@@ -59,7 +59,7 @@ public class UI extends Screen {
     }
 
     override protected function initialize():void {
-        SCREENS[BattleScreen.ID] = new BattleScreen(_refs);
+        SCREENS[BattleScreen.ID] = new BattleScreen(_refs, _controller.game);
 
         _currentPanels = new <AbstractView>[];
         _closedPanels = new <AbstractView>[];
