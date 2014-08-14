@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "name": "chest",
+        "picture": "chip_1.png"
+    },
+    {
+        "id": 2,
+        "name": "weapon",
+        "picture": "chip_2.png"
+    },
+    {
+        "id": 3,
+        "name": "nature",
+        "picture": "chip_3.png"
+    },
+    {
+        "id": 4,
+        "name": "water",
+        "picture": "chip_4.png"
+    },
+    {
+        "id": 5,
+        "name": "fire",
+        "picture": "chip_5.png"
+    },
+    {
+        "id": 6,
+        "name": "add",
+        "picture": "chip_6.png"
+    },
+    {
+        "id": 7,
+        "name": "add",
+        "picture": "chip_7.png"
+    },
+    {
+        "id": 8,
+        "name": "add",
+        "picture": "chip_8.png"
+    }
+]

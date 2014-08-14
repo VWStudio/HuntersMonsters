@@ -1,7 +1,9 @@
 /**
  * Created by agnither on 12.08.14.
  */
-package com.agnither.hunters.model {
+package com.agnither.hunters.model.match3 {
+import com.agnither.hunters.data.ChipVO;
+
 import flash.geom.Point;
 
 import starling.animation.Juggler;
@@ -10,16 +12,19 @@ import starling.events.EventDispatcher;
 
 public class Field extends EventDispatcher {
 
-    public static const INIT: String = "init_Game";
-    public static const NEW_CHIP: String = "new_chip_Game";
-    public static const UPDATE: String = "update_Game";
-    public static const CLEAR: String = "clear_Game";
+    public static const INIT: String = "init_Field";
+    public static const ADD_CHIP: String = "add_chip_Field";
+    public static const MATCH: String = "match_Field";
+    public static const UPDATE: String = "update_Field";
+    public static const CLEAR: String = "clear_Field";
 
     public static var cols: int = 8;
     public static var rows: int = 8;
 
+    private static var _chipTypes: Vector.<String> = new <String>[];
     private static function getRandomChip(fall: Boolean):Chip {
-        return new Chip(1 + Math.random() * 8, fall);
+        var rand: int = _chipTypes.length * Math.random();
+        return new Chip(_chipTypes[rand], fall);
     }
 
     private var _fieldObj: Object;
@@ -50,6 +55,13 @@ public class Field extends EventDispatcher {
 
     public function Field() {
         _juggler = new Juggler();
+
+        _chipTypes.length = 0;
+        _chipTypes.push(ChipVO.CHEST);
+        _chipTypes.push(ChipVO.WEAPON);
+        _chipTypes.push(ChipVO.NATURE);
+        _chipTypes.push(ChipVO.WATER);
+        _chipTypes.push(ChipVO.FIRE);
     }
 
     public function init():void {
@@ -65,11 +77,6 @@ public class Field extends EventDispatcher {
         fillGems();
 
         findMatches();
-//        while (_matches.length==0) {
-//            clearMatches();
-//            shuffleField();
-//            findMatches();
-//        }
         while (_matches.length>0) {
             fixMatches();
             findMatches();
@@ -380,7 +387,7 @@ public class Field extends EventDispatcher {
     private function removeMatches():void {
         while (_matches.length>0) {
             var match: Match = _matches.pop();
-
+            dispatchEventWith(MATCH, false, match);
             delayedCall(clearCells, 0, match.cells);
             match.destroy();
         }
@@ -389,23 +396,13 @@ public class Field extends EventDispatcher {
     private function clearCells(cells: Vector.<Cell>):void {
         while (cells.length > 0) {
             var cell: Cell = cells.shift();
-            cell.clear();
+            if (cell.chip) {
+                cell.clear();
+            }
         }
 
 //        delayedCall(fallGems, TimingVO.kill);
         delayedCall(fallGems, 0.35);
-    }
-
-    private function getGemsOfType(type: int):Vector.<Cell> {
-        var cells: Vector.<Cell> = new <Cell>[];
-        var l: int = _field.length;
-        for (var i:int = 0; i < l; i++) {
-            var cell: Cell = _field[i];
-            if (cell.type == type) {
-                cells.push(cell);
-            }
-        }
-        return cells;
     }
 
     private function fillGems():void {
@@ -415,7 +412,7 @@ public class Field extends EventDispatcher {
                 if (cell) {
                     var chip: Chip = getRandomChip(false);
                     cell.setChip(chip);
-                    dispatchEventWith(NEW_CHIP, false, chip);
+                    dispatchEventWith(ADD_CHIP, false, chip);
                 }
             }
         }
@@ -452,7 +449,7 @@ public class Field extends EventDispatcher {
             if (cell && cell.fillable) {
                 var chip: Chip = getRandomChip(true);
                 cell.setChip(chip);
-                dispatchEventWith(NEW_CHIP, false, chip);
+                dispatchEventWith(ADD_CHIP, false, chip);
 
                 refill = true;
             }
@@ -511,25 +508,6 @@ public class Field extends EventDispatcher {
             }
         }
         return neighbours;
-    }
-
-    private function getNearGems(match: Match):Vector.<Cell> {
-        var near: Vector.<Cell> = new <Cell>[];
-        var l: int = match.amount;
-        for (var i:int = 0; i < l; i++) {
-            var neighbours: Vector.<Cell> = getNeighbours(match.cells[i]);
-            var l2: int = neighbours.length;
-            for (var j:int = 0; j < l2; j++) {
-                var cell: Cell = neighbours[j];
-                if (match.cells.indexOf(cell)<0) {
-                    var chip: Chip = cell.chip;
-                    if (chip && near.indexOf(cell) < 0) {
-                        near.push(cell);
-                    }
-                }
-            }
-        }
-        return near;
     }
 
     public function step(delta: Number):void {

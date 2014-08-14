@@ -1,8 +1,8 @@
 /**
  * Created by agnither on 12.08.14.
  */
-package com.agnither.hunters.view.ui.screens.game {
-import com.agnither.hunters.model.Chip;
+package com.agnither.hunters.view.ui.screens.battle.match3 {
+import com.agnither.hunters.model.match3.Chip;
 import com.agnither.ui.AbstractView;
 import com.agnither.utils.CommonRefs;
 
@@ -29,7 +29,7 @@ public class ChipView extends AbstractView {
     }
 
     override protected function initialize():void {
-        _view = new Image(_refs.gui.getTexture("chip_"+_chip.type+".png"));
+        _view = new Image(_refs.gui.getTexture(_chip.icon));
         _view.pivotX = _view.width/2;
         _view.pivotY = _view.height/2;
         _view.x = _view.pivotX;

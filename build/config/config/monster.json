@@ -1,0 +1,17 @@
+[
+    {
+        "id": 1,
+        "name": "picachu",
+        "picture": "picachu.png",
+        "level": 1,
+        "hp": 100,
+        "damage": 5,
+        "defence": 5,
+        "magic": 5,
+        "difficulty": 10,
+        "drop": 1,
+        "weapon": 1,
+        "armor": "1,2",
+        "item": "1,2"
+    }
+]

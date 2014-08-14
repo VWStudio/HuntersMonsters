@@ -1,0 +1,9 @@
+[
+    {
+        "id": 1,
+        "name": "shield",
+        "picture": "shield.png",
+        "armor": 10,
+        "droparmorrange": "10..15"
+    }
+]

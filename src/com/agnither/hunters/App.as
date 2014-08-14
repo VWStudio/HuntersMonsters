@@ -2,6 +2,7 @@
  * Created by agnither on 06.08.14.
  */
 package com.agnither.hunters {
+import com.agnither.hunters.data.Config;
 import com.agnither.hunters.utils.DeviceResInfo;
 import com.agnither.utils.ResourcesManager;
 
@@ -28,7 +29,7 @@ public class App extends Sprite {
 
         _info = DeviceResInfo.getInfo(Starling.current.nativeOverlay.stage);
 
-//        Config.init();
+        Config.init();
 
         _resources = new ResourcesManager(_info);
 
@@ -54,7 +55,7 @@ public class App extends Sprite {
 //        SoundManager.init();
 
         initLocale();
-//        Config.parse(_resources.main);
+        Config.parse(_resources.main);
     }
 
     private function initLocale():void {

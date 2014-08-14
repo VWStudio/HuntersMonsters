@@ -71,22 +71,22 @@ public class AbstractView extends Sprite {
                     var images: Array = item.images;
                     view = new ButtonContainer(_refs.gui.getTexture(images[0]), "", images.length>=2 ? _refs.gui.getTexture(images[1]) : null, images.length>=3 ? _refs.gui.getTexture(images[2]) : null);
                 } else if (item.type == "text" && item.name) {
-//                    if (item.name.search("_label")<0) {
-//                        view = new TextField(item.width, item.height, item.text, item.fontName, -1, 0xFFFFFF);
-//                        view.touchable = false;
-//                        (view as TextField).hAlign = item.align;
-////                        (view as TextField).vAlign = VAlign.TOP;
-//                        (view as TextField).autoScale = true;
-//                        (view as TextField).batchable = true;
-//                    } else {
-//                        link = item.name.replace("_label", "_btn");
-//                        btn = _links[link];
-//                        btn.textBounds = new Rectangle(item.x - btn.x, item.y - btn.y, item.width, item.height);
-//                        btn.fontName = item.fontName;
-//                        btn.fontSize = -1;
-//                        btn.fontColor = 0xFFFFFF;
-//                        btn.text = item.text;
-//                    }
+                    if (item.name.search("_label")<0) {
+                        view = new TextField(item.width, item.height, item.text, item.fontName, -1, 0xFFFFFF);
+                        view.touchable = false;
+                        (view as TextField).hAlign = item.align;
+//                        (view as TextField).vAlign = VAlign.TOP;
+                        (view as TextField).autoScale = true;
+                        (view as TextField).batchable = true;
+                    } else {
+                        link = item.name.replace("_label", "_btn");
+                        btn = _links[link];
+                        btn.textBounds = new Rectangle(item.x - btn.x, item.y - btn.y, item.width, item.height);
+                        btn.fontName = item.fontName;
+                        btn.fontSize = -1;
+                        btn.fontColor = 0xFFFFFF;
+                        btn.text = item.text;
+                    }
                 } else if (item.type == "movie clip") {
                     view = new Sprite();
                     createFromConfig(item, view as Sprite);
@@ -138,24 +138,24 @@ public class AbstractView extends Sprite {
                     var images: Array = item.images;
                     view = new ButtonContainer(_refs.gui.getTexture(images[0]), "", images.length>=2 ? _refs.gui.getTexture(images[1]) : null, images.length>=3 ? _refs.gui.getTexture(images[2]) : null);
                 } else if (item.type == "text") {
-//                    if (item.name.search("_label")<0) {
-//                        view = new TextField(item.width, item.height, item.text, item.fontName, -1, 0xFFFFFF);
-//                        view.touchable = false;
-//                        (view as TextField).hAlign = item.align;
-////                        (view as TextField).vAlign = VAlign.TOP;
-//                        (view as TextField).autoScale = true;
-//                        (view as TextField).batchable = true;
-//                    } else {
-//                        link = item.name.replace("_label", "_btn");
-//                        btn = _links[link];
-//                        if (btn) {
-//                            btn.textBounds = new Rectangle(item.x - btn.x, item.y - btn.y, item.width, item.height);
-//                            btn.fontName = item.fontName;
-//                            btn.fontSize = -1;
-//                            btn.fontColor = 0xFFFFFF;
-//                            btn.text = item.text;
-//                        }
-//                    }
+                    if (item.name.search("_label")<0) {
+                        view = new TextField(item.width, item.height, item.text, item.fontName, -1, 0xFFFFFF);
+                        view.touchable = false;
+                        (view as TextField).hAlign = item.align;
+//                        (view as TextField).vAlign = VAlign.TOP;
+                        (view as TextField).autoScale = true;
+                        (view as TextField).batchable = true;
+                    } else {
+                        link = item.name.replace("_label", "_btn");
+                        btn = _links[link];
+                        if (btn) {
+                            btn.textBounds = new Rectangle(item.x - btn.x, item.y - btn.y, item.width, item.height);
+                            btn.fontName = item.fontName;
+                            btn.fontSize = -1;
+                            btn.fontColor = 0xFFFFFF;
+                            btn.text = item.text;
+                        }
+                    }
                 } else if (item.type == "movie clip") {
                     view = new Sprite();
                     createFromConfig(item, view as Sprite);

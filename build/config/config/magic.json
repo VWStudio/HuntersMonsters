@@ -1,0 +1,17 @@
+[
+    {
+        "id": 1,
+        "name": "nature",
+        "picture": "m_3.png"
+    },
+    {
+        "id": 2,
+        "name": "water",
+        "picture": "m_4.png"
+    },
+    {
+        "id": 3,
+        "name": "fire",
+        "picture": "m_5.png"
+    }
+]

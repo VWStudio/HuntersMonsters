@@ -5,7 +5,8 @@
  * Time: 0:37
  * To change this template use File | Settings | File Templates.
  */
-package com.agnither.hunters.model {
+package com.agnither.hunters.model.match3 {
+import com.agnither.hunters.model.*;
 
 public class Match {
 
@@ -28,8 +29,8 @@ public class Match {
         return _cells ? _cells.length : 0;
     }
 
-    private var _type: int;
-    public function get type():int {
+    private var _type: String;
+    public function get type():String {
         return _type;
     }
 

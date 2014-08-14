@@ -5,7 +5,7 @@
  * Time: 23:17
  * To change this template use File | Settings | File Templates.
  */
-package com.agnither.hunters.model {
+package com.agnither.hunters.model.match3 {
 
 public class Move {
 

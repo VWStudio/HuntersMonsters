@@ -1,0 +1,9 @@
+[
+    {
+        "id": 1,
+        "name": "sword",
+        "picture": "sword.png",
+        "damage": 10,
+        "dropdamagerange": "10..15"
+    }
+]

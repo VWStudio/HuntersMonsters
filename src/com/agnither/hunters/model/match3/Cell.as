@@ -1,7 +1,9 @@
 /**
  * Created by agnither on 12.08.14.
  */
-package com.agnither.hunters.model {
+package com.agnither.hunters.model.match3 {
+import com.agnither.hunters.model.*;
+
 import flash.geom.Point;
 
 import starling.events.EventDispatcher;
@@ -30,7 +32,7 @@ public class Cell extends EventDispatcher {
         return _chip;
     }
 
-    public function get type():int {
+    public function get type():String {
         return _chip ? _chip.type : null;
     }
 

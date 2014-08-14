@@ -1,7 +1,10 @@
 /**
  * Created by agnither on 12.08.14.
  */
-package com.agnither.hunters.model {
+package com.agnither.hunters.model.match3 {
+import com.agnither.hunters.data.ChipVO;
+import com.agnither.hunters.data.ChipVO;
+
 import starling.events.EventDispatcher;
 
 public class Chip extends EventDispatcher {
@@ -11,9 +14,13 @@ public class Chip extends EventDispatcher {
     public static const HINT: String = "hint_Chip";
     public static const KILL: String = "kill_Chip";
 
-    private var _type: int;
-    public function get type():int {
-        return _type;
+    private var _data: ChipVO;
+    public function get type():String {
+        return _data.name;
+    }
+
+    public function get icon():String {
+        return _data.picture;
     }
 
     private var _cell: Cell;
@@ -38,8 +45,8 @@ public class Chip extends EventDispatcher {
         return movable;
     }
 
-    public function Chip(type: int, fall: Boolean) {
-        _type = type;
+    public function Chip(type: String, fall: Boolean) {
+        _data = ChipVO.DICT[type];
         _fall = fall;
     }
 

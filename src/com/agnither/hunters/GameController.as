@@ -2,11 +2,11 @@
  * Created by agnither on 06.08.14.
  */
 package com.agnither.hunters {
-import com.agnither.hunters.model.Cell;
+import com.agnither.hunters.model.match3.Cell;
 import com.agnither.hunters.model.Game;
 import com.agnither.hunters.view.ui.UI;
 import com.agnither.hunters.view.ui.screens.BattleScreen;
-import com.agnither.hunters.view.ui.screens.game.CellView;
+import com.agnither.hunters.view.ui.screens.battle.match3.FieldView;
 import com.agnither.utils.CommonRefs;
 import com.agnither.utils.ResourcesManager;
 
@@ -37,7 +37,7 @@ public class GameController extends EventDispatcher {
         _ui = new UI(new CommonRefs(_resources), this);
         _stage.addChildAt(_ui, 0);
 
-        _stage.addEventListener(CellView.SELECT, handleSelectCell);
+        _stage.addEventListener(FieldView.SELECT_CELL, handleSelectCell);
     }
 
     public function ready():void {

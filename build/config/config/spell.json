@@ -1,0 +1,18 @@
+[
+    {
+        "id": 1,
+        "name": "fireball",
+        "picture": "fireball.png",
+        "damage": 10,
+        "magic": 1,
+        "mana": "1:5"
+    },
+    {
+        "id": 2,
+        "name": "blaze",
+        "picture": "blaze.png",
+        "damage": 50,
+        "magic": 1,
+        "mana": "1:10,3:5"
+    }
+]

@@ -2,6 +2,7 @@
  * Created by agnither on 30.01.14.
  */
 package com.agnither.utils {
+import com.agnither.hunters.data.Config;
 import com.agnither.hunters.utils.DeviceResInfo;
 
 import org.osflash.signals.Signal;
@@ -70,10 +71,13 @@ public class ResourcesManager {
     public function loadMain():void {
         _loading++;
 
+        for (var i:int = 0; i < Config.list.length; i++) {
+            _main.enqueue("config/config/" + Config.list[i] + ".json");
+        }
+
         _main.enqueue(
             "config/gui.json"
 //            File.applicationDirectory.resolvePath("levels")
-//            File.applicationDirectory.resolvePath("config"),
 //            File.applicationDirectory.resolvePath("particles")
         );
         _queue.push(_main);
@@ -82,11 +86,13 @@ public class ResourcesManager {
     public function loadGUI():void {
         _loading++;
 
+        for (var i:int = 0; i < Fonts.fonts.length; i++) {
+            _gui.enqueue("textures/fonts/"+Fonts.fonts[i]+".xml");
+        }
+
         _gui.enqueue(
-            "textures/main.png",
-            "textures/main.xml"
-//            File.applicationDirectory.resolvePath("textures/"+_info.art+"/fonts/"),
-//            File.applicationDirectory.resolvePath("textures/"+_info.art+"/gui/")
+            "textures/gui/gui.png",
+            "textures/gui/gui.xml"
         );
         _queue.push(_gui);
     }
