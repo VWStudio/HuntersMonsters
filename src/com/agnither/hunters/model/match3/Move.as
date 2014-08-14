@@ -19,6 +19,10 @@ public class Move {
         return _cell2;
     }
 
+    public function get type():String {
+        return cell2.type;
+    }
+
     public function Move(cell1: Cell, cell2: Cell) {
         _cell1 = cell1;
         _cell2 = cell2;

@@ -47,7 +47,9 @@ public class GameController extends EventDispatcher {
     }
 
     private function handleSelectCell(e: Event):void {
-        _game.field.selectCell(e.data as Cell);
+        if (_game.currentPlayer == _game.player) {
+            _game.selectCell(e.data as Cell);
+        }
     }
 }
 }

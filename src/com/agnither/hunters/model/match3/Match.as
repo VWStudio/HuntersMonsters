@@ -6,8 +6,6 @@
  * To change this template use File | Settings | File Templates.
  */
 package com.agnither.hunters.model.match3 {
-import com.agnither.hunters.model.*;
-
 public class Match {
 
     private var _iteration: int;

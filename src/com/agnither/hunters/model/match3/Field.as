@@ -14,6 +14,7 @@ public class Field extends EventDispatcher {
 
     public static const INIT: String = "init_Field";
     public static const ADD_CHIP: String = "add_chip_Field";
+    public static const MOVE: String = "move_Field";
     public static const MATCH: String = "match_Field";
     public static const UPDATE: String = "update_Field";
     public static const CLEAR: String = "clear_Field";
@@ -34,6 +35,10 @@ public class Field extends EventDispatcher {
     }
 
     private var _availableMoves: Vector.<Move>;
+    public function get availableMoves():Vector.<Move> {
+        return _availableMoves;
+    }
+
     private var _matches: Vector.<Match>;
 
     private var _selectedCell: Cell;
@@ -215,6 +220,19 @@ public class Field extends EventDispatcher {
         _hintTime = 0;
     }
 
+    public function checkMove(move: Move):MoveResult {
+        move.trySwap();
+        findMatches();
+        move.trySwap();
+        var result: MoveResult = new MoveResult(move);
+        while (_matches.length > 0) {
+            var match: Match = _matches.pop();
+            result.addResult(new MatchResult(match.type, match.amount));
+            match.destroy();
+        }
+        return result;
+    }
+
     public function selectCell(cell: Cell):void {
         if (busy) {
             return;
@@ -283,6 +301,10 @@ public class Field extends EventDispatcher {
             } else {
                 _hintTime = 0;
                 _hintMatch.length = 0;
+
+                if (_delayedCalls == 0) {
+                    dispatchEventWith(MOVE);
+                }
             }
         }
     }
