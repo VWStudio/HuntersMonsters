@@ -6,6 +6,7 @@ import com.agnither.hunters.model.Game;
 import com.agnither.hunters.view.ui.screens.battle.match3.FieldView;
 import com.agnither.hunters.view.ui.screens.battle.player.HeroView;
 import com.agnither.hunters.view.ui.screens.battle.player.ManaListView;
+import com.agnither.hunters.view.ui.screens.battle.player.SpellsListView;
 import com.agnither.ui.Screen;
 import com.agnither.utils.CommonRefs;
 
@@ -20,6 +21,9 @@ public class BattleScreen extends Screen {
 
     private var _playerMana: ManaListView;
     private var _enemyMana: ManaListView;
+
+    private var _playerSpells: SpellsListView;
+    private var _enemySpells: SpellsListView;
 
     private var _field: FieldView;
 
@@ -66,7 +70,16 @@ public class BattleScreen extends Screen {
         addChild(_enemyMana);
 
         _links.spellsPlayer.visible = false;
+        _playerSpells = new SpellsListView(_refs, _game.player.spells);
+        _playerSpells.x = _links.spellsPlayer.x;
+        _playerSpells.y = _links.spellsPlayer.y;
+        addChild(_playerSpells);
+
         _links.spellsEnemy.visible = false;
+        _enemySpells = new SpellsListView(_refs, _game.enemy.spells);
+        _enemySpells.x = _links.spellsEnemy.x;
+        _enemySpells.y = _links.spellsEnemy.y;
+        addChild(_enemySpells);
 
         _field = new FieldView(_refs, _game.field);
         addChild(_field);

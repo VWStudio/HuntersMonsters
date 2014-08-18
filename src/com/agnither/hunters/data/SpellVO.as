@@ -6,6 +6,9 @@ import flash.utils.Dictionary;
 
 public class SpellVO {
 
+    public static const FIREBALL :String = "fireball";
+    public static const BLAZE :String = "blaze";
+
     public static const LIST: Vector.<SpellVO> = new <SpellVO>[];
     public static const DICT: Dictionary = new Dictionary();
 
@@ -22,7 +25,7 @@ public class SpellVO {
             object.mana = row.mana ? row.mana.split(",") : [];
 
             LIST.push(object);
-            DICT[object.id] = object;
+            DICT[object.name] = object;
         }
     }
 

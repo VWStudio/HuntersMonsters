@@ -13,5 +13,20 @@
         "id": 3,
         "name": "fire",
         "picture": "m_5.png"
+    },
+    {
+        "id": 4,
+        "name": "add1",
+        "picture": "m_6.png"
+    },
+    {
+        "id": 5,
+        "name": "add2",
+        "picture": "m_7.png"
+    },
+    {
+        "id": 6,
+        "name": "add3",
+        "picture": "m_8.png"
     }
 ]

@@ -12,6 +12,7 @@
         "drop": 1,
         "weapon": 1,
         "armor": "1,2",
-        "item": "1,2"
+        "item": "1,2",
+        "spells": "1,2"
     }
 ]

@@ -2,8 +2,6 @@
  * Created by agnither on 14.08.14.
  */
 package com.agnither.hunters.model.match3 {
-import com.agnither.hunters.data.ChipVO;
-
 public class MatchResult {
 
     private var _type: String;
@@ -16,14 +14,15 @@ public class MatchResult {
         return _amount;
     }
 
+    private var _scoreMul: int;
     public function get score():int {
-        var typeScore: int = _type == ChipVO.WEAPON ? 10 : 1;
-        return _amount * typeScore;
+        return _amount * _scoreMul;
     }
 
-    public function MatchResult(type: String, amount: int) {
+    public function MatchResult(type: String, amount: int, scoreMul: int = 1) {
         _type = type;
         _amount = amount;
+        _scoreMul = scoreMul;
     }
 }
 }

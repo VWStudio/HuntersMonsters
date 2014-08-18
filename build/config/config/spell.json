@@ -2,17 +2,17 @@
     {
         "id": 1,
         "name": "fireball",
-        "picture": "fireball.png",
+        "picture": "slot_1.png",
         "damage": 10,
-        "magic": 1,
-        "mana": "1:5"
+        "magic": 3,
+        "mana": "3:5"
     },
     {
         "id": 2,
         "name": "blaze",
-        "picture": "blaze.png",
+        "picture": "slot_2.png",
         "damage": 50,
-        "magic": 1,
-        "mana": "1:10,3:5"
+        "magic": 3,
+        "mana": "3:15"
     }
 ]

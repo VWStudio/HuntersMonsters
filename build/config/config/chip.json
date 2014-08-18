@@ -26,17 +26,17 @@
     },
     {
         "id": 6,
-        "name": "add",
+        "name": "add1",
         "picture": "chip_6.png"
     },
     {
         "id": 7,
-        "name": "add",
+        "name": "add2",
         "picture": "chip_7.png"
     },
     {
         "id": 8,
-        "name": "add",
+        "name": "add3",
         "picture": "chip_8.png"
     }
 ]

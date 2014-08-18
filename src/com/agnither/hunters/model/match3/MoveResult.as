@@ -2,6 +2,8 @@
  * Created by agnither on 14.08.14.
  */
 package com.agnither.hunters.model.match3 {
+import com.agnither.hunters.data.ChipVO;
+
 public class MoveResult {
 
     private var _move: Move;
@@ -10,6 +12,11 @@ public class MoveResult {
     }
 
     private var _results: Vector.<MatchResult>;
+
+    private var _haveWeapon: Boolean;
+    public function get haveWeapon():Boolean {
+        return _haveWeapon;
+    }
 
     private var _score: int;
     public function get score():int {
@@ -23,6 +30,10 @@ public class MoveResult {
     }
 
     public function addResult(result: MatchResult):void {
+        if (result.type == ChipVO.WEAPON) {
+            _haveWeapon = true;
+        }
+
         _score += result.score;
         _results.push(result);
     }

@@ -11,6 +11,9 @@ public class ChipVO {
     public static const NATURE: String = "nature";
     public static const WATER: String = "water";
     public static const FIRE: String = "fire";
+    public static const ADD1: String = "add1";
+    public static const ADD2: String = "add2";
+    public static const ADD3: String = "add3";
 
     public static const LIST: Vector.<ChipVO> = new <ChipVO>[];
     public static const DICT: Dictionary = new Dictionary();

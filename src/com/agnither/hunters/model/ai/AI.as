@@ -6,6 +6,9 @@ import com.agnither.hunters.model.Game;
 import com.agnither.hunters.model.match3.Move;
 import com.agnither.hunters.model.match3.MoveResult;
 import com.agnither.hunters.model.player.Player;
+import com.agnither.hunters.model.player.Spell;
+
+import flash.utils.Dictionary;
 
 import starling.core.Starling;
 
@@ -14,7 +17,9 @@ public class AI {
     private static var _game: Game;
 
     private static var _player: Player;
-    private static var _results: Vector.<MoveResult>;
+    private static var _spellResults: Dictionary;
+    private static var _weaponResults: Array;
+    private static var _otherResults: Array;
 
     public static function init(game: Game):void {
         _game = game;
@@ -22,32 +27,60 @@ public class AI {
 
     public static function move(player: Player):void {
         _player = player;
+        var difficulty: int = 30;
 
-        // TODO: сначала проверка на возможность скастовать заклинание
+        processSpells(difficulty);
+        processMoves();
+        selectMove(difficulty);
+    }
 
-        _results = new <MoveResult>[];
+    private static function processSpells(difficulty: int):void {
+        var results: Array = [];
+        if (Math.random()*100 < difficulty) {
+            for (var i:int = 0; i < _player.spells.list.length; i++) {
+                var spell:Spell = _player.spells.list[i];
+                var result: CheckManaResult = new CheckManaResult(_player.manaList, spell);
+                if (result.enough) {
+                    _game.useSpell(spell);
+                } else {
+                    results.push(result);
+                }
+            }
+        }
+
+        _spellResults = new Dictionary();
+        if (results.length > 0) {
+            results.sortOn("delta", Array.NUMERIC);
+            for (var key: * in results[0].results) {
+                _spellResults[key] = true;
+            }
+        }
+    }
+
+    private static function processMoves():void {
+        _weaponResults = [];
+        _otherResults = [];
         var moves: Vector.<Move> = _game.field.availableMoves;
         var l: int = moves.length;
-        for (var i:int = 0; i < l; i++) {
-            _results.push(_game.field.checkMove(moves[i]));
+        for (var i: int = 0; i < l; i++) {
+            var result: MoveResult = _game.field.checkMove(moves[i], _spellResults);
+            if (result.haveWeapon) {
+                _weaponResults.push(result);
+            } else {
+                _otherResults.push(result);
+            }
         }
-        _results.sort(sortResults);
+    }
 
-//        var rand: int = moves.length * Math.random();
-//        var move: Move = moves[rand];
-        var move: Move = _results[0].move;
+    private static function selectMove(difficulty: int):void {
+        var results: Array = _weaponResults.length > 0 ? _weaponResults : _otherResults;
+        results.sortOn("score", Array.NUMERIC);
+
+        var rand: int = (100-difficulty)/100 * results.length * Math.random();
+        var move: Move = results[rand].move;
 
         Starling.juggler.delayCall(_game.selectCell, 0.5, move.cell2);
         Starling.juggler.delayCall(_game.selectCell, 1, move.cell1);
-    }
-
-    private static function sortResults(res1: MoveResult, res2: MoveResult):int {
-        if (res1.score < res2.score) {
-            return 1;
-        } else if (res1.score > res2.score) {
-            return -1;
-        }
-        return 0;
     }
 }
 }

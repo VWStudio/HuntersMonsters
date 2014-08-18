@@ -61,6 +61,27 @@ public class ManaList extends EventDispatcher {
         return mana && mana.value >= value;
     }
 
+    public function checkSpell(spell: Spell):Boolean {
+        var mana: Array = spell.mana;
+        for (var i:int = 0; i < mana.length; i++) {
+            var manaData: Array = mana[i].split(":");
+            var manaType: MagicVO = MagicVO.DICT[manaData[0]];
+            if (!checkMana(manaType.name, manaData[1])) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public function useSpell(spell: Spell):void {
+        var mana: Array = spell.mana;
+        for (var i:int = 0; i < mana.length; i++) {
+            var manaData: Array = mana[i].split(":");
+            var manaType: MagicVO = MagicVO.DICT[manaData[0]];
+            releaseMana(manaType.name, manaData[1]);
+        }
+    }
+
     public function clearList():void {
         while (_list.length > 0) {
             var mana: Mana = _list.shift();

@@ -5,6 +5,7 @@ package com.agnither.hunters.model.match3 {
 import com.agnither.hunters.data.ChipVO;
 
 import flash.geom.Point;
+import flash.utils.Dictionary;
 
 import starling.animation.Juggler;
 import starling.core.Starling;
@@ -60,13 +61,17 @@ public class Field extends EventDispatcher {
 
     public function Field() {
         _juggler = new Juggler();
+    }
 
+    public function initChips(special1: String, special2: String):void {
         _chipTypes.length = 0;
         _chipTypes.push(ChipVO.CHEST);
         _chipTypes.push(ChipVO.WEAPON);
         _chipTypes.push(ChipVO.NATURE);
         _chipTypes.push(ChipVO.WATER);
         _chipTypes.push(ChipVO.FIRE);
+        _chipTypes.push(special1);
+        _chipTypes.push(special2);
     }
 
     public function init():void {
@@ -220,14 +225,14 @@ public class Field extends EventDispatcher {
         _hintTime = 0;
     }
 
-    public function checkMove(move: Move):MoveResult {
+    public function checkMove(move: Move, scoreMuls: Dictionary):MoveResult {
         move.trySwap();
         findMatches();
         move.trySwap();
         var result: MoveResult = new MoveResult(move);
         while (_matches.length > 0) {
             var match: Match = _matches.pop();
-            result.addResult(new MatchResult(match.type, match.amount));
+            result.addResult(new MatchResult(match.type, match.amount, scoreMuls[match.type] ? 2 : 1));
             match.destroy();
         }
         return result;

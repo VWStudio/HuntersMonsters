@@ -2,6 +2,8 @@
  * Created by agnither on 13.08.14.
  */
 package com.agnither.hunters.model.player {
+import com.agnither.hunters.data.MagicVO;
+
 import starling.events.EventDispatcher;
 
 public class Personage extends EventDispatcher {
@@ -41,6 +43,11 @@ public class Personage extends EventDispatcher {
         return _damage;
     }
 
+    private var _magic: int;
+    public function get magic():MagicVO {
+        return MagicVO.DICT[_magic];
+    }
+
     public function Personage() {
     }
 
@@ -49,6 +56,7 @@ public class Personage extends EventDispatcher {
         _hp = _maxHP;
         _armor = data.armor;
         _damage = data.damage;
+        _magic = data.magic;
     }
 
     public function hit(value: int, ignoreArmor: Boolean = false):void {
