@@ -1,0 +1,11 @@
+[
+    {
+        "id": 1,
+        "name": "player",
+        "picture": "player.png",
+        "level": 1,
+        "hp": 100,
+        "damage": 5,
+        "defence": 5
+    }
+]

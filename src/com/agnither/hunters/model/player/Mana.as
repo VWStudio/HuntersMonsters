@@ -2,7 +2,7 @@
  * Created by agnither on 13.08.14.
  */
 package com.agnither.hunters.model.player {
-import com.agnither.hunters.data.MagicVO;
+import com.agnither.hunters.data.outer.MagicVO;
 
 import starling.events.EventDispatcher;
 

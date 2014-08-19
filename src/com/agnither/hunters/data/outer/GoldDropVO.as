@@ -1,7 +1,7 @@
 /**
  * Created by agnither on 14.08.14.
  */
-package com.agnither.hunters.data {
+package com.agnither.hunters.data.outer {
 import flash.utils.Dictionary;
 
 public class GoldDropVO {
@@ -24,5 +24,12 @@ public class GoldDropVO {
 
     public var id: int;
     public var value: String;
+
+    public function get random():int {
+        var minMax: Array = value.split("..");
+        var min: int = minMax[0];
+        var max: int = minMax[1];
+        return min + Math.random()*(max-min);
+    }
 }
 }

@@ -1,10 +1,12 @@
 /**
  * Created by agnither on 14.08.14.
  */
-package com.agnither.hunters.data {
+package com.agnither.hunters.data.outer {
+import com.agnither.hunters.data.inner.PersonageVO;
+
 import flash.utils.Dictionary;
 
-public class MonsterVO {
+public class MonsterVO extends PersonageVO {
 
     public static const LIST: Vector.<MonsterVO> = new <MonsterVO>[];
     public static const DICT: Dictionary = new Dictionary();
@@ -34,19 +36,10 @@ public class MonsterVO {
         }
     }
 
-    public var id: int;
-    public var name: String;
-    public var picture: String;
-    public var level: int;
-    public var hp: int;
-    public var damage: int;
-    public var defence: int;
-    public var magic: int;
     public var difficulty: int;
     public var drop: int;
     public var weapon: int;
     public var armor: Array;
     public var item: Array;
-    public var spells: Array;
 }
 }

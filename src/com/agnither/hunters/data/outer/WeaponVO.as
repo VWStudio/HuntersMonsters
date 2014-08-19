@@ -1,7 +1,7 @@
 /**
  * Created by agnither on 14.08.14.
  */
-package com.agnither.hunters.data {
+package com.agnither.hunters.data.outer {
 import flash.utils.Dictionary;
 
 public class WeaponVO {
