@@ -2,18 +2,20 @@
  * Created by agnither on 14.08.14.
  */
 package com.agnither.hunters.data.outer {
+import com.agnither.hunters.data.inner.ItemVO;
+
 import flash.utils.Dictionary;
 
-public class ItemVO {
+public class MagicItemVO extends ItemVO {
 
-    public static const LIST: Vector.<ItemVO> = new <ItemVO>[];
+    public static const LIST: Vector.<MagicItemVO> = new <MagicItemVO>[];
     public static const DICT: Dictionary = new Dictionary();
 
     public static function parseData(data: Object):void {
         for (var i: int = 0; i < data.length; i++) {
             var row: Object = data[i];
 
-            var object: ItemVO = new ItemVO();
+            var object: MagicItemVO = new MagicItemVO();
             object.id = row.id;
             object.name = row.name;
             object.picture = row.picture;
@@ -25,9 +27,6 @@ public class ItemVO {
         }
     }
 
-    public var id: int;
-    public var name: String;
-    public var picture: String;
     public var type: int;
     public var action: String;
 }

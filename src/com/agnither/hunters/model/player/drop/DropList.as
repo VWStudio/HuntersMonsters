@@ -1,7 +1,7 @@
 /**
  * Created by agnither on 13.08.14.
  */
-package com.agnither.hunters.model.player {
+package com.agnither.hunters.model.player.drop {
 import starling.events.EventDispatcher;
 
 public class DropList extends EventDispatcher {
@@ -18,7 +18,7 @@ public class DropList extends EventDispatcher {
         }
     }
 
-    public function addContent(content: *):void {
+    public function addContent(content: Drop):void {
         var i: int = 0;
         while (i < _list.length && !_list[i].addContent(content)) {
             i++;

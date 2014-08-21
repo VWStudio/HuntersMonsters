@@ -2,7 +2,7 @@
  * Created by agnither on 14.08.14.
  */
 package com.agnither.hunters.view.ui.screens.battle.player {
-import com.agnither.hunters.model.player.Personage;
+import com.agnither.hunters.model.player.personage.Personage;
 import com.agnither.ui.AbstractView;
 import com.agnither.utils.CommonRefs;
 
@@ -56,7 +56,7 @@ public class HeroView extends AbstractView {
     private function handleUpdate(e: Event = null):void {
         _name.text = String(_hero.name) + " " + String(_hero.level);
         _hp.text = String(_hero.hp) + "/" + String(_hero.maxHP);
-        _armor.text = String(_hero.armor);
+        _armor.text = String(_hero.defence);
         _damage.text = String(_hero.damage);
 
         _btn.visible = _hero.dead;

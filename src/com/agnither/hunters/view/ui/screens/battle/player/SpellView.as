@@ -3,8 +3,7 @@
  */
 package com.agnither.hunters.view.ui.screens.battle.player {
 import com.agnither.hunters.data.outer.MagicVO;
-import com.agnither.hunters.model.player.Spell;
-import com.agnither.ui.AbstractView;
+import com.agnither.hunters.model.player.inventory.Spell;
 import com.agnither.utils.CommonRefs;
 
 import starling.display.Image;
@@ -14,41 +13,22 @@ import starling.events.TouchEvent;
 import starling.events.TouchPhase;
 import starling.text.TextField;
 
-public class SpellView extends AbstractView {
+public class SpellView extends ItemView {
 
     public static const SPELL_SELECTED: String = "spell_selected_SpellView";
 
-    private var _spell: Spell;
-
-    private var _select: Sprite;
-    private var _picture: Sprite;
-
-    private var _damage: TextField;
+    public function get spell():Spell {
+        return _item as Spell;
+    }
 
     public function SpellView(refs:CommonRefs, spell: Spell) {
-        _spell = spell;
-        super(refs);
+        super(refs, spell);
     }
 
     override protected function initialize():void {
-        createFromCommon(_refs.guiConfig.common.spell);
+        super.initialize();
 
-        _select = _links.select;
-        _select.visible = false;
-
-        _picture = _links.picture;
-        _picture.addChild(new Image(_refs.gui.getTexture(_spell.picture)));
-
-        _links.damage_icon.getChildAt(0).texture = _refs.gui.getTexture("hit.png");
-
-        _links.mana1_icon.visible = false;
-        _links.mana1_tf.visible = false;
-        _links.mana2_icon.visible = false;
-        _links.mana2_tf.visible = false;
-        _links.mana3_icon.visible = false;
-        _links.mana3_tf.visible = false;
-
-        var mana: Array = _spell.mana;
+        var mana: Array = spell.mana;
         var l: int = mana.length;
         for (var i:int = 0; i < l; i++) {
             var manaData: Array = mana[i].split(":");
@@ -62,8 +42,7 @@ public class SpellView extends AbstractView {
             tf.visible = true;
         }
 
-        _damage = _links.damage_tf;
-        _damage.text = String(_spell.damage);
+        _damage.text = String(spell.damage);
 
         addEventListener(TouchEvent.TOUCH, handleTouch);
     }
@@ -71,7 +50,7 @@ public class SpellView extends AbstractView {
     private function handleTouch(e: TouchEvent):void {
         var touch: Touch = e.getTouch(this, TouchPhase.BEGAN);
         if (touch) {
-            dispatchEventWith(SPELL_SELECTED, true, _spell);
+            dispatchEventWith(SPELL_SELECTED, true, spell);
         }
     }
 }

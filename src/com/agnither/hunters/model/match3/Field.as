@@ -23,10 +23,10 @@ public class Field extends EventDispatcher {
     public static var cols: int = 8;
     public static var rows: int = 8;
 
-    private static var _chipTypes: Vector.<String> = new <String>[];
+    private static var _chipTypes: Vector.<ChipVO> = new <ChipVO>[];
     private static function getRandomChip(fall: Boolean):Chip {
         var rand: int = _chipTypes.length * Math.random();
-        return new Chip(_chipTypes[rand], fall);
+        return new Chip(_chipTypes[rand].name, fall);
     }
 
     private var _fieldObj: Object;
@@ -63,13 +63,13 @@ public class Field extends EventDispatcher {
         _juggler = new Juggler();
     }
 
-    public function initChips(special1: String, special2: String):void {
+    public function initChips(special1: ChipVO, special2: ChipVO):void {
         _chipTypes.length = 0;
-        _chipTypes.push(ChipVO.CHEST);
-        _chipTypes.push(ChipVO.WEAPON);
-        _chipTypes.push(ChipVO.NATURE);
-        _chipTypes.push(ChipVO.WATER);
-        _chipTypes.push(ChipVO.FIRE);
+        _chipTypes.push(ChipVO.DICT[ChipVO.CHEST]);
+        _chipTypes.push(ChipVO.DICT[ChipVO.WEAPON]);
+        _chipTypes.push(ChipVO.DICT[ChipVO.NATURE]);
+        _chipTypes.push(ChipVO.DICT[ChipVO.WATER]);
+        _chipTypes.push(ChipVO.DICT[ChipVO.FIRE]);
 
         if (_chipTypes.indexOf(special1) < 0) {
             _chipTypes.push(special1);

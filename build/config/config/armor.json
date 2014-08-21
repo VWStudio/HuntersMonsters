@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "name": "plate",
+        "name": "chest",
         "picture": "slot_5.png",
         "armor": 10,
         "droparmorrange": "10..15",
@@ -9,10 +9,42 @@
     },
     {
         "id": 2,
+        "name": "steel_chest",
+        "picture": "slot_5.png",
+        "armor": 15,
+        "droparmorrange": "15..20",
+        "type": "body"
+    },
+    {
+        "id": 3,
+        "name": "gloves",
+        "picture": "slot_6.png",
+        "armor": 6,
+        "droparmorrange": "5..10",
+        "type": "hand"
+    },
+    {
+        "id": 4,
+        "name": "pants",
+        "picture": "slot_6.png",
+        "armor": 6,
+        "droparmorrange": "5..10",
+        "type": "leg"
+    },
+    {
+        "id": 5,
+        "name": "helmet",
+        "picture": "slot_6.png",
+        "armor": 6,
+        "droparmorrange": "5..10",
+        "type": "head"
+    },
+    {
+        "id": 6,
         "name": "boots",
         "picture": "slot_6.png",
-        "armor": 10,
-        "droparmorrange": "10..15",
+        "armor": 6,
+        "droparmorrange": "5..10",
         "type": "feet"
     }
 ]

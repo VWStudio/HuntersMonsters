@@ -28,6 +28,7 @@ public class ChipVO {
             object.picture = row.picture;
 
             LIST.push(object);
+            DICT[object.id] = object;
             DICT[object.name] = object;
         }
     }

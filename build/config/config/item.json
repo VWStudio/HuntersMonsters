@@ -1,8 +1,20 @@
 [
     {
         "id": 1,
-        "name": "staff",
+        "name": "ring",
         "picture": "slot_7.png",
-        "type": 3
+        "type": "hand"
+    },
+    {
+        "id": 2,
+        "name": "ring",
+        "picture": "slot_7.png",
+        "type": "hand"
+    },
+    {
+        "id": 3,
+        "name": "robe",
+        "picture": "slot_7.png",
+        "type": "body"
     }
 ]

@@ -12,8 +12,5 @@ public class PersonageVO {
     public var hp: int;
     public var damage: int;
     public var defence: int;
-
-    public var magic: int;
-    public var spells: Array;
 }
 }

@@ -2,9 +2,11 @@
  * Created by agnither on 14.08.14.
  */
 package com.agnither.hunters.data.outer {
+import com.agnither.hunters.data.inner.ItemVO;
+
 import flash.utils.Dictionary;
 
-public class WeaponVO {
+public class WeaponVO extends ItemVO {
 
     public static const LIST: Vector.<WeaponVO> = new <WeaponVO>[];
     public static const DICT: Dictionary = new Dictionary();
@@ -26,11 +28,15 @@ public class WeaponVO {
         }
     }
 
-    public var id: int;
-    public var name: String;
-    public var picture: String;
     public var damage: int;
     public var drop_damage_range: String;
     public var damage_type: int;
+
+    public function get randomDamage():int {
+        var minMax: Array = drop_damage_range.split("..");
+        var min: int = minMax[0];
+        var max: int = minMax[1];
+        return min + Math.random() * (max - min);
+    }
 }
 }

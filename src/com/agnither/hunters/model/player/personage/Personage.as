@@ -1,9 +1,8 @@
 /**
  * Created by agnither on 13.08.14.
  */
-package com.agnither.hunters.model.player {
+package com.agnither.hunters.model.player.personage {
 import com.agnither.hunters.data.inner.PersonageVO;
-import com.agnither.hunters.data.outer.MagicVO;
 
 import starling.events.EventDispatcher;
 
@@ -12,17 +11,14 @@ public class Personage extends EventDispatcher {
     public static const UPDATE: String = "update_Personage";
     public static const HIT: String = "hit_Personage";
 
-    private var _data: PersonageVO;
-    public function get data():PersonageVO {
-        return _data;
-    }
-
+    private var _name: String;
     public function get name():String {
-        return _data.name;
+        return _name;
     }
 
+    private var _level: int;
     public function get level():int {
-        return _data.level;
+        return _level;
     }
 
     private var _hp: int;
@@ -30,42 +26,48 @@ public class Personage extends EventDispatcher {
         return _hp;
     }
 
+    private var _maxHP: int;
     public function get maxHP():int {
-        return _data.hp;
+        return _maxHP;
     }
 
     public function get dead():Boolean {
         return _hp <= 0;
     }
 
-    public function get armor():int {
-        return _data.defence;
-    }
-
+    private var _damage: int;
     public function get damage():int {
-        return _data.damage;
+        return _damage;
     }
 
-    public function get magic():MagicVO {
-        return MagicVO.DICT[_data.magic];
+    private var _defence: int;
+    public function get defence():int {
+        return _defence;
     }
 
-    public function get spells():Array {
-        return _data.spells;
+    private var _magic: int;
+    public function get magic():int {
+        return _magic;
     }
 
     public function Personage() {
     }
 
-    public function init(data: PersonageVO):void {
-        _data = data;
-        _hp = maxHP;
+    public function init(data: PersonageVO, magic: int):void {
+        _name = data.name;
+        _level = data.level;
+        _maxHP = data.hp;
+        _hp = _maxHP;
+        _damage = data.damage;
+        _defence = data.defence;
+        _magic = magic;
     }
 
-    public function hit(value: int, ignoreArmor: Boolean = false):void {
-        if (!ignoreArmor) {
-            value -= armor;
+    public function hit(value: int, ignoreDefence: Boolean = false):void {
+        if (!ignoreDefence) {
+            value -= defence;
         }
+        value = Math.max(0, value);
 
         _hp -= value;
         _hp = Math.max(0, _hp);

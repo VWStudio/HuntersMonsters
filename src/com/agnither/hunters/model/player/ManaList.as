@@ -3,6 +3,7 @@
  */
 package com.agnither.hunters.model.player {
 import com.agnither.hunters.data.outer.MagicVO;
+import com.agnither.hunters.model.player.inventory.Spell;
 
 import flash.utils.Dictionary;
 

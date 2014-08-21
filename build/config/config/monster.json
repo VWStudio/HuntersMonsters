@@ -1,8 +1,8 @@
 [
     {
         "id": 1,
-        "name": "picachu",
-        "picture": "picachu.png",
+        "name": "blue_bull",
+        "picture": "monster_1.png",
         "level": 1,
         "hp": 100,
         "damage": 5,
@@ -10,9 +10,41 @@
         "magic": 5,
         "difficulty": 10,
         "drop": 1,
-        "weapon": 1,
+        "weapon": 0,
         "armor": "1,2",
-        "item": "1,2",
+        "items": 0,
         "spells": "1,2"
+    },
+    {
+        "id": 2,
+        "name": "blue_bull",
+        "picture": "monster_1.png",
+        "level": 2,
+        "hp": 200,
+        "damage": 8,
+        "defence": 10,
+        "magic": 5,
+        "difficulty": 50,
+        "drop": 1,
+        "weapon": 0,
+        "armor": "1,2",
+        "items": 0,
+        "spells": "1,2"
+    },
+    {
+        "id": 3,
+        "name": "weed",
+        "picture": "monster_2.png",
+        "level": 1,
+        "hp": 150,
+        "damage": 12,
+        "defence": 20,
+        "magic": 4,
+        "difficulty": 80,
+        "drop": 1,
+        "weapon": 0,
+        "armor": 0,
+        "items": 0,
+        "spells": "1,2,3"
     }
 ]

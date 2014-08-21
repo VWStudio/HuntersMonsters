@@ -2,7 +2,7 @@
  * Created by agnither on 14.08.14.
  */
 package com.agnither.hunters.view.ui.screens.battle.player {
-import com.agnither.hunters.model.player.DropList;
+import com.agnither.hunters.model.player.drop.DropList;
 import com.agnither.ui.AbstractView;
 import com.agnither.utils.CommonRefs;
 

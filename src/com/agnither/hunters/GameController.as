@@ -4,7 +4,8 @@
 package com.agnither.hunters {
 import com.agnither.hunters.model.match3.Cell;
 import com.agnither.hunters.model.Game;
-import com.agnither.hunters.model.player.Spell;
+import com.agnither.hunters.model.player.AIPlayer;
+import com.agnither.hunters.model.player.inventory.Spell;
 import com.agnither.hunters.view.ui.UI;
 import com.agnither.hunters.view.ui.screens.BattleScreen;
 import com.agnither.hunters.view.ui.screens.battle.match3.FieldView;
@@ -56,7 +57,7 @@ public class GameController extends EventDispatcher {
     }
 
     private function handleSelectSpell(e: Event):void {
-        if (_game.currentPlayer == _game.player) {
+        if (!(_game.currentPlayer is AIPlayer)) {
             var spell: Spell = e.data as Spell;
             if (_game.checkSpell(spell)) {
                 _game.useSpell(spell);

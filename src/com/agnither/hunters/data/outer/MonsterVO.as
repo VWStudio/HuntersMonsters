@@ -3,6 +3,7 @@
  */
 package com.agnither.hunters.data.outer {
 import com.agnither.hunters.data.inner.PersonageVO;
+import com.agnither.hunters.model.player.inventory.Weapon;
 
 import flash.utils.Dictionary;
 
@@ -23,12 +24,15 @@ public class MonsterVO extends PersonageVO {
             object.hp = row.hp;
             object.damage = row.damage;
             object.defence = row.defence;
+
             object.magic = row.magic;
+
             object.difficulty = row.difficulty;
             object.drop = row.drop;
+
             object.weapon = row.weapon;
             object.armor = row.armor ? row.armor.split(",") : [];
-            object.item = row.item ? row.item.split(",") : [];
+            object.items = row.items ? row.items.split(",") : [];
             object.spells = row.spells ? row.spells.split(",") : [];
 
             LIST.push(object);
@@ -36,10 +40,14 @@ public class MonsterVO extends PersonageVO {
         }
     }
 
+    public var magic: int;
+
     public var difficulty: int;
     public var drop: int;
+
     public var weapon: int;
     public var armor: Array;
-    public var item: Array;
+    public var items: Array;
+    public var spells: Array;
 }
 }

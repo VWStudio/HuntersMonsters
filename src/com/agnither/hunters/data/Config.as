@@ -6,7 +6,7 @@ import com.agnither.hunters.data.outer.ArmorVO;
 import com.agnither.hunters.data.outer.ChipVO;
 import com.agnither.hunters.data.outer.DropVO;
 import com.agnither.hunters.data.outer.GoldDropVO;
-import com.agnither.hunters.data.outer.ItemVO;
+import com.agnither.hunters.data.outer.MagicItemVO;
 import com.agnither.hunters.data.outer.MagicVO;
 import com.agnither.hunters.data.outer.MonsterVO;
 import com.agnither.hunters.data.outer.PlayerVO;
@@ -28,7 +28,7 @@ public class Config {
         addConfig("weapon", WeaponVO);
         addConfig("armor", ArmorVO);
         addConfig("spell", SpellVO);
-        addConfig("item", ItemVO);
+        addConfig("item", MagicItemVO);
         addConfig("magic", MagicVO);
         addConfig("drop", DropVO);
         addConfig("gold_drop", GoldDropVO);

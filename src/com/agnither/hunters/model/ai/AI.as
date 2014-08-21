@@ -5,8 +5,8 @@ package com.agnither.hunters.model.ai {
 import com.agnither.hunters.model.Game;
 import com.agnither.hunters.model.match3.Move;
 import com.agnither.hunters.model.match3.MoveResult;
-import com.agnither.hunters.model.player.Player;
-import com.agnither.hunters.model.player.Spell;
+import com.agnither.hunters.model.player.AIPlayer;
+import com.agnither.hunters.model.player.inventory.Spell;
 
 import flash.utils.Dictionary;
 
@@ -16,7 +16,7 @@ public class AI {
 
     private static var _game: Game;
 
-    private static var _player: Player;
+    private static var _player: AIPlayer;
     private static var _spellResults: Dictionary;
     private static var _weaponResults: Array;
     private static var _otherResults: Array;
@@ -25,9 +25,9 @@ public class AI {
         _game = game;
      }
 
-    public static function move(player: Player):void {
+    public static function move(player: AIPlayer):void {
         _player = player;
-        var difficulty: int = 30;
+        var difficulty: int = _player.difficulty;
 
         processSpells(difficulty);
         processMoves();
@@ -37,13 +37,15 @@ public class AI {
     private static function processSpells(difficulty: int):void {
         var results: Array = [];
         if (Math.random()*100 < difficulty) {
-            for (var i:int = 0; i < _player.spells.list.length; i++) {
-                var spell:Spell = _player.spells.list[i];
-                var result: CheckManaResult = new CheckManaResult(_player.manaList, spell);
-                if (result.enough) {
-                    _game.useSpell(spell);
-                } else {
-                    results.push(result);
+            for (var i:int = 0; i < _player.inventory.items.length; i++) {
+                var spell: Spell = _player.inventory.items[i] as Spell;
+                if (spell) {
+                    var result:CheckManaResult = new CheckManaResult(_player.manaList, spell);
+                    if (result.enough) {
+                        _game.useSpell(spell);
+                    } else {
+                        results.push(result);
+                    }
                 }
             }
         }

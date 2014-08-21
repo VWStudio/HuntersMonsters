@@ -7,7 +7,7 @@ import com.agnither.hunters.view.ui.screens.battle.match3.FieldView;
 import com.agnither.hunters.view.ui.screens.battle.player.DropListView;
 import com.agnither.hunters.view.ui.screens.battle.player.HeroView;
 import com.agnither.hunters.view.ui.screens.battle.player.ManaListView;
-import com.agnither.hunters.view.ui.screens.battle.player.SpellsListView;
+import com.agnither.hunters.view.ui.screens.battle.player.InventoryView;
 import com.agnither.ui.Screen;
 import com.agnither.utils.CommonRefs;
 
@@ -23,8 +23,8 @@ public class BattleScreen extends Screen {
     private var _playerMana: ManaListView;
     private var _enemyMana: ManaListView;
 
-    private var _playerSpells: SpellsListView;
-    private var _enemySpells: SpellsListView;
+    private var _playerSpells: InventoryView;
+    private var _enemySpells: InventoryView;
 
     private var _dropList: DropListView;
 
@@ -49,13 +49,13 @@ public class BattleScreen extends Screen {
         _links.chip10.removeFromParent(true);
 
         _links.heroPlayer.visible = false;
-        _player = new HeroView(_refs, _game.player.personage);
+        _player = new HeroView(_refs, _game.player.hero);
         _player.x = _links.heroPlayer.x;
         _player.y = _links.heroPlayer.y;
         addChild(_player);
 
         _links.heroEnemy.visible = false;
-        _enemy = new HeroView(_refs, _game.enemy.personage);
+        _enemy = new HeroView(_refs, _game.enemy.hero);
         _enemy.x = _links.heroEnemy.x;
         _enemy.y = _links.heroEnemy.y;
         addChild(_enemy);
@@ -73,13 +73,13 @@ public class BattleScreen extends Screen {
         addChild(_enemyMana);
 
         _links.spellsPlayer.visible = false;
-        _playerSpells = new SpellsListView(_refs, _game.player.spells);
+        _playerSpells = new InventoryView(_refs, _game.player.inventory);
         _playerSpells.x = _links.spellsPlayer.x;
         _playerSpells.y = _links.spellsPlayer.y;
         addChild(_playerSpells);
 
         _links.spellsEnemy.visible = false;
-        _enemySpells = new SpellsListView(_refs, _game.enemy.spells);
+        _enemySpells = new InventoryView(_refs, _game.enemy.inventory);
         _enemySpells.x = _links.spellsEnemy.x;
         _enemySpells.y = _links.spellsEnemy.y;
         addChild(_enemySpells);

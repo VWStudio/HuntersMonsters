@@ -2,7 +2,7 @@
  * Created by agnither on 15.08.14.
  */
 package com.agnither.hunters.view.ui.screens.battle.player {
-import com.agnither.hunters.model.player.DropSlot;
+import com.agnither.hunters.model.player.drop.DropSlot;
 import com.agnither.ui.AbstractView;
 import com.agnither.utils.CommonRefs;
 
@@ -30,11 +30,11 @@ public class DropSlotView extends AbstractView {
     }
 
     private function handleUpdate(e: Event = null):void {
-        if (_dropSlot.isEmpty) {
-            _icon.visible = false;
-        } else {
+        if (_dropSlot.content) {
             _icon.visible = true;
-            _icon.texture = _refs.gui.getTexture(_dropSlot.icon);
+            _icon.texture = _refs.gui.getTexture(_dropSlot.content.icon);
+        } else {
+            _icon.visible = false;
         }
     }
 }

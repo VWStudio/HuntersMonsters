@@ -2,19 +2,19 @@
  * Created by agnither on 14.08.14.
  */
 package com.agnither.hunters.view.ui.screens.battle.player {
-import com.agnither.hunters.model.player.Spell;
-import com.agnither.hunters.model.player.SpellsList;
+import com.agnither.hunters.model.player.inventory.Inventory;
+import com.agnither.hunters.model.player.inventory.Item;
 import com.agnither.ui.AbstractView;
 import com.agnither.utils.CommonRefs;
 
-public class SpellsListView extends AbstractView {
+public class InventoryView extends AbstractView {
 
     private static var tileHeight: int;
 
-    private var _spellsList: SpellsList;
+    private var _inventory: Inventory;
 
-    public function SpellsListView(refs:CommonRefs, spellsList: SpellsList) {
-        _spellsList = spellsList;
+    public function InventoryView(refs:CommonRefs, inventory: Inventory) {
+        _inventory = inventory;
 
         super(refs);
     }
@@ -26,12 +26,12 @@ public class SpellsListView extends AbstractView {
         _links.slot1.visible = false;
         _links.slot2.visible = false;
 
-        var l: int = _spellsList.list.length;
+        var l: int = _inventory.items.length;
         for (var i:int = 0; i < l; i++) {
-            var spell: Spell = _spellsList.list[i];
-            var spellView: SpellView = new SpellView(_refs, spell);
-            spellView.y = i * tileHeight;
-            addChild(spellView);
+            var item: Item = _inventory.items[i];
+            var itemView: ItemView = ItemView.getItemView(_refs, item);
+            itemView.y = i * tileHeight;
+            addChild(itemView);
         }
     }
 }

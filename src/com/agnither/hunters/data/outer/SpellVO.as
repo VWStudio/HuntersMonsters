@@ -2,12 +2,18 @@
  * Created by agnither on 14.08.14.
  */
 package com.agnither.hunters.data.outer {
+import com.agnither.hunters.data.inner.ItemVO;
+
 import flash.utils.Dictionary;
 
-public class SpellVO {
+public class SpellVO extends ItemVO {
 
     public static const FIREBALL :String = "fireball";
-    public static const BLAZE :String = "blaze";
+    public static const TROLL :String = "troll";
+    public static const THUNDERBOLT :String = "thunderbolt";
+    public static const VAMPIRISM :String = "vampirism";
+    public static const LIGHT :String = "light";
+    public static const STORM :String = "storm";
 
     public static const LIST: Vector.<SpellVO> = new <SpellVO>[];
     public static const DICT: Dictionary = new Dictionary();
@@ -29,9 +35,6 @@ public class SpellVO {
         }
     }
 
-    public var id: int;
-    public var name: String;
-    public var picture: String;
     public var damage: int;
     public var mana: Array;
 }
