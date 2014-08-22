@@ -8,14 +8,9 @@ import com.agnither.utils.CommonRefs;
 
 import starling.display.Image;
 import starling.display.Sprite;
-import starling.events.Touch;
-import starling.events.TouchEvent;
-import starling.events.TouchPhase;
 import starling.text.TextField;
 
 public class SpellView extends ItemView {
-
-    public static const SPELL_SELECTED: String = "spell_selected_SpellView";
 
     public function get spell():Spell {
         return _item as Spell;
@@ -43,15 +38,6 @@ public class SpellView extends ItemView {
         }
 
         _damage.text = String(spell.damage);
-
-        addEventListener(TouchEvent.TOUCH, handleTouch);
-    }
-
-    private function handleTouch(e: TouchEvent):void {
-        var touch: Touch = e.getTouch(this, TouchPhase.BEGAN);
-        if (touch) {
-            dispatchEventWith(SPELL_SELECTED, true, spell);
-        }
     }
 }
 }

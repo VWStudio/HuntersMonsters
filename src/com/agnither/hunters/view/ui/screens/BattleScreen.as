@@ -72,16 +72,16 @@ public class BattleScreen extends Screen {
         _enemyMana.y = _links.manaEnemy.y;
         addChild(_enemyMana);
 
-        _links.spellsPlayer.visible = false;
+        _links.slotsPlayer.visible = false;
         _playerSpells = new InventoryView(_refs, _game.player.inventory);
-        _playerSpells.x = _links.spellsPlayer.x;
-        _playerSpells.y = _links.spellsPlayer.y;
+        _playerSpells.x = _links.slotsPlayer.x;
+        _playerSpells.y = _links.slotsPlayer.y;
         addChild(_playerSpells);
 
-        _links.spellsEnemy.visible = false;
+        _links.slotsEnemy.visible = false;
         _enemySpells = new InventoryView(_refs, _game.enemy.inventory);
-        _enemySpells.x = _links.spellsEnemy.x;
-        _enemySpells.y = _links.spellsEnemy.y;
+        _enemySpells.x = _links.slotsEnemy.x;
+        _enemySpells.y = _links.slotsEnemy.y;
         addChild(_enemySpells);
 
         _links.drop.visible = false;

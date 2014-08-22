@@ -25,7 +25,7 @@ public class PlayerVO extends PersonageVO {
             object.defence = row.defence;
 
             LIST.push(object);
-            DICT[object.id] = object;
+            DICT[object.level] = object;
         }
     }
 }

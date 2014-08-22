@@ -34,7 +34,6 @@ public class App extends Sprite {
         _resources = new ResourcesManager(_info);
 
         _controller = new GameController(stage, _resources);
-        _controller.init();
 
 //        _preloader = new PreloaderScreen(_controller.refs);
 //        addChild(_preloader);
@@ -77,7 +76,7 @@ public class App extends Sprite {
 //        _preloader.removeFromParent(true);
 //        _preloader = null;
 
-        _controller.ready();
+        _controller.init();
     }
 }
 }

@@ -3,6 +3,7 @@
  */
 package com.agnither.hunters.model.player.personage {
 import com.agnither.hunters.data.inner.PersonageVO;
+import com.agnither.hunters.data.outer.MagicVO;
 
 import starling.events.EventDispatcher;
 
@@ -10,6 +11,7 @@ public class Personage extends EventDispatcher {
 
     public static const UPDATE: String = "update_Personage";
     public static const HIT: String = "hit_Personage";
+    public static const DEAD: String = "dead_Personage";
 
     private var _name: String;
     public function get name():String {
@@ -46,21 +48,21 @@ public class Personage extends EventDispatcher {
     }
 
     private var _magic: int;
-    public function get magic():int {
-        return _magic;
+    public function get magic():MagicVO {
+        return MagicVO.DICT[_magic];
     }
 
     public function Personage() {
     }
 
-    public function init(data: PersonageVO, magic: int):void {
+    public function init(data: Object):void {
         _name = data.name;
         _level = data.level;
         _maxHP = data.hp;
         _hp = _maxHP;
         _damage = data.damage;
         _defence = data.defence;
-        _magic = magic;
+        _magic = data.magic;
     }
 
     public function hit(value: int, ignoreDefence: Boolean = false):void {
@@ -74,6 +76,10 @@ public class Personage extends EventDispatcher {
         update();
 
         dispatchEventWith(HIT, false, value);
+
+        if (dead) {
+            dispatchEventWith(DEAD);
+        }
     }
 
     public function heal(value: int):void {

@@ -3,8 +3,6 @@
  */
 package com.agnither.hunters.model.player {
 import com.agnither.hunters.data.inner.InventoryVO;
-import com.agnither.hunters.data.inner.PersonageVO;
-import com.agnither.hunters.data.outer.MagicVO;
 import com.agnither.hunters.model.player.inventory.Inventory;
 import com.agnither.hunters.model.player.inventory.Spell;
 import com.agnither.hunters.model.player.personage.Hero;
@@ -14,34 +12,32 @@ import starling.events.EventDispatcher;
 
 public class Player extends EventDispatcher {
 
-    private var _inventory: Inventory;
+    public static const UPDATE: String = "update_Player";
+
+    protected var _inventory: Inventory;
     public function get inventory():Inventory {
         return _inventory;
     }
 
-    private var _hero: Hero;
+    protected var _hero: Hero;
     public function get hero():Hero {
         return _hero;
     }
 
-    private var _manaList: ManaList;
+    protected var _manaList: ManaList;
     public function get manaList():ManaList {
         return _manaList;
     }
 
-    public function Player() {
+    public function Player(data: Object) {
         _inventory = new Inventory();
 
         _hero = new Hero(_inventory);
+        _hero.init(data);
 
         _manaList = new ManaList();
-    }
-
-    public function init(data: PersonageVO, magic: int):void {
-        _hero.init(data, magic);
-
         _manaList.init();
-        _manaList.addManaCounter(MagicVO.DICT[_hero.magic].name);
+        _manaList.addManaCounter(_hero.magic.name);
     }
 
     public function initInventory(data: InventoryVO):void {
@@ -59,15 +55,23 @@ public class Player extends EventDispatcher {
         }
     }
 
+    public function startMove():void {
+
+    }
+
     public function checkSpell(name: String):Boolean {
         var spell: Spell = _inventory.getItem(name);
-        return _manaList.checkSpell(spell);
+        return spell ? _manaList.checkSpell(spell) : false;
     }
 
     public function useSpell(name: String, target: Personage):void {
         var spell: Spell = _inventory.getItem(name);
         spell.useSpell(target);
         _manaList.useSpell(spell);
+    }
+
+    public function update():void {
+        dispatchEventWith(UPDATE);
     }
 }
 }

@@ -2,13 +2,22 @@
  * Created by agnither on 06.08.14.
  */
 package com.agnither.hunters {
+import com.agnither.hunters.data.outer.MonsterVO;
 import com.agnither.hunters.model.match3.Cell;
 import com.agnither.hunters.model.Game;
 import com.agnither.hunters.model.player.AIPlayer;
+import com.agnither.hunters.model.player.LocalPlayer;
+import com.agnither.hunters.model.player.Player;
+import com.agnither.hunters.model.player.drop.DropSlot;
+import com.agnither.hunters.model.player.drop.GoldDrop;
+import com.agnither.hunters.model.player.drop.ItemDrop;
+import com.agnither.hunters.model.player.inventory.Item;
 import com.agnither.hunters.model.player.inventory.Spell;
 import com.agnither.hunters.view.ui.UI;
+import com.agnither.hunters.view.ui.popups.InventoryPopup;
 import com.agnither.hunters.view.ui.screens.BattleScreen;
 import com.agnither.hunters.view.ui.screens.battle.match3.FieldView;
+import com.agnither.hunters.view.ui.screens.battle.player.ItemsView;
 import com.agnither.hunters.view.ui.screens.battle.player.SpellView;
 import com.agnither.utils.CommonRefs;
 import com.agnither.utils.ResourcesManager;
@@ -21,6 +30,11 @@ public class GameController extends EventDispatcher {
 
     private var _stage: Stage;
     private var _resources: ResourcesManager;
+
+    private var _player: LocalPlayer;
+    public function get player():LocalPlayer {
+        return _player;
+    }
 
     private var _game: Game;
     public function get game():Game {
@@ -35,19 +49,32 @@ public class GameController extends EventDispatcher {
     }
 
     public function init():void {
+        _player = new LocalPlayer();
+
         _game = new Game();
 
         _ui = new UI(new CommonRefs(_resources), this);
         _stage.addChildAt(_ui, 0);
 
         _stage.addEventListener(FieldView.SELECT_CELL, handleSelectCell);
-        _stage.addEventListener(SpellView.SPELL_SELECTED, handleSelectSpell);
+        _stage.addEventListener(ItemsView.ITEM_SELECTED, handleInventoryItemSelected);
+//        _stage.addEventListener(SpellView.SPELL_SELECTED, handleSelectSpell);
+
+        startGame(MonsterVO.DICT[1]);
     }
 
-    public function ready():void {
-        _game.init();
+    public function startGame(monster: MonsterVO):void {
+        var enemy: Player = new AIPlayer(monster);
+        _game.init(_player, enemy, monster.drop);
+        _game.addEventListener(Game.END_GAME, handleEndGame);
 
         _ui.showScreen(BattleScreen.ID);
+
+        _ui.showPopup(InventoryPopup.ID);
+    }
+
+    public function endGame():void {
+        _game.removeEventListener(Game.END_GAME, handleEndGame);
     }
 
     private function handleSelectCell(e: Event):void {
@@ -63,6 +90,26 @@ public class GameController extends EventDispatcher {
                 _game.useSpell(spell);
             }
         }
+    }
+
+    private function handleEndGame(e: Event):void {
+        for (var i:int = 0; i < _game.dropList.list.length; i++) {
+            var drop: DropSlot = _game.dropList.list[i];
+            if (drop.content) {
+                if (drop.content is GoldDrop) {
+                    var gold: GoldDrop = drop.content as GoldDrop;
+                    _player.addGold(gold.gold);
+                } else if (drop.content is ItemDrop) {
+                    var item: ItemDrop = drop.content as ItemDrop;
+                    _player.addItem(item.item);
+                }
+            }
+        }
+    }
+
+    private function handleInventoryItemSelected(e: Event):void {
+        var item: Item = e.data as Item;
+        _player.selectItem(item);
     }
 }
 }

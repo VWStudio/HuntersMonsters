@@ -8,6 +8,8 @@ import starling.events.EventDispatcher;
 
 public class Inventory extends EventDispatcher {
 
+    private var _data: Object;
+
     private var _items: Vector.<Item>;
     public function get items():Vector.<Item> {
         return _items;
@@ -49,6 +51,11 @@ public class Inventory extends EventDispatcher {
     public function Inventory() {
         _items = new <Item>[];
         _dict = new Dictionary();
+    }
+
+    public function parse(data: Object):void {
+        _data = data;
+
     }
 
     public function addItem(item: Item):void {

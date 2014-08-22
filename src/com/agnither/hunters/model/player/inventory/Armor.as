@@ -21,7 +21,7 @@ public class Armor extends Item {
 
     public function Armor(item: ArmorVO, defence: int = 0) {
         super(item);
-        _defence = defence ? (defence>0 ? defence : item.randomDefence) : item.armor;
+        _defence = defence ? (defence > 0 ? defence : item.randomDefence) : item.armor;
     }
 }
 }

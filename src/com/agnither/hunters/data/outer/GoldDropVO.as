@@ -29,7 +29,7 @@ public class GoldDropVO {
         var minMax: Array = value.split("..");
         var min: int = minMax[0];
         var max: int = minMax[1];
-        return min + Math.random()*(max-min);
+        return min + Math.random()*(max+1-min);
     }
 }
 }
