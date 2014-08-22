@@ -1,7 +1,7 @@
 /**
  * Created by agnither on 18.08.14.
  */
-package com.agnither.hunters.model.ai {
+package com.agnither.hunters.model.player.ai {
 import com.agnither.hunters.data.outer.MagicVO;
 import com.agnither.hunters.model.player.ManaList;
 import com.agnither.hunters.model.player.inventory.Spell;
