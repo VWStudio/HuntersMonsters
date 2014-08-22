@@ -4,6 +4,7 @@
         "name": "fireball",
         "picture": "slot_1.png",
         "damage": 10,
+        "magic": 3,
         "mana": "3:5"
     },
     {
@@ -11,13 +12,7 @@
         "name": "blaze",
         "picture": "slot_2.png",
         "damage": 50,
+        "magic": 3,
         "mana": "3:15"
-    },
-    {
-        "id": 3,
-        "name": "lightning",
-        "picture": "slot_3.png",
-        "damage": 10,
-        "mana": "1:5"
     }
 ]

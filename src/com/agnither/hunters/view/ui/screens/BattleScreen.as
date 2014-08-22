@@ -4,7 +4,6 @@
 package com.agnither.hunters.view.ui.screens {
 import com.agnither.hunters.model.Game;
 import com.agnither.hunters.view.ui.screens.battle.match3.FieldView;
-import com.agnither.hunters.view.ui.screens.battle.player.DropListView;
 import com.agnither.hunters.view.ui.screens.battle.player.HeroView;
 import com.agnither.hunters.view.ui.screens.battle.player.ManaListView;
 import com.agnither.hunters.view.ui.screens.battle.player.SpellsListView;
@@ -25,8 +24,6 @@ public class BattleScreen extends Screen {
 
     private var _playerSpells: SpellsListView;
     private var _enemySpells: SpellsListView;
-
-    private var _dropList: DropListView;
 
     private var _field: FieldView;
 
@@ -83,12 +80,6 @@ public class BattleScreen extends Screen {
         _enemySpells.x = _links.spellsEnemy.x;
         _enemySpells.y = _links.spellsEnemy.y;
         addChild(_enemySpells);
-
-        _links.drop.visible = false;
-        _dropList = new DropListView(_refs, _game.dropList);
-        _dropList.x = _links.drop.x;
-        _dropList.y = _links.drop.y;
-        addChild(_dropList);
 
         _field = new FieldView(_refs, _game.field);
         addChild(_field);

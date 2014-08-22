@@ -2,8 +2,8 @@
  * Created by agnither on 15.08.14.
  */
 package com.agnither.hunters.model.player {
-import com.agnither.hunters.data.outer.MagicVO;
-import com.agnither.hunters.data.outer.SpellVO;
+import com.agnither.hunters.data.MagicVO;
+import com.agnither.hunters.data.SpellVO;
 
 import starling.events.EventDispatcher;
 
@@ -21,6 +21,10 @@ public class Spell extends EventDispatcher {
 
     public function get picture():String {
         return _spell.picture;
+    }
+
+    public function get damageType():MagicVO {
+        return MagicVO.DICT[_spell.magic];
     }
 
     public function get mana():Array {

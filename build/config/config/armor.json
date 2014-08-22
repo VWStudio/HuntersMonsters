@@ -1,18 +1,9 @@
 [
     {
         "id": 1,
-        "name": "plate",
-        "picture": "slot_5.png",
+        "name": "shield",
+        "picture": "shield.png",
         "armor": 10,
-        "droparmorrange": "10..15",
-        "type": "body"
-    },
-    {
-        "id": 2,
-        "name": "boots",
-        "picture": "slot_6.png",
-        "armor": 10,
-        "droparmorrange": "10..15",
-        "type": "feet"
+        "droparmorrange": "10..15"
     }
 ]

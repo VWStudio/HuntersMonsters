@@ -2,7 +2,7 @@
  * Created by agnither on 14.08.14.
  */
 package com.agnither.hunters.model.match3 {
-import com.agnither.hunters.data.outer.ChipVO;
+import com.agnither.hunters.data.ChipVO;
 
 public class MoveResult {
 

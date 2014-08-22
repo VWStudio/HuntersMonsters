@@ -2,8 +2,7 @@
  * Created by agnither on 13.08.14.
  */
 package com.agnither.hunters.model.player {
-import com.agnither.hunters.data.inner.PersonageVO;
-import com.agnither.hunters.data.outer.SpellVO;
+import com.agnither.hunters.data.SpellVO;
 
 import starling.events.EventDispatcher;
 
@@ -31,7 +30,7 @@ public class Player extends EventDispatcher {
         _spells = new SpellsList();
     }
 
-    public function init(data: PersonageVO):void {
+    public function init(data: Object):void {
         _personage.init(data);
 
         _manaList.init();
@@ -39,9 +38,7 @@ public class Player extends EventDispatcher {
 
         _spells.init();
 
-        for (var i:int = 0; i < _personage.spells.length; i++) {
-            _spells.addSpell(SpellVO.DICT[_personage.spells[i]].name);
-        }
+        _spells.addSpell(SpellVO.FIREBALL);
     }
 
     public function checkSpell(name: String):Boolean {

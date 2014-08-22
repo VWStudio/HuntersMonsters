@@ -2,19 +2,11 @@
  * Created by agnither on 12.08.14.
  */
 package com.agnither.hunters.model {
-import com.agnither.hunters.data.outer.ArmorVO;
-import com.agnither.hunters.data.outer.ChipVO;
-import com.agnither.hunters.data.outer.DropVO;
-import com.agnither.hunters.data.outer.GoldDropVO;
-import com.agnither.hunters.data.outer.ItemVO;
-import com.agnither.hunters.data.outer.MonsterVO;
-import com.agnither.hunters.data.outer.PlayerVO;
-import com.agnither.hunters.data.outer.WeaponVO;
+import com.agnither.hunters.data.ChipVO;
 import com.agnither.hunters.model.ai.AI;
 import com.agnither.hunters.model.match3.Cell;
 import com.agnither.hunters.model.match3.Field;
 import com.agnither.hunters.model.match3.Match;
-import com.agnither.hunters.model.player.DropList;
 import com.agnither.hunters.model.player.Player;
 import com.agnither.hunters.model.player.Spell;
 
@@ -46,11 +38,6 @@ public class Game extends EventDispatcher {
         return _field;
     }
 
-    private var _drop: DropList;
-    public function get dropList():DropList {
-        return _drop;
-    }
-
     public function Game() {
         _player = new Player();
         _enemy = new Player();
@@ -58,19 +45,13 @@ public class Game extends EventDispatcher {
         _field = new Field();
         _field.addEventListener(Field.MATCH, handleMatch);
         _field.addEventListener(Field.MOVE, handleMove);
-
-        _drop = new DropList();
     }
 
     public function init():void {
         AI.init(this);
 
-        var pl: PlayerVO = PlayerVO.DICT[1];
-        pl.magic = 5;
-        pl.spells = [1,2];
-        _player.init(pl);
-
-        _enemy.init(MonsterVO.DICT[1]);
+        _player.init({hp: 200, armor: 5, damage: 10, magic: 4});
+        _enemy.init({hp: 100, armor: 3, damage: 5, magic: 5});
 
         _field.initChips(_player.personage.magic.name, _enemy.personage.magic.name);
         _field.init();
@@ -102,30 +83,10 @@ public class Game extends EventDispatcher {
         }
     }
 
-    private function drop():void {
-        var monster: MonsterVO = _enemy.personage.data as MonsterVO;
-        var drop: DropVO = DropVO.getRandomDrop(monster.drop);
-        switch (drop.item_type) {
-            case DropVO.WEAPON:
-                _drop.addContent(WeaponVO.DICT[drop.item_id]);
-                break;
-            case DropVO.ARMOR:
-                _drop.addContent(ArmorVO.DICT[drop.item_id]);
-                break;
-            case DropVO.ITEM:
-                _drop.addContent(ItemVO.DICT[drop.item_id]);
-                break;
-            case DropVO.GOLD:
-                _drop.addContent(GoldDropVO.DICT[drop.item_id]);
-                break;
-        }
-    }
-
     private function handleMatch(e: Event):void {
         var match: Match = e.data as Match;
         switch (match.type) {
             case ChipVO.CHEST:
-                drop();
                 break;
             case ChipVO.WEAPON:
                 currentEnemy.personage.hit(match.amount * currentPlayer.personage.damage);
