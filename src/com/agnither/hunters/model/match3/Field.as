@@ -2,7 +2,7 @@
  * Created by agnither on 12.08.14.
  */
 package com.agnither.hunters.model.match3 {
-import com.agnither.hunters.data.ChipVO;
+import com.agnither.hunters.data.outer.ChipVO;
 
 import flash.geom.Point;
 import flash.utils.Dictionary;
@@ -70,8 +70,13 @@ public class Field extends EventDispatcher {
         _chipTypes.push(ChipVO.NATURE);
         _chipTypes.push(ChipVO.WATER);
         _chipTypes.push(ChipVO.FIRE);
-        _chipTypes.push(special1);
-        _chipTypes.push(special2);
+
+        if (_chipTypes.indexOf(special1) < 0) {
+            _chipTypes.push(special1);
+        }
+        if (_chipTypes.indexOf(special2) < 0) {
+            _chipTypes.push(special2);
+        }
     }
 
     public function init():void {

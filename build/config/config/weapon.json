@@ -2,7 +2,7 @@
     {
         "id": 1,
         "name": "sword",
-        "picture": "sword.png",
+        "picture": "slot_4.png",
         "damage": 10,
         "dropdamagerange": "10..15"
     }
