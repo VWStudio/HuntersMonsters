@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" assert-keyword="true" jdk-15="true" project-jdk-name="air4-0_sdk_mac" project-jdk-type="Flex SDK Type (new)">
-    <output url="file://$PROJECT_DIR$/build/output" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" assert-keyword="true" jdk-15="true" project-jdk-name="AIRSDK_Compiler_14.0.0.178" project-jdk-type="Flex SDK Type (new)">
+    <output url="file://$PROJECT_DIR$/build/test" />
   </component>
 </project>
 

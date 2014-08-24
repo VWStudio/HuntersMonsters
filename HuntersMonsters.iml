@@ -3,13 +3,13 @@
   <component name="FlexBuildConfigurationManager" active="HuntersMonsters">
     <configurations>
       <configuration name="HuntersMonsters" pure-as="true" main-class="Main" output-file="HuntersMonsters.swf" output-folder="$MODULE_DIR$/build" use-html-wrapper="true" wrapper-template-path="$MODULE_DIR$/html-template">
-        <dependencies target-player="12.0">
+        <dependencies target-player="14.0">
           <entries>
-            <entry library-name="starling" library-level="application">
+            <entry library-id="cea11f6d-50b5-4b2f-b1c8-ce07166931bf">
               <dependency linkage="Merged" />
             </entry>
           </entries>
-          <sdk name="air4-0_sdk_mac" />
+          <sdk name="AIRSDK_Compiler_14.0.0.178" />
         </dependencies>
         <compiler-options />
         <packaging-air-desktop />
@@ -24,9 +24,19 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
     </content>
-    <orderEntry type="jdk" jdkName="air4-0_sdk_mac" jdkType="Flex SDK Type (new)" />
+    <orderEntry type="jdk" jdkName="AIRSDK_Compiler_14.0.0.178" jdkType="Flex SDK Type (new)" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="starling" level="application" />
+    <orderEntry type="module-library" exported="">
+      <library type="flex">
+        <properties id="cea11f6d-50b5-4b2f-b1c8-ce07166931bf" />
+        <CLASSES>
+          <root url="jar://E:/Bin/frameworks/Gamua-Starling-Framework-def24cc_1.5.1/starling/bin/starling.swc!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>
 
