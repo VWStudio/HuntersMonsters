@@ -14,7 +14,6 @@ import com.agnither.ui.Popup;
 import com.agnither.ui.Screen;
 import com.agnither.utils.CommonRefs;
 
-import flash.geom.Rectangle;
 import flash.utils.Dictionary;
 
 import starling.display.Quad;
@@ -25,14 +24,6 @@ import starling.events.TouchEvent;
 import starling.events.TouchPhase;
 
 public class UI extends Screen {
-
-    private static var objects: Dictionary = new Dictionary();
-    public static function registerObject(id: String, rect: Rectangle):void {
-        objects[id] = rect;
-    }
-    public static function getObject(id: String):Rectangle {
-        return objects[id];
-    }
 
     public static var SCREENS: Dictionary = new Dictionary();
     public static var POPUPS: Dictionary = new Dictionary();

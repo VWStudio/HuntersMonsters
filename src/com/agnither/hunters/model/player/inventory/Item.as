@@ -10,12 +10,17 @@ public class Item extends EventDispatcher {
 
     public static const UPDATE: String = "update_Item";
 
-    protected var _inventoryId: int;
-    public function set inventoryId(value: int):void {
-        _inventoryId = value;
+    protected var _uniqueId: String;
+    public function set uniqueId(value: String):void {
+        _uniqueId = value;
     }
-    public function get inventoryId():int {
-        return _inventoryId;
+    public function get uniqueId():String {
+        return _uniqueId;
+    }
+
+    private var _extension: Object;
+    public function get extension():Object {
+        return _extension;
     }
 
     protected var _item: ItemVO;
@@ -41,8 +46,9 @@ public class Item extends EventDispatcher {
         return _used;
     }
 
-    public function Item(item: ItemVO) {
+    public function Item(item: ItemVO, extension: Object) {
         _item = item;
+        _extension = extension;
     }
 
     public function update():void {

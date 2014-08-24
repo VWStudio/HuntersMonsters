@@ -18,8 +18,6 @@ public class LocalPlayer extends Player {
         return _stock;
     }
 
-    private var _inventoryData: InventoryVO;
-
     public function LocalPlayer() {
         _data = SharedObject.getLocal("player");
 //
@@ -32,32 +30,15 @@ public class LocalPlayer extends Player {
         super(_data.data);
 
         _stock = new Stock();
-        _stock.parse(_data.data.stock);
-
-        loadInventory();
-    }
-
-    private function loadInventory():void {
-//        _inventoryData = new InventoryVO();
-//        for (var i:int = 0; i < _data.data.inventory.spells.length; i++) {
-//            _inventoryData.spells.push(_stock.getSpell(_data.data.inventory.spells[i]));
-//        }
-//        if (_data.data.inventory.weapon > 0) {
-//            _inventoryData.weapon = _stock.getWeapon(_data.data.inventory.weapon);
-//        }
-//        for (i = 0; i < _data.data.inventory.armor.length; i++) {
-//            _inventoryData.armor.push(_stock.getArmor(_data.data.inventory.armor[i]));
-//        }
-//        initInventory(_inventoryData);
+        _stock.parse(_data.data.items);
     }
 
     private function createProgress(level: int):void {
         _data.data.gold = 0;
-        _data.data.stock = {};
-        _data.data.stock.weapons = {};
-        _data.data.stock.armors = {};
-        _data.data.stock.items = {};
-        _data.data.stock.spells = {};
+        _data.data.magic = 5;
+        _data.data.items = {"weapon.1": {id: 1, extension: {1: 15}}};
+        _data.data.stock = ["weapon.1"];
+        _data.data.inventory = ["weapon.1"];
 
         var player: PlayerVO = PlayerVO.DICT[level];
         _data.data.name = "Player";
@@ -65,14 +46,6 @@ public class LocalPlayer extends Player {
         _data.data.hp = player.hp;
         _data.data.damage = player.damage;
         _data.data.defence = player.defence;
-
-        _data.data.magic = 5;
-
-        _data.data.inventory = [];
-        _data.data.inventory.weapon = 0;
-        _data.data.inventory.armor = [];
-        _data.data.inventory.items = [];
-        _data.data.inventory.spells = [];
 
         _data.flush();
     }
