@@ -28,13 +28,28 @@ public class ItemVO {
             object.picture = row.picture;
             object.type = row.type;
             object.slot = row.slot;
-            object.extension = JSON.parse(row.extension);
-            object.extension_drop = JSON.parse(row.extension_drop);
+            object.extension = parseExtension(row.extension);
+            object.extension_drop = parseExtension(row.extension_drop);
 
             LIST.push(object);
             DICT[object.id] = object;
         }
     }
 
+    private static function parseExtension(string: String):Object {
+        if (!string) {
+            return null;
+        }
+
+        var object: Object = {};
+        var array: Array = string.split(",");
+        for (var i:int = 0; i < array.length; i++) {
+            var row: Array = array[i].split(":");
+            var id: String = row[0];
+            var value: String = row[1];
+            object[id] = value;
+        }
+        return object;
+    }
 }
 }

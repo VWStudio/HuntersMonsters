@@ -1,20 +1,158 @@
 [
     {
         "id": 1,
-        "name": "ring",
-        "picture": "slot_7.png",
-        "type": "hand"
+        "name": "sword",
+        "type": 1,
+        "slot": 1,
+        "picture": "slot_4.png",
+        "extension": "1:10",
+        "extensiondrop": "1:[10,15]"
     },
     {
         "id": 2,
-        "name": "ring",
-        "picture": "slot_7.png",
-        "type": "hand"
+        "name": "steel_sword",
+        "type": 1,
+        "slot": 1,
+        "picture": "slot_4.png",
+        "extension": "1:18",
+        "extensiondrop": "1:[18,25]"
     },
     {
         "id": 3,
-        "name": "robe",
+        "name": "staff",
+        "type": 1,
+        "slot": 1,
         "picture": "slot_7.png",
-        "type": "body"
+        "extension": "1:20",
+        "extensiondrop": "1:[20,25]"
+    },
+    {
+        "id": 4,
+        "name": "chest",
+        "type": 2,
+        "slot": 2,
+        "picture": "slot_5.png",
+        "extension": "2:10",
+        "extensiondrop": "2:[10,15]"
+    },
+    {
+        "id": 5,
+        "name": "steel_chest",
+        "type": 2,
+        "slot": 2,
+        "picture": "slot_5.png",
+        "extension": "2:15",
+        "extensiondrop": "2:[15,20]"
+    },
+    {
+        "id": 6,
+        "name": "gloves",
+        "type": 2,
+        "slot": 3,
+        "picture": "slot_6.png",
+        "extension": "2:6",
+        "extensiondrop": "2:[5,10]"
+    },
+    {
+        "id": 7,
+        "name": "pants",
+        "type": 2,
+        "slot": 4,
+        "picture": "slot_6.png",
+        "extension": "2:6",
+        "extensiondrop": "2:[5,10]"
+    },
+    {
+        "id": 8,
+        "name": "helmet",
+        "type": 2,
+        "slot": 5,
+        "picture": "slot_6.png",
+        "extension": "2:6",
+        "extensiondrop": "2:[5,10]"
+    },
+    {
+        "id": 9,
+        "name": "boots",
+        "type": 2,
+        "slot": 6,
+        "picture": "slot_6.png",
+        "extension": "2:6",
+        "extensiondrop": "2:[5,10]"
+    },
+    {
+        "id": 10,
+        "name": "ring",
+        "type": 3,
+        "slot": 7,
+        "picture": "slot_7.png"
+    },
+    {
+        "id": 11,
+        "name": "ring",
+        "type": 3,
+        "slot": 7,
+        "picture": "slot_7.png"
+    },
+    {
+        "id": 12,
+        "name": "robe",
+        "type": 3,
+        "slot": 2,
+        "picture": "slot_7.png"
+    },
+    {
+        "id": 13,
+        "name": "fireball",
+        "type": 4,
+        "slot": 8,
+        "picture": "slot_1.png",
+        "extension": "7:10,9:1",
+        "extensiondrop": "3:5"
+    },
+    {
+        "id": 14,
+        "name": "troll",
+        "type": 4,
+        "slot": 8,
+        "picture": "slot_2.png",
+        "extension": "3:50,9:1",
+        "extensiondrop": "1:15"
+    },
+    {
+        "id": 15,
+        "name": "thunderbolt",
+        "type": 4,
+        "slot": 8,
+        "picture": "slot_3.png",
+        "extension": "3:35,9:1",
+        "extensiondrop": "2:10"
+    },
+    {
+        "id": 16,
+        "name": "vampirism",
+        "type": 4,
+        "slot": 8,
+        "picture": "slot_3.png",
+        "extension": "3:20,9:1",
+        "extensiondrop": "4:20"
+    },
+    {
+        "id": 17,
+        "name": "light",
+        "type": 4,
+        "slot": 8,
+        "picture": "slot_3.png",
+        "extension": "3:60,9:1",
+        "extensiondrop": "5:7,1:10"
+    },
+    {
+        "id": 18,
+        "name": "storm",
+        "type": 4,
+        "slot": 8,
+        "picture": "slot_3.png",
+        "extension": "5:60,9:1",
+        "extensiondrop": "1:8,2:8,3:8"
     }
 ]

@@ -41,18 +41,18 @@ public class Player extends EventDispatcher {
     }
 
     public function initInventory(data: InventoryVO):void {
-        for (var i:int = 0; i < data.spells.length; i++) {
-            _inventory.addItem(data.spells[i]);
-        }
-        if (data.weapon) {
-            _inventory.addItem(data.weapon);
-        }
-        for (i = 0; i < data.armor.length; i++) {
-            _inventory.addItem(data.armor[i]);
-        }
-        for (i = 0; i < data.items.length; i++) {
-            _inventory.addItem(data.items[i]);
-        }
+//        for (var i:int = 0; i < data.spells.length; i++) {
+//            _inventory.addItem(data.spells[i]);
+//        }
+//        if (data.weapon) {
+//            _inventory.addItem(data.weapon);
+//        }
+//        for (i = 0; i < data.armor.length; i++) {
+//            _inventory.addItem(data.armor[i]);
+//        }
+//        for (i = 0; i < data.items.length; i++) {
+//            _inventory.addItem(data.items[i]);
+//        }
     }
 
     public function startMove():void {

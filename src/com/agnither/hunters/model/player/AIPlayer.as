@@ -2,18 +2,12 @@
  * Created by agnither on 13.08.14.
  */
 package com.agnither.hunters.model.player {
-import com.agnither.hunters.data.inner.InventoryVO;
-import com.agnither.hunters.data.outer.ArmorVO;
 import com.agnither.hunters.data.outer.MonsterVO;
-import com.agnither.hunters.data.outer.SpellVO;
-import com.agnither.hunters.data.outer.WeaponVO;
 import com.agnither.hunters.model.Game;
 import com.agnither.hunters.model.player.ai.CheckManaResult;
 import com.agnither.hunters.model.match3.Move;
 import com.agnither.hunters.model.match3.MoveResult;
-import com.agnither.hunters.model.player.inventory.Armor;
 import com.agnither.hunters.model.player.inventory.Spell;
-import com.agnither.hunters.model.player.inventory.Weapon;
 
 import flash.utils.Dictionary;
 
@@ -37,17 +31,17 @@ public class AIPlayer extends Player {
     }
 
     private function loadInventory(monster: MonsterVO):void {
-        var inventory: InventoryVO = new InventoryVO();
-        for (var i:int = 0; i < monster.spells.length; i++) {
-            inventory.spells.push(new Spell(SpellVO.DICT[monster.spells[i]]));
-        }
-        if (monster.weapon) {
-            inventory.weapon = new Weapon(WeaponVO.DICT[monster.weapon]);
-        }
-        for (i = 0; i < monster.armor.length; i++) {
-            inventory.armor.push(new Armor(ArmorVO.DICT[monster.armor[i]]));
-        }
-        initInventory(inventory);
+//        var inventory: InventoryVO = new InventoryVO();
+//        for (var i:int = 0; i < monster.spells.length; i++) {
+//            inventory.spells.push(new Spell(ItemVO.DICT[monster.spells[i]]));
+//        }
+//        if (monster.weapon) {
+//            inventory.weapon = new Weapon(ItemVO.DICT[monster.weapon]);
+//        }
+//        for (i = 0; i < monster.armor.length; i++) {
+//            inventory.armor.push(new Armor(ItemVO.DICT[monster.armor[i]]));
+//        }
+//        initInventory(inventory);
     }
 
     override public function startMove():void {

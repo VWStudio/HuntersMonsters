@@ -2,7 +2,7 @@
  * Created by agnither on 15.08.14.
  */
 package com.agnither.hunters.model.player.inventory {
-import com.agnither.hunters.data.outer.ArmorVO;
+import com.agnither.hunters.data.outer.ItemVO;
 
 public class Armor extends Item {
 
@@ -10,18 +10,14 @@ public class Armor extends Item {
         return "out_3.png";
     }
 
-    public function get armor():ArmorVO {
-        return _item as ArmorVO;
-    }
-
     private var _defence: int;
     public function get defence():int {
         return _defence;
     }
 
-    public function Armor(item: ArmorVO, defence: int = 0) {
+    public function Armor(item: ItemVO, defence: int = 0) {
         super(item);
-        _defence = defence ? (defence > 0 ? defence : item.randomDefence) : item.armor;
+//        _defence = defence ? (defence > 0 ? defence : item.randomDefence) : item.armor;
     }
 }
 }

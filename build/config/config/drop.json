@@ -2,42 +2,42 @@
     {
         "id": 1,
         "itemset": 1,
-        "itemtype": "weapon",
+        "type": 1,
         "itemid": 1,
         "probability": 20
     },
     {
         "id": 2,
         "itemset": 1,
-        "itemtype": "armor",
+        "type": 2,
         "itemid": 1,
         "probability": 30
     },
     {
         "id": 3,
         "itemset": 1,
-        "itemtype": "item",
+        "type": 3,
         "itemid": 1,
         "probability": 20
     },
     {
         "id": 4,
         "itemset": 1,
-        "itemtype": "gold",
+        "type": 5,
         "itemid": 1,
         "probability": 10
     },
     {
         "id": 5,
         "itemset": 1,
-        "itemtype": "gold",
+        "type": 5,
         "itemid": 2,
         "probability": 10
     },
     {
         "id": 6,
         "itemset": 1,
-        "itemtype": "gold",
+        "type": 5,
         "itemid": 3,
         "probability": 10
     }

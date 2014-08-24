@@ -2,16 +2,16 @@
  * Created by agnither on 11.06.14.
  */
 package com.agnither.hunters.data {
-import com.agnither.hunters.data.outer.ArmorVO;
 import com.agnither.hunters.data.outer.ChipVO;
 import com.agnither.hunters.data.outer.DropVO;
+import com.agnither.hunters.data.outer.ExtensionVO;
 import com.agnither.hunters.data.outer.GoldDropVO;
-import com.agnither.hunters.data.outer.MagicItemVO;
+import com.agnither.hunters.data.outer.ItemSlotVO;
+import com.agnither.hunters.data.outer.ItemTypeVO;
+import com.agnither.hunters.data.outer.ItemVO;
 import com.agnither.hunters.data.outer.MagicVO;
 import com.agnither.hunters.data.outer.MonsterVO;
 import com.agnither.hunters.data.outer.PlayerVO;
-import com.agnither.hunters.data.outer.SpellVO;
-import com.agnither.hunters.data.outer.WeaponVO;
 
 import flash.utils.Dictionary;
 
@@ -25,10 +25,10 @@ public class Config {
     public static function init():void {
         addConfig("player", PlayerVO);
         addConfig("monster", MonsterVO);
-        addConfig("weapon", WeaponVO);
-        addConfig("armor", ArmorVO);
-        addConfig("spell", SpellVO);
-        addConfig("item", MagicItemVO);
+        addConfig("item", ItemVO);
+        addConfig("item_type", ItemTypeVO);
+        addConfig("item_slot", ItemSlotVO);
+        addConfig("extension", ExtensionVO);
         addConfig("magic", MagicVO);
         addConfig("drop", DropVO);
         addConfig("gold_drop", GoldDropVO);

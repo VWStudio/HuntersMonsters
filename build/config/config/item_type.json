@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "name": "weapon"
+    },
+    {
+        "id": 2,
+        "name": "armor"
+    },
+    {
+        "id": 3,
+        "name": "magic"
+    },
+    {
+        "id": 4,
+        "name": "spell"
+    },
+    {
+        "id": 5,
+        "name": "gold"
+    }
+]

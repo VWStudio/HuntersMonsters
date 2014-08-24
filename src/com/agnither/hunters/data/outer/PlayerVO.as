@@ -16,9 +16,6 @@ public class PlayerVO extends PersonageVO {
             var row: Object = data[i];
 
             var object: PlayerVO = new PlayerVO();
-//            object.id = row.id;
-//            object.name = row.name;
-//            object.picture = row.picture;
             object.level = row.level;
             object.hp = row.hp;
             object.damage = row.damage;

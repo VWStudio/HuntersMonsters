@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "type": "melee_damage"
+    },
+    {
+        "id": 2,
+        "type": "melee_defence"
+    },
+    {
+        "id": 3,
+        "type": "nature_damage"
+    },
+    {
+        "id": 4,
+        "type": "nature_defence"
+    },
+    {
+        "id": 5,
+        "type": "water_damage"
+    },
+    {
+        "id": 6,
+        "type": "water_defence"
+    },
+    {
+        "id": 7,
+        "type": "fire_damage"
+    },
+    {
+        "id": 8,
+        "type": "fire_defence"
+    },
+    {
+        "id": 9,
+        "type": "unlock_level"
+    }
+]

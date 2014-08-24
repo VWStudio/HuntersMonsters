@@ -22,29 +22,29 @@ public class Inventory extends EventDispatcher {
 
     private var _damage: int = -1;
     public function get damage():int {
-        if (_damage < 0) {
-            _damage = 0;
-            for (var i:int = 0; i < _items.length; i++) {
-                var weapon: Weapon = _items[i] as Weapon;
-                if (weapon) {
-                    _damage += weapon.damage;
-                }
-            }
-        }
+//        if (_damage < 0) {
+//            _damage = 0;
+//            for (var i:int = 0; i < _items.length; i++) {
+//                var weapon: Weapon = _items[i] as Weapon;
+//                if (weapon) {
+//                    _damage += weapon.damage;
+//                }
+//            }
+//        }
         return _damage;
     }
 
     private var _defence: int = -1;
     public function get defence():int {
-        if (_defence < 0) {
-            _defence = 0;
-            for (var i:int = 0; i < _items.length; i++) {
-                var armor: Armor = _items[i] as Armor;
-                if (armor) {
-                    _defence += armor.defence;
-                }
-            }
-        }
+//        if (_defence < 0) {
+//            _defence = 0;
+//            for (var i:int = 0; i < _items.length; i++) {
+//                var armor: Armor = _items[i] as Armor;
+//                if (armor) {
+//                    _defence += armor.defence;
+//                }
+//            }
+//        }
         return _defence;
     }
 

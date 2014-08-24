@@ -10,10 +10,7 @@
         "magic": 5,
         "difficulty": 10,
         "drop": 1,
-        "weapon": 0,
-        "armor": "1,2",
-        "items": 0,
-        "spells": "1,2"
+        "items": "4,6,13,14"
     },
     {
         "id": 2,
@@ -26,10 +23,7 @@
         "magic": 5,
         "difficulty": 50,
         "drop": 1,
-        "weapon": 0,
-        "armor": "1,2",
-        "items": 0,
-        "spells": "1,2"
+        "items": "4,6,13,14"
     },
     {
         "id": 3,
@@ -42,9 +36,6 @@
         "magic": 4,
         "difficulty": 80,
         "drop": 1,
-        "weapon": 0,
-        "armor": 0,
-        "items": 0,
-        "spells": "1,2,3"
+        "items": "13,14,15"
     }
 ]
