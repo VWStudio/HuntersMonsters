@@ -15,7 +15,7 @@ public class GoldDropVO {
 
             var object: GoldDropVO = new GoldDropVO();
             object.id = row.id;
-            object.value = row.value;
+            object.value = JSON.parse(row.value) as Array;
 
             LIST.push(object);
             DICT[object.id] = object;
@@ -23,7 +23,7 @@ public class GoldDropVO {
     }
 
     public var id: int;
-    public var value: String;
+    public var value: Array;
 
     public function get random():int {
         var minMax: Array = value.split("..");

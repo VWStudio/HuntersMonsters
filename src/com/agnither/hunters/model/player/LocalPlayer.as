@@ -53,6 +53,10 @@ public class LocalPlayer extends Player {
             _inventoryData.armor.push(_stock.getArmor(_data.data.inventory.armor[i]));
         }
         initInventory(_inventoryData);
+
+
+
+
     }
 
     private function createProgress(level: int):void {
@@ -64,9 +68,7 @@ public class LocalPlayer extends Player {
         _data.data.stock.spells = {};
 
         var player: PlayerVO = PlayerVO.DICT[level];
-        _data.data.id = player.id;
-        _data.data.name = player.name;
-        _data.data.picture = player.picture;
+        _data.data.name = "Player";
         _data.data.level = player.level;
         _data.data.hp = player.hp;
         _data.data.damage = player.damage;

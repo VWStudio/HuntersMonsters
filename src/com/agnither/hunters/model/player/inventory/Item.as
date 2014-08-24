@@ -2,7 +2,7 @@
  * Created by agnither on 21.08.14.
  */
 package com.agnither.hunters.model.player.inventory {
-import com.agnither.hunters.data.inner.ItemVO;
+import com.agnither.hunters.data.outer.ItemVO;
 
 import starling.events.EventDispatcher;
 

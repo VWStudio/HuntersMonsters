@@ -33,7 +33,7 @@ public class DropVO {
             var object: DropVO = new DropVO();
             object.id = row.id;
             object.item_set = row.itemset;
-            object.item_type = row.itemtype;
+            object.type = row.type;
             object.item_id = row.itemid;
             object.probability = row.probability;
 
@@ -47,7 +47,7 @@ public class DropVO {
 
     public var id: int;
     public var item_set: int;
-    public var item_type: String;
+    public var type: int;
     public var item_id: int;
     public var probability: int;
 }

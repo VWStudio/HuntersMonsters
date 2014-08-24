@@ -2,7 +2,7 @@
  * Created by agnither on 14.08.14.
  */
 package com.agnither.hunters.data.outer {
-import com.agnither.hunters.data.inner.ItemVO;
+import com.agnither.hunters.data.outer.ItemVO;
 
 import flash.utils.Dictionary;
 

@@ -5,9 +5,7 @@ package com.agnither.hunters.data.inner {
 
 public class PersonageVO {
 
-    public var id: int;
-    public var name: String;
-    public var picture: String;
+
     public var level: int;
     public var hp: int;
     public var damage: int;
