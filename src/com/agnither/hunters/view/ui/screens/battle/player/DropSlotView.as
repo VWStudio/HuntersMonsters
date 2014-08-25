@@ -8,6 +8,9 @@ import com.agnither.utils.CommonRefs;
 
 import starling.display.Image;
 import starling.events.Event;
+import starling.events.Touch;
+import starling.events.TouchEvent;
+import starling.events.TouchPhase;
 
 public class DropSlotView extends AbstractView {
 
@@ -27,6 +30,8 @@ public class DropSlotView extends AbstractView {
 
         _dropSlot.addEventListener(DropSlot.UPDATE, handleUpdate);
         handleUpdate();
+
+        addEventListener(TouchEvent.TOUCH, handleTouch);
     }
 
     private function handleUpdate(e: Event = null):void {
@@ -35,6 +40,14 @@ public class DropSlotView extends AbstractView {
             _icon.texture = _refs.gui.getTexture(_dropSlot.content.icon);
         } else {
             _icon.visible = false;
+        }
+    }
+
+    private function handleTouch(e: TouchEvent):void {
+        var touch: Touch = e.getTouch(this, TouchPhase.HOVER);
+        if (touch) {
+            // TODO: drop tooltip
+//            dispatchEventWith(DROP_HOVER, true, _dropSlot.content)
         }
     }
 }

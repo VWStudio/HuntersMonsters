@@ -99,6 +99,7 @@ public class Game extends EventDispatcher {
                 _drop.drop();
                 break;
             case ChipVO.WEAPON:
+                match.showDamage(currentPlayer.hero.damage);
                 currentEnemy.hero.hit(match.amount * currentPlayer.hero.damage);
                 break;
             default:

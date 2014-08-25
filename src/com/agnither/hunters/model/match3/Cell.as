@@ -11,6 +11,7 @@ import starling.events.EventDispatcher;
 public class Cell extends EventDispatcher {
 
     public static const SELECT: String = "select_Cell";
+    public static const DAMAGE: String = "damage_Cell";
 
     private var _x: int;
     public function get x():int {
@@ -89,6 +90,10 @@ public class Cell extends EventDispatcher {
         var tempChip: Chip = cell.chip;
         cell.setChip(_chip, false);
         setChip(tempChip, false);
+    }
+
+    public function showDamage(value: int):void {
+        dispatchEventWith(DAMAGE, false, value);
     }
 
     public function clear():void {

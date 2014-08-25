@@ -98,6 +98,12 @@ public class Match {
         return null;
     }
 
+    public function showDamage(value: int):void {
+        for (var i:int = 0; i < _cells.length; i++) {
+            _cells[i].showDamage(value);
+        }
+    }
+
     public function getRandomCell():Cell {
         var rand: int = 1 + Math.random()*(_cells.length-2);
         return _cells[rand];
