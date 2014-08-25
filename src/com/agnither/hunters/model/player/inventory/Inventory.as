@@ -31,7 +31,7 @@ public class Inventory extends EventDispatcher {
     }
 
     private var _itemsByType: Dictionary = new Dictionary();
-    public function getItemsByType(type : int):Vector.<String> {
+    public function getItemsByType(type : int):Array { // of String
         return _itemsByType[type];
     }
 

@@ -2,6 +2,7 @@
  * Created by agnither on 21.08.14.
  */
 package com.agnither.hunters.view.ui.popups {
+import com.agnither.hunters.data.outer.ItemTypeVO;
 import com.agnither.hunters.model.player.LocalPlayer;
 import com.agnither.hunters.view.ui.screens.battle.player.InventoryView;
 import com.agnither.hunters.view.ui.screens.battle.player.ItemsView;
@@ -76,7 +77,6 @@ public class InventoryPopup extends Popup {
         _links.slot10.removeFromParent(true);
 
         _items = new ItemsView(_refs, _player.inventory);
-//        _items = new ItemsView(_refs, _player.stock);
         _itemsContainer = _links.items;
         _itemsContainer.addChild(_items);
 
@@ -93,27 +93,22 @@ public class InventoryPopup extends Popup {
     override public function open():void {
         super.open();
 
-        _items.showType(1);
-//        _items.showType(ItemsView.WEAPON);
+        _items.showType(ItemTypeVO.weapon);
     }
 
     private function handleSelectTab(e: Event):void {
         switch (e.currentTarget) {
             case _weaponTab:
-                _items.showType(1);
-//                _items.showType(ItemsView.WEAPON);
+                _items.showType(ItemTypeVO.weapon);
                 break;
             case _armorTab:
-                _items.showType(2);
-//                _items.showType(ItemsView.ARMOR);
+                _items.showType(ItemTypeVO.armor);
                 break;
             case _itemTab:
-                _items.showType(3);
-//                _items.showType(ItemsView.ITEMS);
+                _items.showType(ItemTypeVO.magic);
                 break;
             case _spellTab:
-                _items.showType(4);
-//                _items.showType(ItemsView.SPELLS);
+                _items.showType(ItemTypeVO.spell);
                 break;
         }
     }

@@ -14,11 +14,6 @@ public class ItemsView extends AbstractView {
 
     public static const ITEM_SELECTED: String = "item_selected_ItemsView";
 
-    public static const WEAPON: String = "weapon";
-    public static const ARMOR: String = "armor";
-    public static const ITEMS: String = "items";
-    public static const SPELLS: String = "spells";
-
     public static var itemX: int;
     public static var itemY: int;
 
@@ -34,22 +29,9 @@ public class ItemsView extends AbstractView {
 
     public function showType(type: int):void {
         updateList(_inventory.getItemsByType(type));
-//        switch (type) {
-//            case WEAPON:
-//                break;
-//            case ARMOR:
-//                updateList(_inventory.armors);
-//                break;
-//            case ITEMS:
-//                updateList(_inventory.items);
-//                break;
-//            case SPELLS:
-//                updateList(_inventory.spells);
-//                break;
-//        }
     }
 
-    private function updateList(data: Vector.<String>):void {
+    private function updateList(data: Array):void {
         while (numChildren > 0) {
             var tile: ItemView = removeChildAt(0) as ItemView;
             tile.removeEventListener(TouchEvent.TOUCH, handleTouch);
