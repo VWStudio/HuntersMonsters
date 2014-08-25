@@ -10,14 +10,14 @@
         "id": 2,
         "itemset": 1,
         "type": 2,
-        "itemid": 1,
+        "itemid": 4,
         "probability": 30
     },
     {
         "id": 3,
         "itemset": 1,
         "type": 3,
-        "itemid": 1,
+        "itemid": 7,
         "probability": 20
     },
     {

@@ -26,9 +26,8 @@ public class GoldDropVO {
     public var value: Array;
 
     public function get random():int {
-        var minMax: Array = value.split("..");
-        var min: int = minMax[0];
-        var max: int = minMax[1];
+        var min: int = value[0];
+        var max: int = value[1];
         return min + Math.random()*(max+1-min);
     }
 }

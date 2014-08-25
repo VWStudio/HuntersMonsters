@@ -24,7 +24,6 @@ public class SpellView extends ItemView {
 
         var i: int = 1;
         for (var key: * in mana) {
-            trace(key, mana[key]);
             var manaType: DamageTypeVO = DamageTypeVO.DICT[key];
             var name: String = "mana"+(i++);
             var icon: Sprite = _links[name+"_icon"];

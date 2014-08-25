@@ -11,6 +11,14 @@ public class Item extends EventDispatcher {
 
     public static const UPDATE: String = "update_Item";
 
+    public static function createDrop(data: ItemVO):Item {
+        var extension: Object = {};
+        for (var key: * in data.extension) {
+            extension[key] = data.getDropExtensionValue(key);
+        }
+        return new Item(data, extension);
+    }
+
     protected var _uniqueId: String;
     public function set uniqueId(value: String):void {
         _uniqueId = value;

@@ -6,11 +6,6 @@ import flash.utils.Dictionary;
 
 public class DropVO {
 
-    public static const WEAPON: String = "weapon";
-    public static const ARMOR: String = "armor";
-    public static const ITEM: String = "item";
-    public static const GOLD: String = "gold";
-
     public static const LIST: Vector.<DropVO> = new <DropVO>[];
     public static const DICT: Dictionary = new Dictionary();
 
