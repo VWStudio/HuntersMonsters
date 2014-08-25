@@ -87,6 +87,7 @@ public class Item extends EventDispatcher {
 
     public function destroy():void {
         _item = null;
+        _extension = null;
     }
 }
 }

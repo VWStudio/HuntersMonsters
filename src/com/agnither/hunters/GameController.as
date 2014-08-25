@@ -12,13 +12,17 @@ import com.agnither.hunters.model.player.drop.DropSlot;
 import com.agnither.hunters.model.player.drop.GoldDrop;
 import com.agnither.hunters.model.player.drop.ItemDrop;
 import com.agnither.hunters.model.player.inventory.Item;
+import com.agnither.hunters.model.player.inventory.Pet;
 import com.agnither.hunters.model.player.inventory.Spell;
 import com.agnither.hunters.view.ui.UI;
 import com.agnither.hunters.view.ui.popups.InventoryPopup;
-import com.agnither.hunters.view.ui.popups.InventoryView;
+import com.agnither.hunters.view.ui.popups.SelectMonsterPopup;
+import com.agnither.hunters.view.ui.popups.inventory.InventoryView;
+import com.agnither.hunters.view.ui.popups.monsters.PetsView;
 import com.agnither.hunters.view.ui.screens.BattleScreen;
 import com.agnither.hunters.view.ui.screens.battle.match3.FieldView;
-import com.agnither.hunters.view.ui.popups.ItemsView;
+import com.agnither.hunters.view.ui.popups.inventory.ItemsView;
+import com.agnither.hunters.view.ui.screens.battle.player.PersonageView;
 import com.agnither.hunters.view.ui.screens.battle.player.inventory.BattleInventoryView;
 import com.agnither.utils.CommonRefs;
 import com.agnither.utils.ResourcesManager;
@@ -58,12 +62,16 @@ public class GameController extends EventDispatcher {
         _stage.addChildAt(_ui, 0);
 
         // battle
+        _stage.addEventListener(BattleScreen.SELECT_MONSTER, handleSelectMonster);
         _stage.addEventListener(FieldView.SELECT_CELL, handleSelectCell);
         _stage.addEventListener(BattleInventoryView.ITEM_SELECTED, handleSelectSpell);
 
         // inventory
         _stage.addEventListener(ItemsView.ITEM_SELECTED, handleInventoryItemSelected);
         _stage.addEventListener(InventoryView.ITEM_SELECTED, handleInventoryItemSelected);
+
+        // monsters
+        _stage.addEventListener(PetsView.PET_SELECTED, handlePetSelected);
 
         startGame(MonsterVO.DICT[1]);
     }
@@ -117,9 +125,20 @@ public class GameController extends EventDispatcher {
         endGame();
     }
 
+    private function handleSelectMonster(e: Event):void {
+        _ui.showPopup(SelectMonsterPopup.ID);
+    }
+
     private function handleInventoryItemSelected(e: Event):void {
         var item: Item = e.data as Item;
         _player.selectItem(item);
+    }
+
+    private function handlePetSelected(e: Event):void {
+        var pet: Pet = e.data as Pet;
+        _player.summonPet(pet);
+
+        _ui.hidePopup();
     }
 }
 }

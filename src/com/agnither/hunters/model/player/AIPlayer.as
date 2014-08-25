@@ -26,22 +26,21 @@ public class AIPlayer extends Player {
 
     public function AIPlayer(data: MonsterVO):void {
         _difficulty = data.difficulty;
-        super(data);
+        super();
 
+        init(data);
         loadInventory(data);
     }
 
     private function loadInventory(monster: MonsterVO):void {
         var items: Object = {};
-        var stock: Array = [];
         var inventory: Array = [];
         for (var i:int = 0; i < monster.items.length; i++) {
             var id: int = monster.items[i];
             items[id] = ItemVO.DICT[id];
-            stock.push(id);
             inventory.push(id);
         }
-        initInventory(items, stock, inventory);
+        initInventory(items, inventory);
     }
 
     override public function startMove():void {
@@ -53,8 +52,8 @@ public class AIPlayer extends Player {
     private function processSpells(difficulty: int):void {
         var results: Array = [];
         if (Math.random()*100 < difficulty) {
-            for (var i:int = 0; i < _inventory.stockItems.length; i++) {
-                var spell: Spell = _inventory.stockItems[i] as Spell;
+            for (var i:int = 0; i < _inventory.inventoryItems.length; i++) {
+                var spell: Spell = _inventory.inventoryItems[i] as Spell;
                 if (spell) {
                     var result:CheckManaResult = new CheckManaResult(_manaList, spell);
                     if (result.enough) {

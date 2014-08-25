@@ -19,11 +19,6 @@ public class Inventory extends EventDispatcher {
 
     private var _data: Object;
 
-    private var _stockItems: Array = []; // of String
-    public function get stockItems():Array {
-        return _stockItems;
-    }
-
     private var _inventoryItems : Array = []; // of String
     public function get inventoryItems():Array {
         return _inventoryItems;
@@ -75,7 +70,6 @@ public class Inventory extends EventDispatcher {
             newItem.uniqueId = key;
 
             _itemsDict[key] = newItem;
-            _stockItems.push(key);
             _itemsByType[item.type].push(key);
         }
     }
@@ -85,7 +79,6 @@ public class Inventory extends EventDispatcher {
             _itemsDict[item.uniqueId] = item;
             _itemsByType[item.type].push(item.uniqueId);
             _data[item.uniqueId] = {id: item.id, extension: item.extension};
-            _stockItems.push(item.uniqueId);
         }
     }
 
@@ -94,12 +87,7 @@ public class Inventory extends EventDispatcher {
             delete _itemsDict[item.uniqueId];
             delete _data[item.uniqueId];
 
-            var index: int = _stockItems.indexOf(item.uniqueId);
-            if (index >= 0) {
-                _stockItems.splice(index, 1);
-            }
-
-            index = _itemsByType[item.type].indexOf(item.uniqueId);
+            var index: int = _itemsByType[item.type].indexOf(item.uniqueId);
             if (index >= 0) {
                 _itemsByType[item.type].splice(index, 1);
             }
@@ -174,7 +162,7 @@ public class Inventory extends EventDispatcher {
             var item: Object = _itemsDict[_inventoryItems[i]];
             if (item.type != ItemTypeVO.spell) {
                 var extension:Object = item.extension;
-                for (var key:* in extension) {
+                for (key in extension) {
                     if (!isNaN(extension[key])) {
                         _extensions[key] += int(extension[key]);
                     } else {

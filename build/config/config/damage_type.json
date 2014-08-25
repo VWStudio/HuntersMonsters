@@ -1,31 +1,36 @@
 [
     {
         "id": 1,
+        "name": "weapon",
+        "picture": "m_2.png"
+    },
+    {
+        "id": 2,
         "name": "nature",
         "picture": "m_3.png"
     },
     {
-        "id": 2,
+        "id": 3,
         "name": "water",
         "picture": "m_4.png"
     },
     {
-        "id": 3,
+        "id": 4,
         "name": "fire",
         "picture": "m_5.png"
     },
     {
-        "id": 4,
+        "id": 5,
         "name": "add1",
         "picture": "m_6.png"
     },
     {
-        "id": 5,
+        "id": 6,
         "name": "add2",
         "picture": "m_7.png"
     },
     {
-        "id": 6,
+        "id": 7,
         "name": "add3",
         "picture": "m_8.png"
     }

@@ -1,7 +1,7 @@
 /**
  * Created by agnither on 22.08.14.
  */
-package com.agnither.hunters.view.ui.popups {
+package com.agnither.hunters.view.ui.common {
 import com.agnither.ui.AbstractView;
 import com.agnither.utils.CommonRefs;
 

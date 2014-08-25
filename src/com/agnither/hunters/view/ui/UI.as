@@ -8,6 +8,7 @@
 package com.agnither.hunters.view.ui {
 import com.agnither.hunters.GameController;
 import com.agnither.hunters.view.ui.popups.InventoryPopup;
+import com.agnither.hunters.view.ui.popups.SelectMonsterPopup;
 import com.agnither.hunters.view.ui.screens.BattleScreen;
 import com.agnither.ui.AbstractView;
 import com.agnither.ui.Popup;
@@ -54,6 +55,7 @@ public class UI extends Screen {
         SCREENS[BattleScreen.ID] = new BattleScreen(_refs, _controller.game);
 
         POPUPS[InventoryPopup.ID] = new InventoryPopup(_refs, _controller.player);
+        POPUPS[SelectMonsterPopup.ID] = new SelectMonsterPopup(_refs, _controller.player);
 
         _currentPanels = new <AbstractView>[];
         _closedPanels = new <AbstractView>[];

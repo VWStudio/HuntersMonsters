@@ -3,7 +3,10 @@
  */
 package com.agnither.hunters.view.ui.popups {
 import com.agnither.hunters.data.outer.ItemTypeVO;
-import com.agnither.hunters.model.player.LocalPlayer;
+import com.agnither.hunters.model.player.Player;
+import com.agnither.hunters.view.ui.popups.inventory.InventoryView;
+import com.agnither.hunters.view.ui.popups.inventory.ItemsView;
+import com.agnither.hunters.view.ui.common.TabView;
 import com.agnither.ui.Popup;
 import com.agnither.utils.CommonRefs;
 
@@ -15,7 +18,7 @@ public class InventoryPopup extends Popup {
 
     public static const ID: String = "InventoryPopup";
 
-    private var _player: LocalPlayer;
+    private var _player: Player;
 
     private var _weaponTab: TabView;
     private var _armorTab: TabView;
@@ -29,7 +32,7 @@ public class InventoryPopup extends Popup {
 
     private var _closeBtn: Button;
 
-    public function InventoryPopup(refs:CommonRefs, player: LocalPlayer) {
+    public function InventoryPopup(refs:CommonRefs, player: Player) {
         _player = player;
 
         super(refs);

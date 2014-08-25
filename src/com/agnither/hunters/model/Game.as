@@ -90,22 +90,29 @@ public class Game extends EventDispatcher {
     }
 
     private function handleMatch(e: Event):void {
+        var attacker: Personage;
+
         var match: Match = e.data as Match;
         switch (match.type) {
             case ChipVO.CHEST:
                 _drop.drop();
                 break;
             case ChipVO.WEAPON:
-                match.showDamage(currentPlayer.hero.damage);
-                currentEnemy.hero.hit(match.amount * currentPlayer.hero.damage);
+                attacker = currentPlayer.hero;
                 break;
             default:
+                if (!currentPlayer.pet.dead && currentPlayer.pet.magic.name == match.type) {
+                    attacker = currentPlayer.pet;
+                }
                 currentPlayer.manaList.addMana(match.type, match.amount);
                 break;
         }
 
-
-        // TODO: переделать нанесение урона (проверка типа урона и сравнение с типом матча)
+        if (attacker) {
+            var aim:Personage = !currentEnemy.pet.dead ? currentEnemy.pet : currentEnemy.hero;
+            match.showDamage(attacker.damage);
+            aim.hit(match.amount * attacker.damage);
+        }
     }
 
     private function handleMove(e: Event):void {

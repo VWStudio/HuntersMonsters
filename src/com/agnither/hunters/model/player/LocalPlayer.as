@@ -9,20 +9,22 @@ import flash.net.SharedObject;
 
 public class LocalPlayer extends Player {
 
+    private static var version: int = 1;
+
     private var _data: SharedObject;
 
     public function LocalPlayer() {
         _data = SharedObject.getLocal("player");
-//
-//        _data.clear();
-//        _data.flush();
-        if (!_data.data.name) {
+
+        if (!_data.data.version || _data.data.version < version) {
             createProgress(1);
         }
 
-        super(_data.data);
+        super();
 
-        initInventory(_data.data.items, _data.data.stock, _data.data.inventory);
+        init(_data.data);
+        initInventory(_data.data.items, _data.data.inventory);
+        initPets(_data.data.pets);
     }
 
     private function createProgress(level: int):void {
@@ -38,8 +40,11 @@ public class LocalPlayer extends Player {
         _data.data.items = {"weapon.1": {id: 1, extension: {1: 15}},
                             "armor.2": {id: 4, extension: {2: 15}},
                             "spell.3": {id: 13, extension: {1: 10, 3: 4, 9: 1}}};
-        _data.data.stock = ["weapon.1", "armor.2", "spell.3"];
         _data.data.inventory = ["weapon.1", "armor.2", "spell.3"];
+
+        _data.data.pets = {"pet.1": {id: 1, name: "bluebull", level: 2, hp: 150, damage: 10, defence: 10, magic: 6, tamed: 1},
+                           "pet.2": {id: 2, name: "bluebull", level: 3, hp: 250, damage: 20, defence: 20, magic: 6, tamed: 1},
+                           "pet.3": {id: 3, name: "bluebull", level: 1, hp: 100, damage: 5, defence: 5, magic: 5, tamed: 0}};
 
         _data.data.gold = 0;
 
@@ -52,7 +57,6 @@ public class LocalPlayer extends Player {
 
     public function addItem(item: Item):void {
         _inventory.addItem(item);
-        _data.data.stock = _inventory.stockItems;
     }
 
     public function selectItem(item: Item):void {

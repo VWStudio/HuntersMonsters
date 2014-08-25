@@ -7,7 +7,7 @@
         "hp": 100,
         "damage": 5,
         "defence": 5,
-        "magic": 5,
+        "magic": 6,
         "difficulty": 10,
         "drop": 1,
         "items": "4,6,13,14"
@@ -20,7 +20,7 @@
         "hp": 200,
         "damage": 8,
         "defence": 10,
-        "magic": 5,
+        "magic": 6,
         "difficulty": 50,
         "drop": 1,
         "items": "4,6,13,14"
@@ -33,7 +33,7 @@
         "hp": 150,
         "damage": 12,
         "defence": 20,
-        "magic": 4,
+        "magic": 5,
         "difficulty": 80,
         "drop": 1,
         "items": "13,14,15"

@@ -27,6 +27,8 @@ public class ManaList extends EventDispatcher {
     }
 
     public function init():void {
+        clearList();
+
         addManaCounter(DamageTypeVO.nature.name);
         addManaCounter(DamageTypeVO.water.name);
         addManaCounter(DamageTypeVO.fire.name);
