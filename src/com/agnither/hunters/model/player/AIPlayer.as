@@ -7,6 +7,8 @@ import com.agnither.hunters.data.outer.MonsterVO;
 import com.agnither.hunters.model.Game;
 import com.agnither.hunters.model.match3.Move;
 import com.agnither.hunters.model.match3.MoveResult;
+import com.agnither.hunters.model.player.ai.CheckManaResult;
+import com.agnither.hunters.model.player.inventory.Spell;
 
 import flash.utils.Dictionary;
 
@@ -52,15 +54,15 @@ public class AIPlayer extends Player {
         var results: Array = [];
         if (Math.random()*100 < difficulty) {
             for (var i:int = 0; i < _inventory.stockItems.length; i++) {
-//                var spell: Spell = _inventory.stockItems[i] as Spell;
-//                if (spell) {
-//                    var result:CheckManaResult = new CheckManaResult(_manaList, spell);
-//                    if (result.enough) {
-//                        game.useSpell(spell);
-//                    } else {
-//                        results.push(result);
-//                    }
-//                }
+                var spell: Spell = _inventory.stockItems[i] as Spell;
+                if (spell) {
+                    var result:CheckManaResult = new CheckManaResult(_manaList, spell);
+                    if (result.enough) {
+                        game.useSpell(spell);
+                    } else {
+                        results.push(result);
+                    }
+                }
             }
         }
 

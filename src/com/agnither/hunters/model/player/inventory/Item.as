@@ -11,6 +11,18 @@ public class Item extends EventDispatcher {
 
     public static const UPDATE: String = "update_Item";
 
+    public static function createItem(data: ItemVO, extension: Object = null):Item {
+        switch (data.type) {
+            case ItemTypeVO.weapon:
+            case ItemTypeVO.armor:
+            case ItemTypeVO.magic:
+                return new Item(data, extension);
+            case ItemTypeVO.spell:
+                return new Spell(data, extension);
+        }
+        return null;
+    }
+
     public static function createDrop(data: ItemVO):Item {
         var extension: Object = {};
         for (var key: * in data.extension) {
@@ -55,13 +67,13 @@ public class Item extends EventDispatcher {
         return _item.extension_drop;
     }
 
-    private var _used: Boolean;
-    public function set used(value: Boolean):void {
-        _used = value;
+    private var _isWearing: Boolean;
+    public function set isWearing(value: Boolean):void {
+        _isWearing = value;
         update();
     }
-    public function get used():Boolean {
-        return _used;
+    public function get isWearing():Boolean {
+        return _isWearing;
     }
 
     public function Item(item: ItemVO, extension: Object) {

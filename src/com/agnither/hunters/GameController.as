@@ -12,11 +12,14 @@ import com.agnither.hunters.model.player.drop.DropSlot;
 import com.agnither.hunters.model.player.drop.GoldDrop;
 import com.agnither.hunters.model.player.drop.ItemDrop;
 import com.agnither.hunters.model.player.inventory.Item;
+import com.agnither.hunters.model.player.inventory.Spell;
 import com.agnither.hunters.view.ui.UI;
 import com.agnither.hunters.view.ui.popups.InventoryPopup;
+import com.agnither.hunters.view.ui.popups.InventoryView;
 import com.agnither.hunters.view.ui.screens.BattleScreen;
 import com.agnither.hunters.view.ui.screens.battle.match3.FieldView;
 import com.agnither.hunters.view.ui.popups.ItemsView;
+import com.agnither.hunters.view.ui.screens.battle.player.inventory.BattleInventoryView;
 import com.agnither.utils.CommonRefs;
 import com.agnither.utils.ResourcesManager;
 
@@ -54,9 +57,13 @@ public class GameController extends EventDispatcher {
         _ui = new UI(new CommonRefs(_resources), this);
         _stage.addChildAt(_ui, 0);
 
+        // battle
         _stage.addEventListener(FieldView.SELECT_CELL, handleSelectCell);
+        _stage.addEventListener(BattleInventoryView.ITEM_SELECTED, handleSelectSpell);
+
+        // inventory
         _stage.addEventListener(ItemsView.ITEM_SELECTED, handleInventoryItemSelected);
-//        _stage.addEventListener(SpellView.SPELL_SELECTED, handleSelectSpell);
+        _stage.addEventListener(InventoryView.ITEM_SELECTED, handleInventoryItemSelected);
 
         startGame(MonsterVO.DICT[1]);
     }
@@ -67,6 +74,8 @@ public class GameController extends EventDispatcher {
         _game.addEventListener(Game.END_GAME, handleEndGame);
 
         _ui.showScreen(BattleScreen.ID);
+
+        _ui.showPopup(InventoryPopup.ID);
     }
 
     public function endGame():void {
@@ -83,10 +92,10 @@ public class GameController extends EventDispatcher {
 
     private function handleSelectSpell(e: Event):void {
         if (!(_game.currentPlayer is AIPlayer)) {
-//            var spell: Spell = e.data as Spell;
-//            if (_game.checkSpell(spell)) {
-//                _game.useSpell(spell);
-//            }
+            var spell: Spell = e.data as Spell;
+            if (spell && _game.checkSpell(spell)) {
+                _game.useSpell(spell);
+            }
         }
     }
 

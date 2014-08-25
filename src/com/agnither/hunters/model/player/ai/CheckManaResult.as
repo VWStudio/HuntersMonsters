@@ -27,11 +27,10 @@ public class CheckManaResult {
         _results = new Dictionary();
         _delta = 0;
 
-        var l: int = spell.mana.length;
-        for (var i:int = 0; i < l; i++) {
-            var manaData: Array = spell.mana[i].split(":");
-            var magic: DamageTypeVO = DamageTypeVO.DICT[manaData[0]];
-            var delta: int = manaData[1] - mana.getMana(magic.name).value;
+        var manaAmount: Object = spell.extension_drop;
+        for (var key: * in manaAmount) {
+            var magic: DamageTypeVO = DamageTypeVO.DICT[key];
+            var delta: int = manaAmount[key] - mana.getMana(magic.name).value;
             if (delta > 0) {
                 _results[magic.name] = delta;
                 _delta += delta;

@@ -7,7 +7,7 @@ import com.agnither.hunters.view.ui.screens.battle.match3.FieldView;
 import com.agnither.hunters.view.ui.screens.battle.player.DropListView;
 import com.agnither.hunters.view.ui.screens.battle.player.HeroView;
 import com.agnither.hunters.view.ui.screens.battle.player.ManaListView;
-import com.agnither.hunters.view.ui.screens.battle.player.inventory.InventoryView;
+import com.agnither.hunters.view.ui.screens.battle.player.inventory.BattleInventoryView;
 import com.agnither.ui.Screen;
 import com.agnither.utils.CommonRefs;
 
@@ -23,8 +23,8 @@ public class BattleScreen extends Screen {
     private var _playerMana: ManaListView;
     private var _enemyMana: ManaListView;
 
-    private var _playerSpells: InventoryView;
-    private var _enemySpells: InventoryView;
+    private var _playerSpells: BattleInventoryView;
+    private var _enemySpells: BattleInventoryView;
 
     private var _dropList: DropListView;
 
@@ -73,13 +73,13 @@ public class BattleScreen extends Screen {
         addChild(_enemyMana);
 
         _links.slotsPlayer.visible = false;
-        _playerSpells = new InventoryView(_refs, _game.player.inventory);
+        _playerSpells = new BattleInventoryView(_refs, _game.player.inventory);
         _playerSpells.x = _links.slotsPlayer.x;
         _playerSpells.y = _links.slotsPlayer.y;
         addChild(_playerSpells);
 
         _links.slotsEnemy.visible = false;
-        _enemySpells = new InventoryView(_refs, _game.enemy.inventory);
+        _enemySpells = new BattleInventoryView(_refs, _game.enemy.inventory);
         _enemySpells.x = _links.slotsEnemy.x;
         _enemySpells.y = _links.slotsEnemy.y;
         addChild(_enemySpells);

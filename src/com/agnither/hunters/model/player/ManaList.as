@@ -63,7 +63,7 @@ public class ManaList extends EventDispatcher {
     }
 
     public function checkSpell(spell: Spell):Boolean {
-        var mana: Object = spell.mana;
+        var mana: Object = spell.extension_drop;
         for (var key: * in mana) {
             var manaType: DamageTypeVO = DamageTypeVO.DICT[key];
             if (!checkMana(manaType.name, mana[key])) {
@@ -74,7 +74,7 @@ public class ManaList extends EventDispatcher {
     }
 
     public function useSpell(spell: Spell):void {
-        var mana: Object = spell.mana;
+        var mana: Object = spell.extension_drop;
         for (var key: * in mana) {
             var manaType: DamageTypeVO = DamageTypeVO.DICT[key];
             releaseMana(manaType.name, mana[key]);

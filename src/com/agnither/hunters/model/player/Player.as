@@ -3,7 +3,9 @@
  */
 package com.agnither.hunters.model.player {
 import com.agnither.hunters.model.player.inventory.Inventory;
+import com.agnither.hunters.model.player.inventory.Spell;
 import com.agnither.hunters.model.player.personage.Hero;
+import com.agnither.hunters.model.player.personage.Personage;
 
 import starling.events.EventDispatcher;
 
@@ -47,16 +49,16 @@ public class Player extends EventDispatcher {
 
     }
 
-//    public function checkSpell(name: String):Boolean {
-//        var spell: Spell = _inventory.getItem(name) as Spell;
-//        return spell ? _manaList.checkSpell(spell) : false;
-//    }
-//
-//    public function useSpell(name: String, target: Personage):void {
-//        var spell: Spell = _inventory.getItem(name) as Spell;
-//        spell.useSpell(target);
-//        _manaList.useSpell(spell);
-//    }
+    public function checkSpell(id: String):Boolean {
+        var spell: Spell = _inventory.getItem(id) as Spell;
+        return spell ? _manaList.checkSpell(spell) : false;
+    }
+
+    public function useSpell(id: String, target: Personage):void {
+        var spell: Spell = _inventory.getItem(id) as Spell;
+        spell.useSpell(target);
+        _manaList.useSpell(spell);
+    }
 
     public function update():void {
         dispatchEventWith(UPDATE);

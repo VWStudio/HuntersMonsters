@@ -10,6 +10,7 @@ import com.agnither.utils.CommonRefs;
 
 import starling.display.Image;
 import starling.display.Sprite;
+import starling.events.Event;
 import starling.text.TextField;
 
 public class ItemView extends AbstractView {
@@ -62,10 +63,19 @@ public class ItemView extends AbstractView {
         _links.mana3_tf.visible = false;
 
         _damage = _links.damage_tf;
+
+        _item.addEventListener(Item.UPDATE, handleUpdate);
+        handleUpdate();
+    }
+
+    private function handleUpdate(e: Event = null):void {
+        _select.visible = _item.isWearing;
     }
 
     override public function destroy():void {
         super.destroy();
+
+        _item.removeEventListener(Item.UPDATE, handleUpdate);
 
         _item = null;
         _select = null;

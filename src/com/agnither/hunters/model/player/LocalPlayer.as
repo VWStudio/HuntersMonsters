@@ -22,8 +22,6 @@ public class LocalPlayer extends Player {
 
         super(_data.data);
 
-        trace(_data.data.stock);
-
         initInventory(_data.data.items, _data.data.stock, _data.data.inventory);
     }
 
@@ -55,11 +53,14 @@ public class LocalPlayer extends Player {
     public function addItem(item: Item):void {
         _inventory.addItem(item);
         _data.data.stock = _inventory.stockItems;
-        trace(_data.data.stock);
     }
 
     public function selectItem(item: Item):void {
-        _inventory.wearItem(item);
+        if (item.isWearing) {
+            _inventory.unwearItem(item);
+        } else {
+            _inventory.wearItem(item);
+        }
         _data.data.inventory = _inventory.inventoryItems;
     }
 

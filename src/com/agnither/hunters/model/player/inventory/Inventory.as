@@ -13,6 +13,8 @@ import starling.events.EventDispatcher;
 
 public class Inventory extends EventDispatcher {
 
+    public static const UPDATE: String = "update_Inventory";
+
     public static var max_capacity: uint = 6;
 
     private var _data: Object;
@@ -69,7 +71,7 @@ public class Inventory extends EventDispatcher {
         for (var key: * in data) {
             var itemData: Object = data[key];
             var item : ItemVO = ItemVO.DICT[itemData.id];
-            var newItem : Item = new Item(item, itemData.extension);
+            var newItem : Item = Item.createItem(item, itemData.extension);
             newItem.uniqueId = key;
 
             _itemsDict[key] = newItem;
@@ -106,24 +108,30 @@ public class Inventory extends EventDispatcher {
 
     public function wearItem(item: Item):void {
         addToInventory(item.uniqueId);
+        update();
     }
 
     public function unwearItem(item: Item):void {
         removeFromInventory(item.uniqueId);
+        update();
     }
 
     public function setInventoryItems(array : Array) : void {
         for (var i : int = 0; i < array.length; i++) {
             addToInventory(array[i]);
         }
+        update();
+    }
 
+    public function update():void {
         updateExtensions();
+
+        dispatchEventWith(UPDATE);
     }
 
     private function addToInventory(uid : String) : void {
         var item : Item = _itemsDict[uid];
-        var slotType : int = item.slot; // current slot kind
-        var slotMax : int = ItemSlotVO.DICT[slotType]; // MAX for current slot kind
+        var slotMax : int = ItemSlotVO.DICT[item.slot].max; // MAX for current slot kind
 
         var isHaveFree : Boolean = _inventoryItems.length < max_capacity;
         if(!isHaveFree) {
@@ -135,7 +143,7 @@ public class Inventory extends EventDispatcher {
             for (var i : int = 0; i < _inventoryItems.length; i++)
             {
                 var checkItem : Item = _itemsDict[_inventoryItems[i]];
-                if(checkItem.slot == slotType) {
+                if(checkItem.slot == item.slot) {
                     slotAmount++;
                     if(slotAmount >= slotMax) {
                         return;
@@ -144,17 +152,24 @@ public class Inventory extends EventDispatcher {
             }
         }
 
+        item.isWearing = true;
         _inventoryItems.push(uid);
     }
 
     private function removeFromInventory(uid : String) : void {
+        var item : Item = _itemsDict[uid];
         var index: int = _inventoryItems.indexOf(uid);
         if (index >= 0) {
+            item.isWearing = false;
             _inventoryItems.splice(index, 1);
         }
     }
 
     private function updateExtensions() : void {
+        for (var key: * in _extensions) {
+            _extensions[key] = 0;
+        }
+
         for (var i : int = 0; i < _inventoryItems.length; i++) {
             var item: Object = _itemsDict[_inventoryItems[i]];
             if (item.type != ItemTypeVO.spell) {
@@ -171,7 +186,5 @@ public class Inventory extends EventDispatcher {
             }
         }
     }
-
-
 }
 }
