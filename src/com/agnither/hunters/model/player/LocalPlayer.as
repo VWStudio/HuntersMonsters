@@ -13,14 +13,16 @@ public class LocalPlayer extends Player {
 
     public function LocalPlayer() {
         _data = SharedObject.getLocal("player");
-
-        _data.clear();
-        _data.flush();
+//
+//        _data.clear();
+//        _data.flush();
         if (!_data.data.name) {
             createProgress(1);
         }
 
         super(_data.data);
+
+        trace(_data.data.stock);
 
         initInventory(_data.data.items, _data.data.stock, _data.data.inventory);
     }
@@ -48,17 +50,17 @@ public class LocalPlayer extends Player {
 
     public function addGold(amount: int):void {
         _data.data.gold += amount;
-        save();
     }
 
     public function addItem(item: Item):void {
         _inventory.addItem(item);
+        _data.data.stock = _inventory.stockItems;
+        trace(_data.data.stock);
     }
 
     public function selectItem(item: Item):void {
-//        _inventory.selectItem(item);
+        _inventory.wearItem(item);
         _data.data.inventory = _inventory.inventoryItems;
-        save();
     }
 
     public function save():void {

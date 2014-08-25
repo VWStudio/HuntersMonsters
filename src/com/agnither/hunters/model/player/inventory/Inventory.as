@@ -15,6 +15,8 @@ public class Inventory extends EventDispatcher {
 
     public static var max_capacity: uint = 6;
 
+    private var _data: Object;
+
     private var _stockItems: Array = []; // of String
     public function get stockItems():Array {
         return _stockItems;
@@ -63,6 +65,7 @@ public class Inventory extends EventDispatcher {
     }
 
     public function parse(data : Object) : void {
+        _data = data;
         for (var key: * in data) {
             var itemData: Object = data[key];
             var item : ItemVO = ItemVO.DICT[itemData.id];
@@ -78,18 +81,35 @@ public class Inventory extends EventDispatcher {
     public function addItem(item: Item):void {
         if (!_itemsDict[item.uniqueId]) {
             _itemsDict[item.uniqueId] = item;
-            _stockItems.push(item);
+            _itemsByType[item.type].push(item.uniqueId);
+            _data[item.uniqueId] = {id: item.id, extension: item.extension};
+            _stockItems.push(item.uniqueId);
         }
     }
 
     public function removeItem(item: Item):void {
         if (_itemsDict[item.uniqueId]) {
             delete _itemsDict[item.uniqueId];
-            var index: int = _stockItems.indexOf(item);
+            delete _data[item.uniqueId];
+
+            var index: int = _stockItems.indexOf(item.uniqueId);
             if (index >= 0) {
                 _stockItems.splice(index, 1);
             }
+
+            index = _itemsByType[item.type].indexOf(item.uniqueId);
+            if (index >= 0) {
+                _itemsByType[item.type].splice(index, 1);
+            }
         }
+    }
+
+    public function wearItem(item: Item):void {
+        addToInventory(item.uniqueId);
+    }
+
+    public function unwearItem(item: Item):void {
+        removeFromInventory(item.uniqueId);
     }
 
     public function setInventoryItems(array : Array) : void {
@@ -125,6 +145,13 @@ public class Inventory extends EventDispatcher {
         }
 
         _inventoryItems.push(uid);
+    }
+
+    private function removeFromInventory(uid : String) : void {
+        var index: int = _inventoryItems.indexOf(uid);
+        if (index >= 0) {
+            _inventoryItems.splice(index, 1);
+        }
     }
 
     private function updateExtensions() : void {

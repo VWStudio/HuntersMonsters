@@ -67,12 +67,12 @@ public class GameController extends EventDispatcher {
         _game.addEventListener(Game.END_GAME, handleEndGame);
 
         _ui.showScreen(BattleScreen.ID);
-
-        _ui.showPopup(InventoryPopup.ID);
     }
 
     public function endGame():void {
         _game.removeEventListener(Game.END_GAME, handleEndGame);
+
+        _ui.showPopup(InventoryPopup.ID);
     }
 
     private function handleSelectCell(e: Event):void {
@@ -103,6 +103,9 @@ public class GameController extends EventDispatcher {
                 }
             }
         }
+        _player.save();
+
+        endGame();
     }
 
     private function handleInventoryItemSelected(e: Event):void {
