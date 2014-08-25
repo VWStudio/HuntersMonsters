@@ -2,6 +2,7 @@
  * Created by agnither on 21.08.14.
  */
 package com.agnither.hunters.model.player.inventory {
+import com.agnither.hunters.data.outer.ItemTypeVO;
 import com.agnither.hunters.data.outer.ItemVO;
 
 import starling.events.EventDispatcher;
@@ -33,11 +34,17 @@ public class Item extends EventDispatcher {
     public function get picture():String {
         return _item.picture;
     }
+    public function get type():int {
+        return _item.type;
+    }
     public function get slot():int {
         return _item.slot;
     }
     public function get icon():String {
-        return null;
+        return ItemTypeVO.DICT[_item.type].picture;
+    }
+    public function get extension_drop():Object {
+        return _item.extension_drop;
     }
 
     private var _used: Boolean;

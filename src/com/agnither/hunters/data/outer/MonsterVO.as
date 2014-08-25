@@ -3,7 +3,6 @@
  */
 package com.agnither.hunters.data.outer {
 import com.agnither.hunters.data.inner.PersonageVO;
-import com.agnither.hunters.model.player.inventory.Weapon;
 
 import flash.utils.Dictionary;
 

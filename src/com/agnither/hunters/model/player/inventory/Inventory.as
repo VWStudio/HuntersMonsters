@@ -2,7 +2,9 @@
  * Created by agnither on 21.08.14.
  */
 package com.agnither.hunters.model.player.inventory {
+import com.agnither.hunters.data.outer.ExtensionVO;
 import com.agnither.hunters.data.outer.ItemSlotVO;
+import com.agnither.hunters.data.outer.ItemTypeVO;
 import com.agnither.hunters.data.outer.ItemVO;
 
 import flash.utils.Dictionary;
@@ -11,110 +13,91 @@ import starling.events.EventDispatcher;
 
 public class Inventory extends EventDispatcher {
 
-    private var _data: Object;
+    public static var max_capacity: uint = 6;
 
-    private var _stockItems: Vector.<String> = new <String>[];
-    private var _inventoryItems : Vector.<String> = new <String>[];
-    private var _itemsDict: Dictionary = new Dictionary();
-    private var _itemsByType: Dictionary = new Dictionary();
-    private var _extensions: Dictionary = new Dictionary();
-    private var MAX_INVENTORY : uint = 6;
-
-    public function getItem(name: String):Item {
-        return _itemsDict[name];
-    }
-    public function get stockItems():Vector.<String> {
+    private var _stockItems: Array = []; // of String
+    public function get stockItems():Array {
         return _stockItems;
     }
-    public function get inventoryItems() : Vector.<String> {
+
+    private var _inventoryItems : Array = []; // of String
+    public function get inventoryItems():Array {
         return _inventoryItems;
     }
 
+    private var _itemsDict: Dictionary = new Dictionary();
+    public function getItem(name: String):Item {
+        return _itemsDict[name];
+    }
+
+    private var _itemsByType: Dictionary = new Dictionary();
+    public function getItemsByType(type : int):Vector.<String> {
+        return _itemsByType[type];
+    }
+
+    private var _extensions: Dictionary = new Dictionary();
+    public function getExtension(type: int):int {
+        return _extensions[type];
+    }
+
+    public function get damage():int {
+        return getExtension(ExtensionVO.damage);
+    }
+
+    public function get defence():int {
+        return getExtension(ExtensionVO.defence);
+    }
 
     public function Inventory() {
+
     }
 
+    public function init():void {
+        for (var i: int = 0; i < ItemTypeVO.LIST.length; i++) {
+            _itemsByType[ItemTypeVO.LIST[i].id] = [];
+        }
 
-    private var _damage: int = 0;
-    public function get damage():int {
-        return _extensions["1"];
+        for (i = 0; i < ExtensionVO.LIST.length; i++) {
+            _extensions[ExtensionVO.LIST[i].id] = 0;
+        }
     }
-
-
-
-//    private var _defence: int = -1;
-    public function get defence():int {
-        return _extensions["2"];
-    }
-
-
-
-//    public function parse(data: Object):void {
-//        _data = data;
-//
-//    }
-
-
 
     public function parse(data : Object) : void {
-//        _itemsDict = new Dictionary();
         for (var key: * in data) {
             var itemData: Object = data[key];
             var item : ItemVO = ItemVO.DICT[itemData.id];
-            var newItem : Item = new Item(item, itemData);
+            var newItem : Item = new Item(item, itemData.extension);
             newItem.uniqueId = key;
 
             _itemsDict[key] = newItem;
             _stockItems.push(key);
-
-            var typeArr : Vector.<String> = _itemsByType[item.type];
-            if(!typeArr) {
-                _itemsByType[item.type] = typeArr = new <String>[];
-            }
-            typeArr.push(key);
+            _itemsByType[item.type].push(key);
         }
-    }
-
-    public function getItemsByType(type : int):Vector.<String> {
-
-        var typeArr : Vector.<String> = _itemsByType[type];
-        if(!typeArr) {
-            _itemsByType[type] = typeArr = new <String>[];
-        }
-        return typeArr;
-
     }
 
     public function addItem(item: Item):void {
-
-        if(_stockItems.indexOf(item.uniqueId) == -1) {
+        if (!_itemsDict[item.uniqueId]) {
+            _itemsDict[item.uniqueId] = item;
             _stockItems.push(item);
-            _itemsDict[item.name] = item;
         }
-
     }
 
-    public function clearList():void {
-        while (_stockItems.length > 0) {
-            var uid : String = _stockItems.shift();
-            var item: Item = _itemsDict[uid];
-            item.destroy();
-            delete _itemsDict[uid];
-            var inventoryIndex : int = _inventoryItems.indexOf(uid);
-            if( inventoryIndex > -1) {
-                _inventoryItems.splice(inventoryIndex, 1);
+    public function removeItem(item: Item):void {
+        if (_itemsDict[item.uniqueId]) {
+            delete _itemsDict[item.uniqueId];
+            var index: int = _stockItems.indexOf(item);
+            if (index >= 0) {
+                _stockItems.splice(index, 1);
             }
         }
     }
 
     public function setInventoryItems(array : Array) : void {
-
-        for (var i : int = 0; i < array.length; i++)
-        {
-
+        for (var i : int = 0; i < array.length; i++) {
             addToInventory(array[i]);
-
         }
+
+        updateExtensions();
     }
 
     private function addToInventory(uid : String) : void {
@@ -122,7 +105,7 @@ public class Inventory extends EventDispatcher {
         var slotType : int = item.slot; // current slot kind
         var slotMax : int = ItemSlotVO.DICT[slotType]; // MAX for current slot kind
 
-        var isHaveFree : Boolean = _inventoryItems.length < MAX_INVENTORY;
+        var isHaveFree : Boolean = _inventoryItems.length < max_capacity;
         if(!isHaveFree) {
             return;
         }
@@ -142,41 +125,21 @@ public class Inventory extends EventDispatcher {
         }
 
         _inventoryItems.push(uid);
-
-        updateExtensions();
-
-//        for (var key : * in item.extension)
-//        {
-//            switch (key) {
-//                case "melee_damage" :
-//                    isUpdateDamage = true;
-//                    break;
-//            }
-//
-//
-//
-//        }
-
-
-
     }
 
     private function updateExtensions() : void {
-        _extensions = new Dictionary();
-        for (var i : int = 0; i < _inventoryItems.length; i++)
-        {
-            var item : Object = _itemsDict[_inventoryItems[i]].extension;
-            for (var key : * in item)
-            {
-                if(!_extensions[key]) {
-                    _extensions[key] = 0;
-                }
-                if(!isNaN(item[key])) {
-                    _extensions[key] += item[key];
-                } else {
+        for (var i : int = 0; i < _inventoryItems.length; i++) {
+            var item: Object = _itemsDict[_inventoryItems[i]];
+            if (item.type != ItemTypeVO.spell) {
+                var extension:Object = item.extension;
+                for (var key:* in extension) {
+                    if (!isNaN(extension[key])) {
+                        _extensions[key] += int(extension[key]);
+                    } else {
 
-                    // what should we do if value is array?
+                        // what should we do if value is array?
 
+                    }
                 }
             }
         }

@@ -4,9 +4,6 @@
 package com.agnither.hunters.model.player.drop {
 import com.agnither.hunters.data.outer.DropVO;
 import com.agnither.hunters.data.outer.GoldDropVO;
-import com.agnither.hunters.model.player.inventory.Armor;
-import com.agnither.hunters.model.player.inventory.MagicItem;
-import com.agnither.hunters.model.player.inventory.Weapon;
 
 import starling.events.EventDispatcher;
 

@@ -14,7 +14,6 @@ public class ItemVO {
     public var extension : Object;
     public var extension_drop : Object;
 
-
     public static const LIST: Vector.<ItemVO> = new <ItemVO>[];
     public static const DICT: Dictionary = new Dictionary();
 
@@ -29,7 +28,7 @@ public class ItemVO {
             object.type = row.type;
             object.slot = row.slot;
             object.extension = parseExtension(row.extension);
-            object.extension_drop = parseExtension(row.extension_drop);
+            object.extension_drop = parseExtension(row.extensiondrop);
 
             LIST.push(object);
             DICT[object.id] = object;

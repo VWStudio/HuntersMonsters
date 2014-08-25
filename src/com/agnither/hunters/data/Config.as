@@ -9,7 +9,7 @@ import com.agnither.hunters.data.outer.GoldDropVO;
 import com.agnither.hunters.data.outer.ItemSlotVO;
 import com.agnither.hunters.data.outer.ItemTypeVO;
 import com.agnither.hunters.data.outer.ItemVO;
-import com.agnither.hunters.data.outer.MagicVO;
+import com.agnither.hunters.data.outer.DamageTypeVO;
 import com.agnither.hunters.data.outer.MonsterVO;
 import com.agnither.hunters.data.outer.PlayerVO;
 
@@ -29,7 +29,7 @@ public class Config {
         addConfig("item_type", ItemTypeVO);
         addConfig("item_slot", ItemSlotVO);
         addConfig("extension", ExtensionVO);
-        addConfig("magic", MagicVO);
+        addConfig("damage_type", DamageTypeVO);
         addConfig("drop", DropVO);
         addConfig("gold_drop", GoldDropVO);
         addConfig("chip", ChipVO);

@@ -3,8 +3,6 @@
  */
 package com.agnither.hunters.view.ui.screens.battle.player {
 import com.agnither.hunters.model.player.inventory.Inventory;
-import com.agnither.hunters.model.player.inventory.Item;
-import com.agnither.hunters.model.player.inventory.Stock;
 import com.agnither.ui.AbstractView;
 import com.agnither.utils.CommonRefs;
 

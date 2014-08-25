@@ -3,7 +3,7 @@
  */
 package com.agnither.hunters.model.player.personage {
 import com.agnither.hunters.data.inner.PersonageVO;
-import com.agnither.hunters.data.outer.MagicVO;
+import com.agnither.hunters.data.outer.DamageTypeVO;
 
 import starling.events.EventDispatcher;
 
@@ -48,8 +48,8 @@ public class Personage extends EventDispatcher {
     }
 
     private var _magic: int;
-    public function get magic():MagicVO {
-        return MagicVO.DICT[_magic];
+    public function get magic():DamageTypeVO {
+        return DamageTypeVO.DICT[_magic];
     }
 
     public function Personage() {

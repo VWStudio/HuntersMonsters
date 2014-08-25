@@ -2,7 +2,7 @@
  * Created by agnither on 18.08.14.
  */
 package com.agnither.hunters.model.player.ai {
-import com.agnither.hunters.data.outer.MagicVO;
+import com.agnither.hunters.data.outer.DamageTypeVO;
 import com.agnither.hunters.model.player.ManaList;
 import com.agnither.hunters.model.player.inventory.Spell;
 
@@ -30,7 +30,7 @@ public class CheckManaResult {
         var l: int = spell.mana.length;
         for (var i:int = 0; i < l; i++) {
             var manaData: Array = spell.mana[i].split(":");
-            var magic: MagicVO = MagicVO.DICT[manaData[0]];
+            var magic: DamageTypeVO = DamageTypeVO.DICT[manaData[0]];
             var delta: int = manaData[1] - mana.getMana(magic.name).value;
             if (delta > 0) {
                 _results[magic.name] = delta;

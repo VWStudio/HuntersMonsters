@@ -2,7 +2,7 @@
  * Created by agnither on 13.08.14.
  */
 package com.agnither.hunters.model.player {
-import com.agnither.hunters.data.outer.MagicVO;
+import com.agnither.hunters.data.outer.DamageTypeVO;
 
 import starling.events.EventDispatcher;
 
@@ -10,7 +10,7 @@ public class Mana extends EventDispatcher {
 
     public static const UPDATE: String = "update_Mana";
 
-    private var _magic: MagicVO;
+    private var _magic: DamageTypeVO;
     public function get type():String {
         return _magic.name;
     }
@@ -25,7 +25,7 @@ public class Mana extends EventDispatcher {
     }
 
     public function Mana(type: String) {
-        _magic = MagicVO.DICT[type];
+        _magic = DamageTypeVO.DICT[type];
         _value = 0;
     }
 

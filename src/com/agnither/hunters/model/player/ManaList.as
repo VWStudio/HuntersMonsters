@@ -2,7 +2,7 @@
  * Created by agnither on 13.08.14.
  */
 package com.agnither.hunters.model.player {
-import com.agnither.hunters.data.outer.MagicVO;
+import com.agnither.hunters.data.outer.DamageTypeVO;
 import com.agnither.hunters.model.player.inventory.Spell;
 
 import flash.utils.Dictionary;
@@ -27,9 +27,9 @@ public class ManaList extends EventDispatcher {
     }
 
     public function init():void {
-        addManaCounter(MagicVO.NATURE);
-        addManaCounter(MagicVO.WATER);
-        addManaCounter(MagicVO.FIRE);
+        addManaCounter(DamageTypeVO.nature.name);
+        addManaCounter(DamageTypeVO.water.name);
+        addManaCounter(DamageTypeVO.fire.name);
     }
 
     public function addManaCounter(type: String):void {
@@ -63,11 +63,10 @@ public class ManaList extends EventDispatcher {
     }
 
     public function checkSpell(spell: Spell):Boolean {
-        var mana: Array = spell.mana;
-        for (var i:int = 0; i < mana.length; i++) {
-            var manaData: Array = mana[i].split(":");
-            var manaType: MagicVO = MagicVO.DICT[manaData[0]];
-            if (!checkMana(manaType.name, manaData[1])) {
+        var mana: Object = spell.mana;
+        for (var key: * in mana) {
+            var manaType: DamageTypeVO = DamageTypeVO.DICT[key];
+            if (!checkMana(manaType.name, mana[key])) {
                 return false;
             }
         }
@@ -75,11 +74,10 @@ public class ManaList extends EventDispatcher {
     }
 
     public function useSpell(spell: Spell):void {
-        var mana: Array = spell.mana;
-        for (var i:int = 0; i < mana.length; i++) {
-            var manaData: Array = mana[i].split(":");
-            var manaType: MagicVO = MagicVO.DICT[manaData[0]];
-            releaseMana(manaType.name, manaData[1]);
+        var mana: Object = spell.mana;
+        for (var key: * in mana) {
+            var manaType: DamageTypeVO = DamageTypeVO.DICT[key];
+            releaseMana(manaType.name, mana[key]);
         }
     }
 

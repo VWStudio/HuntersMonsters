@@ -1,15 +1,18 @@
 [
     {
         "id": 1,
-        "name": "weapon"
+        "name": "weapon",
+        "picture": "out_4.png"
     },
     {
         "id": 2,
-        "name": "armor"
+        "name": "armor",
+        "picture": "out_3.png"
     },
     {
         "id": 3,
-        "name": "magic"
+        "name": "magic",
+        "picture": "out_2.png"
     },
     {
         "id": 4,
@@ -17,6 +20,7 @@
     },
     {
         "id": 5,
-        "name": "gold"
+        "name": "gold",
+        "picture": "out_1.png"
     }
 ]

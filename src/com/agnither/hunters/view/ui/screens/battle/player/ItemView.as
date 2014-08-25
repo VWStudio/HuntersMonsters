@@ -2,11 +2,8 @@
  * Created by agnither on 15.08.14.
  */
 package com.agnither.hunters.view.ui.screens.battle.player {
-import com.agnither.hunters.model.player.inventory.Armor;
+import com.agnither.hunters.data.outer.ItemTypeVO;
 import com.agnither.hunters.model.player.inventory.Item;
-import com.agnither.hunters.model.player.inventory.MagicItem;
-import com.agnither.hunters.model.player.inventory.Spell;
-import com.agnither.hunters.model.player.inventory.Weapon;
 import com.agnither.ui.AbstractView;
 import com.agnither.utils.CommonRefs;
 
@@ -17,17 +14,15 @@ import starling.text.TextField;
 public class ItemView extends AbstractView {
 
     public static function getItemView(refs: CommonRefs, item: Item):ItemView {
-        if (item is Spell) {
-            return new SpellView(refs, item as Spell);
-        }
-        if (item is Weapon) {
-            return new WeaponView(refs, item as Weapon);
-        }
-        if (item is Armor) {
-            return new ArmorView(refs, item as Armor);
-        }
-        if (item is MagicItem) {
-            return new MagicItemView(refs, item as MagicItem);
+        switch (item.type) {
+            case ItemTypeVO.weapon:
+                return new WeaponView(refs, item);
+            case ItemTypeVO.armor:
+                return new ArmorView(refs, item);
+            case ItemTypeVO.magic:
+                return new MagicItemView(refs, item);
+            case ItemTypeVO.spell:
+                return new SpellView(refs, item);
         }
         return new ItemView(refs, item);
     }

@@ -2,12 +2,11 @@
  * Created by agnither on 13.08.14.
  */
 package com.agnither.hunters.model.player {
+import com.agnither.hunters.data.outer.ItemVO;
 import com.agnither.hunters.data.outer.MonsterVO;
 import com.agnither.hunters.model.Game;
-import com.agnither.hunters.model.player.ai.CheckManaResult;
 import com.agnither.hunters.model.match3.Move;
 import com.agnither.hunters.model.match3.MoveResult;
-import com.agnither.hunters.model.player.inventory.Spell;
 
 import flash.utils.Dictionary;
 
@@ -31,17 +30,16 @@ public class AIPlayer extends Player {
     }
 
     private function loadInventory(monster: MonsterVO):void {
-//        var inventory: InventoryVO = new InventoryVO();
-//        for (var i:int = 0; i < monster.spells.length; i++) {
-//            inventory.spells.push(new Spell(ItemVO.DICT[monster.spells[i]]));
-//        }
-//        if (monster.weapon) {
-//            inventory.weapon = new Weapon(ItemVO.DICT[monster.weapon]);
-//        }
-//        for (i = 0; i < monster.armor.length; i++) {
-//            inventory.armor.push(new Armor(ItemVO.DICT[monster.armor[i]]));
-//        }
-//        initInventory(inventory);
+        var items: Object = {};
+        var stock: Array = [];
+        var inventory: Array = [];
+        for (var i:int = 0; i < monster.items.length; i++) {
+            var id: int = monster.items[i];
+            items[id] = ItemVO.DICT[id];
+            stock.push(id);
+            inventory.push(id);
+        }
+        initInventory(items, stock, inventory);
     }
 
     override public function startMove():void {
@@ -54,15 +52,15 @@ public class AIPlayer extends Player {
         var results: Array = [];
         if (Math.random()*100 < difficulty) {
             for (var i:int = 0; i < _inventory.stockItems.length; i++) {
-                var spell: Spell = _inventory.stockItems[i] as Spell;
-                if (spell) {
-                    var result:CheckManaResult = new CheckManaResult(_manaList, spell);
-                    if (result.enough) {
-                        game.useSpell(spell);
-                    } else {
-                        results.push(result);
-                    }
-                }
+//                var spell: Spell = _inventory.stockItems[i] as Spell;
+//                if (spell) {
+//                    var result:CheckManaResult = new CheckManaResult(_manaList, spell);
+//                    if (result.enough) {
+//                        game.useSpell(spell);
+//                    } else {
+//                        results.push(result);
+//                    }
+//                }
             }
         }
 

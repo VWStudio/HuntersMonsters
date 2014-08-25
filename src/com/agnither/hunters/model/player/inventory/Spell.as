@@ -11,8 +11,8 @@ public class Spell extends Item {
         return 0;
     }
 
-    public function get mana():Array {
-        return [];
+    public function get mana():Object {
+        return _item.extension_drop;
     }
 
     public function Spell(item: ItemVO) {

@@ -9,7 +9,6 @@ import com.agnither.hunters.model.match3.Match;
 import com.agnither.hunters.model.player.AIPlayer;
 import com.agnither.hunters.model.player.drop.DropList;
 import com.agnither.hunters.model.player.Player;
-import com.agnither.hunters.model.player.inventory.Spell;
 import com.agnither.hunters.model.player.personage.Personage;
 
 import starling.events.Event;
@@ -76,17 +75,17 @@ public class Game extends EventDispatcher {
         _field.selectCell(cell);
     }
 
-    public function checkSpell(spell: Spell):Boolean {
-        return currentPlayer.checkSpell(spell.name);
-    }
-
-    public function selectSpell(spell: Spell):void {
-//        currentPlayer.checkSpell(spell.name);
-    }
-
-    public function useSpell(spell: Spell):void {
-        currentPlayer.useSpell(spell.name, currentEnemy.hero);
-    }
+//    public function checkSpell(spell: Spell):Boolean {
+//        return currentPlayer.checkSpell(spell.name);
+//    }
+//
+//    public function selectSpell(spell: Spell):void {
+////        currentPlayer.checkSpell(spell.name);
+//    }
+//
+//    public function useSpell(spell: Spell):void {
+//        currentPlayer.useSpell(spell.name, currentEnemy.hero);
+//    }
 
     private function nextMove(player: Player):void {
         _currentPlayer = player;

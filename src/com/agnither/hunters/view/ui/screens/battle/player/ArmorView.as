@@ -2,23 +2,20 @@
  * Created by agnither on 15.08.14.
  */
 package com.agnither.hunters.view.ui.screens.battle.player {
-import com.agnither.hunters.model.player.inventory.Armor;
+import com.agnither.hunters.data.outer.ExtensionVO;
+import com.agnither.hunters.model.player.inventory.Item;
 import com.agnither.utils.CommonRefs;
 
 public class ArmorView extends ItemView {
 
-    public function get armor():Armor {
-        return _item as Armor;
-    }
-
-    public function ArmorView(refs:CommonRefs, armor: Armor) {
-        super(refs, armor);
+    public function ArmorView(refs:CommonRefs, item: Item) {
+        super(refs, item);
     }
 
     override protected function initialize():void {
         super.initialize();
 
-        _damage.text = String(armor.defence);
+        _damage.text = String(item.extension[ExtensionVO.defence]);
     }
 }
 }
