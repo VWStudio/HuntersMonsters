@@ -16,7 +16,7 @@ public class Spell extends Item {
     }
 
     public function Spell(item: ItemVO) {
-        super(item);
+        super(item, null);
     }
 
     public function useSpell(target: Personage):void {

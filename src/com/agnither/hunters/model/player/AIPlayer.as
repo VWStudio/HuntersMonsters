@@ -53,8 +53,8 @@ public class AIPlayer extends Player {
     private function processSpells(difficulty: int):void {
         var results: Array = [];
         if (Math.random()*100 < difficulty) {
-            for (var i:int = 0; i < _inventory.items.length; i++) {
-                var spell: Spell = _inventory.items[i] as Spell;
+            for (var i:int = 0; i < _inventory.stockItems.length; i++) {
+                var spell: Spell = _inventory.stockItems[i] as Spell;
                 if (spell) {
                     var result:CheckManaResult = new CheckManaResult(_manaList, spell);
                     if (result.enough) {

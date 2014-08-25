@@ -2,6 +2,7 @@
  * Created by agnither on 22.08.14.
  */
 package com.agnither.hunters.view.ui.screens.battle.player {
+import com.agnither.hunters.model.player.inventory.Inventory;
 import com.agnither.hunters.model.player.inventory.Item;
 import com.agnither.hunters.model.player.inventory.Stock;
 import com.agnither.ui.AbstractView;
@@ -23,34 +24,34 @@ public class ItemsView extends AbstractView {
     public static var itemX: int;
     public static var itemY: int;
 
-    private var _stock: Stock;
+    private var _inventory: Inventory;
 
-    public function ItemsView(refs:CommonRefs, stock: Stock) {
-        _stock = stock;
+    public function ItemsView(refs:CommonRefs, inv: Inventory) {
+        _inventory = inv;
         super(refs);
     }
 
     override protected function initialize():void {
     }
 
-    public function showType(type: String):void {
-        switch (type) {
-            case WEAPON:
-                updateList(_stock.weapons);
-                break;
-            case ARMOR:
-                updateList(_stock.armors);
-                break;
-            case ITEMS:
-                updateList(_stock.items);
-                break;
-            case SPELLS:
-                updateList(_stock.spells);
-                break;
-        }
+    public function showType(type: int):void {
+        updateList(_inventory.getItemsByType(type));
+//        switch (type) {
+//            case WEAPON:
+//                break;
+//            case ARMOR:
+//                updateList(_inventory.armors);
+//                break;
+//            case ITEMS:
+//                updateList(_inventory.items);
+//                break;
+//            case SPELLS:
+//                updateList(_inventory.spells);
+//                break;
+//        }
     }
 
-    private function updateList(data: Vector.<Item>):void {
+    private function updateList(data: Vector.<String>):void {
         while (numChildren > 0) {
             var tile: ItemView = removeChildAt(0) as ItemView;
             tile.removeEventListener(TouchEvent.TOUCH, handleTouch);
@@ -58,7 +59,7 @@ public class ItemsView extends AbstractView {
         }
 
         for (var i:int = 0; i < data.length; i++) {
-            tile = ItemView.getItemView(_refs, data[i]);
+            tile = ItemView.getItemView(_refs, _inventory.getItem(data[i]));
             tile.addEventListener(TouchEvent.TOUCH, handleTouch);
             tile.x = itemX * (i % 3);
             tile.y = itemY * int(i / 3);

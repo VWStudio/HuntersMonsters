@@ -26,9 +26,9 @@ public class InventoryView extends AbstractView {
         _links.slot1.visible = false;
         _links.slot2.visible = false;
 
-        var l: int = _inventory.items.length;
+        var l: int = _inventory.inventoryItems.length;
         for (var i:int = 0; i < l; i++) {
-            var item: Item = _inventory.items[i];
+            var item: Item = _inventory.getItem(_inventory.inventoryItems[i]);
             var itemView: ItemView = ItemView.getItemView(_refs, item);
             itemView.y = i * tileHeight;
             addChild(itemView);

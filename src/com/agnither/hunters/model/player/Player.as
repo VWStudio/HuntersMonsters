@@ -60,12 +60,12 @@ public class Player extends EventDispatcher {
     }
 
     public function checkSpell(name: String):Boolean {
-        var spell: Spell = _inventory.getItem(name);
+        var spell: Spell = _inventory.getItem(name) as Spell;
         return spell ? _manaList.checkSpell(spell) : false;
     }
 
     public function useSpell(name: String, target: Personage):void {
-        var spell: Spell = _inventory.getItem(name);
+        var spell: Spell = _inventory.getItem(name) as Spell;
         spell.useSpell(target);
         _manaList.useSpell(spell);
     }

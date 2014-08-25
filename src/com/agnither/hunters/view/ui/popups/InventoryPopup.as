@@ -75,7 +75,8 @@ public class InventoryPopup extends Popup {
         _links.slot01.removeFromParent(true);
         _links.slot10.removeFromParent(true);
 
-        _items = new ItemsView(_refs, _player.stock);
+        _items = new ItemsView(_refs, _player.inventory);
+//        _items = new ItemsView(_refs, _player.stock);
         _itemsContainer = _links.items;
         _itemsContainer.addChild(_items);
 
@@ -92,22 +93,27 @@ public class InventoryPopup extends Popup {
     override public function open():void {
         super.open();
 
-        _items.showType(ItemsView.WEAPON);
+        _items.showType(1);
+//        _items.showType(ItemsView.WEAPON);
     }
 
     private function handleSelectTab(e: Event):void {
         switch (e.currentTarget) {
             case _weaponTab:
-                _items.showType(ItemsView.WEAPON);
+                _items.showType(1);
+//                _items.showType(ItemsView.WEAPON);
                 break;
             case _armorTab:
-                _items.showType(ItemsView.ARMOR);
+                _items.showType(2);
+//                _items.showType(ItemsView.ARMOR);
                 break;
             case _itemTab:
-                _items.showType(ItemsView.ITEMS);
+                _items.showType(3);
+//                _items.showType(ItemsView.ITEMS);
                 break;
             case _spellTab:
-                _items.showType(ItemsView.SPELLS);
+                _items.showType(4);
+//                _items.showType(ItemsView.SPELLS);
                 break;
         }
     }

@@ -10,23 +10,24 @@ import starling.events.EventDispatcher;
 
 public class Stock extends EventDispatcher {
 
-    private var _itemsDict: Dictionary;
+//    private var _itemsDict: Dictionary;
+//    private var _items : Array = [];
 
-    public function Stock() {
-    }
+//    public function Stock() {
+//    }
 
-    public function parse(data : Object) : void {
-        _itemsDict = new Dictionary();
-        for (var key: * in data) {
-            var itemData: Object = data[key];
-            var item : ItemVO = ItemVO.DICT[itemData.id];
-            var newItem : Item = new Item(item, itemData);
-            newItem.uniqueId = key;
-//            list.push(newItem);
-        }
-    }
+//    public function parse(data : Object) : void {
+//        _itemsDict = new Dictionary();
+//        for (var key: * in data) {
+//            var itemData: Object = data[key];
+//            var item : ItemVO = ItemVO.DICT[itemData.id];
+//            var newItem : Item = new Item(item, itemData);
+//            newItem.uniqueId = key;
+////            list.push(newItem);
+//        }
+//    }
 
-    public function addItem(item : Item) : void {
+//    public function addItem(item : Item) : void {
 //        if (item is Weapon)
 //        {
 //            var weapon : Weapon = item as Weapon;
@@ -55,6 +56,12 @@ public class Stock extends EventDispatcher {
 //            spell.inventoryId = _spells.length;
 //            _spellsObject[spell.inventoryId] = {id: spell.id};
 //        }
-    }
+//    }
+
+//    public function setStockItems(arr : Array) : void {
+//
+//        _items = arr;
+//
+//    }
 }
 }

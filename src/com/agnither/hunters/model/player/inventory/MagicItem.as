@@ -11,7 +11,7 @@ public class MagicItem extends Item {
     }
 
     public function MagicItem(item: ItemVO) {
-        super(item);
+        super(item, null);
     }
 }
 }

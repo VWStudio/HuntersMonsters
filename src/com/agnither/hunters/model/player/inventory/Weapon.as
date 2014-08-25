@@ -16,7 +16,7 @@ public class Weapon extends Item {
     }
 
     public function Weapon(item: ItemVO, damage:int = 0) {
-        super(item);
+        super(item, null);
 //        _damage = damage ? (damage > 0 ? damage : item.randomDamage) : item.damage;
     }
 }

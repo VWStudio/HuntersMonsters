@@ -13,10 +13,10 @@ public class LocalPlayer extends Player {
 
     private var _data: SharedObject;
 
-    private var _stock: Stock;
-    public function get stock():Stock {
-        return _stock;
-    }
+//    private var _stock: Stock;
+//    public function get stock():Stock {
+//        return _stock;
+//    }
 
     public function LocalPlayer() {
         _data = SharedObject.getLocal("player");
@@ -29,8 +29,9 @@ public class LocalPlayer extends Player {
 
         super(_data.data);
 
-        _stock = new Stock();
-        _stock.parse(_data.data.items);
+//        _stock = new Stock();
+        _inventory.parse(_data.data.items);
+        _inventory.setInventoryItems(_data.data.inventory);
     }
 
     private function createProgress(level: int):void {
@@ -55,7 +56,8 @@ public class LocalPlayer extends Player {
     }
 
     public function addItem(item: Item):void {
-        _stock.addItem(item);
+        inventory.addItem(item);
+//        _stock.addItem(item);
     }
 
     public function selectItem(item: Item):void {

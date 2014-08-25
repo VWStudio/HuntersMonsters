@@ -33,6 +33,9 @@ public class Item extends EventDispatcher {
     public function get picture():String {
         return _item.picture;
     }
+    public function get slot():int {
+        return _item.slot;
+    }
     public function get icon():String {
         return null;
     }
