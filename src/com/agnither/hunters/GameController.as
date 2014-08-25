@@ -16,7 +16,7 @@ import com.agnither.hunters.view.ui.UI;
 import com.agnither.hunters.view.ui.popups.InventoryPopup;
 import com.agnither.hunters.view.ui.screens.BattleScreen;
 import com.agnither.hunters.view.ui.screens.battle.match3.FieldView;
-import com.agnither.hunters.view.ui.screens.battle.player.ItemsView;
+import com.agnither.hunters.view.ui.popups.ItemsView;
 import com.agnither.utils.CommonRefs;
 import com.agnither.utils.ResourcesManager;
 

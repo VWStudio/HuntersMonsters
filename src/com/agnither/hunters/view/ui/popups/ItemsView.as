@@ -1,7 +1,9 @@
 /**
  * Created by agnither on 22.08.14.
  */
-package com.agnither.hunters.view.ui.screens.battle.player {
+package com.agnither.hunters.view.ui.popups {
+import com.agnither.hunters.view.ui.screens.battle.player.inventory.*;
+import com.agnither.hunters.view.ui.screens.battle.player.*;
 import com.agnither.hunters.model.player.inventory.Inventory;
 import com.agnither.ui.AbstractView;
 import com.agnither.utils.CommonRefs;

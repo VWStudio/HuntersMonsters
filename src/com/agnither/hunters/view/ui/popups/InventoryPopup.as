@@ -4,9 +4,6 @@
 package com.agnither.hunters.view.ui.popups {
 import com.agnither.hunters.data.outer.ItemTypeVO;
 import com.agnither.hunters.model.player.LocalPlayer;
-import com.agnither.hunters.view.ui.screens.battle.player.InventoryView;
-import com.agnither.hunters.view.ui.screens.battle.player.ItemsView;
-import com.agnither.hunters.view.ui.screens.battle.player.TabView;
 import com.agnither.ui.Popup;
 import com.agnither.utils.CommonRefs;
 

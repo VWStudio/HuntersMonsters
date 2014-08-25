@@ -7,7 +7,7 @@ import com.agnither.hunters.view.ui.screens.battle.match3.FieldView;
 import com.agnither.hunters.view.ui.screens.battle.player.DropListView;
 import com.agnither.hunters.view.ui.screens.battle.player.HeroView;
 import com.agnither.hunters.view.ui.screens.battle.player.ManaListView;
-import com.agnither.hunters.view.ui.screens.battle.player.InventoryView;
+import com.agnither.hunters.view.ui.screens.battle.player.inventory.InventoryView;
 import com.agnither.ui.Screen;
 import com.agnither.utils.CommonRefs;
 
