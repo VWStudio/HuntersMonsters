@@ -7,14 +7,21 @@
  */
 package com.agnither.hunters.view.ui {
 import com.agnither.hunters.GameController;
+import com.agnither.hunters.view.ui.common.TabView;
 import com.agnither.hunters.view.ui.popups.InventoryPopup;
 import com.agnither.hunters.view.ui.popups.SelectMonsterPopup;
 import com.agnither.hunters.view.ui.screens.BattleScreen;
+import com.agnither.hunters.view.ui.screens.battle.player.DropListView;
+import com.agnither.hunters.view.ui.screens.battle.player.DropSlotView;
+import com.agnither.hunters.view.ui.screens.battle.player.ManaListView;
+import com.agnither.hunters.view.ui.screens.battle.player.ManaView;
+import com.agnither.hunters.view.ui.screens.battle.player.PersonageView;
 import com.agnither.ui.AbstractView;
 import com.agnither.ui.Popup;
 import com.agnither.ui.Screen;
 import com.agnither.utils.CommonRefs;
 
+import flash.net.registerClassAlias;
 import flash.utils.Dictionary;
 
 import starling.display.Quad;
@@ -56,6 +63,14 @@ public class UI extends Screen {
 
         POPUPS[InventoryPopup.ID] = new InventoryPopup(_refs, _controller.player);
         POPUPS[SelectMonsterPopup.ID] = new SelectMonsterPopup(_refs, _controller.player);
+
+        registerClassAlias("common.TabView", TabView);
+
+        registerClassAlias("battle.PersonageView", PersonageView);
+        registerClassAlias("battle.ManaListView", ManaListView);
+        registerClassAlias("battle.ManaView", ManaView);
+        registerClassAlias("battle.DropListView", DropListView);
+        registerClassAlias("battle.DropSlotView", DropSlotView);
 
         _currentPanels = new <AbstractView>[];
         _closedPanels = new <AbstractView>[];

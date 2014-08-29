@@ -11,7 +11,9 @@ import com.agnither.utils.CommonRefs;
 import flash.geom.Matrix;
 import flash.geom.Point;
 import flash.geom.Rectangle;
+import flash.net.getClassByAlias;
 import flash.utils.Dictionary;
+import flash.utils.getDefinitionByName;
 
 import starling.display.Button;
 import starling.display.DisplayObject;
@@ -63,14 +65,18 @@ public class AbstractView extends Sprite {
                 var view: DisplayObject = null;
                 if (item.type == "bitmap") {
                     var texture: Texture = _refs.gui.getTexture(item.image);
-                    view = texture ? new Image(texture) : null;
+                    view = texture ? new Image(texture) : new Image(Texture.fromColor(item.width, item.height, 0));
+                    view.visible = Boolean(texture);
+                    if (!texture) {
+                        item.matrix = null;
+                    }
                     if (view) {
                         view.touchable = false;
                     }
                 } else if (item.type == "button") {
                     var images: Array = item.images;
                     view = new ButtonContainer(_refs.gui.getTexture(images[0]), "", images.length>=2 ? _refs.gui.getTexture(images[1]) : null, images.length>=3 ? _refs.gui.getTexture(images[2]) : null);
-                } else if (item.type == "text" && item.name) {
+                } else if (item.type == "text") {
                     if (item.name.search("_label")<0) {
                         view = new TextField(item.width, item.height, item.text, item.fontName, -1, 0xFFFFFF);
                         view.touchable = false;
@@ -88,8 +94,14 @@ public class AbstractView extends Sprite {
                         btn.text = item.text;
                     }
                 } else if (item.type == "movie clip") {
-                    view = new Sprite();
-                    createFromConfig(item, view as Sprite);
+                    if (item.linkage) {
+                        var ViewClass:Class = getClassByAlias(item.linkage);
+                        view = new ViewClass(_refs);
+                        (view as AbstractView).createFromConfig(item);
+                    } else {
+                        view = new Sprite();
+                        createFromConfig(item, view as Sprite);
+                    }
                     if (item.name && item.name.search("_ico")>=0) {
                         var link: String = item.name.replace("_ico", "_btn");
                         var btn: ButtonContainer = _links[link] as ButtonContainer;
@@ -130,7 +142,11 @@ public class AbstractView extends Sprite {
                 var view: DisplayObject = null;
                 if (item.type == "bitmap") {
                     var texture: Texture = _refs.gui.getTexture(item.image);
-                    view = texture ? new Image(texture) : null;
+                    view = texture ? new Image(texture) : new Image(Texture.fromColor(item.width, item.height, 0));
+                    view.visible = Boolean(texture);
+                    if (!texture) {
+                        item.matrix = null;
+                    }
                     if (view) {
                         view.touchable = false;
                     }
@@ -157,8 +173,14 @@ public class AbstractView extends Sprite {
                         }
                     }
                 } else if (item.type == "movie clip") {
-                    view = new Sprite();
-                    createFromConfig(item, view as Sprite);
+                    if (item.linkage) {
+                        var ViewClass:Class = getClassByAlias(item.linkage);
+                        view = new ViewClass(_refs);
+                        (view as AbstractView).createFromConfig(item);
+                    } else {
+                        view = new Sprite();
+                        createFromConfig(item, view as Sprite);
+                    }
                     if (item.name && item.name.search("_ico")>=0) {
                         var link: String = item.name.replace("_ico", "_btn");
                         var btn: ButtonContainer = _links[link] as ButtonContainer;

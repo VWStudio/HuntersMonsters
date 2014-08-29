@@ -24,6 +24,7 @@ public class InventoryPopup extends Popup {
     private var _armorTab: TabView;
     private var _itemTab: TabView;
     private var _spellTab: TabView;
+    private var _trapsTab: TabView;
 
     private var _inventoryView: InventoryView;
 
@@ -41,33 +42,25 @@ public class InventoryPopup extends Popup {
     override protected function initialize():void {
         createFromConfig(_refs.guiConfig.inventory_popup);
 
-        _links.tab1.visible = false;
-        _weaponTab = new TabView(_refs, "weapon");
+        _weaponTab = _links.tab1;
+        _weaponTab.label = "weapon";
         _weaponTab.addEventListener(TabView.TAB_CLICK, handleSelectTab);
-        _weaponTab.x = _links.tab1.x;
-        _weaponTab.y = _links.tab1.y;
-        addChild(_weaponTab);
 
-        _links.tab2.visible = false;
-        _armorTab = new TabView(_refs, "armor");
+        _armorTab = _links.tab2;
+        _armorTab.label = "armor";
         _armorTab.addEventListener(TabView.TAB_CLICK, handleSelectTab);
-        _armorTab.x = _links.tab2.x;
-        _armorTab.y = _links.tab2.y;
-        addChild(_armorTab);
 
-        _links.tab3.visible = false;
-        _itemTab = new TabView(_refs, "items");
+        _itemTab = _links.tab3;
+        _itemTab.label = "items";
         _itemTab.addEventListener(TabView.TAB_CLICK, handleSelectTab);
-        _itemTab.x = _links.tab3.x;
-        _itemTab.y = _links.tab3.y;
-        addChild(_itemTab);
 
-        _links.tab4.visible = false;
-        _spellTab = new TabView(_refs, "spells");
+        _spellTab = _links.tab4;
+        _spellTab.label = "spells";
         _spellTab.addEventListener(TabView.TAB_CLICK, handleSelectTab);
-        _spellTab.x = _links.tab4.x;
-        _spellTab.y = _links.tab4.y;
-        addChild(_spellTab);
+
+        _trapsTab = _links.tab5;
+        _trapsTab.label = "traps";
+        _trapsTab.addEventListener(TabView.TAB_CLICK, handleSelectTab);
 
         ItemsView.itemX = _links.slot10.x - _links.slot00.x;
         ItemsView.itemY = _links.slot01.y - _links.slot00.y;

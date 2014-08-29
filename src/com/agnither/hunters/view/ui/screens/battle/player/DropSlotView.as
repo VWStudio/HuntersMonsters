@@ -15,29 +15,33 @@ import starling.events.TouchPhase;
 public class DropSlotView extends AbstractView {
 
     private var _dropSlot: DropSlot;
+    public function set drop(value: DropSlot):void {
+        if (_dropSlot) {
+            _dropSlot.removeEventListener(DropSlot.UPDATE, handleUpdate);
+        }
+        _dropSlot = value;
+        if (_dropSlot) {
+            _dropSlot.addEventListener(DropSlot.UPDATE, handleUpdate);
+        }
+        handleUpdate();
+    }
 
     private var _icon: Image;
 
-    public function DropSlotView(refs: CommonRefs, dropSlot: DropSlot) {
-        _dropSlot = dropSlot;
+    public function DropSlotView(refs: CommonRefs) {
         super(refs);
     }
 
     override protected function initialize():void {
-        createFromCommon(_refs.guiConfig.common.drop);
-
         _icon = getChildAt(0) as Image;
-
-        _dropSlot.addEventListener(DropSlot.UPDATE, handleUpdate);
-        handleUpdate();
 
         addEventListener(TouchEvent.TOUCH, handleTouch);
     }
 
     private function handleUpdate(e: Event = null):void {
         if (_dropSlot.content) {
-            _icon.visible = true;
             _icon.texture = _refs.gui.getTexture(_dropSlot.content.icon);
+            _icon.visible = true;
         } else {
             _icon.visible = false;
         }

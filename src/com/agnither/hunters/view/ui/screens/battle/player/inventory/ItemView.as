@@ -34,6 +34,8 @@ public class ItemView extends AbstractView {
         return _item;
     }
 
+    protected var _mana: Vector.<ManaView>;
+
     protected var _select: Sprite;
     protected var _picture: Sprite;
 
@@ -55,12 +57,13 @@ public class ItemView extends AbstractView {
 
         _links.damage_icon.getChildAt(0).texture = _refs.gui.getTexture("hit.png");
 
-        _links.mana1_icon.visible = false;
-        _links.mana1_tf.visible = false;
-        _links.mana2_icon.visible = false;
-        _links.mana2_tf.visible = false;
-        _links.mana3_icon.visible = false;
-        _links.mana3_tf.visible = false;
+        _mana = new <ManaView>[];
+        for (var i:int = 0; i < 3; i++) {
+            trace(_links["mana"+(i+1)]);
+            var mana: ManaView = _links["mana"+(i+1)];
+            mana.visible = false;
+            _mana.push(mana);
+        }
 
         _damage = _links.damage_tf;
 

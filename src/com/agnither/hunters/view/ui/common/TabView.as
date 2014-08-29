@@ -13,22 +13,20 @@ public class TabView extends AbstractView {
 
     public static const TAB_CLICK: String = "tab_click_TabView";
 
-    private var _name: String;
+    public function set label(value: String):void {
+        _tab.text = value;
+    }
 
     private var _tab: Button;
     private var _select: Sprite;
 
-    public function TabView(refs:CommonRefs, name: String) {
-        _name = name;
+    public function TabView(refs:CommonRefs) {
         super(refs);
     }
 
     override protected function initialize():void {
-        createFromCommon(_refs.guiConfig.common.tab1);
-
         _tab = _links.tab_btn;
         _tab.addEventListener(Event.TRIGGERED, handleClick);
-        _tab.text = _name;
 
         _select = _links.select;
     }

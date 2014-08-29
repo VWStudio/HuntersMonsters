@@ -7,6 +7,9 @@ import com.agnither.hunters.model.player.inventory.Pet;
 public class Monster extends Personage {
 
     private var _pet: Pet;
+    override public function get picture():String {
+        return _pet.picture;
+    }
 
     public function summon(pet: Pet):void {
         _pet = pet;

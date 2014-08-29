@@ -35,19 +35,13 @@ public class SelectMonsterPopup extends Popup {
     override protected function initialize():void {
         createFromConfig(_refs.guiConfig.monsters_popup);
 
-        _links.tab1.visible = false;
-        _tab1 = new TabView(_refs, "tamed");
+        _tab1 = _links.tab1;
+        _tab1.label = "tamed";
         _tab1.addEventListener(TabView.TAB_CLICK, handleSelectTab);
-        _tab1.x = _links.tab1.x;
-        _tab1.y = _links.tab1.y;
-        addChild(_tab1);
 
-        _links.tab2.visible = false;
-        _tab2 = new TabView(_refs, "untamed");
+        _tab2 = _links.tab2;
+        _tab2.label = "untamed";
         _tab2.addEventListener(TabView.TAB_CLICK, handleSelectTab);
-        _tab2.x = _links.tab2.x;
-        _tab2.y = _links.tab2.y;
-        addChild(_tab2);
 
         PetsView.itemX = _links.monster2.x - _links.monster1.x;
         PetsView.itemY = _links.monster3.y - _links.monster1.y;

@@ -9,24 +9,24 @@ import com.agnither.utils.CommonRefs;
 public class DropListView extends AbstractView {
 
     private var _dropList: DropList;
+    public function set drop(value: DropList):void {
+        _dropList = value;
+        for (var i:int = 0; i < _dropList.list.length; i++) {
+            _drop[i].drop = _dropList.list[i];
+        }
+    }
 
-    public function DropListView(refs:CommonRefs, dropList: DropList) {
-        _dropList = dropList;
+    private var _drop: Vector.<DropSlotView>;
 
+    public function DropListView(refs:CommonRefs) {
         super(refs);
     }
 
     override protected function initialize():void {
-        createFromCommon(_refs.guiConfig.common.dropList);
+        _drop = new <DropSlotView>[];
 
-        var tileW: int = _links.drop2.x - _links.drop1.x;
-        _links.drop1.visible = false;
-        _links.drop2.visible = false;
-
-        for (var i:int = 0; i < _dropList.list.length; i++) {
-            var drop: DropSlotView = new DropSlotView(_refs, _dropList.list[i]);
-            drop.x = tileW * i;
-            addChild(drop);
+        for (var i:int = 0; i < numChildren; i++) {
+            _drop.push(getChildAt(i) as DropSlotView);
         }
     }
 }

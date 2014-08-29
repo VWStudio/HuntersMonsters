@@ -18,6 +18,10 @@ public class Personage extends EventDispatcher {
         return _name;
     }
 
+    public function get picture():String {
+        return null;
+    }
+
     private var _level: int;
     public function get level():int {
         return _level;

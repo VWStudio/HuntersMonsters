@@ -57,44 +57,26 @@ public class BattleScreen extends Screen {
         _links.chip01.removeFromParent(true);
         _links.chip10.removeFromParent(true);
 
-        _links.heroPlayer.visible = false;
-        _player = new PersonageView(_refs, _game.player.hero);
-        _player.x = _links.heroPlayer.x;
-        _player.y = _links.heroPlayer.y;
-        addChild(_player);
+        _player = _links.heroPlayer;
+        _player.personage = _game.player.hero;
 
-        _links.petPlayer.visible = false;
-        _playerPet = new PersonageView(_refs, _game.player.pet);
-        _playerPet.x = _links.petPlayer.x;
-        _playerPet.y = _links.petPlayer.y;
-        addChild(_playerPet);
+        _playerPet = _links.petPlayer;
+        _playerPet.personage = _game.player.pet;
 
-        _links.heroEnemy.visible = false;
-        _enemy = new PersonageView(_refs, _game.enemy.hero);
-        _enemy.x = _links.heroEnemy.x;
-        _enemy.y = _links.heroEnemy.y;
-        addChild(_enemy);
+        _enemy = _links.heroEnemy;
+        _enemy.personage = _game.enemy.hero;
 
-        _links.petEnemy.visible = false;
-        _enemyPet = new PersonageView(_refs, _game.enemy.pet);
-        _enemyPet.x = _links.petEnemy.x;
-        _enemyPet.y = _links.petEnemy.y;
-        addChild(_enemyPet);
+        _enemyPet = _links.petEnemy;
+        _enemyPet.personage = _game.enemy.pet;
 
         _summonPetBtn = _links.pet_btn;
         _summonPetBtn.addEventListener(Event.TRIGGERED, handleClick);
 
-        _links.manaPlayer.visible = false;
-        _playerMana = new ManaListView(_refs, _game.player.manaList);
-        _playerMana.x = _links.manaPlayer.x;
-        _playerMana.y = _links.manaPlayer.y;
-        addChild(_playerMana);
+        _playerMana = _links.manaPlayer;
+        _playerMana.mana = _game.player.manaList;
 
-        _links.manaEnemy.visible = false;
-        _enemyMana = new ManaListView(_refs, _game.enemy.manaList);
-        _enemyMana.x = _links.manaEnemy.x;
-        _enemyMana.y = _links.manaEnemy.y;
-        addChild(_enemyMana);
+        _enemyMana = _links.manaEnemy;
+        _enemyMana.mana = _game.enemy.manaList;
 
         _links.slotsPlayer.visible = false;
         _playerSpells = new BattleInventoryView(_refs, _game.player.inventory);
@@ -108,11 +90,8 @@ public class BattleScreen extends Screen {
         _enemySpells.y = _links.slotsEnemy.y;
         addChild(_enemySpells);
 
-        _links.drop.visible = false;
-        _dropList = new DropListView(_refs, _game.dropList);
-        _dropList.x = _links.drop.x;
-        _dropList.y = _links.drop.y;
-        addChild(_dropList);
+        _dropList = _links.drop;
+        _dropList.drop = _game.dropList;
 
         _field = new FieldView(_refs, _game.field);
         addChild(_field);

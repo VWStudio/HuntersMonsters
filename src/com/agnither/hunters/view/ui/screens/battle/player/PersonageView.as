@@ -4,17 +4,30 @@
 package com.agnither.hunters.view.ui.screens.battle.player {
 import com.agnither.hunters.data.outer.DamageTypeVO;
 import com.agnither.hunters.model.player.personage.Hero;
+import com.agnither.hunters.model.player.personage.Monster;
 import com.agnither.hunters.model.player.personage.Personage;
 import com.agnither.ui.AbstractView;
 import com.agnither.utils.CommonRefs;
 
 import starling.core.Starling;
+import starling.display.Image;
 import starling.events.Event;
 import starling.text.TextField;
 
 public class PersonageView extends AbstractView {
 
     private var _personage: Personage;
+    public function set personage(value: Personage):void {
+        _personage = value;
+
+        _personage.addEventListener(Personage.UPDATE, handleUpdate);
+        handleUpdate();
+
+        _personage.addEventListener(Personage.HIT, handleHit);
+        hideHit();
+    }
+
+    private var _picture: Image;
 
     private var _name: TextField;
     private var _hp: TextField;
@@ -22,14 +35,15 @@ public class PersonageView extends AbstractView {
     private var _damage: TextField;
     private var _hit: TextField;
 
-    public function PersonageView(refs:CommonRefs, personage: Personage) {
-        _personage = personage;
-
+    public function PersonageView(refs:CommonRefs) {
         super(refs);
     }
 
     override protected function initialize():void {
-        createFromCommon(_refs.guiConfig.common.hero);
+        _picture = getChildAt(0) as Image;
+//        _picture.pivotX = _picture.width/2;
+//        _picture.x += _picture.pivotX;
+//        _picture.scaleX = _scale;
 
         _links.hp_icon.getChildAt(0).texture = _refs.gui.getTexture("heart.png");
         _links.armor_icon.getChildAt(0).texture = _refs.gui.getTexture("shild.png");
@@ -40,17 +54,16 @@ public class PersonageView extends AbstractView {
         _armor = _links.armor_tf;
         _damage = _links.damage_tf;
         _hit = _links.hit_tf;
-
-        _personage.addEventListener(Personage.UPDATE, handleUpdate);
-        handleUpdate();
-
-        _personage.addEventListener(Personage.HIT, handleHit);
-        hideHit();
     }
 
     private function handleUpdate(e: Event = null):void {
         if (!_personage.dead) {
             _links.damage_type_icon.getChildAt(0).texture = _personage is Hero ? _refs.gui.getTexture(DamageTypeVO.weapon.picture) : _refs.gui.getTexture(_personage.magic.picture);
+
+            if (_personage is Monster) {
+                _picture.texture = _refs.gui.getTexture(_personage.picture);
+                _picture.readjustSize();
+            }
         }
 
         _name.text = String(_personage.name) + " " + String(_personage.level);
