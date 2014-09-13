@@ -2,6 +2,7 @@
  * Created by agnither on 15.08.14.
  */
 package com.agnither.hunters.view.ui.screens.battle.player.inventory {
+import com.agnither.hunters.view.ui.common.ManaView;
 import com.agnither.hunters.view.ui.screens.battle.player.*;
 import com.agnither.hunters.data.outer.ItemTypeVO;
 import com.agnither.hunters.model.player.inventory.Item;

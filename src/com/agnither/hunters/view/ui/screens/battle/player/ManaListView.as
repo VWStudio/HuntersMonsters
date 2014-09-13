@@ -3,6 +3,7 @@
  */
 package com.agnither.hunters.view.ui.screens.battle.player {
 import com.agnither.hunters.model.player.ManaList;
+import com.agnither.hunters.view.ui.common.ManaView;
 import com.agnither.ui.AbstractView;
 import com.agnither.utils.CommonRefs;
 

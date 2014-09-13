@@ -14,7 +14,7 @@ import com.agnither.hunters.view.ui.screens.BattleScreen;
 import com.agnither.hunters.view.ui.screens.battle.player.DropListView;
 import com.agnither.hunters.view.ui.screens.battle.player.DropSlotView;
 import com.agnither.hunters.view.ui.screens.battle.player.ManaListView;
-import com.agnither.hunters.view.ui.screens.battle.player.ManaView;
+import com.agnither.hunters.view.ui.common.ManaView;
 import com.agnither.hunters.view.ui.screens.battle.player.PersonageView;
 import com.agnither.ui.AbstractView;
 import com.agnither.ui.Popup;
@@ -65,10 +65,10 @@ public class UI extends Screen {
         POPUPS[SelectMonsterPopup.ID] = new SelectMonsterPopup(_refs, _controller.player);
 
         registerClassAlias("common.TabView", TabView);
+        registerClassAlias("common.ManaView", ManaView);
 
         registerClassAlias("battle.PersonageView", PersonageView);
         registerClassAlias("battle.ManaListView", ManaListView);
-        registerClassAlias("battle.ManaView", ManaView);
         registerClassAlias("battle.DropListView", DropListView);
         registerClassAlias("battle.DropSlotView", DropSlotView);
 

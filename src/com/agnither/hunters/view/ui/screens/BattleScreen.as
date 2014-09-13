@@ -46,7 +46,7 @@ public class BattleScreen extends Screen {
     }
 
     override protected function initialize():void {
-        createFromConfig(_refs.guiConfig.battleScreen);
+        createFromConfig(_refs.guiConfig.battle_screen);
 
         FieldView.fieldX = _links.chip00.x;
         FieldView.fieldY = _links.chip00.y;
