@@ -18,8 +18,7 @@ public class DropListView extends AbstractView {
 
     private var _drop: Vector.<DropSlotView>;
 
-    public function DropListView(refs:CommonRefs) {
-        super(refs);
+    public function DropListView() {
     }
 
     override protected function initialize():void {

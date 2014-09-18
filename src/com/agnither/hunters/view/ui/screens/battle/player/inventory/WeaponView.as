@@ -8,8 +8,8 @@ import com.agnither.utils.CommonRefs;
 
 public class WeaponView extends ItemView {
 
-    public function WeaponView(refs:CommonRefs, item: Item) {
-        super(refs, item);
+    public function WeaponView(item: Item) {
+        super(item);
     }
 
     override protected function initialize():void {

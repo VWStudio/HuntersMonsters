@@ -2,6 +2,7 @@
  * Created by agnither on 21.08.14.
  */
 package com.agnither.hunters.view.ui.popups {
+import com.agnither.hunters.App;
 import com.agnither.hunters.data.outer.ItemTypeVO;
 import com.agnither.hunters.model.player.Player;
 import com.agnither.hunters.view.ui.popups.inventory.InventoryView;
@@ -33,10 +34,8 @@ public class InventoryPopup extends Popup {
 
     private var _closeBtn: Button;
 
-    public function InventoryPopup(refs:CommonRefs, player: Player) {
-        _player = player;
-
-        super(refs);
+    public function InventoryPopup() {
+        _player = App.instance.player;
     }
 
     override protected function initialize():void {
@@ -69,12 +68,12 @@ public class InventoryPopup extends Popup {
         _links.slot01.removeFromParent(true);
         _links.slot10.removeFromParent(true);
 
-        _items = new ItemsView(_refs, _player.inventory);
+        _items = new ItemsView();
         _itemsContainer = _links.items;
         _itemsContainer.addChild(_items);
 
         _links.slots.visible = false;
-        _inventoryView = new InventoryView(_refs, _player.inventory);
+        _inventoryView = new InventoryView();
         _inventoryView.x = _links.slots.x;
         _inventoryView.y = _links.slots.y;
         addChild(_inventoryView);

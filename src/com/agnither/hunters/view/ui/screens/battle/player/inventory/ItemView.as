@@ -16,18 +16,18 @@ import starling.text.TextField;
 
 public class ItemView extends AbstractView {
 
-    public static function getItemView(refs: CommonRefs, item: Item):ItemView {
+    public static function getItemView(item: Item):ItemView {
         switch (item.type) {
             case ItemTypeVO.weapon:
-                return new WeaponView(refs, item);
+                return new WeaponView(item);
             case ItemTypeVO.armor:
-                return new ArmorView(refs, item);
+                return new ArmorView(item);
             case ItemTypeVO.magic:
-                return new MagicItemView(refs, item);
+                return new MagicItemView(item);
             case ItemTypeVO.spell:
-                return new SpellView(refs, item);
+                return new SpellView(item);
         }
-        return new ItemView(refs, item);
+        return new ItemView(item);
     }
 
     protected var _item: Item;
@@ -42,9 +42,8 @@ public class ItemView extends AbstractView {
 
     protected var _damage: TextField;
 
-    public function ItemView(refs:CommonRefs, item: Item) {
+    public function ItemView(item: Item) {
         _item = item;
-        super(refs);
     }
 
     override protected function initialize():void {

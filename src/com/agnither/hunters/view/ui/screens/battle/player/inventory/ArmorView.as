@@ -9,8 +9,8 @@ import com.agnither.utils.CommonRefs;
 
 public class ArmorView extends ItemView {
 
-    public function ArmorView(refs:CommonRefs, item: Item) {
-        super(refs, item);
+    public function ArmorView(item: Item) {
+        super(item);
     }
 
     override protected function initialize():void {

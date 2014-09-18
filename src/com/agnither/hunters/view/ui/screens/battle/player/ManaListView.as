@@ -19,8 +19,7 @@ public class ManaListView extends AbstractView {
 
     private var _mana: Vector.<ManaView>;
 
-    public function ManaListView(refs:CommonRefs) {
-        super(refs);
+    public function ManaListView() {
     }
 
     override protected function initialize():void {

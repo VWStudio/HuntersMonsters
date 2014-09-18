@@ -35,8 +35,7 @@ public class PersonageView extends AbstractView {
     private var _damage: TextField;
     private var _hit: TextField;
 
-    public function PersonageView(refs:CommonRefs) {
-        super(refs);
+    public function PersonageView() {
     }
 
     override protected function initialize():void {

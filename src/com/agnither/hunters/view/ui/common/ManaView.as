@@ -27,8 +27,7 @@ public class ManaView extends AbstractView {
     private var _icon: Image;
     private var _value: TextField;
 
-    public function ManaView(refs:CommonRefs) {
-        super(refs);
+    public function ManaView() {
     }
 
     override protected function initialize():void {

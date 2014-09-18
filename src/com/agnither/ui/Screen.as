@@ -16,8 +16,8 @@ public class Screen extends AbstractView {
     public static const OPEN: String = "open_Screen";
     public static const CLOSE: String = "close_Screen";
 
-    public function Screen(refs: CommonRefs) {
-        super(refs);
+    public function Screen() {
+        super();
     }
 }
 }

@@ -28,8 +28,7 @@ public class DropSlotView extends AbstractView {
 
     private var _icon: Image;
 
-    public function DropSlotView(refs: CommonRefs) {
-        super(refs);
+    public function DropSlotView() {
     }
 
     override protected function initialize():void {

@@ -1,8 +1,11 @@
 /**
  * Created by agnither on 12.08.14.
  */
-package com.agnither.hunters.view.ui.screens {
-import com.agnither.hunters.model.Game;
+package com.agnither.hunters.view.ui.screens.battle {
+import com.agnither.hunters.GameController;
+import com.agnither.hunters.model.Match3Game;
+import com.agnither.hunters.view.ui.UI;
+import com.agnither.hunters.view.ui.popups.SelectMonsterPopup;
 import com.agnither.hunters.view.ui.screens.battle.match3.FieldView;
 import com.agnither.hunters.view.ui.screens.battle.player.DropListView;
 import com.agnither.hunters.view.ui.screens.battle.player.PersonageView;
@@ -20,7 +23,7 @@ public class BattleScreen extends Screen {
 
     public static const SELECT_MONSTER: String = "select_monster_BattleScreen";
 
-    private var _game: Game;
+    private var _game: Match3Game;
 
     private var _player: PersonageView;
     private var _playerPet: PersonageView;
@@ -39,10 +42,15 @@ public class BattleScreen extends Screen {
 
     private var _field: FieldView;
 
-    public function BattleScreen(refs:CommonRefs, game: Game) {
-        _game = game;
+    public function BattleScreen() {
+        /**
+         * XXX _game instance removed, should be filled before initialize
+         *
+         * need reinitialize to restart game
+         *
+         */
 
-        super(refs);
+
     }
 
     override protected function initialize():void {
@@ -79,13 +87,13 @@ public class BattleScreen extends Screen {
         _enemyMana.mana = _game.enemy.manaList;
 
         _links.slotsPlayer.visible = false;
-        _playerSpells = new BattleInventoryView(_refs, _game.player.inventory);
+        _playerSpells = new BattleInventoryView(_game.player.inventory);
         _playerSpells.x = _links.slotsPlayer.x;
         _playerSpells.y = _links.slotsPlayer.y;
         addChild(_playerSpells);
 
         _links.slotsEnemy.visible = false;
-        _enemySpells = new BattleInventoryView(_refs, _game.enemy.inventory);
+        _enemySpells = new BattleInventoryView(_game.enemy.inventory);
         _enemySpells.x = _links.slotsEnemy.x;
         _enemySpells.y = _links.slotsEnemy.y;
         addChild(_enemySpells);
@@ -93,12 +101,16 @@ public class BattleScreen extends Screen {
         _dropList = _links.drop;
         _dropList.drop = _game.dropList;
 
-        _field = new FieldView(_refs, _game.field);
+        _field = new FieldView(_game.field);
         addChild(_field);
     }
 
     private function handleClick(e: Event):void {
-        dispatchEventWith(SELECT_MONSTER, true);
+        dispatchEventWith(UI.SHOW_POPUP, true, SelectMonsterPopup.ID);
+//        dispatchEventWith(SELECT_MONSTER, true);
     }
+
+
+
 }
 }

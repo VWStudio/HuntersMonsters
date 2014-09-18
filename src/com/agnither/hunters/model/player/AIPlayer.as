@@ -4,7 +4,7 @@
 package com.agnither.hunters.model.player {
 import com.agnither.hunters.data.outer.ItemVO;
 import com.agnither.hunters.data.outer.MonsterVO;
-import com.agnither.hunters.model.Game;
+import com.agnither.hunters.model.Match3Game;
 import com.agnither.hunters.model.match3.Move;
 import com.agnither.hunters.model.match3.MoveResult;
 import com.agnither.hunters.model.player.ai.CheckManaResult;
@@ -16,7 +16,7 @@ import starling.core.Starling;
 
 public class AIPlayer extends Player {
 
-    public static var game: Game;
+    public static var game: Match3Game;
 
     private var _difficulty: int;
 

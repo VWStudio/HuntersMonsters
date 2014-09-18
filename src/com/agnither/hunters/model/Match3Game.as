@@ -11,11 +11,15 @@ import com.agnither.hunters.model.player.drop.DropList;
 import com.agnither.hunters.model.player.Player;
 import com.agnither.hunters.model.player.inventory.Spell;
 import com.agnither.hunters.model.player.personage.Personage;
+import com.agnither.hunters.view.ui.screens.battle.match3.FieldView;
+import com.agnither.hunters.view.ui.screens.battle.player.inventory.BattleInventoryView;
+
+import starling.display.Stage;
 
 import starling.events.Event;
 import starling.events.EventDispatcher;
 
-public class Game extends EventDispatcher {
+public class Match3Game extends EventDispatcher {
 
     public static const END_GAME: String = "end_game_Game";
 
@@ -43,16 +47,39 @@ public class Game extends EventDispatcher {
     }
 
     private var _drop: DropList;
+    private var _stage : Stage;
     public function get dropList():DropList {
         return _drop;
     }
 
-    public function Game() {
+    public function Match3Game($stage : Stage) {
+
+        _stage = $stage;
+        _stage.addEventListener(FieldView.SELECT_CELL, handleSelectCell);
+        _stage.addEventListener(BattleInventoryView.ITEM_SELECTED, handleSelectSpell);
+
+
+
         _field = new Field();
         _field.addEventListener(Field.MATCH, handleMatch);
         _field.addEventListener(Field.MOVE, handleMove);
 
         _drop = new DropList();
+    }
+
+    private function handleSelectCell(e: Event):void {
+        if (currentPlayer == player) {
+            selectCell(e.data as Cell);
+        }
+    }
+
+    private function handleSelectSpell(e: Event):void {
+        if (!(currentPlayer is AIPlayer)) {
+            var spell: Spell = e.data as Spell;
+            if (spell && checkSpell(spell)) {
+                useSpell(spell);
+            }
+        }
     }
 
     public function init(player: Player, enemy: Player, dropSet: int):void {

@@ -6,6 +6,7 @@
  * To change this template use File | Settings | File Templates.
  */
 package com.agnither.ui {
+import com.agnither.hunters.App;
 import com.agnither.utils.CommonRefs;
 
 import flash.geom.Matrix;
@@ -38,8 +39,8 @@ public class AbstractView extends Sprite {
     protected var _defaultPosition: Point;
     protected var _backSize: Rectangle;
 
-    public function AbstractView(refs: CommonRefs) {
-        _refs = refs;
+    public function AbstractView() {
+        _refs = App.instance.refs;
 
         addEventListener(Event.ADDED_TO_STAGE, handleAddedToStage);
         addEventListener(Event.ADDED_TO_STAGE, handleAdded);
@@ -96,7 +97,7 @@ public class AbstractView extends Sprite {
                 } else if (item.type == "movie clip") {
                     if (item.linkage) {
                         var ViewClass:Class = getClassByAlias(item.linkage);
-                        view = new ViewClass(_refs);
+                        view = new ViewClass();
                         (view as AbstractView).createFromConfig(item);
                     } else {
                         view = new Sprite();

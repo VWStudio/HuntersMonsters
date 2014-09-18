@@ -8,7 +8,7 @@ import flash.system.Capabilities;
 
 import starling.core.Starling;
 
-[SWF(frameRate="60", width="1000", height="720", backgroundColor="0")]
+[SWF(frameRate="60", width="1000", height="720", backgroundColor="#000000")]
 public class Main extends Sprite {
 
     private var viewPort: Rectangle;

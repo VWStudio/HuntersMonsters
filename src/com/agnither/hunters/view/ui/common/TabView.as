@@ -22,8 +22,7 @@ public class TabView extends AbstractView {
     private var _label: TextField;
     private var _select: Sprite;
 
-    public function TabView(refs:CommonRefs) {
-        super(refs);
+    public function TabView() {
     }
 
     override protected function initialize():void {
