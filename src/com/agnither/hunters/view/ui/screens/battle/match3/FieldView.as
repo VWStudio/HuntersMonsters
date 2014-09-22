@@ -29,10 +29,8 @@ public class FieldView extends AbstractView {
 
     private var _rollOver: CellView;
 
-    public function FieldView(refs:CommonRefs, field: Field) {
+    public function FieldView(field: Field) {
         _field = field;
-
-        super(refs);
     }
 
     override protected function initialize():void {
@@ -48,10 +46,10 @@ public class FieldView extends AbstractView {
 
         var l: int = _field.field.length;
         for (var i:int = 0; i < l; i++) {
-            var chip: ChipView = new ChipView(_refs, _field.field[i].chip);
+            var chip: ChipView = new ChipView(_field.field[i].chip);
             _chipsContainer.addChild(chip);
 
-            var cell: CellView = new CellView(_refs, _field.field[i]);
+            var cell: CellView = new CellView(_field.field[i]);
             _cellsContainer.addChild(cell);
         }
 
@@ -59,7 +57,7 @@ public class FieldView extends AbstractView {
     }
 
     private function handleNewChip(e: Event):void {
-        var chip: ChipView = new ChipView(_refs, e.data as Chip);
+        var chip: ChipView = new ChipView(e.data as Chip);
         _chipsContainer.addChild(chip);
     }
 

@@ -7,8 +7,8 @@ import com.agnither.utils.CommonRefs;
 
 public class MagicItemView extends ItemView {
 
-    public function MagicItemView(refs:CommonRefs, item: Item) {
-        super(refs, item);
+    public function MagicItemView(item: Item) {
+        super(item);
     }
 
     override protected function initialize():void {

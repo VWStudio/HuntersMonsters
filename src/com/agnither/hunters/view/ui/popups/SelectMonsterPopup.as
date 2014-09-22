@@ -2,6 +2,7 @@
  * Created by agnither on 25.08.14.
  */
 package com.agnither.hunters.view.ui.popups {
+import com.agnither.hunters.App;
 import com.agnither.hunters.model.player.Player;
 import com.agnither.hunters.model.player.inventory.PetsInventory;
 import com.agnither.hunters.view.ui.common.TabView;
@@ -27,9 +28,8 @@ public class SelectMonsterPopup extends Popup {
 
     private var _closeBtn: Button;
 
-    public function SelectMonsterPopup(refs:CommonRefs, player: Player) {
-        _player = player;
-        super(refs);
+    public function SelectMonsterPopup() {
+        _player = App.instance.player;
     }
 
     override protected function initialize():void {
@@ -50,7 +50,7 @@ public class SelectMonsterPopup extends Popup {
         _links.monster2.removeFromParent(true);
         _links.monster3.removeFromParent(true);
 
-        _monsters = new PetsView(_refs, _player.pets);
+        _monsters = new PetsView();
         _monstersContainer = _links.monsters;
         _monstersContainer.addChild(_monsters);
 

@@ -18,9 +18,9 @@ public class Popup extends AbstractView {
         return _darkened;
     }
 
-    public function Popup(refs: CommonRefs, darkened: Boolean = true) {
+    public function Popup(darkened: Boolean = true) {
         _darkened = darkened;
-        super(refs);
+        super();
     }
 
     override public function open():void {

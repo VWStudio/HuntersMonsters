@@ -2,6 +2,7 @@
  * Created by agnither on 22.08.14.
  */
 package com.agnither.hunters.view.ui.popups.monsters {
+import com.agnither.hunters.App;
 import com.agnither.hunters.model.player.inventory.PetsInventory;
 import com.agnither.ui.AbstractView;
 import com.agnither.utils.CommonRefs;
@@ -19,9 +20,8 @@ public class PetsView extends AbstractView {
 
     private var _inventory: PetsInventory;
 
-    public function PetsView(refs:CommonRefs, pets: PetsInventory) {
-        _inventory = pets;
-        super(refs);
+    public function PetsView() {
+        _inventory = App.instance.player.pets;
     }
 
     override protected function initialize():void {
@@ -39,7 +39,7 @@ public class PetsView extends AbstractView {
         }
 
         for (var i:int = 0; i < data.length; i++) {
-            tile = new PetView(_refs, _inventory.getPet(data[i]));
+            tile = new PetView(_inventory.getPet(data[i]));
             tile.addEventListener(TouchEvent.TOUCH, handleTouch);
             tile.x = itemX * (i % 4);
             tile.y = itemY * int(i / 4);

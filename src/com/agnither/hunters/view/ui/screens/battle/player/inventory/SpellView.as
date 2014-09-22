@@ -10,8 +10,8 @@ import com.agnither.utils.CommonRefs;
 
 public class SpellView extends ItemView {
 
-    public function SpellView(refs:CommonRefs, item: Item) {
-        super(refs, item);
+    public function SpellView(item: Item) {
+        super(item);
     }
 
     override protected function initialize():void {

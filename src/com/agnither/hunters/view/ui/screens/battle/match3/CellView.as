@@ -24,10 +24,9 @@ public class CellView extends AbstractView {
     private var _select: Sprite;
     private var _damage: TextField;
 
-    public function CellView(refs:CommonRefs, cell: Cell) {
+    public function CellView(cell: Cell) {
         _cell = cell;
 
-        super(refs);
     }
 
     override protected function initialize():void {

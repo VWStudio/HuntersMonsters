@@ -2,6 +2,7 @@
  * Created by agnither on 22.08.14.
  */
 package com.agnither.hunters.view.ui.popups.inventory {
+import com.agnither.hunters.App;
 import com.agnither.hunters.view.ui.screens.battle.player.inventory.*;
 import com.agnither.hunters.model.player.inventory.Inventory;
 import com.agnither.ui.AbstractView;
@@ -20,9 +21,8 @@ public class ItemsView extends AbstractView {
 
     private var _inventory: Inventory;
 
-    public function ItemsView(refs:CommonRefs, inv: Inventory) {
-        _inventory = inv;
-        super(refs);
+    public function ItemsView() {
+        _inventory = App.instance.player.inventory;
     }
 
     override protected function initialize():void {
@@ -40,7 +40,7 @@ public class ItemsView extends AbstractView {
         }
 
         for (var i:int = 0; i < data.length; i++) {
-            tile = ItemView.getItemView(_refs, _inventory.getItem(data[i]));
+            tile = ItemView.getItemView(_inventory.getItem(data[i]));
             tile.addEventListener(TouchEvent.TOUCH, handleTouch);
             tile.x = itemX * (i % 3);
             tile.y = itemY * int(i / 3);

@@ -5,34 +5,39 @@ package com.agnither.hunters.view.ui.common {
 import com.agnither.ui.AbstractView;
 import com.agnither.utils.CommonRefs;
 
-import starling.display.Button;
 import starling.display.Sprite;
-import starling.events.Event;
+import starling.events.Touch;
+import starling.events.TouchEvent;
+import starling.events.TouchPhase;
+import starling.text.TextField;
 
 public class TabView extends AbstractView {
 
     public static const TAB_CLICK: String = "tab_click_TabView";
 
     public function set label(value: String):void {
-        _tab.text = value;
+        _label.text = value;
     }
 
-    private var _tab: Button;
+    private var _label: TextField;
     private var _select: Sprite;
 
-    public function TabView(refs:CommonRefs) {
-        super(refs);
+    public function TabView() {
     }
 
     override protected function initialize():void {
-        _tab = _links.tab_btn;
-        _tab.addEventListener(Event.TRIGGERED, handleClick);
+        _label = _links.label_tf;
 
         _select = _links.select;
+
+        addEventListener(TouchEvent.TOUCH, handleTouch);
     }
 
-    private function handleClick(e: Event):void {
-        dispatchEventWith(TAB_CLICK);
+    private function handleTouch(e: TouchEvent):void {
+        var touch: Touch = e.getTouch(this, TouchPhase.BEGAN);
+        if (touch) {
+            dispatchEventWith(TAB_CLICK);
+        }
     }
 }
 }

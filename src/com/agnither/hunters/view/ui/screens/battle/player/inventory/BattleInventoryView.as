@@ -19,10 +19,8 @@ public class BattleInventoryView extends AbstractView {
 
     private var _inventory: Inventory;
 
-    public function BattleInventoryView(refs:CommonRefs, inventory: Inventory) {
+    public function BattleInventoryView(inventory: Inventory) {
         _inventory = inventory;
-
-        super(refs);
     }
 
     override protected function initialize():void {
@@ -35,7 +33,7 @@ public class BattleInventoryView extends AbstractView {
         var l: int = _inventory.inventoryItems.length;
         for (var i:int = 0; i < l; i++) {
             var item: Item = _inventory.getItem(_inventory.inventoryItems[i]);
-            var itemView: ItemView = ItemView.getItemView(_refs, item);
+            var itemView: ItemView = ItemView.getItemView(item);
             itemView.addEventListener(TouchEvent.TOUCH, handleTouch);
             itemView.y = i * tileHeight;
             addChild(itemView);

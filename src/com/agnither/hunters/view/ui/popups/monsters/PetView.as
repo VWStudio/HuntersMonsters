@@ -24,9 +24,8 @@ public class PetView extends AbstractView {
     private var _armor: TextField;
     private var _damage: TextField;
 
-    public function PetView(refs:CommonRefs, pet: Pet) {
+    public function PetView(pet: Pet) {
         _pet = pet;
-        super(refs);
     }
 
     override protected function initialize():void {

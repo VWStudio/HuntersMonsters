@@ -1,7 +1,7 @@
 /**
  * Created by agnither on 14.08.14.
  */
-package com.agnither.hunters.view.ui.screens.battle.player {
+package com.agnither.hunters.view.ui.common {
 import com.agnither.hunters.model.player.Mana;
 import com.agnither.ui.AbstractView;
 import com.agnither.utils.CommonRefs;
@@ -27,8 +27,7 @@ public class ManaView extends AbstractView {
     private var _icon: Image;
     private var _value: TextField;
 
-    public function ManaView(refs:CommonRefs) {
-        super(refs);
+    public function ManaView() {
     }
 
     override protected function initialize():void {

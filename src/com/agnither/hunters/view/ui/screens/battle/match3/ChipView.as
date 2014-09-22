@@ -22,10 +22,8 @@ public class ChipView extends AbstractView {
 
     private var _falling: int;
 
-    public function ChipView(refs:CommonRefs, chip: Chip) {
+    public function ChipView(chip: Chip) {
         _chip = chip;
-
-        super(refs);
     }
 
     override protected function initialize():void {

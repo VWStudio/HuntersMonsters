@@ -35,15 +35,11 @@ public class PersonageView extends AbstractView {
     private var _damage: TextField;
     private var _hit: TextField;
 
-    public function PersonageView(refs:CommonRefs) {
-        super(refs);
+    public function PersonageView() {
     }
 
     override protected function initialize():void {
         _picture = getChildAt(0) as Image;
-//        _picture.pivotX = _picture.width/2;
-//        _picture.x += _picture.pivotX;
-//        _picture.scaleX = _scale;
 
         _links.hp_icon.getChildAt(0).texture = _refs.gui.getTexture("heart.png");
         _links.armor_icon.getChildAt(0).texture = _refs.gui.getTexture("shild.png");
