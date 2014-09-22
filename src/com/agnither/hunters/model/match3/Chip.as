@@ -69,5 +69,10 @@ public class Chip extends EventDispatcher {
     private function update():void {
         dispatchEventWith(UPDATE);
     }
+
+
+    public function toString() : String {
+        return "[Chip(- "+cell+" -)]";
+    }
 }
 }

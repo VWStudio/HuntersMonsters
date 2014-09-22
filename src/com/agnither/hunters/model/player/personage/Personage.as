@@ -52,6 +52,10 @@ public class Personage extends EventDispatcher {
     }
 
     private var _magic: int;
+    private var _exp : int;
+    private var _league : int;
+    private var _rating : int;
+    private var _gold : int;
     public function get magic():DamageTypeVO {
         return DamageTypeVO.DICT[_magic];
     }
@@ -67,6 +71,11 @@ public class Personage extends EventDispatcher {
         _damage = data.damage;
         _defence = data.defence;
         _magic = data.magic;
+
+        _exp = data.exp;
+        _gold = data.gold;
+        _league = data.league;
+        _rating = data.rating;
     }
 
     public function hit(value: int, ignoreDefence: Boolean = false):void {
@@ -94,6 +103,22 @@ public class Personage extends EventDispatcher {
 
     public function update():void {
         dispatchEventWith(UPDATE);
+    }
+
+    public function get exp() : int {
+        return _exp;
+    }
+
+    public function get league() : int {
+        return _league;
+    }
+
+    public function get rating() : int {
+        return _rating;
+    }
+
+    public function get gold() : int {
+        return _gold;
     }
 }
 }

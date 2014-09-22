@@ -1,0 +1,98 @@
+[
+    {
+        "id": 1,
+        "exptolevel": 100
+    },
+    {
+        "id": 2,
+        "exptolevel": 122
+    },
+    {
+        "id": 3,
+        "exptolevel": 160
+    },
+    {
+        "id": 4,
+        "exptolevel": 200
+    },
+    {
+        "id": 5,
+        "exptolevel": 250
+    },
+    {
+        "id": 6,
+        "exptolevel": 320
+    },
+    {
+        "id": 7,
+        "exptolevel": 400
+    },
+    {
+        "id": 8,
+        "exptolevel": 500
+    },
+    {
+        "id": 9,
+        "exptolevel": 630
+    },
+    {
+        "id": 10,
+        "exptolevel": 800
+    },
+    {
+        "id": 11,
+        "exptolevel": 1000
+    },
+    {
+        "id": 12,
+        "exptolevel": 1250
+    },
+    {
+        "id": 13,
+        "exptolevel": 1570
+    },
+    {
+        "id": 14,
+        "exptolevel": 2000
+    },
+    {
+        "id": 15,
+        "exptolevel": 2500
+    },
+    {
+        "id": 16,
+        "exptolevel": 3150
+    },
+    {
+        "id": 17,
+        "exptolevel": 3950
+    },
+    {
+        "id": 18,
+        "exptolevel": 5000
+    },
+    {
+        "id": 19,
+        "exptolevel": 6250
+    },
+    {
+        "id": 20,
+        "exptolevel": 7900
+    },
+    {
+        "id": 21,
+        "exptolevel": 10000
+    },
+    {
+        "id": 22,
+        "exptolevel": 12500
+    },
+    {
+        "id": 23,
+        "exptolevel": 15600
+    },
+    {
+        "id": 24,
+        "exptolevel": 20000
+    }
+]

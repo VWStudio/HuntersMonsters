@@ -28,13 +28,12 @@ import starling.utils.VAlign;
 public class AbstractView extends Sprite {
 
     protected var _refs: CommonRefs;
-
     protected var _data: Object;
+    protected var _links: Dictionary = new Dictionary();
+
     public function set data(val: Object):void {
         _data = val;
     }
-
-    protected var _links: Dictionary = new Dictionary();
 
     protected var _defaultPosition: Point;
     protected var _backSize: Rectangle;
@@ -42,9 +41,85 @@ public class AbstractView extends Sprite {
     public function AbstractView() {
         _refs = App.instance.refs;
 
-        addEventListener(Event.ADDED_TO_STAGE, handleAddedToStage);
-        addEventListener(Event.ADDED_TO_STAGE, handleAdded);
+        addEventListener(Event.ADDED_TO_STAGE, handleFirstRun);
+//        addEventListener(Event.ADDED_TO_STAGE, handleAddedToStage);
+//        addEventListener(Event.ADDED_TO_STAGE, handleAdded);
+//        addEventListener(Event.REMOVED_FROM_STAGE, handleRemoved);
+    }
+
+    private function handleFirstRun(event : Event) : void {
+        removeEventListener(Event.ADDED_TO_STAGE, handleFirstRun);
         addEventListener(Event.REMOVED_FROM_STAGE, handleRemoved);
+
+        initialize(); // runs only once to create contents
+        update(); // used to fill content by data
+    }
+
+    private function handleRemoved(event: Event):void {
+        addEventListener(Event.ADDED_TO_STAGE, handleAddedToStage);
+//        addEventListener(Event.ADDED_TO_STAGE, handleAdded);
+//        close();
+    }
+    /*
+    runs second and future times, only updates content
+     */
+    private function handleAddedToStage(event: Event):void {
+        removeEventListener(Event.ADDED_TO_STAGE, handleAddedToStage);
+        update();
+    }
+
+//
+//
+//    public function open():void {
+//    }
+//
+//    public function close():void {
+//    }
+    protected function initialize():void {
+    }
+    public function update() : void {
+    }
+
+//    protected function hide():void {
+//        visible = false;
+//    }
+//    protected function show():void {
+//        visible = true;
+//    }
+
+//    private function handleAdded(event: Event):void {
+//        removeEventListener(Event.ADDED_TO_STAGE, handleAdded);
+//        open();
+//    }
+
+
+
+    private function destroyContainer(container: Sprite):void {
+        while (container.numChildren>0) {
+            var child: DisplayObject = container.getChildAt(0);
+            if (child is Sprite) {
+                destroyContainer(child as Sprite);
+            }
+            container.removeChild(child, true);
+        }
+    }
+
+    public function destroy():void {
+        destroyContainer(this);
+        _refs = null;
+    }
+
+
+
+
+
+    protected function addToContainer(texture: Texture, container: Sprite, x: int, y: int, scaleX: Number = 1, scaleY: Number = 1):void {
+        var image: Image = new Image(texture);
+        image.x = x;
+        image.y = y;
+        image.scaleX = scaleX;
+        image.scaleY = scaleY;
+        container.addChild(image);
     }
 
     public function createFromConfig(config: Object, container: Sprite = null):void {
@@ -176,7 +251,8 @@ public class AbstractView extends Sprite {
                 } else if (item.type == "movie clip") {
                     if (item.linkage) {
                         var ViewClass:Class = getClassByAlias(item.linkage);
-                        view = new ViewClass(_refs);
+                        view = new ViewClass();
+//                        view = new ViewClass(_refs);
                         (view as AbstractView).createFromConfig(item);
                     } else {
                         view = new Sprite();
@@ -202,58 +278,6 @@ public class AbstractView extends Sprite {
         }
     }
 
-    protected function initialize():void {
-    }
 
-    protected function addToContainer(texture: Texture, container: Sprite, x: int, y: int, scaleX: Number = 1, scaleY: Number = 1):void {
-        var image: Image = new Image(texture);
-        image.x = x;
-        image.y = y;
-        image.scaleX = scaleX;
-        image.scaleY = scaleY;
-        container.addChild(image);
-    }
-
-    public function open():void {
-    }
-
-    public function close():void {
-    }
-
-    protected function hide():void {
-        visible = false;
-    }
-
-    private function handleAddedToStage(event: Event):void {
-        removeEventListener(Event.ADDED_TO_STAGE, handleAddedToStage);
-
-        initialize();
-    }
-
-    private function handleAdded(event: Event):void {
-        removeEventListener(Event.ADDED_TO_STAGE, handleAdded);
-        open();
-    }
-
-    private function handleRemoved(event: Event):void {
-        addEventListener(Event.ADDED_TO_STAGE, handleAdded);
-        close();
-    }
-
-    private function destroyContainer(container: Sprite):void {
-        while (container.numChildren>0) {
-            var child: DisplayObject = container.getChildAt(0);
-            if (child is Sprite) {
-                destroyContainer(child as Sprite);
-            }
-            container.removeChild(child, true);
-        }
-    }
-
-    public function destroy():void {
-        destroyContainer(this);
-
-        _refs = null;
-    }
 }
 }

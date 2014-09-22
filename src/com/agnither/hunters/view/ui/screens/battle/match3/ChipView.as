@@ -56,7 +56,7 @@ public class ChipView extends AbstractView {
 
     private function handleMove(e: Event = null):void {
         var newX: int = _chip.cell.x * FieldView.tileX;
-        var newY: int = _chip.cell.y * FieldView.tileY;;
+        var newY: int = _chip.cell.y * FieldView.tileY;
         if (e) {
             if (e.data) {
                 parent.addChild(this);

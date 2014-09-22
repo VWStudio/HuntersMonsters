@@ -56,6 +56,9 @@ public class Player extends EventDispatcher {
     public function init(data: Object):void {
         _hero.init(data);
 
+        resetMana();
+    }
+    public function resetMana():void {
         _manaList.init();
         _manaList.addManaCounter(_hero.magic.name);
     }

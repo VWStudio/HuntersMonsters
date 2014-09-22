@@ -10,6 +10,8 @@ import com.agnither.hunters.data.outer.ItemSlotVO;
 import com.agnither.hunters.data.outer.ItemTypeVO;
 import com.agnither.hunters.data.outer.ItemVO;
 import com.agnither.hunters.data.outer.DamageTypeVO;
+import com.agnither.hunters.data.outer.LeagueVO;
+import com.agnither.hunters.data.outer.LevelVO;
 import com.agnither.hunters.data.outer.MonsterVO;
 import com.agnither.hunters.data.outer.PlayerVO;
 
@@ -23,7 +25,9 @@ public class Config {
     public static var list: Array = [];
 
     public static function init():void {
+        addConfig("levels", LevelVO);
         addConfig("player", PlayerVO);
+        addConfig("league", LeagueVO);
         addConfig("monster", MonsterVO);
         addConfig("item", ItemVO);
         addConfig("item_type", ItemTypeVO);

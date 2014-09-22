@@ -28,14 +28,25 @@ public class FieldView extends AbstractView {
     private var _chipsContainer: Sprite;
 
     private var _rollOver: CellView;
+    private var _initializedField : Boolean = false;
 
-    public function FieldView(field: Field) {
-        _field = field;
+    public function FieldView() {
     }
 
     override protected function initialize():void {
         x = fieldX;
         y = fieldY;
+
+//        /*
+//         hack to avoid an exception in
+//         handleNewChip -> new ChipView(e.data as Chip) -> initialize on addedToStage;
+//         there is no cell in chip
+//         FIXED by _initializeField flag
+//         */
+//        _field.removeEventListener(Field.ADD_CHIP, handleNewChip);
+
+
+
 
         _chipsContainer = new Sprite();
         addChild(_chipsContainer);
@@ -44,19 +55,11 @@ public class FieldView extends AbstractView {
         _cellsContainer.addEventListener(TouchEvent.TOUCH, handleTouch);
         addChild(_cellsContainer);
 
-        var l: int = _field.field.length;
-        for (var i:int = 0; i < l; i++) {
-            var chip: ChipView = new ChipView(_field.field[i].chip);
-            _chipsContainer.addChild(chip);
 
-            var cell: CellView = new CellView(_field.field[i]);
-            _cellsContainer.addChild(cell);
-        }
-
-        _field.addEventListener(Field.ADD_CHIP, handleNewChip);
     }
 
     private function handleNewChip(e: Event):void {
+        if(!_initializedField) return;
         var chip: ChipView = new ChipView(e.data as Chip);
         _chipsContainer.addChild(chip);
     }
@@ -78,6 +81,39 @@ public class FieldView extends AbstractView {
                 }
             }
         }
+    }
+
+    public function set field(value : Field) : void {
+
+        _field = value;
+        _field.addEventListener(Field.ADD_CHIP, handleNewChip);
+
+        _initializedField = false;
+        var l: int = _field.field.length;
+        for (var i:int = 0; i < l; i++) {
+            var chip: ChipView = new ChipView(_field.field[i].chip);
+            _chipsContainer.addChild(chip);
+
+            var cell: CellView = new CellView(_field.field[i]);
+            _cellsContainer.addChild(cell);
+        }
+        _initializedField = true;
+    }
+
+    public function clear() : void {
+        if(_field) {
+            _field.removeEventListener(Field.ADD_CHIP, handleNewChip);
+        }
+        while(_chipsContainer.numChildren) {
+            var chip : ChipView = _chipsContainer.removeChildAt(0) as ChipView;
+            chip.destroy();
+        }
+
+        while(_cellsContainer.numChildren) {
+            var cell : CellView = _cellsContainer.removeChildAt(0) as CellView;
+            chip.destroy();
+        }
+
     }
 }
 }

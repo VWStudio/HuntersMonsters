@@ -23,13 +23,13 @@ public class Popup extends AbstractView {
         super();
     }
 
-    override public function open():void {
-        dispatchEventWith(OPEN);
-    }
+//    override public function open():void {
+//        dispatchEventWith(OPEN);
+//    }
 
-    public function forceClose():void {
-
-    }
+//    public function forceClose():void {
+//
+//    }
 
     override public function destroy():void {
         super.destroy();

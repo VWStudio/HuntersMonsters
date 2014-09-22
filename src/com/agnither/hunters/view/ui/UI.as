@@ -19,6 +19,7 @@ import com.agnither.hunters.view.ui.screens.battle.player.PersonageView;
 import com.agnither.hunters.view.ui.screens.hud.HudScreen;
 import com.agnither.hunters.view.ui.screens.map.MapScreen;
 import com.agnither.hunters.view.ui.screens.map.PlayerMapView;
+import com.agnither.hunters.view.ui.screens.map.PointStars;
 import com.agnither.hunters.view.ui.screens.map.PointView;
 import com.agnither.ui.AbstractView;
 import com.agnither.ui.Popup;
@@ -79,6 +80,7 @@ public class UI extends Screen {
 
         registerClassAlias("map.Point", PointView);
         registerClassAlias("map.Player", PlayerMapView);
+        registerClassAlias("map.PointStars", PointStars);
 
         registerClassAlias("common.TabView", TabView);
         registerClassAlias("common.ManaView", ManaView);
@@ -133,6 +135,7 @@ public class UI extends Screen {
         if (SCREENS[id]) {
             _currentScreen = SCREENS[id];
             _screensContainer.addChild(_currentScreen);
+            _currentScreen.update();
         }
     }
     public function hideScreen():void {
@@ -198,7 +201,7 @@ public class UI extends Screen {
         if (panel) {
             _currentPanels.push(panel);
             _popupContainer.addChild(panel);
-            panel.open();
+//            panel.open();
         }
     }
     public function restorePanels():void {
@@ -206,7 +209,7 @@ public class UI extends Screen {
             var panel: AbstractView = _closedPanels.shift();
             _currentPanels.push(panel);
             _popupContainer.addChild(panel);
-            panel.open();
+//            panel.open();
         }
     }
     public function hidePanels(cache: Boolean = true):void {
@@ -219,7 +222,7 @@ public class UI extends Screen {
             if (cache) {
                 _closedPanels.push(panel);
             }
-            panel.close();
+//            panel.close();
         }
     }
 
@@ -238,7 +241,7 @@ public class UI extends Screen {
     private function handleTouch(e: TouchEvent):void {
         var touch: Touch = e.getTouch(_darkness, TouchPhase.ENDED);
         if (touch && _currentPopup) {
-            _currentPopup.forceClose();
+//            _currentPopup.forceClose();
         }
     }
 }

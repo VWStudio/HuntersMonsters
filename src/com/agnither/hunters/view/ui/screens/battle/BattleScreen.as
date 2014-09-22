@@ -2,6 +2,7 @@
  * Created by agnither on 12.08.14.
  */
 package com.agnither.hunters.view.ui.screens.battle {
+import com.agnither.hunters.App;
 import com.agnither.hunters.GameController;
 import com.agnither.hunters.model.Match3Game;
 import com.agnither.hunters.view.ui.UI;
@@ -15,6 +16,7 @@ import com.agnither.ui.Screen;
 import com.agnither.utils.CommonRefs;
 
 import starling.display.Button;
+import starling.display.Sprite;
 import starling.events.Event;
 
 public class BattleScreen extends Screen {
@@ -43,17 +45,11 @@ public class BattleScreen extends Screen {
     private var _field: FieldView;
 
     public function BattleScreen() {
-        /**
-         * XXX _game instance removed, should be filled before initialize
-         *
-         * need reinitialize to restart game
-         *
-         */
-
-
     }
 
     override protected function initialize():void {
+        _game = App.instance.game;
+
         createFromConfig(_refs.guiConfig.battle_screen);
 
         FieldView.fieldX = _links.chip00.x;
@@ -66,48 +62,61 @@ public class BattleScreen extends Screen {
         _links.chip10.removeFromParent(true);
 
         _player = _links.heroPlayer;
-        _player.personage = _game.player.hero;
-
         _playerPet = _links.petPlayer;
-        _playerPet.personage = _game.player.pet;
-
         _enemy = _links.heroEnemy;
-        _enemy.personage = _game.enemy.hero;
-
         _enemyPet = _links.petEnemy;
-        _enemyPet.personage = _game.enemy.pet;
-
         _summonPetBtn = _links.pet_btn;
         _summonPetBtn.addEventListener(Event.TRIGGERED, handleClick);
 
         _playerMana = _links.manaPlayer;
-        _playerMana.mana = _game.player.manaList;
-
         _enemyMana = _links.manaEnemy;
-        _enemyMana.mana = _game.enemy.manaList;
 
-        _links.slotsPlayer.visible = false;
-        _playerSpells = new BattleInventoryView(_game.player.inventory);
+        _playerSpells = new BattleInventoryView();
         _playerSpells.x = _links.slotsPlayer.x;
         _playerSpells.y = _links.slotsPlayer.y;
         addChild(_playerSpells);
 
-        _links.slotsEnemy.visible = false;
-        _enemySpells = new BattleInventoryView(_game.enemy.inventory);
+        _enemySpells = new BattleInventoryView();
         _enemySpells.x = _links.slotsEnemy.x;
         _enemySpells.y = _links.slotsEnemy.y;
         addChild(_enemySpells);
 
-        _dropList = _links.drop;
-        _dropList.drop = _game.dropList;
 
-        _field = new FieldView(_game.field);
+        _dropList = _links.drop;
+
+        _field = new FieldView();
         addChild(_field);
+
+        _links.slotsPlayer.visible = false;
+        _links.slotsEnemy.visible = false;
+
+    }
+
+
+    override public function update() : void {
+
+        _field.clear();
+
+        _field.field = _game.field;
+
+        _playerSpells.inventory = _game.player.inventory;
+        _enemySpells.inventory = _game.enemy.inventory;
+
+        _player.personage = _game.player.hero;
+        _playerPet.personage = _game.player.pet;
+        _enemy.personage = _game.enemy.hero;
+        _enemyPet.personage = _game.enemy.pet;
+
+        _game.player.resetMana();
+        _game.enemy.resetMana();
+        _playerMana.mana = _game.player.manaList;
+        _enemyMana.mana = _game.enemy.manaList;
+
+        _dropList.drop = _game.dropList;
     }
 
     private function handleClick(e: Event):void {
         dispatchEventWith(UI.SHOW_POPUP, true, SelectMonsterPopup.ID);
-//        dispatchEventWith(SELECT_MONSTER, true);
     }
 
 

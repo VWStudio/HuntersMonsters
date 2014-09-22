@@ -86,8 +86,8 @@ public class ManaList extends EventDispatcher {
     public function clearList():void {
         while (_list.length > 0) {
             var mana: Mana = _list.shift();
-            mana.destroy();
             delete _dict[mana.type];
+            mana.destroy();
         }
     }
 }

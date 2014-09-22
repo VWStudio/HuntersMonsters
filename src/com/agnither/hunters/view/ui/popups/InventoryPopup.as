@@ -82,11 +82,15 @@ public class InventoryPopup extends Popup {
         _closeBtn.addEventListener(Event.TRIGGERED, handleClose);
     }
 
-    override public function open():void {
-        super.open();
 
+    override public function update() : void {
         _items.showType(ItemTypeVO.weapon);
     }
+
+//    override public function open():void {
+//        super.open();
+//
+//    }
 
     private function handleSelectTab(e: Event):void {
         switch (e.currentTarget) {

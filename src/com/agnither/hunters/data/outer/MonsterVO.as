@@ -40,7 +40,6 @@ public class MonsterVO extends PersonageVO {
     }
 
     public var id: int;
-    public var name: String;
     public var picture: String;
 
     public var magic: int;

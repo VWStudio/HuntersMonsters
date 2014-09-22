@@ -92,6 +92,7 @@
                                 "ty": -52.999
                             },
                             "type": "movie clip",
+                            "linkage": "map.PointStars",
                             "name": "stars",
                             "structure": [
                                 [
@@ -334,6 +335,7 @@
                                 "ty": -52.999
                             },
                             "type": "movie clip",
+                            "linkage": "map.PointStars",
                             "name": "stars",
                             "structure": [
                                 [
@@ -918,6 +920,7 @@
                                 "ty": -52.999
                             },
                             "type": "movie clip",
+                            "linkage": "map.PointStars",
                             "name": "stars",
                             "structure": [
                                 [
@@ -1160,6 +1163,7 @@
                                 "ty": -52.999
                             },
                             "type": "movie clip",
+                            "linkage": "map.PointStars",
                             "name": "stars",
                             "structure": [
                                 [
@@ -1402,6 +1406,7 @@
                                 "ty": -52.999
                             },
                             "type": "movie clip",
+                            "linkage": "map.PointStars",
                             "name": "stars",
                             "structure": [
                                 [
@@ -1644,6 +1649,7 @@
                                 "ty": -52.999
                             },
                             "type": "movie clip",
+                            "linkage": "map.PointStars",
                             "name": "stars",
                             "structure": [
                                 [
@@ -1886,6 +1892,7 @@
                                 "ty": -52.999
                             },
                             "type": "movie clip",
+                            "linkage": "map.PointStars",
                             "name": "stars",
                             "structure": [
                                 [
@@ -2128,6 +2135,7 @@
                                 "ty": -52.999
                             },
                             "type": "movie clip",
+                            "linkage": "map.PointStars",
                             "name": "stars",
                             "structure": [
                                 [
@@ -2305,13 +2313,13 @@
             {
                 "x": -167,
                 "y": -141,
-                "width": 664.2,
-                "height": 441.7,
+                "width": 664.15,
+                "height": 441.65,
                 "matrix": {
-                    "a": 3.3208770751953125,
+                    "a": 3.32086181640625,
                     "b": 0,
                     "c": 0,
-                    "d": 3.3208770751953125,
+                    "d": 3.32086181640625,
                     "tx": -167.149,
                     "ty": -140.799
                 },
@@ -2393,10 +2401,10 @@
                 "width": 664.2,
                 "height": 441.7,
                 "matrix": {
-                    "a": 3.3211212158203125,
+                    "a": 3.32110595703125,
                     "b": 0,
                     "c": 0,
-                    "d": 3.3211212158203125,
+                    "d": 3.32110595703125,
                     "tx": 558.8,
                     "ty": -241.349
                 },
@@ -2546,10 +2554,10 @@
                 "width": 463.4,
                 "height": 308.15,
                 "matrix": {
-                    "a": 2.3170928955078125,
+                    "a": 2.31707763671875,
                     "b": 0,
                     "c": 0,
-                    "d": 2.3170928955078125,
+                    "d": 2.31707763671875,
                     "tx": 746.8,
                     "ty": 1163.3
                 },
@@ -3101,6 +3109,7 @@
                                             "ty": -52.999
                                         },
                                         "type": "movie clip",
+                                        "linkage": "map.PointStars",
                                         "name": "stars",
                                         "structure": [
                                             [
@@ -3343,6 +3352,7 @@
                                             "ty": -52.999
                                         },
                                         "type": "movie clip",
+                                        "linkage": "map.PointStars",
                                         "name": "stars",
                                         "structure": [
                                             [

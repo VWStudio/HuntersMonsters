@@ -65,6 +65,7 @@ public class Cell extends EventDispatcher {
     }
 
     public function setChip(chip: Chip, swap: Boolean = false, silent: Boolean = false):void {
+//        trace("SET CHIP", _pos, chip);
         _chip = chip;
         if (_chip) {
             _chip.place(this);
@@ -102,6 +103,11 @@ public class Cell extends EventDispatcher {
             _chip.kill();
             _chip = null;
         }
+    }
+
+
+    public function toString() : String {
+        return "[Cell("+_x+":"+_y+")]";
     }
 }
 }

@@ -66,6 +66,11 @@ public class MapScreen extends Screen {
 
         _container.addEventListener(TouchEvent.TOUCH, handleTouch);
 
+        /**
+         * XXX player and monsters positions are getting and should create from progress and logic
+         * clouds/fog getting from graphic, but hide/shows according progress
+         *
+         */
         for (var i : int = 0; i < _container.numChildren; i++)
         {
             var dobj : DisplayObject = _container.getChildAt(i);
@@ -81,11 +86,27 @@ public class MapScreen extends Screen {
 //                trace(dobj);
             }
         }
+
+
+    }
+
+
+    override public function update() : void {
+        /**
+         * kinda progress
+         */
+
+        var player : LocalPlayer = _player as LocalPlayer;
+        for (var i : int = 0; i < player.progress.regions.length; i++)
+        {
+            var regionID : String = player.progress.regions[i];
+            if(_clouds[regionID]) {
+                _clouds[regionID].visible = false;
+            }
+        }
+
         _playerPositions["00"].visible = true;
-        _clouds["01"].visible = false;
-
-
-
+//        _clouds["01"].visible = false;
 
     }
 
@@ -96,20 +117,6 @@ public class MapScreen extends Screen {
     }
 
     private function handleTouch(e : TouchEvent) : void {
-
-        for (var key : String in _points)
-        {
-            if(e.interactsWith(_points[key])) {
-                Mouse.cursor = MouseCursor.BUTTON;
-                var ptTouch : Touch = e.getTouch(_points[key], TouchPhase.BEGAN);
-//                trace(key, ptTouch, e.currentTarget["name"]);
-                if(ptTouch) {
-                    trace("RUN GAME HERE");
-                    return;
-                }
-            }
-        }
-        Mouse.cursor = MouseCursor.AUTO;
         var touch : Touch = e.getTouch(_container);
         if (touch)
         {
@@ -150,34 +157,8 @@ public class MapScreen extends Screen {
                     _allowMove = false;
                     break;
             }
-//            trace(touch.phase);
-//            var cell: Sprite = _container.hitTest(touch.getLocation(_container)) as Sprite;
-//            if (cell) {
-//                switch (touch.phase) {
-//
-//                }
-//
-//
-//                if (touch.phase == TouchPhase.BEGAN) {
-//
-//                } || touch.phase == TouchPhase.MOVED
-////                                                               && _rollOver && _rollOver != cell
-//                        ) {
-////                    _rollOver = cell;
-////                    dispatchEventWith(SELECT_CELL, true, _rollOver.cell);
-//
-////                    if (touch.phase != TouchPhase.BEGAN) {
-////                        _rollOver = null;
-////                    }
-//                } else if (touch.phase == TouchPhase.ENDED) {
-////                    _rollOver = null;
-//                }
-//            }
         }
     }
 
-//    private function handleClick(e: Event):void {
-//        dispatchEventWith(SELECT_MONSTER, true);
-//    }
 }
 }

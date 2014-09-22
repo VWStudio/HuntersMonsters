@@ -4,8 +4,11 @@
 package com.agnither.hunters.view.ui.screens.battle.player.inventory {
 import com.agnither.hunters.model.player.inventory.Inventory;
 import com.agnither.hunters.model.player.inventory.Item;
+import com.agnither.hunters.view.ui.screens.battle.player.inventory.ItemView;
 import com.agnither.ui.AbstractView;
 import com.agnither.utils.CommonRefs;
+
+import starling.display.Sprite;
 
 import starling.events.Touch;
 import starling.events.TouchEvent;
@@ -18,10 +21,11 @@ public class BattleInventoryView extends AbstractView {
     private static var tileHeight: int;
 
     private var _inventory: Inventory;
+    private var _itemsContainer : Sprite;
 
-    public function BattleInventoryView(inventory: Inventory) {
-        _inventory = inventory;
+    public function BattleInventoryView() {
     }
+
 
     override protected function initialize():void {
         createFromCommon(_refs.guiConfig.common.spellsList);
@@ -30,14 +34,9 @@ public class BattleInventoryView extends AbstractView {
         _links.slot1.visible = false;
         _links.slot2.visible = false;
 
-        var l: int = _inventory.inventoryItems.length;
-        for (var i:int = 0; i < l; i++) {
-            var item: Item = _inventory.getItem(_inventory.inventoryItems[i]);
-            var itemView: ItemView = ItemView.getItemView(item);
-            itemView.addEventListener(TouchEvent.TOUCH, handleTouch);
-            itemView.y = i * tileHeight;
-            addChild(itemView);
-        }
+        _itemsContainer = new Sprite();
+        addChild(_itemsContainer);
+
     }
 
     private function handleTouch(e: TouchEvent):void {
@@ -47,5 +46,34 @@ public class BattleInventoryView extends AbstractView {
             dispatchEventWith(ITEM_SELECTED, true, target.item);
         }
     }
+
+    public function set inventory(value : Inventory) : void {
+        _inventory = value;
+        var l: int = _inventory.inventoryItems.length;
+
+        clearItems();
+
+        for (var i:int = 0; i < l; i++) {
+            var item: Item = _inventory.getItem(_inventory.inventoryItems[i]);
+            var itemView: ItemView = ItemView.getItemView(item);
+            itemView.addEventListener(TouchEvent.TOUCH, handleTouch);
+            itemView.y = i * tileHeight;
+            _itemsContainer.addChild(itemView);
+        }
+    }
+
+    private function clearItems() : void {
+
+        while(_itemsContainer.numChildren > 0) {
+            var item : ItemView = _itemsContainer.getChildAt(0) as ItemView;
+            _itemsContainer.removeChild(item);
+            item.removeEventListener(TouchEvent.TOUCH, handleTouch);
+            item.destroy();
+        }
+
+
+    }
+
+
 }
 }

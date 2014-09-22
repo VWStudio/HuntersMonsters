@@ -21,7 +21,9 @@ import starling.events.EventDispatcher;
 
 public class Match3Game extends EventDispatcher {
 
-    public static const END_GAME: String = "end_game_Game";
+    public static const END_GAME: String = "Match3Game.END_GAME";
+//    public static const END_GAME: String = "end_game_Game";
+    public static const START_GAME : String = "Match3Game.START_GAME";
 
     private var _player: Player;
     public function get player():Player {
@@ -60,9 +62,7 @@ public class Match3Game extends EventDispatcher {
 
 
 
-        _field = new Field();
-        _field.addEventListener(Field.MATCH, handleMatch);
-        _field.addEventListener(Field.MOVE, handleMove);
+
 
         _drop = new DropList();
     }
@@ -84,6 +84,16 @@ public class Match3Game extends EventDispatcher {
 
     public function init(player: Player, enemy: Player, dropSet: int):void {
         AIPlayer.game = this;
+
+
+        if(_field) {
+            _field.clear();
+        } else {
+            _field = new Field();
+            _field.addEventListener(Field.MATCH, handleMatch);
+            _field.addEventListener(Field.MOVE, handleMove);
+        }
+
 
         _player = player;
         _player.hero.addEventListener(Personage.DEAD, handlePlayerDead);

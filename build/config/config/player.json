@@ -3,6 +3,11 @@
         "level": 1,
         "hp": 100,
         "damage": 5,
-        "defence": 5
+        "defence": 5,
+        "name" : "Gandalf",
+        "league" : 1,
+        "rating" : 5,
+        "gold" : 500,
+        "exp" : 30
     }
 ]

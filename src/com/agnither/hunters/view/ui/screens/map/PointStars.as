@@ -12,15 +12,17 @@ import flash.ui.Mouse;
 import flash.ui.MouseCursor;
 
 import starling.display.Image;
+import starling.display.Sprite;
 import starling.events.Event;
 import starling.events.Touch;
 import starling.events.TouchEvent;
 import starling.events.TouchPhase;
 import starling.text.TextField;
 
-public class PointView extends AbstractView {
+public class PointStars extends AbstractView {
     private var _back : Image;
-    private var _stars : PointStars;
+    private var _stars : Vector.<Sprite>;
+    private var _progress : int;
 
 //    private var _mana: Mana;
 //    public function set mana(value: Mana):void {
@@ -37,50 +39,38 @@ public class PointView extends AbstractView {
 //    private var _icon: Image;
 //    private var _value: TextField;
 
-    public function PointView() {
-        this.addEventListener(TouchEvent.TOUCH, handleTouch);
-    }
-
-    private function handleTouch(e : TouchEvent) : void {
-        e.stopPropagation();
-        e.stopImmediatePropagation();
-
-        var touch : Touch = e.getTouch(this);
-        if(touch)
-        {
-            Mouse.cursor = MouseCursor.BUTTON;
-            switch (touch.phase)
-            {
-                case TouchPhase.HOVER :
-                    break;
-                case TouchPhase.BEGAN :
-                    break;
-                case TouchPhase.ENDED :
-                    dispatchEventWith(Match3Game.START_GAME, true, MonsterVO.DICT[1]);
-                    break;
-            }
-        } else
-        {
-            Mouse.cursor = MouseCursor.AUTO;
-        }
-
+    public function PointStars() {
     }
 
     override protected function initialize():void {
 
-        _back = _links["bitmap_icon_bg.png"];
-        _back.touchable = true;
-        this.touchable = true;
+        _back = _links["bitmap_stars_back.png"];
+//        _back.touchable = true;
+//        this.touchable = true;
 
-        _stars = _links.stars
+        _stars = new <Sprite>[];
 
+        _stars.push(_links["star1"]);
+        _stars.push(_links["star2"]);
+        _stars.push(_links["star3"]);
+
+//        setProgress(0);
     }
 
 
     override public function update() : void {
-
-        _stars.setProgress(Math.random() * 4);
-
+        setProgress(_progress);
     }
+
+    public function setProgress(val : int) : void {
+        _progress = val;
+        if(!_stars) return;
+        for (var i : int = 0; i < _stars.length; i++)
+        {
+            _stars[i].visible = i < val;
+        }
+        _back.visible = val > 0;
+    }
+
 }
 }

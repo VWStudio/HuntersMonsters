@@ -58,9 +58,8 @@ public class SelectMonsterPopup extends Popup {
         _closeBtn.addEventListener(Event.TRIGGERED, handleClose);
     }
 
-    override public function open():void {
-        super.open();
 
+    override public function update() : void {
         _monsters.showType(PetsInventory.TAMED);
     }
 

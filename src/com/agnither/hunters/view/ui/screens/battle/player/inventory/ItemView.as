@@ -59,7 +59,7 @@ public class ItemView extends AbstractView {
 
         _mana = new <ManaView>[];
         for (var i:int = 0; i < 3; i++) {
-            trace(_links["mana"+(i+1)]);
+//            trace(_links["mana"+(i+1)]);
             var mana: ManaView = _links["mana"+(i+1)];
             mana.visible = false;
             _mana.push(mana);
