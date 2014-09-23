@@ -22,7 +22,7 @@ import starling.events.TouchPhase;
 
 public class MapScreen extends Screen {
 
-    public static const ID : String = "MapScreen";
+    public static const NAME : String = "MapScreen";
 
 //    public static const SELECT_MONSTER: String = "select_monster_BattleScreen";
 
@@ -44,6 +44,9 @@ public class MapScreen extends Screen {
         _player = App.instance.player;
 
         super();
+
+
+
     }
 
     override protected function initialize() : void {
@@ -74,14 +77,16 @@ public class MapScreen extends Screen {
         for (var i : int = 0; i < _container.numChildren; i++)
         {
             var dobj : DisplayObject = _container.getChildAt(i);
-            if(dobj is PointView) {
+            if(dobj is MonsterPoint) {
                 _points[dobj.name.split("_")[1]] = dobj;
                 dobj.touchable = true;
-            } else if (dobj is PlayerMapView) {
+                (dobj as MonsterPoint).update();
+            } else if (dobj is PlayerPoint) {
                 _playerPositions[dobj.name.split("_")[1]] = dobj;
                 dobj.visible = false;
             } else if(dobj.name.indexOf("clouds") > -1) {
                 _clouds[dobj.name.split("_")[1]] = dobj;
+                dobj.touchable = true;
             } else {
 //                trace(dobj);
             }
@@ -110,7 +115,7 @@ public class MapScreen extends Screen {
 
     }
 
-    private function sortPlayers($a : PlayerMapView, $b : PlayerMapView) : Number {
+    private function sortPlayers($a : PlayerPoint, $b : PlayerPoint) : Number {
         if($a.name < $b.name) return -1;
         if($a.name > $b.name) return 1;
         return 0;

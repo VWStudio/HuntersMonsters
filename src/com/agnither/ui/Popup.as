@@ -13,13 +13,12 @@ public class Popup extends AbstractView {
     public static const OPEN: String = "open_Popup";
     public static const CLOSE: String = "close_Popup";
 
-    private var _darkened: Boolean;
+    private var _darkened: Boolean = true;
     public function get darkened():Boolean {
         return _darkened;
     }
 
-    public function Popup(darkened: Boolean = true) {
-        _darkened = darkened;
+    public function Popup() {
         super();
     }
 
@@ -33,6 +32,10 @@ public class Popup extends AbstractView {
 
     override public function destroy():void {
         super.destroy();
+    }
+
+    public function set darkened(value : Boolean) : void {
+        _darkened = value;
     }
 }
 }

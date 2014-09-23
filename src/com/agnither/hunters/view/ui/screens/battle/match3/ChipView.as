@@ -5,6 +5,7 @@ package com.agnither.hunters.view.ui.screens.battle.match3 {
 import com.agnither.hunters.model.match3.Chip;
 import com.agnither.ui.AbstractView;
 import com.agnither.utils.CommonRefs;
+import com.cemaprjl.core.coreDispatch;
 
 import flash.geom.Rectangle;
 
@@ -34,8 +35,19 @@ public class ChipView extends AbstractView {
         _view.y = _view.pivotY;
         addChildAt(_view, 0);
 
-        x = _chip.cell.x * FieldView.tileX;
-        y = _chip.cell.y * FieldView.tileY;
+        if(_chip.cell) {
+            x = _chip.cell.x * FieldView.tileX;
+            y = _chip.cell.y * FieldView.tileY;
+        } else {
+            /**
+             * UNFOUND
+             * why sometimes on reinit created some chips without cells
+             * not problem for a game but WTF
+             *
+             */
+//            trace("UNFOUND PROBLEM: ", _chip);
+        }
+
         _falling = 0;
 
         if (_chip.fall) {

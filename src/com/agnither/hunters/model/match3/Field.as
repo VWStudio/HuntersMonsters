@@ -3,6 +3,7 @@
  */
 package com.agnither.hunters.model.match3 {
 import com.agnither.hunters.data.outer.ChipVO;
+import com.cemaprjl.core.coreDispatch;
 
 import flash.geom.Point;
 import flash.utils.Dictionary;
@@ -13,12 +14,12 @@ import starling.events.EventDispatcher;
 
 public class Field extends EventDispatcher {
 
-    public static const INIT: String = "init_Field";
+//    public static const INIT: String = "init_Field";
     public static const ADD_CHIP: String = "add_chip_Field";
     public static const MOVE: String = "move_Field";
     public static const MATCH: String = "match_Field";
     public static const UPDATE: String = "update_Field";
-    public static const CLEAR: String = "clear_Field";
+//    public static const CLEAR: String = "clear_Field";
 
     public static var cols: int = 8;
     public static var rows: int = 8;
@@ -67,6 +68,7 @@ public class Field extends EventDispatcher {
         _chipTypes.length = 0;
         _chipTypes.push(ChipVO.CHEST);
         _chipTypes.push(ChipVO.WEAPON);
+        _chipTypes.push(ChipVO.WEAPON);
         _chipTypes.push(ChipVO.NATURE);
         _chipTypes.push(ChipVO.WATER);
         _chipTypes.push(ChipVO.FIRE);
@@ -96,19 +98,20 @@ public class Field extends EventDispatcher {
             fixMatches();
             findMatches();
         }
+
         clearMatches();
 
         findMoves();
 
         _started = true;
 
-        dispatchEventWith(INIT);
+//        dispatchEventWith(INIT);
 
         Starling.juggler.add(_juggler);
     }
 
     public function clear():void {
-        dispatchEventWith(CLEAR);
+//        dispatchEventWith(CLEAR);
 
         _fieldObj = null;
 
@@ -124,8 +127,8 @@ public class Field extends EventDispatcher {
 
         _started = false;
 
-        _juggler.purge();
         Starling.juggler.remove(_juggler);
+        _juggler.purge();
     }
 
     private function delayedCall(call: Function, delay: Number, ...params):void {
@@ -444,7 +447,8 @@ public class Field extends EventDispatcher {
                 if (cell) {
                     var chip: Chip = getRandomChip(false);
                     cell.setChip(chip);
-                    dispatchEventWith(ADD_CHIP, false, chip);
+                    coreDispatch(ADD_CHIP, chip);
+//                    dispatchEventWith(ADD_CHIP, false, chip);
                 }
             }
         }
@@ -481,7 +485,8 @@ public class Field extends EventDispatcher {
             if (cell && cell.fillable) {
                 var chip: Chip = getRandomChip(true);
                 cell.setChip(chip);
-                dispatchEventWith(ADD_CHIP, false, chip);
+                coreDispatch(ADD_CHIP, chip);
+//                dispatchEventWith(ADD_CHIP, false, chip);
 
                 refill = true;
             }

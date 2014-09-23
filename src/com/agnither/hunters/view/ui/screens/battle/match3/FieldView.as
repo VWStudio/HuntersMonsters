@@ -6,6 +6,7 @@ import com.agnither.hunters.model.match3.Chip;
 import com.agnither.hunters.model.match3.Field;
 import com.agnither.ui.AbstractView;
 import com.agnither.utils.CommonRefs;
+import com.cemaprjl.core.coreAddListener;
 
 import starling.display.Sprite;
 import starling.events.Event;
@@ -58,10 +59,11 @@ public class FieldView extends AbstractView {
 
     }
 
-    private function handleNewChip(e: Event):void {
+    private function handleNewChip(chip : Chip):void {
         if(!_initializedField) return;
-        var chip: ChipView = new ChipView(e.data as Chip);
-        _chipsContainer.addChild(chip);
+
+        var chipView: ChipView = new ChipView(chip);
+        _chipsContainer.addChild(chipView);
     }
 
     private function handleTouch(e: TouchEvent):void {
@@ -85,8 +87,8 @@ public class FieldView extends AbstractView {
 
     public function set field(value : Field) : void {
 
+
         _field = value;
-        _field.addEventListener(Field.ADD_CHIP, handleNewChip);
 
         _initializedField = false;
         var l: int = _field.field.length;
@@ -98,12 +100,13 @@ public class FieldView extends AbstractView {
             _cellsContainer.addChild(cell);
         }
         _initializedField = true;
+        coreAddListener(Field.ADD_CHIP, handleNewChip);
     }
 
     public function clear() : void {
-        if(_field) {
-            _field.removeEventListener(Field.ADD_CHIP, handleNewChip);
-        }
+
+        removeEventListener(Field.ADD_CHIP, handleNewChip);
+
         while(_chipsContainer.numChildren) {
             var chip : ChipView = _chipsContainer.removeChildAt(0) as ChipView;
             chip.destroy();

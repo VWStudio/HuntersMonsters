@@ -5693,6 +5693,7 @@
             "ty": 106.95
         },
         "type": "movie clip",
+        "linkage": "battle.MonsterInfo",
         "name": "monster",
         "structure": [
             [
@@ -6029,6 +6030,7 @@
                     "ty": 61
                 },
                 "type": "movie clip",
+                "linkage": "battle.MonsterInfo",
                 "name": "monster",
                 "structure": [
                     [
@@ -6322,7 +6324,7 @@
                     "ty": 360
                 },
                 "type": "button",
-                "name": "close_btn",
+                "name": "play_btn",
                 "images": ["_bg_btn", "_bg_btn", "_bg_btn"]
             },
             {
@@ -6540,7 +6542,7 @@
                 "fontName": "impact_21",
                 "fontColor": "0xffffff",
                 "align": "center",
-                "name": "close_label"
+                "name": "play_label"
             }
         ]
     ]
@@ -10342,6 +10344,7 @@
                                 "ty": 0
                             },
                             "type": "movie clip",
+                            "linkage": "battle.MonsterInfo",
                             "name": "monster1",
                             "structure": [
                                 [
@@ -10635,6 +10638,7 @@
                                 "ty": 0
                             },
                             "type": "movie clip",
+                            "linkage": "battle.MonsterInfo",
                             "name": "monster2",
                             "structure": [
                                 [
@@ -10928,6 +10932,7 @@
                                 "ty": 180
                             },
                             "type": "movie clip",
+                            "linkage": "battle.MonsterInfo",
                             "name": "monster3",
                             "structure": [
                                 [

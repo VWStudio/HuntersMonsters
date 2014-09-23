@@ -3,10 +3,16 @@
  */
 package com.agnither.hunters.view.ui.screens.battle {
 import com.agnither.hunters.App;
+import com.agnither.hunters.App;
+import com.agnither.hunters.App;
 import com.agnither.hunters.GameController;
 import com.agnither.hunters.model.Match3Game;
+import com.agnither.hunters.model.player.drop.DropSlot;
+import com.agnither.hunters.model.player.drop.GoldDrop;
+import com.agnither.hunters.model.player.drop.ItemDrop;
 import com.agnither.hunters.view.ui.UI;
 import com.agnither.hunters.view.ui.popups.SelectMonsterPopup;
+import com.agnither.hunters.view.ui.popups.win.WinPopup;
 import com.agnither.hunters.view.ui.screens.battle.match3.FieldView;
 import com.agnither.hunters.view.ui.screens.battle.player.DropListView;
 import com.agnither.hunters.view.ui.screens.battle.player.PersonageView;
@@ -14,6 +20,10 @@ import com.agnither.hunters.view.ui.screens.battle.player.ManaListView;
 import com.agnither.hunters.view.ui.screens.battle.player.inventory.BattleInventoryView;
 import com.agnither.ui.Screen;
 import com.agnither.utils.CommonRefs;
+import com.cemaprjl.core.coreAddListener;
+import com.cemaprjl.core.coreExecute;
+import com.cemaprjl.core.coreRemoveListener;
+import com.cemaprjl.viewmanage.ShowPopupCmd;
 
 import starling.display.Button;
 import starling.display.Sprite;
@@ -21,7 +31,7 @@ import starling.events.Event;
 
 public class BattleScreen extends Screen {
 
-    public static const ID: String = "BattleScreen";
+    public static const NAME: String = "BattleScreen";
 
     public static const SELECT_MONSTER: String = "select_monster_BattleScreen";
 
@@ -48,7 +58,8 @@ public class BattleScreen extends Screen {
     }
 
     override protected function initialize():void {
-        _game = App.instance.game;
+
+//        _game = App.instance.game;
 
         createFromConfig(_refs.guiConfig.battle_screen);
 
@@ -92,11 +103,21 @@ public class BattleScreen extends Screen {
 
     }
 
+    public function clear():void {
+        _field.clear();
+
+
+    }
 
     override public function update() : void {
 
-        _field.clear();
+        if (!_game)
+        {
+            _game = new Match3Game(stage);
+        }
+        _game.init(App.instance.player, App.instance.enemy, App.instance.drop);
 
+        _field.clear();
         _field.field = _game.field;
 
         _playerSpells.inventory = _game.player.inventory;
@@ -113,10 +134,43 @@ public class BattleScreen extends Screen {
         _enemyMana.mana = _game.enemy.manaList;
 
         _dropList.drop = _game.dropList;
+
+        coreAddListener(Match3Game.END_GAME, handleEndGame);
     }
 
+
+    private function handleEndGame($isWin : Boolean) : void {
+        coreRemoveListener(Match3Game.END_GAME, handleEndGame);
+        coreExecute(ShowPopupCmd, WinPopup.NAME, {isWin : $isWin});
+
+        /**
+         * MOVE next things in win popup
+         */
+
+        for (var i : int = 0; i < _game.dropList.list.length; i++)
+        {
+            var drop : DropSlot = _game.dropList.list[i];
+            if (drop.content)
+            {
+                if (drop.content is GoldDrop)
+                {
+                    var gold : GoldDrop = drop.content as GoldDrop;
+                    App.instance.player.addGold(gold.gold);
+                }
+                else if (drop.content is ItemDrop)
+                {
+                    var item : ItemDrop = drop.content as ItemDrop;
+                    App.instance.player.addItem(item.item);
+                }
+            }
+        }
+        App.instance.player.save();
+
+    }
+
+
     private function handleClick(e: Event):void {
-        dispatchEventWith(UI.SHOW_POPUP, true, SelectMonsterPopup.ID);
+        coreExecute(ShowPopupCmd, SelectMonsterPopup.NAME);
     }
 
 

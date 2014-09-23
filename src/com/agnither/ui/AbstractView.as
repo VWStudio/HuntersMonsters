@@ -28,11 +28,18 @@ import starling.utils.VAlign;
 public class AbstractView extends Sprite {
 
     protected var _refs: CommonRefs;
-    protected var _data: Object;
+    private var _data: Object;
     protected var _links: Dictionary = new Dictionary();
 
     public function set data(val: Object):void {
-        _data = val;
+            if (val != null)
+            {
+                _data = val;
+            }
+            else
+            {
+                _data = {};
+            }
     }
 
     protected var _defaultPosition: Point;
@@ -40,7 +47,6 @@ public class AbstractView extends Sprite {
 
     public function AbstractView() {
         _refs = App.instance.refs;
-
         addEventListener(Event.ADDED_TO_STAGE, handleFirstRun);
 //        addEventListener(Event.ADDED_TO_STAGE, handleAddedToStage);
 //        addEventListener(Event.ADDED_TO_STAGE, handleAdded);
@@ -49,24 +55,24 @@ public class AbstractView extends Sprite {
 
     private function handleFirstRun(event : Event) : void {
         removeEventListener(Event.ADDED_TO_STAGE, handleFirstRun);
-        addEventListener(Event.REMOVED_FROM_STAGE, handleRemoved);
+//        addEventListener(Event.REMOVED_FROM_STAGE, handleRemoved);
 
         initialize(); // runs only once to create contents
-        update(); // used to fill content by data
+//        update(); // used to fill content by data
     }
 
-    private function handleRemoved(event: Event):void {
-        addEventListener(Event.ADDED_TO_STAGE, handleAddedToStage);
-//        addEventListener(Event.ADDED_TO_STAGE, handleAdded);
-//        close();
-    }
-    /*
-    runs second and future times, only updates content
-     */
-    private function handleAddedToStage(event: Event):void {
-        removeEventListener(Event.ADDED_TO_STAGE, handleAddedToStage);
-        update();
-    }
+//    private function handleRemoved(event: Event):void {
+//        addEventListener(Event.ADDED_TO_STAGE, handleAddedToStage);
+////        addEventListener(Event.ADDED_TO_STAGE, handleAdded);
+////        close();
+//    }
+//    /*
+//    runs second and future times, only updates content
+//     */
+//    private function handleAddedToStage(event: Event):void {
+//        removeEventListener(Event.ADDED_TO_STAGE, handleAddedToStage);
+////        update();
+//    }
 
 //
 //
@@ -278,6 +284,8 @@ public class AbstractView extends Sprite {
         }
     }
 
-
+    public function get data() : Object {
+        return _data;
+    }
 }
 }

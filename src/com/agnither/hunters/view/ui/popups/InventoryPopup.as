@@ -17,7 +17,7 @@ import starling.events.Event;
 
 public class InventoryPopup extends Popup {
 
-    public static const ID: String = "InventoryPopup";
+    public static const NAME: String = "InventoryPopup";
 
     private var _player: Player;
 

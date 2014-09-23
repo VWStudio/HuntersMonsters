@@ -9,10 +9,17 @@ import com.agnither.hunters.model.match3.Match;
 import com.agnither.hunters.model.player.AIPlayer;
 import com.agnither.hunters.model.player.drop.DropList;
 import com.agnither.hunters.model.player.Player;
+import com.agnither.hunters.model.player.drop.DropSlot;
+import com.agnither.hunters.model.player.drop.GoldDrop;
+import com.agnither.hunters.model.player.drop.ItemDrop;
 import com.agnither.hunters.model.player.inventory.Spell;
 import com.agnither.hunters.model.player.personage.Personage;
 import com.agnither.hunters.view.ui.screens.battle.match3.FieldView;
 import com.agnither.hunters.view.ui.screens.battle.player.inventory.BattleInventoryView;
+import com.agnither.hunters.view.ui.screens.map.MapScreen;
+import com.cemaprjl.core.coreDispatch;
+import com.cemaprjl.core.coreExecute;
+import com.cemaprjl.viewmanage.ShowScreenCmd;
 
 import starling.display.Stage;
 
@@ -157,11 +164,14 @@ public class Match3Game extends EventDispatcher {
     }
 
     private function handlePlayerDead(e: Event):void {
-        dispatchEventWith(END_GAME, false, false);
+        coreDispatch(END_GAME, false);
     }
 
     private function handleEnemyDead(e: Event):void {
-        dispatchEventWith(END_GAME, false, true);
+        coreDispatch(END_GAME, true);
     }
+
+
+
 }
 }

@@ -5,10 +5,12 @@ package com.agnither.hunters.view.ui.popups {
 import com.agnither.hunters.App;
 import com.agnither.hunters.model.player.Player;
 import com.agnither.hunters.model.player.inventory.PetsInventory;
+import com.agnither.hunters.view.ui.UI;
 import com.agnither.hunters.view.ui.common.TabView;
 import com.agnither.hunters.view.ui.popups.monsters.PetsView;
 import com.agnither.ui.Popup;
 import com.agnither.utils.CommonRefs;
+import com.cemaprjl.core.coreDispatch;
 
 import starling.display.Button;
 import starling.display.Sprite;
@@ -16,7 +18,7 @@ import starling.events.Event;
 
 public class SelectMonsterPopup extends Popup {
 
-    public static const ID: String = "SelectMonsterPopup";
+    public static const NAME: String = "SelectMonsterPopup";
 
     private var _player: Player;
 
@@ -75,7 +77,7 @@ public class SelectMonsterPopup extends Popup {
     }
 
     private function handleClose(e: Event):void {
-        dispatchEventWith(CLOSE);
+        coreDispatch(UI.HIDE_POPUP);
     }
 }
 }
