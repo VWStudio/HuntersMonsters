@@ -6,11 +6,15 @@ import com.agnither.hunters.App;
 import com.agnither.hunters.data.outer.LeagueVO;
 import com.agnither.hunters.data.outer.LevelVO;
 import com.agnither.hunters.model.player.LocalPlayer;
+import com.agnither.hunters.view.ui.popups.InventoryPopup;
 import com.agnither.ui.ButtonContainer;
 import com.agnither.ui.Screen;
 import com.cemaprjl.core.coreAddListener;
+import com.cemaprjl.core.coreExecute;
+import com.cemaprjl.viewmanage.ShowPopupCmd;
 
 import starling.display.Button;
+import starling.events.Event;
 
 import starling.text.TextField;
 
@@ -28,6 +32,7 @@ public class HudScreen extends Screen {
     private var _fullscreenButton : ButtonContainer;
     private var _musicButton : ButtonContainer;
     private var _soundButton : ButtonContainer;
+    private var _inventoryBtn : ButtonContainer;
 
     public function HudScreen() {
         _player = App.instance.player;
@@ -45,8 +50,16 @@ public class HudScreen extends Screen {
         _musicButton = _links.music_btn;
         _soundButton = _links.sound_btn;
 
+        _inventoryBtn = _links.inventory_btn;
+        _inventoryBtn.text = "Инвентарь";
+        _inventoryBtn.addEventListener(Event.TRIGGERED, onInventory);
+
 
         coreAddListener(HudScreen.UPDATE, update)
+    }
+
+    private function onInventory(event : Event) : void {
+        coreExecute(ShowPopupCmd, InventoryPopup.NAME);
     }
 
 

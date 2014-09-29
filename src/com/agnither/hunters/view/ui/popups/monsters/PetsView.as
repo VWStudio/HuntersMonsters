@@ -4,8 +4,13 @@
 package com.agnither.hunters.view.ui.popups.monsters {
 import com.agnither.hunters.App;
 import com.agnither.hunters.model.player.inventory.PetsInventory;
+import com.agnither.hunters.view.ui.UI;
+import com.agnither.hunters.view.ui.popups.SelectMonsterPopup;
+import com.agnither.hunters.view.ui.popups.monsters.PetView;
+import com.agnither.hunters.view.ui.popups.monsters.PetsView;
 import com.agnither.ui.AbstractView;
 import com.agnither.utils.CommonRefs;
+import com.cemaprjl.core.coreDispatch;
 
 import starling.events.Touch;
 import starling.events.TouchEvent;
@@ -51,7 +56,9 @@ public class PetsView extends AbstractView {
         var pet: PetView = e.currentTarget as PetView;
         var touch: Touch = e.getTouch(pet, TouchPhase.BEGAN);
         if (touch) {
-            dispatchEventWith(PET_SELECTED, true, pet.pet);
+            coreDispatch(PetsView.PET_SELECTED, pet.pet);
+            coreDispatch(UI.HIDE_POPUP, SelectMonsterPopup.NAME);
+//            dispatchEventWith(PET_SELECTED, true, pet.pet);
         }
     }
 }

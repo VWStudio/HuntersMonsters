@@ -26,6 +26,7 @@ import starling.text.TextField;
 public class MonsterPoint extends AbstractView {
     private var _back : Image;
     private var _stars : StarsBar;
+    private var _monsterType : MonsterVO;
 
 //    private var _mana: Mana;
 //    public function set mana(value: Mana):void {
@@ -61,7 +62,8 @@ public class MonsterPoint extends AbstractView {
                 case TouchPhase.BEGAN :
                     break;
                 case TouchPhase.ENDED :
-                    coreExecute(ShowPopupCmd, HuntPopup.NAME, MonsterVO.DICT[1]);
+                    coreExecute(ShowPopupCmd, HuntPopup.NAME, _monsterType);
+//                    coreExecute(ShowPopupCmd, HuntPopup.NAME, MonsterVO.DICT[1]);
 //                    dispatchEventWith(UI.SHOW_POPUP, true, MonsterVO.DICT[1]);
 //                    dispatchEventWith(UI.SHOW_POPUP, true, MonsterVO.DICT[1]);
 //                    dispatchEventWith(Match3Game.START_GAME, true, MonsterVO.DICT[1]);
@@ -75,6 +77,10 @@ public class MonsterPoint extends AbstractView {
     }
 
     override protected function initialize():void {
+        if(!_links["bitmap_icon_bg.png"]) {
+            createFromConfig(_refs.guiConfig.common.monsterIcon);
+        }
+
 
         _back = _links["bitmap_icon_bg.png"];
         _back.touchable = true;
@@ -89,6 +95,14 @@ public class MonsterPoint extends AbstractView {
 
         _stars.setProgress(Math.random() * 4);
 
+    }
+
+    public function get monsterType() : MonsterVO {
+        return _monsterType;
+    }
+
+    public function set monsterType(value : MonsterVO) : void {
+        _monsterType = value;
     }
 }
 }

@@ -5,10 +5,13 @@ package com.agnither.hunters.model.player {
 import com.agnither.hunters.data.outer.PlayerVO;
 import com.agnither.hunters.model.player.inventory.Item;
 import com.agnither.hunters.model.player.personage.Progress;
+import com.cemaprjl.core.coreAddListener;
 
 import flash.net.SharedObject;
 
 public class LocalPlayer extends Player {
+
+    public static const ITEM_SELECTED: String = "LocalPlayer.ITEM_SELECTED";
 
     private static var version: int = 1;
 
@@ -30,6 +33,9 @@ public class LocalPlayer extends Player {
         init(_data.data);
         initInventory(_data.data.items, _data.data.inventory);
         initPets(_data.data.pets);
+
+
+        coreAddListener(LocalPlayer.ITEM_SELECTED, selectItem);
     }
 
 
@@ -80,6 +86,8 @@ public class LocalPlayer extends Player {
     public function addItem(item: Item):void {
         _inventory.addItem(item);
     }
+
+
 
     public function selectItem(item: Item):void {
         if (item.isWearing) {

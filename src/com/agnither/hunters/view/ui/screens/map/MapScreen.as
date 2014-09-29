@@ -3,9 +3,11 @@
  */
 package com.agnither.hunters.view.ui.screens.map {
 import com.agnither.hunters.App;
+import com.agnither.hunters.data.outer.MonsterVO;
 import com.agnither.hunters.model.Match3Game;
 import com.agnither.hunters.model.player.LocalPlayer;
 import com.agnither.ui.Screen;
+import com.cemaprjl.core.coreDispatch;
 
 import flash.geom.Point;
 import flash.ui.Mouse;
@@ -38,6 +40,8 @@ public class MapScreen extends Screen {
     private var _points : Dictionary = new Dictionary();
     private var _playerPositions : Dictionary = new Dictionary();
     private var _clouds : Dictionary = new Dictionary();
+    public static const INIT_MONSTER : String = "MapScreen.INIT_MONSTER";
+    private var _monstersContainer : Sprite;
 
     public function MapScreen() {
 
@@ -61,6 +65,10 @@ public class MapScreen extends Screen {
         _back = _links["bitmap_map_bg.png"];
         _back.touchable = true;
 
+        _monstersContainer = new Sprite();
+        _monstersContainer.name = "monsters_container"; // hack
+        _container.addChildAt(_monstersContainer, _container.getChildIndex(_back) + 1);
+
         _container.x = (stage.stageWidth - _back.width) * 0.5;
         _container.y = (stage.stageHeight - _back.height) * 0.5;
 
@@ -77,13 +85,20 @@ public class MapScreen extends Screen {
         for (var i : int = 0; i < _container.numChildren; i++)
         {
             var dobj : DisplayObject = _container.getChildAt(i);
-            if(dobj is MonsterPoint) {
-                _points[dobj.name.split("_")[1]] = dobj;
-                dobj.touchable = true;
-                (dobj as MonsterPoint).update();
-            } else if (dobj is PlayerPoint) {
-                _playerPositions[dobj.name.split("_")[1]] = dobj;
+//            if(dobj is MonsterPoint) {
+//                _points[dobj.name.split("_")[1]] = dobj;
+//                dobj.touchable = true;
+//                (dobj as MonsterPoint).update();
+//            } else
+            if (dobj is PlayerPoint) {
+
+                var ptName : String = dobj.name;
+                _playerPositions[ptName.split("_")[1]] = dobj;
                 dobj.visible = false;
+
+                initMonster(ptName, new Point(dobj.x, dobj.y));
+
+
             } else if(dobj.name.indexOf("clouds") > -1) {
                 _clouds[dobj.name.split("_")[1]] = dobj;
                 dobj.touchable = true;
@@ -93,6 +108,22 @@ public class MapScreen extends Screen {
         }
 
 
+    }
+
+    private function initMonster($ptName : String, point : Point) : void {
+
+        var mp : MonsterPoint = new MonsterPoint();
+        _monstersContainer.addChild(mp);
+        var monstersInArea  : Vector.<MonsterVO> = MonsterVO.AREA[$ptName];
+        mp.monsterType = monstersInArea[int(monstersInArea.length * Math.random())];
+
+        var monsterPt : Point = Point.polar((mp.monsterType.radius - 30 )* Math.random() + 30, Math.PI * 2 * Math.random());
+        trace($ptName, monsterPt);
+        monsterPt = monsterPt.add(point);
+        trace(point, monsterPt);
+
+        mp.x = monsterPt.x;
+        mp.y = monsterPt.y;
     }
 
 

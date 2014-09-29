@@ -49,11 +49,15 @@ public class ItemView extends AbstractView {
     override protected function initialize():void {
         createFromCommon(_refs.guiConfig.common.spell);
 
+        this.touchable = true;
+
         _select = _links.select;
         _select.visible = false;
 
         _picture = _links.picture;
         _picture.addChild(new Image(_refs.gui.getTexture(_item.picture)));
+
+        _picture.touchable = true;
 
         _links.damage_icon.getChildAt(0).texture = _refs.gui.getTexture("hit.png");
 

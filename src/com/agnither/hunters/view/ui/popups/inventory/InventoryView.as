@@ -3,11 +3,16 @@
  */
 package com.agnither.hunters.view.ui.popups.inventory {
 import com.agnither.hunters.App;
+import com.agnither.hunters.model.player.LocalPlayer;
 import com.agnither.hunters.view.ui.screens.battle.player.inventory.*;
 import com.agnither.hunters.model.player.inventory.Inventory;
 import com.agnither.hunters.model.player.inventory.Item;
 import com.agnither.ui.AbstractView;
 import com.agnither.utils.CommonRefs;
+import com.cemaprjl.core.coreDispatch;
+
+import flash.ui.Mouse;
+import flash.ui.MouseCursor;
 
 import starling.events.Event;
 import starling.events.Touch;
@@ -15,8 +20,6 @@ import starling.events.TouchEvent;
 import starling.events.TouchPhase;
 
 public class InventoryView extends AbstractView {
-
-    public static const ITEM_SELECTED: String = "item_selected_InventoryView";
 
     private static var tileHeight: int;
 
@@ -58,9 +61,14 @@ public class InventoryView extends AbstractView {
 
     private function handleTouch(e: TouchEvent):void {
         var target: ItemView = e.currentTarget as ItemView;
-        var touch: Touch = e.getTouch(target, TouchPhase.BEGAN);
+        var touch: Touch = e.getTouch(target);
         if (touch) {
-            dispatchEventWith(ITEM_SELECTED, true, target.item);
+            Mouse.cursor = MouseCursor.BUTTON;
+            if(touch.phase == TouchPhase.BEGAN) {
+                coreDispatch(LocalPlayer.ITEM_SELECTED,  target.item);
+            }
+        } else {
+            Mouse.cursor = MouseCursor.AUTO;
         }
     }
 }

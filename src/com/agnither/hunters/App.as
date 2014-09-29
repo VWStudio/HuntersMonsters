@@ -8,22 +8,17 @@ import com.agnither.hunters.model.Match3Game;
 import com.agnither.hunters.model.player.AIPlayer;
 import com.agnither.hunters.model.player.LocalPlayer;
 import com.agnither.hunters.model.player.Player;
-import com.agnither.hunters.model.player.drop.DropSlot;
-import com.agnither.hunters.model.player.drop.GoldDrop;
-import com.agnither.hunters.model.player.drop.ItemDrop;
-import com.agnither.hunters.model.player.inventory.Spell;
+import com.agnither.hunters.model.player.inventory.Pet;
 import com.agnither.hunters.utils.DeviceResInfo;
 import com.agnither.hunters.view.ui.UI;
-import com.agnither.hunters.view.ui.popups.win.WinPopup;
+import com.agnither.hunters.view.ui.popups.monsters.PetsView;
 import com.agnither.hunters.view.ui.screens.battle.BattleScreen;
-import com.agnither.hunters.view.ui.screens.hud.HudScreen;
 import com.agnither.hunters.view.ui.screens.map.MapScreen;
 import com.agnither.utils.CommonRefs;
 import com.agnither.utils.ResourcesManager;
 import com.cemaprjl.core.coreAddListener;
 import com.cemaprjl.core.coreExecute;
 import com.cemaprjl.core.coreRemoveListener;
-import com.cemaprjl.viewmanage.ShowPopupCmd;
 import com.cemaprjl.viewmanage.ShowScreenCmd;
 
 import starling.core.Starling;
@@ -107,7 +102,7 @@ public class App extends Sprite {
 
     private function handleLoadAnimation() : void {
 //        _resources.onComplete.addOnce(handleLoadGUI);
-          // XXX commented, not in use
+        // XXX commented, not in use
 //        _resources.onComplete.addOnce(handleInit);
     }
 
@@ -125,6 +120,7 @@ public class App extends Sprite {
         _ui = new UI();
 
         coreAddListener(Match3Game.START_GAME, onStartGame);
+        coreAddListener(PetsView.PET_SELECTED, handlePetSelected);
 
 //        _ui.addEventListener(BattleScreen.SELECT_MONSTER, handleSelectMonster);
 
@@ -133,6 +129,10 @@ public class App extends Sprite {
         coreExecute(ShowScreenCmd, MapScreen.NAME);
     }
 
+//    private function onSelectItem(item: Item) : void {
+//        _player.selectItem(item);
+//    }
+
     private function onStartGame(monster : MonsterVO) : void {
         _drop = monster.drop;
         _enemy = new AIPlayer(monster);
@@ -140,6 +140,10 @@ public class App extends Sprite {
         coreExecute(ShowScreenCmd, BattleScreen.NAME);
 
 //        startGame(monster);
+    }
+
+    private function handlePetSelected(pet : Pet) : void {
+        _player.summonPet(pet);
     }
 
 //    public function startGame(monster : MonsterVO) : void {
@@ -193,12 +197,13 @@ public class App extends Sprite {
 //        return _game;
 //    }
 
-    public function get enemy() : com.agnither.hunters.model.player.Player {
+    public function get enemy() : Player {
         return _enemy;
     }
 
     public function get drop() : int {
         return _drop;
     }
+
 }
 }

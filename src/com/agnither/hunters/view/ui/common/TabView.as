@@ -5,6 +5,12 @@ package com.agnither.hunters.view.ui.common {
 import com.agnither.ui.AbstractView;
 import com.agnither.utils.CommonRefs;
 
+import flash.ui.Mouse;
+
+import flash.ui.MouseCursor;
+
+import starling.display.Image;
+
 import starling.display.Sprite;
 import starling.events.Touch;
 import starling.events.TouchEvent;
@@ -21,6 +27,7 @@ public class TabView extends AbstractView {
 
     private var _label: TextField;
     private var _select: Sprite;
+    private var _back : Image;
 
     public function TabView() {
     }
@@ -30,13 +37,25 @@ public class TabView extends AbstractView {
 
         _select = _links.select;
 
+        _back = _links.bitmap__bg;
+
+        touchable = true;
+        _back.touchable = true;
+
         addEventListener(TouchEvent.TOUCH, handleTouch);
     }
 
     private function handleTouch(e: TouchEvent):void {
-        var touch: Touch = e.getTouch(this, TouchPhase.BEGAN);
+//        trace("handleTouch TAB");
+        var touch: Touch = e.getTouch(this);
+//        var touch: Touch = e.getTouch(this, TouchPhase.BEGAN);
         if (touch) {
-            dispatchEventWith(TAB_CLICK);
+            Mouse.cursor = MouseCursor.BUTTON;
+            if(touch.phase == TouchPhase.BEGAN) {
+                dispatchEventWith(TAB_CLICK);
+            }
+        } else {
+            Mouse.cursor = MouseCursor.AUTO;
         }
     }
 }

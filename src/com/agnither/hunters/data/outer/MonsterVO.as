@@ -10,6 +10,8 @@ public class MonsterVO extends PersonageVO {
 
     public static const LIST: Vector.<MonsterVO> = new <MonsterVO>[];
     public static const DICT: Dictionary = new Dictionary();
+    public static const AREA: Dictionary = new Dictionary();
+    public var radius : Number;
 
     public static function parseData(data: Object):void {
         for (var i: int = 0; i < data.length; i++) {
@@ -19,10 +21,14 @@ public class MonsterVO extends PersonageVO {
             object.id = row.id;
             object.name = row.name;
             object.picture = row.picture;
+
+            object.radius = row.radius;
+
             object.level = row.level;
             object.hp = row.hp;
             object.damage = row.damage;
             object.defence = row.defence;
+            object.area = row.area;
 
             object.magic = row.magic;
 
@@ -36,11 +42,19 @@ public class MonsterVO extends PersonageVO {
 
             LIST.push(object);
             DICT[object.id] = object;
+
+            if(!AREA[object.area]) {
+                AREA[object.area] = new <MonsterVO>[];
+            }
+            AREA[object.area].push(object);
         }
     }
 
+
+
     public var id: int;
     public var picture: String;
+    public var area : String;
 
     public var magic: int;
 

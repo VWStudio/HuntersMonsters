@@ -5,11 +5,13 @@ package com.agnither.hunters.view.ui.popups {
 import com.agnither.hunters.App;
 import com.agnither.hunters.data.outer.ItemTypeVO;
 import com.agnither.hunters.model.player.Player;
+import com.agnither.hunters.view.ui.UI;
 import com.agnither.hunters.view.ui.popups.inventory.InventoryView;
 import com.agnither.hunters.view.ui.popups.inventory.ItemsView;
 import com.agnither.hunters.view.ui.common.TabView;
 import com.agnither.ui.Popup;
 import com.agnither.utils.CommonRefs;
+import com.cemaprjl.core.coreDispatch;
 
 import starling.display.Button;
 import starling.display.Sprite;
@@ -79,6 +81,7 @@ public class InventoryPopup extends Popup {
         addChild(_inventoryView);
 
         _closeBtn = _links.close_btn;
+        _closeBtn.touchable = true;
         _closeBtn.addEventListener(Event.TRIGGERED, handleClose);
     }
 
@@ -110,7 +113,7 @@ public class InventoryPopup extends Popup {
     }
 
     private function handleClose(e: Event):void {
-        dispatchEventWith(CLOSE);
+        coreDispatch(UI.HIDE_POPUP, NAME);
     }
 }
 }

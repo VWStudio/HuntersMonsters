@@ -66,6 +66,7 @@ public class SelectMonsterPopup extends Popup {
     }
 
     private function handleSelectTab(e: Event):void {
+        trace("handleSelectTab");
         switch (e.currentTarget) {
             case _tab1:
                 _monsters.showType(PetsInventory.TAMED);
@@ -77,7 +78,7 @@ public class SelectMonsterPopup extends Popup {
     }
 
     private function handleClose(e: Event):void {
-        coreDispatch(UI.HIDE_POPUP);
+        coreDispatch(UI.HIDE_POPUP, SelectMonsterPopup.NAME);
     }
 }
 }
