@@ -4,6 +4,7 @@
 package com.cemaprjl.viewmanage {
 import com.agnither.hunters.view.ui.common.ManaView;
 import com.agnither.hunters.view.ui.common.TabView;
+import com.agnither.hunters.view.ui.screens.battle.monster.MonsterArea;
 import com.agnither.hunters.view.ui.screens.battle.monster.MonsterInfo;
 import com.agnither.hunters.view.ui.screens.battle.player.DropListView;
 import com.agnither.hunters.view.ui.screens.battle.player.DropSlotView;
@@ -21,6 +22,7 @@ public class ClassBindings {
         registerClassAlias("map.Point", MonsterPoint);
         registerClassAlias("map.Player", PlayerPoint);
         registerClassAlias("map.PointStars", StarsBar);
+        registerClassAlias("map.MonsterArea", MonsterArea);
 
         registerClassAlias("common.TabView", TabView);
         registerClassAlias("common.ManaView", ManaView);

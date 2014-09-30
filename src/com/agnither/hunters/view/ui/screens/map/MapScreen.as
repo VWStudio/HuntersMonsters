@@ -6,10 +6,14 @@ import com.agnither.hunters.App;
 import com.agnither.hunters.data.outer.MonsterVO;
 import com.agnither.hunters.model.Match3Game;
 import com.agnither.hunters.model.player.LocalPlayer;
+import com.agnither.hunters.view.ui.screens.battle.monster.MonsterArea;
 import com.agnither.ui.Screen;
 import com.cemaprjl.core.coreDispatch;
 
 import flash.geom.Point;
+
+import flash.geom.Point;
+import flash.geom.Rectangle;
 import flash.ui.Mouse;
 import flash.ui.MouseCursor;
 import flash.utils.Dictionary;
@@ -38,10 +42,12 @@ public class MapScreen extends Screen {
     private var _startPoint : Point;
     private var _startPos : Point;
     private var _points : Dictionary = new Dictionary();
-    private var _playerPositions : Dictionary = new Dictionary();
+//    private var _playerPositions : Dictionary = new Dictionary();
     private var _clouds : Dictionary = new Dictionary();
     public static const INIT_MONSTER : String = "MapScreen.INIT_MONSTER";
     private var _monstersContainer : Sprite;
+//    private var _playerPositionsArr : Vector.<Point>;
+    private var _playerPosition : PlayerPoint;
 
     public function MapScreen() {
 
@@ -82,48 +88,79 @@ public class MapScreen extends Screen {
          * clouds/fog getting from graphic, but hide/shows according progress
          *
          */
+        var removeArr : Array = [];
+//        _playerPositionsArr = new <Point>[];
         for (var i : int = 0; i < _container.numChildren; i++)
         {
             var dobj : DisplayObject = _container.getChildAt(i);
-//            if(dobj is MonsterPoint) {
-//                _points[dobj.name.split("_")[1]] = dobj;
-//                dobj.touchable = true;
-//                (dobj as MonsterPoint).update();
-//            } else
-            if (dobj is PlayerPoint) {
+            if(dobj is MonsterPoint) {
+                removeArr.push(dobj);
+            } else if (dobj is MonsterArea) {
+
+//                (dobj as MonsterArea).update();
+                App.instance.monsterAreas[dobj.name] = new Rectangle(dobj.x, dobj.y, 50 * dobj.transformationMatrix.a, 50 * dobj.transformationMatrix.d);
+//                trace(dobj.name, App.instance.monsterAreas[dobj.name]);
+                removeArr.push(dobj);
+            } else if (dobj is PlayerPoint) {
 
                 var ptName : String = dobj.name;
-                _playerPositions[ptName.split("_")[1]] = dobj;
-                dobj.visible = false;
+                if(ptName.indexOf("00") > -1) {
+                    _playerPosition = dobj as PlayerPoint;
+                } else {
+                    removeArr.push(dobj);
+                }
 
-                initMonster(ptName, new Point(dobj.x, dobj.y));
+//
+//                _playerPositionsArr.push(new Point());
+//
+//                _playerPositions[ptName.split("_")[1]] = dobj;
+//                dobj.visible = false;
+//
+//                initMonster(ptName, new Point(dobj.x, dobj.y));
 
 
             } else if(dobj.name.indexOf("clouds") > -1) {
-                _clouds[dobj.name.split("_")[1]] = dobj;
-                dobj.touchable = true;
+                trace(dobj.name);
+                _clouds[dobj.name] = dobj;
+//                dobj.touchable = true;
+//                dobj.visible = false;
             } else {
-//                trace(dobj);
             }
         }
+
+        for (var j : int = 0; j < removeArr.length; j++)
+        {
+            var dobj1 : DisplayObject = removeArr[j];
+            _container.removeChild(dobj1);
+        }
+
+
+
 
 
     }
 
-    private function initMonster($ptName : String, point : Point) : void {
+    private function initMonster($ptName : String) : void {
+
 
         var mp : MonsterPoint = new MonsterPoint();
         _monstersContainer.addChild(mp);
         var monstersInArea  : Vector.<MonsterVO> = MonsterVO.AREA[$ptName];
-        mp.monsterType = monstersInArea[int(monstersInArea.length * Math.random())];
 
-        var monsterPt : Point = Point.polar((mp.monsterType.radius - 30 )* Math.random() + 30, Math.PI * 2 * Math.random());
-        trace($ptName, monsterPt);
-        monsterPt = monsterPt.add(point);
-        trace(point, monsterPt);
+        var monster : MonsterVO = mp.monsterType = monstersInArea[int(monstersInArea.length * Math.random())];
 
+        var monsterRect : Rectangle = App.instance.monsterAreas[$ptName];
+
+        var monsterPt : Point = new Point(monsterRect.x + Math.random() * monsterRect.width, monsterRect.y + Math.random() * monsterRect.height);
         mp.x = monsterPt.x;
         mp.y = monsterPt.y;
+        mp.update();
+
+        trace(monster.area, _clouds[monster.area]);
+        if(_clouds[monster.area]) {
+            _clouds[monster.area].visible = false;
+        }
+
     }
 
 
@@ -132,17 +169,32 @@ public class MapScreen extends Screen {
          * kinda progress
          */
 
-        var player : LocalPlayer = _player as LocalPlayer;
-        for (var i : int = 0; i < player.progress.regions.length; i++)
+//        var player : LocalPlayer = _player as LocalPlayer;
+//        for (var i : int = 0; i < player.progress.regions.length; i++)
+//        {
+//            var regionID : String = player.progress.regions[i];
+//            if(_clouds[regionID]) {
+//                _clouds[regionID].visible = false;
+//            }
+//        }
+
+        trace(JSON.stringify(App.instance.monstersResults));
+
+        _monstersContainer.removeChildren();
+//        trace("Map update");
+        trace("unlockedMonsters: ",App.instance.unlockedMonsters, App.instance.unlockedMonsters.length);
+        var arr : Array = App.instance.unlockedMonsters;
+        var i : int = -100500;
+        for (var i : int = 0; i < arr.length; i++)
         {
-            var regionID : String = player.progress.regions[i];
-            if(_clouds[regionID]) {
-                _clouds[regionID].visible = false;
-            }
+            var monsterName : String = arr[i];
+            initMonster(monsterName);
         }
 
-        _playerPositions["00"].visible = true;
-//        _clouds["01"].visible = false;
+        var monsterRect : Rectangle = App.instance.monsterAreas[monsterName];
+        _playerPosition.x = monsterRect.x + monsterRect.width * 0.5;
+        _playerPosition.y = monsterRect.y + monsterRect.height * 0.5;
+
 
     }
 

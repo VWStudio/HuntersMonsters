@@ -9,6 +9,7 @@ import com.agnither.hunters.model.player.AIPlayer;
 import com.agnither.hunters.model.player.LocalPlayer;
 import com.agnither.hunters.model.player.Player;
 import com.agnither.hunters.model.player.inventory.Pet;
+import com.agnither.hunters.model.player.personage.Monster;
 import com.agnither.hunters.utils.DeviceResInfo;
 import com.agnither.hunters.view.ui.UI;
 import com.agnither.hunters.view.ui.popups.monsters.PetsView;
@@ -20,6 +21,8 @@ import com.cemaprjl.core.coreAddListener;
 import com.cemaprjl.core.coreExecute;
 import com.cemaprjl.core.coreRemoveListener;
 import com.cemaprjl.viewmanage.ShowScreenCmd;
+
+import flash.utils.Dictionary;
 
 import starling.core.Starling;
 import starling.display.Sprite;
@@ -36,6 +39,9 @@ public class App extends Sprite {
     private var _ui : UI;
 
     private static var _instance : App;
+    public var monsterAreas : Dictionary = new Dictionary();
+    public var unlockedMonsters : Array = ["blue_bull"];
+    public static const UPDATE_PROGRESS : String = "App.UPDATE_PROGRESS";
     public static function get instance() : App {
         if (!_instance)
         {
@@ -48,6 +54,8 @@ public class App extends Sprite {
 //    private var _game : Match3Game;
     private var _enemy : Player;
     private var _drop : int = 0;
+    private var _monster : MonsterVO;
+    private var _monstersResults : Object = {};
 
     public function get player() : LocalPlayer {
         return _player;
@@ -75,12 +83,24 @@ public class App extends Sprite {
 //        _resources.onProgress.add(_preloader.progress);
 
         coreAddListener(ResourcesManager.ON_COMPLETE, handleComplete);
+        coreAddListener(App.UPDATE_PROGRESS, onProgress);
 //        _resources.onComplete.addOnce(handleComplete);
         _resources.loadMain();
 //        _resources.loadAnimations();
         _resources.loadGUI();
 //        _resources.loadGame();
         _resources.load();
+    }
+
+    private function onProgress() : void {
+
+        _monstersResults[_monster.id] = 1 + int(Math.random() * 3);
+        var monsterToUnlock : MonsterVO = MonsterVO.DICT[_monster.unlock];
+        if(unlockedMonsters.indexOf(monsterToUnlock.name) == -1) {
+            unlockedMonsters.push(monsterToUnlock.name);
+            _monstersResults[monsterToUnlock.id] = 0;
+        }
+
     }
 
     private function handleComplete() : void {
@@ -126,6 +146,8 @@ public class App extends Sprite {
 
         stage.addChildAt(_ui, 0);
 
+        _monstersResults[1] = 0; // stars
+
         coreExecute(ShowScreenCmd, MapScreen.NAME);
     }
 
@@ -134,6 +156,7 @@ public class App extends Sprite {
 //    }
 
     private function onStartGame(monster : MonsterVO) : void {
+        _monster = monster;
         _drop = monster.drop;
         _enemy = new AIPlayer(monster);
 
@@ -205,5 +228,12 @@ public class App extends Sprite {
         return _drop;
     }
 
+    public function get monster() : com.agnither.hunters.data.outer.MonsterVO {
+        return _monster;
+    }
+
+    public function get monstersResults() : Object {
+        return _monstersResults;
+    }
 }
 }

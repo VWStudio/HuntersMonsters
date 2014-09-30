@@ -2,6 +2,7 @@
  * Created by agnither on 14.08.14.
  */
 package com.agnither.hunters.view.ui.screens.map {
+import com.agnither.hunters.App;
 import com.agnither.hunters.data.outer.MonsterVO;
 import com.agnither.hunters.model.Match3Game;
 import com.agnither.hunters.model.player.Mana;
@@ -93,7 +94,7 @@ public class MonsterPoint extends AbstractView {
 
     override public function update() : void {
 
-        _stars.setProgress(Math.random() * 4);
+        _stars.setProgress(App.instance.monstersResults[_monsterType.id]);
 
     }
 

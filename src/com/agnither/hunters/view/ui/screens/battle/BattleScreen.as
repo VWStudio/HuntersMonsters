@@ -5,7 +5,6 @@ package com.agnither.hunters.view.ui.screens.battle {
 import com.agnither.hunters.App;
 import com.agnither.hunters.App;
 import com.agnither.hunters.App;
-import com.agnither.hunters.GameController;
 import com.agnither.hunters.model.Match3Game;
 import com.agnither.hunters.model.player.drop.DropSlot;
 import com.agnither.hunters.model.player.drop.GoldDrop;

@@ -75,6 +75,10 @@ public class WinPopup extends Popup {
     }
 
     private function handleClose(event : Event) : void {
+
+
+        coreDispatch(App.UPDATE_PROGRESS, NAME);
+
         coreDispatch(UI.HIDE_POPUP, NAME);
         coreExecute(ShowScreenCmd, MapScreen.NAME);
     }
@@ -85,9 +89,8 @@ public class WinPopup extends Popup {
         _title.text = data.isWin ? "Победа" : "Поражение";
         _playButton.text = data.isWin ? "Забрать" : "Закрыть";
 
-//        _monster.data = data;
-//        _monster.update();
-
+        _monster.data = App.instance.monster;
+        _monster.update();
 
 
     }
