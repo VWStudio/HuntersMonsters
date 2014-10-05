@@ -7,9 +7,11 @@ import com.agnither.hunters.data.outer.LeagueVO;
 import com.agnither.hunters.data.outer.LevelVO;
 import com.agnither.hunters.model.player.LocalPlayer;
 import com.agnither.hunters.view.ui.popups.InventoryPopup;
+import com.agnither.hunters.view.ui.screens.map.MapScreen;
 import com.agnither.ui.ButtonContainer;
 import com.agnither.ui.Screen;
 import com.cemaprjl.core.coreAddListener;
+import com.cemaprjl.core.coreDispatch;
 import com.cemaprjl.core.coreExecute;
 import com.cemaprjl.viewmanage.ShowPopupCmd;
 
@@ -33,6 +35,7 @@ public class HudScreen extends Screen {
     private var _musicButton : ButtonContainer;
     private var _soundButton : ButtonContainer;
     private var _inventoryBtn : ButtonContainer;
+    private var _trapBtn : ButtonContainer;
 
     public function HudScreen() {
         _player = App.instance.player;
@@ -54,8 +57,16 @@ public class HudScreen extends Screen {
         _inventoryBtn.text = "Инвентарь";
         _inventoryBtn.addEventListener(Event.TRIGGERED, onInventory);
 
+        _trapBtn = _links.trap_btn;
+        _trapBtn.text = "Ловушка";
+        _trapBtn.addEventListener(Event.TRIGGERED, onTrap);
 
         coreAddListener(HudScreen.UPDATE, update)
+    }
+
+    private function onTrap(event : Event) : void {
+        coreDispatch(MapScreen.START_TRAP);
+
     }
 
     private function onInventory(event : Event) : void {
@@ -69,6 +80,7 @@ public class HudScreen extends Screen {
         _playerLeague.text = LeagueVO.DICT[_player.hero.league.toString()].name;
         _playerRating.text = _player.hero.rating.toString();
         _playerGold.text = _player.hero.gold.toString();
+        _trapBtn.visible = !App.instance.trapMode;
     }
 }
 }

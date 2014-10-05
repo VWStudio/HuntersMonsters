@@ -10,9 +10,11 @@ import com.agnither.hunters.view.ui.screens.battle.player.DropListView;
 import com.agnither.hunters.view.ui.screens.battle.player.DropSlotView;
 import com.agnither.hunters.view.ui.screens.battle.player.ManaListView;
 import com.agnither.hunters.view.ui.screens.battle.player.PersonageView;
+import com.agnither.hunters.view.ui.screens.map.ChestPoint;
 import com.agnither.hunters.view.ui.screens.map.PlayerPoint;
 import com.agnither.hunters.view.ui.screens.map.StarsBar;
 import com.agnither.hunters.view.ui.screens.map.MonsterPoint;
+import com.agnither.hunters.view.ui.screens.map.TrapPoint;
 
 import flash.net.registerClassAlias;
 
@@ -23,6 +25,8 @@ public class ClassBindings {
         registerClassAlias("map.Player", PlayerPoint);
         registerClassAlias("map.PointStars", StarsBar);
         registerClassAlias("map.MonsterArea", MonsterArea);
+        registerClassAlias("map.Trap", TrapPoint);
+        registerClassAlias("map.Chest", ChestPoint);
 
         registerClassAlias("common.TabView", TabView);
         registerClassAlias("common.ManaView", ManaView);

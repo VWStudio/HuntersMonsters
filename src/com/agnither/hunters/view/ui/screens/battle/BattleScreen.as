@@ -11,18 +11,21 @@ import com.agnither.hunters.model.player.drop.GoldDrop;
 import com.agnither.hunters.model.player.drop.ItemDrop;
 import com.agnither.hunters.view.ui.UI;
 import com.agnither.hunters.view.ui.popups.SelectMonsterPopup;
+import com.agnither.hunters.view.ui.popups.hunt.HuntStepsPopup;
 import com.agnither.hunters.view.ui.popups.win.WinPopup;
 import com.agnither.hunters.view.ui.screens.battle.match3.FieldView;
 import com.agnither.hunters.view.ui.screens.battle.player.DropListView;
 import com.agnither.hunters.view.ui.screens.battle.player.PersonageView;
 import com.agnither.hunters.view.ui.screens.battle.player.ManaListView;
 import com.agnither.hunters.view.ui.screens.battle.player.inventory.BattleInventoryView;
+import com.agnither.hunters.view.ui.screens.map.MapScreen;
 import com.agnither.ui.Screen;
 import com.agnither.utils.CommonRefs;
 import com.cemaprjl.core.coreAddListener;
 import com.cemaprjl.core.coreExecute;
 import com.cemaprjl.core.coreRemoveListener;
 import com.cemaprjl.viewmanage.ShowPopupCmd;
+import com.cemaprjl.viewmanage.ShowScreenCmd;
 
 import starling.display.Button;
 import starling.display.Sprite;
@@ -140,30 +143,48 @@ public class BattleScreen extends Screen {
 
     private function handleEndGame($isWin : Boolean) : void {
         coreRemoveListener(Match3Game.END_GAME, handleEndGame);
-        coreExecute(ShowPopupCmd, WinPopup.NAME, {isWin : $isWin});
+        if(App.instance.chestStep >= 0) {
+            if($isWin) {
+                if(App.instance.chestStep + 1 < App.instance.steps.length) {
+                    App.instance.chestStep++;
+                    coreExecute(ShowPopupCmd, HuntStepsPopup.NAME, {mode : HuntStepsPopup.CONTINUE_MODE});
+                } else {
+                    coreExecute(ShowPopupCmd, HuntStepsPopup.NAME, {mode : HuntStepsPopup.WIN_MODE});
+                }
+            } else {
+                coreExecute(ShowPopupCmd, HuntStepsPopup.NAME, {mode : HuntStepsPopup.LOSE_MODE});
+            }
+
+            coreExecute(ShowScreenCmd, MapScreen.NAME);
+            return;
+        } else {
+            coreExecute(ShowPopupCmd, WinPopup.NAME, {isWin : $isWin});
+        }
+
 
         /**
          * MOVE next things in win popup
          */
-
-        for (var i : int = 0; i < _game.dropList.list.length; i++)
-        {
-            var drop : DropSlot = _game.dropList.list[i];
-            if (drop.content)
+        if($isWin) {
+            for (var i : int = 0; i < _game.dropList.list.length; i++)
             {
-                if (drop.content is GoldDrop)
+                var drop : DropSlot = _game.dropList.list[i];
+                if (drop.content)
                 {
-                    var gold : GoldDrop = drop.content as GoldDrop;
-                    App.instance.player.addGold(gold.gold);
-                }
-                else if (drop.content is ItemDrop)
-                {
-                    var item : ItemDrop = drop.content as ItemDrop;
-                    App.instance.player.addItem(item.item);
+                    if (drop.content is GoldDrop)
+                    {
+                        var gold : GoldDrop = drop.content as GoldDrop;
+                        App.instance.player.addGold(gold.gold);
+                    }
+                    else if (drop.content is ItemDrop)
+                    {
+                        var item : ItemDrop = drop.content as ItemDrop;
+                        App.instance.player.addItem(item.item);
+                    }
                 }
             }
+            App.instance.player.save();
         }
-        App.instance.player.save();
 
     }
 

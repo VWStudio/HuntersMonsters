@@ -4,11 +4,18 @@
 package com.agnither.hunters.view.ui.screens.map {
 import com.agnither.hunters.App;
 import com.agnither.hunters.data.outer.MonsterVO;
+import com.agnither.hunters.data.outer.MonsterVO;
 import com.agnither.hunters.model.Match3Game;
 import com.agnither.hunters.model.player.LocalPlayer;
 import com.agnither.hunters.view.ui.screens.battle.monster.MonsterArea;
+import com.agnither.hunters.view.ui.screens.battle.monster.TrapPopup;
 import com.agnither.ui.Screen;
+import com.cemaprjl.core.coreAddListener;
 import com.cemaprjl.core.coreDispatch;
+import com.cemaprjl.core.coreExecute;
+import com.cemaprjl.viewmanage.ShowPopupCmd;
+
+import flash.geom.Point;
 
 import flash.geom.Point;
 
@@ -48,6 +55,14 @@ public class MapScreen extends Screen {
     private var _monstersContainer : Sprite;
 //    private var _playerPositionsArr : Vector.<Point>;
     private var _playerPosition : PlayerPoint;
+    public static const START_TRAP : String = "MapScreen.START_TRAP";
+    public static const STOP_TRAP : String = "MapScreen.STOP_TRAP";
+    public static const ADD_TRAP : String = "MapScreen.ADD_TRAP";
+    public static const DELETE_TRAP : String = "MapScreen.DELETE_TRAP";
+    private var _trapsContainer : Sprite;
+    public static const ADD_CHEST : String = "MapScreen.ADD_CHEST";
+    public static const REMOVE_CHEST : String = "MapScreen.REMOVE_CHEST";
+    private var _chestsContainer : Sprite;
 
     public function MapScreen() {
 
@@ -68,12 +83,25 @@ public class MapScreen extends Screen {
 
         createFromConfig(_refs.guiConfig.map, _container);
 
+        coreAddListener(ADD_TRAP, onTrapAdd);
+        coreAddListener(DELETE_TRAP, onTrapDelete);
+        coreAddListener(ADD_CHEST, onChestAdd);
+        coreAddListener(REMOVE_CHEST, onChestRemove);
+
         _back = _links["bitmap_map_bg.png"];
         _back.touchable = true;
 
         _monstersContainer = new Sprite();
         _monstersContainer.name = "monsters_container"; // hack
         _container.addChildAt(_monstersContainer, _container.getChildIndex(_back) + 1);
+
+        _trapsContainer = new Sprite();
+        _trapsContainer.name = "traps_container"; // hack
+        _container.addChildAt(_trapsContainer, _container.getChildIndex(_monstersContainer) + 1);
+
+        _chestsContainer = new Sprite();
+        _chestsContainer.name = "chests_container"; // hack
+        _container.addChildAt(_chestsContainer, _container.getChildIndex(_trapsContainer) + 1);
 
         _container.x = (stage.stageWidth - _back.width) * 0.5;
         _container.y = (stage.stageHeight - _back.height) * 0.5;
@@ -138,7 +166,65 @@ public class MapScreen extends Screen {
 
 
 
+
     }
+
+    private function onChestRemove($chest : ChestPoint) : void {
+
+        if(_chestsContainer.contains($chest)) {
+            _chestsContainer.removeChild($chest);
+            App.instance.chest = null;
+            App.instance.chestStep = -1;
+        }
+
+
+    }
+
+    private function onChestAdd() : void {
+
+        if(_chestsContainer.numChildren >= App.instance.unlockedMonsters.length) {
+            return;
+        }
+
+        var chest : ChestPoint = new ChestPoint();
+        _chestsContainer.addChild(chest);
+
+        var monster  : String  = App.instance.unlockedMonsters[int(Math.random() * App.instance.unlockedMonsters.length)];
+        var rect : Rectangle = App.instance.monsterAreas[monster];
+        var pt : Point = new Point(rect.x + rect.width * Math.random(), rect.y + rect.height * Math.random());
+
+        chest.update();
+
+        chest.x = pt.x;
+        chest.y = pt.y;
+
+
+    }
+
+    private function onTrapDelete($trap : TrapPoint) : void {
+
+        if(_trapsContainer.contains($trap)) {
+            _trapsContainer.removeChild($trap);
+        }
+        $trap.destroy();
+
+    }
+
+    private function onTrapAdd($data : Object) : void {
+
+        var trapPoint : TrapPoint = new TrapPoint();
+        _trapsContainer.addChild(trapPoint);
+        trapPoint.monsterType = MonsterVO.AREA[$data.id][0];
+        trapPoint.data = $data;
+        trapPoint.update();
+
+        var position : Point = $data.position;
+
+        trapPoint.x = position.x;
+        trapPoint.y = position.y;
+
+    }
+
 
     private function initMonster($ptName : String) : void {
 
@@ -156,7 +242,7 @@ public class MapScreen extends Screen {
         mp.y = monsterPt.y;
         mp.update();
 
-        trace(monster.area, _clouds[monster.area]);
+//        trace(monster.area, _clouds[monster.area]);
         if(_clouds[monster.area]) {
             _clouds[monster.area].visible = false;
         }
@@ -169,20 +255,7 @@ public class MapScreen extends Screen {
          * kinda progress
          */
 
-//        var player : LocalPlayer = _player as LocalPlayer;
-//        for (var i : int = 0; i < player.progress.regions.length; i++)
-//        {
-//            var regionID : String = player.progress.regions[i];
-//            if(_clouds[regionID]) {
-//                _clouds[regionID].visible = false;
-//            }
-//        }
-
-        trace(JSON.stringify(App.instance.monstersResults));
-
         _monstersContainer.removeChildren();
-//        trace("Map update");
-        trace("unlockedMonsters: ",App.instance.unlockedMonsters, App.instance.unlockedMonsters.length);
         var arr : Array = App.instance.unlockedMonsters;
         var i : int = -100500;
         for (var i : int = 0; i < arr.length; i++)
@@ -211,9 +284,30 @@ public class MapScreen extends Screen {
             switch (touch.phase)
             {
                 case TouchPhase.BEGAN:
-                    _allowMove = true;
                     _startPoint = new Point(touch.globalX, touch.globalY);
                     _startPos = new Point(_container.x, _container.y);
+
+                    var pt : Point = _container.globalToLocal(_startPoint);
+                    var trapAllowed : Boolean = false;
+                    if(App.instance.trapMode) {
+                        for (var i : int = 0; i < App.instance.unlockedMonsters.length; i++)
+                        {
+                            var key : String = App.instance.unlockedMonsters[i];
+                            var rect : Rectangle = App.instance.monsterAreas[key];
+                            if(rect.containsPoint(pt)) {
+                                trapAllowed = true;
+                                break;
+                            }
+                        }
+                        if(trapAllowed) {
+                            coreExecute(ShowPopupCmd, TrapPopup.NAME, {id : key, position : pt, mode:TrapPopup.SET_MODE});
+                            coreDispatch(MapScreen.STOP_TRAP);
+                            return;
+                        } else {
+                            coreDispatch(MapScreen.STOP_TRAP);
+                        }
+                    }
+                    _allowMove = true;
                     break;
                 case TouchPhase.MOVED:
                     if (_allowMove)

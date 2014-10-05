@@ -48,7 +48,7 @@ public class MonsterVO extends PersonageVO {
                 AREA[object.name] = new <MonsterVO>[];
             }
             AREA[object.name].push(object);
-            trace(object.name, AREA[object.name].length)
+//            trace(object.name, AREA[object.name].length)
         }
     }
 

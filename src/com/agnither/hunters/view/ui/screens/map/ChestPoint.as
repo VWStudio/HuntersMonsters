@@ -8,6 +8,7 @@ import com.agnither.hunters.model.Match3Game;
 import com.agnither.hunters.model.player.Mana;
 import com.agnither.hunters.view.ui.UI;
 import com.agnither.hunters.view.ui.popups.hunt.HuntPopup;
+import com.agnither.hunters.view.ui.popups.hunt.HuntStepsPopup;
 import com.agnither.ui.AbstractView;
 import com.agnither.utils.CommonRefs;
 import com.cemaprjl.core.coreDispatch;
@@ -24,27 +25,13 @@ import starling.events.TouchEvent;
 import starling.events.TouchPhase;
 import starling.text.TextField;
 
-public class MonsterPoint extends AbstractView {
+public class ChestPoint extends AbstractView {
     private var _back : Image;
-    private var _stars : StarsBar;
-    private var _monsterType : MonsterVO;
+    private var _time : TextField;
+    private var _monsters : Vector.<MonsterVO>;
 
-//    private var _mana: Mana;
-//    public function set mana(value: Mana):void {
-//        if (_mana) {
-//            _mana.removeEventListener(Mana.UPDATE, handleUpdate);
-//        }
-//        _mana = value;
-//        if (_mana) {
-//            _mana.addEventListener(Mana.UPDATE, handleUpdate);
-//        }
-//        handleUpdate();
-//    }
-//
-//    private var _icon: Image;
-//    private var _value: TextField;
 
-    public function MonsterPoint() {
+    public function ChestPoint() {
         this.addEventListener(TouchEvent.TOUCH, handleTouch);
     }
 
@@ -66,11 +53,10 @@ public class MonsterPoint extends AbstractView {
                 case TouchPhase.BEGAN :
                     break;
                 case TouchPhase.ENDED :
-                    coreExecute(ShowPopupCmd, HuntPopup.NAME, _monsterType);
-//                    coreExecute(ShowPopupCmd, HuntPopup.NAME, MonsterVO.DICT[1]);
-//                    dispatchEventWith(UI.SHOW_POPUP, true, MonsterVO.DICT[1]);
-//                    dispatchEventWith(UI.SHOW_POPUP, true, MonsterVO.DICT[1]);
-//                    dispatchEventWith(Match3Game.START_GAME, true, MonsterVO.DICT[1]);
+                    App.instance.chestStep = 0;
+                    App.instance.steps = _monsters;
+                    App.instance.chest = this;
+                    coreExecute(ShowPopupCmd, HuntStepsPopup.NAME, {mode : HuntStepsPopup.START_MODE});
                     break;
             }
         } else
@@ -82,7 +68,7 @@ public class MonsterPoint extends AbstractView {
 
     override protected function initialize():void {
         if(!_links["bitmap_icon_bg.png"]) {
-            createFromConfig(_refs.guiConfig.common.monsterIcon);
+            createFromConfig(_refs.guiConfig.common.chestIcon);
         }
 
 
@@ -90,23 +76,21 @@ public class MonsterPoint extends AbstractView {
         _back.touchable = true;
         this.touchable = true;
 
-        _stars = _links.stars;
+        _time = _links.time_tf;
 
     }
 
 
     override public function update() : void {
 
-        _stars.setProgress(App.instance.monstersResults[_monsterType.id]);
+        var maxMonsters : int = 1 + Math.random() * 3;
+        _monsters = new <MonsterVO>[];
+        for (var i : int = 0; i < maxMonsters; i++)
+        {
+            _monsters.push(MonsterVO.LIST[int(MonsterVO.LIST.length * Math.random())]);
+        }
 
     }
 
-    public function get monsterType() : MonsterVO {
-        return _monsterType;
-    }
-
-    public function set monsterType(value : MonsterVO) : void {
-        _monsterType = value;
-    }
 }
 }

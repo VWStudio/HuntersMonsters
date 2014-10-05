@@ -66,7 +66,7 @@ public class SelectMonsterPopup extends Popup {
     }
 
     private function handleSelectTab(e: Event):void {
-        trace("handleSelectTab");
+//        trace("handleSelectTab");
         switch (e.currentTarget) {
             case _tab1:
                 _monsters.showType(PetsInventory.TAMED);

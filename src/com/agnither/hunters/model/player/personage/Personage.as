@@ -27,7 +27,7 @@ public class Personage extends EventDispatcher {
         return _level;
     }
 
-    private var _hp: int;
+    protected var _hp: int;
     public function get hp():int {
         return _hp;
     }

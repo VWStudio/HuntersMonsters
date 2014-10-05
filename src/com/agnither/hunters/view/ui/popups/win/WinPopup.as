@@ -77,7 +77,7 @@ public class WinPopup extends Popup {
     private function handleClose(event : Event) : void {
 
 
-        coreDispatch(App.UPDATE_PROGRESS, NAME);
+        coreDispatch(App.UPDATE_PROGRESS);
 
         coreDispatch(UI.HIDE_POPUP, NAME);
         coreExecute(ShowScreenCmd, MapScreen.NAME);

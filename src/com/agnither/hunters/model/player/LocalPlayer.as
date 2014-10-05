@@ -102,8 +102,12 @@ public class LocalPlayer extends Player {
         _data.flush();
     }
 
-    public function get progress() : com.agnither.hunters.model.player.personage.Progress {
+    public function get progress() : Progress {
         return _progress;
+    }
+
+    public function reset() : void {
+
     }
 }
 }

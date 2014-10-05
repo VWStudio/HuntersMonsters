@@ -17,6 +17,8 @@ public class PetsInventory extends EventDispatcher {
 
     private var _data: Object;
 
+    private var _pets: Vector.<Pet> = new Vector.<Pet>();
+
     private var _petsDict: Dictionary = new Dictionary();
     public function getPet(uid: String):Pet {
         return _petsDict[uid];
@@ -44,8 +46,9 @@ public class PetsInventory extends EventDispatcher {
             var newPet: Pet = new Pet(pet, petData);
             newPet.uniqueId = key;
 
-            _petsDict[key] = newPet;
-            _petsByType[petData.tamed].push(key);
+            addPet(newPet);
+//            _petsDict[key] = newPet;
+//            _petsByType[petData.tamed].push(key);
         }
     }
 
@@ -54,6 +57,7 @@ public class PetsInventory extends EventDispatcher {
             _petsDict[pet.uniqueId] = pet;
             _petsByType[pet.tamed].push(pet.uniqueId);
             _data[pet.uniqueId] = pet.params;
+            _pets.push(pet);
         }
     }
 
@@ -71,6 +75,10 @@ public class PetsInventory extends EventDispatcher {
 
     public function update():void {
         dispatchEventWith(UPDATE);
+    }
+
+    public function get pets() : Vector.<com.agnither.hunters.model.player.inventory.Pet> {
+        return _pets;
     }
 }
 }

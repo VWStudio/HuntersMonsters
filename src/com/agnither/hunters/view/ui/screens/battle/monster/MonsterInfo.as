@@ -5,6 +5,8 @@ package com.agnither.hunters.view.ui.screens.battle.monster {
 import com.agnither.hunters.data.outer.MonsterVO;
 import com.agnither.ui.AbstractView;
 
+import starling.display.Image;
+
 import starling.text.TextField;
 
 public class MonsterInfo extends AbstractView {
@@ -13,6 +15,7 @@ public class MonsterInfo extends AbstractView {
     private var _armorVal : TextField;
     private var _monster : MonsterVO;
     private var _nameVal : TextField;
+    private var _killed : Image;
     public function MonsterInfo() {
         super();
     }
@@ -24,6 +27,8 @@ public class MonsterInfo extends AbstractView {
         _hpVal = _links["hp_tf"];
         _damageVal = _links["damage_tf"];
         _armorVal = _links["armor_tf"];
+        _killed = _links["bitmap_killed"];
+        _killed.visible = false;
 
     }
 
@@ -35,7 +40,13 @@ public class MonsterInfo extends AbstractView {
         _damageVal.text = _monster.damage.toString();
         _armorVal.text = _monster.defence.toString();
         _nameVal.text = _monster.name;
+        _killed.visible = false;
 
     }
+
+    public function set killed($val : Boolean):void {
+        _killed.visible = $val;
+    }
+
 }
 }

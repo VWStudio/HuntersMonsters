@@ -1,4 +1,242 @@
-{"map": {
+{"hud": {
+    "x": 0,
+    "y": 0,
+    "structure": [
+        [
+            {
+                "x": 954,
+                "y": 8,
+                "width": 32,
+                "height": 25,
+                "matrix": {
+                    "a": 1,
+                    "b": 0,
+                    "c": 0,
+                    "d": 1,
+                    "tx": 954.1,
+                    "ty": 7.9
+                },
+                "type": "button",
+                "name": "fullscreen_btn",
+                "images": ["button_up", "button_over", "button_up", "button_up"]
+            },
+            {
+                "x": 914,
+                "y": 8,
+                "width": 32,
+                "height": 25,
+                "matrix": {
+                    "a": 1,
+                    "b": 0,
+                    "c": 0,
+                    "d": 1,
+                    "tx": 913.9,
+                    "ty": 7.9
+                },
+                "type": "button",
+                "name": "music_btn",
+                "images": ["button_up", "button_over", "button_up", "button_up"]
+            },
+            {
+                "x": 874,
+                "y": 8,
+                "width": 32,
+                "height": 25,
+                "matrix": {
+                    "a": 1,
+                    "b": 0,
+                    "c": 0,
+                    "d": 1,
+                    "tx": 873.7,
+                    "ty": 7.9
+                },
+                "type": "button",
+                "name": "sound_btn",
+                "images": ["button_up", "button_over", "button_up", "button_up"]
+            },
+            {
+                "x": 8,
+                "y": 681,
+                "width": 181,
+                "height": 31,
+                "matrix": {
+                    "a": 1,
+                    "b": 0,
+                    "c": 0,
+                    "d": 1,
+                    "tx": 8,
+                    "ty": 680.6
+                },
+                "type": "button",
+                "name": "inventory_btn",
+                "images": ["_bg_btn", "_bg_btn", "_bg_btn"]
+            },
+            {
+                "x": 213,
+                "y": 681,
+                "width": 181,
+                "height": 31,
+                "matrix": {
+                    "a": 1,
+                    "b": 0,
+                    "c": 0,
+                    "d": 1,
+                    "tx": 213.05,
+                    "ty": 680.6
+                },
+                "type": "button",
+                "name": "trap_btn",
+                "images": ["_bg_btn", "_bg_btn", "_bg_btn"]
+            }
+        ],
+        [
+            {
+                "x": 59,
+                "y": 24,
+                "width": 97.45,
+                "height": 25.95,
+                "type": "text",
+                "text": "10/100",
+                "fontName": "impact_21",
+                "fontColor": "0xffffff",
+                "align": "left",
+                "name": "expVal_tf"
+            },
+            {
+                "x": 5,
+                "y": 24,
+                "width": 52.15,
+                "height": 25.95,
+                "type": "text",
+                "text": "Опыт:",
+                "fontName": "impact_21",
+                "fontColor": "0xffffff",
+                "align": "left",
+                "name": "expTitle_tf"
+            },
+            {
+                "x": 81,
+                "y": 1,
+                "width": 75.4,
+                "height": 25.95,
+                "type": "text",
+                "text": "10",
+                "fontName": "impact_21",
+                "fontColor": "0xffffff",
+                "align": "left",
+                "name": "levelVal_tf"
+            },
+            {
+                "x": 8,
+                "y": 1,
+                "width": 71.9,
+                "height": 29.65,
+                "type": "text",
+                "text": "Уровень:",
+                "fontName": "impact_21",
+                "fontColor": "0xffffff",
+                "align": "left",
+                "name": "levelTitle_tf"
+            },
+            {
+                "x": 165,
+                "y": 24,
+                "width": 69.75,
+                "height": 25.95,
+                "type": "text",
+                "text": "Рейтинг:",
+                "fontName": "impact_21",
+                "fontColor": "0xffffff",
+                "align": "left",
+                "name": "ratingTitle_tf"
+            },
+            {
+                "x": 236,
+                "y": 24,
+                "width": 83.65,
+                "height": 25.95,
+                "type": "text",
+                "text": "1022",
+                "fontName": "impact_21",
+                "fontColor": "0xffffff",
+                "align": "left",
+                "name": "ratingVal_tf"
+            },
+            {
+                "x": 166,
+                "y": 0,
+                "width": 43.65,
+                "height": 25.95,
+                "type": "text",
+                "text": "Лига:",
+                "fontName": "impact_21",
+                "fontColor": "0xffffff",
+                "align": "left",
+                "name": "leagueTitle_tf"
+            },
+            {
+                "x": 210,
+                "y": 0,
+                "width": 125.25,
+                "height": 25.95,
+                "type": "text",
+                "text": "Серебро",
+                "fontName": "impact_21",
+                "fontColor": "0xffffff",
+                "align": "left",
+                "name": "leagueVal_tf"
+            },
+            {
+                "x": 468,
+                "y": 10,
+                "width": 62.85,
+                "height": 25.95,
+                "type": "text",
+                "text": "Золото:",
+                "fontName": "impact_21",
+                "fontColor": "0xffffff",
+                "align": "left",
+                "name": "goldTitle_tf"
+            },
+            {
+                "x": 532,
+                "y": 10,
+                "width": 83.65,
+                "height": 25.95,
+                "type": "text",
+                "text": "1022",
+                "fontName": "impact_21",
+                "fontColor": "0xffffff",
+                "align": "left",
+                "name": "goldVal_tf"
+            },
+            {
+                "x": 9,
+                "y": 683,
+                "width": 180,
+                "height": 26,
+                "type": "text",
+                "text": "Кнопка",
+                "fontName": "impact_21",
+                "fontColor": "0xffffff",
+                "align": "center",
+                "name": "inventory_label"
+            },
+            {
+                "x": 210,
+                "y": 680,
+                "width": 180,
+                "height": 26,
+                "type": "text",
+                "text": "Кнопка",
+                "fontName": "impact_21",
+                "fontColor": "0xffffff",
+                "align": "center",
+                "name": "trap_label"
+            }
+        ]
+    ]
+}, "map": {
     "x": -17,
     "y": -132,
     "structure": [
@@ -410,10 +648,10 @@
                 "width": 254.05,
                 "height": 396.6,
                 "matrix": {
-                    "a": 5.0808868408203125,
+                    "a": 5.08087158203125,
                     "b": 0,
                     "c": 0,
-                    "d": 7.9319000244140625,
+                    "d": 7.931884765625,
                     "tx": 235.15,
                     "ty": 703.95
                 },
@@ -448,7 +686,7 @@
                     "a": 7.921112060546875,
                     "b": 0,
                     "c": 0,
-                    "d": 3.1331329345703125,
+                    "d": 3.13311767578125,
                     "tx": 528.3,
                     "ty": 1049.4
                 },
@@ -588,7 +826,7 @@
                     "a": 8.804000854492188,
                     "b": 0,
                     "c": 0,
-                    "d": 4.4923248291015625,
+                    "d": 4.4923095703125,
                     "tx": 655.85,
                     "ty": 430.45
                 },
@@ -623,7 +861,7 @@
                     "a": 6.63787841796875,
                     "b": 0,
                     "c": 0,
-                    "d": 8.732559204101562,
+                    "d": 8.7325439453125,
                     "tx": 290.65,
                     "ty": 250.5
                 },
@@ -728,7 +966,7 @@
                     "a": 4.5637054443359375,
                     "b": 0,
                     "c": 0,
-                    "d": 8.655410766601562,
+                    "d": 8.6553955078125,
                     "tx": 1525.35,
                     "ty": 380.75
                 },
@@ -2223,215 +2461,6 @@
                         }
                     ]
                 ]
-            }
-        ]
-    ]
-}, "hud": {
-    "x": 0,
-    "y": 0,
-    "structure": [
-        [
-            {
-                "x": 954,
-                "y": 8,
-                "width": 32,
-                "height": 25,
-                "matrix": {
-                    "a": 1,
-                    "b": 0,
-                    "c": 0,
-                    "d": 1,
-                    "tx": 954.1,
-                    "ty": 7.9
-                },
-                "type": "button",
-                "name": "fullscreen_btn",
-                "images": ["button_up", "button_over", "button_up", "button_up"]
-            },
-            {
-                "x": 914,
-                "y": 8,
-                "width": 32,
-                "height": 25,
-                "matrix": {
-                    "a": 1,
-                    "b": 0,
-                    "c": 0,
-                    "d": 1,
-                    "tx": 913.9,
-                    "ty": 7.9
-                },
-                "type": "button",
-                "name": "music_btn",
-                "images": ["button_up", "button_over", "button_up", "button_up"]
-            },
-            {
-                "x": 874,
-                "y": 8,
-                "width": 32,
-                "height": 25,
-                "matrix": {
-                    "a": 1,
-                    "b": 0,
-                    "c": 0,
-                    "d": 1,
-                    "tx": 873.7,
-                    "ty": 7.9
-                },
-                "type": "button",
-                "name": "sound_btn",
-                "images": ["button_up", "button_over", "button_up", "button_up"]
-            },
-            {
-                "x": 8,
-                "y": 681,
-                "width": 181,
-                "height": 31,
-                "matrix": {
-                    "a": 1,
-                    "b": 0,
-                    "c": 0,
-                    "d": 1,
-                    "tx": 8,
-                    "ty": 680.6
-                },
-                "type": "button",
-                "name": "inventory_btn",
-                "images": ["_bg_btn", "_bg_btn", "_bg_btn"]
-            }
-        ],
-        [
-            {
-                "x": 59,
-                "y": 24,
-                "width": 97.45,
-                "height": 25.95,
-                "type": "text",
-                "text": "10/100",
-                "fontName": "impact_21",
-                "fontColor": "0xffffff",
-                "align": "left",
-                "name": "expVal_tf"
-            },
-            {
-                "x": 5,
-                "y": 24,
-                "width": 52.15,
-                "height": 25.95,
-                "type": "text",
-                "text": "Опыт:",
-                "fontName": "impact_21",
-                "fontColor": "0xffffff",
-                "align": "left",
-                "name": "expTitle_tf"
-            },
-            {
-                "x": 81,
-                "y": 1,
-                "width": 75.4,
-                "height": 25.95,
-                "type": "text",
-                "text": "10",
-                "fontName": "impact_21",
-                "fontColor": "0xffffff",
-                "align": "left",
-                "name": "levelVal_tf"
-            },
-            {
-                "x": 8,
-                "y": 1,
-                "width": 71.9,
-                "height": 29.65,
-                "type": "text",
-                "text": "Уровень:",
-                "fontName": "impact_21",
-                "fontColor": "0xffffff",
-                "align": "left",
-                "name": "levelTitle_tf"
-            },
-            {
-                "x": 165,
-                "y": 24,
-                "width": 69.75,
-                "height": 25.95,
-                "type": "text",
-                "text": "Рейтинг:",
-                "fontName": "impact_21",
-                "fontColor": "0xffffff",
-                "align": "left",
-                "name": "ratingTitle_tf"
-            },
-            {
-                "x": 236,
-                "y": 24,
-                "width": 83.65,
-                "height": 25.95,
-                "type": "text",
-                "text": "1022",
-                "fontName": "impact_21",
-                "fontColor": "0xffffff",
-                "align": "left",
-                "name": "ratingVal_tf"
-            },
-            {
-                "x": 166,
-                "y": 0,
-                "width": 43.65,
-                "height": 25.95,
-                "type": "text",
-                "text": "Лига:",
-                "fontName": "impact_21",
-                "fontColor": "0xffffff",
-                "align": "left",
-                "name": "leagueTitle_tf"
-            },
-            {
-                "x": 210,
-                "y": 0,
-                "width": 125.25,
-                "height": 25.95,
-                "type": "text",
-                "text": "Серебро",
-                "fontName": "impact_21",
-                "fontColor": "0xffffff",
-                "align": "left",
-                "name": "leagueVal_tf"
-            },
-            {
-                "x": 468,
-                "y": 10,
-                "width": 62.85,
-                "height": 25.95,
-                "type": "text",
-                "text": "Золото:",
-                "fontName": "impact_21",
-                "fontColor": "0xffffff",
-                "align": "left",
-                "name": "goldTitle_tf"
-            },
-            {
-                "x": 532,
-                "y": 10,
-                "width": 83.65,
-                "height": 25.95,
-                "type": "text",
-                "text": "1022",
-                "fontName": "impact_21",
-                "fontColor": "0xffffff",
-                "align": "left",
-                "name": "goldVal_tf"
-            },
-            {
-                "x": 9,
-                "y": 683,
-                "width": 180,
-                "height": 26,
-                "type": "text",
-                "text": "Кнопка",
-                "fontName": "impact_21",
-                "fontColor": "0xffffff",
-                "align": "center",
-                "name": "inventory_label"
             }
         ]
     ]
@@ -3949,6 +3978,25 @@
                     "align": "center",
                     "name": "name_tf"
                 }
+            ],
+            [
+                {
+                    "x": -1,
+                    "y": 0,
+                    "width": 169,
+                    "height": 169,
+                    "matrix": {
+                        "a": 1,
+                        "b": 0,
+                        "c": 0,
+                        "d": 1,
+                        "tx": -0.849,
+                        "ty": 0
+                    },
+                    "type": "bitmap",
+                    "image": "killed",
+                    "name": "bitmap_killed"
+                }
             ]
         ]
     },
@@ -4194,7 +4242,895 @@
                 }
             ]
         ]
+    },
+    "trapIcon": {
+        "x": 540,
+        "y": 135,
+        "width": 44,
+        "height": 55.15,
+        "matrix": {
+            "a": 1,
+            "b": 0,
+            "c": 0,
+            "d": 1,
+            "tx": 540.45,
+            "ty": 135.05
+        },
+        "type": "movie clip",
+        "linkage": "map.Trap",
+        "name": "trapIcon",
+        "structure": [
+            [
+                {
+                    "x": -14,
+                    "y": -39,
+                    "width": 29,
+                    "height": 39,
+                    "matrix": {
+                        "a": 1,
+                        "b": 0,
+                        "c": 0,
+                        "d": 1,
+                        "tx": -14.499,
+                        "ty": -38.999
+                    },
+                    "type": "bitmap",
+                    "image": "trap_back",
+                    "name": "bitmap_trap_back"
+                }
+            ],
+            [
+                {
+                    "x": -11,
+                    "y": -34,
+                    "width": 19,
+                    "height": 17,
+                    "matrix": {
+                        "a": 1,
+                        "b": 0,
+                        "c": 0,
+                        "d": 1,
+                        "tx": -10.549,
+                        "ty": -34.299
+                    },
+                    "type": "bitmap",
+                    "image": "trap_icon",
+                    "name": "bitmap_trap_icon"
+                }
+            ],
+            [
+                {
+                    "x": -22,
+                    "y": -55,
+                    "width": 44,
+                    "height": 16.15,
+                    "type": "text",
+                    "text": "12ч",
+                    "fontName": "impact_21",
+                    "fontColor": "0xffffff",
+                    "align": "center",
+                    "name": "time_tf"
+                }
+            ],
+            [
+                {
+                    "x": -6,
+                    "y": -53,
+                    "width": 12,
+                    "height": 10.5,
+                    "matrix": {
+                        "a": 1,
+                        "b": 0,
+                        "c": 0,
+                        "d": 1,
+                        "tx": -5.999,
+                        "ty": -52.749
+                    },
+                    "type": "movie clip",
+                    "name": "star",
+                    "structure": [
+                        [
+                            {
+                                "x": 0,
+                                "y": 0,
+                                "width": 12,
+                                "height": 10.5,
+                                "matrix": {
+                                    "a": 0.299530029296875,
+                                    "b": 0,
+                                    "c": 0,
+                                    "d": 0.300140380859375,
+                                    "tx": 0,
+                                    "ty": 0
+                                },
+                                "type": "bitmap",
+                                "image": "star.png",
+                                "name": "bitmap_star.png"
+                            }
+                        ]
+                    ]
+                }
+            ]
+        ]
+    },
+    "chestIcon": {
+        "x": 538,
+        "y": 200,
+        "width": 43,
+        "height": 53.8,
+        "matrix": {
+            "a": 1,
+            "b": 0,
+            "c": 0,
+            "d": 1,
+            "tx": 538.2,
+            "ty": 200.35
+        },
+        "type": "movie clip",
+        "linkage": "map.Chest",
+        "name": "chestIcon",
+        "structure": [
+            [
+                {
+                    "x": -14,
+                    "y": -39,
+                    "width": 29,
+                    "height": 39,
+                    "matrix": {
+                        "a": 1,
+                        "b": 0,
+                        "c": 0,
+                        "d": 1,
+                        "tx": -14.499,
+                        "ty": -38.999
+                    },
+                    "type": "bitmap",
+                    "image": "icon_bg.png",
+                    "name": "bitmap_icon_bg.png"
+                }
+            ],
+            [
+                {
+                    "x": -10,
+                    "y": -38,
+                    "width": 20,
+                    "height": 22,
+                    "matrix": {
+                        "a": 1,
+                        "b": 0,
+                        "c": 0,
+                        "d": 1,
+                        "tx": -10.349,
+                        "ty": -37.749
+                    },
+                    "type": "bitmap",
+                    "image": "chest_icon",
+                    "name": "bitmap_chest_icon"
+                }
+            ],
+            [
+                {
+                    "x": -23,
+                    "y": -54,
+                    "width": 43,
+                    "height": 16.15,
+                    "type": "text",
+                    "text": "12ч",
+                    "fontName": "impact_21",
+                    "fontColor": "0xffffff",
+                    "align": "center",
+                    "name": "time_tf"
+                }
+            ]
+        ]
     }
+}, "trap_popup": {
+    "x": 313,
+    "y": 132,
+    "structure": [
+        [
+            {
+                "x": 0,
+                "y": 0,
+                "width": 400.95,
+                "height": 404,
+                "matrix": {
+                    "a": 3.969818115234375,
+                    "b": 0,
+                    "c": 0,
+                    "d": 4,
+                    "tx": 0.45,
+                    "ty": 0
+                },
+                "type": "movie clip",
+                "structure": [
+                    [
+                        {
+                            "x": 0,
+                            "y": 0,
+                            "width": 101,
+                            "height": 101,
+                            "matrix": {
+                                "a": 1,
+                                "b": 0,
+                                "c": 0,
+                                "d": 1,
+                                "tx": -0.499,
+                                "ty": -0.499
+                            },
+                            "type": "bitmap",
+                            "image": "_bg",
+                            "name": "bitmap__bg"
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            {
+                "x": 367,
+                "y": -2,
+                "width": 30.2,
+                "height": 31,
+                "matrix": {
+                    "a": 1,
+                    "b": 0,
+                    "c": 0,
+                    "d": 1,
+                    "tx": 367,
+                    "ty": -1.999
+                },
+                "type": "button",
+                "name": "close_btn",
+                "images": ["close.png", "close.png", "close.png"]
+            }
+        ],
+        [
+            {
+                "x": 0,
+                "y": 0,
+                "width": 397,
+                "height": 26,
+                "type": "text",
+                "text": "Установить ловушку",
+                "fontName": "impact_21",
+                "fontColor": "0xffffff",
+                "align": "center",
+                "name": "title_tf"
+            }
+        ],
+        [
+            {
+                "x": 18,
+                "y": 61,
+                "width": 171.7,
+                "height": 171.7,
+                "matrix": {
+                    "a": 1,
+                    "b": 0,
+                    "c": 0,
+                    "d": 1,
+                    "tx": 18,
+                    "ty": 61
+                },
+                "type": "movie clip",
+                "linkage": "battle.MonsterInfo",
+                "name": "monster",
+                "structure": [
+                    [
+                        {
+                            "x": 0,
+                            "y": 0,
+                            "width": 171.7,
+                            "height": 171.7,
+                            "matrix": {
+                                "a": 1.6999969482421875,
+                                "b": 0,
+                                "c": 0,
+                                "d": 1.6999969482421875,
+                                "tx": 0,
+                                "ty": 0
+                            },
+                            "type": "movie clip",
+                            "structure": [
+                                [
+                                    {
+                                        "x": 0,
+                                        "y": 0,
+                                        "width": 101,
+                                        "height": 101,
+                                        "matrix": {
+                                            "a": 1,
+                                            "b": 0,
+                                            "c": 0,
+                                            "d": 1,
+                                            "tx": -0.499,
+                                            "ty": -0.499
+                                        },
+                                        "type": "bitmap",
+                                        "image": "_bg",
+                                        "name": "bitmap__bg"
+                                    }
+                                ]
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "x": 0,
+                            "y": 0,
+                            "width": 170,
+                            "height": 170,
+                            "matrix": {
+                                "a": 1,
+                                "b": 0,
+                                "c": 0,
+                                "d": 1,
+                                "tx": 0,
+                                "ty": 0
+                            },
+                            "type": "movie clip",
+                            "name": "icon",
+                            "structure": [
+                                [
+                                    {
+                                        "x": 0,
+                                        "y": 0,
+                                        "width": 170,
+                                        "height": 170,
+                                        "matrix": {
+                                            "a": 1,
+                                            "b": 0,
+                                            "c": 0,
+                                            "d": 1,
+                                            "tx": 0,
+                                            "ty": 0
+                                        },
+                                        "type": "bitmap",
+                                        "image": "mon_1.png",
+                                        "name": "bitmap_mon_1.png"
+                                    }
+                                ]
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "x": 19,
+                            "y": 148,
+                            "width": 27,
+                            "height": 28,
+                            "matrix": {
+                                "a": 1,
+                                "b": 0,
+                                "c": 0,
+                                "d": 1,
+                                "tx": 19,
+                                "ty": 148.3
+                            },
+                            "type": "movie clip",
+                            "name": "armor_icon",
+                            "structure": [
+                                [
+                                    {
+                                        "x": -15,
+                                        "y": -13,
+                                        "width": 27,
+                                        "height": 28,
+                                        "matrix": {
+                                            "a": 1,
+                                            "b": 0,
+                                            "c": 0,
+                                            "d": 1,
+                                            "tx": -14.999,
+                                            "ty": -12.999
+                                        },
+                                        "type": "bitmap",
+                                        "image": "shild.png",
+                                        "name": "bitmap_shild.png"
+                                    }
+                                ]
+                            ]
+                        },
+                        {
+                            "x": 30,
+                            "y": 134,
+                            "width": 31,
+                            "height": 29.65,
+                            "type": "text",
+                            "text": "10",
+                            "fontName": "impact_21",
+                            "fontColor": "0xffffff",
+                            "align": "left",
+                            "name": "armor_tf"
+                        },
+                        {
+                            "x": 19,
+                            "y": 121,
+                            "width": 27,
+                            "height": 28,
+                            "matrix": {
+                                "a": 1,
+                                "b": 0,
+                                "c": 0,
+                                "d": 1,
+                                "tx": 19,
+                                "ty": 121.3
+                            },
+                            "type": "movie clip",
+                            "name": "damage_icon",
+                            "structure": [
+                                [
+                                    {
+                                        "x": -15,
+                                        "y": -13,
+                                        "width": 27,
+                                        "height": 28,
+                                        "matrix": {
+                                            "a": 1,
+                                            "b": 0,
+                                            "c": 0,
+                                            "d": 1,
+                                            "tx": -14.999,
+                                            "ty": -12.999
+                                        },
+                                        "type": "bitmap",
+                                        "image": "shild.png",
+                                        "name": "bitmap_shild.png"
+                                    }
+                                ]
+                            ]
+                        },
+                        {
+                            "x": 30,
+                            "y": 107,
+                            "width": 31,
+                            "height": 29.65,
+                            "type": "text",
+                            "text": "10",
+                            "fontName": "impact_21",
+                            "fontColor": "0xffffff",
+                            "align": "left",
+                            "name": "damage_tf"
+                        },
+                        {
+                            "x": 19,
+                            "y": 93,
+                            "width": 27,
+                            "height": 28,
+                            "matrix": {
+                                "a": 1,
+                                "b": 0,
+                                "c": 0,
+                                "d": 1,
+                                "tx": 19,
+                                "ty": 93.3
+                            },
+                            "type": "movie clip",
+                            "name": "hp_icon",
+                            "structure": [
+                                [
+                                    {
+                                        "x": -15,
+                                        "y": -13,
+                                        "width": 27,
+                                        "height": 28,
+                                        "matrix": {
+                                            "a": 1,
+                                            "b": 0,
+                                            "c": 0,
+                                            "d": 1,
+                                            "tx": -14.999,
+                                            "ty": -12.999
+                                        },
+                                        "type": "bitmap",
+                                        "image": "shild.png",
+                                        "name": "bitmap_shild.png"
+                                    }
+                                ]
+                            ]
+                        },
+                        {
+                            "x": 30,
+                            "y": 79,
+                            "width": 31,
+                            "height": 29.65,
+                            "type": "text",
+                            "text": "10",
+                            "fontName": "impact_21",
+                            "fontColor": "0xffffff",
+                            "align": "left",
+                            "name": "hp_tf"
+                        },
+                        {
+                            "x": 152,
+                            "y": 149,
+                            "width": 27,
+                            "height": 28,
+                            "matrix": {
+                                "a": 1,
+                                "b": 0,
+                                "c": 0,
+                                "d": 1,
+                                "tx": 152,
+                                "ty": 149.3
+                            },
+                            "type": "movie clip",
+                            "name": "damage_type_icon",
+                            "structure": [
+                                [
+                                    {
+                                        "x": -15,
+                                        "y": -13,
+                                        "width": 27,
+                                        "height": 28,
+                                        "matrix": {
+                                            "a": 1,
+                                            "b": 0,
+                                            "c": 0,
+                                            "d": 1,
+                                            "tx": -14.999,
+                                            "ty": -12.999
+                                        },
+                                        "type": "bitmap",
+                                        "image": "shild.png",
+                                        "name": "bitmap_shild.png"
+                                    }
+                                ]
+                            ]
+                        },
+                        {
+                            "x": 0,
+                            "y": 0,
+                            "width": 170,
+                            "height": 29.65,
+                            "type": "text",
+                            "text": "Name lv",
+                            "fontName": "impact_21",
+                            "fontColor": "0xffffff",
+                            "align": "center",
+                            "name": "name_tf"
+                        }
+                    ],
+                    [
+                        {
+                            "x": -1,
+                            "y": 0,
+                            "width": 169,
+                            "height": 169,
+                            "matrix": {
+                                "a": 1,
+                                "b": 0,
+                                "c": 0,
+                                "d": 1,
+                                "tx": -0.849,
+                                "ty": 0
+                            },
+                            "type": "bitmap",
+                            "image": "killed",
+                            "name": "bitmap_killed"
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            {
+                "x": 18,
+                "y": 350,
+                "width": 167.5,
+                "height": 31,
+                "matrix": {
+                    "a": 0.925445556640625,
+                    "b": 0,
+                    "c": 0,
+                    "d": 1,
+                    "tx": 17.65,
+                    "ty": 349.5
+                },
+                "type": "button",
+                "name": "setNow_btn",
+                "images": ["_bg_btn", "_bg_btn", "_bg_btn"]
+            }
+        ],
+        [
+            {
+                "x": 18,
+                "y": 352,
+                "width": 164.85,
+                "height": 26,
+                "type": "text",
+                "text": "Кнопка",
+                "fontName": "impact_21",
+                "fontColor": "0xffffff",
+                "align": "center",
+                "name": "setNow_label"
+            }
+        ],
+        [
+            {
+                "x": 18,
+                "y": 302,
+                "width": 169,
+                "height": 31,
+                "matrix": {
+                    "a": 0.93377685546875,
+                    "b": 0,
+                    "c": 0,
+                    "d": 1,
+                    "tx": 17.65,
+                    "ty": 301.5
+                },
+                "type": "button",
+                "name": "set6h_btn",
+                "images": ["_bg_btn", "_bg_btn", "_bg_btn"]
+            }
+        ],
+        [
+            {
+                "x": 18,
+                "y": 304,
+                "width": 166.35,
+                "height": 26,
+                "type": "text",
+                "text": "Кнопка",
+                "fontName": "impact_21",
+                "fontColor": "0xffffff",
+                "align": "center",
+                "name": "set6h_label"
+            }
+        ],
+        [
+            {
+                "x": 18,
+                "y": 251,
+                "width": 170.15,
+                "height": 31,
+                "matrix": {
+                    "a": 0.94012451171875,
+                    "b": 0,
+                    "c": 0,
+                    "d": 1,
+                    "tx": 17.6,
+                    "ty": 250.5
+                },
+                "type": "button",
+                "name": "set1h_btn",
+                "images": ["_bg_btn", "_bg_btn", "_bg_btn"]
+            }
+        ],
+        [
+            {
+                "x": 18,
+                "y": 253,
+                "width": 166.35,
+                "height": 26,
+                "type": "text",
+                "text": "Кнопка",
+                "fontName": "impact_21",
+                "fontColor": "0xffffff",
+                "align": "center",
+                "name": "set1h_label"
+            }
+        ]
+    ]
+}, "hunt_steps": {
+    "x": 99,
+    "y": 126,
+    "structure": [
+        [
+            {
+                "x": 3,
+                "y": 0,
+                "width": 823.05,
+                "height": 450,
+                "matrix": {
+                    "a": 8.149017333984375,
+                    "b": 0,
+                    "c": 0,
+                    "d": 4.4554443359375,
+                    "tx": 2.55,
+                    "ty": 0.2
+                },
+                "type": "movie clip",
+                "structure": [
+                    [
+                        {
+                            "x": 0,
+                            "y": 0,
+                            "width": 101,
+                            "height": 101,
+                            "matrix": {
+                                "a": 1,
+                                "b": 0,
+                                "c": 0,
+                                "d": 1,
+                                "tx": -0.499,
+                                "ty": -0.499
+                            },
+                            "type": "bitmap",
+                            "image": "_bg",
+                            "name": "bitmap__bg"
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            {
+                "x": 321,
+                "y": 399,
+                "width": 181,
+                "height": 31,
+                "matrix": {
+                    "a": 1,
+                    "b": 0,
+                    "c": 0,
+                    "d": 1,
+                    "tx": 320.95,
+                    "ty": 399
+                },
+                "type": "button",
+                "name": "play_btn",
+                "images": ["_bg_btn", "_bg_btn", "_bg_btn"]
+            }
+        ],
+        [
+            {
+                "x": 321,
+                "y": 401,
+                "width": 180,
+                "height": 26,
+                "type": "text",
+                "text": "Кнопка",
+                "fontName": "impact_21",
+                "fontColor": "0xffffff",
+                "align": "center",
+                "name": "play_label"
+            }
+        ],
+        [
+            {
+                "x": 788,
+                "y": -2,
+                "width": 30.2,
+                "height": 31,
+                "matrix": {
+                    "a": 1,
+                    "b": 0,
+                    "c": 0,
+                    "d": 1,
+                    "tx": 788,
+                    "ty": -1.999
+                },
+                "type": "button",
+                "name": "close_btn",
+                "images": ["close.png", "close.png", "close.png"]
+            }
+        ],
+        [
+            {
+                "x": 0,
+                "y": 0,
+                "width": 819.95,
+                "height": 26,
+                "type": "text",
+                "text": "Охота на монстра",
+                "fontName": "impact_21",
+                "fontColor": "0xffffff",
+                "align": "center",
+                "name": "title_tf"
+            },
+            {
+                "x": 0,
+                "y": 354,
+                "width": 819.95,
+                "height": 26,
+                "type": "text",
+                "text": "Награда",
+                "fontName": "impact_21",
+                "fontColor": "0xffffff",
+                "align": "center",
+                "name": "reward_tf"
+            }
+        ],
+        [],
+        [
+            {
+                "x": 113,
+                "y": 267,
+                "width": 48,
+                "height": 48,
+                "matrix": {
+                    "a": 1,
+                    "b": 0,
+                    "c": 0,
+                    "d": 1,
+                    "tx": 113,
+                    "ty": 267.05
+                },
+                "type": "bitmap",
+                "image": "chip_2.png",
+                "name": "bitmap_chip_2.png"
+            }
+        ],
+        [
+            {
+                "x": 259,
+                "y": 131,
+                "width": 27,
+                "height": 67,
+                "matrix": {
+                    "a": 1,
+                    "b": 0,
+                    "c": 0,
+                    "d": 1,
+                    "tx": 258.6,
+                    "ty": 131.35
+                },
+                "type": "movie clip",
+                "name": "arrow1",
+                "structure": [
+                    [
+                        {
+                            "x": 0,
+                            "y": 0,
+                            "width": 27,
+                            "height": 67,
+                            "matrix": {
+                                "a": 1,
+                                "b": 0,
+                                "c": 0,
+                                "d": 1,
+                                "tx": 0,
+                                "ty": 0
+                            },
+                            "type": "bitmap",
+                            "image": "next",
+                            "name": "bitmap_next"
+                        }
+                    ]
+                ]
+            },
+            {
+                "x": 531,
+                "y": 127,
+                "width": 27,
+                "height": 67,
+                "matrix": {
+                    "a": 1,
+                    "b": 0,
+                    "c": 0,
+                    "d": 1,
+                    "tx": 530.65,
+                    "ty": 127.35
+                },
+                "type": "movie clip",
+                "name": "arrow2",
+                "structure": [
+                    [
+                        {
+                            "x": 0,
+                            "y": 0,
+                            "width": 27,
+                            "height": 67,
+                            "matrix": {
+                                "a": 1,
+                                "b": 0,
+                                "c": 0,
+                                "d": 1,
+                                "tx": 0,
+                                "ty": 0
+                            },
+                            "type": "bitmap",
+                            "image": "next",
+                            "name": "bitmap_next"
+                        }
+                    ]
+                ]
+            }
+        ]
+    ]
 }, "hunt_popup": {
     "x": 350,
     "y": 161,
@@ -4528,6 +5464,25 @@
                             "fontColor": "0xffffff",
                             "align": "center",
                             "name": "name_tf"
+                        }
+                    ],
+                    [
+                        {
+                            "x": -1,
+                            "y": 0,
+                            "width": 169,
+                            "height": 169,
+                            "matrix": {
+                                "a": 1,
+                                "b": 0,
+                                "c": 0,
+                                "d": 1,
+                                "tx": -0.849,
+                                "ty": 0
+                            },
+                            "type": "bitmap",
+                            "image": "killed",
+                            "name": "bitmap_killed"
                         }
                     ]
                 ]
@@ -8843,6 +9798,25 @@
                                         "align": "center",
                                         "name": "name_tf"
                                     }
+                                ],
+                                [
+                                    {
+                                        "x": -1,
+                                        "y": 0,
+                                        "width": 169,
+                                        "height": 169,
+                                        "matrix": {
+                                            "a": 1,
+                                            "b": 0,
+                                            "c": 0,
+                                            "d": 1,
+                                            "tx": -0.849,
+                                            "ty": 0
+                                        },
+                                        "type": "bitmap",
+                                        "image": "killed",
+                                        "name": "bitmap_killed"
+                                    }
                                 ]
                             ]
                         },
@@ -9137,6 +10111,25 @@
                                         "align": "center",
                                         "name": "name_tf"
                                     }
+                                ],
+                                [
+                                    {
+                                        "x": -1,
+                                        "y": 0,
+                                        "width": 169,
+                                        "height": 169,
+                                        "matrix": {
+                                            "a": 1,
+                                            "b": 0,
+                                            "c": 0,
+                                            "d": 1,
+                                            "tx": -0.849,
+                                            "ty": 0
+                                        },
+                                        "type": "bitmap",
+                                        "image": "killed",
+                                        "name": "bitmap_killed"
+                                    }
                                 ]
                             ]
                         },
@@ -9430,6 +10423,25 @@
                                         "fontColor": "0xffffff",
                                         "align": "center",
                                         "name": "name_tf"
+                                    }
+                                ],
+                                [
+                                    {
+                                        "x": -1,
+                                        "y": 0,
+                                        "width": 169,
+                                        "height": 169,
+                                        "matrix": {
+                                            "a": 1,
+                                            "b": 0,
+                                            "c": 0,
+                                            "d": 1,
+                                            "tx": -0.849,
+                                            "ty": 0
+                                        },
+                                        "type": "bitmap",
+                                        "image": "killed",
+                                        "name": "bitmap_killed"
                                     }
                                 ]
                             ]
