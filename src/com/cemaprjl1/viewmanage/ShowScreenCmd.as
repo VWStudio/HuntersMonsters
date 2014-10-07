@@ -5,11 +5,11 @@
  * Time: 11:07
  * To change this template use File | Settings | File Templates.
  */
-package com.cemaprjl.viewmanage {
+package com.cemaprjl1.viewmanage {
 import com.agnither.hunters.view.ui.UI;
 import com.agnither.ui.AbstractView;
-import com.cemaprjl.core.ICommand;
-import com.cemaprjl.core.coreDispatch;
+import com.cemaprjl1.core.ICommand;
+import com.cemaprjl1.core.coreDispatch;
 
 public class ShowScreenCmd implements ICommand {
 

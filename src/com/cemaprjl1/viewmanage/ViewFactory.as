@@ -5,7 +5,7 @@
  * Time: 10:47
  * To change this template use File | Settings | File Templates.
  */
-package com.cemaprjl.viewmanage {
+package com.cemaprjl1.viewmanage {
 
 import com.agnither.ui.AbstractView;
 

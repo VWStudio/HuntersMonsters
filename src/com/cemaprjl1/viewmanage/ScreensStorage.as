@@ -1,7 +1,7 @@
 /**
  * Created by mor on 11.12.13.
  */
-package com.cemaprjl.viewmanage {
+package com.cemaprjl1.viewmanage {
 import com.agnither.hunters.view.ui.popups.InventoryPopup;
 import com.agnither.hunters.view.ui.popups.SelectMonsterPopup;
 import com.agnither.hunters.view.ui.popups.hunt.HuntStepsPopup;

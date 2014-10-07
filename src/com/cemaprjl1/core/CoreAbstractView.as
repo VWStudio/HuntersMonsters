@@ -1,10 +1,10 @@
-package com.cemaprjl.core {
+package com.cemaprjl1.core {
 import flash.display.DisplayObject;
 import flash.display.Sprite;
 import flash.events.EventDispatcher;
 
 /**
- * @author com.cemaprjl
+ * @author com.cemaprjl1
  */
 public class CoreAbstractView extends EventDispatcher {
 

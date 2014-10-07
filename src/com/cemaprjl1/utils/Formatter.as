@@ -5,7 +5,7 @@
  * Time: 13:22
  * To change this template use File | Settings | File Templates.
  */
-package com.cemaprjl.utils {
+package com.cemaprjl1.utils {
 public class Formatter {
 
     public static function plural(count : Number, form1:String,  form2:String, form5:String):String {

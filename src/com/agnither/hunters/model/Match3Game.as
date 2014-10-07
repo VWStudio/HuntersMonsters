@@ -17,9 +17,9 @@ import com.agnither.hunters.model.player.personage.Personage;
 import com.agnither.hunters.view.ui.screens.battle.match3.FieldView;
 import com.agnither.hunters.view.ui.screens.battle.player.inventory.BattleInventoryView;
 import com.agnither.hunters.view.ui.screens.map.MapScreen;
-import com.cemaprjl.core.coreDispatch;
-import com.cemaprjl.core.coreExecute;
-import com.cemaprjl.viewmanage.ShowScreenCmd;
+import com.cemaprjl1.core.coreDispatch;
+import com.cemaprjl1.core.coreExecute;
+import com.cemaprjl1.viewmanage.ShowScreenCmd;
 
 import starling.display.Stage;
 

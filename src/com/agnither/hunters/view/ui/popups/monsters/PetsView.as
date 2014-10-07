@@ -10,7 +10,7 @@ import com.agnither.hunters.view.ui.popups.monsters.PetView;
 import com.agnither.hunters.view.ui.popups.monsters.PetsView;
 import com.agnither.ui.AbstractView;
 import com.agnither.utils.CommonRefs;
-import com.cemaprjl.core.coreDispatch;
+import com.cemaprjl1.core.coreDispatch;
 
 import starling.events.Touch;
 import starling.events.TouchEvent;

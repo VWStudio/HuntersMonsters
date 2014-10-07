@@ -5,7 +5,7 @@ package com.agnither.hunters.model.player {
 import com.agnither.hunters.data.outer.PlayerVO;
 import com.agnither.hunters.model.player.inventory.Item;
 import com.agnither.hunters.model.player.personage.Progress;
-import com.cemaprjl.core.coreAddListener;
+import com.cemaprjl1.core.coreAddListener;
 
 import flash.net.SharedObject;
 

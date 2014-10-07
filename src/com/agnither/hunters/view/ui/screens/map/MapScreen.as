@@ -10,10 +10,10 @@ import com.agnither.hunters.model.player.LocalPlayer;
 import com.agnither.hunters.view.ui.screens.battle.monster.MonsterArea;
 import com.agnither.hunters.view.ui.screens.battle.monster.TrapPopup;
 import com.agnither.ui.Screen;
-import com.cemaprjl.core.coreAddListener;
-import com.cemaprjl.core.coreDispatch;
-import com.cemaprjl.core.coreExecute;
-import com.cemaprjl.viewmanage.ShowPopupCmd;
+import com.cemaprjl1.core.coreAddListener;
+import com.cemaprjl1.core.coreDispatch;
+import com.cemaprjl1.core.coreExecute;
+import com.cemaprjl1.viewmanage.ShowPopupCmd;
 
 import flash.geom.Point;
 

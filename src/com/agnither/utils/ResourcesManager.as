@@ -4,7 +4,7 @@
 package com.agnither.utils {
 import com.agnither.hunters.data.Config;
 import com.agnither.hunters.utils.DeviceResInfo;
-import com.cemaprjl.core.coreDispatch;
+import com.cemaprjl1.core.coreDispatch;
 
 import starling.utils.AssetManager;
 

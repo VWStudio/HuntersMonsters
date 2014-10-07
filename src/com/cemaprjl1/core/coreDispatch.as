@@ -1,4 +1,4 @@
-package com.cemaprjl.core {
+package com.cemaprjl1.core {
 /**
  * @author mor
  */

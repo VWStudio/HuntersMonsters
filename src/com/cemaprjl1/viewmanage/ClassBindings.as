@@ -1,7 +1,7 @@
 /**
  * Created by mor on 22.09.2014.
  */
-package com.cemaprjl.viewmanage {
+package com.cemaprjl1.viewmanage {
 import com.agnither.hunters.view.ui.common.ManaView;
 import com.agnither.hunters.view.ui.common.TabView;
 import com.agnither.hunters.view.ui.screens.battle.monster.MonsterArea;

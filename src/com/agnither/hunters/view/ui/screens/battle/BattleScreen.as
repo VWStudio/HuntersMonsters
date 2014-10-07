@@ -21,11 +21,11 @@ import com.agnither.hunters.view.ui.screens.battle.player.inventory.BattleInvent
 import com.agnither.hunters.view.ui.screens.map.MapScreen;
 import com.agnither.ui.Screen;
 import com.agnither.utils.CommonRefs;
-import com.cemaprjl.core.coreAddListener;
-import com.cemaprjl.core.coreExecute;
-import com.cemaprjl.core.coreRemoveListener;
-import com.cemaprjl.viewmanage.ShowPopupCmd;
-import com.cemaprjl.viewmanage.ShowScreenCmd;
+import com.cemaprjl1.core.coreAddListener;
+import com.cemaprjl1.core.coreExecute;
+import com.cemaprjl1.core.coreRemoveListener;
+import com.cemaprjl1.viewmanage.ShowPopupCmd;
+import com.cemaprjl1.viewmanage.ShowScreenCmd;
 
 import starling.display.Button;
 import starling.display.Sprite;

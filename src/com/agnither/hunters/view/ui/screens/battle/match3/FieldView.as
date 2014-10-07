@@ -6,7 +6,7 @@ import com.agnither.hunters.model.match3.Chip;
 import com.agnither.hunters.model.match3.Field;
 import com.agnither.ui.AbstractView;
 import com.agnither.utils.CommonRefs;
-import com.cemaprjl.core.coreAddListener;
+import com.cemaprjl1.core.coreAddListener;
 
 import starling.display.Sprite;
 import starling.events.Event;
