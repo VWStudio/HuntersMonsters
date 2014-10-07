@@ -12,7 +12,7 @@ import com.agnither.hunters.model.player.LocalPlayer;
 import com.agnither.ui.ButtonContainer;
 import com.agnither.ui.Popup;
 import com.agnither.ui.Screen;
-import com.cemaprjl1.core.coreDispatch;
+import com.cemaprjl.core.coreDispatch;
 
 import flash.geom.Point;
 import flash.ui.Mouse;

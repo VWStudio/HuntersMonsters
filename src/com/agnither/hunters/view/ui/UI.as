@@ -21,10 +21,10 @@ import com.agnither.hunters.view.ui.screens.map.MonsterPoint;
 import com.agnither.ui.AbstractView;
 import com.agnither.ui.Popup;
 import com.agnither.ui.Screen;
-import com.cemaprjl1.core.coreAddListener;
-import com.cemaprjl1.viewmanage.ClassBindings;
-import com.cemaprjl1.viewmanage.ScreensStorage;
-import com.cemaprjl1.viewmanage.ViewFactory;
+import com.cemaprjl.core.coreAddListener;
+import com.cemaprjl.viewmanage.ClassBindings;
+import com.cemaprjl.viewmanage.ScreensStorage;
+import com.cemaprjl.viewmanage.ViewFactory;
 
 import flash.net.registerClassAlias;
 

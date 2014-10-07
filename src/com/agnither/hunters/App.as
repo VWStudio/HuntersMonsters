@@ -19,12 +19,12 @@ import com.agnither.hunters.view.ui.screens.map.ChestPoint;
 import com.agnither.hunters.view.ui.screens.map.MapScreen;
 import com.agnither.utils.CommonRefs;
 import com.agnither.utils.ResourcesManager;
-import com.cemaprjl1.core.coreAddListener;
-import com.cemaprjl1.core.coreDispatch;
-import com.cemaprjl1.core.coreExecute;
-import com.cemaprjl1.core.coreRemoveListener;
-import com.cemaprjl1.viewmanage.ShowScreenCmd;
-import com.cemaprjl1.viewmanage.ViewFactory;
+import com.cemaprjl.core.coreAddListener;
+import com.cemaprjl.core.coreDispatch;
+import com.cemaprjl.core.coreExecute;
+import com.cemaprjl.core.coreRemoveListener;
+import com.cemaprjl.viewmanage.ShowScreenCmd;
+import com.cemaprjl.viewmanage.ViewFactory;
 
 import flash.utils.Dictionary;
 

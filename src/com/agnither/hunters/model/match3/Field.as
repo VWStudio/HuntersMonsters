@@ -3,7 +3,7 @@
  */
 package com.agnither.hunters.model.match3 {
 import com.agnither.hunters.data.outer.ChipVO;
-import com.cemaprjl1.core.coreDispatch;
+import com.cemaprjl.core.coreDispatch;
 
 import flash.geom.Point;
 import flash.utils.Dictionary;

@@ -10,10 +10,10 @@ import com.agnither.hunters.view.ui.popups.InventoryPopup;
 import com.agnither.hunters.view.ui.screens.map.MapScreen;
 import com.agnither.ui.ButtonContainer;
 import com.agnither.ui.Screen;
-import com.cemaprjl1.core.coreAddListener;
-import com.cemaprjl1.core.coreDispatch;
-import com.cemaprjl1.core.coreExecute;
-import com.cemaprjl1.viewmanage.ShowPopupCmd;
+import com.cemaprjl.core.coreAddListener;
+import com.cemaprjl.core.coreDispatch;
+import com.cemaprjl.core.coreExecute;
+import com.cemaprjl.viewmanage.ShowPopupCmd;
 
 import starling.display.Button;
 import starling.events.Event;

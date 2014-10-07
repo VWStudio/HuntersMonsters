@@ -11,7 +11,7 @@ import com.agnither.hunters.view.ui.popups.inventory.ItemsView;
 import com.agnither.hunters.view.ui.common.TabView;
 import com.agnither.ui.Popup;
 import com.agnither.utils.CommonRefs;
-import com.cemaprjl1.core.coreDispatch;
+import com.cemaprjl.core.coreDispatch;
 
 import starling.display.Button;
 import starling.display.Sprite;

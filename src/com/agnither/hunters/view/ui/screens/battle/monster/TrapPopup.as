@@ -9,7 +9,7 @@ import com.agnither.hunters.view.ui.UI;
 import com.agnither.hunters.view.ui.screens.map.MapScreen;
 import com.agnither.ui.ButtonContainer;
 import com.agnither.ui.Popup;
-import com.cemaprjl1.core.coreDispatch;
+import com.cemaprjl.core.coreDispatch;
 
 import starling.display.Image;
 import starling.events.Event;

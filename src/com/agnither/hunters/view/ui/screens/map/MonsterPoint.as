@@ -10,9 +10,9 @@ import com.agnither.hunters.view.ui.UI;
 import com.agnither.hunters.view.ui.popups.hunt.HuntPopup;
 import com.agnither.ui.AbstractView;
 import com.agnither.utils.CommonRefs;
-import com.cemaprjl1.core.coreDispatch;
-import com.cemaprjl1.core.coreExecute;
-import com.cemaprjl1.viewmanage.ShowPopupCmd;
+import com.cemaprjl.core.coreDispatch;
+import com.cemaprjl.core.coreExecute;
+import com.cemaprjl.viewmanage.ShowPopupCmd;
 
 import flash.ui.Mouse;
 import flash.ui.MouseCursor;

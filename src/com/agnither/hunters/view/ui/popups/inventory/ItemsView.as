@@ -8,7 +8,7 @@ import com.agnither.hunters.view.ui.screens.battle.player.inventory.*;
 import com.agnither.hunters.model.player.inventory.Inventory;
 import com.agnither.ui.AbstractView;
 import com.agnither.utils.CommonRefs;
-import com.cemaprjl1.core.coreDispatch;
+import com.cemaprjl.core.coreDispatch;
 
 import flash.ui.Mouse;
 import flash.ui.MouseCursor;

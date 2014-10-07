@@ -6,9 +6,9 @@ import com.agnither.hunters.App;
 import com.agnither.hunters.data.outer.MonsterVO;
 import com.agnither.hunters.view.ui.screens.battle.monster.TrapPopup;
 import com.agnither.ui.AbstractView;
-import com.cemaprjl1.core.coreExecute;
-import com.cemaprjl1.utils.Formatter;
-import com.cemaprjl1.viewmanage.ShowPopupCmd;
+import com.cemaprjl.core.coreExecute;
+import com.cemaprjl.utils.Formatter;
+import com.cemaprjl.viewmanage.ShowPopupCmd;
 
 import flash.ui.Mouse;
 import flash.ui.MouseCursor;
