@@ -64,7 +64,7 @@ public class TrapPopup extends Popup {
 
     override public function update() : void {
 
-        _monsterVO = MonsterVO.AREA[data.id][0];
+        _monsterVO = MonsterVO.DICT[data.id];
         _monster.data = _monsterVO;
         _monster.update();
         _set1hButton.visible = false;

@@ -19,7 +19,7 @@ public class Pet extends EventDispatcher {
     }
 
     protected var _monster: MonsterVO;
-    public function get id():int {
+    public function get id():String {
         return _monster.id;
     }
     public function get name():String {

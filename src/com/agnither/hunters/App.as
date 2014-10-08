@@ -41,13 +41,14 @@ public class App extends Sprite {
     private var _refs : CommonRefs;
     private var _ui : UI;
 
-    private static var _instance : App;
     public var monsterAreas : Dictionary = new Dictionary();
     public var unlockedMonsters : Array = ["blue_bull"];
     public static const UPDATE_PROGRESS : String = "App.UPDATE_PROGRESS";
     public var chestStep : int = -1;
     public var steps : Vector.<MonsterVO>;
     public var chest : ChestPoint;
+
+    private static var _instance : App;
     public static function get instance() : App {
         if (!_instance)
         {
@@ -105,8 +106,8 @@ public class App extends Sprite {
 
         _monstersResults[_monster.id] = 1 + int(Math.random() * 3);
         var monsterToUnlock : MonsterVO = MonsterVO.DICT[_monster.unlock];
-        if(unlockedMonsters.indexOf(monsterToUnlock.name) == -1) {
-            unlockedMonsters.push(monsterToUnlock.name);
+        if(unlockedMonsters.indexOf(monsterToUnlock.id) == -1) {
+            unlockedMonsters.push(monsterToUnlock.id);
             _monstersResults[monsterToUnlock.id] = 0;
         }
 

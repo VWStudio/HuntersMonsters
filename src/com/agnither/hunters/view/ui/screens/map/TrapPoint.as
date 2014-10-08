@@ -53,15 +53,15 @@ public class TrapPoint extends AbstractView {
                 case TouchPhase.ENDED :
                     if (_timeleft > 0)
                     {
-                        coreExecute(ShowPopupCmd, TrapPopup.NAME, {id: _monsterType.name, mode: TrapPopup.CHECK_MODE, marker: this});
+                        coreExecute(ShowPopupCmd, TrapPopup.NAME, {id: _monsterType.id, mode: TrapPopup.CHECK_MODE, marker: this});
                     }
                     else if (_monsterCaught)
                     {
-                        coreExecute(ShowPopupCmd, TrapPopup.NAME, {id: _monsterType.name, mode: TrapPopup.REWARD_MODE, marker: this});
+                        coreExecute(ShowPopupCmd, TrapPopup.NAME, {id: _monsterType.id, mode: TrapPopup.REWARD_MODE, marker: this});
                     }
                     else
                     {
-                        coreExecute(ShowPopupCmd, TrapPopup.NAME, {id: _monsterType.name, mode: TrapPopup.DELETE_MODE, marker: this});
+                        coreExecute(ShowPopupCmd, TrapPopup.NAME, {id: _monsterType.id, mode: TrapPopup.DELETE_MODE, marker: this});
                     }
                     break;
             }

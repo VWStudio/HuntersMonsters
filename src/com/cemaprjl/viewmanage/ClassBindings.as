@@ -11,6 +11,7 @@ import com.agnither.hunters.view.ui.screens.battle.player.DropSlotView;
 import com.agnither.hunters.view.ui.screens.battle.player.ManaListView;
 import com.agnither.hunters.view.ui.screens.battle.player.PersonageView;
 import com.agnither.hunters.view.ui.screens.map.ChestPoint;
+import com.agnither.hunters.view.ui.screens.map.HousePoint;
 import com.agnither.hunters.view.ui.screens.map.PlayerPoint;
 import com.agnither.hunters.view.ui.screens.map.StarsBar;
 import com.agnither.hunters.view.ui.screens.map.MonsterPoint;
@@ -27,6 +28,7 @@ public class ClassBindings {
         registerClassAlias("map.MonsterArea", MonsterArea);
         registerClassAlias("map.Trap", TrapPoint);
         registerClassAlias("map.Chest", ChestPoint);
+        registerClassAlias("map.House", HousePoint);
 
         registerClassAlias("common.TabView", TabView);
         registerClassAlias("common.ManaView", ManaView);

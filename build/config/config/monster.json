@@ -1,7 +1,7 @@
 [
     {
-        "id": 1,
-        "name": "blue_bull",
+        "id": "blue_bull",
+        "name": "Синий бык",
         "area": 0,
         "picture": "monster_1.png",
         "level": 1,
@@ -12,26 +12,11 @@
         "difficulty": 10,
         "drop": 1,
         "items": "4,6,13,14",
-        "unlock": 3
+        "unlock": "pikachu"
     },
     {
-        "id": 2,
-        "name": "blue_bull",
-        "area": 0,
-        "picture": "monster_1.png",
-        "level": 2,
-        "hp": 200,
-        "damage": 8,
-        "defence": 10,
-        "magic": 6,
-        "difficulty": 50,
-        "drop": 1,
-        "items": "4,6,13,14",
-        "unlock": 3
-    },
-    {
-        "id": 3,
-        "name": "pikachu",
+        "id": "pikachu",
+        "name": "Пикачу",
         "area": "clouds_01",
         "picture": "monster_2.png",
         "level": 1,
@@ -42,11 +27,11 @@
         "difficulty": 20,
         "drop": 1,
         "items": "13,14,15",
-        "unlock": 4
+        "unlock": "meowut"
     },
     {
-        "id": 4,
-        "name": "meowut",
+        "id": "meowut",
+        "name": "Мяут",
         "area": "clouds_02",
         "picture": "monster_1.png",
         "level": 1,
@@ -57,11 +42,11 @@
         "difficulty": 20,
         "drop": 1,
         "items": "4,6,13,14",
-        "unlock": 5
+        "unlock": "slowpoke"
     },
     {
-        "id": 5,
-        "name": "slowpoke",
+        "id": "slowpoke",
+        "name": "Слоупок",
         "area": "clouds_03",
         "picture": "monster_2.png",
         "level": 1,
@@ -72,11 +57,11 @@
         "difficulty": 20,
         "drop": 1,
         "items": "4,6,13,15",
-        "unlock": 6
+        "unlock": "charmander"
     },
     {
-        "id": 6,
-        "name": "charmander",
+        "id": "charmander",
+        "name": "Чармандер",
         "area": "clouds_04",
         "picture": "monster_1.png",
         "level": 1,
@@ -87,11 +72,11 @@
         "difficulty": 20,
         "drop": 1,
         "items": "4,6,13,14",
-        "unlock": 7
+        "unlock": "bulbasaur"
     },
     {
-        "id": 7,
-        "name": "bulbasaur",
+        "id": "bulbasaur",
+        "name": "Бульбазавр",
         "area": "clouds_05",
         "picture": "monster_2.png",
         "level": 1,
@@ -102,11 +87,11 @@
         "difficulty": 20,
         "drop": 1,
         "items": "4,6,13,14",
-        "unlock": 8
+        "unlock": "squirtle"
     },
     {
-        "id": 8,
-        "name": "squirtle",
+        "id": "squirtle",
+        "name": "Сквиртл",
         "area": "clouds_06",
         "picture": "monster_1.png",
         "level": 1,
@@ -117,11 +102,11 @@
         "difficulty": 20,
         "drop": 1,
         "items": "4,6,13,14",
-        "unlock": 9
+        "unlock": "pidgey"
     },
     {
-        "id": 9,
-        "name": "pidgey",
+        "id": "pidgey",
+        "name": "Пиджей",
         "area": "clouds_07",
         "picture": "monster_2.png",
         "level": 1,
@@ -132,11 +117,11 @@
         "difficulty": 20,
         "drop": 1,
         "items": "4,6,13,14",
-        "unlock": 10
+        "unlock": "ratata"
     },
     {
-        "id": 10,
-        "name": "ratata",
+        "id": "ratata",
+        "name": "Ратата",
         "area": "clouds_08",
         "picture": "monster_2.png",
         "level": 1,
@@ -147,11 +132,11 @@
         "difficulty": 20,
         "drop": 1,
         "items": "4,6,13,14",
-        "unlock": 11
+        "unlock": "zubat"
     },
     {
-        "id": 11,
-        "name": "zubat",
+        "id": "zubat",
+        "name": "Зубат",
         "area": "clouds_09",
         "picture": "monster_2.png",
         "level": 1,
@@ -161,7 +146,6 @@
         "magic": 5,
         "difficulty": 20,
         "drop": 1,
-        "items": "4,6,13,15",
-        "unlock": 11
+        "items": "4,6,13,15"
     }
 ]

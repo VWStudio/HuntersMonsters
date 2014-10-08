@@ -43,21 +43,17 @@ public class MonsterVO extends PersonageVO {
 
             LIST.push(object);
             DICT[object.id] = object;
-
-            if(!AREA[object.name]) {
-                AREA[object.name] = new <MonsterVO>[];
-            }
-            AREA[object.name].push(object);
+//            AREA[object.id] = object;
 //            trace(object.name, AREA[object.name].length)
         }
     }
 
 
 
-    public var id: int;
+    public var id: String;
     public var picture: String;
     public var area : String;
-    public var unlock : Number;
+    public var unlock : String;
 
     public var magic: int;
 

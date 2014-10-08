@@ -14,6 +14,9 @@ import com.cemaprjl.core.coreDispatch;
 import com.cemaprjl.core.coreExecute;
 import com.cemaprjl.viewmanage.ShowPopupCmd;
 
+import flash.geom.Point;
+import flash.geom.Rectangle;
+
 import flash.ui.Mouse;
 import flash.ui.MouseCursor;
 
@@ -28,6 +31,11 @@ public class MonsterPoint extends AbstractView {
     private var _back : Image;
     private var _stars : StarsBar;
     private var _monsterType : MonsterVO;
+    private var _pathTime : Number = -1;
+    private var _timeleft : Number = -1;
+    private var _distance : Number = 0;
+    private var _targetPoint : Point;
+    private var _currentPoint : Point;
 
 //    private var _mana: Mana;
 //    public function set mana(value: Mana):void {
@@ -99,6 +107,30 @@ public class MonsterPoint extends AbstractView {
 
         _stars.setProgress(App.instance.monstersResults[_monsterType.id]);
 
+        App.instance.tick.addTickCallback(tick);
+
+    }
+
+    private function tick($delta : Number) : void {
+        if(_timeleft <= 0) {
+            var area : Rectangle = App.instance.monsterAreas[_monsterType.id];
+            _targetPoint = new Point(area.x + area.width * Math.random(), area.y + area.height * Math.random());
+            _currentPoint = new Point(this.x, this.y);
+            _distance = Point.distance(_targetPoint, _currentPoint);
+            _pathTime = _distance * 75; // distance in 10 px will be reached in 1 second
+            _timeleft = _pathTime;
+        } else {
+            _timeleft -= $delta;
+            var newPos : Point = Point.interpolate(_currentPoint, _targetPoint, _timeleft / _pathTime);
+            this.x = newPos.x;
+            this.y = newPos.y;
+        }
+
+    }
+
+
+    override public function destroy() : void {
+        App.instance.tick.removeTickCallback(tick)
     }
 
     public function get monsterType() : MonsterVO {

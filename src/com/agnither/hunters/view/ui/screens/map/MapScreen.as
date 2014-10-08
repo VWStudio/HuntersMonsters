@@ -63,6 +63,8 @@ public class MapScreen extends Screen {
     public static const ADD_CHEST : String = "MapScreen.ADD_CHEST";
     public static const REMOVE_CHEST : String = "MapScreen.REMOVE_CHEST";
     private var _chestsContainer : Sprite;
+    private var _houses : Object = {};
+    private var _houseContainer : Sprite;
 
     public function MapScreen() {
 
@@ -102,6 +104,10 @@ public class MapScreen extends Screen {
         _chestsContainer = new Sprite();
         _chestsContainer.name = "chests_container"; // hack
         _container.addChildAt(_chestsContainer, _container.getChildIndex(_trapsContainer) + 1);
+
+        _houseContainer = new Sprite();
+        _houseContainer.name = "houses_container"; // hack
+        _container.addChildAt(_houseContainer, _container.getChildIndex(_chestsContainer) + 1);
 
         _container.x = (stage.stageWidth - _back.width) * 0.5;
         _container.y = (stage.stageHeight - _back.height) * 0.5;
@@ -214,7 +220,7 @@ public class MapScreen extends Screen {
 
         var trapPoint : TrapPoint = new TrapPoint();
         _trapsContainer.addChild(trapPoint);
-        trapPoint.monsterType = MonsterVO.AREA[$data.id][0];
+        trapPoint.monsterType = MonsterVO.DICT[$data.id];
         trapPoint.data = $data;
         trapPoint.update();
 
@@ -231,9 +237,9 @@ public class MapScreen extends Screen {
 
         var mp : MonsterPoint = new MonsterPoint();
         _monstersContainer.addChild(mp);
-        var monstersInArea  : Vector.<MonsterVO> = MonsterVO.AREA[$ptName];
+        var monsterInArea  : MonsterVO = MonsterVO.DICT[$ptName];
 
-        var monster : MonsterVO = mp.monsterType = monstersInArea[int(monstersInArea.length * Math.random())];
+        var monster : MonsterVO = mp.monsterType = monsterInArea;
 
         var monsterRect : Rectangle = App.instance.monsterAreas[$ptName];
 
@@ -245,6 +251,15 @@ public class MapScreen extends Screen {
 //        trace(monster.area, _clouds[monster.area]);
         if(_clouds[monster.area]) {
             _clouds[monster.area].visible = false;
+        }
+        if(!_houses[monster.id] && (_clouds[monster.area] == null || _clouds[monster.area].visible == false)) {
+            var house : HousePoint = new HousePoint();
+            house.territory = monster.id;
+            _houses[monster.id] = house;
+            _houseContainer.addChild(house);
+            var rect : Rectangle = App.instance.monsterAreas[monster.id];
+            house.y = rect.y + rect.height * 0.5;
+            house.x = rect.x + rect.width * 0.75;
         }
 
     }
@@ -258,13 +273,13 @@ public class MapScreen extends Screen {
         _monstersContainer.removeChildren();
         var arr : Array = App.instance.unlockedMonsters;
         var i : int = -100500;
-        for (var i : int = 0; i < arr.length; i++)
+        for (i = 0; i < arr.length; i++)
         {
-            var monsterName : String = arr[i];
-            initMonster(monsterName);
+            var monsterID: String = arr[i];
+            initMonster(monsterID);
         }
 
-        var monsterRect : Rectangle = App.instance.monsterAreas[monsterName];
+        var monsterRect : Rectangle = App.instance.monsterAreas[monsterID];
         _playerPosition.x = monsterRect.x + monsterRect.width * 0.5;
         _playerPosition.y = monsterRect.y + monsterRect.height * 0.5;
 
