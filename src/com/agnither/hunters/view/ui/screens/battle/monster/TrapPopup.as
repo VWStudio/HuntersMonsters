@@ -4,6 +4,7 @@
 package com.agnither.hunters.view.ui.screens.battle.monster {
 import com.agnither.hunters.App;
 import com.agnither.hunters.data.outer.MonsterVO;
+import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.player.inventory.Pet;
 import com.agnither.hunters.view.ui.UI;
 import com.agnither.hunters.view.ui.screens.map.MapScreen;
@@ -64,7 +65,8 @@ public class TrapPopup extends Popup {
 
     override public function update() : void {
 
-        _monsterVO = MonsterVO.DICT[data.id];
+        _monsterVO = Model.instance.getMonster(data.id);
+//        _monsterVO = MonsterVO.DICT[data.id];
         _monster.data = _monsterVO;
         _monster.update();
         _set1hButton.visible = false;

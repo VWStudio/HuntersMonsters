@@ -3,6 +3,7 @@
  */
 package com.agnither.hunters.view.ui.popups.hunt {
 import com.agnither.hunters.data.outer.MonsterVO;
+import com.agnither.hunters.model.Model;
 import com.agnither.hunters.view.ui.UI;
 import com.agnither.hunters.view.ui.screens.battle.monster.MonsterInfo;
 import com.agnither.hunters.view.ui.screens.map.*;
@@ -96,10 +97,12 @@ public class HuntStepsPopup extends Popup {
 
         switch (data.mode) {
             case START_MODE:
+                Model.instance.match3mode = Match3Game.MODE_STEP;
                 coreDispatch(UI.HIDE_POPUP, NAME);
                 coreDispatch(Match3Game.START_GAME, _monsters[App.instance.chestStep]);
                 break;
             case CONTINUE_MODE:
+                Model.instance.match3mode = Match3Game.MODE_STEP;
                 coreDispatch(UI.HIDE_POPUP, NAME);
                 coreDispatch(Match3Game.START_GAME, _monsters[App.instance.chestStep]);
                 break;

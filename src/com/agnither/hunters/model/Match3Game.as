@@ -32,6 +32,11 @@ public class Match3Game extends EventDispatcher {
 //    public static const END_GAME: String = "end_game_Game";
     public static const START_GAME : String = "Match3Game.START_GAME";
 
+    public static const MODE_HOUSE : String = "Match3Game.MODE_HOUSE";
+    public static const MODE_REGULAR : String = "Match3Game.MODE_REGULAR";
+    public static const MODE_BOSS : String = "Match3Game.MODE_BOSS";
+    public static const MODE_STEP : String = "Match3Game.MODE_STEP";
+
     private var _player: Player;
     public function get player():Player {
         return _player;

@@ -6,11 +6,13 @@ import com.agnither.hunters.App;
 import com.agnither.hunters.App;
 import com.agnither.hunters.App;
 import com.agnither.hunters.model.Match3Game;
+import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.player.drop.DropSlot;
 import com.agnither.hunters.model.player.drop.GoldDrop;
 import com.agnither.hunters.model.player.drop.ItemDrop;
 import com.agnither.hunters.view.ui.UI;
 import com.agnither.hunters.view.ui.popups.SelectMonsterPopup;
+import com.agnither.hunters.view.ui.popups.house.HousePopup;
 import com.agnither.hunters.view.ui.popups.hunt.HuntStepsPopup;
 import com.agnither.hunters.view.ui.popups.win.WinPopup;
 import com.agnither.hunters.view.ui.screens.battle.match3.FieldView;
@@ -18,6 +20,7 @@ import com.agnither.hunters.view.ui.screens.battle.player.DropListView;
 import com.agnither.hunters.view.ui.screens.battle.player.PersonageView;
 import com.agnither.hunters.view.ui.screens.battle.player.ManaListView;
 import com.agnither.hunters.view.ui.screens.battle.player.inventory.BattleInventoryView;
+import com.agnither.hunters.view.ui.screens.map.HousePoint;
 import com.agnither.hunters.view.ui.screens.map.MapScreen;
 import com.agnither.ui.Screen;
 import com.agnither.utils.CommonRefs;
@@ -143,23 +146,46 @@ public class BattleScreen extends Screen {
 
     private function handleEndGame($isWin : Boolean) : void {
         coreRemoveListener(Match3Game.END_GAME, handleEndGame);
-        if(App.instance.chestStep >= 0) {
-            if($isWin) {
-                if(App.instance.chestStep + 1 < App.instance.steps.length) {
-                    App.instance.chestStep++;
-                    coreExecute(ShowPopupCmd, HuntStepsPopup.NAME, {mode : HuntStepsPopup.CONTINUE_MODE});
-                } else {
-                    coreExecute(ShowPopupCmd, HuntStepsPopup.NAME, {mode : HuntStepsPopup.WIN_MODE});
-                }
-            } else {
-                coreExecute(ShowPopupCmd, HuntStepsPopup.NAME, {mode : HuntStepsPopup.LOSE_MODE});
-            }
+        switch (Model.instance.match3mode) {
+            case Match3Game.MODE_STEP:
+                if(App.instance.chestStep >= 0) {
+                    if($isWin) {
+                        if(App.instance.chestStep + 1 < App.instance.steps.length) {
+                            App.instance.chestStep++;
+                            coreExecute(ShowPopupCmd, HuntStepsPopup.NAME, {mode : HuntStepsPopup.CONTINUE_MODE});
+                        } else {
+                            coreExecute(ShowPopupCmd, HuntStepsPopup.NAME, {mode : HuntStepsPopup.WIN_MODE});
+                        }
+                    } else {
+                        coreExecute(ShowPopupCmd, HuntStepsPopup.NAME, {mode : HuntStepsPopup.LOSE_MODE});
+                    }
 
-            coreExecute(ShowScreenCmd, MapScreen.NAME);
-            return;
-        } else {
-            coreExecute(ShowPopupCmd, WinPopup.NAME, {isWin : $isWin});
+                    coreExecute(ShowScreenCmd, MapScreen.NAME);
+                    return;
+                } else {
+                    coreExecute(ShowPopupCmd, WinPopup.NAME, {isWin : $isWin});
+                }
+                break;
+
+            case Match3Game.MODE_REGULAR:
+                coreExecute(ShowPopupCmd, WinPopup.NAME, {isWin : $isWin});
+                break;
+
+            case Match3Game.MODE_HOUSE:
+
+                coreExecute(ShowScreenCmd, MapScreen.NAME);
+                var pt : HousePoint = Model.instance.currentHousePoint;
+                if($isWin) {
+                    Model.instance.houses[pt.territory]["owner"] = App.instance.player.id;
+                } else {
+
+                }
+
+                coreExecute(ShowPopupCmd, HousePopup.NAME, {id:pt.territory, point : pt});
+                break;
         }
+
+
 
 
         /**

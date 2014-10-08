@@ -2,6 +2,7 @@
  * Created by agnither on 12.08.14.
  */
 package com.agnither.hunters.view.ui.popups.hunt {
+import com.agnither.hunters.model.Model;
 import com.agnither.hunters.view.ui.UI;
 import com.agnither.hunters.view.ui.screens.battle.monster.MonsterInfo;
 import com.agnither.hunters.view.ui.screens.map.*;
@@ -74,6 +75,7 @@ public class HuntPopup extends Popup {
 
     private function handlePlay(event : Event) : void {
 
+        Model.instance.match3mode = Match3Game.MODE_REGULAR;
         coreDispatch(UI.HIDE_POPUP, NAME);
         coreDispatch(Match3Game.START_GAME, data);
     }

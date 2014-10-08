@@ -6,6 +6,7 @@ import com.agnither.hunters.App;
 import com.agnither.hunters.data.outer.MonsterVO;
 import com.agnither.hunters.data.outer.MonsterVO;
 import com.agnither.hunters.model.Match3Game;
+import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.player.LocalPlayer;
 import com.agnither.hunters.view.ui.screens.battle.monster.MonsterArea;
 import com.agnither.hunters.view.ui.screens.battle.monster.TrapPopup;
@@ -154,7 +155,6 @@ public class MapScreen extends Screen {
 
 
             } else if(dobj.name.indexOf("clouds") > -1) {
-                trace(dobj.name);
                 _clouds[dobj.name] = dobj;
 //                dobj.touchable = true;
 //                dobj.visible = false;
@@ -220,7 +220,8 @@ public class MapScreen extends Screen {
 
         var trapPoint : TrapPoint = new TrapPoint();
         _trapsContainer.addChild(trapPoint);
-        trapPoint.monsterType = MonsterVO.DICT[$data.id];
+        trapPoint.monsterType = Model.instance.getMonster($data.id);
+//        trapPoint.monsterType = MonsterVO.DICT[$data.id];
         trapPoint.data = $data;
         trapPoint.update();
 
@@ -237,7 +238,8 @@ public class MapScreen extends Screen {
 
         var mp : MonsterPoint = new MonsterPoint();
         _monstersContainer.addChild(mp);
-        var monsterInArea  : MonsterVO = MonsterVO.DICT[$ptName];
+//        var monsterInArea  : MonsterVO = MonsterVO.DICT[$ptName];
+        var monsterInArea  : MonsterVO = Model.instance.getMonster($ptName);
 
         var monster : MonsterVO = mp.monsterType = monsterInArea;
 
@@ -260,6 +262,9 @@ public class MapScreen extends Screen {
             var rect : Rectangle = App.instance.monsterAreas[monster.id];
             house.y = rect.y + rect.height * 0.5;
             house.x = rect.x + rect.width * 0.75;
+
+            Model.instance.houses[monster.id] = {id: monster.id, unlockItems:[1, 2, 3, 4]}
+
         }
 
     }

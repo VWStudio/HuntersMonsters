@@ -5,6 +5,7 @@ package com.agnither.hunters {
 import com.agnither.hunters.data.Config;
 import com.agnither.hunters.data.outer.MonsterVO;
 import com.agnither.hunters.model.Match3Game;
+import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.player.AIPlayer;
 import com.agnither.hunters.model.player.LocalPlayer;
 import com.agnither.hunters.model.player.Player;
@@ -105,7 +106,8 @@ public class App extends Sprite {
     private function onProgress() : void {
 
         _monstersResults[_monster.id] = 1 + int(Math.random() * 3);
-        var monsterToUnlock : MonsterVO = MonsterVO.DICT[_monster.unlock];
+        var monsterToUnlock : MonsterVO = Model.instance.getMonster(_monster.unlock);
+//        var monsterToUnlock : MonsterVO = MonsterVO.DICT[_monster.unlock];
         if(unlockedMonsters.indexOf(monsterToUnlock.id) == -1) {
             unlockedMonsters.push(monsterToUnlock.id);
             _monstersResults[monsterToUnlock.id] = 0;

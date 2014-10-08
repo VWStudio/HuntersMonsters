@@ -19,8 +19,11 @@ public class LocalPlayer extends Player {
 
     private var _progress : Progress;
 
+
     public function LocalPlayer() {
         _data = SharedObject.getLocal("player");
+
+        id = "player user";
 
         _progress = new Progress();
 
@@ -71,9 +74,9 @@ public class LocalPlayer extends Player {
          */
         _data.data.map = {"regions": ["00"], monsters:["blue_bull"]};
 
-        _data.data.pets = {"pet.1": {id: 1, name: "blue_bull", level: 2, hp: 150, damage: 10, defence: 10, magic: 6, tamed: 1},
-                           "pet.2": {id: 2, name: "blue_bull", level: 3, hp: 250, damage: 20, defence: 20, magic: 6, tamed: 1},
-                           "pet.3": {id: 3, name: "blue_bull", level: 1, hp: 100, damage: 5, defence: 5, magic: 5, tamed: 0}};
+        _data.data.pets = {"pet.1": {id: "blue_bull", name:"Вася", level: 2, hp: 50, damage: 10, defence: 10, magic: 6, tamed: 1},
+                           "pet.2": {id: "blue_bull", name:"Коля", level: 3, hp: 100, damage: 20, defence: 20, magic: 6, tamed: 1},
+                           "pet.3": {id: "blue_bull", name:"Саша", level: 1, hp: 100, damage: 5, defence: 5, magic: 5, tamed: 0}};
 
 
         save();

@@ -4,6 +4,7 @@
 package com.cemaprjl.viewmanage {
 import com.agnither.hunters.view.ui.popups.InventoryPopup;
 import com.agnither.hunters.view.ui.popups.SelectMonsterPopup;
+import com.agnither.hunters.view.ui.popups.house.HousePopup;
 import com.agnither.hunters.view.ui.popups.hunt.HuntStepsPopup;
 import com.agnither.hunters.view.ui.popups.win.WinPopup;
 import com.agnither.hunters.view.ui.screens.battle.BattleScreen;
@@ -29,6 +30,8 @@ public class ScreensStorage {
         ViewFactory.add(WinPopup.NAME, WinPopup);
         ViewFactory.add(TrapPopup.NAME, TrapPopup);
         ViewFactory.add(HuntStepsPopup.NAME, HuntStepsPopup);
+        ViewFactory.add(HousePopup.NAME, HousePopup
+        );
 
 
     }

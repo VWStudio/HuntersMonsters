@@ -6,45 +6,51 @@ import com.agnither.hunters.data.inner.PersonageVO;
 
 import flash.utils.Dictionary;
 
-public class MonsterVO extends PersonageVO {
+public dynamic class MonsterVO extends PersonageVO {
 
     public static const LIST: Vector.<MonsterVO> = new <MonsterVO>[];
     public static const DICT: Dictionary = new Dictionary();
-    public static const AREA: Dictionary = new Dictionary();
     public var radius : Number;
+
+    public static function fill($target : MonsterVO, $source : Object) : MonsterVO {
+        $target.id = $source.id;
+        $target.name = $source.name;
+        $target.picture = $source.picture;
+
+        $target.level = $source.level;
+        $target.hp = $source.hp;
+        $target.damage = $source.damage;
+        $target.defence = $source.defence;
+
+        $target.area = $source.area;
+        $target.unlock = $source.unlock;
+
+        $target.magic = $source.magic;
+
+        $target.difficulty = $source.difficulty;
+        $target.drop = $source.drop;
+
+        $target.weapon = $source.weapon;
+        $target.armor = $source.armor;
+        $target.items = $source.items;
+        $target.spells = $source.spells;
+
+        return $target;
+    }
 
     public static function parseData(data: Object):void {
         for (var i: int = 0; i < data.length; i++) {
-            var row: Object = data[i];
+
+            var source: Object = data[i];
+            source.armor = source.armor ? source.armor.split(",") : [];
+            source.items = source.items ? source.items.split(",") : [];
+            source.spells = source.spells ? source.spells.split(",") : [];
 
             var object: MonsterVO = new MonsterVO();
-            object.id = row.id;
-            object.name = row.name;
-            object.picture = row.picture;
-
-            object.level = row.level;
-            object.hp = row.hp;
-            object.damage = row.damage;
-            object.defence = row.defence;
-
-            object.area = row.area;
-            object.unlock = row.unlock;
-
-            object.magic = row.magic;
-
-            object.difficulty = row.difficulty;
-            object.drop = row.drop;
-
-            object.weapon = row.weapon;
-            object.armor = row.armor ? row.armor.split(",") : [];
-            object.items = row.items ? row.items.split(",") : [];
-            object.spells = row.spells ? row.spells.split(",") : [];
-
+            object = fill(object, source);
 
             LIST.push(object);
             DICT[object.id] = object;
-//            AREA[object.id] = object;
-//            trace(object.name, AREA[object.name].length)
         }
     }
 
@@ -64,5 +70,9 @@ public class MonsterVO extends PersonageVO {
     public var armor: Array;
     public var items: Array;
     public var spells: Array;
+
+    public function clone() : MonsterVO {
+        return fill(new MonsterVO(), this);
+    }
 }
 }

@@ -7,6 +7,7 @@ import com.agnither.hunters.data.outer.MonsterVO;
 import com.agnither.hunters.model.Match3Game;
 import com.agnither.hunters.model.player.Mana;
 import com.agnither.hunters.view.ui.UI;
+import com.agnither.hunters.view.ui.popups.house.HousePopup;
 import com.agnither.hunters.view.ui.popups.hunt.HuntPopup;
 import com.agnither.hunters.view.ui.popups.hunt.HuntStepsPopup;
 import com.agnither.ui.AbstractView;
@@ -52,7 +53,7 @@ public class HousePoint extends AbstractView {
                 case TouchPhase.BEGAN :
                     break;
                 case TouchPhase.ENDED :
-//                    coreExecute(ShowPopupCmd, HuntStepsPopup.NAME, {mode : HuntStepsPopup.START_MODE});
+                    coreExecute(ShowPopupCmd, HousePopup.NAME, {id : territory, point : this});
                     break;
             }
         } else

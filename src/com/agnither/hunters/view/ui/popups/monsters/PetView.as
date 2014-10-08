@@ -23,6 +23,7 @@ public class PetView extends AbstractView {
     private var _hp: TextField;
     private var _armor: TextField;
     private var _damage: TextField;
+    private var _killed : Image;
 
     public function PetView(pet: Pet) {
         _pet = pet;
@@ -51,7 +52,11 @@ public class PetView extends AbstractView {
         _hp.text = String(_pet.params.hp);
         _armor.text = String(_pet.params.defence);
         _damage.text = String(_pet.params.damage);
+
+        _killed = _links["bitmap_killed"];
+        _killed.visible = false;
     }
+
 
     override public function destroy():void {
         super.destroy();

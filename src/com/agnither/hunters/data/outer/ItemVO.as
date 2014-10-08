@@ -8,6 +8,7 @@ public class ItemVO {
 
     public static const LIST: Vector.<ItemVO> = new <ItemVO>[];
     public static const DICT: Dictionary = new Dictionary();
+    public static const THINGS: Vector.<ItemVO> = new <ItemVO>[];
 
     public static function parseData(data: Object):void {
         for (var i: int = 0; i < data.length; i++) {
@@ -24,6 +25,9 @@ public class ItemVO {
 
             LIST.push(object);
             DICT[object.id] = object;
+            if(object.type == 1 || object.type == 2 || object.type == 3) {
+                THINGS.push(object);
+            }
         }
     }
 

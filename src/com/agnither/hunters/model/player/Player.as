@@ -16,6 +16,8 @@ public class Player extends EventDispatcher {
 
     public static const UPDATE: String = "update_Player";
 
+    public var id : String = "0";
+
     protected var _inventory: Inventory;
     public function get inventory():Inventory {
         return _inventory;

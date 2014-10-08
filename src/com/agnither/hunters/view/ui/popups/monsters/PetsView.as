@@ -37,6 +37,7 @@ public class PetsView extends AbstractView {
     }
 
     private function updateList(data: Array):void {
+        trace(JSON.stringify(data));
         while (numChildren > 0) {
             var tile: PetView = removeChildAt(0) as PetView;
             tile.removeEventListener(TouchEvent.TOUCH, handleTouch);
