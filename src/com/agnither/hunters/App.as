@@ -113,6 +113,9 @@ public class App extends Sprite {
             _monstersResults[monsterToUnlock.id] = 0;
         }
 
+
+        _player.unlockedMonsters = unlockedMonsters;
+        _player.save();
     }
 
     private function handleComplete() : void {
@@ -148,6 +151,7 @@ public class App extends Sprite {
         _refs = new CommonRefs(_resources);
 
         _player = new LocalPlayer();
+        unlockedMonsters = _player.unlockedMonsters;
 
         _ui = new UI();
 

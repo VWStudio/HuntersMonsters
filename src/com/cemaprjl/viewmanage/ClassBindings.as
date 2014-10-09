@@ -2,6 +2,7 @@
  * Created by mor on 22.09.2014.
  */
 package com.cemaprjl.viewmanage {
+import com.agnither.hunters.view.ui.common.GoldView;
 import com.agnither.hunters.view.ui.common.ManaView;
 import com.agnither.hunters.view.ui.common.TabView;
 import com.agnither.hunters.view.ui.screens.battle.monster.MonsterArea;
@@ -32,6 +33,7 @@ public class ClassBindings {
 
         registerClassAlias("common.TabView", TabView);
         registerClassAlias("common.ManaView", ManaView);
+        registerClassAlias("common.GoldIcon", GoldView);
 
         registerClassAlias("battle.PersonageView", PersonageView);
         registerClassAlias("battle.ManaListView", ManaListView);

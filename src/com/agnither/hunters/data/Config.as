@@ -13,6 +13,8 @@ import com.agnither.hunters.data.outer.DamageTypeVO;
 import com.agnither.hunters.data.outer.LeagueVO;
 import com.agnither.hunters.data.outer.LevelVO;
 import com.agnither.hunters.data.outer.MonsterVO;
+import com.agnither.hunters.data.outer.PlayerItemVO;
+import com.agnither.hunters.data.outer.PlayerPetVO;
 import com.agnither.hunters.data.outer.PlayerVO;
 
 import flash.utils.Dictionary;
@@ -37,6 +39,8 @@ public class Config {
         addConfig("drop", DropVO);
         addConfig("gold_drop", GoldDropVO);
         addConfig("chip", ChipVO);
+        addConfig("player_items", PlayerItemVO);
+        addConfig("player_pets", PlayerPetVO);
     }
 
     public static function addConfig(id: String, ClassRef: Class):void {

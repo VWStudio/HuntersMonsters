@@ -163,7 +163,6 @@ public class AbstractView extends Sprite {
                         view = new TextField(item.width, item.height, item.text, item.fontName, -1, 0xFFFFFF);
                         view.touchable = false;
                         (view as TextField).hAlign = item.align;
-//                        (view as TextField).vAlign = VAlign.TOP;
                         (view as TextField).autoScale = true;
                         (view as TextField).batchable = true;
                     } else {
@@ -195,6 +194,14 @@ public class AbstractView extends Sprite {
                 if (view) {
                     view.x = item.x;
                     view.y = item.y;
+//                    if(item.name == "bitmap__bg" || item.name == "spell") {
+//                        trace(view, item.matrix, JSON.stringify(item));
+//                    }
+
+                    /**
+                     * TODO some elements not affected by matrix, FIX!!!
+                     */
+
                     if (item.matrix) {
                         view.transformationMatrix = new Matrix(item.matrix.a, item.matrix.b, item.matrix.c, item.matrix.d, item.matrix.tx, item.matrix.ty);
                     }

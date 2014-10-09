@@ -9,17 +9,22 @@ import com.agnither.hunters.model.Match3Game;
 import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.player.drop.DropSlot;
 import com.agnither.hunters.model.player.drop.GoldDrop;
+import com.agnither.hunters.model.player.drop.GoldDrop;
 import com.agnither.hunters.model.player.drop.ItemDrop;
 import com.agnither.hunters.view.ui.UI;
+import com.agnither.hunters.view.ui.common.GoldView;
 import com.agnither.hunters.view.ui.popups.SelectMonsterPopup;
 import com.agnither.hunters.view.ui.popups.house.HousePopup;
 import com.agnither.hunters.view.ui.popups.hunt.HuntStepsPopup;
 import com.agnither.hunters.view.ui.popups.win.WinPopup;
 import com.agnither.hunters.view.ui.screens.battle.match3.FieldView;
 import com.agnither.hunters.view.ui.screens.battle.player.DropListView;
+import com.agnither.hunters.view.ui.screens.battle.player.DropSlotView;
 import com.agnither.hunters.view.ui.screens.battle.player.PersonageView;
 import com.agnither.hunters.view.ui.screens.battle.player.ManaListView;
 import com.agnither.hunters.view.ui.screens.battle.player.inventory.BattleInventoryView;
+import com.agnither.hunters.view.ui.screens.battle.player.inventory.ItemView;
+import com.agnither.hunters.view.ui.screens.battle.player.inventory.ItemView;
 import com.agnither.hunters.view.ui.screens.map.HousePoint;
 import com.agnither.hunters.view.ui.screens.map.MapScreen;
 import com.agnither.ui.Screen;
@@ -29,6 +34,8 @@ import com.cemaprjl.core.coreExecute;
 import com.cemaprjl.core.coreRemoveListener;
 import com.cemaprjl.viewmanage.ShowPopupCmd;
 import com.cemaprjl.viewmanage.ShowScreenCmd;
+
+import flash.geom.Rectangle;
 
 import starling.display.Button;
 import starling.display.Sprite;
@@ -58,6 +65,7 @@ public class BattleScreen extends Screen {
     private var _summonPetBtn: Button;
 
     private var _field: FieldView;
+    private var _tooltip : Sprite;
 
     public function BattleScreen() {
     }
@@ -140,7 +148,37 @@ public class BattleScreen extends Screen {
 
         _dropList.drop = _game.dropList;
 
+        _tooltip = new Sprite();
+        addChild(_tooltip);
+        _tooltip.visible = false;
+
         coreAddListener(Match3Game.END_GAME, handleEndGame);
+        coreAddListener(DropSlotView.SHOW_TOOLTIP, onShowTooltip);
+        coreAddListener(DropSlotView.HIDE_TOOLTIP, onHideTooltip);
+    }
+
+    private function onHideTooltip() : void {
+        _tooltip.visible = false;
+        _tooltip.removeChildren();
+    }
+
+    private function onShowTooltip($data : Object) : void {
+
+        if($data.content is ItemDrop) {
+            _tooltip.addChild(ItemView.getItemView(($data.content as ItemDrop).item));
+            _tooltip.visible = true;
+
+        } else if ($data.content is GoldDrop) {
+            var gv : GoldView = new GoldView();
+            _tooltip.addChild(gv);
+            gv.data = ($data.content as GoldDrop).gold;
+            gv.update();
+        }
+        _tooltip.visible = true;
+        var rect : Rectangle = ($data.item as Sprite).getBounds(this);
+        trace(rect);
+        _tooltip.x = rect.x + rect.width + 5;
+        _tooltip.y = rect.y + rect.height + 5;
     }
 
 
@@ -209,6 +247,8 @@ public class BattleScreen extends Screen {
                     }
                 }
             }
+
+
             App.instance.player.save();
         }
 

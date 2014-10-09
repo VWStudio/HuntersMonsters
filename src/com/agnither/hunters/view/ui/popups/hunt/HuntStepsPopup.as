@@ -81,7 +81,7 @@ public class HuntStepsPopup extends Popup {
         _arrow2.visible = false;
         _playerIcon.visible = false;
 
-        _rewardTF = _links["rewawrd_tf"];
+        _rewardTF = _links["reward_tf"];
 
 
         _monsterContainer = new Sprite();

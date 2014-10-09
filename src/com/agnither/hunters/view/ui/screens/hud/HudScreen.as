@@ -15,7 +15,10 @@ import com.cemaprjl.core.coreDispatch;
 import com.cemaprjl.core.coreExecute;
 import com.cemaprjl.viewmanage.ShowPopupCmd;
 
-import starling.display.Button;
+import flash.external.ExternalInterface;
+import flash.net.URLRequest;
+import flash.net.navigateToURL;
+
 import starling.events.Event;
 
 import starling.text.TextField;
@@ -36,6 +39,7 @@ public class HudScreen extends Screen {
     private var _soundButton : ButtonContainer;
     private var _inventoryBtn : ButtonContainer;
     private var _trapBtn : ButtonContainer;
+    private var _resetBtn : ButtonContainer;
 
     public function HudScreen() {
         _player = App.instance.player;
@@ -61,6 +65,10 @@ public class HudScreen extends Screen {
         _trapBtn.text = "Ловушка";
         _trapBtn.addEventListener(Event.TRIGGERED, onTrap);
 
+        _resetBtn = _links.reset_btn;
+        _resetBtn.text = "Сбросить все";
+        _resetBtn.addEventListener(Event.TRIGGERED, onReset);
+
         coreAddListener(HudScreen.UPDATE, update)
     }
 
@@ -81,6 +89,15 @@ public class HudScreen extends Screen {
         _playerRating.text = _player.hero.rating.toString();
         _playerGold.text = _player.hero.gold.toString();
         _trapBtn.visible = !App.instance.trapMode;
+    }
+
+    private function onReset(event : Event) : void {
+
+        App.instance.player.reset();
+
+        var url:String = ExternalInterface.call("window.location.href.toString");
+        navigateToURL(new URLRequest(url))
+
     }
 }
 }
