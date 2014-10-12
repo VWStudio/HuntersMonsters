@@ -5,9 +5,13 @@ package com.agnither.hunters.view.ui.screens.hud {
 import com.agnither.hunters.App;
 import com.agnither.hunters.data.outer.LeagueVO;
 import com.agnither.hunters.data.outer.LevelVO;
+import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.player.LocalPlayer;
 import com.agnither.hunters.view.ui.popups.InventoryPopup;
+import com.agnither.hunters.view.ui.popups.SelectMonsterPopup;
+import com.agnither.hunters.view.ui.popups.monsters.PetsView;
 import com.agnither.hunters.view.ui.screens.map.MapScreen;
+import com.agnither.ui.ButtonContainer;
 import com.agnither.ui.ButtonContainer;
 import com.agnither.ui.Screen;
 import com.cemaprjl.core.coreAddListener;
@@ -28,7 +32,6 @@ public class HudScreen extends Screen {
     public static const NAME : String = "HudScreen";
     public static const UPDATE : String = "HudScreen.UPDATE";
 
-    private var _player : LocalPlayer;
     private var _playerLevel : TextField;
     private var _playerExp : TextField;
     private var _playerLeague : TextField;
@@ -40,9 +43,9 @@ public class HudScreen extends Screen {
     private var _inventoryBtn : ButtonContainer;
     private var _trapBtn : ButtonContainer;
     private var _resetBtn : ButtonContainer;
+    private var _monstersBtn : ButtonContainer;
 
     public function HudScreen() {
-        _player = App.instance.player;
     }
 
     override protected function initialize() : void {
@@ -69,7 +72,16 @@ public class HudScreen extends Screen {
         _resetBtn.text = "Сбросить все";
         _resetBtn.addEventListener(Event.TRIGGERED, onReset);
 
+        _monstersBtn = _links.monsters_btn;
+        _monstersBtn.text = "Монстры";
+        _monstersBtn.addEventListener(Event.TRIGGERED, onMonster);
+
         coreAddListener(HudScreen.UPDATE, update)
+    }
+
+    private function onMonster(event : Event) : void {
+
+        coreExecute(ShowPopupCmd, SelectMonsterPopup.NAME);
     }
 
     private function onTrap(event : Event) : void {
@@ -83,17 +95,18 @@ public class HudScreen extends Screen {
 
 
     override public function update() : void {
-        _playerLevel.text = _player.hero.level.toString();
-        _playerExp.text = _player.hero.exp.toString() + "/" +LevelVO.DICT[_player.hero.level.toString()].exp;
-        _playerLeague.text = LeagueVO.DICT[_player.hero.league.toString()].name;
-        _playerRating.text = _player.hero.rating.toString();
-        _playerGold.text = _player.hero.gold.toString();
+        var player :  LocalPlayer = Model.instance.player;
+        _playerLevel.text = player.hero.level.toString();
+        _playerExp.text = player.hero.exp.toString() + "/" +LevelVO.DICT[player.hero.level.toString()].exp;
+        _playerLeague.text = LeagueVO.DICT[player.hero.league.toString()].name;
+        _playerRating.text = player.hero.rating.toString();
+        _playerGold.text = player.hero.gold.toString();
         _trapBtn.visible = !App.instance.trapMode;
     }
 
     private function onReset(event : Event) : void {
 
-        App.instance.player.reset();
+        Model.instance.player.reset();
 
         var url:String = ExternalInterface.call("window.location.href.toString");
         navigateToURL(new URLRequest(url))

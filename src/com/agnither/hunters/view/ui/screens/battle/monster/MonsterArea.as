@@ -2,7 +2,7 @@
  * Created by mor on 23.09.2014.
  */
 package com.agnither.hunters.view.ui.screens.battle.monster {
-import com.agnither.hunters.data.outer.MonsterVO;
+import com.agnither.hunters.model.modules.monsters.MonsterVO;
 import com.agnither.ui.AbstractView;
 
 import starling.text.TextField;

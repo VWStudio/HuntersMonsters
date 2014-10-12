@@ -3,9 +3,9 @@
  */
 package com.agnither.hunters.view.ui.screens.map {
 import com.agnither.hunters.App;
-import com.agnither.hunters.data.outer.MonsterVO;
-import com.agnither.hunters.data.outer.MonsterVO;
-import com.agnither.hunters.model.Match3Game;
+import com.agnither.hunters.model.modules.monsters.MonsterVO;
+import com.agnither.hunters.model.modules.monsters.MonsterVO;
+import com.agnither.hunters.model.match3.Match3Game;
 import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.player.LocalPlayer;
 import com.agnither.hunters.view.ui.screens.battle.monster.MonsterArea;
@@ -40,8 +40,6 @@ public class MapScreen extends Screen {
 
 //    public static const SELECT_MONSTER: String = "select_monster_BattleScreen";
 
-    private var _player : LocalPlayer;
-
     private var _back : Image;
     private var _container : Sprite;
     private var _maxY : Number = -100;
@@ -69,11 +67,7 @@ public class MapScreen extends Screen {
 
     public function MapScreen() {
 
-        _player = App.instance.player;
-
         super();
-
-
 
     }
 
@@ -133,7 +127,7 @@ public class MapScreen extends Screen {
             } else if (dobj is MonsterArea) {
 
 //                (dobj as MonsterArea).update();
-                App.instance.monsterAreas[dobj.name] = new Rectangle(dobj.x, dobj.y, 50 * dobj.transformationMatrix.a, 50 * dobj.transformationMatrix.d);
+                Model.instance.monsterAreas[dobj.name] = new Rectangle(dobj.x, dobj.y, 50 * dobj.transformationMatrix.a, 50 * dobj.transformationMatrix.d);
 //                trace(dobj.name, App.instance.monsterAreas[dobj.name]);
                 removeArr.push(dobj);
             } else if (dobj is PlayerPoint) {
@@ -188,15 +182,15 @@ public class MapScreen extends Screen {
 
     private function onChestAdd() : void {
 
-        if(_chestsContainer.numChildren >= App.instance.unlockedMonsters.length) {
+        if(_chestsContainer.numChildren >= Model.instance.player.unlockedMonsters.length) {
             return;
         }
 
         var chest : ChestPoint = new ChestPoint();
         _chestsContainer.addChild(chest);
 
-        var monster  : String  = App.instance.unlockedMonsters[int(Math.random() * App.instance.unlockedMonsters.length)];
-        var rect : Rectangle = App.instance.monsterAreas[monster];
+        var monster  : String  = Model.instance.player.unlockedMonsters[int(Math.random() * Model.instance.player.unlockedMonsters.length)];
+        var rect : Rectangle = Model.instance.monsterAreas[monster];
         var pt : Point = new Point(rect.x + rect.width * Math.random(), rect.y + rect.height * Math.random());
 
         chest.update();
@@ -220,7 +214,7 @@ public class MapScreen extends Screen {
 
         var trapPoint : TrapPoint = new TrapPoint();
         _trapsContainer.addChild(trapPoint);
-        trapPoint.monsterType = Model.instance.getMonster($data.id);
+        trapPoint.monsterType = Model.instance.monsters.getMonster($data.id);
 //        trapPoint.monsterType = MonsterVO.DICT[$data.id];
         trapPoint.data = $data;
         trapPoint.update();
@@ -239,11 +233,11 @@ public class MapScreen extends Screen {
         var mp : MonsterPoint = new MonsterPoint();
         _monstersContainer.addChild(mp);
 //        var monsterInArea  : MonsterVO = MonsterVO.DICT[$ptName];
-        var monsterInArea  : MonsterVO = Model.instance.getMonster($ptName);
+        var monsterInArea  : MonsterVO = Model.instance.monsters.getMonster($ptName);
 
         var monster : MonsterVO = mp.monsterType = monsterInArea;
 
-        var monsterRect : Rectangle = App.instance.monsterAreas[$ptName];
+        var monsterRect : Rectangle = Model.instance.monsterAreas[$ptName];
 
         var monsterPt : Point = new Point(monsterRect.x + Math.random() * monsterRect.width, monsterRect.y + Math.random() * monsterRect.height);
         mp.x = monsterPt.x;
@@ -259,7 +253,7 @@ public class MapScreen extends Screen {
             house.territory = monster.id;
             _houses[monster.id] = house;
             _houseContainer.addChild(house);
-            var rect : Rectangle = App.instance.monsterAreas[monster.id];
+            var rect : Rectangle = Model.instance.monsterAreas[monster.id];
             house.y = rect.y + rect.height * 0.5;
             house.x = rect.x + rect.width * 0.75;
 
@@ -276,7 +270,7 @@ public class MapScreen extends Screen {
          */
 
         _monstersContainer.removeChildren();
-        var arr : Array = App.instance.unlockedMonsters;
+        var arr : Array = Model.instance.player.unlockedMonsters;
         var i : int = -100500;
         for (i = 0; i < arr.length; i++)
         {
@@ -284,7 +278,7 @@ public class MapScreen extends Screen {
             initMonster(monsterID);
         }
 
-        var monsterRect : Rectangle = App.instance.monsterAreas[monsterID];
+        var monsterRect : Rectangle = Model.instance.monsterAreas[monsterID];
         _playerPosition.x = monsterRect.x + monsterRect.width * 0.5;
         _playerPosition.y = monsterRect.y + monsterRect.height * 0.5;
 
@@ -310,10 +304,10 @@ public class MapScreen extends Screen {
                     var pt : Point = _container.globalToLocal(_startPoint);
                     var trapAllowed : Boolean = false;
                     if(App.instance.trapMode) {
-                        for (var i : int = 0; i < App.instance.unlockedMonsters.length; i++)
+                        for (var i : int = 0; i < Model.instance.player.unlockedMonsters.length; i++)
                         {
-                            var key : String = App.instance.unlockedMonsters[i];
-                            var rect : Rectangle = App.instance.monsterAreas[key];
+                            var key : String = Model.instance.player.unlockedMonsters[i];
+                            var rect : Rectangle = Model.instance.monsterAreas[key];
                             if(rect.containsPoint(pt)) {
                                 trapAllowed = true;
                                 break;

@@ -3,6 +3,7 @@
  */
 package com.agnither.hunters.view.ui.popups.inventory {
 import com.agnither.hunters.App;
+import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.player.LocalPlayer;
 import com.agnither.hunters.view.ui.screens.battle.player.inventory.*;
 import com.agnither.hunters.model.player.inventory.Inventory;
@@ -27,7 +28,7 @@ public class ItemsView extends AbstractView {
     private var _inventory: Inventory;
 
     public function ItemsView() {
-        _inventory = App.instance.player.inventory;
+        _inventory = Model.instance.player.inventory;
     }
 
     override protected function initialize():void {

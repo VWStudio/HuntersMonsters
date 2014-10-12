@@ -3,11 +3,13 @@
  */
 package com.agnither.hunters.view.ui.popups.monsters {
 import com.agnither.hunters.App;
+import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.player.inventory.PetsInventory;
 import com.agnither.hunters.view.ui.UI;
 import com.agnither.hunters.view.ui.popups.SelectMonsterPopup;
 import com.agnither.hunters.view.ui.popups.monsters.PetView;
 import com.agnither.hunters.view.ui.popups.monsters.PetsView;
+import com.agnither.hunters.view.ui.screens.map.MapScreen;
 import com.agnither.ui.AbstractView;
 import com.agnither.utils.CommonRefs;
 import com.cemaprjl.core.coreDispatch;
@@ -26,7 +28,7 @@ public class PetsView extends AbstractView {
     private var _inventory: PetsInventory;
 
     public function PetsView() {
-        _inventory = App.instance.player.pets;
+        _inventory = Model.instance.player.pets;
     }
 
     override protected function initialize():void {
@@ -54,12 +56,15 @@ public class PetsView extends AbstractView {
     }
 
     private function handleTouch(e: TouchEvent):void {
+        if(Model.instance.state == MapScreen.NAME) {
+            return;
+        }
+
         var pet: PetView = e.currentTarget as PetView;
         var touch: Touch = e.getTouch(pet, TouchPhase.BEGAN);
         if (touch) {
             coreDispatch(PetsView.PET_SELECTED, pet.pet);
             coreDispatch(UI.HIDE_POPUP, SelectMonsterPopup.NAME);
-//            dispatchEventWith(PET_SELECTED, true, pet.pet);
         }
     }
 }

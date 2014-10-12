@@ -58,5 +58,10 @@ public class TabView extends AbstractView {
             Mouse.cursor = MouseCursor.AUTO;
         }
     }
+
+    public function setIsSelected($tab : TabView) : void {
+        _select.visible = $tab == this;
+    }
+
 }
 }

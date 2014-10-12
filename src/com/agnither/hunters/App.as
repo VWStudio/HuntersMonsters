@@ -3,9 +3,9 @@
  */
 package com.agnither.hunters {
 import com.agnither.hunters.data.Config;
-import com.agnither.hunters.data.outer.MonsterVO;
-import com.agnither.hunters.model.Match3Game;
 import com.agnither.hunters.model.Model;
+import com.agnither.hunters.model.match3.Match3Game;
+import com.agnither.hunters.model.modules.monsters.MonsterVO;
 import com.agnither.hunters.model.player.AIPlayer;
 import com.agnither.hunters.model.player.LocalPlayer;
 import com.agnither.hunters.model.player.Player;
@@ -14,7 +14,6 @@ import com.agnither.hunters.utils.DeviceResInfo;
 import com.agnither.hunters.view.ui.UI;
 import com.agnither.hunters.view.ui.popups.monsters.PetsView;
 import com.agnither.hunters.view.ui.screens.battle.BattleScreen;
-import com.agnither.hunters.view.ui.screens.hud.HudScreen;
 import com.agnither.hunters.view.ui.screens.hud.HudScreen;
 import com.agnither.hunters.view.ui.screens.map.ChestPoint;
 import com.agnither.hunters.view.ui.screens.map.MapScreen;
@@ -25,9 +24,6 @@ import com.cemaprjl.core.coreDispatch;
 import com.cemaprjl.core.coreExecute;
 import com.cemaprjl.core.coreRemoveListener;
 import com.cemaprjl.viewmanage.ShowScreenCmd;
-import com.cemaprjl.viewmanage.ViewFactory;
-
-import flash.utils.Dictionary;
 
 import starling.core.Starling;
 import starling.display.Sprite;
@@ -35,16 +31,16 @@ import starling.events.Event;
 
 public class App extends Sprite {
 
+
+
     private var _info : DeviceResInfo;
-
     private var _resources : ResourcesManager;
-
     private var _refs : CommonRefs;
+
     private var _ui : UI;
 
-    public var monsterAreas : Dictionary = new Dictionary();
-    public var unlockedMonsters : Array = ["blue_bull"];
-    public static const UPDATE_PROGRESS : String = "App.UPDATE_PROGRESS";
+
+
     public var chestStep : int = -1;
     public var steps : Vector.<MonsterVO>;
     public var chest : ChestPoint;
@@ -58,19 +54,13 @@ public class App extends Sprite {
         return _instance;
     }
 
-    private var _player : LocalPlayer;
-//    private var _game : Match3Game;
-    private var _enemy : Player;
-    private var _drop : int = 0;
-    private var _monster : MonsterVO;
-    private var _monstersResults : Object = {};
+//    private var _enemy : Player;
+//    private var _drop : int = 0;
+//    private var _monster : MonsterVO;
+
     private var _trapMode : Boolean = false;
     private var _tick : Ticker;
     private var _timeleft : Number = -1;
-
-    public function get player() : LocalPlayer {
-        return _player;
-    }
 
     public function App() {
         addEventListener(Event.ADDED_TO_STAGE, start);
@@ -87,14 +77,8 @@ public class App extends Sprite {
 
         _resources = new ResourcesManager(_info);
 
-//        _controller = new GameController(stage, _resources);
-
-//        _preloader = new PreloaderScreen(_controller.refs);
-//        addChild(_preloader);
-//        _resources.onProgress.add(_preloader.progress);
-
         coreAddListener(ResourcesManager.ON_COMPLETE, handleComplete);
-        coreAddListener(App.UPDATE_PROGRESS, onProgress);
+
 //        _resources.onComplete.addOnce(handleComplete);
         _resources.loadMain();
 //        _resources.loadAnimations();
@@ -103,20 +87,7 @@ public class App extends Sprite {
         _resources.load();
     }
 
-    private function onProgress() : void {
 
-        _monstersResults[_monster.id] = 1 + int(Math.random() * 3);
-        var monsterToUnlock : MonsterVO = Model.instance.getMonster(_monster.unlock);
-//        var monsterToUnlock : MonsterVO = MonsterVO.DICT[_monster.unlock];
-        if(unlockedMonsters.indexOf(monsterToUnlock.id) == -1) {
-            unlockedMonsters.push(monsterToUnlock.id);
-            _monstersResults[monsterToUnlock.id] = 0;
-        }
-
-
-        _player.unlockedMonsters = unlockedMonsters;
-        _player.save();
-    }
 
     private function handleComplete() : void {
         coreRemoveListener(ResourcesManager.ON_COMPLETE, handleComplete);
@@ -150,50 +121,43 @@ public class App extends Sprite {
 
         _refs = new CommonRefs(_resources);
 
-        _player = new LocalPlayer();
-        unlockedMonsters = _player.unlockedMonsters;
+        Model.instance.init();
 
         _ui = new UI();
 
         _tick = new Ticker(stage);
-        tick.addTickCallback(eventGeneration);
+        _tick.addTickCallback(eventGeneration);
 
-        coreAddListener(Match3Game.START_GAME, onStartGame);
-        coreAddListener(PetsView.PET_SELECTED, handlePetSelected);
+
         coreAddListener(MapScreen.START_TRAP, onTrapStart);
         coreAddListener(MapScreen.STOP_TRAP, onTrapEnd);
 
-//        _ui.addEventListener(BattleScreen.SELECT_MONSTER, handleSelectMonster);
-
         stage.addChildAt(_ui, 0);
-
-        _monstersResults[1] = 0; // stars
 
         coreExecute(ShowScreenCmd, MapScreen.NAME);
     }
 
     private function eventGeneration($delta : Number) : void {
 
-        if(_timeleft <= 0) {
+        if (_timeleft <= 0)
+        {
             generateEvent();
             _timeleft = Math.random() * 10000;
-        } else {
+        }
+        else
+        {
             _timeleft -= $delta;
         }
-
-
     }
 
     private function generateEvent() : void {
 
-        switch (int(Math.random() * 2)) {
+        switch (int(Math.random() * 2))
+        {
             case 1:
                 coreDispatch(MapScreen.ADD_CHEST);
                 break;
         }
-
-
-
     }
 
     private function onTrapEnd() : void {
@@ -206,46 +170,8 @@ public class App extends Sprite {
         coreDispatch(HudScreen.UPDATE);
     }
 
-//    private function onSelectItem(item: Item) : void {
-//        _player.selectItem(item);
-//    }
-
-    private function onStartGame(monster : MonsterVO) : void {
-
-        trace("onStartGame", monster.name);
-        _player.hero.heal(_player.hero.maxHP);
-        _player.pet.unsummon();
-        _monster = monster;
-        _drop = monster.drop;
-        _enemy = new AIPlayer(monster);
-
-        coreExecute(ShowScreenCmd, BattleScreen.NAME);
-
-//        startGame(monster);
-    }
-
-    private function handlePetSelected(pet : Pet) : void {
-        _player.summonPet(pet);
-    }
-
     public function get refs() : CommonRefs {
         return _refs;
-    }
-
-    public function get enemy() : Player {
-        return _enemy;
-    }
-
-    public function get drop() : int {
-        return _drop;
-    }
-
-    public function get monster() : MonsterVO {
-        return _monster;
-    }
-
-    public function get monstersResults() : Object {
-        return _monstersResults;
     }
 
     public function get trapMode() : Boolean {

@@ -12,7 +12,8 @@
         "difficulty": 10,
         "drop": 1,
         "items": "4,6,13,14",
-        "unlock": "pikachu"
+        "unlock": "pikachu",
+        "stars": "7,12,20"
     },
     {
         "id": "pikachu",
@@ -27,7 +28,8 @@
         "difficulty": 20,
         "drop": 1,
         "items": "13,14,15",
-        "unlock": "meowut"
+        "unlock": "meowut",
+        "stars": "7,12,21"
     },
     {
         "id": "meowut",
@@ -42,7 +44,8 @@
         "difficulty": 20,
         "drop": 1,
         "items": "4,6,13,14",
-        "unlock": "slowpoke"
+        "unlock": "slowpoke",
+        "stars": "7,12,22"
     },
     {
         "id": "slowpoke",
@@ -57,7 +60,8 @@
         "difficulty": 20,
         "drop": 1,
         "items": "4,6,13,15",
-        "unlock": "charmander"
+        "unlock": "charmander",
+        "stars": "7,12,23"
     },
     {
         "id": "charmander",
@@ -72,7 +76,8 @@
         "difficulty": 20,
         "drop": 1,
         "items": "4,6,13,14",
-        "unlock": "bulbasaur"
+        "unlock": "bulbasaur",
+        "stars": "7,12,24"
     },
     {
         "id": "bulbasaur",
@@ -87,7 +92,8 @@
         "difficulty": 20,
         "drop": 1,
         "items": "4,6,13,14",
-        "unlock": "squirtle"
+        "unlock": "squirtle",
+        "stars": "7,12,25"
     },
     {
         "id": "squirtle",
@@ -102,7 +108,8 @@
         "difficulty": 20,
         "drop": 1,
         "items": "4,6,13,14",
-        "unlock": "pidgey"
+        "unlock": "pidgey",
+        "stars": "7,12,26"
     },
     {
         "id": "pidgey",
@@ -117,7 +124,8 @@
         "difficulty": 20,
         "drop": 1,
         "items": "4,6,13,14",
-        "unlock": "ratata"
+        "unlock": "ratata",
+        "stars": "7,12,27"
     },
     {
         "id": "ratata",
@@ -132,7 +140,8 @@
         "difficulty": 20,
         "drop": 1,
         "items": "4,6,13,14",
-        "unlock": "zubat"
+        "unlock": "zubat",
+        "stars": "7,12,28"
     },
     {
         "id": "zubat",
@@ -146,6 +155,7 @@
         "magic": 5,
         "difficulty": 20,
         "drop": 1,
-        "items": "4,6,13,15"
+        "items": "4,6,13,15",
+        "stars": "7,12,28"
     }
 ]

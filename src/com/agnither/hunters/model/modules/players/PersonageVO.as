@@ -1,11 +1,12 @@
 /**
  * Created by agnither on 19.08.14.
  */
-package com.agnither.hunters.data.inner {
+package com.agnither.hunters.model.modules.players {
 
 public class PersonageVO {
 
-    public var name: String = "Player";
+
+    public var name: String = "";
     public var hp: int = 0;
     public var level: int = 0;
     public var exp : int = 0;

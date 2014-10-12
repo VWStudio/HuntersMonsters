@@ -3,8 +3,9 @@
  */
 package com.agnither.hunters.view.ui.screens.map {
 import com.agnither.hunters.App;
-import com.agnither.hunters.data.outer.MonsterVO;
-import com.agnither.hunters.model.Match3Game;
+import com.agnither.hunters.model.Model;
+import com.agnither.hunters.model.modules.monsters.MonsterVO;
+import com.agnither.hunters.model.match3.Match3Game;
 import com.agnither.hunters.model.player.Mana;
 import com.agnither.hunters.view.ui.UI;
 import com.agnither.hunters.view.ui.popups.hunt.HuntPopup;
@@ -87,7 +88,8 @@ public class ChestPoint extends AbstractView {
         _monsters = new <MonsterVO>[];
         for (var i : int = 0; i < maxMonsters; i++)
         {
-            _monsters.push(MonsterVO.LIST[int(MonsterVO.LIST.length * Math.random())]);
+            _monsters.push(Model.instance.monsters.getRandomMonster());
+//            _monsters.push(MonsterVO.LIST[int(MonsterVO.LIST.length * Math.random())]);
         }
 
     }

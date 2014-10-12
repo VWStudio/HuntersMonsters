@@ -1,7 +1,7 @@
 /**
  * Created by agnither on 21.08.14.
  */
-package com.agnither.hunters.data.outer {
+package com.agnither.hunters.model.modules.items {
 import flash.utils.Dictionary;
 
 public class ItemVO {
@@ -10,18 +10,26 @@ public class ItemVO {
     public static const DICT: Dictionary = new Dictionary();
     public static const THINGS: Vector.<ItemVO> = new <ItemVO>[];
 
+    public var id: int;
+    public var name: String;
+    public var picture: String;
+    public var type: int;
+    public var slot: int;
+    public var extension : Object;
+    public var extension_drop : Object;
+
     public static function parseData(data: Object):void {
         for (var i: int = 0; i < data.length; i++) {
-            var row: Object = data[i];
+            var source: Object = data[i];
+            source.extension = parseExtension(source.extension);
+            source.extension_drop = parseExtension(source.extensiondrop);
 
-            var object: ItemVO = new ItemVO();
-            object.id = row.id;
-            object.name = row.name;
-            object.picture = row.picture;
-            object.type = row.type;
-            object.slot = row.slot;
-            object.extension = parseExtension(row.extension);
-            object.extension_drop = parseExtension(row.extensiondrop);
+            var object: ItemVO = fill(new ItemVO(), source);
+//            object.id = row.id;
+//            object.name = row.name;
+//            object.picture = row.picture;
+//            object.type = row.type;
+//            object.slot = row.slot;
 
             LIST.push(object);
             DICT[object.id] = object;
@@ -37,13 +45,13 @@ public class ItemVO {
         }
 
         var object: Object = {};
-        var array: Array = string.split(",");
+        var array: Array = string.split(";");
         for (var i:int = 0; i < array.length; i++) {
-            while (array[i].indexOf("[") >= 0 && array[i].indexOf("]") < 0) {
-                array[i] += "," + array[i+1];
-                array.splice(i+1, 1);
-            }
-
+//            trace(array[i]);
+//            while (array[i].indexOf("[") >= 0 && array[i].indexOf("]") < 0) {
+//                array[i] += "," + array[i+1];
+//                array.splice(i+1, 1);
+//            }
             var row: Array = array[i].split(":");
             var id: String = row[0];
             var value: String = row[1];
@@ -62,16 +70,28 @@ public class ItemVO {
         return value as int;
     }
 
-    public var id: int;
-    public var name: String;
-    public var picture: String;
-    public var type: int;
-    public var slot: int;
-    public var extension : Object;
-    public var extension_drop : Object;
 
     public function getDropExtensionValue(key: String):int {
         return extension_drop[key] ? getValue(extension_drop[key]) : getValue(extension[key]);
+    }
+
+
+    public static function fill($target : ItemVO, $source : Object) : ItemVO {
+
+        var source : Object = $source;
+        if(source.constructor != Object){
+            source = JSON.parse(JSON.stringify(source));
+        }
+        for (var key : String in source)
+        {
+            if($target.hasOwnProperty(key)) {
+                $target[key] = source[key];
+            }
+        }
+        return $target;
+    }
+    public function clone() : ItemVO {
+        return fill(new ItemVO(), this);
     }
 }
 }

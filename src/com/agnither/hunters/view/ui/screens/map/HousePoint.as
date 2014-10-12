@@ -3,8 +3,8 @@
  */
 package com.agnither.hunters.view.ui.screens.map {
 import com.agnither.hunters.App;
-import com.agnither.hunters.data.outer.MonsterVO;
-import com.agnither.hunters.model.Match3Game;
+import com.agnither.hunters.model.modules.monsters.MonsterVO;
+import com.agnither.hunters.model.match3.Match3Game;
 import com.agnither.hunters.model.player.Mana;
 import com.agnither.hunters.view.ui.UI;
 import com.agnither.hunters.view.ui.popups.house.HousePopup;

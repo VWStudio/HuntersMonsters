@@ -3,7 +3,7 @@
  */
 package com.agnither.hunters.model.player.inventory {
 import com.agnither.hunters.data.outer.ItemTypeVO;
-import com.agnither.hunters.data.outer.ItemVO;
+import com.agnither.hunters.model.modules.items.ItemVO;
 
 import starling.events.EventDispatcher;
 

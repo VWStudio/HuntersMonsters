@@ -3,7 +3,7 @@
  */
 package com.agnither.hunters.view.ui.screens.map {
 import com.agnither.hunters.App;
-import com.agnither.hunters.data.outer.MonsterVO;
+import com.agnither.hunters.model.modules.monsters.MonsterVO;
 import com.agnither.hunters.view.ui.screens.battle.monster.TrapPopup;
 import com.agnither.ui.AbstractView;
 import com.cemaprjl.core.coreExecute;

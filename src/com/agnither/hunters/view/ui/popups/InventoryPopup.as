@@ -4,6 +4,7 @@
 package com.agnither.hunters.view.ui.popups {
 import com.agnither.hunters.App;
 import com.agnither.hunters.data.outer.ItemTypeVO;
+import com.agnither.hunters.model.modules.locale.Locale;
 import com.agnither.hunters.model.player.Player;
 import com.agnither.hunters.view.ui.UI;
 import com.agnither.hunters.view.ui.popups.inventory.InventoryView;
@@ -21,8 +22,6 @@ public class InventoryPopup extends Popup {
 
     public static const NAME: String = "InventoryPopup";
 
-    private var _player: Player;
-
     private var _weaponTab: TabView;
     private var _armorTab: TabView;
     private var _itemTab: TabView;
@@ -37,30 +36,29 @@ public class InventoryPopup extends Popup {
     private var _closeBtn: Button;
 
     public function InventoryPopup() {
-        _player = App.instance.player;
     }
 
     override protected function initialize():void {
         createFromConfig(_refs.guiConfig.inventory_popup);
 
         _weaponTab = _links.tab1;
-        _weaponTab.label = "weapon";
+        _weaponTab.label = Locale.getString("weapon_tab");
         _weaponTab.addEventListener(TabView.TAB_CLICK, handleSelectTab);
 
         _armorTab = _links.tab2;
-        _armorTab.label = "armor";
+        _armorTab.label = Locale.getString("armor_tab");
         _armorTab.addEventListener(TabView.TAB_CLICK, handleSelectTab);
 
         _itemTab = _links.tab3;
-        _itemTab.label = "items";
+        _itemTab.label = Locale.getString("items_tab");
         _itemTab.addEventListener(TabView.TAB_CLICK, handleSelectTab);
 
         _spellTab = _links.tab4;
-        _spellTab.label = "spells";
+        _spellTab.label = Locale.getString("spells_tab");
         _spellTab.addEventListener(TabView.TAB_CLICK, handleSelectTab);
 
         _trapsTab = _links.tab5;
-        _trapsTab.label = "traps";
+        _trapsTab.label = Locale.getString("traps_tab");
         _trapsTab.addEventListener(TabView.TAB_CLICK, handleSelectTab);
 
         ItemsView.itemX = _links.slot10.x - _links.slot00.x;
@@ -87,7 +85,9 @@ public class InventoryPopup extends Popup {
 
 
     override public function update() : void {
-        _items.showType(ItemTypeVO.weapon);
+        _weaponTab.dispatchEventWith(TabView.TAB_CLICK);
+//        handleSelectTab();
+//        _items.showType(ItemTypeVO.weapon);
     }
 
 //    override public function open():void {
@@ -109,7 +109,17 @@ public class InventoryPopup extends Popup {
             case _spellTab:
                 _items.showType(ItemTypeVO.spell);
                 break;
+            case _spellTab:
+//                _trapsTab
+                break;
         }
+        _weaponTab.setIsSelected(e.currentTarget as TabView);
+        _armorTab.setIsSelected(e.currentTarget as TabView);
+        _itemTab.setIsSelected(e.currentTarget as TabView);
+        _spellTab.setIsSelected(e.currentTarget as TabView);
+        _trapsTab.setIsSelected(e.currentTarget as TabView);
+
+
     }
 
     private function handleClose(e: Event):void {

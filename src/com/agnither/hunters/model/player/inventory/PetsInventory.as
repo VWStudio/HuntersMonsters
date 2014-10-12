@@ -2,7 +2,7 @@
  * Created by agnither on 21.08.14.
  */
 package com.agnither.hunters.model.player.inventory {
-import com.agnither.hunters.data.outer.MonsterVO;
+import com.agnither.hunters.model.modules.monsters.MonsterVO;
 import com.agnither.hunters.model.Model;
 
 import flash.utils.Dictionary;
@@ -43,7 +43,7 @@ public class PetsInventory extends EventDispatcher {
         _data = data;
         for (var key: * in data) {
             var petData: Object = data[key];
-            var pet : MonsterVO = Model.instance.getMonster(petData.id);
+            var pet : MonsterVO = Model.instance.monsters.getMonster(petData.id);
 //            var pet : MonsterVO = MonsterVO.DICT[petData.id];
             var newPet: Pet = new Pet(pet, petData);
             newPet.uniqueId = key;

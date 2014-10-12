@@ -2,11 +2,13 @@
  * Created by agnither on 21.08.14.
  */
 package com.agnither.hunters.model.player {
-import com.agnither.hunters.data.outer.ItemVO;
-import com.agnither.hunters.data.outer.MonsterVO;
+import com.agnither.hunters.model.Model;
+import com.agnither.hunters.model.modules.items.ItemVO;
+import com.agnither.hunters.model.Model;
+import com.agnither.hunters.model.modules.monsters.MonsterVO;
 import com.agnither.hunters.data.outer.PlayerItemVO;
-import com.agnither.hunters.data.outer.PlayerPetVO;
-import com.agnither.hunters.data.outer.PlayerVO;
+import com.agnither.hunters.model.modules.players.PlayerPetVO;
+import com.agnither.hunters.model.modules.players.PlayerVO;
 import com.agnither.hunters.model.player.inventory.Item;
 import com.agnither.hunters.model.player.personage.Progress;
 import com.cemaprjl.core.coreAddListener;
@@ -54,7 +56,7 @@ public class LocalPlayer extends Player {
     }
 
     private function createProgress():void {
-        var player: PlayerVO = PlayerVO.LIST[0];
+        var player: PlayerVO = PlayerVO.LIST[0].clone();
         var playerItems : Vector.<PlayerItemVO> = PlayerItemVO.LIST;
         var playerPets : Vector.<PlayerPetVO> = PlayerPetVO.LIST;
 //        var player: PlayerVO = PlayerVO.DICT[level];
@@ -76,7 +78,7 @@ public class LocalPlayer extends Player {
         for (var i : int = 0; i < playerItems.length; i++)
         {
             var playerItemVO : PlayerItemVO = playerItems[i];
-            var itemVO : ItemVO = ItemVO.DICT[playerItemVO.id];  // TODO item props could be overriden, to avoid replace to getting clone()
+            var itemVO : ItemVO = Model.instance.items.getItem(playerItemVO.id);
             itemVO.extension = playerItemVO.extension;
             var itmName : String = itemVO.name + "."+i;
             _data.data.items[itmName] = itemVO;
@@ -86,31 +88,19 @@ public class LocalPlayer extends Player {
         trace(JSON.stringify(_data.data.items));
         trace(_data.data.inventory);
 
-//        _data.data.items = {"weapon.1": {id: 1, extension: {1: 15}},
-//                            "armor.2": {id: 4, extension: {2: 15}},
-//                            "spell.3": {id: 13, extension: {1: 10, 3: 4, 9: 1}}};
-//        _data.data.inventory = ["weapon.1", "armor.2", "spell.3"];
         _data.data.version = 1;
-        /**
-         * unlocked regions and pets
-         */
+
         _data.data.unlockedMonsters = ["blue_bull"];
 
 
         _data.data.pets = {};
         for (var j : int = 0; j < playerPets.length; j++)
         {
-            var playerPetVO : PlayerPetVO = playerPets[j];
-            var monsterVO : MonsterVO = MonsterVO.fill(MonsterVO.DICT[playerPetVO.id].clone(), playerPetVO);  // TODO item props could be overriden, to avoid replace to getting clone()
-            var itmName : String = monsterVO.name + "."+j;
-            _data.data.pets[itmName] = monsterVO;
+            var playerPetVO : PlayerPetVO = playerPets[j].clone();
+            var monsterVO : MonsterVO = Model.instance.monsters.getMonster(playerPetVO.id, playerPetVO);
+            var itmName2 : String = monsterVO.name + "."+j;
+            _data.data.pets[itmName2] = monsterVO;
         }
-
-
-//        _data.data.pets = {"pet.1": {id: "blue_bull", name:"Вася", level: 2, hp: 50, damage: 10, defence: 10, magic: 6, tamed: 1},
-//                           "pet.2": {id: "blue_bull", name:"Коля", level: 3, hp: 100, damage: 20, defence: 20, magic: 6, tamed: 1},
-//                           "pet.3": {id: "blue_bull", name:"Саша", level: 1, hp: 100, damage: 5, defence: 5, magic: 5, tamed: 0}};
-
 
         save();
     }
@@ -153,6 +143,11 @@ public class LocalPlayer extends Player {
     }
     public function get unlockedMonsters() : Array {
            return _data.data.unlockedMonsters;
+    }
+
+    public function resetToBattle() : void {
+        hero.healMax();
+        pet.unsummon();
     }
 }
 }

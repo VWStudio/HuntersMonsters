@@ -59,7 +59,11 @@ public class ItemView extends AbstractView {
 
         _picture.touchable = true;
 
-        _links.damage_icon.getChildAt(0).texture = _refs.gui.getTexture("hit.png");
+        if(_item.extension["1"]) {
+            _links.damage_icon.getChildAt(0).texture = _refs.gui.getTexture("m_2.png");
+        } else if(_item.extension["2"]) {
+            _links.damage_icon.getChildAt(0).texture = _refs.gui.getTexture("shild.png");
+        }
 
         _mana = new <ManaView>[];
         for (var i:int = 0; i < 3; i++) {

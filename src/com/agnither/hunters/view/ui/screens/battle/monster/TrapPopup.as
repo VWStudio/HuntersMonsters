@@ -3,7 +3,7 @@
  */
 package com.agnither.hunters.view.ui.screens.battle.monster {
 import com.agnither.hunters.App;
-import com.agnither.hunters.data.outer.MonsterVO;
+import com.agnither.hunters.model.modules.monsters.MonsterVO;
 import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.player.inventory.Pet;
 import com.agnither.hunters.view.ui.UI;
@@ -65,7 +65,7 @@ public class TrapPopup extends Popup {
 
     override public function update() : void {
 
-        _monsterVO = Model.instance.getMonster(data.id);
+        _monsterVO = Model.instance.monsters.getMonster(data.id);
 //        _monsterVO = MonsterVO.DICT[data.id];
         _monster.data = _monsterVO;
         _monster.update();
@@ -121,7 +121,7 @@ public class TrapPopup extends Popup {
 
 
                         var petData : Object = {};
-                        petData.uniqueId = "caught.pet." + App.instance.player.pets.pets.length;
+                        petData.uniqueId = "caught.pet." + Model.instance.player.pets.pets.length;
                         petData.id = _monsterVO.id;
                         petData.level = _monsterVO.level;
                         petData.hp = _monsterVO.hp * 0.5;
@@ -132,7 +132,7 @@ public class TrapPopup extends Popup {
                         var pet : Pet = new Pet(_monsterVO, petData);
                         pet.uniqueId = petData.uniqueId;
 
-                        App.instance.player.pets.addPet(pet);
+                        Model.instance.player.pets.addPet(pet);
                         coreDispatch(MapScreen.DELETE_TRAP, data.marker);
                     } else {
                         coreDispatch(MapScreen.DELETE_TRAP, data.marker);

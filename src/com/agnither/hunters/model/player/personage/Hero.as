@@ -22,5 +22,9 @@ public class Hero extends Personage {
     public function Hero(inventory: Inventory) {
         _inventory = inventory;
     }
+
+    public function healMax() : void {
+        heal(maxHP);
+    }
 }
 }

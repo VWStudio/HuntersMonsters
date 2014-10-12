@@ -2,13 +2,13 @@
  * Created by agnither on 12.08.14.
  */
 package com.agnither.hunters.view.ui.popups.hunt {
-import com.agnither.hunters.data.outer.MonsterVO;
+import com.agnither.hunters.model.modules.monsters.MonsterVO;
 import com.agnither.hunters.model.Model;
 import com.agnither.hunters.view.ui.UI;
 import com.agnither.hunters.view.ui.screens.battle.monster.MonsterInfo;
 import com.agnither.hunters.view.ui.screens.map.*;
 import com.agnither.hunters.App;
-import com.agnither.hunters.model.Match3Game;
+import com.agnither.hunters.model.match3.Match3Game;
 import com.agnither.hunters.model.player.LocalPlayer;
 import com.agnither.ui.ButtonContainer;
 import com.agnither.ui.Popup;
@@ -35,8 +35,6 @@ public class HuntStepsPopup extends Popup {
 
 //    public static const SELECT_MONSTER: String = "select_monster_BattleScreen";
 
-    private var _player : LocalPlayer;
-
     private var _back : Image;
     private var _playButton : ButtonContainer;
     private var _closeButton : ButtonContainer;
@@ -53,8 +51,6 @@ public class HuntStepsPopup extends Popup {
     private var _rewardTF : TextField;
 
     public function HuntStepsPopup() {
-
-        _player = App.instance.player;
 
         super();
     }

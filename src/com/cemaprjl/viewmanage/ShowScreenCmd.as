@@ -6,6 +6,7 @@
  * To change this template use File | Settings | File Templates.
  */
 package com.cemaprjl.viewmanage {
+import com.agnither.hunters.model.Model;
 import com.agnither.hunters.view.ui.UI;
 import com.agnither.ui.AbstractView;
 import com.cemaprjl.core.ICommand;
@@ -23,6 +24,8 @@ public class ShowScreenCmd implements ICommand {
         {
             view.data = (rest[1]);
         }
+
+        Model.instance.state = viewName;
 
         coreDispatch(UI.SHOW_SCREEN, viewName);
     }

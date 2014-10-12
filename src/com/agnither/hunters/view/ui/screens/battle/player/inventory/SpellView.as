@@ -26,7 +26,7 @@ public class SpellView extends ItemView {
             _mana[i++].mana = manaObj;
         }
 
-        _damage.text = String(item.extension[ExtensionVO.damage]);
+        _damage.text = item.extension[ExtensionVO.damage].toString();
     }
 }
 }

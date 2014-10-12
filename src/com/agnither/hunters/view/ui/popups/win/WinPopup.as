@@ -2,11 +2,12 @@
  * Created by agnither on 12.08.14.
  */
 package com.agnither.hunters.view.ui.popups.win {
+import com.agnither.hunters.model.Model;
 import com.agnither.hunters.view.ui.UI;
 import com.agnither.hunters.view.ui.screens.battle.monster.MonsterInfo;
 import com.agnither.hunters.view.ui.screens.map.*;
 import com.agnither.hunters.App;
-import com.agnither.hunters.model.Match3Game;
+import com.agnither.hunters.model.match3.Match3Game;
 import com.agnither.hunters.model.player.LocalPlayer;
 import com.agnither.ui.ButtonContainer;
 import com.agnither.ui.Popup;
@@ -38,7 +39,6 @@ public class WinPopup extends Popup {
 
 //    public static const SELECT_MONSTER: String = "select_monster_BattleScreen";
 
-    private var _player : LocalPlayer;
 
     private var _back : Image;
     private var _playButton : ButtonContainer;
@@ -47,8 +47,6 @@ public class WinPopup extends Popup {
     private var _title : TextField;
 
     public function WinPopup() {
-
-        _player = App.instance.player;
 
         super();
     }
@@ -77,7 +75,7 @@ public class WinPopup extends Popup {
     private function handleClose(event : Event) : void {
 
 
-        coreDispatch(App.UPDATE_PROGRESS);
+        coreDispatch(Model.UPDATE_PROGRESS);
 
         coreDispatch(UI.HIDE_POPUP, NAME);
         coreExecute(ShowScreenCmd, MapScreen.NAME);
@@ -89,7 +87,7 @@ public class WinPopup extends Popup {
         _title.text = data.isWin ? "Победа" : "Поражение";
         _playButton.text = data.isWin ? "Забрать" : "Закрыть";
 
-        _monster.data = App.instance.monster;
+        _monster.data = Model.instance.monster;
         _monster.update();
 
 

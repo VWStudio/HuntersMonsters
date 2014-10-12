@@ -5,7 +5,8 @@ package com.agnither.hunters.model.player.inventory {
 import com.agnither.hunters.data.outer.ExtensionVO;
 import com.agnither.hunters.data.outer.ItemSlotVO;
 import com.agnither.hunters.data.outer.ItemTypeVO;
-import com.agnither.hunters.data.outer.ItemVO;
+import com.agnither.hunters.model.Model;
+import com.agnither.hunters.model.modules.items.ItemVO;
 
 import flash.utils.Dictionary;
 
@@ -56,8 +57,9 @@ public class Inventory extends EventDispatcher {
             _itemsByType[ItemTypeVO.LIST[i].id] = [];
         }
 
-        for (i = 0; i < ExtensionVO.LIST.length; i++) {
-            _extensions[ExtensionVO.LIST[i].id] = 0;
+        var extArray : Vector.<ExtensionVO> = Model.instance.items.getExtensions();
+        for (i = 0; i < extArray.length; i++) {
+            _extensions[extArray[i].id] = 0;
         }
     }
 
@@ -65,7 +67,7 @@ public class Inventory extends EventDispatcher {
         _data = data;
         for (var key: * in data) {
             var itemData: Object = data[key];
-            var item : ItemVO = ItemVO.DICT[itemData.id];
+            var item : ItemVO = Model.instance.items.getItem(itemData.id);
             var newItem : Item = Item.createItem(item, itemData.extension);
             newItem.uniqueId = key;
 

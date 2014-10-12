@@ -2,7 +2,7 @@
  * Created by agnither on 13.08.14.
  */
 package com.agnither.hunters.model.player.personage {
-import com.agnither.hunters.data.inner.PersonageVO;
+import com.agnither.hunters.model.modules.players.PersonageVO;
 import com.agnither.hunters.data.outer.DamageTypeVO;
 
 import starling.events.EventDispatcher;
@@ -19,7 +19,7 @@ public class Personage extends EventDispatcher {
     }
 
     public function get picture():String {
-        return null;
+        return _picture;
     }
 
     private var _level: int;
@@ -56,6 +56,7 @@ public class Personage extends EventDispatcher {
     private var _league : int;
     private var _rating : int;
     private var _gold : int;
+    private var _picture : String;
     public function get magic():DamageTypeVO {
         return DamageTypeVO.DICT[_magic];
     }
@@ -76,6 +77,7 @@ public class Personage extends EventDispatcher {
         _gold = data.gold;
         _league = data.league;
         _rating = data.rating;
+        _picture = data.picture;
     }
 
     public function hit(value: int, ignoreDefence: Boolean = false):void {

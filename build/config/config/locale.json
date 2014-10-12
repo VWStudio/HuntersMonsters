@@ -1,0 +1,30 @@
+[
+    {
+        "id": "weapon_tab",
+        "russian": "Оружие"
+    },
+    {
+        "id": "armor_tab",
+        "russian": "Броня"
+    },
+    {
+        "id": "items_tab",
+        "russian": "Предметы"
+    },
+    {
+        "id": "spells_tab",
+        "russian": "Магия"
+    },
+    {
+        "id": "traps_tab",
+        "russian": "Ловушки"
+    },
+    {
+        "id": "tamed_tab",
+        "russian": "Пойманные"
+    },
+    {
+        "id": "untamed_tab",
+        "russian": "Не пойманные"
+    }
+]

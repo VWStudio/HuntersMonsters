@@ -5,7 +5,7 @@ package com.agnither.hunters.view.ui.screens.battle {
 import com.agnither.hunters.App;
 import com.agnither.hunters.App;
 import com.agnither.hunters.App;
-import com.agnither.hunters.model.Match3Game;
+import com.agnither.hunters.model.match3.Match3Game;
 import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.player.drop.DropSlot;
 import com.agnither.hunters.model.player.drop.GoldDrop;
@@ -128,7 +128,7 @@ public class BattleScreen extends Screen {
         {
             _game = new Match3Game(stage);
         }
-        _game.init(App.instance.player, App.instance.enemy, App.instance.drop);
+        _game.init(Model.instance.player, Model.instance.enemy, Model.instance.drop);
 
         _field.clear();
         _field.field = _game.field;
@@ -176,7 +176,6 @@ public class BattleScreen extends Screen {
         }
         _tooltip.visible = true;
         var rect : Rectangle = ($data.item as Sprite).getBounds(this);
-        trace(rect);
         _tooltip.x = rect.x + rect.width + 5;
         _tooltip.y = rect.y + rect.height + 5;
     }
@@ -214,7 +213,7 @@ public class BattleScreen extends Screen {
                 coreExecute(ShowScreenCmd, MapScreen.NAME);
                 var pt : HousePoint = Model.instance.currentHousePoint;
                 if($isWin) {
-                    Model.instance.houses[pt.territory]["owner"] = App.instance.player.id;
+                    Model.instance.houses[pt.territory]["owner"] = Model.instance.player.id;
                 } else {
 
                 }
@@ -238,18 +237,18 @@ public class BattleScreen extends Screen {
                     if (drop.content is GoldDrop)
                     {
                         var gold : GoldDrop = drop.content as GoldDrop;
-                        App.instance.player.addGold(gold.gold);
+                        Model.instance.player.addGold(gold.gold);
                     }
                     else if (drop.content is ItemDrop)
                     {
                         var item : ItemDrop = drop.content as ItemDrop;
-                        App.instance.player.addItem(item.item);
+                        Model.instance.player.addItem(item.item);
                     }
                 }
             }
 
 
-            App.instance.player.save();
+            Model.instance.player.save();
         }
 
     }

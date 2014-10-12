@@ -3,19 +3,19 @@
  */
 package com.agnither.hunters.view.ui.popups.house {
 import com.agnither.hunters.data.inner.InventoryVO;
-import com.agnither.hunters.data.outer.ItemVO;
+import com.agnither.hunters.model.modules.items.ItemVO;
 import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.player.inventory.Item;
 import com.agnither.hunters.model.player.personage.Monster;
 import com.agnither.hunters.view.ui.popups.hunt.*;
-import com.agnither.hunters.data.outer.MonsterVO;
+import com.agnither.hunters.model.modules.monsters.MonsterVO;
 import com.agnither.hunters.view.ui.UI;
 import com.agnither.hunters.view.ui.screens.battle.monster.MonsterInfo;
 import com.agnither.hunters.view.ui.screens.battle.player.inventory.ItemView;
 import com.agnither.hunters.view.ui.screens.map.*;
 import com.agnither.hunters.App;
-import com.agnither.hunters.model.Match3Game;
+import com.agnither.hunters.model.match3.Match3Game;
 import com.agnither.hunters.model.player.LocalPlayer;
 import com.agnither.ui.ButtonContainer;
 import com.agnither.ui.Popup;
@@ -43,8 +43,6 @@ public class HousePopup extends Popup {
 
 //    public static const SELECT_MONSTER: String = "select_monster_BattleScreen";
 
-    private var _player : LocalPlayer;
-
     private var _back : Image;
     private var _getPrizeButton : ButtonContainer;
     private var _closeButton : ButtonContainer;
@@ -59,8 +57,6 @@ public class HousePopup extends Popup {
     private var _currentItem : ItemVO;
 
     public function HousePopup() {
-
-        _player = App.instance.player;
 
         super();
     }
@@ -99,7 +95,7 @@ public class HousePopup extends Popup {
 
     private function handleGet(event : Event) : void {
         if(_currentItem) {
-            App.instance.player.addItem(Item.createItem(_currentItem, _currentItem.extension));
+            Model.instance.player.addItem(Item.createItem(_currentItem, _currentItem.extension));
             _currentItem = null;
             _randomContainer.removeChildren();
         }
@@ -115,7 +111,7 @@ public class HousePopup extends Popup {
         Model.instance.match3mode = Match3Game.MODE_HOUSE;
         Model.instance.currentHousePoint = data["point"];
         coreDispatch(UI.HIDE_POPUP, NAME);
-        coreDispatch(Match3Game.START_GAME, Model.instance.getRandomMonster());
+        coreDispatch(Match3Game.START_GAME, Model.instance.monsters.getRandomMonster());
 
     }
 
@@ -123,7 +119,7 @@ public class HousePopup extends Popup {
     override public function update() : void {
 
         houseData = Model.instance.houses[data["id"]];
-        _isOwner = (houseData.owner && houseData.owner == App.instance.player.id);
+        _isOwner = (houseData.owner && houseData.owner == Model.instance.player.id);
         _owner.text = _isOwner ? "Вы владеете этим домом" : "Дом принадлежит не вам";
         _attackButton.visible = !_isOwner;
 
@@ -133,7 +129,8 @@ public class HousePopup extends Popup {
             for (var i : int = 0; i < houseData.unlockItems.length; i++)
             {
                     var id: int = houseData.unlockItems[i];
-                    var item : ItemVO = ItemVO.DICT[id];
+                    var item : ItemVO = Model.instance.items.getItem(id);
+//                    var item : ItemVO = ItemVO.DICT[id];
 //                    _items.push(item);
                     var iview : ItemView = ItemView.getItemView(Item.createItem(item, item.extension));
                     _itemsContainer.addChild(iview);
@@ -144,7 +141,8 @@ public class HousePopup extends Popup {
         _randomContainer.removeChildren();
 
 
-        _currentItem = houseData.nextRandomItem = ItemVO.THINGS[int(ItemVO.THINGS.length * Math.random())];
+        _currentItem = houseData.nextRandomItem = Model.instance.items.getRandomThing();
+//        _currentItem = houseData.nextRandomItem = ItemVO.THINGS[int(ItemVO.THINGS.length * Math.random())];
         var iview1 : ItemView = ItemView.getItemView(Item.createItem(_currentItem, _currentItem.extension));
         _randomContainer.addChild(iview1);
 

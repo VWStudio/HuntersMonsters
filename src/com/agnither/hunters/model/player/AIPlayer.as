@@ -2,9 +2,10 @@
  * Created by agnither on 13.08.14.
  */
 package com.agnither.hunters.model.player {
-import com.agnither.hunters.data.outer.ItemVO;
-import com.agnither.hunters.data.outer.MonsterVO;
-import com.agnither.hunters.model.Match3Game;
+import com.agnither.hunters.model.Model;
+import com.agnither.hunters.model.modules.items.ItemVO;
+import com.agnither.hunters.model.modules.monsters.MonsterVO;
+import com.agnither.hunters.model.match3.Match3Game;
 import com.agnither.hunters.model.match3.Move;
 import com.agnither.hunters.model.match3.MoveResult;
 import com.agnither.hunters.model.player.ai.CheckManaResult;
@@ -37,7 +38,7 @@ public class AIPlayer extends Player {
         var inventory: Array = [];
         for (var i:int = 0; i < monster.items.length; i++) {
             var id: int = monster.items[i];
-            items[id] = ItemVO.DICT[id];
+            items[id] = Model.instance.items.getItem(id);
             inventory.push(id);
         }
         initInventory(items, inventory);

@@ -16,7 +16,7 @@ public class ArmorView extends ItemView {
     override protected function initialize():void {
         super.initialize();
 
-        _damage.text = String(item.extension[ExtensionVO.defence]);
+        _damage.text = item.extension[ExtensionVO.defence].toString();
     }
 }
 }

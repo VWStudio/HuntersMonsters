@@ -1,7 +1,7 @@
 /**
  * Created by agnither on 12.08.14.
  */
-package com.agnither.hunters.model {
+package com.agnither.hunters.model.match3 {
 import com.agnither.hunters.data.outer.ChipVO;
 import com.agnither.hunters.model.match3.Cell;
 import com.agnither.hunters.model.match3.Field;
@@ -116,6 +116,7 @@ public class Match3Game extends EventDispatcher {
         _field.initChips(_player.hero.magic.name, _enemy.hero.magic.name);
         _field.init();
 
+        _drop.clearList();
         _drop.init(dropSet);
 
         nextMove(_player);

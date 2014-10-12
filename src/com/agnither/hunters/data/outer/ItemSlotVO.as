@@ -2,7 +2,7 @@
  * Created by agnither on 14.08.14.
  */
 package com.agnither.hunters.data.outer {
-import com.agnither.hunters.data.inner.PersonageVO;
+import com.agnither.hunters.model.modules.players.PersonageVO;
 
 import flash.utils.Dictionary;
 

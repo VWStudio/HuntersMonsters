@@ -3,8 +3,9 @@
  */
 package com.agnither.hunters.view.ui.screens.map {
 import com.agnither.hunters.App;
-import com.agnither.hunters.data.outer.MonsterVO;
-import com.agnither.hunters.model.Match3Game;
+import com.agnither.hunters.model.Model;
+import com.agnither.hunters.model.modules.monsters.MonsterVO;
+import com.agnither.hunters.model.match3.Match3Game;
 import com.agnither.hunters.model.player.Mana;
 import com.agnither.hunters.view.ui.UI;
 import com.agnither.hunters.view.ui.popups.hunt.HuntPopup;
@@ -105,7 +106,7 @@ public class MonsterPoint extends AbstractView {
 
     override public function update() : void {
 
-        _stars.setProgress(App.instance.monstersResults[_monsterType.id]);
+        _stars.setProgress(Model.instance.monstersResults[_monsterType.id]);
 
         App.instance.tick.addTickCallback(tick);
 
@@ -113,7 +114,7 @@ public class MonsterPoint extends AbstractView {
 
     private function tick($delta : Number) : void {
         if(_timeleft <= 0) {
-            var area : Rectangle = App.instance.monsterAreas[_monsterType.id];
+            var area : Rectangle = Model.instance.monsterAreas[_monsterType.id];
             _targetPoint = new Point(area.x + area.width * Math.random(), area.y + area.height * Math.random());
             _currentPoint = new Point(this.x, this.y);
             _distance = Point.distance(_targetPoint, _currentPoint);

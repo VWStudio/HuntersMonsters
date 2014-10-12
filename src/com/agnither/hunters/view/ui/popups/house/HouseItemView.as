@@ -3,7 +3,7 @@
  */
 package com.agnither.hunters.view.ui.popups.house {
 import com.agnither.hunters.App;
-import com.agnither.hunters.data.outer.ItemVO;
+import com.agnither.hunters.model.modules.items.ItemVO;
 import com.agnither.hunters.model.player.LocalPlayer;
 import com.agnither.hunters.model.player.inventory.Item;
 import com.agnither.hunters.view.ui.screens.battle.player.inventory.*;

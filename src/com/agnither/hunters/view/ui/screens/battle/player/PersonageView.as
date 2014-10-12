@@ -56,9 +56,10 @@ public class PersonageView extends AbstractView {
         if (!_personage.dead) {
             _links.damage_type_icon.getChildAt(0).texture = _personage is Hero ? _refs.gui.getTexture(DamageTypeVO.weapon.picture) : _refs.gui.getTexture(_personage.magic.picture);
 
-            if (_personage is Monster) {
+            if (_personage.picture) {
                 _picture.texture = _refs.gui.getTexture(_personage.picture);
                 _picture.readjustSize();
+                _picture.x = _picture.y = 0;
             }
         }
 

@@ -5,7 +5,8 @@ package com.agnither.hunters.model.player.drop {
 import com.agnither.hunters.data.outer.DropVO;
 import com.agnither.hunters.data.outer.GoldDropVO;
 import com.agnither.hunters.data.outer.ItemTypeVO;
-import com.agnither.hunters.data.outer.ItemVO;
+import com.agnither.hunters.model.Model;
+import com.agnither.hunters.model.modules.items.ItemVO;
 import com.agnither.hunters.model.player.inventory.Item;
 
 import starling.events.EventDispatcher;
@@ -18,6 +19,9 @@ public class DropList extends EventDispatcher {
     }
 
     private var _dropSet : int;
+    private var _goldContent : DropSlot;
+    private var _lastIndex : int = 0;
+    private var _itemsAmount : int = 0;
 
     public function DropList() {
         _list = new Vector.<DropSlot>(6);
@@ -31,13 +35,13 @@ public class DropList extends EventDispatcher {
     }
 
     public function drop() : void {
-        var drop : DropVO = DropVO.getRandomDrop(_dropSet);
+        var drop : DropVO = _itemsAmount < _list.length - 1 ? DropVO.getRandomDrop(_dropSet) : DropVO.getRandomDrop(2); // set 2 is only gold
         var content : Drop;
         switch (drop.type) {
             case ItemTypeVO.weapon:
             case ItemTypeVO.armor:
             case ItemTypeVO.magic:
-                content = new ItemDrop(Item.createDrop(ItemVO.DICT[drop.item_id]));
+                content = new ItemDrop(Item.createDrop(Model.instance.items.getItem(drop.item_id)));
                 break;
             case ItemTypeVO.gold:
                 content = new GoldDrop(GoldDropVO.DICT[drop.item_id].random);
@@ -47,17 +51,34 @@ public class DropList extends EventDispatcher {
     }
 
     private function addContent(content : Drop) : void {
-        var i : int = 0;
-        while (i < _list.length && !_list[i].addContent(content)) {
-            i++;
+        if(content is GoldDrop) {
+            if(!_goldContent) {
+                _goldContent = _list[_lastIndex];
+                _lastIndex++;
+            }
+            _goldContent.addContent(content);
+            return;
+        } else {
+            if(_lastIndex < _list.length) {
+                _list[_lastIndex].addContent(content);
+            }
+            _itemsAmount++;
+            _lastIndex++;
         }
+//        while (i < _list.length && !_list[i].addContent(content)) {
+//            i++;
+//        }
     }
 
     public function clearList() : void {
-        while (_list.length > 0) {
-            var drop : DropSlot = _list.shift();
-            drop.clear();
+        for (var i : int = 0; i < _list.length; i++)
+        {
+            var slot : DropSlot = _list[i];
+            slot.clear();
         }
+        _lastIndex = 0;
+        _itemsAmount = 0;
+        _goldContent = null;
     }
 }
 }
