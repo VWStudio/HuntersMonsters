@@ -58,6 +58,7 @@ public class HuntPopup extends Popup {
     }
 
     private function handleClose(event : Event) : void {
+        Model.instance.currentMonsterPoint = null;
         coreDispatch(UI.HIDE_POPUP, NAME);
     }
 

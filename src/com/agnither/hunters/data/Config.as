@@ -8,11 +8,13 @@ import com.agnither.hunters.data.outer.ExtensionVO;
 import com.agnither.hunters.data.outer.GoldDropVO;
 import com.agnither.hunters.data.outer.ItemSlotVO;
 import com.agnither.hunters.data.outer.ItemTypeVO;
+import com.agnither.hunters.data.outer.TrapVO;
 import com.agnither.hunters.model.modules.items.ItemVO;
 import com.agnither.hunters.data.outer.DamageTypeVO;
 import com.agnither.hunters.data.outer.LeagueVO;
 import com.agnither.hunters.data.outer.LevelVO;
 import com.agnither.hunters.model.modules.locale.LocaleVO;
+import com.agnither.hunters.model.modules.monsters.MonsterAreaVO;
 import com.agnither.hunters.model.modules.monsters.MonsterVO;
 import com.agnither.hunters.data.outer.PlayerItemVO;
 import com.agnither.hunters.model.modules.players.PlayerPetVO;
@@ -43,6 +45,8 @@ public class Config {
         addConfig("player_items", PlayerItemVO);
         addConfig("player_pets", PlayerPetVO);
         addConfig("locale", LocaleVO);
+        addConfig("monster_area", MonsterAreaVO);
+        addConfig("trap", TrapVO);
     }
 
     public static function addConfig(id: String, ClassRef: Class):void {

@@ -4,22 +4,25 @@
 package com.agnither.hunters.data.outer {
 import flash.utils.Dictionary;
 
-public class PlayerItemVO {
+public class TrapVO {
 
-    public static const LIST: Vector.<PlayerItemVO> = new <PlayerItemVO>[];
+    public static const LIST: Vector.<TrapVO> = new <TrapVO>[];
     public static const DICT: Dictionary = new Dictionary();
+
+    public var level: int = 0;
+    public var leveleffect : Array = [];
+    public var areaeffect : Number = 0;
 
     public static function parseData(data: Object):void {
         for (var i: int = 0; i < data.length; i++) {
             var row: Object = data[i];
 
-            var object: PlayerItemVO = new PlayerItemVO();
-            object.id = row.id;
-            object.extension = parseExtension(row.extension);
-            object.wield = row.wield;
+            row.leveleffect = row.leveleffect.toString().split(",");
+
+            var object: TrapVO = fill(new TrapVO(), row);
 
             LIST.push(object);
-            DICT[object.id] = object;
+            DICT[object.level] = object;
         }
     }
 
@@ -44,9 +47,27 @@ public class PlayerItemVO {
         return object;
     }
 
-    public var id: int;
-    public var extension : Object;
-    public var wield : Boolean = false;
+    public static function fill($target : TrapVO, $source : Object) : TrapVO {
+
+        var source : Object = $source;
+        if(source.constructor != Object){
+            source = JSON.parse(JSON.stringify(source));
+        }
+        for (var key : String in source)
+        {
+            if($target.hasOwnProperty(key)) {
+                $target[key] = source[key];
+            }
+        }
+        return $target;
+    }
+    public function clone() : TrapVO {
+        return fill(new TrapVO(), this);
+    }
+
+
+
+
 
 }
 }

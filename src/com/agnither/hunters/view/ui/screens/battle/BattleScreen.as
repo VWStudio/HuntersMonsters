@@ -11,6 +11,7 @@ import com.agnither.hunters.model.player.drop.DropSlot;
 import com.agnither.hunters.model.player.drop.GoldDrop;
 import com.agnither.hunters.model.player.drop.GoldDrop;
 import com.agnither.hunters.model.player.drop.ItemDrop;
+import com.agnither.hunters.model.player.inventory.Item;
 import com.agnither.hunters.view.ui.UI;
 import com.agnither.hunters.view.ui.common.GoldView;
 import com.agnither.hunters.view.ui.popups.SelectMonsterPopup;
@@ -72,7 +73,6 @@ public class BattleScreen extends Screen {
 
     override protected function initialize():void {
 
-//        _game = App.instance.game;
 
         createFromConfig(_refs.guiConfig.battle_screen);
 
@@ -205,20 +205,19 @@ public class BattleScreen extends Screen {
                 break;
 
             case Match3Game.MODE_REGULAR:
-                coreExecute(ShowPopupCmd, WinPopup.NAME, {isWin : $isWin});
+                coreExecute(ShowPopupCmd, WinPopup.NAME, {isWin : $isWin, drops:_game.dropList});
                 break;
-
             case Match3Game.MODE_HOUSE:
-
                 coreExecute(ShowScreenCmd, MapScreen.NAME);
                 var pt : HousePoint = Model.instance.currentHousePoint;
                 if($isWin) {
-                    Model.instance.houses[pt.territory]["owner"] = Model.instance.player.id;
+                    Model.instance.houses[pt.name]["owner"] = Model.instance.player.id;
+                    Model.instance.checkHouses();
                 } else {
 
                 }
 
-                coreExecute(ShowPopupCmd, HousePopup.NAME, {id:pt.territory, point : pt});
+                coreExecute(ShowPopupCmd, HousePopup.NAME, {point : pt});
                 break;
         }
 
@@ -228,28 +227,29 @@ public class BattleScreen extends Screen {
         /**
          * MOVE next things in win popup
          */
-        if($isWin) {
-            for (var i : int = 0; i < _game.dropList.list.length; i++)
-            {
-                var drop : DropSlot = _game.dropList.list[i];
-                if (drop.content)
-                {
-                    if (drop.content is GoldDrop)
-                    {
-                        var gold : GoldDrop = drop.content as GoldDrop;
-                        Model.instance.player.addGold(gold.gold);
-                    }
-                    else if (drop.content is ItemDrop)
-                    {
-                        var item : ItemDrop = drop.content as ItemDrop;
-                        Model.instance.player.addItem(item.item);
-                    }
-                }
-            }
-
-
-            Model.instance.player.save();
-        }
+//        if($isWin) {
+//            for (var i : int = 0; i < _game.dropList.list.length; i++)
+//            {
+//                var drop : DropSlot = _game.dropList.list[i];
+//                if (drop.content)
+//                {
+//                    if (drop.content is GoldDrop)
+//                    {
+//                        var gold : GoldDrop = drop.content as GoldDrop;
+//                        Model.instance.addPlayerGold(gold.gold);
+//                    }
+//                    else if (drop.content is ItemDrop)
+//                    {
+//                        var item : ItemDrop = drop.content as ItemDrop;
+//                        Model.instance.addPlayerItem(item.item);
+////                        Model.instance.player.addItem(item.item);
+//                    }
+//                }
+//            }
+//
+//
+//            Model.instance.progress.saveProgress();
+//        }
 
     }
 

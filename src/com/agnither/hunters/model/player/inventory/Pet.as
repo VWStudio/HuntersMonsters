@@ -10,13 +10,13 @@ public class Pet extends EventDispatcher {
 
     public static const UPDATE: String = "update_Pet";
 
-    protected var _uniqueId: String;
-    public function set uniqueId(value: String):void {
-        _uniqueId = value;
-    }
-    public function get uniqueId():String {
-        return _uniqueId;
-    }
+    public var uniqueId: String;
+//    public function set uniqueId(value: String):void {
+//        _uniqueId = value;
+//    }
+//    public function get uniqueId():String {
+//        return _uniqueId;
+//    }
 
     protected var _monster: MonsterVO;
     public function get id():String {
@@ -42,8 +42,8 @@ public class Pet extends EventDispatcher {
         _params = params;
     }
 
-    public function tame():void {
-        _params.tamed = 1;
+    public function tame($val : Boolean = true):void {
+        _params.tamed = int($val);
         update();
     }
 

@@ -4,6 +4,7 @@
 package com.agnither.hunters.model.player.inventory {
 import com.agnither.hunters.data.outer.ItemTypeVO;
 import com.agnither.hunters.model.modules.items.ItemVO;
+import com.cemaprjl.utils.Util;
 
 import starling.events.EventDispatcher;
 
@@ -28,7 +29,9 @@ public class Item extends EventDispatcher {
         for (var key: * in data.extension) {
             extension[key] = data.getDropExtensionValue(key);
         }
-        return new Item(data, extension);
+        var item : Item = new Item(data, extension);
+        item.uniqueId = Util.uniq(item.id.toString());
+        return item;
     }
 
     protected var _uniqueId: String;

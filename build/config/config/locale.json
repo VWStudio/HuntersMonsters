@@ -26,5 +26,45 @@
     {
         "id": "untamed_tab",
         "russian": "Не пойманные"
+    },
+    {
+        "id": "blue_bull",
+        "russian": "Синий бык"
+    },
+    {
+        "id": "pikachu",
+        "russian": "Пикачу"
+    },
+    {
+        "id": "meowut",
+        "russian": "Мяут"
+    },
+    {
+        "id": "slowpoke",
+        "russian": "Слоупок"
+    },
+    {
+        "id": "charmander",
+        "russian": "Чармандер"
+    },
+    {
+        "id": "bulbasaur",
+        "russian": "Бульбазавр"
+    },
+    {
+        "id": "squirtle",
+        "russian": "Сквиртл"
+    },
+    {
+        "id": "pidgey",
+        "russian": "Пиджей"
+    },
+    {
+        "id": "ratata",
+        "russian": "Ратата"
+    },
+    {
+        "id": "zubat",
+        "russian": "Зубат"
     }
 ]

@@ -1,0 +1,83 @@
+[
+    {
+        "id": "blue_bull",
+        "order": 10,
+        "areaamount": "1,2",
+        "lifetime": "60,300",
+        "respawn": 180
+    },
+    {
+        "id": "pikachu",
+        "order": 20,
+        "area": "clouds_01",
+        "areaamount": "2,3",
+        "lifetime": "60,300",
+        "respawn": 180,
+        "house": "house00"
+    },
+    {
+        "id": "meowut",
+        "order": 30,
+        "area": "clouds_02",
+        "areaamount": "1,2",
+        "lifetime": "60,300",
+        "respawn": 180,
+        "house": "house01"
+    },
+    {
+        "id": "slowpoke",
+        "order": 40,
+        "area": "clouds_03",
+        "areaamount": "1,3",
+        "lifetime": "60,300",
+        "respawn": 180
+    },
+    {
+        "id": "charmander",
+        "order": 50,
+        "area": "clouds_04",
+        "areaamount": "1,2",
+        "lifetime": "60,300",
+        "respawn": 180
+    },
+    {
+        "id": "bulbasaur",
+        "order": 60,
+        "area": "clouds_05",
+        "areaamount": "2,3",
+        "lifetime": "60,300",
+        "respawn": 180
+    },
+    {
+        "id": "squirtle",
+        "order": 70,
+        "area": "clouds_06",
+        "areaamount": "1,2",
+        "lifetime": "60,300",
+        "respawn": 180
+    },
+    {
+        "id": "pidgey",
+        "order": 80,
+        "area": "clouds_07",
+        "areaamount": "1,3",
+        "lifetime": "60,300",
+        "respawn": 180
+    },
+    {
+        "id": "ratata",
+        "order": 90,
+        "area": "clouds_08",
+        "areaamount": "1,2",
+        "lifetime": "60,300",
+        "respawn": 180
+    },
+    {
+        "id": "zubat",
+        "order": 100,
+        "area": "clouds_09",
+        "areaamount": "1,3",
+        "lifetime": "60,300",
+        "respawn": 180
+    }
+]

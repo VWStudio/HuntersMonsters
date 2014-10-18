@@ -65,7 +65,7 @@ public class HudScreen extends Screen {
         _inventoryBtn.addEventListener(Event.TRIGGERED, onInventory);
 
         _trapBtn = _links.trap_btn;
-        _trapBtn.text = "Ловушка";
+        _trapBtn.text = "Убрать ловушку";
         _trapBtn.addEventListener(Event.TRIGGERED, onTrap);
 
         _resetBtn = _links.reset_btn;
@@ -85,8 +85,7 @@ public class HudScreen extends Screen {
     }
 
     private function onTrap(event : Event) : void {
-        coreDispatch(MapScreen.START_TRAP);
-
+        coreDispatch(MapScreen.STOP_TRAP);
     }
 
     private function onInventory(event : Event) : void {
@@ -101,12 +100,12 @@ public class HudScreen extends Screen {
         _playerLeague.text = LeagueVO.DICT[player.hero.league.toString()].name;
         _playerRating.text = player.hero.rating.toString();
         _playerGold.text = player.hero.gold.toString();
-        _trapBtn.visible = !App.instance.trapMode;
+        _trapBtn.visible = App.instance.trapMode;
     }
 
     private function onReset(event : Event) : void {
 
-        Model.instance.player.reset();
+        Model.instance.progress.reset();
 
         var url:String = ExternalInterface.call("window.location.href.toString");
         navigateToURL(new URLRequest(url))

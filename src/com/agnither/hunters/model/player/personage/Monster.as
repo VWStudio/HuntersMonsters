@@ -7,9 +7,9 @@ import com.agnither.hunters.model.player.inventory.Pet;
 public class Monster extends Personage {
 
     private var _pet: Pet;
-    override public function get picture():String {
-        return _pet.picture;
-    }
+//    override public function get picture():String {
+//        return _pet.picture;
+//    }
 
     public function summon(pet: Pet):void {
         _pet = pet;
@@ -19,7 +19,7 @@ public class Monster extends Personage {
 
     public function unsummon():void {
         _pet = null;
-        _hp = 0;
+        hp = 0;
     }
 }
 }

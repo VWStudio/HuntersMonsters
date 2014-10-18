@@ -39,6 +39,23 @@ public class DropVO {
             DICT[object.item_set].push(object);
         }
     }
+    public static function fill($target : DropVO, $source : Object) : DropVO {
+
+        var source : Object = $source;
+        if(source.constructor != Object){
+            source = JSON.parse(JSON.stringify(source));
+        }
+        for (var key : String in source)
+        {
+            if($target.hasOwnProperty(key)) {
+                $target[key] = source[key];
+            }
+        }
+        return $target;
+    }
+    public function clone() : DropVO {
+        return fill(new DropVO(), this);
+    }
 
     public var id: int;
     public var item_set: int;

@@ -121,13 +121,13 @@ public class App extends Sprite {
 
         _refs = new CommonRefs(_resources);
 
-        Model.instance.init();
 
         _ui = new UI();
 
         _tick = new Ticker(stage);
         _tick.addTickCallback(eventGeneration);
 
+        Model.instance.init();
 
         coreAddListener(MapScreen.START_TRAP, onTrapStart);
         coreAddListener(MapScreen.STOP_TRAP, onTrapEnd);

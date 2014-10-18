@@ -13,50 +13,24 @@ public class Personage extends EventDispatcher {
     public static const HIT: String = "hit_Personage";
     public static const DEAD: String = "dead_Personage";
 
-    private var _name: String;
-    public function get name():String {
-        return _name;
+    public var name: String;
+    public var id: String;
+    public var exp : int = 0;
+    public var league : int = 0;
+    public var rating : int = 0;
+    public var gold : int = 0;
+    public var picture : String;
+    public var level: int = 0;
+    public var hp: int = 0;
+    public var maxHP: int = 0;
+    private var _damage: int = 0;
+    private var _defence: int = 0;
+
+    public function get isDead():Boolean {
+        return hp <= 0;
     }
 
-    public function get picture():String {
-        return _picture;
-    }
-
-    private var _level: int;
-    public function get level():int {
-        return _level;
-    }
-
-    protected var _hp: int;
-    public function get hp():int {
-        return _hp;
-    }
-
-    private var _maxHP: int;
-    public function get maxHP():int {
-        return _maxHP;
-    }
-
-    public function get dead():Boolean {
-        return _hp <= 0;
-    }
-
-    private var _damage: int;
-    public function get damage():int {
-        return _damage;
-    }
-
-    private var _defence: int;
-    public function get defence():int {
-        return _defence;
-    }
-
-    private var _magic: int;
-    private var _exp : int;
-    private var _league : int;
-    private var _rating : int;
-    private var _gold : int;
-    private var _picture : String;
+    private var _magic: int = 0;
     public function get magic():DamageTypeVO {
         return DamageTypeVO.DICT[_magic];
     }
@@ -65,19 +39,20 @@ public class Personage extends EventDispatcher {
     }
 
     public function init(data: Object):void {
-        _name = data.name;
-        _level = data.level;
-        _maxHP = data.hp;
-        _hp = _maxHP;
+        name = data.name;
+        id = data.id;
+        level = data.level;
+        maxHP = data.hp;
+        hp = maxHP;
         _damage = data.damage;
         _defence = data.defence;
         _magic = data.magic;
 
-        _exp = data.exp;
-        _gold = data.gold;
-        _league = data.league;
-        _rating = data.rating;
-        _picture = data.picture;
+        exp = data.exp;
+        gold = data.gold;
+        league = data.league;
+        rating = data.rating;
+        picture = data.picture;
     }
 
     public function hit(value: int, ignoreDefence: Boolean = false):void {
@@ -86,20 +61,20 @@ public class Personage extends EventDispatcher {
         }
         value = Math.max(0, value);
 
-        _hp -= value;
-        _hp = Math.max(0, _hp);
+        hp -= value;
+        hp = Math.max(0, hp);
         update();
 
         dispatchEventWith(HIT, false, value);
 
-        if (dead) {
+        if (isDead) {
             dispatchEventWith(DEAD);
         }
     }
 
     public function heal(value: int):void {
-        _hp += value;
-        _hp = Math.min(_hp, maxHP);
+        hp += value;
+        hp = Math.min(hp, maxHP);
         update();
     }
 
@@ -107,20 +82,12 @@ public class Personage extends EventDispatcher {
         dispatchEventWith(UPDATE);
     }
 
-    public function get exp() : int {
-        return _exp;
+    public function get damage() : int {
+        return _damage;
     }
 
-    public function get league() : int {
-        return _league;
-    }
-
-    public function get rating() : int {
-        return _rating;
-    }
-
-    public function get gold() : int {
-        return _gold;
+    public function get defence() : int {
+        return _defence;
     }
 }
 }

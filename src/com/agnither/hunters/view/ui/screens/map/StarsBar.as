@@ -69,7 +69,7 @@ public class StarsBar extends AbstractView {
         {
             _stars[i].visible = i < val;
         }
-        _back.visible = val > 0;
+//        _back.visible = val > 0;
     }
 
 }

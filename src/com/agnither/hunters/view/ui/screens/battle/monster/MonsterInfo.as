@@ -2,6 +2,7 @@
  * Created by mor on 23.09.2014.
  */
 package com.agnither.hunters.view.ui.screens.battle.monster {
+import com.agnither.hunters.model.modules.locale.Locale;
 import com.agnither.hunters.model.modules.monsters.MonsterVO;
 import com.agnither.ui.AbstractView;
 
@@ -39,7 +40,7 @@ public class MonsterInfo extends AbstractView {
         _hpVal.text = _monster.hp.toString();
         _damageVal.text = _monster.damage.toString();
         _armorVal.text = _monster.defence.toString();
-        _nameVal.text = _monster.name;
+        _nameVal.text = Locale.getString(_monster.id) + " ["+_monster.level+ "]";
         _killed.visible = false;
 
     }
@@ -48,7 +49,7 @@ public class MonsterInfo extends AbstractView {
         _killed.visible = $val;
     }
 
-    public function get monster() : com.agnither.hunters.model.modules.monsters.MonsterVO {
+    public function get monster() : MonsterVO {
         return _monster;
     }
 }

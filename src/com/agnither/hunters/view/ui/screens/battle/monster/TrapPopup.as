@@ -3,6 +3,8 @@
  */
 package com.agnither.hunters.view.ui.screens.battle.monster {
 import com.agnither.hunters.App;
+import com.agnither.hunters.data.outer.TrapVO;
+import com.agnither.hunters.model.modules.monsters.MonsterAreaVO;
 import com.agnither.hunters.model.modules.monsters.MonsterVO;
 import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.player.inventory.Pet;
@@ -33,6 +35,11 @@ public class TrapPopup extends Popup {
     public static const DELETE_MODE : String = "delete";
     private var _title : TextField;
     private var _monsterVO : MonsterVO;
+    private var _trap : TrapVO;
+    private var _currentTerritory : MonsterAreaVO;
+    private var _chance1 : TextField;
+    private var _chance2 : TextField;
+    private var _chance3 : TextField;
 
     public function TrapPopup() {
         super();
@@ -59,13 +66,34 @@ public class TrapPopup extends Popup {
         _set6hButton.addEventListener(Event.TRIGGERED, handleSet);
         _setNowButton.addEventListener(Event.TRIGGERED, handleSet);
 
+        _chance1 = _links["level1chance_tf"];
+        _chance2 = _links["level2chance_tf"];
+        _chance3 = _links["level3chance_tf"];
+
+
         _monster = _links.monster;
+//        _monster.visible = false;
     }
 
 
     override public function update() : void {
 
-        _monsterVO = Model.instance.monsters.getMonster(data.id);
+        _trap = Model.instance.currentTrap;
+
+
+        _currentTerritory = MonsterAreaVO.DICT[data["id"]];
+
+        var settedIndex : int = MonsterAreaVO.NAMES_LIST.indexOf(_currentTerritory.id);
+        var trapIndex : int = _trap.level;
+
+        var baseChance : Number = 100 + _trap.areaeffect * (trapIndex - settedIndex);
+        trace(settedIndex, trapIndex, baseChance);
+        _chance1.text = "Уровень 1: "+int(baseChance * _trap.leveleffect[0] + 1)+"%";
+        _chance2.text = "Уровень 2: "+int(baseChance * _trap.leveleffect[1] + 1)+"%";
+        _chance3.text = "Уровень 3: "+int(baseChance * _trap.leveleffect[2] + 1)+"%";
+
+
+        _monsterVO = Model.instance.monsters.getMonster(data.id, 1);
 //        _monsterVO = MonsterVO.DICT[data.id];
         _monster.data = _monsterVO;
         _monster.update();
@@ -74,12 +102,12 @@ public class TrapPopup extends Popup {
         _setNowButton.visible = false;
         switch (data.mode) {
             case TrapPopup.CHECK_MODE:
-                _title.text = "Ловушка";
+                _title.text = "Ловушка ур."+(_trap.level + 1);
                 _setNowButton.visible = true;
                 _setNowButton.text = "Удалить";
                 break;
             case TrapPopup.DELETE_MODE:
-                _title.text = "Ловушка";
+                _title.text = "Ловушка ур."+(_trap.level + 1);
                 _setNowButton.visible = true;
                 _setNowButton.text = "Удалить";
                 break;
@@ -90,7 +118,9 @@ public class TrapPopup extends Popup {
                 break;
             case TrapPopup.SET_MODE:
             default :
-                _title.text = "Установить ловушку";
+
+                    //_title.text = "Установить ловушку ур."+(_trap.level + 1);
+                _title.text = "Установить ловушку ур."+(_trap.level + 1);
                 _set1hButton.visible = true;
                 _set6hButton.visible = true;
                 _setNowButton.visible = true;

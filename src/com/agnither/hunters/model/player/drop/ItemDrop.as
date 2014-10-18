@@ -4,6 +4,7 @@
 package com.agnither.hunters.model.player.drop {
 import com.agnither.hunters.data.outer.ItemTypeVO;
 import com.agnither.hunters.model.player.inventory.Item;
+import com.cemaprjl.utils.Util;
 
 public class ItemDrop extends Drop {
 
@@ -18,7 +19,7 @@ public class ItemDrop extends Drop {
 
     public function ItemDrop(item: Item) {
         _item = item;
-        _item.uniqueId = ItemTypeVO.DICT[item.type].name + "." + (new Date()).time;
+        _item.uniqueId = Util.uniq(ItemTypeVO.DICT[item.type].name);
     }
 
     override public function stack(drop: Drop):Boolean {

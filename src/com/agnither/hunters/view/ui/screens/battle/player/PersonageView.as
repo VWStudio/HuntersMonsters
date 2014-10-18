@@ -3,6 +3,7 @@
  */
 package com.agnither.hunters.view.ui.screens.battle.player {
 import com.agnither.hunters.data.outer.DamageTypeVO;
+import com.agnither.hunters.model.modules.locale.Locale;
 import com.agnither.hunters.model.player.personage.Hero;
 import com.agnither.hunters.model.player.personage.Monster;
 import com.agnither.hunters.model.player.personage.Personage;
@@ -53,7 +54,7 @@ public class PersonageView extends AbstractView {
     }
 
     private function handleUpdate(e: Event = null):void {
-        if (!_personage.dead) {
+        if (!_personage.isDead) {
             _links.damage_type_icon.getChildAt(0).texture = _personage is Hero ? _refs.gui.getTexture(DamageTypeVO.weapon.picture) : _refs.gui.getTexture(_personage.magic.picture);
 
             if (_personage.picture) {
@@ -63,12 +64,12 @@ public class PersonageView extends AbstractView {
             }
         }
 
-        _name.text = String(_personage.name) + " " + String(_personage.level);
+        _name.text = (_personage.name ? String(_personage.name) : Locale.getString(_personage.id)) + " " + String(_personage.level);
         _hp.text = String(_personage.hp) + "/" + String(_personage.maxHP);
         _armor.text = String(_personage.defence);
         _damage.text = String(_personage.damage);
 
-        visible = !_personage.dead;
+        visible = !_personage.isDead;
     }
 
     private function handleHit(e: Event):void {

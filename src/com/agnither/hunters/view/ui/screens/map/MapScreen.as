@@ -3,6 +3,7 @@
  */
 package com.agnither.hunters.view.ui.screens.map {
 import com.agnither.hunters.App;
+import com.agnither.hunters.model.modules.monsters.MonsterAreaVO;
 import com.agnither.hunters.model.modules.monsters.MonsterVO;
 import com.agnither.hunters.model.modules.monsters.MonsterVO;
 import com.agnither.hunters.model.match3.Match3Game;
@@ -58,12 +59,15 @@ public class MapScreen extends Screen {
     public static const STOP_TRAP : String = "MapScreen.STOP_TRAP";
     public static const ADD_TRAP : String = "MapScreen.ADD_TRAP";
     public static const DELETE_TRAP : String = "MapScreen.DELETE_TRAP";
+    public static const ADD_POINT : String = "MapScreen.ADD_POINT";
+    public static const DELETE_POINT : String = "MapScreen.DELETE_POINT";
     private var _trapsContainer : Sprite;
     public static const ADD_CHEST : String = "MapScreen.ADD_CHEST";
     public static const REMOVE_CHEST : String = "MapScreen.REMOVE_CHEST";
     private var _chestsContainer : Sprite;
     private var _houses : Object = {};
     private var _houseContainer : Sprite;
+    private var isFirstRun : Boolean = true;
 
     public function MapScreen() {
 
@@ -80,6 +84,8 @@ public class MapScreen extends Screen {
 
         createFromConfig(_refs.guiConfig.map, _container);
 
+        coreAddListener(ADD_POINT, onPointAdd);
+        coreAddListener(DELETE_POINT, onPointDelete);
         coreAddListener(ADD_TRAP, onTrapAdd);
         coreAddListener(DELETE_TRAP, onTrapDelete);
         coreAddListener(ADD_CHEST, onChestAdd);
@@ -148,11 +154,15 @@ public class MapScreen extends Screen {
 //                initMonster(ptName, new Point(dobj.x, dobj.y));
 
 
+            } else if(dobj is HousePoint) {
+
+                _houses[dobj.name] = dobj;
+                dobj.visible = false;
+
             } else if(dobj.name.indexOf("clouds") > -1) {
                 _clouds[dobj.name] = dobj;
 //                dobj.touchable = true;
 //                dobj.visible = false;
-            } else {
             }
         }
 
@@ -169,6 +179,26 @@ public class MapScreen extends Screen {
 
     }
 
+    private function onPointDelete($pt : MonsterPoint) : void {
+
+        if(_monstersContainer.contains($pt)) {
+            _monstersContainer.removeChild($pt);
+            $pt.destroy();
+        }
+
+    }
+
+    private function onPointAdd($pt : MonsterPoint) : void {
+        var monsterRect : Rectangle = Model.instance.monsterAreas[$pt.monsterType.id];
+//        var mp : MonsterPoint = new MonsterPoint();
+        _monstersContainer.addChild($pt);
+        var monsterPt : Point = new Point(monsterRect.x + Math.random() * monsterRect.width, monsterRect.y + Math.random() * monsterRect.height);
+        $pt.x = monsterPt.x;
+        $pt.y = monsterPt.y;
+        $pt.update();
+
+    }
+
     private function onChestRemove($chest : ChestPoint) : void {
 
         if(_chestsContainer.contains($chest)) {
@@ -182,14 +212,14 @@ public class MapScreen extends Screen {
 
     private function onChestAdd() : void {
 
-        if(_chestsContainer.numChildren >= Model.instance.player.unlockedMonsters.length) {
+        if(_chestsContainer.numChildren >= Model.instance.progress.unlockedMonsters.length) {
             return;
         }
 
         var chest : ChestPoint = new ChestPoint();
         _chestsContainer.addChild(chest);
 
-        var monster  : String  = Model.instance.player.unlockedMonsters[int(Math.random() * Model.instance.player.unlockedMonsters.length)];
+        var monster  : String  = Model.instance.progress.unlockedMonsters[int(Math.random() * Model.instance.progress.unlockedMonsters.length)];
         var rect : Rectangle = Model.instance.monsterAreas[monster];
         var pt : Point = new Point(rect.x + rect.width * Math.random(), rect.y + rect.height * Math.random());
 
@@ -214,7 +244,7 @@ public class MapScreen extends Screen {
 
         var trapPoint : TrapPoint = new TrapPoint();
         _trapsContainer.addChild(trapPoint);
-        trapPoint.monsterType = Model.instance.monsters.getMonster($data.id);
+        trapPoint.monsterType = Model.instance.monsters.getMonster($data.id, 1);
 //        trapPoint.monsterType = MonsterVO.DICT[$data.id];
         trapPoint.data = $data;
         trapPoint.update();
@@ -224,66 +254,38 @@ public class MapScreen extends Screen {
         trapPoint.x = position.x;
         trapPoint.y = position.y;
 
+        Model.instance.territoryTraps[$data.id] = trapPoint;
     }
 
-
-    private function initMonster($ptName : String) : void {
-
-
-        var mp : MonsterPoint = new MonsterPoint();
-        _monstersContainer.addChild(mp);
-//        var monsterInArea  : MonsterVO = MonsterVO.DICT[$ptName];
-        var monsterInArea  : MonsterVO = Model.instance.monsters.getMonster($ptName);
-
-        var monster : MonsterVO = mp.monsterType = monsterInArea;
-
-        var monsterRect : Rectangle = Model.instance.monsterAreas[$ptName];
-
-        var monsterPt : Point = new Point(monsterRect.x + Math.random() * monsterRect.width, monsterRect.y + Math.random() * monsterRect.height);
-        mp.x = monsterPt.x;
-        mp.y = monsterPt.y;
-        mp.update();
-
-//        trace(monster.area, _clouds[monster.area]);
-        if(_clouds[monster.area]) {
-            _clouds[monster.area].visible = false;
-        }
-        if(!_houses[monster.id] && (_clouds[monster.area] == null || _clouds[monster.area].visible == false)) {
-            var house : HousePoint = new HousePoint();
-            house.territory = monster.id;
-            _houses[monster.id] = house;
-            _houseContainer.addChild(house);
-            var rect : Rectangle = Model.instance.monsterAreas[monster.id];
-            house.y = rect.y + rect.height * 0.5;
-            house.x = rect.x + rect.width * 0.75;
-
-            Model.instance.houses[monster.id] = {id: monster.id, unlockItems:[1, 2, 3, 4]}
-
-        }
-
-    }
 
 
     override public function update() : void {
-        /**
-         * kinda progress
-         */
-
-        _monstersContainer.removeChildren();
-        var arr : Array = Model.instance.player.unlockedMonsters;
-        var i : int = -100500;
+        var arr : Array = Model.instance.progress.unlockedMonsters;
+        var i : int = 0;
+        var monsterID : String; // = Model.instance.progress.unlockedMonsters[Model.instance.progress.unlockedMonsters.length - 1];
         for (i = 0; i < arr.length; i++)
         {
-            var monsterID: String = arr[i];
-            initMonster(monsterID);
+            monsterID = arr[i];
+            var monsterArea  : MonsterAreaVO = Model.instance.monsters.getMonsterArea(monsterID);
+            if(_clouds[monsterArea.area]) {
+                _clouds[monsterArea.area].visible = false;
+            }
+
+            if(monsterArea.house && _houses[monsterArea.house])  {
+                _houses[monsterArea.house].visible = true;
+            }
         }
 
         var monsterRect : Rectangle = Model.instance.monsterAreas[monsterID];
         _playerPosition.x = monsterRect.x + monsterRect.width * 0.5;
         _playerPosition.y = monsterRect.y + monsterRect.height * 0.5;
 
+        Model.instance.updatePoints();
+
 
     }
+
+
 
     private function sortPlayers($a : PlayerPoint, $b : PlayerPoint) : Number {
         if($a.name < $b.name) return -1;
@@ -304,11 +306,11 @@ public class MapScreen extends Screen {
                     var pt : Point = _container.globalToLocal(_startPoint);
                     var trapAllowed : Boolean = false;
                     if(App.instance.trapMode) {
-                        for (var i : int = 0; i < Model.instance.player.unlockedMonsters.length; i++)
+                        for (var i : int = 0; i < Model.instance.progress.unlockedMonsters.length; i++)
                         {
-                            var key : String = Model.instance.player.unlockedMonsters[i];
+                            var key : String = Model.instance.progress.unlockedMonsters[i];
                             var rect : Rectangle = Model.instance.monsterAreas[key];
-                            if(rect.containsPoint(pt)) {
+                            if(rect.containsPoint(pt) && Model.instance.territoryTraps[key] == null) {
                                 trapAllowed = true;
                                 break;
                             }

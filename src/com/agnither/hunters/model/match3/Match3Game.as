@@ -2,11 +2,14 @@
  * Created by agnither on 12.08.14.
  */
 package com.agnither.hunters.model.match3 {
+import com.agnither.hunters.App;
 import com.agnither.hunters.data.outer.ChipVO;
+import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.match3.Cell;
 import com.agnither.hunters.model.match3.Field;
 import com.agnither.hunters.model.match3.Match;
 import com.agnither.hunters.model.player.AIPlayer;
+import com.agnither.hunters.model.player.LocalPlayer;
 import com.agnither.hunters.model.player.drop.DropList;
 import com.agnither.hunters.model.player.Player;
 import com.agnither.hunters.model.player.drop.DropSlot;
@@ -62,6 +65,8 @@ public class Match3Game extends EventDispatcher {
 
     private var _drop: DropList;
     private var _stage : Stage;
+    private var _allowPlay : Boolean = true;
+    private var _totalMoves : int = 0;
     public function get dropList():DropList {
         return _drop;
     }
@@ -96,8 +101,8 @@ public class Match3Game extends EventDispatcher {
 
     public function init(player: Player, enemy: Player, dropSet: int):void {
         AIPlayer.game = this;
-
-
+        _allowPlay = true;
+        _totalMoves = 0;
         if(_field) {
             _field.clear();
         } else {
@@ -136,7 +141,12 @@ public class Match3Game extends EventDispatcher {
 
     private function nextMove(player: Player):void {
         _currentPlayer = player;
-        _currentPlayer.startMove();
+        if(_currentPlayer is LocalPlayer) {
+            _totalMoves++;
+        }
+        if(_allowPlay) {
+            _currentPlayer.startMove();
+        }
     }
 
     private function handleMatch(e: Event):void {
@@ -151,7 +161,7 @@ public class Match3Game extends EventDispatcher {
                 attacker = currentPlayer.hero;
                 break;
             default:
-                if (!currentPlayer.pet.dead && currentPlayer.pet.magic.name == match.type) {
+                if (!currentPlayer.pet.isDead && currentPlayer.pet.magic.name == match.type) {
                     attacker = currentPlayer.pet;
                 }
                 currentPlayer.manaList.addMana(match.type, match.amount);
@@ -159,7 +169,7 @@ public class Match3Game extends EventDispatcher {
         }
 
         if (attacker) {
-            var aim:Personage = !currentEnemy.pet.dead ? currentEnemy.pet : currentEnemy.hero;
+            var aim:Personage = !currentEnemy.pet.isDead ? currentEnemy.pet : currentEnemy.hero;
             match.showDamage(attacker.damage);
             aim.hit(match.amount * attacker.damage);
         }
@@ -170,10 +180,14 @@ public class Match3Game extends EventDispatcher {
     }
 
     private function handlePlayerDead(e: Event):void {
+        _allowPlay = false;
+        Model.instance.movesAmount = _totalMoves;
         coreDispatch(END_GAME, false);
     }
 
     private function handleEnemyDead(e: Event):void {
+        _allowPlay = false;
+        Model.instance.movesAmount = _totalMoves;
         coreDispatch(END_GAME, true);
     }
 

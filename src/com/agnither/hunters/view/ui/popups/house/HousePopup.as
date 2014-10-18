@@ -20,7 +20,9 @@ import com.agnither.hunters.model.player.LocalPlayer;
 import com.agnither.ui.ButtonContainer;
 import com.agnither.ui.Popup;
 import com.agnither.ui.Screen;
+import com.cemaprjl.core.coreAddListener;
 import com.cemaprjl.core.coreDispatch;
+import com.cemaprjl.utils.Formatter;
 
 import flash.geom.Point;
 import flash.ui.Mouse;
@@ -55,6 +57,9 @@ public class HousePopup extends Popup {
     private var _items : Array;
     private var _randomContainer : Sprite;
     private var _currentItem : ItemVO;
+    private var point : HousePoint;
+    private var _priceText : TextField;
+    private var _item : ItemView;
 
     public function HousePopup() {
 
@@ -81,6 +86,9 @@ public class HousePopup extends Popup {
         _getPrizeButton.addEventListener(Event.TRIGGERED, handleGet );
         _getPrizeButton.text = "Купить";
 
+        _priceText = _links["price_tf"];
+        _priceText.text = "";
+
         _itemsContainer = new Sprite();
         addChild(_itemsContainer);
         _itemsContainer.x = 100;
@@ -91,13 +99,27 @@ public class HousePopup extends Popup {
         _randomContainer.x = 400;
         _randomContainer.y = 200;
 
+        coreAddListener(Model.UPDATE_HOUSE, onHouseUpdate);
+
+
+    }
+
+    private function onHouseUpdate() : void {
+        if(_isOwner && houseData) {
+            if(houseData.timeLeft > 0) {
+                _priceText.text = "Осталось:"+Formatter.msToHHMMSS(houseData.timeLeft);
+            } else {
+                update();
+            }
+        }
     }
 
     private function handleGet(event : Event) : void {
         if(_currentItem) {
-            Model.instance.player.addItem(Item.createItem(_currentItem, _currentItem.extension));
+            Model.instance.player.addItem(_item.item);
+            Model.instance.generateNewHouseItem(point.name);
             _currentItem = null;
-            _randomContainer.removeChildren();
+            update();
         }
     }
 
@@ -118,18 +140,27 @@ public class HousePopup extends Popup {
 
     override public function update() : void {
 
-        houseData = Model.instance.houses[data["id"]];
-        _isOwner = (houseData.owner && houseData.owner == Model.instance.player.id);
+        point = data["point"];
+        _isOwner = false;
+
+        if(!Model.instance.houses[point.name]) {
+            Model.instance.createHouse(point.name);
+        }
+
+        if(Model.instance.houses[point.name]) {
+            houseData = Model.instance.houses[point.name];
+            _isOwner = houseData.owner == Model.instance.player.id;
+        }
+//        _isOwner = (houseData.owner && houseData.owner == Model.instance.player.id);
         _owner.text = _isOwner ? "Вы владеете этим домом" : "Дом принадлежит не вам";
         _attackButton.visible = !_isOwner;
 
         _itemsContainer.removeChildren();
 //        _items = [];
-        if(houseData.unlockItems) {
+        if(houseData && houseData.unlockItems) {
             for (var i : int = 0; i < houseData.unlockItems.length; i++)
             {
-                    var id: int = houseData.unlockItems[i];
-                    var item : ItemVO = Model.instance.items.getItem(id);
+                    var item : ItemVO = houseData.unlockItems[i];
 //                    var item : ItemVO = ItemVO.DICT[id];
 //                    _items.push(item);
                     var iview : ItemView = ItemView.getItemView(Item.createItem(item, item.extension));
@@ -141,10 +172,18 @@ public class HousePopup extends Popup {
         _randomContainer.removeChildren();
 
 
-        _currentItem = houseData.nextRandomItem = Model.instance.items.getRandomThing();
+        _currentItem = houseData.nextRandomItem;
 //        _currentItem = houseData.nextRandomItem = ItemVO.THINGS[int(ItemVO.THINGS.length * Math.random())];
-        var iview1 : ItemView = ItemView.getItemView(Item.createItem(_currentItem, _currentItem.extension));
-        _randomContainer.addChild(iview1);
+        _item = ItemView.getItemView(Item.createItem(_currentItem, _currentItem.extension));
+        _randomContainer.addChild(_item);
+        if(_isOwner) {
+            _getPrizeButton.text = "Взять";
+            _getPrizeButton.visible = houseData.timeLeft <= 0;
+            _priceText.text = _getPrizeButton.visible ? "Вещь готова" : "";
+        } else {
+            _priceText.text = "Стоимость: "+200+"$";
+            _getPrizeButton.text = "Купить";
+        }
 
 
     }

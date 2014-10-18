@@ -4,6 +4,7 @@
 package com.agnither.hunters.view.ui.screens.map {
 import com.agnither.hunters.App;
 import com.agnither.hunters.model.Model;
+import com.agnither.hunters.model.modules.monsters.MonsterAreaVO;
 import com.agnither.hunters.model.modules.monsters.MonsterVO;
 import com.agnither.hunters.model.match3.Match3Game;
 import com.agnither.hunters.model.player.Mana;
@@ -13,6 +14,7 @@ import com.agnither.ui.AbstractView;
 import com.agnither.utils.CommonRefs;
 import com.cemaprjl.core.coreDispatch;
 import com.cemaprjl.core.coreExecute;
+import com.cemaprjl.utils.Formatter;
 import com.cemaprjl.viewmanage.ShowPopupCmd;
 
 import flash.geom.Point;
@@ -37,21 +39,9 @@ public class MonsterPoint extends AbstractView {
     private var _distance : Number = 0;
     private var _targetPoint : Point;
     private var _currentPoint : Point;
-
-//    private var _mana: Mana;
-//    public function set mana(value: Mana):void {
-//        if (_mana) {
-//            _mana.removeEventListener(Mana.UPDATE, handleUpdate);
-//        }
-//        _mana = value;
-//        if (_mana) {
-//            _mana.addEventListener(Mana.UPDATE, handleUpdate);
-//        }
-//        handleUpdate();
-//    }
-//
-//    private var _icon: Image;
-//    private var _value: TextField;
+    private var _time : TextField;
+    private var _monsterArea : MonsterAreaVO;
+    private var _lifetime : Number;
 
     public function MonsterPoint() {
         this.addEventListener(TouchEvent.TOUCH, handleTouch);
@@ -75,11 +65,8 @@ public class MonsterPoint extends AbstractView {
                 case TouchPhase.BEGAN :
                     break;
                 case TouchPhase.ENDED :
+                    Model.instance.currentMonsterPoint = this;
                     coreExecute(ShowPopupCmd, HuntPopup.NAME, _monsterType);
-//                    coreExecute(ShowPopupCmd, HuntPopup.NAME, MonsterVO.DICT[1]);
-//                    dispatchEventWith(UI.SHOW_POPUP, true, MonsterVO.DICT[1]);
-//                    dispatchEventWith(UI.SHOW_POPUP, true, MonsterVO.DICT[1]);
-//                    dispatchEventWith(Match3Game.START_GAME, true, MonsterVO.DICT[1]);
                     break;
             }
         } else
@@ -99,6 +86,8 @@ public class MonsterPoint extends AbstractView {
         _back.touchable = true;
         this.touchable = true;
 
+        _time = _links["time_tf"];
+
         _stars = _links.stars;
 
     }
@@ -106,13 +95,30 @@ public class MonsterPoint extends AbstractView {
 
     override public function update() : void {
 
-        _stars.setProgress(Model.instance.monstersResults[_monsterType.id]);
+        if(Model.instance.progress.monstersResults[_monsterType.id + "."+_monsterType.level] == null) {
+            Model.instance.progress.monstersResults[_monsterType.id + "."+_monsterType.level] = 0;
+        }
+        _stars.setProgress(Model.instance.progress.monstersResults[_monsterType.id + "."+_monsterType.level]);
+
+        _monsterArea = Model.instance.monsters.getMonsterArea(_monsterType.id);
+        _lifetime = (_monsterArea.lifetime_min + (_monsterArea.lifetime_max - _monsterArea.lifetime_min) * Math.random())*1000;
+
+//        _lifetime *= 0.25;
+
+//        trace("---",_monsterType.id, _lifetime, _monsterArea.lifetime_min, _monsterArea.lifetime_max);
 
         App.instance.tick.addTickCallback(tick);
 
     }
 
     private function tick($delta : Number) : void {
+        if(_lifetime > 0) {
+            _lifetime -= $delta;
+            _time.text = Formatter.msToHHMMSS(_lifetime);
+        } else {
+            Model.instance.deletePoint(this);
+        }
+
         if(_timeleft <= 0) {
             var area : Rectangle = Model.instance.monsterAreas[_monsterType.id];
             _targetPoint = new Point(area.x + area.width * Math.random(), area.y + area.height * Math.random());
@@ -126,6 +132,8 @@ public class MonsterPoint extends AbstractView {
             this.x = newPos.x;
             this.y = newPos.y;
         }
+
+
 
     }
 
