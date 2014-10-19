@@ -17,7 +17,7 @@ import starling.events.EventDispatcher;
 public class Progress extends EventDispatcher {
 
     private var _data: SharedObject;
-    private static var version: int = 1;
+    private static var version: int = 2;
     public var id : String = "";
     public var name : String = "";
     public var picture : String = "";
@@ -40,7 +40,8 @@ public class Progress extends EventDispatcher {
     public function Progress() {
         _data = SharedObject.getLocal("player");
 //        version = -1;
-        if (version == -1 || _data.data.version == null || _data.data.version != version) {
+        if (version == -1 || !_data.data.progress || _data.data.version == null || _data.data.version != version) {
+//        if (version == -1 || _data.data.version == null || _data.data.version != version) {
             save(mockup());
         }
         load(JSON.parse(_data.data.progress));
