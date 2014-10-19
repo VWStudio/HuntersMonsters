@@ -61,5 +61,33 @@
         "type": 5,
         "itemid": 3,
         "probability": 33
+    },
+    {
+        "id": 10,
+        "itemset": 3,
+        "type": 1,
+        "itemid": 1,
+        "probability": 25
+    },
+    {
+        "id": 11,
+        "itemset": 3,
+        "type": 2,
+        "itemid": 4,
+        "probability": 25
+    },
+    {
+        "id": 12,
+        "itemset": 3,
+        "type": 3,
+        "itemid": 7,
+        "probability": 25
+    },
+    {
+        "id": 13,
+        "itemset": 3,
+        "type": 5,
+        "itemid": 3,
+        "probability": 50
     }
 ]

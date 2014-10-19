@@ -8,12 +8,15 @@ public class DropVO {
 
     public static const LIST: Vector.<DropVO> = new <DropVO>[];
     public static const DICT: Dictionary = new Dictionary();
+    public static const PROBABILITY: Dictionary = new Dictionary();
 
     public static function getRandomDrop(itemSet: int):DropVO {
-        var rand: int = Math.random() * 100;
+        var rand: int = Math.random() * PROBABILITY[itemSet];
+        trace("RANDOM", itemSet, rand, PROBABILITY[itemSet]);
         var list: Vector.<DropVO> = DICT[itemSet];
         for (var i:int = 0; i < list.length; i++) {
             if (list[i].probability > rand) {
+                trace("*prob:", i, list[i].probability, rand);
                 return list[i];
             }
             rand -= list[i].probability;
@@ -38,6 +41,20 @@ public class DropVO {
             }
             DICT[object.item_set].push(object);
         }
+        for (var key : String in DICT)
+        {
+            var vec : Vector.<DropVO> = DICT[key]
+            var prob : Number = 0;
+            for (var j : int = 0; j < vec.length; j++)
+            {
+
+                prob+= vec[j].probability;
+
+            }
+            PROBABILITY[key] = prob;
+        }
+
+
     }
     public static function fill($target : DropVO, $source : Object) : DropVO {
 

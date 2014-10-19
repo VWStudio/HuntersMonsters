@@ -21,6 +21,9 @@ public class MonsterAreaVO {
     public var lifetime_min: int = 0;
     public var respawn: int = 0;
     public var house: String = "";
+    public var chestLife: int = 0;
+    public var chestRespawn: int = 0;
+    public var chestdropset: int = 0;
 
     public static function parseData(data: Object):void {
         for (var i: int = 0; i < data.length; i++) {
@@ -29,10 +32,17 @@ public class MonsterAreaVO {
             var arr : Array = source.areaamount.toString().split(",");
             source.area_min = arr[0];
             source.area_max = arr[1];
+            delete source.areaamount;
 
             arr = source.lifetime.toString().split(",");
             source.lifetime_min = arr[0];
             source.lifetime_max = arr[1];
+            delete source.lifetime;
+
+            arr = source.chesttimes.toString().split(",");
+            source.chestLife = arr[0];
+            source.chestRespawn = arr[1];
+            delete source.chesttimes;
 
             var object: MonsterAreaVO = fill(new MonsterAreaVO(), source);
             DICT[object.id] = object;

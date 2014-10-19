@@ -3,10 +3,18 @@
  */
 package com.agnither.hunters.view.ui.screens.map {
 import com.agnither.hunters.App;
+import com.agnither.hunters.data.outer.DropVO;
+import com.agnither.hunters.data.outer.GoldDropVO;
+import com.agnither.hunters.data.outer.ItemTypeVO;
 import com.agnither.hunters.model.Model;
+import com.agnither.hunters.model.modules.monsters.MonsterAreaVO;
 import com.agnither.hunters.model.modules.monsters.MonsterVO;
 import com.agnither.hunters.model.match3.Match3Game;
 import com.agnither.hunters.model.player.Mana;
+import com.agnither.hunters.model.player.drop.Drop;
+import com.agnither.hunters.model.player.drop.GoldDrop;
+import com.agnither.hunters.model.player.drop.ItemDrop;
+import com.agnither.hunters.model.player.inventory.Item;
 import com.agnither.hunters.view.ui.UI;
 import com.agnither.hunters.view.ui.popups.hunt.HuntPopup;
 import com.agnither.hunters.view.ui.popups.hunt.HuntStepsPopup;
@@ -30,6 +38,7 @@ public class ChestPoint extends AbstractView {
     private var _back : Image;
     private var _time : TextField;
     private var _monsters : Vector.<MonsterVO>;
+    private var _drops : Array;
 
 
     public function ChestPoint() {
@@ -89,10 +98,31 @@ public class ChestPoint extends AbstractView {
         for (var i : int = 0; i < maxMonsters; i++)
         {
             _monsters.push(Model.instance.monsters.getRandomMonster());
-//            _monsters.push(MonsterVO.LIST[int(MonsterVO.LIST.length * Math.random())]);
         }
 
+        var monster : MonsterVO = _monsters[0];
+
+        var goldDrop : GoldDrop;
+        _drops = [];
+        for (var j : int = 0; j < 3; j++)
+        {
+            var drop : DropVO = DropVO.getRandomDrop(MonsterAreaVO.DICT[monster.id].chestdropset);
+            if(drop.type == ItemTypeVO.gold) {
+                trace("GOOOLD");
+                if(goldDrop) {
+                    goldDrop.stack(new GoldDrop(GoldDropVO.DICT[drop.item_id].random));
+                } else {
+                    goldDrop = new GoldDrop(GoldDropVO.DICT[drop.item_id].random);
+                    _drops.push(goldDrop);
+                }
+            } else {
+                _drops.push(new ItemDrop(Item.createDrop(Model.instance.items.getItem(drop.item_id))));
+            }
+        }
     }
 
+    public function get drops() : Array {
+        return _drops;
+    }
 }
 }

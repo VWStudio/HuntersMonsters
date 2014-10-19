@@ -40,6 +40,7 @@ public class Model {
     public static const UPDATE_HOUSE : String = "Model.UPDATE_HOUSE";
     public var currentTrap : TrapVO;
     public var territoryTraps : Object = {};
+    public var chestAreas : Object = {};
     public static function get instance() : Model {
         if (!_instance)
         {

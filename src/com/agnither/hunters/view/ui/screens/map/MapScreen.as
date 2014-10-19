@@ -205,6 +205,14 @@ public class MapScreen extends Screen {
             _chestsContainer.removeChild($chest);
             App.instance.chest = null;
             App.instance.chestStep = -1;
+            for (var key : String in Model.instance.chestAreas)
+            {
+                if(Model.instance.chestAreas[key] == $chest) {
+
+                    delete  Model.instance.chestAreas[key];
+                    break;
+                }
+            }
         }
 
 
@@ -219,7 +227,22 @@ public class MapScreen extends Screen {
         var chest : ChestPoint = new ChestPoint();
         _chestsContainer.addChild(chest);
 
-        var monster  : String  = Model.instance.progress.unlockedMonsters[int(Math.random() * Model.instance.progress.unlockedMonsters.length)];
+        var chestAreas : Array = Model.instance.progress.unlockedMonsters.concat([]);
+        for (var key : String in Model.instance.chestAreas)
+        {
+            var index : int = chestAreas.indexOf(key);
+            if(index >= 0) {
+                chestAreas.splice(index, 1);
+            }
+        }
+
+        if(!chestAreas.length) {
+            return;
+        }
+
+        var monster  : String  = chestAreas[int(Math.random() * chestAreas.length)];
+
+//        var monster  : String  = Model.instance.progress.unlockedMonsters[int(Math.random() * Model.instance.progress.unlockedMonsters.length)];
         var rect : Rectangle = Model.instance.monsterAreas[monster];
         var pt : Point = new Point(rect.x + rect.width * Math.random(), rect.y + rect.height * Math.random());
 
@@ -228,6 +251,7 @@ public class MapScreen extends Screen {
         chest.x = pt.x;
         chest.y = pt.y;
 
+        Model.instance.chestAreas[monster] = chest;
 
     }
 

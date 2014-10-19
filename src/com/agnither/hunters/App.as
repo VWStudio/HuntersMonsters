@@ -5,6 +5,7 @@ package com.agnither.hunters {
 import com.agnither.hunters.data.Config;
 import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.match3.Match3Game;
+import com.agnither.hunters.model.modules.monsters.MonsterAreaVO;
 import com.agnither.hunters.model.modules.monsters.MonsterVO;
 import com.agnither.hunters.model.player.AIPlayer;
 import com.agnither.hunters.model.player.LocalPlayer;
@@ -142,7 +143,7 @@ public class App extends Sprite {
         if (_timeleft <= 0)
         {
             generateEvent();
-            _timeleft = Math.random() * 10000;
+            _timeleft = MonsterAreaVO.LIST[0].chestRespawn * 1000;
         }
         else
         {
@@ -152,12 +153,12 @@ public class App extends Sprite {
 
     private function generateEvent() : void {
 
-        switch (int(Math.random() * 2))
-        {
-            case 1:
+//        switch (int(Math.random() * 2))
+//        {
+//            case 1:
                 coreDispatch(MapScreen.ADD_CHEST);
-                break;
-        }
+//                break;
+//        }
     }
 
     private function onTrapEnd() : void {
