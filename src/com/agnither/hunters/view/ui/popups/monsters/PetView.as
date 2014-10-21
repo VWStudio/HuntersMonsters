@@ -37,9 +37,9 @@ public class PetView extends AbstractView {
         _picture.touchable = true;
         _picture.texture = _refs.gui.getTexture(_pet.picture);
 
-        _links.hp_icon.getChildAt(0).texture = _refs.gui.getTexture("heart.png");
-        _links.armor_icon.getChildAt(0).texture = _refs.gui.getTexture("shild.png");
-        _links.damage_icon.getChildAt(0).texture = _refs.gui.getTexture("hit.png");
+//        _links.hp_icon.getChildAt(0).texture = _refs.gui.getTexture("heart.png");
+//        _links.armor_icon.getChildAt(0).texture = _refs.gui.getTexture("shild.png");
+//        _links.damage_icon.getChildAt(0).texture = _refs.gui.getTexture("hit.png");
 
         var damageType: DamageTypeVO = DamageTypeVO.DICT[_pet.params.magic];
         _links.damage_type_icon.getChildAt(0).texture = _refs.gui.getTexture(damageType.picture);

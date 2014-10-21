@@ -18,6 +18,7 @@ import com.agnither.ui.ButtonContainer;
 import com.agnither.ui.Popup;
 import com.cemaprjl.core.coreAddListener;
 import com.cemaprjl.core.coreDispatch;
+import com.cemaprjl.core.coreRemoveListener;
 
 import flash.geom.Rectangle;
 
@@ -90,8 +91,7 @@ public class HuntStepsPopup extends Popup {
         addChild(_tooltip);
         _tooltip.visible = false;
 
-        coreAddListener(DropSlotView.SHOW_TOOLTIP, onShowTooltip);
-        coreAddListener(DropSlotView.HIDE_TOOLTIP, onHideTooltip);
+
 
 
     }
@@ -114,6 +114,11 @@ public class HuntStepsPopup extends Popup {
         _tooltip.y = rect.y + rect.height + 5;
     }
 
+
+    override public function destroy() : void {
+        coreRemoveListener(DropSlotView.SHOW_TOOLTIP, onShowTooltip);
+        coreRemoveListener(DropSlotView.HIDE_TOOLTIP, onHideTooltip);
+    }
 
     private function handleClose(event : Event) : void {
         coreDispatch(UI.HIDE_POPUP, NAME);
@@ -234,6 +239,8 @@ public class HuntStepsPopup extends Popup {
         }
 
 
+        coreAddListener(DropSlotView.SHOW_TOOLTIP, onShowTooltip);
+        coreAddListener(DropSlotView.HIDE_TOOLTIP, onHideTooltip);
     }
 
 
