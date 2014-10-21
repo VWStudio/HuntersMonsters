@@ -2,6 +2,7 @@
  * Created by mor on 23.09.2014.
  */
 package com.agnither.hunters.view.ui.screens.battle.monster {
+import com.agnither.hunters.data.outer.DamageTypeVO;
 import com.agnither.hunters.model.modules.locale.Locale;
 import com.agnither.hunters.model.modules.monsters.MonsterVO;
 import com.agnither.ui.AbstractView;
@@ -18,6 +19,7 @@ public class MonsterInfo extends AbstractView {
     private var _nameVal : TextField;
     private var _killed : Image;
     private var _icon : Image;
+    private var _damageType : Image;
     public function MonsterInfo() {
         super();
     }
@@ -28,6 +30,7 @@ public class MonsterInfo extends AbstractView {
         _nameVal = _links["name_tf"];
         _hpVal = _links["hp_tf"];
         _icon = _links["icon"].getChildAt(0) as Image;
+        _damageType = _links["damage_type_icon"].getChildAt(0) as Image;
         _damageVal = _links["damage_tf"];
         _armorVal = _links["armor_tf"];
         _killed = _links["bitmap_killed"];
@@ -46,6 +49,7 @@ public class MonsterInfo extends AbstractView {
         _killed.visible = false;
 
         _icon.texture = _refs.gui.getTexture(_monster.picture);
+        _damageType.texture = _refs.gui.getTexture(DamageTypeVO.DICT[_monster.magic].picture);
     }
 
     public function set killed($val : Boolean):void {
