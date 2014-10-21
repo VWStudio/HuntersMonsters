@@ -212,7 +212,6 @@ public class HuntStepsPopup extends Popup {
         {
             var drop : DropSlot = new DropSlot();
             drop.addContent(App.instance.chest.drops[j]);
-            trace(drop, drop.content);
             if (drop.content)
             {
                 if (drop.content is GoldDrop)

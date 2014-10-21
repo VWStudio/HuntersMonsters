@@ -10,7 +10,9 @@ public class TrapVO {
     public static const DICT: Dictionary = new Dictionary();
 
     public var level: int = 0;
+    public var area : String = "";
     public var leveleffect : Array = [];
+    public var timechance : Array = [];
     public var areaeffect : Number = 0;
 
     public static function parseData(data: Object):void {
@@ -18,6 +20,7 @@ public class TrapVO {
             var row: Object = data[i];
 
             row.leveleffect = row.leveleffect.toString().split(",");
+            row.timechance = row.timechance.toString().split(",");
 
             var object: TrapVO = fill(new TrapVO(), row);
 

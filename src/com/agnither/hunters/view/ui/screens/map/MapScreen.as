@@ -260,6 +260,7 @@ public class MapScreen extends Screen {
         if(_trapsContainer.contains($trap)) {
             _trapsContainer.removeChild($trap);
         }
+        delete  Model.instance.territoryTraps[$trap.monsterType.id];
         $trap.destroy();
 
     }
@@ -268,7 +269,7 @@ public class MapScreen extends Screen {
 
         var trapPoint : TrapPoint = new TrapPoint();
         _trapsContainer.addChild(trapPoint);
-        trapPoint.monsterType = Model.instance.monsters.getMonster($data.id, 1);
+//        trapPoint.monsterType = Model.instance.monsters.getMonster($data.id, 1);
 //        trapPoint.monsterType = MonsterVO.DICT[$data.id];
         trapPoint.data = $data;
         trapPoint.update();

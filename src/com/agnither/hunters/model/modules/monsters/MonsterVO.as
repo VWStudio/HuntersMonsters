@@ -19,6 +19,7 @@ public dynamic class MonsterVO extends PersonageVO{
 //    public var picture: String;
     public var difficulty: int;
     public var drop: int;
+    public var speed: uint = 75;
 
     public var items: Array = [];
     public var stars: Array = [];

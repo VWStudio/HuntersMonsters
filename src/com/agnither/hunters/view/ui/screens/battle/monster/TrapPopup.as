@@ -40,6 +40,7 @@ public class TrapPopup extends Popup {
     private var _chance1 : TextField;
     private var _chance2 : TextField;
     private var _chance3 : TextField;
+    private var _chances : Array;
 
     public function TrapPopup() {
         super();
@@ -84,30 +85,36 @@ public class TrapPopup extends Popup {
         _currentTerritory = MonsterAreaVO.DICT[data["id"]];
 
         var settedIndex : int = MonsterAreaVO.NAMES_LIST.indexOf(_currentTerritory.id);
-        var trapIndex : int = _trap.level;
+        var trapIndex : int = MonsterAreaVO.NAMES_LIST.indexOf(_trap.area);
 
         var baseChance : Number = 100 + _trap.areaeffect * (trapIndex - settedIndex);
-        trace(settedIndex, trapIndex, baseChance);
         _chance1.text = "Уровень 1: "+int(baseChance * _trap.leveleffect[0] + 1)+"%";
         _chance2.text = "Уровень 2: "+int(baseChance * _trap.leveleffect[1] + 1)+"%";
         _chance3.text = "Уровень 3: "+int(baseChance * _trap.leveleffect[2] + 1)+"%";
 
+        _chances = [int(baseChance * _trap.leveleffect[0] + 1),int(baseChance * _trap.leveleffect[1] + 1),int(baseChance * _trap.leveleffect[2] + 1)];
+        data["chances"] = _chances;
 
-        _monsterVO = Model.instance.monsters.getMonster(data.id, 1);
+        if(data.id) {
+            _monsterVO = Model.instance.monsters.getMonster(data.id, data.level ? data.level : 1);
+            _monster.data = _monsterVO;
+            _monster.update();
+            _monster.visible = true;
+        } else {
+            _monster.visible = false;
+        }
 //        _monsterVO = MonsterVO.DICT[data.id];
-        _monster.data = _monsterVO;
-        _monster.update();
         _set1hButton.visible = false;
         _set6hButton.visible = false;
         _setNowButton.visible = false;
         switch (data.mode) {
             case TrapPopup.CHECK_MODE:
-                _title.text = "Ловушка ур."+(_trap.level + 1);
+                _title.text = "Ловушка ур."+(_trap.level);
                 _setNowButton.visible = true;
                 _setNowButton.text = "Удалить";
                 break;
             case TrapPopup.DELETE_MODE:
-                _title.text = "Ловушка ур."+(_trap.level + 1);
+                _title.text = "Ловушка ур."+(_trap.level);
                 _setNowButton.visible = true;
                 _setNowButton.text = "Удалить";
                 break;
@@ -120,7 +127,7 @@ public class TrapPopup extends Popup {
             default :
 
                     //_title.text = "Установить ловушку ур."+(_trap.level + 1);
-                _title.text = "Установить ловушку ур."+(_trap.level + 1);
+                _title.text = "Установить ловушку ур."+(_trap.level);
                 _set1hButton.visible = true;
                 _set6hButton.visible = true;
                 _setNowButton.visible = true;
@@ -135,17 +142,17 @@ public class TrapPopup extends Popup {
             case _set1hButton:
                 data["time"] = 60;
 //                data["time"] = 3600;
-                data["chance"] = 0.5;
+                data["chanceAdd"] = _trap.timechance[0];
                 break;
             case _set6hButton:
                 data["time"] = 3600 * 6;
-                data["chance"] = 0.85;
+                data["chanceAdd"] = _trap.timechance[1];
 
                 break;
             case _setNowButton:
                 if(data.mode == TrapPopup.SET_MODE) {
                     data["time"] = 0;
-                    data["chance"] = 1;
+                    data["chanceAdd"] = _trap.timechance[2];
                 } else {
                     if(data.mode == TrapPopup.REWARD_MODE) {
 
@@ -158,7 +165,7 @@ public class TrapPopup extends Popup {
                         petData.damage = _monsterVO.damage;
                         petData.defence = _monsterVO.defence;
                         petData.magic = _monsterVO.magic;
-                        petData.tamed = 1;
+                        petData.tamed = 0;
                         var pet : Pet = new Pet(_monsterVO, petData);
                         pet.uniqueId = petData.uniqueId;
 

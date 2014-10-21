@@ -136,6 +136,7 @@ public class Match3Game extends EventDispatcher {
     }
 
     public function useSpell(spell: Spell):void {
+        trace("USE SPELL");
         currentPlayer.useSpell(spell.uniqueId, currentEnemy.hero);
     }
 

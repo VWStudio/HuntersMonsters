@@ -12,6 +12,7 @@ import com.agnither.hunters.view.ui.UI;
 import com.agnither.hunters.view.ui.popups.hunt.HuntPopup;
 import com.agnither.ui.AbstractView;
 import com.agnither.utils.CommonRefs;
+import com.cemaprjl.core.coreAddListener;
 import com.cemaprjl.core.coreDispatch;
 import com.cemaprjl.core.coreExecute;
 import com.cemaprjl.utils.Formatter;
@@ -42,9 +43,16 @@ public class MonsterPoint extends AbstractView {
     private var _time : TextField;
     private var _monsterArea : MonsterAreaVO;
     private var _lifetime : Number;
+    public static const STARS_UPDATE : String = "MonsterPoint.STARS_UPDATE";
+    private var _allowCount : Boolean = true;
 
     public function MonsterPoint() {
         this.addEventListener(TouchEvent.TOUCH, handleTouch);
+        coreAddListener(MonsterPoint.STARS_UPDATE, onStars);
+    }
+
+    private function onStars() : void {
+        _stars.setProgress(Model.instance.progress.monstersResults[_monsterType.id]);
     }
 
     private function handleTouch(e : TouchEvent) : void {
@@ -95,10 +103,13 @@ public class MonsterPoint extends AbstractView {
 
     override public function update() : void {
 
-        if(Model.instance.progress.monstersResults[_monsterType.id + "."+_monsterType.level] == null) {
-            Model.instance.progress.monstersResults[_monsterType.id + "."+_monsterType.level] = 0;
+//        if(Model.instance.progress.monstersResults[_monsterType.id + "."+_monsterType.level] == null) {
+        if(Model.instance.progress.monstersResults[_monsterType.id] == null) {
+            Model.instance.progress.monstersResults[_monsterType.id] = 0;
+//            Model.instance.progress.monstersResults[_monsterType.id + "."+_monsterType.level] = 0;
         }
-        _stars.setProgress(Model.instance.progress.monstersResults[_monsterType.id + "."+_monsterType.level]);
+        _stars.setProgress(Model.instance.progress.monstersResults[_monsterType.id]);
+//        _stars.setProgress(Model.instance.progress.monstersResults[_monsterType.id + "."+_monsterType.level]);
 
         _monsterArea = Model.instance.monsters.getMonsterArea(_monsterType.id);
         _lifetime = (_monsterArea.lifetime_min + (_monsterArea.lifetime_max - _monsterArea.lifetime_min) * Math.random())*1000;
@@ -112,6 +123,8 @@ public class MonsterPoint extends AbstractView {
     }
 
     private function tick($delta : Number) : void {
+        if(!_allowCount) return;
+
         if(_lifetime > 0) {
             _lifetime -= $delta;
             _time.text = Formatter.msToHHMMSS(_lifetime);
@@ -119,12 +132,16 @@ public class MonsterPoint extends AbstractView {
             Model.instance.deletePoint(this);
         }
 
+        if(_monsterType.speed == 0) {
+            return;
+        }
+
         if(_timeleft <= 0) {
             var area : Rectangle = Model.instance.monsterAreas[_monsterType.id];
             _targetPoint = new Point(area.x + area.width * Math.random(), area.y + area.height * Math.random());
             _currentPoint = new Point(this.x, this.y);
             _distance = Point.distance(_targetPoint, _currentPoint);
-            _pathTime = _distance * 75; // distance in 10 px will be reached in 1 second
+            _pathTime = _distance * _monsterType.speed; // if speed = 100 means that distance in 10 px will be reached in 1 second
             _timeleft = _pathTime;
         } else {
             _timeleft -= $delta;
@@ -148,6 +165,10 @@ public class MonsterPoint extends AbstractView {
 
     public function set monsterType(value : MonsterVO) : void {
         _monsterType = value;
+    }
+
+    public function count($val : Boolean) : void {
+        _allowCount = $val;
     }
 }
 }

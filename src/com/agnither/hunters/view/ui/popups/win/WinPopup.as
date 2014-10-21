@@ -18,6 +18,7 @@ import com.agnither.ui.Popup;
 import com.cemaprjl.core.coreAddListener;
 import com.cemaprjl.core.coreDispatch;
 import com.cemaprjl.core.coreExecute;
+import com.cemaprjl.core.coreRemoveListener;
 import com.cemaprjl.viewmanage.ShowScreenCmd;
 
 import flash.geom.Rectangle;
@@ -51,6 +52,14 @@ public class WinPopup extends Popup {
         super();
     }
 
+
+    override public function destroy() : void {
+
+        coreRemoveListener(DropSlotView.SHOW_TOOLTIP, onShowTooltip);
+        coreRemoveListener(DropSlotView.HIDE_TOOLTIP, onHideTooltip);
+
+    }
+
     override protected function initialize() : void {
 
         createFromConfig(_refs.guiConfig.win_popup);
@@ -82,8 +91,7 @@ public class WinPopup extends Popup {
         addChild(_tooltip);
         _tooltip.visible = false;
 
-        coreAddListener(DropSlotView.SHOW_TOOLTIP, onShowTooltip);
-        coreAddListener(DropSlotView.HIDE_TOOLTIP, onHideTooltip);
+
 
     }
 
@@ -98,6 +106,8 @@ public class WinPopup extends Popup {
 
             Model.instance.deletePoint(Model.instance.currentMonsterPoint);
 
+        } else {
+            Model.instance.currentMonsterPoint.count(true);
         }
 
         Model.instance.currentMonsterPoint = null;
@@ -178,6 +188,9 @@ public class WinPopup extends Popup {
 
 
             Model.instance.progress.saveProgress();
+
+            coreAddListener(DropSlotView.SHOW_TOOLTIP, onShowTooltip);
+            coreAddListener(DropSlotView.HIDE_TOOLTIP, onHideTooltip);
         }
 
 

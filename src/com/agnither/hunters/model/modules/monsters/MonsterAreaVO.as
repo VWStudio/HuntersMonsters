@@ -54,8 +54,6 @@ public class MonsterAreaVO {
             NAMES_LIST.push(LIST[j].id);
         }
 
-        trace(NAMES_LIST);
-
     }
     private static function sortByOrder($a : MonsterAreaVO, $b : MonsterAreaVO) : Number {
         if($a.order < $b.order) return -1;

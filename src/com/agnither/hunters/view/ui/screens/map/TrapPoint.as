@@ -3,6 +3,7 @@
  */
 package com.agnither.hunters.view.ui.screens.map {
 import com.agnither.hunters.App;
+import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.modules.monsters.MonsterVO;
 import com.agnither.hunters.view.ui.screens.battle.monster.TrapPopup;
 import com.agnither.ui.AbstractView;
@@ -53,15 +54,15 @@ public class TrapPoint extends AbstractView {
                 case TouchPhase.ENDED :
                     if (_timeleft > 0)
                     {
-                        coreExecute(ShowPopupCmd, TrapPopup.NAME, {id: _monsterType.id, mode: TrapPopup.CHECK_MODE, marker: this});
+                        coreExecute(ShowPopupCmd, TrapPopup.NAME, {id: _monsterType.id, level:_monsterType.level, mode: TrapPopup.CHECK_MODE, marker: this});
                     }
                     else if (_monsterCaught)
                     {
-                        coreExecute(ShowPopupCmd, TrapPopup.NAME, {id: _monsterType.id, mode: TrapPopup.REWARD_MODE, marker: this});
+                        coreExecute(ShowPopupCmd, TrapPopup.NAME, {id: _monsterType.id, level:_monsterType.level, mode: TrapPopup.REWARD_MODE, marker: this});
                     }
                     else
                     {
-                        coreExecute(ShowPopupCmd, TrapPopup.NAME, {id: _monsterType.id, mode: TrapPopup.DELETE_MODE, marker: this});
+                        coreExecute(ShowPopupCmd, TrapPopup.NAME, {id: _monsterType.id, level : null, mode: TrapPopup.DELETE_MODE, marker: this});
                     }
                     break;
             }
@@ -107,14 +108,47 @@ public class TrapPoint extends AbstractView {
         }
         else
         {
-            _monsterCaught = data.chance > Math.random();
+            App.instance.tick.removeTickCallback(tick);
+            var chances : Array = data["chances"];
+            var chanceAdd : Number = data["chanceAdd"];
+
+            var max : Number = Math.max.apply(this, chances);
+            var chanceToCatch : Number = Math.random() * 100;
+            _monsterCaught = (max + chanceAdd) > chanceToCatch;
+//            var isCaught : Boolean = Math.random() * (max + chanceAdd);
+            trace("max chance", max, chanceAdd, _monsterCaught, chanceToCatch, max + chanceAdd);
+
+            if(_monsterCaught) {
+
+                var chanceSum : Number = chances[0] + chances[1] + chances[2] + chanceAdd * 3;
+                var randomVal : Number = Math.random() * chanceSum;
+                var caughtMonster : int = -1;
+                trace(randomVal, chanceSum);
+                for (var i : int = 0; i < chances.length; i++)
+                {
+                    var ch : Number = chances[i] + chanceAdd;
+                    if(ch > randomVal) {
+                        caughtMonster = i + 1;
+                        break;
+                    } else {
+                        randomVal -= ch;
+                    }
+                }
+                trace(i, caughtMonster, chances[i], randomVal, chanceSum);
+
+                _monsterCaught = caughtMonster >= 0;
+            }
+
             if (_monsterCaught)
             {
                 _time.visible = false;
                 _star.visible = true;
+                _monsterType = Model.instance.monsters.getMonster(data["id"], caughtMonster)
+
             }
             else
             {
+                _monsterType = Model.instance.monsters.getMonster(data["id"], 1)
                 _time.visible = true;
                 _time.text = "X";
             }
@@ -146,8 +180,5 @@ public class TrapPoint extends AbstractView {
         return _monsterType;
     }
 
-    public function set monsterType(value : MonsterVO) : void {
-        _monsterType = value;
-    }
 }
 }

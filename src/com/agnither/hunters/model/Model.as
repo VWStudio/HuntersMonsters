@@ -89,7 +89,9 @@ public class Model {
         } else {
             stars = 0;
         }
-           progress.monstersResults[monster.id+"."+monster.level] = stars;
+        progress.monstersResults[monster.id] = progress.monstersResults[monster.id] < stars ? stars : progress.monstersResults[monster.id];
+        coreDispatch(MonsterPoint.STARS_UPDATE);
+//           progress.monstersResults[monster.id+"."+monster.level] = stars;
         var monsterToUnlock : MonsterAreaVO = Model.instance.monsters.getNextArea(monster.id);
         if (progress.unlockedMonsters.indexOf(monsterToUnlock.id) == -1)
         {
@@ -107,7 +109,6 @@ public class Model {
 
     private function onStartGame($monster : MonsterVO) : void {
 
-        trace("onStartGame", $monster.name);
         player.resetToBattle();
         monster = $monster;
         drop = monster.drop;
@@ -143,13 +144,15 @@ public class Model {
         progress.items[$item.uniqueId] = $item;
     }
     private function monsterGenerate($delta : Number) : void {
-
         for (var monsterID : String in _territoryTimeouts)
         {
             var territory : MonsterAreaVO = monsters.getMonsterArea(monsterID);
             var points : Vector.<MonsterPoint> = _territoryPoints[monsterID];
             if(points.length < territory.area_max) {
-                _territoryTimeouts[monsterID] -= $delta;
+                _territoryTimeouts[monsterID] = _territoryTimeouts[monsterID] < 0 ? 0 : _territoryTimeouts[monsterID] - $delta;
+
+                if(state != MapScreen.NAME) continue;
+
                 if(_territoryTimeouts[monsterID] <= 0) {
                     createPoint(monsterID);
                     _territoryTimeouts[monsterID] = territory.respawn;
@@ -163,7 +166,6 @@ public class Model {
     public function deletePoint($point : MonsterPoint) : void {
         if(currentMonsterPoint) return;
 
-        trace("DELETE: ", $point, $point.monsterType.id);
         var points : Vector.<MonsterPoint> = _territoryPoints[$point.monsterType.id];
         var index : int = points.indexOf($point);
         if(index > -1) {
@@ -201,7 +203,6 @@ public class Model {
                     createPoint(monsterID);
                 }
             }
-            trace("POINTS:", monsterID, points.length);
         }
     }
 

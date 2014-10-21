@@ -52,12 +52,13 @@ public class TrapView extends AbstractView {
         _name = _links.monster_tf;
 
         _area_tf = _links.area_tf;
+        _area_tf.visible = false;
         _level1 = _links.level1_tf;
         _level2 = _links.level2_tf;
         _level3 = _links.level3_tf;
 
 
-        _name.text = "Ловушка "+(_trap.level + 1);
+        _name.text = "Ловушка "+(_trap.level);
 
         _level1.text = "Уровень 1: "+_trap.leveleffect[0] * 100 + "%";
         _level2.text = "Уровень 2: "+_trap.leveleffect[1] * 100 + "%";

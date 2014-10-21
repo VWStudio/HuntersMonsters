@@ -17,6 +17,7 @@ public class MonsterInfo extends AbstractView {
     private var _monster : MonsterVO;
     private var _nameVal : TextField;
     private var _killed : Image;
+    private var _icon : Image;
     public function MonsterInfo() {
         super();
     }
@@ -26,6 +27,7 @@ public class MonsterInfo extends AbstractView {
 
         _nameVal = _links["name_tf"];
         _hpVal = _links["hp_tf"];
+        _icon = _links["icon"].getChildAt(0) as Image;
         _damageVal = _links["damage_tf"];
         _armorVal = _links["armor_tf"];
         _killed = _links["bitmap_killed"];
@@ -43,6 +45,7 @@ public class MonsterInfo extends AbstractView {
         _nameVal.text = Locale.getString(_monster.id) + " ["+_monster.level+ "]";
         _killed.visible = false;
 
+        _icon.texture = _refs.gui.getTexture(_monster.picture);
     }
 
     public function set killed($val : Boolean):void {

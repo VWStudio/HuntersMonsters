@@ -3,6 +3,7 @@
  */
 package com.agnither.hunters.view.ui.popups.monsters {
 import com.agnither.hunters.data.outer.DamageTypeVO;
+import com.agnither.hunters.model.modules.locale.Locale;
 import com.agnither.hunters.model.player.inventory.Pet;
 import com.agnither.ui.AbstractView;
 import com.agnither.utils.CommonRefs;
@@ -48,7 +49,8 @@ public class PetView extends AbstractView {
         _armor = _links.armor_tf;
         _damage = _links.damage_tf;
 
-        _name.text = String(_pet.name) + " " + String(_pet.params.level);
+        _name.text = Locale.getString(_pet.id) + " [" + String(_pet.params.level)+"]";
+//        _name.text = String(_pet.name) + " " + String(_pet.params.level);
         _hp.text = String(_pet.params.hp);
         _armor.text = String(_pet.params.defence);
         _damage.text = String(_pet.params.damage);

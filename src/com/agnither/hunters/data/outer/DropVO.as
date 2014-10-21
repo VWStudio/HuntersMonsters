@@ -12,11 +12,9 @@ public class DropVO {
 
     public static function getRandomDrop(itemSet: int):DropVO {
         var rand: int = Math.random() * PROBABILITY[itemSet];
-        trace("RANDOM", itemSet, rand, PROBABILITY[itemSet]);
         var list: Vector.<DropVO> = DICT[itemSet];
         for (var i:int = 0; i < list.length; i++) {
             if (list[i].probability > rand) {
-                trace("*prob:", i, list[i].probability, rand);
                 return list[i];
             }
             rand -= list[i].probability;

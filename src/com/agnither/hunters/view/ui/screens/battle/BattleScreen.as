@@ -138,6 +138,7 @@ public class BattleScreen extends Screen {
 
         _player.personage = _game.player.hero;
         _playerPet.personage = _game.player.pet;
+        _enemy.isStandRight = true;
         _enemy.personage = _game.enemy.hero;
         _enemyPet.personage = _game.enemy.pet;
 

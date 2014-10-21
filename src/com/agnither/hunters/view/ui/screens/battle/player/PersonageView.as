@@ -18,6 +18,12 @@ import starling.text.TextField;
 public class PersonageView extends AbstractView {
 
     private var _personage: Personage;
+    private var _isRight : Boolean = false;
+
+    public function set isStandRight($val : Boolean) :void {
+        _isRight = $val;
+    }
+
     public function set personage(value: Personage):void {
         _personage = value;
 
@@ -60,7 +66,9 @@ public class PersonageView extends AbstractView {
             if (_personage.picture) {
                 _picture.texture = _refs.gui.getTexture(_personage.picture);
                 _picture.readjustSize();
-                _picture.x = _picture.y = 0;
+                _picture.scaleX = _isRight ? -1 : 1;
+                _picture.y = 0;
+                _picture.x = _isRight ? _picture.width : 0;
             }
         }
 

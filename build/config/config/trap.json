@@ -1,52 +1,23 @@
 [
     {
-        "level": 0,
-        "areaeffect": 25,
-        "leveleffect": "0.9,0.6,0.3"
-    },
-    {
         "level": 1,
-        "areaeffect": 24,
-        "leveleffect": "0.9,0.6,0.3"
+        "area": "blue_bull",
+        "areaeffect": 25,
+        "leveleffect": "0.9,0.6,0.3",
+        "timechance": "0,0,0"
     },
     {
         "level": 2,
-        "areaeffect": 23,
-        "leveleffect": "0.9,0.6,0.3"
+        "area": "charmander",
+        "areaeffect": 24,
+        "leveleffect": "0.9,0.6,0.3",
+        "timechance": "0,50,51"
     },
     {
         "level": 3,
-        "areaeffect": 22,
-        "leveleffect": "0.9,0.6,0.3"
-    },
-    {
-        "level": 4,
-        "areaeffect": 21,
-        "leveleffect": "0.9,0.6,0.3"
-    },
-    {
-        "level": 5,
-        "areaeffect": 20,
-        "leveleffect": "0.9,0.6,0.3"
-    },
-    {
-        "level": 6,
-        "areaeffect": 19,
-        "leveleffect": "0.9,0.6,0.3"
-    },
-    {
-        "level": 7,
-        "areaeffect": 18,
-        "leveleffect": "0.9,0.6,0.3"
-    },
-    {
-        "level": 8,
-        "areaeffect": 17,
-        "leveleffect": "0.9,0.6,0.3"
-    },
-    {
-        "level": 9,
-        "areaeffect": 16,
-        "leveleffect": "0.9,0.6,0.3"
+        "area": "zubat",
+        "areaeffect": 23,
+        "leveleffect": "0.9,0.6,0.3",
+        "timechance": "0,50,52"
     }
 ]

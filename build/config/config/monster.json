@@ -6,11 +6,12 @@
         "damage": 5,
         "defence": 5,
         "magic": 6,
-        "difficulty": 10,
+        "difficulty": 100,
         "drop": 1,
         "items": "4,6,13,14",
         "stars": "7,12,20",
-        "picture": "monster_1.png"
+        "picture": "monster_1.png",
+        "speed": 75
     },
     {
         "level": 2,
@@ -19,11 +20,12 @@
         "damage": 6,
         "defence": 5,
         "magic": 6,
-        "difficulty": 11,
+        "difficulty": 100,
         "drop": 1,
         "items": "4,6,13,15",
         "stars": "7,12,21",
-        "picture": "monster_1.png"
+        "picture": "monster_1.png",
+        "speed": 70
     },
     {
         "level": 3,
@@ -32,11 +34,12 @@
         "damage": 7,
         "defence": 5,
         "magic": 6,
-        "difficulty": 12,
+        "difficulty": 100,
         "drop": 1,
         "items": "4,6,13,16",
         "stars": "7,12,22",
-        "picture": "monster_1.png"
+        "picture": "monster_1.png",
+        "speed": 0
     },
     {
         "level": 1,
@@ -49,7 +52,8 @@
         "drop": 1,
         "items": "4,6,13,14",
         "stars": "7,12,20",
-        "picture": "monster_2.png"
+        "picture": "monster_2.png",
+        "speed": 100
     },
     {
         "level": 2,
@@ -62,7 +66,8 @@
         "drop": 1,
         "items": "4,6,13,15",
         "stars": "7,12,21",
-        "picture": "monster_2.png"
+        "picture": "monster_2.png",
+        "speed": 50
     },
     {
         "level": 3,
@@ -75,7 +80,8 @@
         "drop": 1,
         "items": "4,6,13,16",
         "stars": "7,12,22",
-        "picture": "monster_2.png"
+        "picture": "monster_2.png",
+        "speed": 25
     },
     {
         "level": 1,
@@ -88,7 +94,8 @@
         "drop": 1,
         "items": "4,6,13,14",
         "stars": "7,12,20",
-        "picture": "monster_1.png"
+        "picture": "monster_1.png",
+        "speed": 75
     },
     {
         "level": 2,
@@ -101,7 +108,8 @@
         "drop": 1,
         "items": "4,6,13,15",
         "stars": "7,12,21",
-        "picture": "monster_1.png"
+        "picture": "monster_1.png",
+        "speed": 70
     },
     {
         "level": 3,
@@ -114,7 +122,8 @@
         "drop": 1,
         "items": "4,6,13,16",
         "stars": "7,12,22",
-        "picture": "monster_1.png"
+        "picture": "monster_1.png",
+        "speed": 0
     },
     {
         "level": 1,
@@ -127,7 +136,8 @@
         "drop": 1,
         "items": "4,6,13,14",
         "stars": "7,12,20",
-        "picture": "monster_2.png"
+        "picture": "monster_2.png",
+        "speed": 100
     },
     {
         "level": 2,
@@ -140,7 +150,8 @@
         "drop": 1,
         "items": "4,6,13,15",
         "stars": "7,12,21",
-        "picture": "monster_2.png"
+        "picture": "monster_2.png",
+        "speed": 50
     },
     {
         "level": 3,
@@ -153,7 +164,8 @@
         "drop": 1,
         "items": "4,6,13,16",
         "stars": "7,12,22",
-        "picture": "monster_2.png"
+        "picture": "monster_2.png",
+        "speed": 25
     },
     {
         "level": 1,
@@ -166,7 +178,8 @@
         "drop": 1,
         "items": "4,6,13,14",
         "stars": "7,12,20",
-        "picture": "monster_1.png"
+        "picture": "monster_1.png",
+        "speed": 75
     },
     {
         "level": 2,
@@ -179,7 +192,8 @@
         "drop": 1,
         "items": "4,6,13,15",
         "stars": "7,12,21",
-        "picture": "monster_1.png"
+        "picture": "monster_1.png",
+        "speed": 70
     },
     {
         "level": 3,
@@ -192,7 +206,8 @@
         "drop": 1,
         "items": "4,6,13,16",
         "stars": "7,12,22",
-        "picture": "monster_1.png"
+        "picture": "monster_1.png",
+        "speed": 0
     },
     {
         "level": 1,
@@ -205,7 +220,8 @@
         "drop": 1,
         "items": "4,6,13,14",
         "stars": "7,12,20",
-        "picture": "monster_2.png"
+        "picture": "monster_2.png",
+        "speed": 100
     },
     {
         "level": 2,
@@ -218,7 +234,8 @@
         "drop": 1,
         "items": "4,6,13,15",
         "stars": "7,12,21",
-        "picture": "monster_2.png"
+        "picture": "monster_2.png",
+        "speed": 50
     },
     {
         "level": 3,
@@ -231,7 +248,8 @@
         "drop": 1,
         "items": "4,6,13,16",
         "stars": "7,12,22",
-        "picture": "monster_2.png"
+        "picture": "monster_2.png",
+        "speed": 25
     },
     {
         "level": 1,
@@ -244,7 +262,8 @@
         "drop": 1,
         "items": "4,6,13,14",
         "stars": "7,12,20",
-        "picture": "monster_1.png"
+        "picture": "monster_1.png",
+        "speed": 75
     },
     {
         "level": 2,
@@ -257,7 +276,8 @@
         "drop": 1,
         "items": "4,6,13,15",
         "stars": "7,12,21",
-        "picture": "monster_1.png"
+        "picture": "monster_1.png",
+        "speed": 70
     },
     {
         "level": 3,
@@ -270,7 +290,8 @@
         "drop": 1,
         "items": "4,6,13,16",
         "stars": "7,12,22",
-        "picture": "monster_1.png"
+        "picture": "monster_1.png",
+        "speed": 0
     },
     {
         "level": 1,
@@ -283,7 +304,8 @@
         "drop": 1,
         "items": "4,6,13,14",
         "stars": "7,12,20",
-        "picture": "monster_2.png"
+        "picture": "monster_2.png",
+        "speed": 100
     },
     {
         "level": 2,
@@ -296,7 +318,8 @@
         "drop": 1,
         "items": "4,6,13,15",
         "stars": "7,12,21",
-        "picture": "monster_2.png"
+        "picture": "monster_2.png",
+        "speed": 50
     },
     {
         "level": 3,
@@ -309,7 +332,8 @@
         "drop": 1,
         "items": "4,6,13,16",
         "stars": "7,12,22",
-        "picture": "monster_2.png"
+        "picture": "monster_2.png",
+        "speed": 25
     },
     {
         "level": 1,
@@ -322,7 +346,8 @@
         "drop": 1,
         "items": "4,6,13,14",
         "stars": "7,12,20",
-        "picture": "monster_1.png"
+        "picture": "monster_1.png",
+        "speed": 75
     },
     {
         "level": 2,
@@ -335,7 +360,8 @@
         "drop": 1,
         "items": "4,6,13,15",
         "stars": "7,12,21",
-        "picture": "monster_1.png"
+        "picture": "monster_1.png",
+        "speed": 70
     },
     {
         "level": 3,
@@ -348,7 +374,8 @@
         "drop": 1,
         "items": "4,6,13,16",
         "stars": "7,12,22",
-        "picture": "monster_1.png"
+        "picture": "monster_1.png",
+        "speed": 0
     },
     {
         "level": 1,
@@ -361,7 +388,8 @@
         "drop": 1,
         "items": "4,6,13,14",
         "stars": "7,12,20",
-        "picture": "monster_2.png"
+        "picture": "monster_2.png",
+        "speed": 100
     },
     {
         "level": 2,
@@ -374,7 +402,8 @@
         "drop": 1,
         "items": "4,6,13,15",
         "stars": "7,12,21",
-        "picture": "monster_2.png"
+        "picture": "monster_2.png",
+        "speed": 50
     },
     {
         "level": 3,
@@ -387,6 +416,7 @@
         "drop": 1,
         "items": "4,6,13,16",
         "stars": "7,12,22",
-        "picture": "monster_2.png"
+        "picture": "monster_2.png",
+        "speed": 25
     }
 ]

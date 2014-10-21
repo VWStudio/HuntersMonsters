@@ -108,7 +108,6 @@ public class ChestPoint extends AbstractView {
         {
             var drop : DropVO = DropVO.getRandomDrop(MonsterAreaVO.DICT[monster.id].chestdropset);
             if(drop.type == ItemTypeVO.gold) {
-                trace("GOOOLD");
                 if(goldDrop) {
                     goldDrop.stack(new GoldDrop(GoldDropVO.DICT[drop.item_id].random));
                 } else {

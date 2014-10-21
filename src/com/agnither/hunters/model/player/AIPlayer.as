@@ -24,6 +24,7 @@ public class AIPlayer extends Player {
     private var _spellResults: Dictionary;
     private var _weaponResults: Array;
     private var _otherResults: Array;
+    private var _spellMovesResults : Array;
 
     public function AIPlayer(data: MonsterVO):void {
         _difficulty = data.difficulty;
@@ -54,7 +55,7 @@ public class AIPlayer extends Player {
         var results: Array = [];
         if (Math.random()*100 < difficulty) {
             for (var i:int = 0; i < _inventory.inventoryItems.length; i++) {
-                var spell: Spell = _inventory.inventoryItems[i] as Spell;
+                var spell: Spell = _inventory.getItem(_inventory.inventoryItems[i]) as Spell;
                 if (spell) {
                     var result:CheckManaResult = new CheckManaResult(_manaList, spell);
                     if (result.enough) {
@@ -78,6 +79,7 @@ public class AIPlayer extends Player {
     private function processMoves():void {
         _weaponResults = [];
         _otherResults = [];
+        _spellMovesResults = [];
         var moves: Vector.<Move> = game.field.availableMoves;
         var l: int = moves.length;
         for (var i: int = 0; i < l; i++) {

@@ -3,6 +3,7 @@
  */
 package com.agnither.hunters.model.player.ai {
 import com.agnither.hunters.data.outer.DamageTypeVO;
+import com.agnither.hunters.model.player.Mana;
 import com.agnither.hunters.model.player.ManaList;
 import com.agnither.hunters.model.player.inventory.Spell;
 
@@ -30,7 +31,8 @@ public class CheckManaResult {
         var manaAmount: Object = spell.extension_drop;
         for (var key: * in manaAmount) {
             var magic: DamageTypeVO = DamageTypeVO.DICT[key];
-            var delta: int = manaAmount[key] - mana.getMana(magic.name).value;
+            var manaItem : Mana = mana.getMana(magic.name);
+            var delta: int = manaItem ? manaAmount[key] - manaItem.value : 0;
             if (delta > 0) {
                 _results[magic.name] = delta;
                 _delta += delta;
