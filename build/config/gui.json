@@ -2746,7 +2746,9 @@
                             }
                         ]
                     ]
-                },
+                }
+            ],
+            [
                 {
                     "x": 30,
                     "y": 134,
@@ -2758,24 +2760,18 @@
                     "fontColor": "0xffffff",
                     "align": "left",
                     "name": "armor_tf"
-                },
+                }
+            ],
+            [
                 {
-                    "x": 19,
-                    "y": 121,
-                    "type": "movie clip",
-                    "name": "damage_icon",
-                    "structure": [
-                        [
-                            {
-                                "x": -15,
-                                "y": -13,
-                                "type": "bitmap",
-                                "image": "shild.png",
-                                "name": "bitmap_shild.png"
-                            }
-                        ]
-                    ]
-                },
+                    "x": 5,
+                    "y": 98,
+                    "type": "bitmap",
+                    "image": "hit.png",
+                    "name": "bitmap_hit.png"
+                }
+            ],
+            [
                 {
                     "x": 30,
                     "y": 107,
@@ -2787,24 +2783,18 @@
                     "fontColor": "0xffffff",
                     "align": "left",
                     "name": "damage_tf"
-                },
+                }
+            ],
+            [
                 {
-                    "x": 19,
-                    "y": 93,
-                    "type": "movie clip",
-                    "name": "hp_icon",
-                    "structure": [
-                        [
-                            {
-                                "x": -15,
-                                "y": -13,
-                                "type": "bitmap",
-                                "image": "shild.png",
-                                "name": "bitmap_shild.png"
-                            }
-                        ]
-                    ]
-                },
+                    "x": 1,
+                    "y": 75,
+                    "type": "bitmap",
+                    "image": "heart.png",
+                    "name": "bitmap_heart.png"
+                }
+            ],
+            [
                 {
                     "x": 30,
                     "y": 79,
@@ -2816,7 +2806,9 @@
                     "fontColor": "0xffffff",
                     "align": "left",
                     "name": "hp_tf"
-                },
+                }
+            ],
+            [
                 {
                     "x": 152,
                     "y": 149,
@@ -2833,7 +2825,9 @@
                             }
                         ]
                     ]
-                },
+                }
+            ],
+            [
                 {
                     "x": 0,
                     "y": 0,
@@ -3498,7 +3492,9 @@
                                     }
                                 ]
                             ]
-                        },
+                        }
+                    ],
+                    [
                         {
                             "x": 30,
                             "y": 134,
@@ -3510,24 +3506,18 @@
                             "fontColor": "0xffffff",
                             "align": "left",
                             "name": "armor_tf"
-                        },
+                        }
+                    ],
+                    [
                         {
-                            "x": 19,
-                            "y": 121,
-                            "type": "movie clip",
-                            "name": "damage_icon",
-                            "structure": [
-                                [
-                                    {
-                                        "x": -15,
-                                        "y": -13,
-                                        "type": "bitmap",
-                                        "image": "shild.png",
-                                        "name": "bitmap_shild.png"
-                                    }
-                                ]
-                            ]
-                        },
+                            "x": 5,
+                            "y": 98,
+                            "type": "bitmap",
+                            "image": "hit.png",
+                            "name": "bitmap_hit.png"
+                        }
+                    ],
+                    [
                         {
                             "x": 30,
                             "y": 107,
@@ -3539,24 +3529,18 @@
                             "fontColor": "0xffffff",
                             "align": "left",
                             "name": "damage_tf"
-                        },
+                        }
+                    ],
+                    [
                         {
-                            "x": 19,
-                            "y": 93,
-                            "type": "movie clip",
-                            "name": "hp_icon",
-                            "structure": [
-                                [
-                                    {
-                                        "x": -15,
-                                        "y": -13,
-                                        "type": "bitmap",
-                                        "image": "shild.png",
-                                        "name": "bitmap_shild.png"
-                                    }
-                                ]
-                            ]
-                        },
+                            "x": 1,
+                            "y": 75,
+                            "type": "bitmap",
+                            "image": "heart.png",
+                            "name": "bitmap_heart.png"
+                        }
+                    ],
+                    [
                         {
                             "x": 30,
                             "y": 79,
@@ -3568,7 +3552,9 @@
                             "fontColor": "0xffffff",
                             "align": "left",
                             "name": "hp_tf"
-                        },
+                        }
+                    ],
+                    [
                         {
                             "x": 152,
                             "y": 149,
@@ -3585,7 +3571,9 @@
                                     }
                                 ]
                             ]
-                        },
+                        }
+                    ],
+                    [
                         {
                             "x": 0,
                             "y": 0,
@@ -4041,7 +4029,9 @@
                                     }
                                 ]
                             ]
-                        },
+                        }
+                    ],
+                    [
                         {
                             "x": 30,
                             "y": 134,
@@ -4053,24 +4043,18 @@
                             "fontColor": "0xffffff",
                             "align": "left",
                             "name": "armor_tf"
-                        },
+                        }
+                    ],
+                    [
                         {
-                            "x": 19,
-                            "y": 121,
-                            "type": "movie clip",
-                            "name": "damage_icon",
-                            "structure": [
-                                [
-                                    {
-                                        "x": -15,
-                                        "y": -13,
-                                        "type": "bitmap",
-                                        "image": "shild.png",
-                                        "name": "bitmap_shild.png"
-                                    }
-                                ]
-                            ]
-                        },
+                            "x": 5,
+                            "y": 98,
+                            "type": "bitmap",
+                            "image": "hit.png",
+                            "name": "bitmap_hit.png"
+                        }
+                    ],
+                    [
                         {
                             "x": 30,
                             "y": 107,
@@ -4082,24 +4066,18 @@
                             "fontColor": "0xffffff",
                             "align": "left",
                             "name": "damage_tf"
-                        },
+                        }
+                    ],
+                    [
                         {
-                            "x": 19,
-                            "y": 93,
-                            "type": "movie clip",
-                            "name": "hp_icon",
-                            "structure": [
-                                [
-                                    {
-                                        "x": -15,
-                                        "y": -13,
-                                        "type": "bitmap",
-                                        "image": "shild.png",
-                                        "name": "bitmap_shild.png"
-                                    }
-                                ]
-                            ]
-                        },
+                            "x": 1,
+                            "y": 75,
+                            "type": "bitmap",
+                            "image": "heart.png",
+                            "name": "bitmap_heart.png"
+                        }
+                    ],
+                    [
                         {
                             "x": 30,
                             "y": 79,
@@ -4111,7 +4089,9 @@
                             "fontColor": "0xffffff",
                             "align": "left",
                             "name": "hp_tf"
-                        },
+                        }
+                    ],
+                    [
                         {
                             "x": 152,
                             "y": 149,
@@ -4128,7 +4108,9 @@
                                     }
                                 ]
                             ]
-                        },
+                        }
+                    ],
+                    [
                         {
                             "x": 0,
                             "y": 0,
@@ -4451,7 +4433,9 @@
                                     }
                                 ]
                             ]
-                        },
+                        }
+                    ],
+                    [
                         {
                             "x": 30,
                             "y": 134,
@@ -4463,24 +4447,18 @@
                             "fontColor": "0xffffff",
                             "align": "left",
                             "name": "armor_tf"
-                        },
+                        }
+                    ],
+                    [
                         {
-                            "x": 19,
-                            "y": 121,
-                            "type": "movie clip",
-                            "name": "damage_icon",
-                            "structure": [
-                                [
-                                    {
-                                        "x": -15,
-                                        "y": -13,
-                                        "type": "bitmap",
-                                        "image": "shild.png",
-                                        "name": "bitmap_shild.png"
-                                    }
-                                ]
-                            ]
-                        },
+                            "x": 5,
+                            "y": 98,
+                            "type": "bitmap",
+                            "image": "hit.png",
+                            "name": "bitmap_hit.png"
+                        }
+                    ],
+                    [
                         {
                             "x": 30,
                             "y": 107,
@@ -4492,24 +4470,18 @@
                             "fontColor": "0xffffff",
                             "align": "left",
                             "name": "damage_tf"
-                        },
+                        }
+                    ],
+                    [
                         {
-                            "x": 19,
-                            "y": 93,
-                            "type": "movie clip",
-                            "name": "hp_icon",
-                            "structure": [
-                                [
-                                    {
-                                        "x": -15,
-                                        "y": -13,
-                                        "type": "bitmap",
-                                        "image": "shild.png",
-                                        "name": "bitmap_shild.png"
-                                    }
-                                ]
-                            ]
-                        },
+                            "x": 1,
+                            "y": 75,
+                            "type": "bitmap",
+                            "image": "heart.png",
+                            "name": "bitmap_heart.png"
+                        }
+                    ],
+                    [
                         {
                             "x": 30,
                             "y": 79,
@@ -4521,7 +4493,9 @@
                             "fontColor": "0xffffff",
                             "align": "left",
                             "name": "hp_tf"
-                        },
+                        }
+                    ],
+                    [
                         {
                             "x": 152,
                             "y": 149,
@@ -4538,7 +4512,9 @@
                                     }
                                 ]
                             ]
-                        },
+                        }
+                    ],
+                    [
                         {
                             "x": 0,
                             "y": 0,
@@ -7156,7 +7132,9 @@
                                                 }
                                             ]
                                         ]
-                                    },
+                                    }
+                                ],
+                                [
                                     {
                                         "x": 30,
                                         "y": 134,
@@ -7168,24 +7146,18 @@
                                         "fontColor": "0xffffff",
                                         "align": "left",
                                         "name": "armor_tf"
-                                    },
+                                    }
+                                ],
+                                [
                                     {
-                                        "x": 19,
-                                        "y": 121,
-                                        "type": "movie clip",
-                                        "name": "damage_icon",
-                                        "structure": [
-                                            [
-                                                {
-                                                    "x": -15,
-                                                    "y": -13,
-                                                    "type": "bitmap",
-                                                    "image": "shild.png",
-                                                    "name": "bitmap_shild.png"
-                                                }
-                                            ]
-                                        ]
-                                    },
+                                        "x": 5,
+                                        "y": 98,
+                                        "type": "bitmap",
+                                        "image": "hit.png",
+                                        "name": "bitmap_hit.png"
+                                    }
+                                ],
+                                [
                                     {
                                         "x": 30,
                                         "y": 107,
@@ -7197,24 +7169,18 @@
                                         "fontColor": "0xffffff",
                                         "align": "left",
                                         "name": "damage_tf"
-                                    },
+                                    }
+                                ],
+                                [
                                     {
-                                        "x": 19,
-                                        "y": 93,
-                                        "type": "movie clip",
-                                        "name": "hp_icon",
-                                        "structure": [
-                                            [
-                                                {
-                                                    "x": -15,
-                                                    "y": -13,
-                                                    "type": "bitmap",
-                                                    "image": "shild.png",
-                                                    "name": "bitmap_shild.png"
-                                                }
-                                            ]
-                                        ]
-                                    },
+                                        "x": 1,
+                                        "y": 75,
+                                        "type": "bitmap",
+                                        "image": "heart.png",
+                                        "name": "bitmap_heart.png"
+                                    }
+                                ],
+                                [
                                     {
                                         "x": 30,
                                         "y": 79,
@@ -7226,7 +7192,9 @@
                                         "fontColor": "0xffffff",
                                         "align": "left",
                                         "name": "hp_tf"
-                                    },
+                                    }
+                                ],
+                                [
                                     {
                                         "x": 152,
                                         "y": 149,
@@ -7243,7 +7211,9 @@
                                                 }
                                             ]
                                         ]
-                                    },
+                                    }
+                                ],
+                                [
                                     {
                                         "x": 0,
                                         "y": 0,
@@ -7337,7 +7307,9 @@
                                                 }
                                             ]
                                         ]
-                                    },
+                                    }
+                                ],
+                                [
                                     {
                                         "x": 30,
                                         "y": 134,
@@ -7349,24 +7321,18 @@
                                         "fontColor": "0xffffff",
                                         "align": "left",
                                         "name": "armor_tf"
-                                    },
+                                    }
+                                ],
+                                [
                                     {
-                                        "x": 19,
-                                        "y": 121,
-                                        "type": "movie clip",
-                                        "name": "damage_icon",
-                                        "structure": [
-                                            [
-                                                {
-                                                    "x": -15,
-                                                    "y": -13,
-                                                    "type": "bitmap",
-                                                    "image": "shild.png",
-                                                    "name": "bitmap_shild.png"
-                                                }
-                                            ]
-                                        ]
-                                    },
+                                        "x": 5,
+                                        "y": 98,
+                                        "type": "bitmap",
+                                        "image": "hit.png",
+                                        "name": "bitmap_hit.png"
+                                    }
+                                ],
+                                [
                                     {
                                         "x": 30,
                                         "y": 107,
@@ -7378,24 +7344,18 @@
                                         "fontColor": "0xffffff",
                                         "align": "left",
                                         "name": "damage_tf"
-                                    },
+                                    }
+                                ],
+                                [
                                     {
-                                        "x": 19,
-                                        "y": 93,
-                                        "type": "movie clip",
-                                        "name": "hp_icon",
-                                        "structure": [
-                                            [
-                                                {
-                                                    "x": -15,
-                                                    "y": -13,
-                                                    "type": "bitmap",
-                                                    "image": "shild.png",
-                                                    "name": "bitmap_shild.png"
-                                                }
-                                            ]
-                                        ]
-                                    },
+                                        "x": 1,
+                                        "y": 75,
+                                        "type": "bitmap",
+                                        "image": "heart.png",
+                                        "name": "bitmap_heart.png"
+                                    }
+                                ],
+                                [
                                     {
                                         "x": 30,
                                         "y": 79,
@@ -7407,7 +7367,9 @@
                                         "fontColor": "0xffffff",
                                         "align": "left",
                                         "name": "hp_tf"
-                                    },
+                                    }
+                                ],
+                                [
                                     {
                                         "x": 152,
                                         "y": 149,
@@ -7424,7 +7386,9 @@
                                                 }
                                             ]
                                         ]
-                                    },
+                                    }
+                                ],
+                                [
                                     {
                                         "x": 0,
                                         "y": 0,
@@ -7518,7 +7482,9 @@
                                                 }
                                             ]
                                         ]
-                                    },
+                                    }
+                                ],
+                                [
                                     {
                                         "x": 30,
                                         "y": 134,
@@ -7530,24 +7496,18 @@
                                         "fontColor": "0xffffff",
                                         "align": "left",
                                         "name": "armor_tf"
-                                    },
+                                    }
+                                ],
+                                [
                                     {
-                                        "x": 19,
-                                        "y": 121,
-                                        "type": "movie clip",
-                                        "name": "damage_icon",
-                                        "structure": [
-                                            [
-                                                {
-                                                    "x": -15,
-                                                    "y": -13,
-                                                    "type": "bitmap",
-                                                    "image": "shild.png",
-                                                    "name": "bitmap_shild.png"
-                                                }
-                                            ]
-                                        ]
-                                    },
+                                        "x": 5,
+                                        "y": 98,
+                                        "type": "bitmap",
+                                        "image": "hit.png",
+                                        "name": "bitmap_hit.png"
+                                    }
+                                ],
+                                [
                                     {
                                         "x": 30,
                                         "y": 107,
@@ -7559,24 +7519,18 @@
                                         "fontColor": "0xffffff",
                                         "align": "left",
                                         "name": "damage_tf"
-                                    },
+                                    }
+                                ],
+                                [
                                     {
-                                        "x": 19,
-                                        "y": 93,
-                                        "type": "movie clip",
-                                        "name": "hp_icon",
-                                        "structure": [
-                                            [
-                                                {
-                                                    "x": -15,
-                                                    "y": -13,
-                                                    "type": "bitmap",
-                                                    "image": "shild.png",
-                                                    "name": "bitmap_shild.png"
-                                                }
-                                            ]
-                                        ]
-                                    },
+                                        "x": 1,
+                                        "y": 75,
+                                        "type": "bitmap",
+                                        "image": "heart.png",
+                                        "name": "bitmap_heart.png"
+                                    }
+                                ],
+                                [
                                     {
                                         "x": 30,
                                         "y": 79,
@@ -7588,7 +7542,9 @@
                                         "fontColor": "0xffffff",
                                         "align": "left",
                                         "name": "hp_tf"
-                                    },
+                                    }
+                                ],
+                                [
                                     {
                                         "x": 152,
                                         "y": 149,
@@ -7605,7 +7561,9 @@
                                                 }
                                             ]
                                         ]
-                                    },
+                                    }
+                                ],
+                                [
                                     {
                                         "x": 0,
                                         "y": 0,
