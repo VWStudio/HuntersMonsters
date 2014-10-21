@@ -124,12 +124,17 @@ public class MonsterPoint extends AbstractView {
 
     private function tick($delta : Number) : void {
         if(!_allowCount) return;
-
         if(_lifetime > 0) {
             _lifetime -= $delta;
             _time.text = Formatter.msToHHMMSS(_lifetime);
         } else {
-            Model.instance.deletePoint(this);
+            if(Model.instance.state == MapScreen.NAME) {
+                Model.instance.deletePoint(this);
+            }
+        }
+
+        if(Model.instance.state != MapScreen.NAME) {
+            return;
         }
 
         if(_monsterType.speed == 0) {

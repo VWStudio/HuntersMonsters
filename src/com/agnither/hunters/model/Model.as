@@ -165,6 +165,7 @@ public class Model {
 
     public function deletePoint($point : MonsterPoint) : void {
         if(currentMonsterPoint) return;
+        if(Model.instance.state != MapScreen.NAME) return;
 
         var points : Vector.<MonsterPoint> = _territoryPoints[$point.monsterType.id];
         var index : int = points.indexOf($point);
@@ -177,6 +178,7 @@ public class Model {
         updatePoints();
     }
     private function createPoint($monsterID : String) : void {
+        if(Model.instance.state != MapScreen.NAME) return;
 
         var mp : MonsterPoint = new MonsterPoint();
         mp.monsterType = Model.instance.monsters.getRandomAreaMonster($monsterID);
@@ -187,6 +189,9 @@ public class Model {
 
     }
     public function updatePoints() : void {
+
+        if(Model.instance.state != MapScreen.NAME) return;
+
         for (var i : int = 0; i < progress.unlockedMonsters.length; i++)
         {
             var monsterID : String = progress.unlockedMonsters[i];

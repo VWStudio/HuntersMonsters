@@ -32,12 +32,20 @@ public class CheckManaResult {
         for (var key: * in manaAmount) {
             var magic: DamageTypeVO = DamageTypeVO.DICT[key];
             var manaItem : Mana = mana.getMana(magic.name);
+            if(!manaItem) {
+                _delta = -1;
+                return;;
+            }
             var delta: int = manaItem ? manaAmount[key] - manaItem.value : 0;
+//            trace(key, magic.id, magic.name, manaItem, delta);
             if (delta > 0) {
                 _results[magic.name] = delta;
                 _delta += delta;
             }
         }
+
+//        trace("_delta", _delta, _delta == 0);
+
     }
 }
 }

@@ -58,7 +58,9 @@ public class AIPlayer extends Player {
                 var spell: Spell = _inventory.getItem(_inventory.inventoryItems[i]) as Spell;
                 if (spell) {
                     var result:CheckManaResult = new CheckManaResult(_manaList, spell);
+//                    trace("IS ENOUGH:", result.enough)
                     if (result.enough) {
+
                         game.useSpell(spell);
                     } else {
                         results.push(result);

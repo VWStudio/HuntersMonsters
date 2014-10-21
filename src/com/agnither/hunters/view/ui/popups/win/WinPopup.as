@@ -53,7 +53,7 @@ public class WinPopup extends Popup {
     }
 
 
-    override public function destroy() : void {
+    override public function onRemove() : void {
 
         coreRemoveListener(DropSlotView.SHOW_TOOLTIP, onShowTooltip);
         coreRemoveListener(DropSlotView.HIDE_TOOLTIP, onHideTooltip);

@@ -71,6 +71,14 @@ public class BattleScreen extends Screen {
     public function BattleScreen() {
     }
 
+
+    override public function onRemove() : void {
+
+        coreRemoveListener(DropSlotView.SHOW_TOOLTIP, onShowTooltip);
+        coreRemoveListener(DropSlotView.HIDE_TOOLTIP, onHideTooltip);
+
+    }
+
     override protected function initialize():void {
 
 

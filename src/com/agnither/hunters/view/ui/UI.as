@@ -160,6 +160,7 @@ public class UI extends Screen {
                 if (_prevScreen)
                 {
                     _screensContainer.removeChild(_prevScreen);
+                    _prevScreen.onRemove();
                 }
                 else
                 {
@@ -204,6 +205,7 @@ public class UI extends Screen {
         {
             _darkness.visible = false;
             _popupContainer.removeChild(_currentPopup);
+            _currentPopup.onRemove();
             _currentPopup = null;
             _currentPopupName = "";
 

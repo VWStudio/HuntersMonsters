@@ -294,5 +294,9 @@ public class AbstractView extends Sprite {
     public function get data() : Object {
         return _data;
     }
+
+    public function onRemove() : void {
+
+    }
 }
 }
