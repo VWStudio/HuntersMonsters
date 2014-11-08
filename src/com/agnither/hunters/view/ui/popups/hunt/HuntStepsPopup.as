@@ -10,7 +10,7 @@ import com.agnither.hunters.model.player.drop.DropSlot;
 import com.agnither.hunters.model.player.drop.GoldDrop;
 import com.agnither.hunters.model.player.drop.ItemDrop;
 import com.agnither.hunters.view.ui.UI;
-import com.agnither.hunters.view.ui.screens.battle.monster.MonsterInfo;
+import com.agnither.hunters.view.ui.common.MonsterInfo;
 import com.agnither.hunters.view.ui.screens.battle.player.DropSlotView;
 import com.agnither.hunters.view.ui.screens.battle.player.inventory.ItemView;
 import com.agnither.hunters.view.ui.screens.map.*;
@@ -163,7 +163,9 @@ public class HuntStepsPopup extends Popup {
         for (var i : int = 0; i < _monsters.length; i++)
         {
             var mon : MonsterInfo = new MonsterInfo();
-            mon.createFromCommon(_refs.guiConfig.common.monster);
+            // XXXCOMMON
+            mon.createFromConfig(_refs.guiConfig.common.monster);
+//            mon.createFromCommon(_refs.guiConfig.common.monster);
             mon.data = _monsters[i];
             _monsterContainer.addChild(mon);
             mon.update();
@@ -228,7 +230,9 @@ public class HuntStepsPopup extends Popup {
                 else if (drop.content is ItemDrop)
                 {
                     var dropView : DropSlotView = new DropSlotView();
-                    dropView.createFromCommon(_refs.guiConfig.common.drop);
+                    // XXXCOMMON
+                    dropView.createFromConfig(_refs.guiConfig.common.drop);
+//                    dropView.createFromCommon(_refs.guiConfig.common.drop);
                     _drops.addChild(dropView);
                     dropView.drop = drop;
                     var item : ItemDrop = drop.content as ItemDrop;

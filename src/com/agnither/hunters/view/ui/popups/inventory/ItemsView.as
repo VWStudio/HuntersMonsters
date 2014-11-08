@@ -36,6 +36,7 @@ public class ItemsView extends AbstractView {
 
     public function showType(type: int):void {
         updateList(_inventory.getItemsByType(type));
+//        updateList(_inventory.getItemsByType(type).concat(_inventory.getItemsByType(type)).concat(_inventory.getItemsByType(type)).concat(_inventory.getItemsByType(type)));
     }
 
     private function updateList(data: Array):void {
@@ -48,9 +49,9 @@ public class ItemsView extends AbstractView {
         for (var i:int = 0; i < data.length; i++) {
             tile = ItemView.getItemView(_inventory.getItem(data[i]));
             tile.addEventListener(TouchEvent.TOUCH, handleTouch);
+            addChild(tile);
             tile.x = itemX * (i % 3);
             tile.y = itemY * int(i / 3);
-            addChild(tile);
         }
     }
 

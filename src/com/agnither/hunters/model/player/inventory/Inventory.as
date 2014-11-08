@@ -55,8 +55,8 @@ public class Inventory extends EventDispatcher {
     public function init():void {
         for (var i: int = 0; i < ItemTypeVO.LIST.length; i++) {
             _itemsByType[ItemTypeVO.LIST[i].id] = [];
+//            _itemsByType[ItemTypeVO.LIST[i].id] = _itemsByType[ItemTypeVO.LIST[i].id].concat(_itemsByType[ItemTypeVO.LIST[i].id]);
         }
-
         var extArray : Vector.<ExtensionVO> = Model.instance.items.getExtensions();
         for (i = 0; i < extArray.length; i++) {
             _extensions[extArray[i].id] = 0;
@@ -175,6 +175,18 @@ public class Inventory extends EventDispatcher {
                 }
             }
         }
+    }
+
+    public function getItemsByName($code : String) : Array {
+        var arr : Array = [];
+        for (var uid : String in _itemsDict)
+        {
+            var item : Item = _itemsDict[uid];
+            if(item.name == $code) {
+                arr.push(item);
+            }
+        }
+        return arr;
     }
 }
 }

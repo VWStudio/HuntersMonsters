@@ -12,6 +12,10 @@ import com.agnither.ui.Popup;
 import com.cemaprjl.core.ICommand;
 import com.cemaprjl.core.coreDispatch;
 
+import flash.ui.Mouse;
+
+import flash.ui.MouseCursor;
+
 /**
  * run example:
  * coreExecute(ShowPopupCmd, SomePopup.NAME, {id:123, name:"zzzz", true});
@@ -47,6 +51,7 @@ public class ShowPopupCmd implements ICommand {
             view.darkened = true;
         }
 
+        Mouse.cursor = MouseCursor.AUTO;
         coreDispatch(UI.SHOW_POPUP, popupName);
     }
 }

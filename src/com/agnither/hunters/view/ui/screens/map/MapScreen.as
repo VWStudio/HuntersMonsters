@@ -9,8 +9,9 @@ import com.agnither.hunters.model.modules.monsters.MonsterVO;
 import com.agnither.hunters.model.match3.Match3Game;
 import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.player.LocalPlayer;
-import com.agnither.hunters.view.ui.screens.battle.monster.MonsterArea;
-import com.agnither.hunters.view.ui.screens.battle.monster.TrapPopup;
+import com.agnither.hunters.model.player.personage.Progress;
+import com.agnither.hunters.view.ui.common.MonsterArea;
+import com.agnither.hunters.view.ui.popups.traps.TrapSetPopup;
 import com.agnither.ui.Screen;
 import com.cemaprjl.core.coreAddListener;
 import com.cemaprjl.core.coreDispatch;
@@ -26,6 +27,8 @@ import flash.geom.Rectangle;
 import flash.ui.Mouse;
 import flash.ui.MouseCursor;
 import flash.utils.Dictionary;
+
+import starling.core.Starling;
 
 import starling.display.DisplayObject;
 
@@ -84,6 +87,7 @@ public class MapScreen extends Screen {
 
         createFromConfig(_refs.guiConfig.map, _container);
 
+        coreAddListener(Progress.UPDATED, update);
         coreAddListener(ADD_POINT, onPointAdd);
         coreAddListener(DELETE_POINT, onPointDelete);
         coreAddListener(ADD_TRAP, onTrapAdd);
@@ -124,45 +128,27 @@ public class MapScreen extends Screen {
          *
          */
         var removeArr : Array = [];
-//        _playerPositionsArr = new <Point>[];
         for (var i : int = 0; i < _container.numChildren; i++)
         {
             var dobj : DisplayObject = _container.getChildAt(i);
             if(dobj is MonsterPoint) {
                 removeArr.push(dobj);
             } else if (dobj is MonsterArea) {
-
-//                (dobj as MonsterArea).update();
                 Model.instance.monsterAreas[dobj.name] = new Rectangle(dobj.x, dobj.y, 50 * dobj.transformationMatrix.a, 50 * dobj.transformationMatrix.d);
-//                trace(dobj.name, App.instance.monsterAreas[dobj.name]);
                 removeArr.push(dobj);
             } else if (dobj is PlayerPoint) {
-
                 var ptName : String = dobj.name;
                 if(ptName.indexOf("00") > -1) {
                     _playerPosition = dobj as PlayerPoint;
                 } else {
                     removeArr.push(dobj);
                 }
-
-//
-//                _playerPositionsArr.push(new Point());
-//
-//                _playerPositions[ptName.split("_")[1]] = dobj;
-//                dobj.visible = false;
-//
-//                initMonster(ptName, new Point(dobj.x, dobj.y));
-
-
             } else if(dobj is HousePoint) {
-
                 _houses[dobj.name] = dobj;
                 dobj.visible = false;
 
             } else if(dobj.name.indexOf("clouds") > -1) {
                 _clouds[dobj.name] = dobj;
-//                dobj.touchable = true;
-//                dobj.visible = false;
             }
         }
 
@@ -269,8 +255,6 @@ public class MapScreen extends Screen {
 
         var trapPoint : TrapPoint = new TrapPoint();
         _trapsContainer.addChild(trapPoint);
-//        trapPoint.monsterType = Model.instance.monsters.getMonster($data.id, 1);
-//        trapPoint.monsterType = MonsterVO.DICT[$data.id];
         trapPoint.data = $data;
         trapPoint.update();
 
@@ -293,7 +277,14 @@ public class MapScreen extends Screen {
             monsterID = arr[i];
             var monsterArea  : MonsterAreaVO = Model.instance.monsters.getMonsterArea(monsterID);
             if(_clouds[monsterArea.area]) {
-                _clouds[monsterArea.area].visible = false;
+                if(_clouds[monsterArea.area].visible) {
+                    openTerritoryTween(_clouds[monsterArea.area]);
+                } else {
+                    _clouds[monsterArea.area].visible = false;
+                }
+
+
+
             }
 
             if(monsterArea.house && _houses[monsterArea.house])  {
@@ -307,6 +298,17 @@ public class MapScreen extends Screen {
 
         Model.instance.updatePoints();
 
+
+    }
+
+    private function openTerritoryTween($cloud : DisplayObject) : void {
+
+        Starling.juggler.tween($cloud, 1, {alpha : 0, onComplete: onEndTween});
+
+        function onEndTween():void {
+            $cloud.visible = false ;
+            $cloud.alpha = 1;
+        }
 
     }
 
@@ -341,7 +343,7 @@ public class MapScreen extends Screen {
                             }
                         }
                         if(trapAllowed) {
-                            coreExecute(ShowPopupCmd, TrapPopup.NAME, {id : key, position : pt, mode:TrapPopup.SET_MODE});
+                            coreExecute(ShowPopupCmd, TrapSetPopup.NAME, {id : key, position : pt, mode:TrapSetPopup.SET_MODE});
                             coreDispatch(MapScreen.STOP_TRAP);
                             return;
                         } else {

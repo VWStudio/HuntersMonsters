@@ -1,0 +1,62 @@
+[
+    {
+        "parameter": "chestLifetime",
+        "value": "300,1800",
+        "type": "array"
+    },
+    {
+        "parameter": "chestRespawn",
+        "value": "300",
+        "type": "int"
+    },
+    {
+        "parameter": "playerInitialLevel",
+        "value": "1",
+        "type": "int"
+    },
+    {
+        "parameter": "playerInitialHp",
+        "value": "100",
+        "type": "int"
+    },
+    {
+        "parameter": "playerInitialDmg",
+        "value": "5",
+        "type": "int"
+    },
+    {
+        "parameter": "playerInitialDef",
+        "value": "5",
+        "type": "int"
+    },
+    {
+        "parameter": "playerInitialExp",
+        "value": "0",
+        "type": "int"
+    },
+    {
+        "parameter": "playerInitialGold",
+        "value": "500",
+        "type": "int"
+    },
+    {
+        "parameter": "playerInitialMagic",
+        "value": "6",
+        "type": "int"
+    },
+    {
+        "parameter": "playerInitialRating",
+        "value": "0",
+        "type": "int"
+    },
+    {
+        "parameter": "playerInitialName",
+        "value": "Hunter",
+        "type": "str"
+    },
+    {
+        "parameter": "playerInitialLeague",
+        "value": "1",
+        "type": "int"
+    }
+]

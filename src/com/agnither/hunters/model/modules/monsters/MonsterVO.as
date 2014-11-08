@@ -6,19 +6,17 @@ import com.agnither.hunters.model.modules.players.PersonageVO;
 
 import flash.utils.Dictionary;
 
-public dynamic class MonsterVO extends PersonageVO{
+public dynamic class MonsterVO extends PersonageVO {
 
     public static const LIST: Vector.<MonsterVO> = new <MonsterVO>[];
     public static const DICT_BY_TYPE : Dictionary = new Dictionary();
     public static const DICT: Dictionary = new Dictionary();
 
     public var id: String;
-//    public var level: int;
     public var order: Number = 0;
-//    public var area : String;
-//    public var picture: String;
     public var difficulty: int;
     public var drop: int;
+    public var expearned: int;
     public var speed: uint = 75;
 
     public var items: Array = [];
@@ -26,20 +24,7 @@ public dynamic class MonsterVO extends PersonageVO{
 
 
 
-    /*
-     "level": 1,
-     "monster": "blue_bull",
-     "hp": 100,
-     "damage": 5,
-     "defence": 5,
 
-     "magic": 6,
-     "difficulty": 10,
-     "drop": 1,
-     "items": "4,6,13,14",
-     "stars": "7,12,20",
-     "picture": "monster_1.png"
-     */
     public static function parseData(data: Object):void {
         for (var i: int = 0; i < data.length; i++) {
 
@@ -60,7 +45,6 @@ public dynamic class MonsterVO extends PersonageVO{
             DICT[object.id][object.level] = object;
             LIST.push(object);
             DICT_BY_TYPE[object.id].push(object);
-
         }
     }
 

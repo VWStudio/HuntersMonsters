@@ -6,7 +6,9 @@
         "lifetime": "60,300",
         "respawn": 180,
         "chesttimes": "300,300",
-        "chestdropset": "3"
+        "chestdropset": "3",
+        "expearned": 50,
+        "tameprice": "1,11,21"
     },
     {
         "id": "pikachu",
@@ -17,7 +19,9 @@
         "respawn": 180,
         "house": "house00",
         "chesttimes": "300,300",
-        "chestdropset": "3"
+        "chestdropset": "3",
+        "expearned": 60,
+        "tameprice": "2,12,22"
     },
     {
         "id": "meowut",
@@ -28,7 +32,9 @@
         "respawn": 180,
         "house": "house01",
         "chesttimes": "300,300",
-        "chestdropset": "3"
+        "chestdropset": "3",
+        "expearned": 70,
+        "tameprice": "3,13,23"
     },
     {
         "id": "slowpoke",
@@ -38,7 +44,9 @@
         "lifetime": "60,300",
         "respawn": 180,
         "chesttimes": "300,300",
-        "chestdropset": "3"
+        "chestdropset": "3",
+        "expearned": 80,
+        "tameprice": "4,14,24"
     },
     {
         "id": "charmander",
@@ -48,7 +56,9 @@
         "lifetime": "60,300",
         "respawn": 180,
         "chesttimes": "300,300",
-        "chestdropset": "3"
+        "chestdropset": "3",
+        "expearned": 90,
+        "tameprice": "5,15,25"
     },
     {
         "id": "bulbasaur",
@@ -58,7 +68,9 @@
         "lifetime": "60,300",
         "respawn": 180,
         "chesttimes": "300,300",
-        "chestdropset": "3"
+        "chestdropset": "3",
+        "expearned": 100,
+        "tameprice": "6,16,26"
     },
     {
         "id": "squirtle",
@@ -68,7 +80,9 @@
         "lifetime": "60,300",
         "respawn": 180,
         "chesttimes": "300,300",
-        "chestdropset": "3"
+        "chestdropset": "3",
+        "expearned": 110,
+        "tameprice": "7,17,27"
     },
     {
         "id": "pidgey",
@@ -78,7 +92,9 @@
         "lifetime": "60,300",
         "respawn": 180,
         "chesttimes": "300,300",
-        "chestdropset": "3"
+        "chestdropset": "3",
+        "expearned": 120,
+        "tameprice": "8,18,28"
     },
     {
         "id": "ratata",
@@ -88,7 +104,9 @@
         "lifetime": "60,300",
         "respawn": 180,
         "chesttimes": "300,300",
-        "chestdropset": "3"
+        "chestdropset": "3",
+        "expearned": 130,
+        "tameprice": "9,19,29"
     },
     {
         "id": "zubat",
@@ -98,6 +116,8 @@
         "lifetime": "60,300",
         "respawn": 180,
         "chesttimes": "300,300",
-        "chestdropset": "3"
+        "chestdropset": "3",
+        "expearned": 140,
+        "tameprice": "10,20,30"
     }
 ]

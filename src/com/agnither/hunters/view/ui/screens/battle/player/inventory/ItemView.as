@@ -47,7 +47,9 @@ public class ItemView extends AbstractView {
     }
 
     override protected function initialize():void {
-        createFromCommon(_refs.guiConfig.common.spell);
+        // XXXCOMMON
+        createFromConfig(_refs.guiConfig.common.spell);
+//        createFromCommon(_refs.guiConfig.common.spell);
 
         this.touchable = true;
 

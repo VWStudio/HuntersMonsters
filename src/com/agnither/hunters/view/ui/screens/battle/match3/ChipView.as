@@ -28,7 +28,7 @@ public class ChipView extends AbstractView {
     }
 
     override protected function initialize():void {
-        _view = new Image(_refs.gui.getTexture(_chip.icon));
+        _view = new Image(_refs.gui.getTexture(_chip.iconChip));
         _view.pivotX = _view.width/2;
         _view.pivotY = _view.height/2;
         _view.x = _view.pivotX;

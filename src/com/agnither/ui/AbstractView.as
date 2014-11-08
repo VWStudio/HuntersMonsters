@@ -157,7 +157,14 @@ public class AbstractView extends Sprite {
                     }
                 } else if (item.type == "button") {
                     var images: Array = item.images;
-                    view = new ButtonContainer(_refs.gui.getTexture(images[0]), "", images.length>=2 ? _refs.gui.getTexture(images[1]) : null, images.length>=3 ? _refs.gui.getTexture(images[2]) : null);
+                    var upTex : Texture = _refs.gui.getTexture(images[0]);
+                    var hovTex : Texture = images.length > 1 ? _refs.gui.getTexture(images[1]) : upTex;
+                    var downTex : Texture = images.length > 1 ?_refs.gui.getTexture( images[2]) : upTex;
+                    var disTex : Texture = images.length > 1 ? _refs.gui.getTexture(images[3]) : upTex;
+
+
+                    view = new ButtonContainer(upTex, hovTex, downTex, disTex);
+//                    view = new ButtonContainer(_refs.gui.getTexture(images[0]), "", images.length>=2 ? _refs.gui.getTexture(images[1]) : null, images.length>=3 ? _refs.gui.getTexture(images[2]) : null);
                 } else if (item.type == "text") {
                     if (item.name.search("_label")<0) {
                         view = new TextField(item.width, item.height, item.text, item.fontName, -1, 0xFFFFFF);
@@ -199,7 +206,7 @@ public class AbstractView extends Sprite {
 //                    }
 
                     /**
-                     * TODO some elements not affected by matrix, FIX!!!
+                     * TODO some elements are not affected by matrix, FIX!!!
                      */
 
                     if (item.matrix) {
@@ -241,7 +248,14 @@ public class AbstractView extends Sprite {
                     }
                 } else if (item.type == "button") {
                     var images: Array = item.images;
-                    view = new ButtonContainer(_refs.gui.getTexture(images[0]), "", images.length>=2 ? _refs.gui.getTexture(images[1]) : null, images.length>=3 ? _refs.gui.getTexture(images[2]) : null);
+
+                    var upTex : Texture = _refs.gui.getTexture(images[0]);
+                    var hovTex : Texture = images.length > 1 ? _refs.gui.getTexture(images[1]) : upTex;
+                    var downTex : Texture = images.length > 1 ?_refs.gui.getTexture( images[2]) : upTex;
+                    var disTex : Texture = images.length > 1 ? _refs.gui.getTexture(images[3]) : upTex;
+
+                    view = new ButtonContainer(upTex, hovTex, downTex, disTex);
+//                    view = new ButtonContainer(_refs.gui.getTexture(images[0]), "", images.length>=2 ? _refs.gui.getTexture(images[1]) : null, images.length>=3 ? _refs.gui.getTexture(images[2]) : null);
                 } else if (item.type == "text") {
                     if (item.name.search("_label")<0) {
                         view = new TextField(item.width, item.height, item.text, item.fontName, -1, 0xFFFFFF);

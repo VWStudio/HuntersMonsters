@@ -38,15 +38,18 @@ public class ButtonContainer extends Button {
 
     private var _enabledState: Texture;
     private var _disabledState: Texture;
+    private var _hoverState : Texture;
     override public function set enabled(value: Boolean):void {
         upState = value ? _enabledState : _disabledState;
         super.enabled = value;
     }
 
-    public function ButtonContainer(enabledState:Texture, text:String = "", downState:Texture = null, disabledState: Texture = null) {
+//    public function ButtonContainer(enabledState:Texture, text:String = "", downState:Texture = null, disabledState: Texture = null) {
+    public function ButtonContainer(enabledState:Texture, hoverState : Texture = null, downState:Texture = null, disabledState: Texture = null) {
         _enabledState = enabledState;
         _disabledState = disabledState;
-        super(_enabledState, text, downState);
+        _hoverState = hoverState;
+        super(_enabledState, "", downState);
         scaleWhenDown = 1;
         alphaWhenDisabled = 1;
 
@@ -54,9 +57,12 @@ public class ButtonContainer extends Button {
     }
 
     private function handleTouch(e: TouchEvent):void {
-        var touch: Touch = e.getTouch(this, TouchPhase.BEGAN);
+        if(!enabled) return;
+        var touch: Touch = e.getTouch(this, TouchPhase.HOVER);
         if (touch) {
-//            dispatchEventWith(AppController.COMMAND, true, [ButtonPressCommand, enabled]);
+            upState = _hoverState;
+        } else {
+            upState = _enabledState;
         }
     }
 }

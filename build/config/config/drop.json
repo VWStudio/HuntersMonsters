@@ -25,42 +25,48 @@
         "itemset": 1,
         "type": 5,
         "itemid": 1,
-        "probability": 10
+        "probability": 10,
+        "amount": "10,50"
     },
     {
         "id": 5,
         "itemset": 1,
         "type": 5,
         "itemid": 2,
-        "probability": 10
+        "probability": 10,
+        "amount": "50,100"
     },
     {
         "id": 6,
         "itemset": 1,
         "type": 5,
         "itemid": 3,
-        "probability": 10
+        "probability": 10,
+        "amount": "100,200"
     },
     {
         "id": 7,
         "itemset": 2,
         "type": 5,
         "itemid": 1,
-        "probability": 34
+        "probability": 34,
+        "amount": "10,50"
     },
     {
         "id": 8,
         "itemset": 2,
         "type": 5,
         "itemid": 2,
-        "probability": 33
+        "probability": 33,
+        "amount": "50,100"
     },
     {
         "id": 9,
         "itemset": 2,
         "type": 5,
         "itemid": 3,
-        "probability": 33
+        "probability": 33,
+        "amount": "100,200"
     },
     {
         "id": 10,
@@ -88,6 +94,7 @@
         "itemset": 3,
         "type": 5,
         "itemid": 3,
-        "probability": 50
+        "probability": 50,
+        "amount": "100,200"
     }
 ]

@@ -13,6 +13,7 @@ import com.agnither.hunters.view.ui.screens.battle.player.DropListView;
 import com.agnither.hunters.view.ui.screens.battle.player.DropSlotView;
 import com.agnither.hunters.view.ui.screens.battle.player.ManaListView;
 import com.agnither.hunters.view.ui.screens.battle.player.PersonageView;
+import com.agnither.hunters.view.ui.screens.camp.CampScreen;
 import com.agnither.hunters.view.ui.screens.hud.HudScreen;
 import com.agnither.hunters.view.ui.screens.map.MapScreen;
 import com.agnither.hunters.view.ui.screens.map.PlayerPoint;
@@ -130,7 +131,7 @@ public class UI extends Screen {
 
     private function updateHud() : void {
 
-        _hud.visible = _currentScreenName == MapScreen.NAME;
+        _hud.visible = _currentScreenName == MapScreen.NAME || _currentScreenName == CampScreen.NAME;
         _hud.update();
 
     }

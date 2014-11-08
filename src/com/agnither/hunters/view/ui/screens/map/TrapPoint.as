@@ -5,7 +5,7 @@ package com.agnither.hunters.view.ui.screens.map {
 import com.agnither.hunters.App;
 import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.modules.monsters.MonsterVO;
-import com.agnither.hunters.view.ui.screens.battle.monster.TrapPopup;
+import com.agnither.hunters.view.ui.popups.traps.TrapSetPopup;
 import com.agnither.ui.AbstractView;
 import com.cemaprjl.core.coreExecute;
 import com.cemaprjl.utils.Formatter;
@@ -54,15 +54,15 @@ public class TrapPoint extends AbstractView {
                 case TouchPhase.ENDED :
                     if (_timeleft > 0)
                     {
-                        coreExecute(ShowPopupCmd, TrapPopup.NAME, {id: _monsterType.id, level:_monsterType.level, mode: TrapPopup.CHECK_MODE, marker: this});
+                        coreExecute(ShowPopupCmd, TrapSetPopup.NAME, {id: _monsterType.id, level:_monsterType.level, mode: TrapSetPopup.CHECK_MODE, marker: this});
                     }
                     else if (_monsterCaught)
                     {
-                        coreExecute(ShowPopupCmd, TrapPopup.NAME, {id: _monsterType.id, level:_monsterType.level, mode: TrapPopup.REWARD_MODE, marker: this});
+                        coreExecute(ShowPopupCmd, TrapSetPopup.NAME, {id: _monsterType.id, level:_monsterType.level, mode: TrapSetPopup.REWARD_MODE, marker: this});
                     }
                     else
                     {
-                        coreExecute(ShowPopupCmd, TrapPopup.NAME, {id: _monsterType.id, level : null, mode: TrapPopup.DELETE_MODE, marker: this});
+                        coreExecute(ShowPopupCmd, TrapSetPopup.NAME, {id: _monsterType.id, level : null, mode: TrapSetPopup.DELETE_MODE, marker: this});
                     }
                     break;
             }

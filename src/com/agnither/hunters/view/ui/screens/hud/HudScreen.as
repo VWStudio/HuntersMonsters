@@ -7,9 +7,11 @@ import com.agnither.hunters.data.outer.LeagueVO;
 import com.agnither.hunters.data.outer.LevelVO;
 import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.player.LocalPlayer;
-import com.agnither.hunters.view.ui.popups.InventoryPopup;
-import com.agnither.hunters.view.ui.popups.SelectMonsterPopup;
-import com.agnither.hunters.view.ui.popups.monsters.PetsView;
+import com.agnither.hunters.model.player.personage.Progress;
+import com.agnither.hunters.view.ui.popups.inventory.InventoryPopup;
+import com.agnither.hunters.view.ui.popups.monsters.SelectMonsterPopup;
+import com.agnither.hunters.view.ui.popups.monsters.CatchedPetsView;
+import com.agnither.hunters.view.ui.screens.camp.CampScreen;
 import com.agnither.hunters.view.ui.screens.map.MapScreen;
 import com.agnither.ui.ButtonContainer;
 import com.agnither.ui.ButtonContainer;
@@ -18,6 +20,7 @@ import com.cemaprjl.core.coreAddListener;
 import com.cemaprjl.core.coreDispatch;
 import com.cemaprjl.core.coreExecute;
 import com.cemaprjl.viewmanage.ShowPopupCmd;
+import com.cemaprjl.viewmanage.ShowScreenCmd;
 
 import flash.external.ExternalInterface;
 import flash.net.URLRequest;
@@ -44,6 +47,7 @@ public class HudScreen extends Screen {
     private var _trapBtn : ButtonContainer;
     private var _resetBtn : ButtonContainer;
     private var _monstersBtn : ButtonContainer;
+    private var _modeBtn : ButtonContainer;
 
     public function HudScreen() {
     }
@@ -76,7 +80,24 @@ public class HudScreen extends Screen {
         _monstersBtn.text = "Монстры";
         _monstersBtn.addEventListener(Event.TRIGGERED, onMonster);
 
-        coreAddListener(HudScreen.UPDATE, update)
+        _modeBtn = _links.mode_btn;
+
+        _modeBtn.addEventListener(Event.TRIGGERED, onMode);
+
+        coreAddListener(HudScreen.UPDATE, update);
+        coreAddListener(Progress.UPDATED, update);
+    }
+
+    private function onMode(event : Event) : void {
+        switch (Model.instance.state) {
+            case MapScreen.NAME :
+                coreExecute(ShowScreenCmd, CampScreen.NAME);
+                break;
+            case CampScreen.NAME :
+                coreExecute(ShowScreenCmd, MapScreen.NAME);
+                break;
+
+        }
     }
 
     private function onMonster(event : Event) : void {
@@ -94,13 +115,15 @@ public class HudScreen extends Screen {
 
 
     override public function update() : void {
-        var player :  LocalPlayer = Model.instance.player;
-        _playerLevel.text = player.hero.level.toString();
-        _playerExp.text = player.hero.exp.toString() + "/" +LevelVO.DICT[player.hero.level.toString()].exp;
-        _playerLeague.text = LeagueVO.DICT[player.hero.league.toString()].name;
-        _playerRating.text = player.hero.rating.toString();
-        _playerGold.text = player.hero.gold.toString();
+        var progress :  Progress = Model.instance.progress;
+        _playerLevel.text = progress.level.toString();
+        _playerExp.text = progress.exp.toString() + "/" +LevelVO.DICT[progress.level.toString()].exp;
+        _playerLeague.text = LeagueVO.DICT[progress.league.toString()].name;
+        _playerRating.text = progress.rating.toString();
+        _playerGold.text = progress.gold.toString();
         _trapBtn.visible = App.instance.trapMode;
+
+        _modeBtn.text = Model.instance.state == MapScreen.NAME ? "Лагерь" : "Карта";
     }
 
     private function onReset(event : Event) : void {

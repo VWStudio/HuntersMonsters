@@ -5,12 +5,13 @@
         "hp": 100,
         "damage": 5,
         "defence": 5,
-        "magic": 5,
+        "magic": 6,
         "difficulty": 100,
         "drop": 1,
         "items": "4,6,13,14",
         "stars": "7,12,20",
         "picture": "monster_1.png",
+        "expearned": 50,
         "speed": 75
     },
     {
@@ -19,12 +20,13 @@
         "hp": 110,
         "damage": 6,
         "defence": 5,
-        "magic": 6,
+        "magic": 7,
         "difficulty": 100,
         "drop": 1,
         "items": "4,6,13,15",
         "stars": "7,12,21",
         "picture": "monster_1.png",
+        "expearned": 100,
         "speed": 70
     },
     {
@@ -33,12 +35,13 @@
         "hp": 120,
         "damage": 7,
         "defence": 5,
-        "magic": 7,
+        "magic": 8,
         "difficulty": 100,
         "drop": 1,
         "items": "4,6,13,16",
         "stars": "7,12,22",
         "picture": "monster_1.png",
+        "expearned": 150,
         "speed": 0
     },
     {
@@ -47,12 +50,13 @@
         "hp": 130,
         "damage": 8,
         "defence": 6,
-        "magic": 5,
+        "magic": 6,
         "difficulty": 13,
         "drop": 1,
         "items": "4,6,13,14",
         "stars": "7,12,20",
         "picture": "monster_2.png",
+        "expearned": 200,
         "speed": 100
     },
     {
@@ -61,12 +65,13 @@
         "hp": 140,
         "damage": 8,
         "defence": 6,
-        "magic": 6,
+        "magic": 7,
         "difficulty": 14,
         "drop": 1,
         "items": "4,6,13,15",
         "stars": "7,12,21",
         "picture": "monster_2.png",
+        "expearned": 250,
         "speed": 50
     },
     {
@@ -75,12 +80,13 @@
         "hp": 150,
         "damage": 8,
         "defence": 6,
-        "magic": 7,
+        "magic": 8,
         "difficulty": 15,
         "drop": 1,
         "items": "4,6,13,16",
         "stars": "7,12,22",
         "picture": "monster_2.png",
+        "expearned": 300,
         "speed": 25
     },
     {
@@ -89,12 +95,13 @@
         "hp": 160,
         "damage": 8,
         "defence": 6,
-        "magic": 5,
+        "magic": 6,
         "difficulty": 16,
         "drop": 1,
         "items": "4,6,13,14",
         "stars": "7,12,20",
         "picture": "monster_1.png",
+        "expearned": 350,
         "speed": 75
     },
     {
@@ -103,12 +110,13 @@
         "hp": 170,
         "damage": 8,
         "defence": 6,
-        "magic": 6,
+        "magic": 7,
         "difficulty": 17,
         "drop": 1,
         "items": "4,6,13,15",
         "stars": "7,12,21",
         "picture": "monster_1.png",
+        "expearned": 400,
         "speed": 70
     },
     {
@@ -117,12 +125,13 @@
         "hp": 180,
         "damage": 8,
         "defence": 6,
-        "magic": 7,
+        "magic": 8,
         "difficulty": 18,
         "drop": 1,
         "items": "4,6,13,16",
         "stars": "7,12,22",
         "picture": "monster_1.png",
+        "expearned": 450,
         "speed": 0
     },
     {
@@ -131,12 +140,13 @@
         "hp": 190,
         "damage": 8,
         "defence": 6,
-        "magic": 5,
+        "magic": 6,
         "difficulty": 19,
         "drop": 1,
         "items": "4,6,13,14",
         "stars": "7,12,20",
         "picture": "monster_2.png",
+        "expearned": 500,
         "speed": 100
     },
     {
@@ -145,12 +155,13 @@
         "hp": 200,
         "damage": 8,
         "defence": 6,
-        "magic": 6,
+        "magic": 7,
         "difficulty": 20,
         "drop": 1,
         "items": "4,6,13,15",
         "stars": "7,12,21",
         "picture": "monster_2.png",
+        "expearned": 550,
         "speed": 50
     },
     {
@@ -159,12 +170,13 @@
         "hp": 210,
         "damage": 8,
         "defence": 6,
-        "magic": 7,
+        "magic": 8,
         "difficulty": 21,
         "drop": 1,
         "items": "4,6,13,16",
         "stars": "7,12,22",
         "picture": "monster_2.png",
+        "expearned": 600,
         "speed": 25
     },
     {
@@ -173,12 +185,13 @@
         "hp": 220,
         "damage": 8,
         "defence": 6,
-        "magic": 5,
+        "magic": 6,
         "difficulty": 22,
         "drop": 1,
         "items": "4,6,13,14",
         "stars": "7,12,20",
         "picture": "monster_1.png",
+        "expearned": 650,
         "speed": 75
     },
     {
@@ -187,12 +200,13 @@
         "hp": 230,
         "damage": 8,
         "defence": 6,
-        "magic": 6,
+        "magic": 7,
         "difficulty": 23,
         "drop": 1,
         "items": "4,6,13,15",
         "stars": "7,12,21",
         "picture": "monster_1.png",
+        "expearned": 700,
         "speed": 70
     },
     {
@@ -201,12 +215,13 @@
         "hp": 240,
         "damage": 8,
         "defence": 6,
-        "magic": 7,
+        "magic": 8,
         "difficulty": 24,
         "drop": 1,
         "items": "4,6,13,16",
         "stars": "7,12,22",
         "picture": "monster_1.png",
+        "expearned": 750,
         "speed": 0
     },
     {
@@ -215,12 +230,13 @@
         "hp": 250,
         "damage": 8,
         "defence": 6,
-        "magic": 5,
+        "magic": 6,
         "difficulty": 25,
         "drop": 1,
         "items": "4,6,13,14",
         "stars": "7,12,20",
         "picture": "monster_2.png",
+        "expearned": 800,
         "speed": 100
     },
     {
@@ -229,12 +245,13 @@
         "hp": 260,
         "damage": 8,
         "defence": 6,
-        "magic": 6,
+        "magic": 7,
         "difficulty": 26,
         "drop": 1,
         "items": "4,6,13,15",
         "stars": "7,12,21",
         "picture": "monster_2.png",
+        "expearned": 850,
         "speed": 50
     },
     {
@@ -243,12 +260,13 @@
         "hp": 270,
         "damage": 8,
         "defence": 6,
-        "magic": 7,
+        "magic": 8,
         "difficulty": 27,
         "drop": 1,
         "items": "4,6,13,16",
         "stars": "7,12,22",
         "picture": "monster_2.png",
+        "expearned": 900,
         "speed": 25
     },
     {
@@ -257,12 +275,13 @@
         "hp": 280,
         "damage": 8,
         "defence": 6,
-        "magic": 5,
+        "magic": 6,
         "difficulty": 28,
         "drop": 1,
         "items": "4,6,13,14",
         "stars": "7,12,20",
         "picture": "monster_1.png",
+        "expearned": 950,
         "speed": 75
     },
     {
@@ -271,12 +290,13 @@
         "hp": 290,
         "damage": 8,
         "defence": 6,
-        "magic": 6,
+        "magic": 7,
         "difficulty": 29,
         "drop": 1,
         "items": "4,6,13,15",
         "stars": "7,12,21",
         "picture": "monster_1.png",
+        "expearned": 1000,
         "speed": 70
     },
     {
@@ -285,12 +305,13 @@
         "hp": 300,
         "damage": 8,
         "defence": 6,
-        "magic": 7,
+        "magic": 8,
         "difficulty": 30,
         "drop": 1,
         "items": "4,6,13,16",
         "stars": "7,12,22",
         "picture": "monster_1.png",
+        "expearned": 1050,
         "speed": 0
     },
     {
@@ -299,12 +320,13 @@
         "hp": 310,
         "damage": 8,
         "defence": 6,
-        "magic": 5,
+        "magic": 6,
         "difficulty": 31,
         "drop": 1,
         "items": "4,6,13,14",
         "stars": "7,12,20",
         "picture": "monster_2.png",
+        "expearned": 1100,
         "speed": 100
     },
     {
@@ -313,12 +335,13 @@
         "hp": 320,
         "damage": 8,
         "defence": 6,
-        "magic": 6,
+        "magic": 7,
         "difficulty": 32,
         "drop": 1,
         "items": "4,6,13,15",
         "stars": "7,12,21",
         "picture": "monster_2.png",
+        "expearned": 1150,
         "speed": 50
     },
     {
@@ -327,12 +350,13 @@
         "hp": 330,
         "damage": 8,
         "defence": 6,
-        "magic": 7,
+        "magic": 8,
         "difficulty": 33,
         "drop": 1,
         "items": "4,6,13,16",
         "stars": "7,12,22",
         "picture": "monster_2.png",
+        "expearned": 1200,
         "speed": 25
     },
     {
@@ -341,12 +365,13 @@
         "hp": 340,
         "damage": 8,
         "defence": 6,
-        "magic": 5,
+        "magic": 6,
         "difficulty": 34,
         "drop": 1,
         "items": "4,6,13,14",
         "stars": "7,12,20",
         "picture": "monster_1.png",
+        "expearned": 1250,
         "speed": 75
     },
     {
@@ -355,12 +380,13 @@
         "hp": 350,
         "damage": 8,
         "defence": 6,
-        "magic": 6,
+        "magic": 7,
         "difficulty": 35,
         "drop": 1,
         "items": "4,6,13,15",
         "stars": "7,12,21",
         "picture": "monster_1.png",
+        "expearned": 1300,
         "speed": 70
     },
     {
@@ -369,12 +395,13 @@
         "hp": 360,
         "damage": 8,
         "defence": 6,
-        "magic": 7,
+        "magic": 8,
         "difficulty": 36,
         "drop": 1,
         "items": "4,6,13,16",
         "stars": "7,12,22",
         "picture": "monster_1.png",
+        "expearned": 1350,
         "speed": 0
     },
     {
@@ -383,12 +410,13 @@
         "hp": 370,
         "damage": 8,
         "defence": 6,
-        "magic": 5,
+        "magic": 6,
         "difficulty": 37,
         "drop": 1,
         "items": "4,6,13,14",
         "stars": "7,12,20",
         "picture": "monster_2.png",
+        "expearned": 1400,
         "speed": 100
     },
     {
@@ -397,12 +425,13 @@
         "hp": 380,
         "damage": 8,
         "defence": 6,
-        "magic": 6,
+        "magic": 7,
         "difficulty": 38,
         "drop": 1,
         "items": "4,6,13,15",
         "stars": "7,12,21",
         "picture": "monster_2.png",
+        "expearned": 1450,
         "speed": 50
     },
     {
@@ -411,12 +440,13 @@
         "hp": 390,
         "damage": 8,
         "defence": 6,
-        "magic": 7,
+        "magic": 8,
         "difficulty": 39,
         "drop": 1,
         "items": "4,6,13,16",
         "stars": "7,12,22",
         "picture": "monster_2.png",
+        "expearned": 1500,
         "speed": 25
     }
 ]

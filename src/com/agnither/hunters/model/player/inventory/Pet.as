@@ -22,6 +22,11 @@ public class Pet extends EventDispatcher {
     public function get id():String {
         return _monster.id;
     }
+
+    public function get level():Number {
+        return _monster.level;
+    }
+
     public function get name():String {
         return _monster.name;
     }

@@ -2,6 +2,7 @@
  * Created by agnither on 14.08.14.
  */
 package com.agnither.hunters.view.ui.screens.battle.player {
+import com.agnither.hunters.data.outer.MagicTypeVO;
 import com.agnither.hunters.data.outer.DamageTypeVO;
 import com.agnither.hunters.model.modules.locale.Locale;
 import com.agnither.hunters.model.player.personage.Hero;
@@ -26,11 +27,14 @@ public class PersonageView extends AbstractView {
 
     public function set personage(value: Personage):void {
         _personage = value;
-
         _personage.addEventListener(Personage.UPDATE, handleUpdate);
+        _personage.addEventListener(Personage.HIT, handleHit);
+        this.visible = false;
+
+        if(!value || !value.id) return;
+
         handleUpdate();
 
-        _personage.addEventListener(Personage.HIT, handleHit);
         hideHit();
     }
 
@@ -60,8 +64,10 @@ public class PersonageView extends AbstractView {
     }
 
     private function handleUpdate(e: Event = null):void {
+        trace("UPDATE PERSONAGE", _personage.isDead);
         if (!_personage.isDead) {
-            _links.damage_type_icon.getChildAt(0).texture = _personage is Hero ? _refs.gui.getTexture(DamageTypeVO.weapon.picture) : _refs.gui.getTexture(_personage.magic.picture);
+            this.visible = true;
+            _links.damage_type_icon.getChildAt(0).texture = _personage is Hero ? _refs.gui.getTexture(MagicTypeVO.weapon.picturedamage) : _refs.gui.getTexture(_personage.magic.picturedamage);
 
             if (_personage.picture) {
                 _picture.texture = _refs.gui.getTexture(_personage.picture);
@@ -70,20 +76,22 @@ public class PersonageView extends AbstractView {
                 _picture.y = 0;
                 _picture.x = _isRight ? _picture.width : 0;
             }
+        } else {
+
         }
 
-        _name.text = (_personage.name ? String(_personage.name) : Locale.getString(_personage.id)) + " " + String(_personage.level);
+        _name.text = (_personage.name ? String(_personage.name) : Locale.getString(_personage.id)) + " [lvl " + String(_personage.level)+"]";
         _hp.text = String(_personage.hp) + "/" + String(_personage.maxHP);
         _armor.text = String(_personage.defence);
         _damage.text = String(_personage.damage);
 
-        visible = !_personage.isDead;
+//        visible = !_personage.isDead;
     }
 
     private function handleHit(e: Event):void {
         _hit.text = String(e.data);
         _hit.visible = true;
-        Starling.juggler.delayCall(hideHit, 1);
+        Starling.juggler.delayCall(hideHit, 1.5);
     }
 
     private function hideHit():void {

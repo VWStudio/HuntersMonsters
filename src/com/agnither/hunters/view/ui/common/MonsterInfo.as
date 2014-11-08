@@ -1,7 +1,8 @@
 /**
  * Created by mor on 23.09.2014.
  */
-package com.agnither.hunters.view.ui.screens.battle.monster {
+package com.agnither.hunters.view.ui.common {
+import com.agnither.hunters.data.outer.MagicTypeVO;
 import com.agnither.hunters.data.outer.DamageTypeVO;
 import com.agnither.hunters.model.modules.locale.Locale;
 import com.agnither.hunters.model.modules.monsters.MonsterVO;
@@ -49,7 +50,7 @@ public class MonsterInfo extends AbstractView {
         _killed.visible = false;
 
         _icon.texture = _refs.gui.getTexture(_monster.picture);
-        _damageType.texture = _refs.gui.getTexture(DamageTypeVO.DICT[_monster.magic].picture);
+        _damageType.texture = _refs.gui.getTexture(MagicTypeVO.DICT[_monster.magic].picturedamage);
     }
 
     public function set killed($val : Boolean):void {

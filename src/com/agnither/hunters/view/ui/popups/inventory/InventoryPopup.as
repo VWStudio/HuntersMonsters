@@ -1,7 +1,7 @@
 /**
  * Created by agnither on 21.08.14.
  */
-package com.agnither.hunters.view.ui.popups {
+package com.agnither.hunters.view.ui.popups.inventory {
 import com.agnither.hunters.App;
 import com.agnither.hunters.data.outer.ItemTypeVO;
 import com.agnither.hunters.model.modules.locale.Locale;
@@ -74,9 +74,9 @@ public class InventoryPopup extends Popup {
 
         _links.slots.visible = false;
         _inventoryView = new InventoryView();
+        addChild(_inventoryView);
         _inventoryView.x = _links.slots.x;
         _inventoryView.y = _links.slots.y;
-        addChild(_inventoryView);
 
         _closeBtn = _links.close_btn;
         _closeBtn.touchable = true;

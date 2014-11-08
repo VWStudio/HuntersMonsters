@@ -11,7 +11,7 @@ import com.agnither.hunters.model.player.personage.Monster;
 import com.agnither.hunters.view.ui.popups.hunt.*;
 import com.agnither.hunters.model.modules.monsters.MonsterVO;
 import com.agnither.hunters.view.ui.UI;
-import com.agnither.hunters.view.ui.screens.battle.monster.MonsterInfo;
+import com.agnither.hunters.view.ui.common.MonsterInfo;
 import com.agnither.hunters.view.ui.screens.battle.player.inventory.ItemView;
 import com.agnither.hunters.view.ui.screens.map.*;
 import com.agnither.hunters.App;

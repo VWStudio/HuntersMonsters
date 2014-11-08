@@ -2,6 +2,7 @@
  * Created by agnither on 25.08.14.
  */
 package com.agnither.hunters.view.ui.popups.monsters {
+import com.agnither.hunters.data.outer.MagicTypeVO;
 import com.agnither.hunters.data.outer.DamageTypeVO;
 import com.agnither.hunters.model.modules.locale.Locale;
 import com.agnither.hunters.model.player.inventory.Pet;
@@ -31,7 +32,9 @@ public class PetView extends AbstractView {
     }
 
     override protected function initialize():void {
-        createFromCommon(_refs.guiConfig.common.monster);
+        // XXXCOMMON
+        createFromConfig(_refs.guiConfig.common.monster);
+//        createFromCommon(_refs.guiConfig.common.monster);
 
         _picture = _links.icon.getChildAt(0) as Image;
         _picture.touchable = true;
@@ -41,8 +44,8 @@ public class PetView extends AbstractView {
 //        _links.armor_icon.getChildAt(0).texture = _refs.gui.getTexture("shild.png");
 //        _links.damage_icon.getChildAt(0).texture = _refs.gui.getTexture("hit.png");
 
-        var damageType: DamageTypeVO = DamageTypeVO.DICT[_pet.params.magic];
-        _links.damage_type_icon.getChildAt(0).texture = _refs.gui.getTexture(damageType.picture);
+        var damageType: MagicTypeVO = MagicTypeVO.DICT[_pet.params.magic];
+        _links.damage_type_icon.getChildAt(0).texture = _refs.gui.getTexture(damageType.picturedamage);
 
         _name = _links.name_tf;
         _hp = _links.hp_tf;

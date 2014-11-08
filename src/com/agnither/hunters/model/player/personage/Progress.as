@@ -2,22 +2,26 @@
  * Created by mor on 22.09.2014.
  */
 package com.agnither.hunters.model.player.personage {
+import com.agnither.hunters.data.outer.LevelVO;
 import com.agnither.hunters.data.outer.PlayerItemVO;
+import com.agnither.hunters.data.outer.SkillVO;
 import com.agnither.hunters.model.Model;
-import com.agnither.hunters.model.modules.items.ItemVO;
-import com.agnither.hunters.model.modules.monsters.MonsterVO;
 import com.agnither.hunters.model.modules.players.PlayerPetVO;
-import com.agnither.hunters.model.modules.players.PlayerVO;
+import com.agnither.hunters.model.modules.players.SettingsVO;
+import com.cemaprjl.core.coreDispatch;
 import com.cemaprjl.utils.Util;
 
 import flash.net.SharedObject;
+import flash.utils.Dictionary;
 
 import starling.events.EventDispatcher;
 
 public class Progress extends EventDispatcher {
 
-    private var _data: SharedObject;
-    private static var version: int = 2;
+    public static const UPDATED : String = "Progress.UPDATED";
+
+    private var _data : SharedObject;
+    private static var version : int = 2;
     public var id : String = "";
     public var name : String = "";
     public var picture : String = "";
@@ -32,19 +36,39 @@ public class Progress extends EventDispatcher {
     public var gold : int = 0;
     public var monstersResults : Object = {};
     public var unlockedMonsters : Array = [];
+    public var tamedMonsters : Array = [];
     public var items : Object = {};
     public var inventory : Array = [];
     public var pets : Object = {};
+    public var maxSummon : int = 1;
+    public var skillPoints : int = 0;
+    public var skills : Object = {};
+    public static const SKILL_PREFIX : String = "skill.";
 
 
     public function Progress() {
         _data = SharedObject.getLocal("player");
 //        version = -1;
-        if (version == -1 || !_data.data.progress || _data.data.version == null || _data.data.version != version) {
+//        _data.clear();
+        if (version == -1 || !_data.data.progress || _data.data.version == null || _data.data.version != version)
+        {
 //        if (version == -1 || _data.data.version == null || _data.data.version != version) {
             save(mockup());
         }
-        load(JSON.parse(_data.data.progress));
+
+        var obj : Object = JSON.parse(_data.data.progress);
+
+        trace("------load------");
+        trace(JSON.stringify(obj));
+
+        obj.items = _data.data.items ? JSON.parse(_data.data.items) : {};
+        load(obj);
+
+        /**
+         * CORRECT AND SAVE
+         */
+//        saveProgress();
+
     }
 
     public function reset() : void {
@@ -53,64 +77,103 @@ public class Progress extends EventDispatcher {
     }
 
     private function load($val : Object) : void {
-        trace("------load------");
-        trace(JSON.stringify($val));
+
 
         id = $val.id;
         name = $val.name;
         picture = $val.picture;
         level = $val.level;
         exp = $val.exp;
-        hp = $val.hp;
         damage = $val.damage;
         defence = $val.defence;
         league = $val.league;
         rating = $val.rating;
         magic = $val.magic;
         gold = $val.gold;
+        maxSummon = $val.maxSummon;
+        skillPoints = $val.skillPoints;
+//        skills = {};
+        skills = $val.skills ? $val.skills : {};
 
         unlockedMonsters = $val.unlockedMonsters ? $val.unlockedMonsters : [];
+        tamedMonsters = $val.tamedMonsters ? $val.tamedMonsters : [];
         monstersResults = $val.monstersResults ? $val.monstersResults : {};
 
         items = $val.items ? $val.items : {};
         inventory = $val.inventory ? $val.inventory : [];
 
         pets = $val.pets ? $val.pets : {};
+
+        recalculateHP();
+    }
+
+    public function recalculateHP() : int {
+        if(level < 1) return 1;
+        var baseHP : int = LevelVO.DICT[level.toString()].basehp;
+        if(getSkillValue("1")) {
+            var amount : int = getSkillValue("1");
+            for (var i : int = 0; i < amount; i++)
+            {
+                baseHP *= 1.1;
+            }
+        }
+
+        hp = baseHP;
+        trace("recalc HP", hp, " - ", level, LevelVO.DICT[level].basehp);
+        return baseHP;
     }
 
     public function saveProgress() : void {
         save(this);
     }
+
     private function save($val : Object) : void {
 
-        trace("------save------");
-        trace(JSON.stringify($val));
-
         _data.data.version = version;
-        _data.data.progress = JSON.stringify($val);
+
+        trace("------save------");
+        var obj : Object = JSON.parse(JSON.stringify($val));
+
+
+        // move items to another SO branch to lightweight output
+        _data.data.items = JSON.stringify(obj.items);
+        delete obj.items;
+
+        trace(JSON.stringify(obj));
+        _data.data.progress = JSON.stringify(obj);
+
         _data.flush();
+
+        coreDispatch(UPDATED);
     }
 
-    private function mockup():Object {
-        var player: PlayerVO = PlayerVO.LIST[0];
+    private function mockup() : Object {
+        trace("--- mockup ---");
+
+        var settings : Object = SettingsVO.DICT;
 
         var obj : Object = {};
         obj.id = "local player";
-//        obj.id = player.id;
-        obj.name = player.name;
-        obj.picture = player.picture;
-        obj.level = player.level;
-        obj.exp = player.exp;
-        obj.hp = player.hp;
-        obj.damage = player.damage;
-        obj.defence = player.defence;
-        obj.league = player.league;
-        obj.rating = player.rating;
-        obj.magic = player.magic;
-        obj.gold = player.gold;
+        obj.name = settings.playerInitialName;
+        obj.level = settings.playerInitialLevel;
+        obj.exp = settings.playerInitialExp;
+        obj.hp = settings.playerInitialHp;
+        obj.damage = settings.playerInitialDmg;
+        obj.defence = settings.playerInitialDef;
+        obj.league = settings.playerInitialLeague;
+        obj.rating = settings.playerInitialRating;
+        obj.magic = settings.playerInitialMagic;
+        obj.gold = settings.playerInitialGold;
+        obj.maxSummon = settings.playerInitialSummonMax;
+        obj.skillPoints = settings.playerInitialSkillPoints;
+        obj.skills = {};
 
         obj.items = {};
         obj.inventory = [];
+
+        trace("settings: ",JSON.stringify(settings));
+        trace("mock: ",JSON.stringify(obj));
+
         var playerItems : Vector.<PlayerItemVO> = PlayerItemVO.LIST;
         var i : int = 0;
         for (i = 0; i < playerItems.length; i++)
@@ -118,9 +181,10 @@ public class Progress extends EventDispatcher {
             var playerItem : PlayerItemVO = playerItems[i];
             var item : Object = Model.instance.items.getItem(playerItem.id);
             item.extension = playerItem.extension;
-            var itmName : String = item.name + "."+i;
+            var itmName : String = item.name + "." + i;
             obj.items[itmName] = item;
-            if(playerItem.wield) {
+            if (playerItem.wield)
+            {
                 obj.inventory.push(itmName);
             }
         }
@@ -139,6 +203,48 @@ public class Progress extends EventDispatcher {
         obj.monstersResults = {};
 
         return obj;
+    }
+
+    public function addExp($val : int) : void {
+
+
+        exp += $val;
+        var lv : LevelVO = LevelVO.DICT[level];
+        if (exp >= lv.exp)
+        {
+            level++;
+
+            exp = exp - lv.exp;
+            skillPoints += 1;
+            if (level % 5 == 0)
+            {
+                skillPoints += 1;
+            }
+            recalculateHP();
+        }
+
+
+    }
+
+    public function incSkill($id : String) : void {
+
+        var skill : SkillVO = SkillVO.DICT[$id];
+
+        if(getSkillValue($id)) {
+            skills[SKILL_PREFIX+$id] = Math.min(getSkillValue($id) + 1, skill.points);
+        } else {
+            skills[SKILL_PREFIX+$id] = 1;
+        }
+
+        skillPoints--;
+
+        recalculateHP();
+        saveProgress();
+
+    }
+
+    public function getSkillValue($id : String) : Number {
+        return skills[SKILL_PREFIX+$id] != null ? skills[SKILL_PREFIX+$id] : 0;
     }
 }
 }

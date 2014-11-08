@@ -7,6 +7,7 @@ import com.agnither.hunters.model.player.inventory.Inventory;
 public class Hero extends Personage {
 
     private var _inventory: Inventory;
+
     public function get inventory():Inventory {
         return _inventory;
     }

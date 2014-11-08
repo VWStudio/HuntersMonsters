@@ -5,6 +5,10 @@ package com.agnither.hunters.view.ui.screens.battle {
 import com.agnither.hunters.App;
 import com.agnither.hunters.App;
 import com.agnither.hunters.App;
+import com.agnither.hunters.data.outer.DamageTypeVO;
+import com.agnither.hunters.data.outer.DropVO;
+import com.agnither.hunters.data.outer.ItemTypeVO;
+import com.agnither.hunters.data.outer.MagicTypeVO;
 import com.agnither.hunters.model.match3.Match3Game;
 import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.player.drop.DropSlot;
@@ -14,7 +18,7 @@ import com.agnither.hunters.model.player.drop.ItemDrop;
 import com.agnither.hunters.model.player.inventory.Item;
 import com.agnither.hunters.view.ui.UI;
 import com.agnither.hunters.view.ui.common.GoldView;
-import com.agnither.hunters.view.ui.popups.SelectMonsterPopup;
+import com.agnither.hunters.view.ui.popups.monsters.SelectMonsterPopup;
 import com.agnither.hunters.view.ui.popups.house.HousePopup;
 import com.agnither.hunters.view.ui.popups.hunt.HuntStepsPopup;
 import com.agnither.hunters.view.ui.popups.win.WinPopup;
@@ -30,15 +34,24 @@ import com.agnither.hunters.view.ui.screens.map.HousePoint;
 import com.agnither.hunters.view.ui.screens.map.MapScreen;
 import com.agnither.ui.Screen;
 import com.agnither.utils.CommonRefs;
+import com.agnither.utils.ResourcesManager;
 import com.cemaprjl.core.coreAddListener;
 import com.cemaprjl.core.coreExecute;
 import com.cemaprjl.core.coreRemoveListener;
 import com.cemaprjl.viewmanage.ShowPopupCmd;
 import com.cemaprjl.viewmanage.ShowScreenCmd;
 
+import flash.geom.Point;
+
 import flash.geom.Rectangle;
+import flash.utils.clearTimeout;
+import flash.utils.setTimeout;
+
+import starling.animation.Juggler;
+import starling.core.Starling;
 
 import starling.display.Button;
+import starling.display.Image;
 import starling.display.Sprite;
 import starling.events.Event;
 
@@ -67,6 +80,10 @@ public class BattleScreen extends Screen {
 
     private var _field: FieldView;
     private var _tooltip : Sprite;
+    public static const PLAY_CHEST_FLY : String = "BattleScreen.PLAY_CHEST_FLY";
+    private var _effects : Sprite;
+    public static const PLAY_MANA_FLY : String = "BattleScreen.PLAY_MANA_FLY";
+    private var _timeout : uint;
 
     public function BattleScreen() {
     }
@@ -95,8 +112,10 @@ public class BattleScreen extends Screen {
 
         _player = _links.heroPlayer;
         _playerPet = _links.petPlayer;
+
         _enemy = _links.heroEnemy;
         _enemyPet = _links.petEnemy;
+
         _summonPetBtn = _links.pet_btn;
         _summonPetBtn.addEventListener(Event.TRIGGERED, handleClick);
 
@@ -104,14 +123,14 @@ public class BattleScreen extends Screen {
         _enemyMana = _links.manaEnemy;
 
         _playerSpells = new BattleInventoryView();
+        addChild(_playerSpells);
         _playerSpells.x = _links.slotsPlayer.x;
         _playerSpells.y = _links.slotsPlayer.y;
-        addChild(_playerSpells);
 
         _enemySpells = new BattleInventoryView();
+        addChild(_enemySpells);
         _enemySpells.x = _links.slotsEnemy.x;
         _enemySpells.y = _links.slotsEnemy.y;
-        addChild(_enemySpells);
 
 
         _dropList = _links.drop;
@@ -122,6 +141,9 @@ public class BattleScreen extends Screen {
         _links.slotsPlayer.visible = false;
         _links.slotsEnemy.visible = false;
 
+        _tooltip = new Sprite();
+
+        _effects = new Sprite();
     }
 
     public function clear():void {
@@ -157,13 +179,57 @@ public class BattleScreen extends Screen {
 
         _dropList.drop = _game.dropList;
 
-        _tooltip = new Sprite();
+
         addChild(_tooltip);
         _tooltip.visible = false;
 
+        addChild(_effects);
+
         coreAddListener(Match3Game.END_GAME, handleEndGame);
+        coreAddListener(BattleScreen.PLAY_CHEST_FLY, onDropFly);
+        coreAddListener(BattleScreen.PLAY_MANA_FLY, onManaFly);
         coreAddListener(DropSlotView.SHOW_TOOLTIP, onShowTooltip);
         coreAddListener(DropSlotView.HIDE_TOOLTIP, onHideTooltip);
+    }
+
+    private function onManaFly($data : Object) : void {
+        /**
+         * TODO realize effect!!!!!!!!!!!!!!!
+         * {position : match.cells[1].position, type: match.type, amount : match.amount}
+         */
+
+        var magicType : MagicTypeVO = MagicTypeVO.DICT[$data.type];
+        var pictureUrl : String = magicType.picturedamage;
+        var img : Image = new Image(App.instance.refs.gui.getTexture(pictureUrl));
+        _effects.addChild(img);
+        var position : Point = $data.position;
+        img.x = position.x * FieldView.tileX + FieldView.fieldX;
+        img.y = position.y * FieldView.tileY + FieldView.fieldY;
+        img.scaleX = img.scaleY = 2;
+
+        Starling.juggler.tween(img, 0.5, {x : img.x, y: img.y - 50, onComplete: onEndTween, alpha:0.5});
+
+        function onEndTween():void {
+            _effects.removeChild(img);
+        }
+
+    }
+    private function onDropFly($data : Object) : void {
+
+        var drop : DropVO = $data.drop as DropVO;
+        var position : Point = $data.position;
+        var pictureUrl : String = ItemTypeVO.DICT[drop.type].picture;
+        var img : Image = new Image(App.instance.refs.gui.getTexture(pictureUrl));
+        _effects.addChild(img);
+        img.x = position.x * FieldView.tileX + FieldView.fieldX;
+        img.y = position.y * FieldView.tileY + FieldView.fieldY;
+
+        Starling.juggler.tween(img, 0.5, {x : img.x, y: img.y - 50, onComplete: onEndTween, alpha:0.5});
+
+        function onEndTween():void {
+            _effects.removeChild(img);
+        }
+
     }
 
     private function onHideTooltip() : void {
@@ -191,7 +257,19 @@ public class BattleScreen extends Screen {
 
 
     private function handleEndGame($isWin : Boolean) : void {
+
         coreRemoveListener(Match3Game.END_GAME, handleEndGame);
+        _timeout = setTimeout(gameEnds, 2500, $isWin);
+
+
+
+    }
+
+    private function gameEnds($isWin : Boolean) : void {
+
+        clearTimeout(_timeout);
+        coreExecute(ShowScreenCmd, MapScreen.NAME);
+
         switch (Model.instance.match3mode) {
             case Match3Game.MODE_STEP:
                 if(App.instance.chestStep >= 0) {
@@ -205,8 +283,6 @@ public class BattleScreen extends Screen {
                     } else {
                         coreExecute(ShowPopupCmd, HuntStepsPopup.NAME, {mode : HuntStepsPopup.LOSE_MODE});
                     }
-
-                    coreExecute(ShowScreenCmd, MapScreen.NAME);
                     return;
                 } else {
                     coreExecute(ShowPopupCmd, WinPopup.NAME, {isWin : $isWin});
@@ -217,7 +293,6 @@ public class BattleScreen extends Screen {
                 coreExecute(ShowPopupCmd, WinPopup.NAME, {isWin : $isWin, drops:_game.dropList});
                 break;
             case Match3Game.MODE_HOUSE:
-                coreExecute(ShowScreenCmd, MapScreen.NAME);
                 var pt : HousePoint = Model.instance.currentHousePoint;
                 if($isWin) {
                     Model.instance.houses[pt.name]["owner"] = Model.instance.player.id;
@@ -232,33 +307,6 @@ public class BattleScreen extends Screen {
 
 
 
-
-        /**
-         * MOVE next things in win popup
-         */
-//        if($isWin) {
-//            for (var i : int = 0; i < _game.dropList.list.length; i++)
-//            {
-//                var drop : DropSlot = _game.dropList.list[i];
-//                if (drop.content)
-//                {
-//                    if (drop.content is GoldDrop)
-//                    {
-//                        var gold : GoldDrop = drop.content as GoldDrop;
-//                        Model.instance.addPlayerGold(gold.gold);
-//                    }
-//                    else if (drop.content is ItemDrop)
-//                    {
-//                        var item : ItemDrop = drop.content as ItemDrop;
-//                        Model.instance.addPlayerItem(item.item);
-////                        Model.instance.player.addItem(item.item);
-//                    }
-//                }
-//            }
-//
-//
-//            Model.instance.progress.saveProgress();
-//        }
 
     }
 

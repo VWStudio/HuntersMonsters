@@ -10,7 +10,8 @@ public class LevelVO {
     public static const DICT: Dictionary = new Dictionary();
 
     public var id: int;
-    public var exp: String;
+    public var exp: int;
+    public var basehp: int;
 
     public static function parseData(data: Object):void {
         for (var i: int = 0; i < data.length; i++) {
@@ -19,6 +20,7 @@ public class LevelVO {
             var object: LevelVO = new LevelVO();
             object.id = row.id;
             object.exp = row.exptolevel;
+            object.basehp = row.basehp;
 
             LIST.push(object);
             DICT[object.id] = object;

@@ -18,7 +18,7 @@ public dynamic class PlayerPetVO {
     public var damage: int = 0;
     public var defence: int = 0;
     public var magic: int;
-    public var tamed: int;
+//    public var tamed: int;
 
     public static function fill($target : PlayerPetVO, $source : Object) : PlayerPetVO {
         var source : Object = $source;

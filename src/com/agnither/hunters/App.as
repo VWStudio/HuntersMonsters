@@ -13,7 +13,7 @@ import com.agnither.hunters.model.player.Player;
 import com.agnither.hunters.model.player.inventory.Pet;
 import com.agnither.hunters.utils.DeviceResInfo;
 import com.agnither.hunters.view.ui.UI;
-import com.agnither.hunters.view.ui.popups.monsters.PetsView;
+import com.agnither.hunters.view.ui.popups.monsters.CatchedPetsView;
 import com.agnither.hunters.view.ui.screens.battle.BattleScreen;
 import com.agnither.hunters.view.ui.screens.hud.HudScreen;
 import com.agnither.hunters.view.ui.screens.map.ChestPoint;

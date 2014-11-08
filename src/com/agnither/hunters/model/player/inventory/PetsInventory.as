@@ -26,8 +26,16 @@ public class PetsInventory extends EventDispatcher {
     }
 
     private var _petsByType: Dictionary = new Dictionary();
-    public function getPetsByType(type : int):Array { // of String
-        return _petsByType[type];
+    public function getPetsByType($type : String):Array { // of String
+        var arr : Array = [];
+        for (var i : int = 0; i < _pets.length; i++)
+        {
+            var pet : Pet = _pets[i];
+            if(pet.id +"."+pet.level == $type) {
+                arr.push(pet);
+            }
+        }
+        return arr;
     }
 
     public function PetsInventory() {
@@ -35,7 +43,7 @@ public class PetsInventory extends EventDispatcher {
     }
 
     public function init():void {
-        _petsByType[TAMED] = [];
+//        _petsByType[TAMED] = [];
         _petsByType[UNTAMED] = [];
     }
 
@@ -58,7 +66,8 @@ public class PetsInventory extends EventDispatcher {
     public function addPet(pet: Pet):void {
         if (!_petsDict[pet.uniqueId]) {
             _petsDict[pet.uniqueId] = pet;
-            _petsByType[pet.tamed].push(pet.uniqueId);
+            _petsByType[UNTAMED].push(pet.uniqueId);
+//            _petsByType[pet.tamed].push(pet.uniqueId);
 //            _data[pet.uniqueId] = pet.params;
             _pets.push(pet);
         }
@@ -69,10 +78,16 @@ public class PetsInventory extends EventDispatcher {
             delete _petsDict[pet.uniqueId];
             delete _data[pet.uniqueId];
 
-            var index: int = _petsByType[pet.tamed].indexOf(pet.uniqueId);
+            var index: int = _petsByType[UNTAMED].indexOf(pet.uniqueId);
+//            var index: int = _petsByType[pet.tamed].indexOf(pet.uniqueId);
             if (index >= 0) {
-                _petsByType[pet.tamed].splice(index, 1);
+                _petsByType[UNTAMED].splice(index, 1);
+//                _petsByType[pet.tamed].splice(index, 1);
             }
+
+            index = _pets.indexOf(pet);
+            _pets.splice(index, 1);
+
         }
     }
 
@@ -83,5 +98,9 @@ public class PetsInventory extends EventDispatcher {
     public function get pets() : Vector.<Pet> {
         return _pets;
     }
+
+//    public function get catchedPets() : Array {
+//        return _petsByType[UNTAMED];
+//    }
 }
 }

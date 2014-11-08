@@ -3,7 +3,6 @@
  */
 package com.agnither.hunters.model.player.drop {
 import com.agnither.hunters.data.outer.DropVO;
-import com.agnither.hunters.data.outer.GoldDropVO;
 import com.agnither.hunters.data.outer.ItemTypeVO;
 import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.modules.items.ItemVO;
@@ -34,7 +33,7 @@ public class DropList extends EventDispatcher {
         _dropSet = dropSet;
     }
 
-    public function drop() : void {
+    public function drop() : DropVO {
         var drop : DropVO = _itemsAmount < _list.length - 1 ? DropVO.getRandomDrop(_dropSet) : DropVO.getRandomDrop(2); // set 2 is only gold
         var content : Drop;
         switch (drop.type) {
@@ -44,10 +43,12 @@ public class DropList extends EventDispatcher {
                 content = new ItemDrop(Item.createDrop(Model.instance.items.getItem(drop.item_id)));
                 break;
             case ItemTypeVO.gold:
-                content = new GoldDrop(GoldDropVO.DICT[drop.item_id].random);
+                content = new GoldDrop(drop.randomAmount);
+//                content = new GoldDrop(GoldDropVO.DICT[drop.item_id].random);
                 break;
         }
         addContent(content);
+        return drop;
     }
 
     private function addContent(content : Drop) : void {

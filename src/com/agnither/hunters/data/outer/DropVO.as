@@ -32,6 +32,7 @@ public class DropVO {
             object.type = row.type;
             object.item_id = row.itemid;
             object.probability = row.probability;
+            object.amount = row.amount ? row.amount.toString().split(",") : null;
 
             LIST.push(object);
             if (!DICT[object.item_set]) {
@@ -41,7 +42,7 @@ public class DropVO {
         }
         for (var key : String in DICT)
         {
-            var vec : Vector.<DropVO> = DICT[key]
+            var vec : Vector.<DropVO> = DICT[key];
             var prob : Number = 0;
             for (var j : int = 0; j < vec.length; j++)
             {
@@ -77,5 +78,15 @@ public class DropVO {
     public var type: int;
     public var item_id: int;
     public var probability: int;
+    public var amount: Array;
+
+
+    public function get randomAmount():int {
+        if(!amount) return 1;
+        var min: int = amount[0];
+        var max: int = amount[1];
+        return min + Math.random()*(max+1-min);
+    }
+
 }
 }

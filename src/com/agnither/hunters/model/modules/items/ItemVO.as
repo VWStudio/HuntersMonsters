@@ -32,6 +32,11 @@ public class ItemVO {
 //            object.slot = row.slot;
 
             LIST.push(object);
+//            LIST.push(object);
+//            LIST.push(object);
+//            LIST.push(object);
+//            LIST.push(object);
+//            LIST.push(object);
             DICT[object.id] = object;
             if(object.type == 1 || object.type == 2 || object.type == 3) {
                 THINGS.push(object);

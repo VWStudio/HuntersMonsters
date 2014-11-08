@@ -14,7 +14,7 @@ import starling.events.EventDispatcher;
 
 public class Player extends EventDispatcher {
 
-    public static const UPDATE: String = "update_Player";
+//    public static const UPDATE: String = "update_Player";
 
     public var id : String = "0";
 
@@ -49,7 +49,6 @@ public class Player extends EventDispatcher {
         _pets = new PetsInventory();
 
         _hero = new Hero(_inventory);
-
         _pet = new Monster();
 
         _manaList = new ManaList();
@@ -93,10 +92,6 @@ public class Player extends EventDispatcher {
         var spell: Spell = _inventory.getItem(id) as Spell;
         spell.useSpell(target);
         _manaList.useSpell(spell);
-    }
-
-    public function update():void {
-        dispatchEventWith(UPDATE);
     }
 }
 }

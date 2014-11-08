@@ -3,13 +3,14 @@
  */
 package com.agnither.hunters.view.ui.popups.win {
 import com.agnither.hunters.App;
+import com.agnither.hunters.data.outer.LevelVO;
 import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.player.drop.DropList;
 import com.agnither.hunters.model.player.drop.DropSlot;
 import com.agnither.hunters.model.player.drop.GoldDrop;
 import com.agnither.hunters.model.player.drop.ItemDrop;
 import com.agnither.hunters.view.ui.UI;
-import com.agnither.hunters.view.ui.screens.battle.monster.MonsterInfo;
+import com.agnither.hunters.view.ui.common.MonsterInfo;
 import com.agnither.hunters.view.ui.screens.battle.player.DropSlotView;
 import com.agnither.hunters.view.ui.screens.battle.player.inventory.ItemView;
 import com.agnither.hunters.view.ui.screens.map.*;
@@ -112,7 +113,7 @@ public class WinPopup extends Popup {
 
         Model.instance.currentMonsterPoint = null;
 
-        coreExecute(ShowScreenCmd, MapScreen.NAME);
+//        coreExecute(ShowScreenCmd, MapScreen.NAME);
 
 
     }
@@ -176,7 +177,9 @@ public class WinPopup extends Popup {
                     else if (drop.content is ItemDrop)
                     {
                         var dropView : DropSlotView = new DropSlotView();
-                        dropView.createFromCommon(_refs.guiConfig.common.drop);
+                        // XXXCOMMON
+                        dropView.createFromConfig(_refs.guiConfig.common.drop);
+//                        dropView.createFromCommon(_refs.guiConfig.common.drop);
                         _drops.addChild(dropView);
                         dropView.drop = drop;
                         var item : ItemDrop = drop.content as ItemDrop;
@@ -185,6 +188,8 @@ public class WinPopup extends Popup {
                     }
                 }
             }
+
+            Model.instance.progress.addExp(_monster.monster.expearned);
 
 
             Model.instance.progress.saveProgress();

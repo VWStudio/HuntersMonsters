@@ -16,7 +16,7 @@ import com.agnither.hunters.model.player.Player;
 import com.agnither.hunters.model.player.inventory.Item;
 import com.agnither.hunters.model.player.inventory.Pet;
 import com.agnither.hunters.model.player.personage.Progress;
-import com.agnither.hunters.view.ui.popups.monsters.PetsView;
+import com.agnither.hunters.view.ui.popups.monsters.CatchedPetsView;
 import com.agnither.hunters.view.ui.screens.battle.BattleScreen;
 import com.agnither.hunters.view.ui.screens.map.HousePoint;
 import com.agnither.hunters.view.ui.screens.map.MapScreen;
@@ -70,7 +70,7 @@ public class Model {
         items = new Items();
 
         coreAddListener(Model.MONSTER_CATCHED, onMonsterCatched);
-        coreAddListener(PetsView.PET_SELECTED, handlePetSelected);
+        coreAddListener(CatchedPetsView.PET_SELECTED, handlePetSelected);
         coreAddListener(Match3Game.START_GAME, onStartGame);
 
 
@@ -96,10 +96,11 @@ public class Model {
         if (progress.unlockedMonsters.indexOf(monsterToUnlock.id) == -1)
         {
             progress.unlockedMonsters.push(monsterToUnlock.id);
+            progress.addExp(MonsterAreaVO.DICT[monsterToUnlock.id].expearned);
         }
 
         var pet : Pet = new Pet(monster, monster);
-        pet.tame(false);
+//        pet.tame(false);
         pet.uniqueId = Util.uniq(pet.id);
         player.pets.addPet(pet);
         progress.pets[pet.uniqueId] = monsters.getMonster(monster.id, monster.level, monster);
@@ -134,9 +135,8 @@ public class Model {
         App.instance.tick.addTickCallback(monsterGenerate);
     }
 
-    public function addPlayerGold(gold : int) : void {
-        player.addGold(gold);
-        progress.gold = player.hero.gold;
+    public function addPlayerGold($gold : int) : void {
+        progress.gold += $gold;
     }
 
     public function addPlayerItem($item : Item) : void {

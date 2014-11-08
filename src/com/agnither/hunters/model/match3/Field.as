@@ -2,7 +2,7 @@
  * Created by agnither on 12.08.14.
  */
 package com.agnither.hunters.model.match3 {
-import com.agnither.hunters.data.outer.ChipVO;
+import com.agnither.hunters.data.outer.MagicTypeVO;
 import com.cemaprjl.core.coreDispatch;
 
 import flash.geom.Point;
@@ -66,12 +66,11 @@ public class Field extends EventDispatcher {
 
     public function initChips(special1: String, special2: String):void {
         _chipTypes.length = 0;
-        _chipTypes.push(ChipVO.CHEST);
-        _chipTypes.push(ChipVO.WEAPON);
-        _chipTypes.push(ChipVO.WEAPON);
-        _chipTypes.push(ChipVO.NATURE);
-        _chipTypes.push(ChipVO.WATER);
-        _chipTypes.push(ChipVO.FIRE);
+        _chipTypes.push(MagicTypeVO.CHEST);
+        _chipTypes.push(MagicTypeVO.WEAPON);
+        _chipTypes.push(MagicTypeVO.NATURE);
+        _chipTypes.push(MagicTypeVO.WATER);
+        _chipTypes.push(MagicTypeVO.FIRE);
 
         if (_chipTypes.indexOf(special1) < 0) {
             _chipTypes.push(special1);

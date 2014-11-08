@@ -5,9 +5,9 @@ package com.cemaprjl.viewmanage {
 import com.agnither.hunters.view.ui.common.GoldView;
 import com.agnither.hunters.view.ui.common.ManaView;
 import com.agnither.hunters.view.ui.common.TabView;
-import com.agnither.hunters.view.ui.popups.traps.TrapView;
-import com.agnither.hunters.view.ui.screens.battle.monster.MonsterArea;
-import com.agnither.hunters.view.ui.screens.battle.monster.MonsterInfo;
+import com.agnither.hunters.view.ui.popups.traps.TrapItem;
+import com.agnither.hunters.view.ui.common.MonsterArea;
+import com.agnither.hunters.view.ui.common.MonsterInfo;
 import com.agnither.hunters.view.ui.screens.battle.player.DropListView;
 import com.agnither.hunters.view.ui.screens.battle.player.DropSlotView;
 import com.agnither.hunters.view.ui.screens.battle.player.ManaListView;
@@ -35,7 +35,7 @@ public class ClassBindings {
         registerClassAlias("common.TabView", TabView);
         registerClassAlias("common.ManaView", ManaView);
         registerClassAlias("common.GoldIcon", GoldView);
-        registerClassAlias("common.TrapItem", TrapView);
+        registerClassAlias("common.TrapItem", TrapItem);
 
         registerClassAlias("battle.PersonageView", PersonageView);
         registerClassAlias("battle.ManaListView", ManaListView);

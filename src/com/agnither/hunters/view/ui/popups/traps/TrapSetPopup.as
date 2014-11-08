@@ -1,7 +1,7 @@
 /**
  * Created by mor on 04.10.2014.
  */
-package com.agnither.hunters.view.ui.screens.battle.monster {
+package com.agnither.hunters.view.ui.popups.traps {
 import com.agnither.hunters.App;
 import com.agnither.hunters.data.outer.TrapVO;
 import com.agnither.hunters.model.modules.monsters.MonsterAreaVO;
@@ -9,6 +9,7 @@ import com.agnither.hunters.model.modules.monsters.MonsterVO;
 import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.player.inventory.Pet;
 import com.agnither.hunters.view.ui.UI;
+import com.agnither.hunters.view.ui.common.MonsterInfo;
 import com.agnither.hunters.view.ui.screens.map.MapScreen;
 import com.agnither.ui.ButtonContainer;
 import com.agnither.ui.Popup;
@@ -18,9 +19,9 @@ import starling.display.Image;
 import starling.events.Event;
 import starling.text.TextField;
 
-public class TrapPopup extends Popup {
+public class TrapSetPopup extends Popup {
 
-    public static const NAME : String = "com.agnither.hunters.view.ui.screens.battle.monster.TrapPopup";
+    public static const NAME : String = "com.agnither.hunters.view.ui.popups.traps.TrapSetPopup";
 
     private var _back : Image;
     private var _monster : MonsterInfo;
@@ -42,7 +43,7 @@ public class TrapPopup extends Popup {
     private var _chance3 : TextField;
     private var _chances : Array;
 
-    public function TrapPopup() {
+    public function TrapSetPopup() {
         super();
     }
 
@@ -108,22 +109,22 @@ public class TrapPopup extends Popup {
         _set6hButton.visible = false;
         _setNowButton.visible = false;
         switch (data.mode) {
-            case TrapPopup.CHECK_MODE:
+            case TrapSetPopup.CHECK_MODE:
                 _title.text = "Ловушка ур."+(_trap.level);
                 _setNowButton.visible = true;
                 _setNowButton.text = "Удалить";
                 break;
-            case TrapPopup.DELETE_MODE:
+            case TrapSetPopup.DELETE_MODE:
                 _title.text = "Ловушка ур."+(_trap.level);
                 _setNowButton.visible = true;
                 _setNowButton.text = "Удалить";
                 break;
-            case TrapPopup.REWARD_MODE:
+            case TrapSetPopup.REWARD_MODE:
                 _title.text = "Монстр пойман";
                 _setNowButton.visible = true;
                 _setNowButton.text = "Забрать";
                 break;
-            case TrapPopup.SET_MODE:
+            case TrapSetPopup.SET_MODE:
             default :
 
                     //_title.text = "Установить ловушку ур."+(_trap.level + 1);
@@ -150,11 +151,11 @@ public class TrapPopup extends Popup {
 
                 break;
             case _setNowButton:
-                if(data.mode == TrapPopup.SET_MODE) {
+                if(data.mode == TrapSetPopup.SET_MODE) {
                     data["time"] = 0;
                     data["chanceAdd"] = _trap.timechance[2];
                 } else {
-                    if(data.mode == TrapPopup.REWARD_MODE) {
+                    if(data.mode == TrapSetPopup.REWARD_MODE) {
 
 
                         var petData : Object = {};

@@ -2,8 +2,8 @@
  * Created by agnither on 12.08.14.
  */
 package com.agnither.hunters.model.match3 {
-import com.agnither.hunters.data.outer.ChipVO;
-import com.agnither.hunters.data.outer.ChipVO;
+import com.agnither.hunters.data.outer.MagicTypeVO;
+import com.agnither.hunters.data.outer.MagicTypeVO;
 
 import starling.events.EventDispatcher;
 
@@ -14,13 +14,13 @@ public class Chip extends EventDispatcher {
     public static const HINT: String = "hint_Chip";
     public static const KILL: String = "kill_Chip";
 
-    private var _data: ChipVO;
+    private var _data: MagicTypeVO;
     public function get type():String {
         return _data.name;
     }
 
-    public function get icon():String {
-        return _data.picture;
+    public function get iconChip():String {
+        return _data.picturechip;
     }
 
     private var _cell: Cell;
@@ -46,7 +46,7 @@ public class Chip extends EventDispatcher {
     }
 
     public function Chip(type: String, fall: Boolean) {
-        _data = ChipVO.DICT[type];
+        _data = MagicTypeVO.DICT[type];
         _fall = fall;
     }
 

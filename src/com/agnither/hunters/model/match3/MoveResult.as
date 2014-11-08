@@ -2,7 +2,7 @@
  * Created by agnither on 14.08.14.
  */
 package com.agnither.hunters.model.match3 {
-import com.agnither.hunters.data.outer.ChipVO;
+import com.agnither.hunters.data.outer.MagicTypeVO;
 
 public class MoveResult {
 
@@ -30,7 +30,7 @@ public class MoveResult {
     }
 
     public function addResult(result: MatchResult):void {
-        if (result.type == ChipVO.WEAPON) {
+        if (result.type == MagicTypeVO.WEAPON) {
             _haveWeapon = true;
         }
 

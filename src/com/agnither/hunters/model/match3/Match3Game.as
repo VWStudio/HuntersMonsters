@@ -3,13 +3,15 @@
  */
 package com.agnither.hunters.model.match3 {
 import com.agnither.hunters.App;
-import com.agnither.hunters.data.outer.ChipVO;
+import com.agnither.hunters.data.outer.MagicTypeVO;
+import com.agnither.hunters.data.outer.DropVO;
 import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.match3.Cell;
 import com.agnither.hunters.model.match3.Field;
 import com.agnither.hunters.model.match3.Match;
 import com.agnither.hunters.model.player.AIPlayer;
 import com.agnither.hunters.model.player.LocalPlayer;
+import com.agnither.hunters.model.player.drop.Drop;
 import com.agnither.hunters.model.player.drop.DropList;
 import com.agnither.hunters.model.player.Player;
 import com.agnither.hunters.model.player.drop.DropSlot;
@@ -17,6 +19,7 @@ import com.agnither.hunters.model.player.drop.GoldDrop;
 import com.agnither.hunters.model.player.drop.ItemDrop;
 import com.agnither.hunters.model.player.inventory.Spell;
 import com.agnither.hunters.model.player.personage.Personage;
+import com.agnither.hunters.view.ui.screens.battle.BattleScreen;
 import com.agnither.hunters.view.ui.screens.battle.match3.FieldView;
 import com.agnither.hunters.view.ui.screens.battle.player.inventory.BattleInventoryView;
 import com.agnither.hunters.view.ui.screens.map.MapScreen;
@@ -136,7 +139,7 @@ public class Match3Game extends EventDispatcher {
     }
 
     public function useSpell(spell: Spell):void {
-        trace("USE SPELL");
+//        trace("USE SPELL");
         currentPlayer.useSpell(spell.uniqueId, currentEnemy.hero);
     }
 
@@ -155,10 +158,13 @@ public class Match3Game extends EventDispatcher {
 
         var match: Match = e.data as Match;
         switch (match.type) {
-            case ChipVO.CHEST:
-                _drop.drop();
+            case MagicTypeVO.CHEST:
+                if(currentPlayer is LocalPlayer) {
+                    var drop : DropVO = _drop.drop();
+                    coreDispatch(BattleScreen.PLAY_CHEST_FLY, {position : match.cells[1].position, drop: drop});
+                }
                 break;
-            case ChipVO.WEAPON:
+            case MagicTypeVO.WEAPON:
                 attacker = currentPlayer.hero;
                 break;
             default:
@@ -166,6 +172,9 @@ public class Match3Game extends EventDispatcher {
                     attacker = currentPlayer.pet;
                 }
                 currentPlayer.manaList.addMana(match.type, match.amount);
+                if(currentPlayer is LocalPlayer) {
+                    coreDispatch(BattleScreen.PLAY_MANA_FLY, {position : match.cells[1].position, type: match.type, amount : match.amount});
+                }
                 break;
         }
 

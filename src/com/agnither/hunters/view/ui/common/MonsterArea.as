@@ -1,7 +1,7 @@
 /**
  * Created by mor on 23.09.2014.
  */
-package com.agnither.hunters.view.ui.screens.battle.monster {
+package com.agnither.hunters.view.ui.common {
 import com.agnither.hunters.model.modules.monsters.MonsterVO;
 import com.agnither.ui.AbstractView;
 

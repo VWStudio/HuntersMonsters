@@ -9,7 +9,7 @@ import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.modules.locale.Locale;
 import com.agnither.hunters.model.player.inventory.Pet;
 import com.agnither.hunters.view.ui.UI;
-import com.agnither.hunters.view.ui.popups.SelectMonsterPopup;
+import com.agnither.hunters.view.ui.popups.monsters.SelectMonsterPopup;
 import com.agnither.hunters.view.ui.screens.map.MapScreen;
 import com.agnither.ui.AbstractView;
 import com.agnither.utils.CommonRefs;
@@ -25,7 +25,7 @@ import starling.events.TouchEvent;
 import starling.events.TouchPhase;
 import starling.text.TextField;
 
-public class TrapView extends AbstractView {
+public class TrapItem extends AbstractView {
 
     public function get trap():TrapVO {
         return _trap;
@@ -39,12 +39,12 @@ public class TrapView extends AbstractView {
     private var _level3 : TextField;
     private var _back : Image;
 
-    public function TrapView($trap: TrapVO) {
+    public function TrapItem($trap: TrapVO) {
         _trap = $trap;
     }
 
     override protected function initialize():void {
-        createFromCommon(_refs.guiConfig.common.trapItem);
+        createFromConfig(_refs.guiConfig.common.trapItem);
 
         _back = _links["bitmap__bg"];
         _back.touchable = true;

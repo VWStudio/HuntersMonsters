@@ -31,7 +31,9 @@ public class InventoryView extends AbstractView {
     }
 
     override protected function initialize():void {
-        createFromCommon(_refs.guiConfig.common.spellsList);
+        // XXXCOMMON
+        createFromConfig(_refs.guiConfig.common.spellsList);
+//        createFromCommon(_refs.guiConfig.common.spellsList);
 
         tileHeight = _links.slot2.y - _links.slot1.y;
         _links.slot1.visible = false;
@@ -55,8 +57,8 @@ public class InventoryView extends AbstractView {
             var item: Item = _inventory.getItem(_inventory.inventoryItems[i]);
             itemView = ItemView.getItemView(item);
             itemView.addEventListener(TouchEvent.TOUCH, handleTouch);
-            itemView.y = i * tileHeight;
             addChild(itemView);
+            itemView.y = i * tileHeight;
         }
     }
 

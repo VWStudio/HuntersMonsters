@@ -28,16 +28,16 @@ public class LocalPlayer extends Player {
     }
 
 
-    public function addGold(amount : int) : void {
-        _hero.gold += amount;
-    }
+//    public function addGold(amount : int) : void {
+//        _hero.gold += amount;
+//    }
 
     public function addItem(item : Item) : void {
         _inventory.addItem(item);
     }
 
 
-    public function selectItem(item : Item) : void {
+    private function selectItem(item : Item) : void {
         if (item.isWearing)
         {
             _inventory.unwearItem(item);
@@ -48,9 +48,9 @@ public class LocalPlayer extends Player {
         }
     }
 
-    public function get progress() : Progress {
-        return _progress;
-    }
+//    public function get progress() : Progress {
+//        return _progress;
+//    }
 
     public function resetToBattle() : void {
         hero.healMax();

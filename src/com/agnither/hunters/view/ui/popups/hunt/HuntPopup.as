@@ -5,7 +5,7 @@ package com.agnither.hunters.view.ui.popups.hunt {
 import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.match3.Match3Game;
 import com.agnither.hunters.view.ui.UI;
-import com.agnither.hunters.view.ui.screens.battle.monster.MonsterInfo;
+import com.agnither.hunters.view.ui.common.MonsterInfo;
 import com.agnither.ui.ButtonContainer;
 import com.agnither.ui.Popup;
 import com.cemaprjl.core.coreDispatch;

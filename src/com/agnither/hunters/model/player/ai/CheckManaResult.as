@@ -2,6 +2,7 @@
  * Created by agnither on 18.08.14.
  */
 package com.agnither.hunters.model.player.ai {
+import com.agnither.hunters.data.outer.MagicTypeVO;
 import com.agnither.hunters.data.outer.DamageTypeVO;
 import com.agnither.hunters.model.player.Mana;
 import com.agnither.hunters.model.player.ManaList;
@@ -30,7 +31,7 @@ public class CheckManaResult {
 
         var manaAmount: Object = spell.extension_drop;
         for (var key: * in manaAmount) {
-            var magic: DamageTypeVO = DamageTypeVO.DICT[key];
+            var magic: MagicTypeVO = MagicTypeVO.DICT[key];
             var manaItem : Mana = mana.getMana(magic.name);
             if(!manaItem) {
                 _delta = -1;

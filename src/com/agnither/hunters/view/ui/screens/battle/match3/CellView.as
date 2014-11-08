@@ -30,7 +30,9 @@ public class CellView extends AbstractView {
     }
 
     override protected function initialize():void {
-        createFromCommon(_refs.guiConfig.common.cell);
+        // XXXCOMMON
+        createFromConfig(_refs.guiConfig.common.cell);
+//        createFromCommon(_refs.guiConfig.common.cell);
 
         _select = _links.select;
 

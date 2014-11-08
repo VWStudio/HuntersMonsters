@@ -24,6 +24,8 @@ public class MonsterAreaVO {
     public var chestLife: int = 0;
     public var chestRespawn: int = 0;
     public var chestdropset: int = 0;
+    public var expearned: int = 0;
+    public var tameprice: Array = [];
 
     public static function parseData(data: Object):void {
         for (var i: int = 0; i < data.length; i++) {
@@ -43,6 +45,8 @@ public class MonsterAreaVO {
             source.chestLife = arr[0];
             source.chestRespawn = arr[1];
             delete source.chesttimes;
+
+            source.tameprice = source.tameprice ? source.tameprice.toString().split(",") : [];
 
             var object: MonsterAreaVO = fill(new MonsterAreaVO(), source);
             DICT[object.id] = object;

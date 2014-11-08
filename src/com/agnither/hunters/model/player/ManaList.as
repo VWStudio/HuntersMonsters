@@ -2,6 +2,7 @@
  * Created by agnither on 13.08.14.
  */
 package com.agnither.hunters.model.player {
+import com.agnither.hunters.data.outer.MagicTypeVO;
 import com.agnither.hunters.data.outer.DamageTypeVO;
 import com.agnither.hunters.model.player.inventory.Spell;
 
@@ -29,9 +30,9 @@ public class ManaList extends EventDispatcher {
     public function init():void {
         clearList();
 
-        addManaCounter(DamageTypeVO.nature.name);
-        addManaCounter(DamageTypeVO.water.name);
-        addManaCounter(DamageTypeVO.fire.name);
+        addManaCounter(MagicTypeVO.nature.name);
+        addManaCounter(MagicTypeVO.water.name);
+        addManaCounter(MagicTypeVO.fire.name);
     }
 
     public function addManaCounter(type: String):void {
@@ -67,7 +68,7 @@ public class ManaList extends EventDispatcher {
     public function checkSpell(spell: Spell):Boolean {
         var mana: Object = spell.extension_drop;
         for (var key: * in mana) {
-            var manaType: DamageTypeVO = DamageTypeVO.DICT[key];
+            var manaType: MagicTypeVO = MagicTypeVO.DICT[key];
             if (!checkMana(manaType.name, mana[key])) {
                 return false;
             }
@@ -78,7 +79,7 @@ public class ManaList extends EventDispatcher {
     public function useSpell(spell: Spell):void {
         var mana: Object = spell.extension_drop;
         for (var key: * in mana) {
-            var manaType: DamageTypeVO = DamageTypeVO.DICT[key];
+            var manaType: MagicTypeVO = MagicTypeVO.DICT[key];
             releaseMana(manaType.name, mana[key]);
         }
     }
