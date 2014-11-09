@@ -7,6 +7,7 @@ import com.agnither.hunters.data.outer.DamageTypeVO;
 import com.agnither.hunters.model.modules.locale.Locale;
 import com.agnither.hunters.model.modules.monsters.MonsterVO;
 import com.agnither.ui.AbstractView;
+import com.agnither.ui.ButtonContainer;
 
 import starling.display.Image;
 
@@ -21,6 +22,7 @@ public class MonsterInfo extends AbstractView {
     private var _killed : Image;
     private var _icon : Image;
     private var _damageType : Image;
+    private var _sellButton : ButtonContainer;
     public function MonsterInfo() {
         super();
     }
@@ -37,6 +39,8 @@ public class MonsterInfo extends AbstractView {
         _killed = _links["bitmap_killed"];
         _killed.visible = false;
 
+        _sellButton = _links["buy_btn"];
+        _sellButton.visible = false;
     }
 
 

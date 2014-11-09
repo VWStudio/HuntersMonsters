@@ -9,6 +9,8 @@ public class ItemVO {
     public static const LIST: Vector.<ItemVO> = new <ItemVO>[];
     public static const DICT: Dictionary = new Dictionary();
     public static const THINGS: Vector.<ItemVO> = new <ItemVO>[];
+    public static const SPELLS: Vector.<ItemVO> = new <ItemVO>[];
+    public static const SETS: Dictionary = new Dictionary();
 
     public var id: int;
     public var name: String;
@@ -17,6 +19,7 @@ public class ItemVO {
     public var slot: int;
     public var extension : Object;
     public var extension_drop : Object;
+    public var setname : String;
 
     public static function parseData(data: Object):void {
         for (var i: int = 0; i < data.length; i++) {
@@ -40,7 +43,14 @@ public class ItemVO {
             DICT[object.id] = object;
             if(object.type == 1 || object.type == 2 || object.type == 3) {
                 THINGS.push(object);
+            } else {
+                SPELLS.push(object);
             }
+
+            if(!SETS[object.setname]) {
+                SETS[object.setname] = [];
+            }
+            SETS[object.setname].push(object);
         }
     }
 

@@ -103,6 +103,7 @@ public class SelectMonsterPopup extends Popup {
                 break;
             case _tab3:
                 _traps.visible = true;
+                _traps.update();
                 break;
         }
 

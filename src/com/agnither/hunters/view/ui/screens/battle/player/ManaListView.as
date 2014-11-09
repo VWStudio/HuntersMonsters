@@ -7,6 +7,13 @@ import com.agnither.hunters.view.ui.common.ManaView;
 import com.agnither.ui.AbstractView;
 import com.agnither.utils.CommonRefs;
 
+import starling.display.DisplayObject;
+
+import starling.events.Touch;
+
+import starling.events.TouchEvent;
+import starling.events.TouchPhase;
+
 public class ManaListView extends AbstractView {
 
     private var _manaList: ManaList;
@@ -19,6 +26,10 @@ public class ManaListView extends AbstractView {
 
     private var _mana: Vector.<ManaView>;
 
+    /*
+     currentPlayer.manaList.addMana(match.type, match.amount);
+     */
+
     public function ManaListView() {
     }
 
@@ -26,8 +37,26 @@ public class ManaListView extends AbstractView {
         _mana = new <ManaView>[];
 
         for (var i:int = 0; i < numChildren; i++) {
+            var child : ManaView = getChildAt(i) as ManaView;
+            child.touchable = true;
+            child.addEventListener(TouchEvent.TOUCH, onTouch);
             _mana.push(getChildAt(i) as ManaView);
         }
+
+
+
+    }
+
+    private function onTouch(event : TouchEvent) : void
+    {
+
+        var touch : Touch = event.getTouch(event.currentTarget as DisplayObject, TouchPhase.BEGAN);
+        if(touch) {
+            trace("ADD MANA");
+            var mv : ManaView = event.currentTarget as ManaView;
+            _manaList.addMana(mv.mana.type, 5);
+        }
+
     }
 }
 }

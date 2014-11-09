@@ -21,6 +21,10 @@ public class TabView extends AbstractView {
 
     public static const TAB_CLICK: String = "tab_click_TabView";
 
+    public function get label(): String {
+        return _label.text;
+    }
+
     public function set label(value: String):void {
         _label.text = value;
     }

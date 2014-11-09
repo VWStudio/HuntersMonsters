@@ -18,6 +18,7 @@ import com.agnither.hunters.view.ui.screens.battle.BattleScreen;
 import com.agnither.hunters.view.ui.screens.hud.HudScreen;
 import com.agnither.hunters.view.ui.screens.map.ChestPoint;
 import com.agnither.hunters.view.ui.screens.map.MapScreen;
+import com.agnither.ui.Popup;
 import com.agnither.utils.CommonRefs;
 import com.agnither.utils.ResourcesManager;
 import com.cemaprjl.core.coreAddListener;
@@ -181,6 +182,10 @@ public class App extends Sprite {
 
     public function get tick() : Ticker {
         return _tick;
+    }
+
+    public function get currentPopup() : Popup {
+        return _ui.currentPopup;
     }
 }
 }

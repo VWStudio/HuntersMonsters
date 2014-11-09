@@ -4,7 +4,7 @@
         "area": "blue_bull",
         "areaeffect": 25,
         "leveleffect": "0.9,0.6,0.3",
-        "timechance": "0,0,0"
+        "timechance": "0,50,50"
     },
     {
         "level": 2,

@@ -25,8 +25,9 @@ public class Inventory extends EventDispatcher {
         return _inventoryItems;
     }
 
-    private var _itemsDict: Dictionary = new Dictionary();
+    private var _itemsDict: Object = new Object();
     public function getItem(name: String):Item {
+        trace("GET ITEM", name, _itemsDict[name]);
         return _itemsDict[name];
     }
 
@@ -36,6 +37,7 @@ public class Inventory extends EventDispatcher {
     }
 
     private var _extensions: Dictionary = new Dictionary();
+    private var _spells : Object = {};
     public function getExtension(type: int):int {
         return _extensions[type];
     }
@@ -55,7 +57,6 @@ public class Inventory extends EventDispatcher {
     public function init():void {
         for (var i: int = 0; i < ItemTypeVO.LIST.length; i++) {
             _itemsByType[ItemTypeVO.LIST[i].id] = [];
-//            _itemsByType[ItemTypeVO.LIST[i].id] = _itemsByType[ItemTypeVO.LIST[i].id].concat(_itemsByType[ItemTypeVO.LIST[i].id]);
         }
         var extArray : Vector.<ExtensionVO> = Model.instance.items.getExtensions();
         for (i = 0; i < extArray.length; i++) {
@@ -71,23 +72,44 @@ public class Inventory extends EventDispatcher {
             var newItem : Item = Item.createItem(item, itemData.extension);
             newItem.uniqueId = key;
 
-            _itemsDict[key] = newItem;
-            _itemsByType[item.type].push(key);
+            addItem(newItem);
+
+//            _itemsDict[key] = newItem;
+//            _itemsByType[item.type].push(key);
         }
     }
 
-    public function addItem(item: Item):void {
-        if (!_itemsDict[item.uniqueId]) {
+    public function addItem($item: Item):void {
+        if (!_itemsDict[$item.uniqueId]) {
+            var item : Item = Item.createItem($item.item, $item.extension);
+            item.uniqueId = $item.uniqueId;
             _itemsDict[item.uniqueId] = item;
             _itemsByType[item.type].push(item.uniqueId);
+            trace("**", item.uniqueId, item.type, item.type == ItemTypeVO.spell);
+            if(item.type == ItemTypeVO.spell) {
+                _spells["spell"+item.id] = item;
+                trace("spell"+item.id, item, _spells["spell"+item.id])
+            }
+
             _data[item.uniqueId] = {id: item.id, extension: item.extension};
         }
     }
 
+    public function isHaveSpell($id : Number):Boolean {
+
+        trace("isHaveSpell", $id, _spells["spell"+$id]);
+        return _spells["spell"+$id] != null;
+
+    }
+
     public function removeItem(item: Item):void {
         if (_itemsDict[item.uniqueId]) {
+
+            unwearItem(item);
+
             delete _itemsDict[item.uniqueId];
             delete _data[item.uniqueId];
+
 
             var index: int = _itemsByType[item.type].indexOf(item.uniqueId);
             if (index >= 0) {
@@ -116,11 +138,18 @@ public class Inventory extends EventDispatcher {
     public function update():void {
         updateExtensions();
 
+        _inventoryItems.sort(sortInventory);
+
         dispatchEventWith(UPDATE);
     }
 
     private function addToInventory(uid : String) : void {
         var item : Item = _itemsDict[uid];
+        if(item == null) {
+            return;
+        }
+
+
         var slotMax : int = ItemSlotVO.DICT[item.slot].max; // MAX for current slot kind
 
         var isHaveFree : Boolean = _inventoryItems.length < max_capacity;
@@ -144,6 +173,31 @@ public class Inventory extends EventDispatcher {
 
         item.isWearing = true;
         _inventoryItems.push(uid);
+
+
+
+
+    }
+
+    private function sortInventory($a : String, $b : String) : int
+    {
+        var itemA : Item = _itemsDict[$a];
+        var itemB : Item = _itemsDict[$b];
+
+        if(itemA.slot < itemB.slot) {
+            return -1;
+        }
+        else if (itemA.slot > itemB.slot)
+        {
+            return 1;
+        } else {
+            if(itemA.extension[ExtensionVO.damage] > itemA.extension[ExtensionVO.damage]) {
+                return -1;
+            } else if (itemA.extension[ExtensionVO.damage] < itemA.extension[ExtensionVO.damage]) {
+                return 1;
+            }
+        }
+        return 0;
     }
 
     private function removeFromInventory(uid : String) : void {
@@ -187,6 +241,11 @@ public class Inventory extends EventDispatcher {
             }
         }
         return arr;
+    }
+
+    public function get items() : Object
+    {
+        return _itemsDict;
     }
 }
 }

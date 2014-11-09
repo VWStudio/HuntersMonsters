@@ -31,10 +31,16 @@ public class ManaView extends AbstractView {
     }
 
     override protected function initialize():void {
+        this.touchable = true;
         _icon = _links.icon.getChildAt(0);
+        _icon.touchable = true;
         _value = _links.value_tf;
+        _value.touchable = true;
         visible = false;
     }
+
+
+
 
     private function handleUpdate(e: Event = null):void {
         if (_mana) {
@@ -44,6 +50,11 @@ public class ManaView extends AbstractView {
         } else {
             visible = false;
         }
+    }
+
+    public function get mana() : Mana
+    {
+        return _mana;
     }
 }
 }

@@ -18,9 +18,9 @@ public class PetsInventory extends EventDispatcher {
 
     private var _data: Object;
 
-    private var _pets: Vector.<Pet> = new Vector.<Pet>();
+    private var _petsList: Vector.<Pet> = new Vector.<Pet>();
 
-    private var _petsDict: Dictionary = new Dictionary();
+    private var _petsDict: Object = {};
     public function getPet(uid: String):Pet {
         return _petsDict[uid];
     }
@@ -28,9 +28,9 @@ public class PetsInventory extends EventDispatcher {
     private var _petsByType: Dictionary = new Dictionary();
     public function getPetsByType($type : String):Array { // of String
         var arr : Array = [];
-        for (var i : int = 0; i < _pets.length; i++)
+        for (var i : int = 0; i < _petsList.length; i++)
         {
-            var pet : Pet = _pets[i];
+            var pet : Pet = _petsList[i];
             if(pet.id +"."+pet.level == $type) {
                 arr.push(pet);
             }
@@ -51,7 +51,8 @@ public class PetsInventory extends EventDispatcher {
         _data = data;
         for (var key: * in data) {
             var petData: Object = data[key];
-            if(!petData.id) continue;
+            trace(JSON.stringify(petData));
+//            if(!petData.id) continue;
             var pet : MonsterVO = Model.instance.monsters.getMonster(petData.id, petData.level);
 //            var pet : MonsterVO = MonsterVO.DICT[petData.id];
             var newPet: Pet = new Pet(pet, petData);
@@ -67,9 +68,7 @@ public class PetsInventory extends EventDispatcher {
         if (!_petsDict[pet.uniqueId]) {
             _petsDict[pet.uniqueId] = pet;
             _petsByType[UNTAMED].push(pet.uniqueId);
-//            _petsByType[pet.tamed].push(pet.uniqueId);
-//            _data[pet.uniqueId] = pet.params;
-            _pets.push(pet);
+            _petsList.push(pet);
         }
     }
 
@@ -85,8 +84,8 @@ public class PetsInventory extends EventDispatcher {
 //                _petsByType[pet.tamed].splice(index, 1);
             }
 
-            index = _pets.indexOf(pet);
-            _pets.splice(index, 1);
+            index = _petsList.indexOf(pet);
+            _petsList.splice(index, 1);
 
         }
     }
@@ -95,12 +94,18 @@ public class PetsInventory extends EventDispatcher {
         dispatchEventWith(UPDATE);
     }
 
-    public function get pets() : Vector.<Pet> {
-        return _pets;
+    public function get petsList() : Vector.<Pet> {
+        return _petsList;
     }
 
-//    public function get catchedPets() : Array {
-//        return _petsByType[UNTAMED];
-//    }
+    public function get pets() : Object
+    {
+        var petsObj : Object = {};
+        for (var key : String in _petsDict)
+        {
+            petsObj[key] = (_petsDict[key] as Pet).params;
+        }
+        return petsObj;
+    }
 }
 }

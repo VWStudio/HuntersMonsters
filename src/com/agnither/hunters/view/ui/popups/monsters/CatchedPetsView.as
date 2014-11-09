@@ -35,7 +35,7 @@ public class CatchedPetsView extends AbstractView {
 
     override public function update() : void {
 //        var catchedPets : Array = _inventory.getPetsByType(0);
-        var catchedPets : Vector.<Pet> = _pets.pets;
+        var catchedPets : Vector.<Pet> = _pets.petsList;
 //        var catchedPets : Array = _pets.catchedPets;
 
         removeChildren();

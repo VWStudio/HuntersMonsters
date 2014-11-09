@@ -58,5 +58,25 @@
         "parameter": "playerInitialLeague",
         "value": "1",
         "type": "int"
+    },
+    {
+        "parameter": "playerInitialSummonMax",
+        "value": "1",
+        "type": "int"
+    },
+    {
+        "parameter": "playerInitialSkillPoints",
+        "value": "0",
+        "type": "int"
+    },
+    {
+        "parameter": "pointValue",
+        "value": "10",
+        "type": "int"
+    },
+    {
+        "parameter": "pointPercent",
+        "value": "10",
+        "type": "int"
     }
 ]

@@ -2,17 +2,20 @@
     {
         "id": 1,
         "name": "weapon",
-        "picture": "out_4.png"
+        "picture": "out_4.png",
+        "shoptabminmax": "5,10"
     },
     {
         "id": 2,
         "name": "armor",
-        "picture": "out_3.png"
+        "picture": "out_3.png",
+        "shoptabminmax": "10,15"
     },
     {
         "id": 3,
         "name": "magic",
-        "picture": "out_2.png"
+        "picture": "out_2.png",
+        "shoptabminmax": "2,4"
     },
     {
         "id": 4,

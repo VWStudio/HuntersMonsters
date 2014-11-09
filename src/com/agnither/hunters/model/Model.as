@@ -10,6 +10,7 @@ import com.agnither.hunters.model.modules.locale.Locale;
 import com.agnither.hunters.model.modules.monsters.MonsterAreaVO;
 import com.agnither.hunters.model.modules.monsters.MonsterVO;
 import com.agnither.hunters.model.modules.monsters.Monsters;
+import com.agnither.hunters.model.modules.players.SettingsVO;
 import com.agnither.hunters.model.player.AIPlayer;
 import com.agnither.hunters.model.player.LocalPlayer;
 import com.agnither.hunters.model.player.Player;
@@ -49,6 +50,9 @@ public class Model {
         return _instance;
     }
 
+    private var _territoryPoints : Dictionary = new Dictionary();
+    private var _territoryTimeouts : Dictionary = new Dictionary();
+
     public var houses : Object = {};
     public var match3mode : String;
     public var currentHousePoint : HousePoint;
@@ -61,13 +65,16 @@ public class Model {
     public var drop : int;
     public var enemy : AIPlayer;
     public var progress : Progress;
-    private var _territoryPoints : Dictionary = new Dictionary();
-    private var _territoryTimeouts : Dictionary = new Dictionary();
+    public var traps : Traps;
+    public var shop : Shop;
 
     public function Model() {
 
         monsters = new Monsters();
         items = new Items();
+        traps = new Traps();
+        shop = new Shop();
+
 
         coreAddListener(Model.MONSTER_CATCHED, onMonsterCatched);
         coreAddListener(CatchedPetsView.PET_SELECTED, handlePetSelected);
@@ -103,7 +110,7 @@ public class Model {
 //        pet.tame(false);
         pet.uniqueId = Util.uniq(pet.id);
         player.pets.addPet(pet);
-        progress.pets[pet.uniqueId] = monsters.getMonster(monster.id, monster.level, monster);
+//        progress.petsList[pet.uniqueId] = monsters.getMonster(monster.id, monster.level, monster);
 
         progress.saveProgress();
     }
@@ -141,7 +148,7 @@ public class Model {
 
     public function addPlayerItem($item : Item) : void {
         player.addItem($item);
-        progress.items[$item.uniqueId] = $item;
+//        progress.items[$item.uniqueId] = $item;
     }
     private function monsterGenerate($delta : Number) : void {
         for (var monsterID : String in _territoryTimeouts)
@@ -215,8 +222,9 @@ public class Model {
     public function createHouse($name : String) : void {
         var obj : Object = {};
         houses[$name] = obj;
-        obj.owner = "";
+        obj.owner = progress.houses.indexOf($name) >= 0 ? player.id : "";
 //        obj.nextRandomItem = Model.instance.items.getRandomThing();
+        // TODO get items according set
         obj.unlockItems = [Model.instance.items.getRandomThing(), Model.instance.items.getRandomThing(), Model.instance.items.getRandomThing()];
 //        obj.timeLeft = (Math.random() * 20) * 1000;
         generateNewHouseItem($name);
@@ -263,5 +271,11 @@ public class Model {
         obj.timeLeft = (Math.random() * 500) * 1000;
 
     }
+
+    public function getPrice($val : Number) : Number
+    {
+        return int($val * SettingsVO.DICT["pointValue"] + ( (SettingsVO.DICT["pointPercent"] + 100) / 100) * $val) ;
+    }
+
 }
 }

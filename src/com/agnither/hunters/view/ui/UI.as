@@ -299,5 +299,9 @@ public class UI extends Screen {
 ////            _currentPopup.forceClose();
 //        }
 //    }
+    public function get currentPopup() : Popup
+    {
+        return _currentPopup;
+    }
 }
 }

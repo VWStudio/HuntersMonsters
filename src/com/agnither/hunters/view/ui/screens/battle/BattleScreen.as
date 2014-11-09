@@ -296,7 +296,11 @@ public class BattleScreen extends Screen {
                 var pt : HousePoint = Model.instance.currentHousePoint;
                 if($isWin) {
                     Model.instance.houses[pt.name]["owner"] = Model.instance.player.id;
+                    Model.instance.progress.houses.push(pt.name);
+                    Model.instance.progress.sets.push(pt.name);
                     Model.instance.checkHouses();
+                    Model.instance.progress.saveProgress();
+
                 } else {
 
                 }

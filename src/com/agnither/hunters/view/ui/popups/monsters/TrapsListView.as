@@ -36,14 +36,37 @@ public class TrapsListView extends AbstractView {
         _trapsContainer = new Sprite();
         addChild(_trapsContainer);
 
-        for (var i : int = 0; i < TrapVO.LIST.length; i++)
+
+    }
+
+
+    override public function update() : void
+    {
+
+        _trapsContainer.removeChildren();
+        var boughtTraps : Array = Model.instance.progress.traps;
+        trace(JSON.stringify(boughtTraps));
+        for (var i : int = 0; i < boughtTraps.length; i++)
         {
-            var trap : TrapVO = TrapVO.LIST[i].clone();
+            var trapObj : Object = boughtTraps[i];
+            var trap : TrapVO = TrapVO.fill(new TrapVO(), trapObj);
             var trapView : TrapItem = new TrapItem(trap);
             _trapsContainer.addChild(trapView);
             trapView.x = (_trapsContainer.numChildren - 1) % 4 * 170;
             trapView.y = int(_trapsContainer.numChildren / 4) * 170;
         }
+
+
+
+//        for (var i : int = 0; i < TrapVO.LIST.length; i++)
+//        {
+//            var trap : TrapVO = TrapVO.LIST[i].clone();
+//            var trapView : TrapItem = new TrapItem(trap);
+//            _trapsContainer.addChild(trapView);
+//            trapView.x = (_trapsContainer.numChildren - 1) % 4 * 170;
+//            trapView.y = int(_trapsContainer.numChildren / 4) * 170;
+//        }
+
 
     }
 }

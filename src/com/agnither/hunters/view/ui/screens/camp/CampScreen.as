@@ -3,7 +3,9 @@
  */
 package com.agnither.hunters.view.ui.screens.camp {
 import com.agnither.hunters.view.ui.popups.monsters.SelectMonsterPopup;
+import com.agnither.hunters.view.ui.popups.shop.ShopPopup;
 import com.agnither.hunters.view.ui.popups.skills.SkillsPopup;
+import com.agnither.hunters.view.ui.popups.trainer.TrainerPopup;
 import com.agnither.hunters.view.ui.screens.map.*;
 import com.agnither.hunters.App;
 import com.agnither.hunters.model.modules.monsters.MonsterAreaVO;
@@ -139,7 +141,7 @@ public class CampScreen extends Screen {
                     Mouse.cursor = MouseCursor.BUTTON;
                     break;
                 case TouchPhase.ENDED:
-                    coreExecute(ShowPopupCmd, SelectMonsterPopup.NAME);
+                    coreExecute(ShowPopupCmd, TrainerPopup.NAME);
                     break;
             }
         } else {
@@ -182,7 +184,7 @@ public class CampScreen extends Screen {
                     Mouse.cursor = MouseCursor.BUTTON;
                     break;
                 case TouchPhase.ENDED:
-                    coreExecute(ShowPopupCmd, SelectMonsterPopup.NAME);
+                    coreExecute(ShowPopupCmd, ShopPopup.NAME);
                     break;
             }
         } else {

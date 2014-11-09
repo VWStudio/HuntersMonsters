@@ -159,7 +159,7 @@ public class TrapSetPopup extends Popup {
 
 
                         var petData : Object = {};
-                        petData.uniqueId = "caught.pet." + Model.instance.player.pets.pets.length;
+                        petData.uniqueId = "caught.pet." + Model.instance.player.pets.petsList.length;
                         petData.id = _monsterVO.id;
                         petData.level = _monsterVO.level;
                         petData.hp = _monsterVO.hp * 0.5;

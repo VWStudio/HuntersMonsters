@@ -6,7 +6,8 @@
         "slot": 1,
         "picture": "slot_4.png",
         "extension": "1:10;3:1",
-        "extensiondrop": "1:[10,15]"
+        "extensiondrop": "1:[10,15]",
+        "setname": "default"
     },
     {
         "id": 2,
@@ -15,7 +16,8 @@
         "slot": 1,
         "picture": "slot_4.png",
         "extension": "1:18;3:1",
-        "extensiondrop": "1:[18,25]"
+        "extensiondrop": "1:[18,25]",
+        "setname": "house00"
     },
     {
         "id": 3,
@@ -24,7 +26,8 @@
         "slot": 1,
         "picture": "slot_7.png",
         "extension": "1:20;3:1",
-        "extensiondrop": "1:[20,25]"
+        "extensiondrop": "1:[20,25]",
+        "setname": "house01"
     },
     {
         "id": 4,
@@ -33,7 +36,8 @@
         "slot": 2,
         "picture": "slot_5.png",
         "extension": "2:10;3:1",
-        "extensiondrop": "2:[10,15]"
+        "extensiondrop": "2:[10,15]",
+        "setname": "default"
     },
     {
         "id": 5,
@@ -42,7 +46,8 @@
         "slot": 2,
         "picture": "slot_5.png",
         "extension": "2:15;3:1",
-        "extensiondrop": "2:[15,20]"
+        "extensiondrop": "2:[15,20]",
+        "setname": "house00"
     },
     {
         "id": 6,
@@ -51,7 +56,8 @@
         "slot": 3,
         "picture": "slot_6.png",
         "extension": "2:6;3:1",
-        "extensiondrop": "2:[5,10]"
+        "extensiondrop": "2:[5,10]",
+        "setname": "house00"
     },
     {
         "id": 7,
@@ -60,7 +66,8 @@
         "slot": 4,
         "picture": "slot_6.png",
         "extension": "2:6;3:1",
-        "extensiondrop": "2:[5,10]"
+        "extensiondrop": "2:[5,10]",
+        "setname": "house01"
     },
     {
         "id": 8,
@@ -69,7 +76,8 @@
         "slot": 5,
         "picture": "slot_6.png",
         "extension": "2:6;3:1",
-        "extensiondrop": "2:[5,10]"
+        "extensiondrop": "2:[5,10]",
+        "setname": "house01"
     },
     {
         "id": 9,
@@ -78,28 +86,32 @@
         "slot": 6,
         "picture": "slot_6.png",
         "extension": "2:6;3:1",
-        "extensiondrop": "2:[5,10]"
+        "extensiondrop": "2:[5,10]",
+        "setname": "house01"
     },
     {
         "id": 10,
         "name": "ring",
         "type": 3,
         "slot": 7,
-        "picture": "slot_7.png"
+        "picture": "slot_7.png",
+        "setname": "default"
     },
     {
         "id": 11,
         "name": "ring",
         "type": 3,
         "slot": 7,
-        "picture": "slot_7.png"
+        "picture": "slot_7.png",
+        "setname": "house00"
     },
     {
         "id": 12,
         "name": "robe",
         "type": 3,
         "slot": 2,
-        "picture": "slot_7.png"
+        "picture": "slot_7.png",
+        "setname": "house00"
     },
     {
         "id": 13,
@@ -107,8 +119,9 @@
         "type": 4,
         "slot": 8,
         "picture": "slot_1.png",
-        "extension": "1:10;3:4",
-        "extensiondrop": "3:5"
+        "extension": "1:10;3:5",
+        "extensiondrop": "3:5",
+        "setname": "default"
     },
     {
         "id": 14,
@@ -116,8 +129,9 @@
         "type": 4,
         "slot": 8,
         "picture": "slot_2.png",
-        "extension": "1:50;3:2",
-        "extensiondrop": "2:15"
+        "extension": "1:50;3:3",
+        "extensiondrop": "3:15",
+        "setname": "house00"
     },
     {
         "id": 15,
@@ -125,8 +139,9 @@
         "type": 4,
         "slot": 8,
         "picture": "slot_3.png",
-        "extension": "1:35;3:2",
-        "extensiondrop": "2:10"
+        "extension": "1:35;3:6",
+        "extensiondrop": "5:10",
+        "setname": "house00"
     },
     {
         "id": 16,
@@ -134,8 +149,9 @@
         "type": 4,
         "slot": 8,
         "picture": "slot_3.png",
-        "extension": "1:20;3:2",
-        "extensiondrop": "4:20"
+        "extension": "1:20;3:7",
+        "extensiondrop": "4:20",
+        "setname": "house01"
     },
     {
         "id": 17,
@@ -143,8 +159,9 @@
         "type": 4,
         "slot": 8,
         "picture": "slot_3.png",
-        "extension": "1:60;3:2",
-        "extensiondrop": "5:7;3:10"
+        "extension": "1:60;3:5",
+        "extensiondrop": "5:7;3:10",
+        "setname": "house01"
     },
     {
         "id": 18,
@@ -152,7 +169,8 @@
         "type": 4,
         "slot": 8,
         "picture": "slot_3.png",
-        "extension": "1:60;3:3",
-        "extensiondrop": "4:8;2:8;3:8"
+        "extension": "1:60;3:4",
+        "extensiondrop": "4:8;5:8;3:8",
+        "setname": "house01"
     }
 ]

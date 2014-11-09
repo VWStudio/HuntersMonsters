@@ -37,32 +37,37 @@ public class Progress extends EventDispatcher {
     public var monstersResults : Object = {};
     public var unlockedMonsters : Array = [];
     public var tamedMonsters : Array = [];
-    public var items : Object = {};
-    public var inventory : Array = [];
-    public var pets : Object = {};
     public var maxSummon : int = 1;
     public var skillPoints : int = 0;
     public var skills : Object = {};
     public static const SKILL_PREFIX : String = "skill.";
+    public var traps : Array = [];
+    public var sets : Array = [];
+    public var houses : Array = [];
 
+    private var _pets : Object = {};
+    private var _items : Object = {};
+    private var _inventory : Array = [];
 
     public function Progress() {
         _data = SharedObject.getLocal("player");
 //        version = -1;
 //        _data.clear();
+//        reset();
+
         if (version == -1 || !_data.data.progress || _data.data.version == null || _data.data.version != version)
         {
 //        if (version == -1 || _data.data.version == null || _data.data.version != version) {
             save(mockup());
         }
 
-        var obj : Object = JSON.parse(_data.data.progress);
+//        var obj : Object = JSON.parse(_data.data.progress);
 
-        trace("------load------");
-        trace(JSON.stringify(obj));
+//        trace("------load------");
+//        trace(JSON.stringify(obj));
 
-        obj.items = _data.data.items ? JSON.parse(_data.data.items) : {};
-        load(obj);
+//        obj.items = _data.data.items ? JSON.parse(_data.data.items) : {};
+        load();
 
         /**
          * CORRECT AND SAVE
@@ -76,36 +81,58 @@ public class Progress extends EventDispatcher {
         _data.flush();
     }
 
-    private function load($val : Object) : void {
+    private function load() : void {
+
+        var dataObj : Object = _data.data;
+        var progressObj : Object = JSON.parse(dataObj.progress);
+
+        id = progressObj.id;
+        name = progressObj.name;
+        picture = progressObj.picture;
+        level = progressObj.level;
+        exp = progressObj.exp;
+        damage = progressObj.damage;
+        defence = progressObj.defence;
+        league = progressObj.league;
+        rating = progressObj.rating;
+        magic = progressObj.magic;
+        gold = progressObj.gold;
+        maxSummon = progressObj.maxSummon;
+        skillPoints = progressObj.skillPoints;
+        skills = progressObj.skills ? progressObj.skills : {};
+        sets = progressObj.sets ? progressObj.sets : [];
+        houses = progressObj.houses ? progressObj.houses : [];
+
+        traps = progressObj.traps ? progressObj.traps : [];
+        unlockedMonsters = progressObj.unlockedMonsters ? progressObj.unlockedMonsters : [];
+        tamedMonsters = progressObj.tamedMonsters ? progressObj.tamedMonsters : [];
+        monstersResults = progressObj.monstersResults ? progressObj.monstersResults : {};
+//        inventory = progressObj.inventory ? progressObj.inventory : [];
+
+        _items = dataObj.items ? JSON.parse(dataObj.items) : {};
+        _inventory = dataObj.inventory ? JSON.parse(dataObj.inventory) as Array : [];
+        _pets = dataObj.pets ? JSON.parse(dataObj.pets) : {};
 
 
-        id = $val.id;
-        name = $val.name;
-        picture = $val.picture;
-        level = $val.level;
-        exp = $val.exp;
-        damage = $val.damage;
-        defence = $val.defence;
-        league = $val.league;
-        rating = $val.rating;
-        magic = $val.magic;
-        gold = $val.gold;
-        maxSummon = $val.maxSummon;
-        skillPoints = $val.skillPoints;
-//        skills = {};
-        skills = $val.skills ? $val.skills : {};
+//        validateItems(items, inventory);
 
-        unlockedMonsters = $val.unlockedMonsters ? $val.unlockedMonsters : [];
-        tamedMonsters = $val.tamedMonsters ? $val.tamedMonsters : [];
-        monstersResults = $val.monstersResults ? $val.monstersResults : {};
-
-        items = $val.items ? $val.items : {};
-        inventory = $val.inventory ? $val.inventory : [];
-
-        pets = $val.pets ? $val.pets : {};
+//        items = $val.items ? $val.items : {};
 
         recalculateHP();
     }
+
+//    private function validateItems($items : Object, $inventory : Array) : void
+//    {
+//        for (var i : int = $inventory.length - 1; i >= 0; i--)
+//        {
+//            var itemID : String = $inventory[i];
+//            if(!$items[itemID]) {
+//                $inventory.splice(i, 1)
+//            }
+//        }
+//
+//
+//    }
 
     public function recalculateHP() : int {
         if(level < 1) return 1;
@@ -117,14 +144,23 @@ public class Progress extends EventDispatcher {
                 baseHP *= 1.1;
             }
         }
-
         hp = baseHP;
-        trace("recalc HP", hp, " - ", level, LevelVO.DICT[level].basehp);
         return baseHP;
     }
 
     public function saveProgress() : void {
-        save(this);
+        save(prepareData());
+    }
+
+    private function prepareData() : Object
+    {
+        var obj : Object = {};
+        obj.progress = JSON.parse(JSON.stringify(this));
+        obj.items = JSON.parse(JSON.stringify(Model.instance.player.inventory.items));
+        obj.inventory = JSON.parse(JSON.stringify(Model.instance.player.inventory.inventoryItems));
+        obj.pets = JSON.parse(JSON.stringify(Model.instance.player.pets.pets));
+
+        return obj;
     }
 
     private function save($val : Object) : void {
@@ -132,15 +168,23 @@ public class Progress extends EventDispatcher {
         _data.data.version = version;
 
         trace("------save------");
-        var obj : Object = JSON.parse(JSON.stringify($val));
+        for (var key : String in $val)
+        {
+            _data.data[key] = JSON.stringify($val[key]);
+            trace(key,"----------------------");
+            trace(_data.data[key]);
+        }
+
+
+//        var obj : Object = JSON.parse(JSON.stringify($val));
 
 
         // move items to another SO branch to lightweight output
-        _data.data.items = JSON.stringify(obj.items);
-        delete obj.items;
-
-        trace(JSON.stringify(obj));
-        _data.data.progress = JSON.stringify(obj);
+//        _data.data.items = JSON.stringify(obj.items);
+//        delete obj.items;
+//
+//        trace(JSON.stringify(obj));
+//        _data.data.progress = JSON.stringify(obj);
 
         _data.flush();
 
@@ -149,6 +193,8 @@ public class Progress extends EventDispatcher {
 
     private function mockup() : Object {
         trace("--- mockup ---");
+
+        var saveObject : Object = {};
 
         var settings : Object = SettingsVO.DICT;
 
@@ -168,11 +214,15 @@ public class Progress extends EventDispatcher {
         obj.skillPoints = settings.playerInitialSkillPoints;
         obj.skills = {};
 
-        obj.items = {};
-        obj.inventory = [];
+        obj.traps = [];
+        obj.houses = [];
+        obj.unlockedMonsters = ["blue_bull"];
+        obj.monstersResults = {};
+        obj.sets = ["default"];
 
-        trace("settings: ",JSON.stringify(settings));
-        trace("mock: ",JSON.stringify(obj));
+
+        saveObject.items = {};
+        saveObject.inventory = [];
 
         var playerItems : Vector.<PlayerItemVO> = PlayerItemVO.LIST;
         var i : int = 0;
@@ -182,27 +232,27 @@ public class Progress extends EventDispatcher {
             var item : Object = Model.instance.items.getItem(playerItem.id);
             item.extension = playerItem.extension;
             var itmName : String = item.name + "." + i;
-            obj.items[itmName] = item;
+            saveObject.items[itmName] = item;
             if (playerItem.wield)
             {
-                obj.inventory.push(itmName);
+                saveObject.inventory.push(itmName);
             }
         }
 
-        obj.pets = {};
+        saveObject.pets = {};
+
         var playerPets : Vector.<PlayerPetVO> = PlayerPetVO.LIST;
         for (i = 0; i < playerPets.length; i++)
         {
             var playerPet : PlayerPetVO = playerPets[i];
             var monster : Object = Util.toObj(Model.instance.monsters.getMonster(playerPet.id, playerPet.level, playerPet));
             var petID : String = Util.uniq(monster.name);
-            obj.pets[petID] = monster;
+            saveObject.pets[petID] = monster;
         }
 
-        obj.unlockedMonsters = ["blue_bull"];
-        obj.monstersResults = {};
+        saveObject.progress = obj;
 
-        return obj;
+        return saveObject;
     }
 
     public function addExp($val : int) : void {
@@ -228,6 +278,8 @@ public class Progress extends EventDispatcher {
 
     public function incSkill($id : String) : void {
 
+        if(skillPoints == 0) return;
+
         var skill : SkillVO = SkillVO.DICT[$id];
 
         if(getSkillValue($id)) {
@@ -245,6 +297,21 @@ public class Progress extends EventDispatcher {
 
     public function getSkillValue($id : String) : Number {
         return skills[SKILL_PREFIX+$id] != null ? skills[SKILL_PREFIX+$id] : 0;
+    }
+
+    public function getItems() : Object
+    {
+        return _items;
+    }
+
+    public function getInventory() : Array
+    {
+        return _inventory;
+    }
+
+    public function getPets() : Object
+    {
+        return _pets;
     }
 }
 }

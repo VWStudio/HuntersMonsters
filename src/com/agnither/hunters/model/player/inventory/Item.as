@@ -3,6 +3,7 @@
  */
 package com.agnither.hunters.model.player.inventory {
 import com.agnither.hunters.data.outer.ItemTypeVO;
+import com.agnither.hunters.data.outer.ItemTypeVO;
 import com.agnither.hunters.model.modules.items.ItemVO;
 import com.cemaprjl.utils.Util;
 
@@ -30,7 +31,7 @@ public class Item extends EventDispatcher {
             extension[key] = data.getDropExtensionValue(key);
         }
         var item : Item = new Item(data, extension);
-        item.uniqueId = Util.uniq(item.id.toString());
+        item.uniqueId = Util.uniq(ItemTypeVO.DICT[item.type].name);
         return item;
     }
 
@@ -47,7 +48,7 @@ public class Item extends EventDispatcher {
         return _extension;
     }
 
-    protected var _item: ItemVO;
+    private var _item: ItemVO;
     public function get id():int {
         return _item.id;
     }
@@ -91,6 +92,11 @@ public class Item extends EventDispatcher {
     public function destroy():void {
         _item = null;
         _extension = null;
+    }
+
+    public function get item() : ItemVO
+    {
+        return _item;
     }
 }
 }

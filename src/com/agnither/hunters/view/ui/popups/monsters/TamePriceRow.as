@@ -96,7 +96,7 @@ public class TamePriceRow extends AbstractView {
 
     private function removePets() : void {
 
-        var pets : Vector.<Pet> = Model.instance.player.pets.pets;
+        var pets : Vector.<Pet> = Model.instance.player.pets.petsList;
         var removed : int = 0;
         for (var i : int = pets.length-1; i >= 0; i--)
         {

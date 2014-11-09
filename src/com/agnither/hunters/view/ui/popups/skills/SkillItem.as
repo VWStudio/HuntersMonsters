@@ -1,15 +1,11 @@
 /**
  * Created by mor on 23.09.2014.
  */
-package com.agnither.hunters.view.ui.popups.skills {
-import com.agnither.hunters.data.outer.MagicTypeVO;
-import com.agnither.hunters.data.outer.DamageTypeVO;
+package com.agnither.hunters.view.ui.popups.skills
+{
 import com.agnither.hunters.data.outer.SkillVO;
 import com.agnither.hunters.model.Model;
-import com.agnither.hunters.model.modules.locale.Locale;
-import com.agnither.hunters.model.modules.monsters.MonsterVO;
 import com.agnither.ui.AbstractView;
-import com.cemaprjl.viewmanage.ShowPopupCmd;
 
 import flash.ui.Mouse;
 import flash.ui.MouseCursor;
@@ -18,11 +14,10 @@ import starling.display.Image;
 import starling.events.Touch;
 import starling.events.TouchEvent;
 import starling.events.TouchPhase;
-import starling.filters.ColorMatrixFilter;
-
 import starling.text.TextField;
 
-public class SkillItem extends AbstractView {
+public class SkillItem extends AbstractView
+{
     private var _points : TextField;
     private var _icon : Image;
     private var _back : Image;
@@ -31,12 +26,15 @@ public class SkillItem extends AbstractView {
     private var isLevelEnough : Boolean = false;
     private var _disabled : Image;
     private var isNotMax : Boolean = true;
-    public function SkillItem() {
+
+    public function SkillItem()
+    {
         super();
     }
 
 
-    override protected function initialize() : void {
+    override protected function initialize() : void
+    {
 
         createFromConfig(_refs.guiConfig.common.skillItem);
 
@@ -51,11 +49,12 @@ public class SkillItem extends AbstractView {
 
         _back.touchable = true;
         _back.addEventListener(TouchEvent.TOUCH, onTouch);
-        
+
     }
 
 
-    override public function update() : void {
+    override public function update() : void
+    {
 
 
         var owned : Number = Model.instance.progress.getSkillValue(_skill.id.toString());
@@ -64,22 +63,28 @@ public class SkillItem extends AbstractView {
         isLevelEnough = _skill.unlocklevel <= Model.instance.progress.level;
         isNotMax = owned < _skill.points;
         isAllowedToIncrease = Model.instance.progress.skillPoints > 0 && isLevelEnough && isNotMax;
-        _points.text = owned + "/" + _skill.points + (isAllowedToIncrease ? "(+)" :"");
+        _points.text = owned + "/" + _skill.points + (isAllowedToIncrease ? "(+)" : "");
         _disabled.visible = !isLevelEnough;
         _back.visible = isLevelEnough;
 
 
     }
 
-    public function setSkill($skill : SkillVO):void {
+    public function setSkill($skill : SkillVO) : void
+    {
         _skill = $skill;
     }
 
-    private function onTouch(e : TouchEvent) : void {
+    private function onTouch(e : TouchEvent) : void
+    {
+        if (!isAllowedToIncrease)
+        {
+            return;
+        }
         e.stopImmediatePropagation();
         e.stopPropagation();
         var touch : Touch = e.getTouch(_back);
-        if(touch)
+        if (touch)
         {
             Mouse.cursor = isAllowedToIncrease ? MouseCursor.BUTTON : MouseCursor.AUTO;
             switch (touch.phase)
@@ -92,9 +97,11 @@ public class SkillItem extends AbstractView {
                     Model.instance.progress.incSkill(_skill.id.toString());
                     break;
             }
-        } else
+        }
+        else
         {
             Mouse.cursor = MouseCursor.AUTO;
+
         }
 
 

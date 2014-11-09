@@ -23,8 +23,8 @@ public class LocalPlayer extends Player {
 
     override public function init($data : Object) : void {
         super.init($data);
-        initInventory($data.items, $data.inventory);
-        initPets($data.pets);
+        initInventory($data.getItems(), $data.getInventory());
+        initPets($data.getPets());
     }
 
 

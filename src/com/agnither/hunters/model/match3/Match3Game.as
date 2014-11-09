@@ -94,6 +94,7 @@ public class Match3Game extends EventDispatcher {
     }
 
     private function handleSelectSpell(e: Event):void {
+        trace("SELECT SPELL", e.data);
         if (!(currentPlayer is AIPlayer)) {
             var spell: Spell = e.data as Spell;
             if (spell && checkSpell(spell)) {

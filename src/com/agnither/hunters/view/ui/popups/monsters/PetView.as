@@ -4,12 +4,15 @@
 package com.agnither.hunters.view.ui.popups.monsters {
 import com.agnither.hunters.data.outer.MagicTypeVO;
 import com.agnither.hunters.data.outer.DamageTypeVO;
+import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.modules.locale.Locale;
 import com.agnither.hunters.model.player.inventory.Pet;
 import com.agnither.ui.AbstractView;
+import com.agnither.ui.ButtonContainer;
 import com.agnither.utils.CommonRefs;
 
 import starling.display.Image;
+import starling.events.Event;
 import starling.text.TextField;
 
 public class PetView extends AbstractView {
@@ -26,6 +29,9 @@ public class PetView extends AbstractView {
     private var _armor: TextField;
     private var _damage: TextField;
     private var _killed : Image;
+    private var _sellButton : ButtonContainer;
+    private var _price : Number = 0;
+    private var _buyable : Boolean;
 
     public function PetView(pet: Pet) {
         _pet = pet;
@@ -44,7 +50,9 @@ public class PetView extends AbstractView {
 //        _links.armor_icon.getChildAt(0).texture = _refs.gui.getTexture("shild.png");
 //        _links.damage_icon.getChildAt(0).texture = _refs.gui.getTexture("hit.png");
 
+        trace("_pet.params.magic", _pet.params.magic);
         var damageType: MagicTypeVO = MagicTypeVO.DICT[_pet.params.magic];
+        trace(damageType);
         _links.damage_type_icon.getChildAt(0).texture = _refs.gui.getTexture(damageType.picturedamage);
 
         _name = _links.name_tf;
@@ -60,6 +68,26 @@ public class PetView extends AbstractView {
 
         _killed = _links["bitmap_killed"];
         _killed.visible = false;
+
+        _sellButton = _links["buy_btn"];
+        _sellButton.text = "Продать";
+        _sellButton.addEventListener(Event.TRIGGERED, onSell);
+        _sellButton.visible = false;
+
+        _price = Model.instance.getPrice(pet.level);
+
+    }
+
+    public function setBuyable($val : Boolean = false):void {
+        _buyable = $val;
+        _sellButton.visible = _buyable && _price <= Model.instance.progress.gold;
+    }
+
+    private function onSell(event : Event) : void
+    {
+        Model.instance.player.pets.removePet(pet);
+        Model.instance.progress.gold += _price;
+        Model.instance.progress.saveProgress();
     }
 
 
