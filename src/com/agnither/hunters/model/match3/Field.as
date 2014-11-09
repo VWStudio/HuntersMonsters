@@ -66,17 +66,32 @@ public class Field extends EventDispatcher {
 
     public function initChips(special1: String, special2: String):void {
         _chipTypes.length = 0;
+
+        var allTypes : Array = [MagicTypeVO.NATURE, MagicTypeVO.ADD1, MagicTypeVO.ADD2, MagicTypeVO.ADD3];
+
         _chipTypes.push(MagicTypeVO.CHEST);
         _chipTypes.push(MagicTypeVO.WEAPON);
-        _chipTypes.push(MagicTypeVO.NATURE);
         _chipTypes.push(MagicTypeVO.WATER);
         _chipTypes.push(MagicTypeVO.FIRE);
 
+//        _chipTypes.push(MagicTypeVO.NATURE);
+
+        var index : int = -1;
         if (_chipTypes.indexOf(special1) < 0) {
             _chipTypes.push(special1);
+            index = allTypes.indexOf(special1);
+            if(index >= 0) {
+                allTypes.splice(index, 1)
+            }
         }
         if (_chipTypes.indexOf(special2) < 0) {
             _chipTypes.push(special2);
+//            index = allTypes.indexOf(special1);
+//            if(index >= 0) {
+//                allTypes.splice(index, 1)
+//            }
+        } else {
+            _chipTypes.push(allTypes[int(Math.random()*allTypes.length)]);
         }
     }
 

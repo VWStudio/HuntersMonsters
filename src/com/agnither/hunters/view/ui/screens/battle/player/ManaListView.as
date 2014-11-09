@@ -36,12 +36,24 @@ public class ManaListView extends AbstractView {
     override protected function initialize():void {
         _mana = new <ManaView>[];
 
-        for (var i:int = 0; i < numChildren; i++) {
+        var i : int = 0;
+        while (i < numChildren && numChildren > 3) {
+            if(i == 3) {
+                removeChildAt(i);
+                continue;
+            }
             var child : ManaView = getChildAt(i) as ManaView;
             child.touchable = true;
             child.addEventListener(TouchEvent.TOUCH, onTouch);
             _mana.push(getChildAt(i) as ManaView);
+            i++;
         }
+
+//        for (var i:int = 0; i < numChildren; i++) {
+//            if(i == 3) {
+//                remo
+//            }
+//        }
 
 
 
@@ -52,9 +64,9 @@ public class ManaListView extends AbstractView {
 
         var touch : Touch = event.getTouch(event.currentTarget as DisplayObject, TouchPhase.BEGAN);
         if(touch) {
-            trace("ADD MANA");
+//            trace("ADD MANA");
             var mv : ManaView = event.currentTarget as ManaView;
-            _manaList.addMana(mv.mana.type, 5);
+            _manaList.addMana(mv.mana.type, 10);
         }
 
     }

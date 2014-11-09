@@ -30,9 +30,9 @@ public class ManaList extends EventDispatcher {
     public function init():void {
         clearList();
 
-        addManaCounter(MagicTypeVO.nature.name);
-        addManaCounter(MagicTypeVO.water.name);
         addManaCounter(MagicTypeVO.fire.name);
+        addManaCounter(MagicTypeVO.water.name);
+//        addManaCounter(MagicTypeVO.nature.name);
     }
 
     public function addManaCounter(type: String):void {
