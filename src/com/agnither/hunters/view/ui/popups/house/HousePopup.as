@@ -123,7 +123,7 @@ public class HousePopup extends Popup {
         }
     }
 
-    private function handleClose(event : Event) : void {
+    override protected function handleClose(event : Event) : void {
         coreDispatch(UI.HIDE_POPUP, NAME);
     }
 

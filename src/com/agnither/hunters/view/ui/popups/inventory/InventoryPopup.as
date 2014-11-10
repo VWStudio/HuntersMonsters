@@ -122,7 +122,7 @@ public class InventoryPopup extends Popup {
 
     }
 
-    private function handleClose(e: Event):void {
+    override protected function handleClose(e: Event):void {
         coreDispatch(UI.HIDE_POPUP, NAME);
     }
 }

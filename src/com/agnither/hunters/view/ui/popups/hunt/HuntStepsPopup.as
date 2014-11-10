@@ -120,7 +120,7 @@ public class HuntStepsPopup extends Popup {
         coreRemoveListener(DropSlotView.HIDE_TOOLTIP, onHideTooltip);
     }
 
-    private function handleClose(event : Event) : void {
+    override protected function handleClose(event : Event) : void {
         coreDispatch(UI.HIDE_POPUP, NAME);
     }
 

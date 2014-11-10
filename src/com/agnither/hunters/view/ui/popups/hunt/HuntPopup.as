@@ -57,7 +57,7 @@ public class HuntPopup extends Popup {
 
     }
 
-    private function handleClose(event : Event) : void {
+    override protected function handleClose(event : Event) : void {
         Model.instance.currentMonsterPoint = null;
         coreDispatch(UI.HIDE_POPUP, NAME);
     }
@@ -65,7 +65,7 @@ public class HuntPopup extends Popup {
     private function handlePlay(event : Event) : void {
 
         Model.instance.match3mode = Match3Game.MODE_REGULAR;
-        Model.instance.currentMonsterPoint.count(false)
+        Model.instance.currentMonsterPoint.count(false);
         coreDispatch(UI.HIDE_POPUP, NAME);
         coreDispatch(Match3Game.START_GAME, data);
     }
