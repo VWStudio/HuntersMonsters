@@ -144,7 +144,7 @@ public class App extends Sprite {
         if (_timeleft <= 0)
         {
             generateEvent();
-            _timeleft = MonsterAreaVO.LIST[0].chestRespawn * 1000;
+            _timeleft = MonsterAreaVO.LIST[0].chestrespawn * 1000;
         }
         else
         {

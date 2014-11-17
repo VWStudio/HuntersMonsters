@@ -13,7 +13,6 @@ public class MonsterArea extends AbstractView {
     }
 
     override public function update() : void {
-//        trace(this.name, this.width, this.height, this.transformationMatrix);
     }
 }
 }

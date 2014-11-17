@@ -28,6 +28,7 @@ public class ManaView extends AbstractView {
     private var _value: TextField;
 
     public function ManaView() {
+        createFromConfig(_refs.guiConfig.common.mana)
     }
 
     override protected function initialize():void {

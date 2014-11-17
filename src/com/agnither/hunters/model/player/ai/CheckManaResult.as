@@ -6,6 +6,7 @@ import com.agnither.hunters.data.outer.MagicTypeVO;
 import com.agnither.hunters.data.outer.DamageTypeVO;
 import com.agnither.hunters.model.player.Mana;
 import com.agnither.hunters.model.player.ManaList;
+import com.agnither.hunters.model.player.inventory.Item;
 import com.agnither.hunters.model.player.inventory.Spell;
 
 import flash.utils.Dictionary;
@@ -25,27 +26,24 @@ public class CheckManaResult {
         return _delta == 0;
     }
 
-    public function CheckManaResult(mana: ManaList, spell: Spell) {
+    public function CheckManaResult(mana: ManaList, $item: Item) {
         _results = new Dictionary();
         _delta = 0;
 
-        var manaAmount: Object = spell.extension_drop;
+        var manaAmount: Object = $item.mana;
         for (var key: * in manaAmount) {
             var magic: MagicTypeVO = MagicTypeVO.DICT[key];
             var manaItem : Mana = mana.getMana(magic.name);
             if(!manaItem) {
                 _delta = -1;
-                return;;
+                return;
             }
             var delta: int = manaItem ? manaAmount[key] - manaItem.value : 0;
-//            trace(key, magic.id, magic.name, manaItem, delta);
             if (delta > 0) {
                 _results[magic.name] = delta;
                 _delta += delta;
             }
         }
-
-//        trace("_delta", _delta, _delta == 0);
 
     }
 }

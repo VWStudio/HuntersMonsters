@@ -14,12 +14,10 @@ public class Personage extends EventDispatcher {
     public static const HIT: String = "hit_Personage";
     public static const DEAD: String = "dead_Personage";
 
-//    private var _id: String;
+    public var current : Boolean = false;
 
     private var _name: String;
     public var exp : int = 0;
-//    public var league : int = 0;
-//    public var rating : int = 0;
     public var picture : String;
     public var level: int = 0;
     public var hp: int = 0;
@@ -27,7 +25,6 @@ public class Personage extends EventDispatcher {
     public var maxSummon: int = 1;
     private var _damage: int = 0;
     private var _defence: int = 0;
-//    public var skillPoints : int = 0;
 
     public function get isDead():Boolean {
         return hp <= 0;

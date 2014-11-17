@@ -9,7 +9,7 @@ import com.cemaprjl.core.coreAddListener;
 public class LocalPlayer extends Player {
 
     public static const ITEM_SELECTED : String = "LocalPlayer.ITEM_SELECTED";
-
+    public static const PET_SELECTED: String = "pet_selected_MonstersView";
 
     private var _progress : Progress;
 
@@ -18,19 +18,14 @@ public class LocalPlayer extends Player {
         id = "player user";
         super();
         coreAddListener(LocalPlayer.ITEM_SELECTED, selectItem);
+        coreAddListener(LocalPlayer.PET_SELECTED, handleSummonPet);
     }
-
 
     override public function init($data : Object) : void {
         super.init($data);
         initInventory($data.getItems(), $data.getInventory());
         initPets($data.getPets());
     }
-
-
-//    public function addGold(amount : int) : void {
-//        _hero.gold += amount;
-//    }
 
     public function addItem(item : Item) : void {
         _inventory.addItem(item);

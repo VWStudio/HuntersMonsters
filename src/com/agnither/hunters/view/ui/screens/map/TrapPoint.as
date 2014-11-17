@@ -82,13 +82,13 @@ public class TrapPoint extends AbstractView {
     }
 
     override protected function initialize() : void {
-        if (!_links["bitmap_trap_back"])
+        if (!_links["bitmap_common_trap_back"])
         {
             createFromConfig(_refs.guiConfig.common.trapIcon);
         }
 
 
-        _back = _links["bitmap_trap_back"];
+        _back = _links["bitmap_common_trap_back"];
         _back.touchable = true;
         this.touchable = true;
 

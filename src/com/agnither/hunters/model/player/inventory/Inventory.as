@@ -7,6 +7,8 @@ import com.agnither.hunters.data.outer.ItemSlotVO;
 import com.agnither.hunters.data.outer.ItemTypeVO;
 import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.modules.items.ItemVO;
+import com.agnither.hunters.model.player.drop.Drop;
+import com.cemaprjl.utils.Util;
 
 import flash.utils.Dictionary;
 
@@ -18,7 +20,7 @@ public class Inventory extends EventDispatcher {
 
     public static var max_capacity: uint = 6;
 
-    private var _data: Object;
+//    private var _data: Object;
 
     private var _inventoryItems : Array = []; // of String
     public function get inventoryItems():Array {
@@ -27,7 +29,6 @@ public class Inventory extends EventDispatcher {
 
     private var _itemsDict: Object = new Object();
     public function getItem(name: String):Item {
-        trace("GET ITEM", name, _itemsDict[name]);
         return _itemsDict[name];
     }
 
@@ -65,11 +66,13 @@ public class Inventory extends EventDispatcher {
     }
 
     public function parse(data : Object) : void {
-        _data = data;
+//        _data = data;
         for (var key: * in data) {
             var itemData: Object = data[key];
-            var item : ItemVO = Model.instance.items.getItem(itemData.id);
-            var newItem : Item = Item.createItem(item, itemData.extension);
+
+            var itemVO : ItemVO = Model.instance.items.getItemVO(itemData.id);
+            itemVO.extension = itemData.extension;
+            var newItem : Item = Item.create(itemVO);
             newItem.uniqueId = key;
 
             addItem(newItem);
@@ -77,27 +80,36 @@ public class Inventory extends EventDispatcher {
 //            _itemsDict[key] = newItem;
 //            _itemsByType[item.type].push(key);
         }
+
+//        for (var i : int = 0; i < 100; i++)
+//        {
+//
+//            item = Model.instance.shop.genRandomItem(ItemTypeVO.weapon);
+//            newItem = Item.createDrop(item);
+//            newItem.uniqueId = Util.uniq(item.name+ "."+i);
+//            addItem(newItem);
+//
+//        }
+
+
+
     }
 
     public function addItem($item: Item):void {
         if (!_itemsDict[$item.uniqueId]) {
-            var item : Item = Item.createItem($item.item, $item.extension);
+            var item : Item = $item;
             item.uniqueId = $item.uniqueId;
             _itemsDict[item.uniqueId] = item;
             _itemsByType[item.type].push(item.uniqueId);
-            trace("**", item.uniqueId, item.type, item.type == ItemTypeVO.spell);
             if(item.type == ItemTypeVO.spell) {
                 _spells["spell"+item.id] = item;
-                trace("spell"+item.id, item, _spells["spell"+item.id])
             }
-
-            _data[item.uniqueId] = {id: item.id, extension: item.extension};
         }
     }
 
     public function isHaveSpell($id : Number):Boolean {
 
-        trace("isHaveSpell", $id, _spells["spell"+$id]);
+//        trace("isHaveSpell", $id, _spells["spell"+$id]);
         return _spells["spell"+$id] != null;
 
     }
@@ -108,7 +120,7 @@ public class Inventory extends EventDispatcher {
             unwearItem(item);
 
             delete _itemsDict[item.uniqueId];
-            delete _data[item.uniqueId];
+//            delete _data[item.uniqueId];
 
 
             var index: int = _itemsByType[item.type].indexOf(item.uniqueId);
@@ -172,10 +184,10 @@ public class Inventory extends EventDispatcher {
         }
 
         item.isWearing = true;
+
         _inventoryItems.push(uid);
 
-
-
+        item.update();
 
     }
 
@@ -191,9 +203,9 @@ public class Inventory extends EventDispatcher {
         {
             return 1;
         } else {
-            if(itemA.extension[ExtensionVO.damage] > itemA.extension[ExtensionVO.damage]) {
+            if(itemA.getDamage() > itemA.getDamage()) {
                 return -1;
-            } else if (itemA.extension[ExtensionVO.damage] < itemA.extension[ExtensionVO.damage]) {
+            } else if (itemA.getDamage() < itemA.getDamage()) {
                 return 1;
             }
         }
@@ -206,6 +218,7 @@ public class Inventory extends EventDispatcher {
         if (index >= 0) {
             item.isWearing = false;
             _inventoryItems.splice(index, 1);
+            item.update();
         }
     }
 
@@ -217,16 +230,20 @@ public class Inventory extends EventDispatcher {
         for (var i : int = 0; i < _inventoryItems.length; i++) {
             var item: Object = _itemsDict[_inventoryItems[i]];
             if (item.type != ItemTypeVO.spell) {
-                var extension:Object = item.extension;
-                for (key in extension) {
-                    if (!isNaN(extension[key])) {
-                        _extensions[key] += int(extension[key]);
-                    } else {
 
-                        // what should we do if value is array?
+                _extensions[ExtensionVO.damage] += item.getDamage();
+                _extensions[ExtensionVO.defence] += item.getDefence();
 
-                    }
-                }
+//                var extension:Object = item.extension;
+//                for (key in extension) {
+//                    if (!isNaN(extension[key])) {
+//                        _extensions[key] += int(extension[key]);
+//                    } else {
+//
+//                        // what should we do if value is array?
+//
+//                    }
+//                }
             }
         }
     }

@@ -56,13 +56,13 @@ public class HousePoint extends AbstractView {
     }
 
     override protected function initialize() : void {
-        if (!_links["bitmap_icon_bg.png"])
+        if (!_links["bitmap_map_icon_back"])
         {
             createFromConfig(_refs.guiConfig.common.houseIcon);
         }
 
 
-        _back = _links["bitmap_icon_bg.png"];
+        _back = _links["bitmap_map_icon_back"];
         _back.touchable = true;
         this.touchable = true;
 

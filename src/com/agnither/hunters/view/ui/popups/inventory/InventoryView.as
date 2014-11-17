@@ -47,6 +47,7 @@ public class InventoryView extends AbstractView {
         while (numChildren > 0) {
             var itemView: ItemView = removeChildAt(0) as ItemView;
             if (itemView) {
+                itemView.update();
                 itemView.removeEventListener(TouchEvent.TOUCH, handleTouch);
                 itemView.destroy();
             }
@@ -59,6 +60,7 @@ public class InventoryView extends AbstractView {
             itemView.addEventListener(TouchEvent.TOUCH, handleTouch);
             addChild(itemView);
             itemView.y = i * tileHeight;
+            itemView.noSelection();
         }
     }
 

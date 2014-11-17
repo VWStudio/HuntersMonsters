@@ -6,7 +6,7 @@
  * To change this template use File | Settings | File Templates.
  */
 package com.agnither.hunters.view.ui {
-import com.agnither.hunters.view.ui.common.ManaView;
+import com.agnither.hunters.view.ui.common.ItemManaView;
 import com.agnither.hunters.view.ui.common.TabView;
 import com.agnither.hunters.view.ui.screens.battle.BattleScreen;
 import com.agnither.hunters.view.ui.screens.battle.player.DropListView;

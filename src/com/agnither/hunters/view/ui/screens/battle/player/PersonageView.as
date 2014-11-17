@@ -45,29 +45,39 @@ public class PersonageView extends AbstractView {
     private var _armor: TextField;
     private var _damage: TextField;
     private var _hit: TextField;
+    private var _currentMarker : Image;
+    private var _progressLine : Image;
+    private var _attackType : Image;
+    private var _hitImage : Image;
 
     public function PersonageView() {
     }
 
     override protected function initialize():void {
-        _picture = getChildAt(0) as Image;
+        _picture = _links["bitmap_hero.png"];
 
-        _links.hp_icon.getChildAt(0).texture = _refs.gui.getTexture("heart.png");
-        _links.armor_icon.getChildAt(0).texture = _refs.gui.getTexture("shild.png");
-        _links.damage_icon.getChildAt(0).texture = _refs.gui.getTexture("hit.png");
+        _currentMarker = _links["bitmap_battle_current_player"];
+        _currentMarker.visible = false;
+        _progressLine = _links["bitmap_battle_progress_line"];
+
+        _attackType = _links["bitmap_chip_sword"];
 
         _name = _links.name_tf;
         _hp = _links.hp_tf;
         _armor = _links.armor_tf;
         _damage = _links.damage_tf;
         _hit = _links.hit_tf;
+        _hitImage = _links["bitmap_battle_hit"];
+        _hitImage.visible = false;
+
     }
 
     private function handleUpdate(e: Event = null):void {
-        trace("UPDATE PERSONAGE", _personage.isDead);
         if (!_personage.isDead) {
             this.visible = true;
-            _links.damage_type_icon.getChildAt(0).texture = _personage is Hero ? _refs.gui.getTexture(MagicTypeVO.weapon.picturedamage) : _refs.gui.getTexture(_personage.magic.picturedamage);
+
+            // TODO
+//            _links.damage_type_icon.getChildAt(0).texture = _personage is Hero ? _refs.gui.getTexture(MagicTypeVO.weapon.picturedamage) : _refs.gui.getTexture(_personage.magic.picturedamage);
 
             if (_personage.picture) {
                 _picture.texture = _refs.gui.getTexture(_personage.picture);
@@ -82,20 +92,32 @@ public class PersonageView extends AbstractView {
 
         _name.text = (_personage.name ? String(_personage.name) : Locale.getString(_personage.id)) + " [lvl " + String(_personage.level)+"]";
         _hp.text = String(_personage.hp) + "/" + String(_personage.maxHP);
+        _progressLine.scaleX = _isRight ? -_personage.hp / _personage.maxHP : _personage.hp / _personage.maxHP;
+
         _armor.text = String(_personage.defence);
         _damage.text = String(_personage.damage);
-
+        _currentMarker.visible = _personage.current;
+        
+//        for (var i : int = 0; i < numChildren; i++)
+//        {
+//            var object : Object = getChildAt(i);
+//        }
+        
 //        visible = !_personage.isDead;
     }
 
     private function handleHit(e: Event):void {
         _hit.text = String(e.data);
         _hit.visible = true;
-        Starling.juggler.delayCall(hideHit, 1.5);
+        _hitImage.visible = true;
+        _hitImage.alpha = 0;
+        Starling.juggler.tween(_hitImage, 0.2, {alpha:1});
+        Starling.juggler.delayCall(hideHit, 0.7);
     }
 
     private function hideHit():void {
         _hit.visible = false;
+        _hitImage.visible = false;
     }
 }
 }

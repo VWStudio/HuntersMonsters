@@ -14,6 +14,7 @@ import com.agnither.hunters.model.modules.players.SettingsVO;
 import com.agnither.hunters.model.player.AIPlayer;
 import com.agnither.hunters.model.player.LocalPlayer;
 import com.agnither.hunters.model.player.Player;
+import com.agnither.hunters.model.player.Territory;
 import com.agnither.hunters.model.player.inventory.Item;
 import com.agnither.hunters.model.player.inventory.Pet;
 import com.agnither.hunters.model.player.personage.Progress;
@@ -59,7 +60,7 @@ public class Model {
 
     public var monsters : Monsters;
     public var items : Items;
-    public var monsterAreas : Dictionary = new Dictionary();
+    public var territories : Dictionary = new Dictionary();
     public var player : LocalPlayer;
     public var monster : MonsterVO;
     public var drop : int;
@@ -76,14 +77,39 @@ public class Model {
         shop = new Shop();
 
 
+
         coreAddListener(Model.MONSTER_CATCHED, onMonsterCatched);
-        coreAddListener(CatchedPetsView.PET_SELECTED, handlePetSelected);
+
         coreAddListener(Match3Game.START_GAME, onStartGame);
 
 
     }
 
+    private function fillTerritories() : void
+    {
 
+        for (var i : int = 0; i < MonsterAreaVO.LIST.length; i++)
+        {
+            var ma : MonsterAreaVO = MonsterAreaVO.LIST[i];
+            var territory : Territory = new Territory(ma.clone());
+            territories[ma.area] = territory; // if you get area by monster id or house
+            territories[ma.id] = territory; // if you get area by clouds
+            trace(i, ma.id, progress.unlockedLocations.indexOf(ma.id));
+            territory.isUnlocked = progress.unlockedLocations.indexOf(ma.id) >= 0;
+        }
+
+    }
+
+    public function init() : void {
+        progress = new Progress();
+
+        player = new LocalPlayer();
+        player.init(progress);
+
+        fillTerritories();
+
+        App.instance.tick.addTickCallback(monsterGenerate);
+    }
 
     private function onMonsterCatched() : void {
         var stars : int = 0;
@@ -96,15 +122,29 @@ public class Model {
         } else {
             stars = 0;
         }
+
+        var isJustBeaten : Boolean = progress.unlockPointsGiven[monster.id] == null;
+
+        trace("onMonsterCatched", isJustBeaten, Model.instance.progress.unlockPoints);
+
         progress.monstersResults[monster.id] = progress.monstersResults[monster.id] < stars ? stars : progress.monstersResults[monster.id];
+
         coreDispatch(MonsterPoint.STARS_UPDATE);
-//           progress.monstersResults[monster.id+"."+monster.level] = stars;
-        var monsterToUnlock : MonsterAreaVO = Model.instance.monsters.getNextArea(monster.id);
-        if (progress.unlockedMonsters.indexOf(monsterToUnlock.id) == -1)
-        {
-            progress.unlockedMonsters.push(monsterToUnlock.id);
-            progress.addExp(MonsterAreaVO.DICT[monsterToUnlock.id].expearned);
+
+        if(isJustBeaten) {
+            Model.instance.progress.unlockPoints += 1;
+
+            coreDispatch(Territory.CAN_UNLOCK);
         }
+
+//        var territory : Territory = Model.instance.territories[monster.id];
+
+//        var monsterToUnlock : MonsterAreaVO = Model.instance.monsters.getNextArea(monster.id);
+//        if (progress.unlockedLocations.indexOf(monsterToUnlock.id) == -1)
+//        {
+//            progress.unlockedLocations.push(monsterToUnlock.id);
+//            progress.addExp(MonsterAreaVO.DICT[monsterToUnlock.id].expearned);
+//        }
 
         var pet : Pet = new Pet(monster, monster);
 //        pet.tame(false);
@@ -127,96 +167,89 @@ public class Model {
 
 
 
-    private function handlePetSelected(pet : Pet) : void {
-        player.summonPet(pet);
-    }
-
-    public function init() : void {
-        progress = new Progress();
-
-        player = new LocalPlayer();
-        player.init(progress);
 
 
-
-        App.instance.tick.addTickCallback(monsterGenerate);
-    }
-
-    public function addPlayerGold($gold : int) : void {
-        progress.gold += $gold;
-    }
 
     public function addPlayerItem($item : Item) : void {
         player.addItem($item);
-//        progress.items[$item.uniqueId] = $item;
     }
     private function monsterGenerate($delta : Number) : void {
-        for (var monsterID : String in _territoryTimeouts)
+
+
+        for (var i : int = 0; i < progress.unlockedLocations.length; i++)
         {
-            var territory : MonsterAreaVO = monsters.getMonsterArea(monsterID);
-            var points : Vector.<MonsterPoint> = _territoryPoints[monsterID];
-            if(points.length < territory.area_max) {
-                _territoryTimeouts[monsterID] = _territoryTimeouts[monsterID] < 0 ? 0 : _territoryTimeouts[monsterID] - $delta;
+            var territory : Territory = territories[progress.unlockedLocations[i]];
+            territory.tick($delta);
 
-                if(state != MapScreen.NAME) continue;
-
-                if(_territoryTimeouts[monsterID] <= 0) {
-                    createPoint(monsterID);
-                    _territoryTimeouts[monsterID] = territory.respawn;
-                }
-            } else {
-
-            }
         }
+
+
+//        for (var monsterID : String in _territoryTimeouts)
+//        {
+//            var territory : MonsterAreaVO = monsters.getMonsterArea(monsterID);
+//            var points : Vector.<MonsterPoint> = _territoryPoints[monsterID];
+//            if(points.length < territory.area_max) {
+//                _territoryTimeouts[monsterID] = _territoryTimeouts[monsterID] < 0 ? 0 : _territoryTimeouts[monsterID] - $delta;
+//
+//                if(state != MapScreen.NAME) continue;
+//
+//                if(_territoryTimeouts[monsterID] <= 0) {
+//                    createPoint(monsterID);
+//                    _territoryTimeouts[monsterID] = territory.respawn;
+//                }
+//            } else {
+//
+//            }
+//        }
     }
 
-    public function deletePoint($point : MonsterPoint) : void {
-        if(currentMonsterPoint) return;
-        if(Model.instance.state != MapScreen.NAME) return;
-
-        var points : Vector.<MonsterPoint> = _territoryPoints[$point.monsterType.id];
-        var index : int = points.indexOf($point);
-        if(index > -1) {
-            points.splice(index, 1);
-        }
-        coreDispatch(MapScreen.DELETE_POINT, $point);
-
-
-        updatePoints();
-    }
-    private function createPoint($monsterID : String) : void {
-        if(Model.instance.state != MapScreen.NAME) return;
-
-        var mp : MonsterPoint = new MonsterPoint();
-        mp.monsterType = Model.instance.monsters.getRandomAreaMonster($monsterID);
-        var points : Vector.<MonsterPoint> = _territoryPoints[$monsterID];
-        points.push(mp);
-
-        coreDispatch(MapScreen.ADD_POINT, mp);
-
-    }
-    public function updatePoints() : void {
-
-        if(Model.instance.state != MapScreen.NAME) return;
-
-        for (var i : int = 0; i < progress.unlockedMonsters.length; i++)
-        {
-            var monsterID : String = progress.unlockedMonsters[i];
-            var territory : MonsterAreaVO = monsters.getMonsterArea(monsterID);
-            if(!_territoryPoints[monsterID]) {
-                _territoryPoints[monsterID]  = new <MonsterPoint>[];
-                _territoryTimeouts[monsterID]  = territory.respawn * 1000;
-            }
-            var points : Vector.<MonsterPoint> = _territoryPoints[monsterID];
-            if(points.length < territory.area_min) {
-                var monstersAmount : int = (territory.area_min + (territory.area_max - territory.area_min + 1) * Math.random()) - points.length;
-                for (var j : int = 0; j < monstersAmount; j++)
-                {
-                    createPoint(monsterID);
-                }
-            }
-        }
-    }
+//    public function deletePoint($point : MonsterPoint) : void {
+//        if(currentMonsterPoint) return;
+//        if(Model.instance.state != MapScreen.NAME) return;
+//
+//        var points : Vector.<MonsterPoint> = _territoryPoints[$point.monsterType.id];
+//        var index : int = points.indexOf($point);
+//        if(index > -1) {
+//            points.splice(index, 1);
+//        }
+//        coreDispatch(MapScreen.DELETE_POINT, $point);
+//
+//
+//        updatePoints();
+//    }
+//    private function createPoint($monsterID : String) : void {
+//        if(Model.instance.state != MapScreen.NAME) return;
+//
+//        var mp : MonsterPoint = new MonsterPoint();
+//        mp.monsterType = Model.instance.monsters.getRandomAreaMonster($monsterID);
+//        var points : Vector.<MonsterPoint> = _territoryPoints[$monsterID];
+//        points.push(mp);
+//
+//        coreDispatch(MapScreen.ADD_POINT, mp);
+//
+//    }
+//    public function updatePoints() : void {
+//
+//        if(state != MapScreen.NAME) return;
+//
+//        for (var i : int = 0; i < progress.unlockedLocations.length; i++)
+//        {
+////            var monsterID : String = progress.unlockedLocations[i];
+////            var territory : MonsterAreaVO = monsters.getMonsterArea(monsterID);
+////            if(!_territoryPoints[monsterID]) {
+////                _territoryPoints[monsterID]  = new <MonsterPoint>[];
+////                _territoryTimeouts[monsterID]  = territory.respawn * 1000;
+////            }
+//            var points : Vector.<MonsterPoint> = _territoryPoints[monsterID];
+//            if(points.length < territory.area_min) {
+//                var monstersAmount : int = (territory.area_min + (territory.area_max - territory.area_min + 1) * Math.random()) - points.length;
+//                for (var j : int = 0; j < monstersAmount; j++)
+//                {
+//                    createPoint(monsterID);
+//                }
+//            }
+//        }
+//    }
 
 
     public function createHouse($name : String) : void {
@@ -277,5 +310,17 @@ public class Model {
         return int($val * SettingsVO.DICT["pointValue"] + ( (SettingsVO.DICT["pointPercent"] + 100) / 100) * $val) ;
     }
 
+    public function deleteCurrentPoint() : void
+    {
+        if(currentMonsterPoint != null) {
+            var terr : Territory = territories[currentMonsterPoint.monsterType.id];
+            terr.deletePoint(currentMonsterPoint);
+        }
+    }
+
+    public function isMap() : Boolean
+    {
+        return state == MapScreen.NAME;
+    }
 }
 }

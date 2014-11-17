@@ -9,6 +9,7 @@ import com.agnither.hunters.model.match3.Match3Game;
 import com.agnither.hunters.model.match3.Move;
 import com.agnither.hunters.model.match3.MoveResult;
 import com.agnither.hunters.model.player.ai.CheckManaResult;
+import com.agnither.hunters.model.player.inventory.Item;
 import com.agnither.hunters.model.player.inventory.Spell;
 
 import flash.utils.Dictionary;
@@ -39,7 +40,7 @@ public class AIPlayer extends Player {
         var inventory: Array = [];
         for (var i:int = 0; i < monster.items.length; i++) {
             var id: int = monster.items[i];
-            items[id] = Model.instance.items.getItem(id);
+            items[id] = Model.instance.items.getItemVO(id);
             inventory.push(id);
         }
         initInventory(items, inventory);
@@ -55,13 +56,14 @@ public class AIPlayer extends Player {
         var results: Array = [];
         if (Math.random()*100 < difficulty) {
             for (var i:int = 0; i < _inventory.inventoryItems.length; i++) {
-                var spell: Spell = _inventory.getItem(_inventory.inventoryItems[i]) as Spell;
-                if (spell) {
-                    var result:CheckManaResult = new CheckManaResult(_manaList, spell);
-//                    trace("IS ENOUGH:", result.enough)
+
+                var spellItem: Item = _inventory.getItem(_inventory.inventoryItems[i]);
+//                var spell: Spell = _inventory.getItem(_inventory.inventoryItems[i]) as Spell;
+                if (spellItem.isSpell()) {
+                    var result:CheckManaResult = new CheckManaResult(_manaList, spellItem);
                     if (result.enough) {
 
-                        game.useSpell(spell);
+                        game.useSpell(spellItem);
                     } else {
                         results.push(result);
                     }

@@ -3,6 +3,7 @@
  */
 package com.agnither.hunters.model.player {
 import com.agnither.hunters.model.player.inventory.Inventory;
+import com.agnither.hunters.model.player.inventory.Item;
 import com.agnither.hunters.model.player.inventory.Pet;
 import com.agnither.hunters.model.player.inventory.PetsInventory;
 import com.agnither.hunters.model.player.inventory.Spell;
@@ -39,6 +40,7 @@ public class Player extends EventDispatcher {
     }
 
     protected var _manaList: ManaList;
+    private var _isCurrent : Boolean = false;
     public function get manaList():ManaList {
         return _manaList;
     }
@@ -79,19 +81,28 @@ public class Player extends EventDispatcher {
 
     }
 
-    public function summonPet(pet: Pet):void {
+    public function handleSummonPet(pet: Pet):void {
         _pet.summon(pet);
     }
 
     public function checkSpell(id: String):Boolean {
-        var spell: Spell = _inventory.getItem(id) as Spell;
-        return spell ? _manaList.checkSpell(spell) : false;
+        var item: Item = _inventory.getItem(id);
+        return (item && item.isSpell()) ? _manaList.checkSpell(item) : false;
     }
 
     public function useSpell(id: String, target: Personage):void {
-        var spell: Spell = _inventory.getItem(id) as Spell;
-        spell.useSpell(target);
+        var spell: Item = _inventory.getItem(id);
+        if(!spell.isSpell()) return;
+        target.hit(spell.getDamage(), true);
+//        spell.useSpell(target);
         _manaList.useSpell(spell);
+    }
+
+    public function set isCurrent($val : Boolean) : void
+    {
+        _isCurrent = $val;
+        _hero.current = _isCurrent;
+        _hero.update();
     }
 }
 }

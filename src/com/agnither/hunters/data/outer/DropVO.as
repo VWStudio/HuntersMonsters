@@ -80,7 +80,6 @@ public class DropVO {
     public var probability: int;
     public var amount: Array;
 
-
     public function get randomAmount():int {
         if(!amount) return 1;
         var min: int = amount[0];

@@ -19,7 +19,7 @@ public class GoldView extends AbstractView {
 
     override protected function initialize():void {
 
-        if(!_links["bitmap__bg"]) {
+        if(!_links["bitmap_common_back"]) {
             createFromConfig(_refs.guiConfig.common.goldItem);
         }
 

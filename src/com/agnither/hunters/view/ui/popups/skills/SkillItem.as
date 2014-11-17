@@ -38,10 +38,10 @@ public class SkillItem extends AbstractView
 
         createFromConfig(_refs.guiConfig.common.skillItem);
 
-        _icon = _links["bitmap_out_2.png"];
+        _icon = _links["bitmap_drop_magic"];
         _icon.touchable = false;
-        _back = _links["bitmap_hitrect"];
-        _disabled = _links["bitmap_disabled_tint"];
+        _back = _links["bitmap_common_hitrect"];
+        _disabled = _links["bitmap_common_disabled_tint"];
         _disabled.touchable = false;
         _disabled.visible = false;
         _points = _links["points_tf"];

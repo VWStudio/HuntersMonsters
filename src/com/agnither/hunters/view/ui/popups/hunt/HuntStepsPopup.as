@@ -1,13 +1,13 @@
 /**
  * Created by agnither on 12.08.14.
  */
-package com.agnither.hunters.view.ui.popups.hunt {
+package com.agnither.hunters.view.ui.popups.hunt
+{
 import com.agnither.hunters.App;
 import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.match3.Match3Game;
 import com.agnither.hunters.model.modules.monsters.MonsterVO;
 import com.agnither.hunters.model.player.drop.DropSlot;
-import com.agnither.hunters.model.player.drop.GoldDrop;
 import com.agnither.hunters.model.player.drop.ItemDrop;
 import com.agnither.hunters.view.ui.UI;
 import com.agnither.hunters.view.ui.common.MonsterInfo;
@@ -27,7 +27,8 @@ import starling.display.Sprite;
 import starling.events.Event;
 import starling.text.TextField;
 
-public class HuntStepsPopup extends Popup {
+public class HuntStepsPopup extends Popup
+{
 
     public static const NAME : String = "com.agnither.hunters.view.ui.popups.hunt.HuntStepsPopup";
 
@@ -50,17 +51,19 @@ public class HuntStepsPopup extends Popup {
     private var _drops : Sprite;
     private var _tooltip : Sprite;
 
-    public function HuntStepsPopup() {
+    public function HuntStepsPopup()
+    {
 
         super();
     }
 
-    override protected function initialize() : void {
+    override protected function initialize() : void
+    {
 
         createFromConfig(_refs.guiConfig.hunt_steps);
 
 
-        _back = _links["bitmap__bg"];
+        _back = _links["bitmap_common_back"];
         _closeButton = _links["close_btn"];
         _closeButton.addEventListener(Event.TRIGGERED, handleClose);
 
@@ -70,7 +73,7 @@ public class HuntStepsPopup extends Popup {
         _playButton.addEventListener(Event.TRIGGERED, handlePlay);
         _playButton.text = "Напасть";
 
-        _playerIcon = _links["bitmap_chip_2.png"];
+        _playerIcon = _links["bitmap_chip_sword"];
         _arrow1 = _links["arrow1"];
         _arrow1.visible = false;
         _arrow2 = _links["arrow2"];
@@ -92,16 +95,16 @@ public class HuntStepsPopup extends Popup {
         _tooltip.visible = false;
 
 
-
-
     }
 
-    private function onHideTooltip() : void {
+    private function onHideTooltip() : void
+    {
         _tooltip.visible = false;
         _tooltip.removeChildren();
     }
 
-    private function onShowTooltip($data : Object) : void {
+    private function onShowTooltip($data : Object) : void
+    {
 
         if ($data.content is ItemDrop)
         {
@@ -115,16 +118,19 @@ public class HuntStepsPopup extends Popup {
     }
 
 
-    override public function onRemove() : void {
+    override public function onRemove() : void
+    {
         coreRemoveListener(DropSlotView.SHOW_TOOLTIP, onShowTooltip);
         coreRemoveListener(DropSlotView.HIDE_TOOLTIP, onHideTooltip);
     }
 
-    override protected function handleClose(event : Event) : void {
+    override protected function handleClose(event : Event) : void
+    {
         coreDispatch(UI.HIDE_POPUP, NAME);
     }
 
-    private function handlePlay(event : Event) : void {
+    private function handlePlay(event : Event) : void
+    {
 
         switch (data.mode)
         {
@@ -154,7 +160,8 @@ public class HuntStepsPopup extends Popup {
     }
 
 
-    override public function update() : void {
+    override public function update() : void
+    {
 
         _monsters = App.instance.steps;
 //        _monsters = data as Vector.<MonsterVO>;
@@ -221,11 +228,10 @@ public class HuntStepsPopup extends Popup {
             drop.addContent(App.instance.chest.drops[j]);
             if (drop.content)
             {
-                if (drop.content is GoldDrop)
+                if (drop.content.isGold())
                 {
-                    var gold : GoldDrop = drop.content as GoldDrop;
-                    _rewardTF.text = "Награда: " + gold.gold + "$";
-                    Model.instance.addPlayerGold(gold.gold);
+                    _rewardTF.text = "Награда: " + drop.content.amount + "$";
+                    Model.instance.progress.gold += drop.content.amount;
                 }
                 else if (drop.content is ItemDrop)
                 {
@@ -240,6 +246,7 @@ public class HuntStepsPopup extends Popup {
                     dropView.x = _drops.numChildren * 40;
                 }
             }
+
         }
 
 

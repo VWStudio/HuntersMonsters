@@ -5,29 +5,18 @@ package com.agnither.hunters.view.ui.popups.shop
 {
 import com.agnither.hunters.App;
 import com.agnither.hunters.data.outer.ItemTypeVO;
-import com.agnither.hunters.model.player.inventory.Inventory;
-import com.agnither.hunters.model.player.inventory.Item;
-import com.agnither.hunters.view.ui.common.GoldView;
-import com.agnither.hunters.view.ui.popups.trainer.*;
-import com.agnither.hunters.data.outer.TrapVO;
 import com.agnither.hunters.model.Model;
-import com.agnither.hunters.model.player.inventory.Pet;
+import com.agnither.hunters.model.player.inventory.Inventory;
 import com.agnither.hunters.model.player.personage.Progress;
+import com.agnither.hunters.view.ui.common.GoldView;
 import com.agnither.hunters.view.ui.common.TabView;
-import com.agnither.hunters.view.ui.popups.monsters.PetView;
-import com.agnither.hunters.view.ui.popups.traps.TrapItem;
-import com.agnither.hunters.view.ui.screens.battle.player.inventory.ItemView;
-import com.agnither.hunters.view.ui.screens.battle.player.inventory.ItemView;
-import com.agnither.hunters.view.ui.screens.battle.player.inventory.WeaponView;
 import com.agnither.ui.AbstractView;
 import com.agnither.ui.Popup;
 import com.cemaprjl.core.coreAddListener;
-import com.cemaprjl.core.coreDispatch;
 
 import flash.geom.Rectangle;
 
 import starling.display.Sprite;
-
 import starling.events.Event;
 
 public class ShopPopup extends Popup
@@ -120,7 +109,10 @@ public class ShopPopup extends Popup
     {
 
         var price : Number = $item["price"];
-        if(!price) return;
+        if (!price)
+        {
+            return;
+        }
 
         var rect : Rectangle = $item.getBounds(this);
 
@@ -141,39 +133,55 @@ public class ShopPopup extends Popup
     override public function update() : void
     {
 
-        if(App.instance.currentPopup != this) return;
+        if (App.instance.currentPopup != this)
+        {
+            return;
+        }
 
         _container.removeChildren();
-            switch(_currentType) {
-                case _weaponsTab :
-                    if(_currentOwner == _traderTab) {
-                        showSellerItems(ItemTypeVO.weapon);
-                    } else {
-                        showPlayerItems(ItemTypeVO.weapon);
-                    }
-                    break;
-                case _armorTab :
-                    if(_currentOwner == _traderTab) {
-                        showSellerItems(ItemTypeVO.armor);
-                    } else {
-                        showPlayerItems(ItemTypeVO.armor);
-                    }
-                    break;
-                case _magicTab :
-                    if(_currentOwner == _traderTab) {
-                        showSellerItems(ItemTypeVO.magic);
-                    } else {
-                        showPlayerItems(ItemTypeVO.magic);
-                    }
-                    break;
-                case _spellsTab :
-                    if(_currentOwner == _traderTab) {
-                        showSellerItems(ItemTypeVO.spell);
-                    } else {
-                        showPlayerItems(ItemTypeVO.spell);
-                    }
-                    break;
-            }
+        switch (_currentType)
+        {
+            case _weaponsTab :
+                if (_currentOwner == _traderTab)
+                {
+                    showSellerItems(ItemTypeVO.weapon);
+                }
+                else
+                {
+                    showPlayerItems(ItemTypeVO.weapon);
+                }
+                break;
+            case _armorTab :
+                if (_currentOwner == _traderTab)
+                {
+                    showSellerItems(ItemTypeVO.armor);
+                }
+                else
+                {
+                    showPlayerItems(ItemTypeVO.armor);
+                }
+                break;
+            case _magicTab :
+                if (_currentOwner == _traderTab)
+                {
+                    showSellerItems(ItemTypeVO.magic);
+                }
+                else
+                {
+                    showPlayerItems(ItemTypeVO.magic);
+                }
+                break;
+            case _spellsTab :
+                if (_currentOwner == _traderTab)
+                {
+                    showSellerItems(ItemTypeVO.spell);
+                }
+                else
+                {
+                    showPlayerItems(ItemTypeVO.spell);
+                }
+                break;
+        }
 
         _hunterTab.setIsSelected(_currentOwner);
         _traderTab.setIsSelected(_currentOwner);
@@ -190,10 +198,10 @@ public class ShopPopup extends Popup
 
         var items : Array = Model.instance.shop.getItemsByType($type);
         _container.removeChildren();
-        for (var i:int = 0; i < items.length; i++) {
-            var tile : BuyItemView = new BuyItemView();
+        for (var i : int = 0; i < items.length; i++)
+        {
+            var tile : BuyItemView = new BuyItemView(items[i]);
             _container.addChild(tile);
-            tile.setBuyItem(items[i]);
             tile.x = 210 * (i % 3);
             tile.y = 100 * int(i / 3);
 
@@ -206,10 +214,10 @@ public class ShopPopup extends Popup
 
         var items : Array = _inventory.getItemsByType($type);
         _container.removeChildren();
-        for (var i:int = 0; i < items.length; i++) {
-            var tile : SellItemView = new SellItemView();
+        for (var i : int = 0; i < items.length; i++)
+        {
+            var tile : SellItemView = new SellItemView(_inventory.getItem(items[i]));
             _container.addChild(tile);
-            tile.setSellItem(_inventory.getItem(items[i]));
             tile.x = 210 * (i % 3);
             tile.y = 100 * int(i / 3);
 

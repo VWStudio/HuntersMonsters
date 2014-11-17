@@ -17,7 +17,6 @@ public class LocaleVO {
         for (var i: int = 0; i < data.length; i++) {
             var source: Object = data[i];
             var object: LocaleVO = fill(new LocaleVO(), source);
-//            trace(object.id, JSON.stringify(object));
             DICT[object.id] = object;
         }
     }

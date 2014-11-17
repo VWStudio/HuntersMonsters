@@ -11,6 +11,7 @@ import com.agnither.hunters.model.player.personage.Progress;
 import com.agnither.hunters.view.ui.popups.inventory.InventoryPopup;
 import com.agnither.hunters.view.ui.popups.monsters.SelectMonsterPopup;
 import com.agnither.hunters.view.ui.popups.monsters.CatchedPetsView;
+import com.agnither.hunters.view.ui.popups.skills.SkillsPopup;
 import com.agnither.hunters.view.ui.screens.camp.CampScreen;
 import com.agnither.hunters.view.ui.screens.map.MapScreen;
 import com.agnither.ui.ButtonContainer;
@@ -48,6 +49,7 @@ public class HudScreen extends Screen {
     private var _resetBtn : ButtonContainer;
     private var _monstersBtn : ButtonContainer;
     private var _modeBtn : ButtonContainer;
+    private var _skillsButton : ButtonContainer;
 
     public function HudScreen() {
     }
@@ -80,12 +82,21 @@ public class HudScreen extends Screen {
         _monstersBtn.text = "Монстры";
         _monstersBtn.addEventListener(Event.TRIGGERED, onMonster);
 
+        _skillsButton = _links.skills_btn;
+        _skillsButton.text = "Навыки";
+        _skillsButton.addEventListener(Event.TRIGGERED, onSkills);
+
         _modeBtn = _links.mode_btn;
 
         _modeBtn.addEventListener(Event.TRIGGERED, onMode);
 
         coreAddListener(HudScreen.UPDATE, update);
         coreAddListener(Progress.UPDATED, update);
+    }
+
+    private function onSkills(event : Event) : void
+    {
+        coreExecute(ShowPopupCmd, SkillsPopup.NAME);
     }
 
     private function onMode(event : Event) : void {

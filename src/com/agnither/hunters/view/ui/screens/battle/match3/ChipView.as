@@ -45,7 +45,6 @@ public class ChipView extends AbstractView {
              * not problem for a game but WTF
              *
              */
-//            trace("UNFOUND PROBLEM: ", _chip);
         }
 
         _falling = 0;

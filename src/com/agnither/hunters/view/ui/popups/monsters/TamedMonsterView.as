@@ -8,6 +8,7 @@ import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.modules.locale.Locale;
 import com.agnither.hunters.model.modules.monsters.MonsterAreaVO;
 import com.agnither.hunters.model.modules.monsters.MonsterVO;
+import com.agnither.hunters.model.player.LocalPlayer;
 import com.agnither.hunters.model.player.inventory.Pet;
 import com.agnither.hunters.view.ui.UI;
 import com.agnither.hunters.view.ui.screens.battle.BattleScreen;
@@ -52,19 +53,29 @@ public class TamedMonsterView extends AbstractView {
     override protected function initialize():void {
         createFromConfig(_refs.guiConfig.common.tamedMonster);
 
-        _picture = _links["bitmap_mon_1.png"] as Image;
+        _picture = _links["bitmap_monster_1.png"] as Image;
 //        _picture.touchable = true;
         _picture.texture = _refs.gui.getTexture(_monster.picture);
+        _picture.readjustSize();
 
         _name = _links.name_tf;
-        _tint = _links["bitmap_disabled_tint"];
+        _tint = _links["bitmap_common_disabled_tint"];
+
+        if(_picture.width > _tint.width) {
+            _picture.width = _tint.width;
+            _picture.scaleY = _picture.scaleX;
+        }
+        if(_picture.height > _tint.height) {
+            _picture.height = _tint.height;
+            _picture.scaleX = _picture.scaleY;
+        }
 
         _tame = _links["tame_btn"];
         _tame.addEventListener(Event.TRIGGERED, onTame);
 
         _name.text = Locale.getString(_monsterID);
 
-        isUnlocked = Model.instance.progress.unlockedMonsters.indexOf(_monsterID) >= 0;
+        isUnlocked = Model.instance.progress.unlockedLocations.indexOf(_monsterID) >= 0;
         _tint.visible = !isUnlocked;
 
         isTamed = Model.instance.progress.tamedMonsters.indexOf(_monsterID) >= 0;
@@ -84,7 +95,7 @@ public class TamedMonsterView extends AbstractView {
             monster.hp = monster.hp * 0.5;
             var pet : Pet = new Pet(monster, monster);
 
-            coreDispatch(CatchedPetsView.PET_SELECTED, pet);
+            coreDispatch(LocalPlayer.PET_SELECTED, pet);
             coreDispatch(UI.HIDE_POPUP, SelectMonsterPopup.NAME);
 
 

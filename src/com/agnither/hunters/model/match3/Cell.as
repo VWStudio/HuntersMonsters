@@ -65,7 +65,6 @@ public class Cell extends EventDispatcher {
     }
 
     public function setChip(chip: Chip, swap: Boolean = false, silent: Boolean = false):void {
-//        trace("SET CHIP", _pos, chip);
         _chip = chip;
         if (_chip) {
             _chip.place(this);

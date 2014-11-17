@@ -13,8 +13,6 @@ public class Monster extends Personage {
 
     public function summon(pet: Pet):void {
 
-        trace("MONSTER SUMMON");
-
         _pet = pet;
         init(_pet.params);
         update();

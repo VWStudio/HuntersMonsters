@@ -61,6 +61,7 @@ public class BattleInventoryView extends AbstractView {
             itemView.addEventListener(TouchEvent.TOUCH, handleTouch);
             _itemsContainer.addChild(itemView);
             itemView.y = i * tileHeight;
+            itemView.noSelection();
         }
     }
 

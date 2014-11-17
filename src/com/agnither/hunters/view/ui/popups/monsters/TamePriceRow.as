@@ -29,7 +29,7 @@ public class TamePriceRow extends AbstractView {
 
         createFromConfig(_refs.guiConfig.common.priceRow);
 
-        _tick = _links["bitmap_tick"];
+        _tick = _links["bitmap_common_tick"];
         _title = _links["title_tf"];
         price = PriceItemVO.DICT[_id];
         isEnough = false;

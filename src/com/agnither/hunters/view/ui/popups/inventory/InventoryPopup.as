@@ -7,12 +7,17 @@ import com.agnither.hunters.data.outer.ItemTypeVO;
 import com.agnither.hunters.model.modules.locale.Locale;
 import com.agnither.hunters.model.player.Player;
 import com.agnither.hunters.view.ui.UI;
+import com.agnither.hunters.view.ui.common.Scroll;
 import com.agnither.hunters.view.ui.popups.inventory.InventoryView;
-import com.agnither.hunters.view.ui.popups.inventory.ItemsView;
+import com.agnither.hunters.view.ui.popups.inventory.ItemsListView;
 import com.agnither.hunters.view.ui.common.TabView;
 import com.agnither.ui.Popup;
 import com.agnither.utils.CommonRefs;
 import com.cemaprjl.core.coreDispatch;
+
+import flash.geom.Rectangle;
+
+import starling.core.Starling;
 
 import starling.display.Button;
 import starling.display.Sprite;
@@ -26,14 +31,15 @@ public class InventoryPopup extends Popup {
     private var _armorTab: TabView;
     private var _itemTab: TabView;
     private var _spellTab: TabView;
-    private var _trapsTab: TabView;
+//    private var _trapsTab: TabView;
 
     private var _inventoryView: InventoryView;
 
-    private var _items: ItemsView;
+    private var _items: ItemsListView;
     private var _itemsContainer: Sprite;
 
     private var _closeBtn: Button;
+    private var _scroll : Scroll;
 
     public function InventoryPopup() {
     }
@@ -57,18 +63,19 @@ public class InventoryPopup extends Popup {
         _spellTab.label = Locale.getString("spells_tab");
         _spellTab.addEventListener(TabView.TAB_CLICK, handleSelectTab);
 
-        _trapsTab = _links.tab5;
-        _trapsTab.label = Locale.getString("traps_tab");
-        _trapsTab.addEventListener(TabView.TAB_CLICK, handleSelectTab);
+//        _trapsTab = _links.tab5;
+//        removeChild(_trapsTab);
+//        _trapsTab.label = Locale.getString("traps_tab");
+//        _trapsTab.addEventListener(TabView.TAB_CLICK, handleSelectTab);
 
-        ItemsView.itemX = _links.slot10.x - _links.slot00.x;
-        ItemsView.itemY = _links.slot01.y - _links.slot00.y;
+        ItemsListView.itemX = _links.slot10.x - _links.slot00.x;
+        ItemsListView.itemY = _links.slot01.y - _links.slot00.y;
 
         _links.slot00.removeFromParent(true);
         _links.slot01.removeFromParent(true);
         _links.slot10.removeFromParent(true);
 
-        _items = new ItemsView();
+        _items = new ItemsListView();
         _itemsContainer = _links.items;
         _itemsContainer.addChild(_items);
 
@@ -81,6 +88,17 @@ public class InventoryPopup extends Popup {
         _closeBtn = _links.close_btn;
         _closeBtn.touchable = true;
         _closeBtn.addEventListener(Event.TRIGGERED, handleClose);
+
+        _scroll = new Scroll(_links["scroll"]);
+        _scroll.onChange = onScroll;
+        _itemsContainer.clipRect = new Rectangle(0,0,600,500);
+    }
+
+    private function onScroll($val : Number) : void
+    {
+
+        var newy : Number = -60 * $val;
+        Starling.juggler.tween(_items, 0.4, {y : newy});
     }
 
 
@@ -96,20 +114,28 @@ public class InventoryPopup extends Popup {
 //    }
 
     private function handleSelectTab(e: Event):void {
+        _items.y = 0;
         switch (e.currentTarget) {
             case _weaponTab:
                 _items.showType(ItemTypeVO.weapon);
+
+                _scroll.setScrollParams(_items.itemsAmount, 8);
+
                 break;
             case _armorTab:
                 _items.showType(ItemTypeVO.armor);
+                _scroll.setScrollParams(_items.itemsAmount, 8);
                 break;
             case _itemTab:
                 _items.showType(ItemTypeVO.magic);
+                _scroll.setScrollParams(_items.itemsAmount, 8);
                 break;
             case _spellTab:
                 _items.showType(ItemTypeVO.spell);
+                _scroll.setScrollParams(_items.itemsAmount, 8);
+
                 break;
-            case _spellTab:
+//            case _spellTab:
 //                _trapsTab
                 break;
         }
@@ -117,7 +143,7 @@ public class InventoryPopup extends Popup {
         _armorTab.setIsSelected(e.currentTarget as TabView);
         _itemTab.setIsSelected(e.currentTarget as TabView);
         _spellTab.setIsSelected(e.currentTarget as TabView);
-        _trapsTab.setIsSelected(e.currentTarget as TabView);
+//        _trapsTab.setIsSelected(e.currentTarget as TabView);
 
 
     }

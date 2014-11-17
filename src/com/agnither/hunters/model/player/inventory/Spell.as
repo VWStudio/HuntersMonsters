@@ -8,15 +8,13 @@ import com.agnither.hunters.model.player.personage.Personage;
 
 public class Spell extends Item {
 
-    public function Spell(item: ItemVO, extension: Object) {
-        super(item, extension);
+    public function Spell(item: ItemVO) {
+        super(item);
     }
 
-    public function useSpell(target: Personage):void {
-        var damage: int = extension[ExtensionVO.damage];
-        if (damage) {
-            target.hit(damage, true);
-        }
-    }
+//    public function get mana():Object {
+//        return _item.extension_drop;
+//    }
+
 }
 }

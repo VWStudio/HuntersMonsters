@@ -19,7 +19,7 @@ public class ItemDrop extends Drop {
 
     public function ItemDrop(item: Item) {
         _item = item;
-        _item.uniqueId = Util.uniq(ItemTypeVO.DICT[item.type].name);
+        _item.uniqueId = Util.uniq(item.name);
     }
 
     override public function stack(drop: Drop):Boolean {

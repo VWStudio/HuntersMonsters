@@ -57,17 +57,11 @@ public class TrapsListView extends AbstractView {
         }
 
 
+    }
 
-//        for (var i : int = 0; i < TrapVO.LIST.length; i++)
-//        {
-//            var trap : TrapVO = TrapVO.LIST[i].clone();
-//            var trapView : TrapItem = new TrapItem(trap);
-//            _trapsContainer.addChild(trapView);
-//            trapView.x = (_trapsContainer.numChildren - 1) % 4 * 170;
-//            trapView.y = int(_trapsContainer.numChildren / 4) * 170;
-//        }
-
-
+    public function get itemsAmount() : Number
+    {
+        return int(_trapsContainer.numChildren / 4) + 1;
     }
 }
 }

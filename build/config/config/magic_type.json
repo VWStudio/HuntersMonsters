@@ -2,48 +2,62 @@
     {
         "id": 1,
         "name": "chest",
-        "picturechip": "chip_1.png"
+        "picturechip": "chip_chest",
+        "picturedamage": "drop_gold",
+        "itemmarker": "drop_gold"
     },
     {
         "id": 2,
         "name": "weapon",
-        "picturechip": "chip_2.png",
-        "picturedamage": "m_2.png"
+        "picturechip": "chip_sword",
+        "picturedamage": "chip_sword",
+        "itemmarker": "chip_sword"
     },
     {
         "id": 3,
         "name": "nature",
-        "picturechip": "chip_3.png",
-        "picturedamage": "m_3.png"
+        "picturechip": "chip_green",
+        "picturedamage": "chip_green",
+        "itemmarker": "itemmagic_green",
+        "manaicon": "mana_green"
     },
     {
         "id": 4,
         "name": "water",
-        "picturechip": "chip_4.png",
-        "picturedamage": "m_4.png"
+        "picturechip": "chip_blue",
+        "picturedamage": "chip_blue",
+        "itemmarker": "itemmagic_blue",
+        "manaicon": "mana_blue"
     },
     {
         "id": 5,
         "name": "fire",
-        "picturechip": "chip_5.png",
-        "picturedamage": "m_5.png"
+        "picturechip": "chip_fire",
+        "picturedamage": "chip_fire",
+        "itemmarker": "itemmagic_orange",
+        "manaicon": "mana_fire"
     },
     {
         "id": 6,
         "name": "add1",
-        "picturechip": "chip_6.png",
-        "picturedamage": "m_6.png"
+        "picturechip": "chip_red",
+        "picturedamage": "chip_red",
+        "itemmarker": "itemmagic_red",
+        "manaicon": "mana_red"
     },
     {
         "id": 7,
         "name": "add2",
-        "picturechip": "chip_7.png",
-        "picturedamage": "m_7.png"
+        "picturechip": "chip_white",
+        "picturedamage": "chip_white",
+        "itemmarker": "itemmagic_white",
+        "manaicon": "mana_white"
     },
     {
         "id": 8,
         "name": "add3",
-        "picturechip": "chip_8.png",
-        "picturedamage": "m_8.png"
+        "picturechip": "chip_white",
+        "picturedamage": "chip_white",
+        "itemmarker": "chip_white"
     }
 ]

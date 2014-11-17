@@ -2,8 +2,10 @@
  * Created by mor on 22.09.2014.
  */
 package com.cemaprjl.viewmanage {
+import com.agnither.hunters.view.ui.common.AreaHud;
+import com.agnither.hunters.view.ui.common.BattleManaView;
 import com.agnither.hunters.view.ui.common.GoldView;
-import com.agnither.hunters.view.ui.common.ManaView;
+import com.agnither.hunters.view.ui.common.ItemManaView;
 import com.agnither.hunters.view.ui.common.TabView;
 import com.agnither.hunters.view.ui.popups.traps.TrapItem;
 import com.agnither.hunters.view.ui.common.MonsterArea;
@@ -31,9 +33,11 @@ public class ClassBindings {
         registerClassAlias("map.Trap", TrapPoint);
         registerClassAlias("map.Chest", ChestPoint);
         registerClassAlias("map.House", HousePoint);
+        registerClassAlias("map.AreaHud", AreaHud);
 
         registerClassAlias("common.TabView", TabView);
-        registerClassAlias("common.ManaView", ManaView);
+        registerClassAlias("common.ItemManaView", ItemManaView);
+        registerClassAlias("common.BattleManaView", BattleManaView);
         registerClassAlias("common.GoldIcon", GoldView);
         registerClassAlias("common.TrapItem", TrapItem);
 

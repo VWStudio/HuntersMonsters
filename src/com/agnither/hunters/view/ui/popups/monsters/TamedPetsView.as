@@ -52,5 +52,9 @@ public class TamedPetsView extends AbstractView {
 
     }
 
+    public function get itemsAmount() : Number
+    {
+        return int(numChildren / 4) + 1;
+    }
 }
 }

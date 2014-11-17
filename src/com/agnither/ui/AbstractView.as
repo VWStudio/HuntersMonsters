@@ -201,9 +201,6 @@ public class AbstractView extends Sprite {
                 if (view) {
                     view.x = item.x;
                     view.y = item.y;
-//                    if(item.name == "bitmap__bg" || item.name == "spell") {
-//                        trace(view, item.matrix, JSON.stringify(item));
-//                    }
 
                     /**
                      * TODO some elements are not affected by matrix, FIX!!!

@@ -51,7 +51,7 @@ public class TrapSetPopup extends Popup {
     override protected function initialize() : void {
         createFromConfig(_refs.guiConfig.trap_popup);
 
-        _back = _links["bitmap__bg"];
+        _back = _links["bitmap_common_back"];
         _closeButton = _links["close_btn"];
         _closeButton.addEventListener(Event.TRIGGERED, handleClose);
 
@@ -85,7 +85,7 @@ public class TrapSetPopup extends Popup {
 
         _currentTerritory = MonsterAreaVO.DICT[data["id"]];
 
-        var settedIndex : int = MonsterAreaVO.NAMES_LIST.indexOf(_currentTerritory.id);
+        var settedIndex : int = MonsterAreaVO.NAMES_LIST.indexOf(_currentTerritory.area);
         var trapIndex : int = MonsterAreaVO.NAMES_LIST.indexOf(_trap.area);
 
         var baseChance : Number = 100 + _trap.areaeffect * (trapIndex - settedIndex);

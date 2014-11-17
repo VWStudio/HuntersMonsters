@@ -2,7 +2,10 @@
  * Created by agnither on 15.08.14.
  */
 package com.agnither.hunters.view.ui.screens.battle.player.inventory {
-import com.agnither.hunters.view.ui.common.ManaView;
+import com.agnither.hunters.data.outer.MagicTypeVO;
+import com.agnither.hunters.model.player.Mana;
+import com.agnither.hunters.view.ui.common.ItemManaView;
+import com.agnither.hunters.view.ui.common.ItemManaView;
 import com.agnither.hunters.view.ui.screens.battle.player.*;
 import com.agnither.hunters.data.outer.ItemTypeVO;
 import com.agnither.hunters.model.player.inventory.Item;
@@ -17,16 +20,16 @@ import starling.text.TextField;
 public class ItemView extends AbstractView {
 
     public static function getItemView(item: Item):ItemView {
-        switch (item.type) {
-            case ItemTypeVO.weapon:
-                return new WeaponView(item);
-            case ItemTypeVO.armor:
-                return new ArmorView(item);
-            case ItemTypeVO.magic:
-                return new MagicItemView(item);
-            case ItemTypeVO.spell:
-                return new SpellView(item);
-        }
+//        switch (item.type) {
+//            case ItemTypeVO.weapon:
+//                return new WeaponView(item);
+//            case ItemTypeVO.armor:
+//                return new ArmorView(item);
+//            case ItemTypeVO.magic:
+//                return new MagicItemView(item);
+//            case ItemTypeVO.spell:
+//                return new SpellView(item);
+//        }
         return new ItemView(item);
     }
 
@@ -35,60 +38,117 @@ public class ItemView extends AbstractView {
         return _item;
     }
 
-    protected var _mana: Vector.<ManaView>;
-
-    protected var _select: Sprite;
-    protected var _picture: Sprite;
+    protected var _select: Image;
+    protected var _picture: Image;
 
     protected var _damage: TextField;
+    protected var _icon : Image;
+    protected var _magicBack : Image;
+    private var _allowSelection : Boolean = true;
+    private var _manaContainer : Sprite;
 
     public function ItemView(item: Item) {
         _item = item;
     }
 
     override protected function initialize():void {
-        // XXXCOMMON
         createFromConfig(_refs.guiConfig.common.spell);
-//        createFromCommon(_refs.guiConfig.common.spell);
-
         this.touchable = true;
 
-        _select = _links.select;
+        _select = _links.bitmap_item_select;
         _select.visible = false;
 
-        _picture = _links.picture;
-        _picture.addChild(new Image(_refs.gui.getTexture(_item.picture)));
-
+        _picture = _links.bitmap_item_sword;
+        _picture.texture = _refs.gui.getTexture(_item.picture);
         _picture.touchable = true;
 
-        if(_item.extension) {
-
-            if(_item.extension["1"]) {
-                _links.damage_icon.getChildAt(0).texture = _refs.gui.getTexture("m_2.png");
-            } else if(_item.extension["2"]) {
-                _links.damage_icon.getChildAt(0).texture = _refs.gui.getTexture("shild.png");
-            }
-        } else {
-            _links.damage_icon.visible = false;
-            _links.damage_tf.visible = false;
-        }
-
-        _mana = new <ManaView>[];
-        for (var i:int = 0; i < 3; i++) {
-//            trace(_links["mana"+(i+1)]);
-            var mana: ManaView = _links["mana"+(i+1)];
-            mana.visible = false;
-            _mana.push(mana);
-        }
+        _magicBack = _links["bitmap_itemmagic_back"];
+        _magicBack.visible = false;
 
         _damage = _links.damage_tf;
+
+
+
+
+
+
+        var texName : String = "";
+
+
+
+        if (_item.isSpell()) {
+            texName = "itemicon_spell";
+            _damage.text = item.getDamage().toString();
+        } else if(_item.getDamage())
+        {
+            texName = "chip_sword";
+            _damage.text = item.getDamage().toString();
+        }
+        else if(_item.getDefence())
+        {
+            texName = "itemicon_shield";
+            _damage.text = item.getDefence().toString();
+        }
+        else
+        {
+            _damage.visible = false;
+        }
+
+        if(texName.length > 0) {
+            _icon = new Image(_refs.gui.getTexture(texName));
+            addChildAt(_icon, getChildIndex(_damage));
+            _icon.readjustSize();
+            if(_icon.width > _damage.width) {
+                _icon.width = _damage.width;
+                _icon.scaleY = _icon.scaleX;
+            }
+
+            if(_icon.height > _picture.height * 0.7) {
+                _icon.height = _picture.height * 0.7;
+                _icon.scaleX = _icon.scaleY;
+            }
+
+            _icon.y = 10;
+            _icon.x = (_damage.width - _icon.width) * 0.5;
+
+        }
+
+
+
+        if(_item.isSpell()) {
+
+            _manaContainer = new Sprite();
+            addChild(_manaContainer);
+            _manaContainer.y = 36;
+            _manaContainer.x = _picture.width;
+
+            var i: int = 0;
+            var mana: Object = _item.mana;
+            for (var key: * in mana) {
+
+                var manaview : ItemManaView = new ItemManaView();
+                _manaContainer.addChild(manaview);
+                manaview.x = - (i + 1) * 20;
+                var manaType: MagicTypeVO = MagicTypeVO.DICT[key];
+                var manaObj: Mana = new Mana(manaType.name);
+                manaObj.addMana(mana[key]);
+                manaview.mana = manaObj;
+                i++;
+            }
+
+            _magicBack.visible = i > 0;
+        }
+
+
+
+
 
         _item.addEventListener(Item.UPDATE, handleUpdate);
         handleUpdate();
     }
 
     private function handleUpdate(e: Event = null):void {
-        _select.visible = _item.isWearing;
+        _select.visible = _item.isWearing && _allowSelection;
     }
 
     override public function destroy():void {
@@ -100,6 +160,13 @@ public class ItemView extends AbstractView {
         _select = null;
         _picture = null;
         _damage = null;
+    }
+
+    public function noSelection() : void
+    {
+
+        _allowSelection = false;
+        handleUpdate();
     }
 }
 }

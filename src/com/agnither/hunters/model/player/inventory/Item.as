@@ -2,10 +2,10 @@
  * Created by agnither on 21.08.14.
  */
 package com.agnither.hunters.model.player.inventory {
+import com.agnither.hunters.data.outer.ExtensionVO;
 import com.agnither.hunters.data.outer.ItemTypeVO;
 import com.agnither.hunters.data.outer.ItemTypeVO;
 import com.agnither.hunters.model.modules.items.ItemVO;
-import com.cemaprjl.utils.Util;
 
 import starling.events.EventDispatcher;
 
@@ -13,42 +13,68 @@ public class Item extends EventDispatcher {
 
     public static const UPDATE: String = "update_Item";
 
-    public static function createItem(data: ItemVO, extension: Object = null):Item {
-        switch (data.type) {
+    private var _extension: Object;
+    protected var _item: ItemVO;
+
+    public var uniqueId: String;
+    public var amount: int = 0;
+    public var isWearing : Boolean = false;
+
+    public static function create($data: ItemVO):Item {
+        var item : Item;
+        switch ($data.type) {
             case ItemTypeVO.weapon:
             case ItemTypeVO.armor:
             case ItemTypeVO.magic:
-                return new Item(data, extension);
+            case ItemTypeVO.gold:
             case ItemTypeVO.spell:
-                return new Spell(data, extension);
+                item = new Item($data);
+                break;
+//                item = new Spell($data);
+//                break;
         }
-        return null;
-    }
+//        if(item && $extension) {
+//            item.setExtension($extension);
+//        }
 
-    public static function createDrop(data: ItemVO):Item {
-        var extension: Object = {};
-        for (var key: * in data.extension) {
-            extension[key] = data.getDropExtensionValue(key);
-        }
-        var item : Item = new Item(data, extension);
-        item.uniqueId = Util.uniq(ItemTypeVO.DICT[item.type].name);
+
         return item;
     }
 
-    protected var _uniqueId: String;
-    public function set uniqueId(value: String):void {
-        _uniqueId = value;
-    }
-    public function get uniqueId():String {
-        return _uniqueId;
+    public function Item($item: ItemVO) {
+        _item = $item;
     }
 
-    private var _extension: Object;
-    public function get extension():Object {
-        return _extension;
-    }
+//    protected function updateExtensions() : void
+//    {
+//
+//        for (var key : String in _extension)
+//        {
+//            if(ExtensionVO.damage.toString() == key) {
+//                _damage = _extension[key];
+//            }
+//            if(ExtensionVO.defence.toString() == key) {
+//                _defence = _extension[key];
+//            }
+//        }
+//    }
 
-    private var _item: ItemVO;
+//    public static function createDrop(data: ItemVO):Item {
+//        var extension: Object = {};
+//        for (var key: * in data.extension) {
+//            extension[key] = data.getDropExtensionValue(key);
+//        }
+//        var item : Item = new Item(data, extension);
+//        item.uniqueId = Util.uniq(ItemTypeVO.DICT[item.type].name);
+//        return item;
+//    }
+
+
+
+
+//    public function get extension():Object {
+//        return _extension;
+//    }
     public function get id():int {
         return _item.id;
     }
@@ -61,29 +87,35 @@ public class Item extends EventDispatcher {
     public function get type():int {
         return _item.type;
     }
+    public function isGold() : Boolean {
+        return _item.type == ItemTypeVO.gold;
+    }
+    public function isSpell() : Boolean {
+        return _item.type == ItemTypeVO.spell;
+    }
     public function get slot():int {
         return _item.slot;
     }
     public function get icon():String {
-        return ItemTypeVO.DICT[_item.type].picture;
+        return _item.droppicture;
     }
-    public function get extension_drop():Object {
+    public function get mana():Object {
         return _item.extension_drop;
     }
 
-    private var _isWearing: Boolean;
-    public function set isWearing(value: Boolean):void {
-        _isWearing = value;
-        update();
-    }
-    public function get isWearing():Boolean {
-        return _isWearing;
-    }
+//    public function get extension_drop():Object {
+//        return _item.extension_drop;
+//    }
 
-    public function Item(item: ItemVO, extension: Object) {
-        _item = item;
-        _extension = extension;
-    }
+//    private var _isWearing: Boolean;
+//    public function set isWearing(value: Boolean):void {
+//        _isWearing = value;
+//        update();
+//    }
+//    public function get isWearing():Boolean {
+//        return _isWearing;
+//    }
+
 
     public function update():void {
         dispatchEventWith(UPDATE);
@@ -91,12 +123,40 @@ public class Item extends EventDispatcher {
 
     public function destroy():void {
         _item = null;
-        _extension = null;
+//        _extension = null;
     }
 
-    public function get item() : ItemVO
+    public function getDamage() : int
     {
-        return _item;
+        return _item.extension ? _item.extension[ExtensionVO.damage] : 0;
+    }
+
+    public function getDefence() : int
+    {
+        return _item.extension ? _item.extension[ExtensionVO.defence] : 0;
+    }
+
+//    public function setExtension($ext : Object) : void
+//    {
+//        if($ext is Object)
+//        {
+//            _extension = $ext;
+//        }
+//        else if(type == ItemTypeVO.gold)
+//        {
+//            amount = int($ext);
+//        }
+//
+//        update();
+//    }
+
+
+    /**
+     * XXX required to save
+     */
+    public function get extension() : Object
+    {
+        return _extension;
     }
 }
 }

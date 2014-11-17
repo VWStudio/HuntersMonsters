@@ -36,6 +36,8 @@ public class MagicTypeVO {
             object.name = row.name;
             object.picturechip = row.picturechip;
             object.picturedamage = row.picturedamage;
+            object.itemmarker = row.itemmarker;
+            object.manaicon = row.manaicon;
 
             LIST.push(object);
             DICT[object.id] = object;
@@ -55,5 +57,7 @@ public class MagicTypeVO {
     public var name: String;
     public var picturechip: String;
     public var picturedamage: String;
+    public var itemmarker: String;
+    public var manaicon: String;
 }
 }

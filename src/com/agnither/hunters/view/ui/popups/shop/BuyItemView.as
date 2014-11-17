@@ -9,7 +9,9 @@ import com.agnither.hunters.data.outer.MagicTypeVO;
 import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.player.Mana;
 import com.agnither.hunters.model.player.inventory.Item;
-import com.agnither.hunters.view.ui.common.ManaView;
+import com.agnither.hunters.model.player.inventory.Spell;
+import com.agnither.hunters.view.ui.common.ItemManaView;
+import com.agnither.hunters.view.ui.screens.battle.player.inventory.ItemView;
 import com.agnither.ui.AbstractView;
 import com.agnither.ui.ButtonContainer;
 import com.cemaprjl.core.coreDispatch;
@@ -31,20 +33,14 @@ public class BuyItemView extends AbstractView
         return _item;
     }
 
-    protected var _mana : Vector.<ManaView>;
-
-    protected var _select : Sprite;
-    protected var _picture : Sprite;
-
-    protected var _damage : TextField;
     private var _buyButton : ButtonContainer;
-    private var _spell : Sprite;
     private var _price : Number;
-    private var _back : Image;
+    private var _itemView : ItemView;
 
-    public function BuyItemView()
+    public function BuyItemView($item : Item)
     {
         super();
+        _item = $item;
     }
 
     override protected function initialize() : void
@@ -53,20 +49,35 @@ public class BuyItemView extends AbstractView
         createFromConfig(_refs.guiConfig.common.shopItem);
 
         this.touchable = true;
-        _back = _links["bitmap__bg"];
-        _back.touchable = true;
-        _back.addEventListener(TouchEvent.TOUCH, onTouch);
 
         _buyButton = _links["buy_btn"];
         _buyButton.text = "Купить";
         _buyButton.addEventListener(Event.TRIGGERED, onBuy);
 
-        _select = _links.select;
-        _select.visible = false;
+        _itemView = ItemView.getItemView(_item);
+        addChild(_itemView);
+        _itemView.touchable = true;
+        _itemView.noSelection();
 
-        _picture = _links.picture;
-        _picture.touchable = false;
-        _damage = _links.damage_tf;
+        _itemView.addEventListener(TouchEvent.TOUCH, onTouch);
+
+        if (_item.getDamage())
+        {
+//            _links.damage_icon.getChildAt(0).texture = _refs.gui.getTexture("chip_sword");
+//            _damage.text = item.getDamage().toString();
+            _price = Model.instance.getPrice(item.getDamage());
+        }
+        else if (_item.getDefence())
+        {
+//            _links.damage_icon.getChildAt(0).texture = _refs.gui.getTexture("itemicon_shield");
+//            _damage.text = item.getDefence().toString();
+            _price = Model.instance.getPrice(item.getDefence());
+        }
+
+        var isPriceEnough : Boolean = Model.instance.progress.gold >= _price;
+        if(_item.isSpell()) {
+            _buyButton.visible = !Model.instance.player.inventory.isHaveSpell(item.id) && isPriceEnough;
+        }
 
     }
     private function onTouch(e : TouchEvent) : void
@@ -78,6 +89,8 @@ public class BuyItemView extends AbstractView
         } else if(touch.phase == TouchPhase.HOVER) {
             coreDispatch(ShopPopup.SHOW_TOOLTIP, this);
         }
+
+
 
     }
     private function onBuy(event : Event) : void
@@ -91,78 +104,63 @@ public class BuyItemView extends AbstractView
 
     }
 
-    public function setBuyItem($item : Item) : void
-    {
-        _item = $item;
-
-        _picture.addChild(new Image(_refs.gui.getTexture(_item.picture)));
-
-        if (_item.extension)
-        {
-
-            if (_item.extension["1"])
-            {
-                _links.damage_icon.getChildAt(0).texture = _refs.gui.getTexture("m_2.png");
-            }
-            else if (_item.extension["2"])
-            {
-                _links.damage_icon.getChildAt(0).texture = _refs.gui.getTexture("shild.png");
-            }
-        }
-        else
-        {
-            _links.damage_icon.visible = false;
-            _links.damage_tf.visible = false;
-        }
-
-        var i : int = 0;
-        _mana = new <ManaView>[];
-        for (i = 0; i < 3; i++)
-        {
-            var manaView : ManaView = _links["mana" + (i + 1)];
-            manaView.visible = false;
-            _mana.push(manaView);
-        }
-
-
-        _price = 0;
-
-        if (item.extension[ExtensionVO.defence])
-        {
-            _damage.text = item.extension[ExtensionVO.defence].toString();
-            _price = Model.instance.getPrice(item.extension[ExtensionVO.defence]);
-        }
-        else if (item.extension[ExtensionVO.damage])
-        {
-            _damage.text = item.extension[ExtensionVO.damage].toString();
-            _price = Model.instance.getPrice(item.extension[ExtensionVO.damage]);
-        }
-        else
-        {
-            _damage.text = "";
-        }
-
-        _buyButton.visible = Model.instance.progress.gold >= _price;
-
-
-        if (item.type == ItemTypeVO.spell)
-        {
-
-            i = 0;
-            var mana : Object = item.extension_drop;
-            for (var key : * in mana)
-            {
-                var manaType : MagicTypeVO = MagicTypeVO.DICT[key];
-                var manaObj : Mana = new Mana(manaType.name);
-                manaObj.addMana(mana[key]);
-                _mana[i++].mana = manaObj;
-            }
-            _buyButton.visible = !Model.instance.player.inventory.isHaveSpell(item.id) && Model.instance.progress.gold >= _price;
-        }
-
-
-
-    }
+//    public function setBuyItem($item : Item) : void
+//    {
+//        _item = $item;
+//        _price = 0;
+//
+//        _picture.addChild(new Image(_refs.gui.getTexture(_item.picture)));
+//
+//        if (_item.getDamage())
+//        {
+//            _links.damage_icon.getChildAt(0).texture = _refs.gui.getTexture("chip_sword");
+//            _damage.text = item.getDamage().toString();
+//            _price = Model.instance.getPrice(item.getDamage());
+//        }
+//        else if (_item.getDefence())
+//        {
+//            _links.damage_icon.getChildAt(0).texture = _refs.gui.getTexture("itemicon_shield");
+//            _damage.text = item.getDefence().toString();
+//            _price = Model.instance.getPrice(item.getDefence());
+//        }
+//        else {
+//            _links.damage_icon.visible = false;
+//            _links.damage_tf.visible = false;
+//            _damage.text = "";
+//        }
+//
+//        var i : int = 0;
+//        _mana = new <ItemManaView>[];
+//        for (i = 0; i < 3; i++)
+//        {
+//            var manaView : ItemManaView = _links["mana" + (i + 1)];
+//            manaView.visible = false;
+//            _mana.push(manaView);
+//        }
+//
+//
+//        var isPriceEnough : Boolean = Model.instance.progress.gold >= _price;
+//
+//        _buyButton.visible = isPriceEnough;
+//
+//        if (item.isSpell())
+//        {
+//
+//            i = 0;
+//            var mana : Object = item.mana;
+//            for (var key : * in mana)
+//            {
+//                var manaType : MagicTypeVO = MagicTypeVO.DICT[key];
+//                var manaObj : Mana = new Mana(manaType.name);
+//                manaObj.addMana(mana[key]);
+//                _mana[i++].mana = manaObj;
+//            }
+//            _buyButton.visible = !Model.instance.player.inventory.isHaveSpell(item.id) && isPriceEnough;
+//        }
+//
+//
+//
+//    }
 
     public function get price() : Number
     {

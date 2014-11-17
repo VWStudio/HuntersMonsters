@@ -51,16 +51,11 @@ public class PetsInventory extends EventDispatcher {
         _data = data;
         for (var key: * in data) {
             var petData: Object = data[key];
-            trace(JSON.stringify(petData));
-//            if(!petData.id) continue;
             var pet : MonsterVO = Model.instance.monsters.getMonster(petData.id, petData.level);
-//            var pet : MonsterVO = MonsterVO.DICT[petData.id];
             var newPet: Pet = new Pet(pet, petData);
             newPet.uniqueId = key;
 
             addPet(newPet);
-//            _petsDict[key] = newPet;
-//            _petsByType[petData.tamed].push(key);
         }
     }
 

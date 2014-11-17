@@ -8,6 +8,7 @@ import com.agnither.hunters.model.modules.monsters.MonsterAreaVO;
 import com.agnither.hunters.model.modules.monsters.MonsterVO;
 import com.agnither.hunters.model.match3.Match3Game;
 import com.agnither.hunters.model.player.Mana;
+import com.agnither.hunters.model.player.Territory;
 import com.agnither.hunters.view.ui.UI;
 import com.agnither.hunters.view.ui.popups.hunt.HuntPopup;
 import com.agnither.ui.AbstractView;
@@ -33,7 +34,6 @@ import starling.text.TextField;
 
 public class MonsterPoint extends AbstractView {
     private var _back : Image;
-    private var _stars : StarsBar;
     private var _monsterType : MonsterVO;
     private var _pathTime : Number = -1;
     private var _timeleft : Number = -1;
@@ -41,18 +41,24 @@ public class MonsterPoint extends AbstractView {
     private var _targetPoint : Point;
     private var _currentPoint : Point;
     private var _time : TextField;
-    private var _monsterArea : MonsterAreaVO;
     private var _lifetime : Number;
     public static const STARS_UPDATE : String = "MonsterPoint.STARS_UPDATE";
     private var _allowCount : Boolean = true;
+    private var _territory : Territory;
+    private var _territoryRect : Rectangle;
 
     public function MonsterPoint() {
-        this.addEventListener(TouchEvent.TOUCH, handleTouch);
-        coreAddListener(MonsterPoint.STARS_UPDATE, onStars);
-    }
 
-    private function onStars() : void {
-        _stars.setProgress(Model.instance.progress.monstersResults[_monsterType.id]);
+        createFromConfig(_refs.guiConfig.common.monsterIcon);
+
+        _back = _links["bitmap_monster_icon_1"];
+        _back.touchable = true;
+        this.touchable = true;
+
+        _time = _links["time_tf"];
+
+        this.addEventListener(TouchEvent.TOUCH, handleTouch);
+
     }
 
     private function handleTouch(e : TouchEvent) : void {
@@ -84,56 +90,28 @@ public class MonsterPoint extends AbstractView {
 
     }
 
-    override protected function initialize():void {
-        if(!_links["bitmap_icon_bg.png"]) {
-            createFromConfig(_refs.guiConfig.common.monsterIcon);
-        }
-
-
-        _back = _links["bitmap_icon_bg.png"];
-        _back.touchable = true;
-        this.touchable = true;
-
-        _time = _links["time_tf"];
-
-        _stars = _links.stars;
-
-    }
-
-
     override public function update() : void {
 
-//        if(Model.instance.progress.monstersResults[_monsterType.id + "."+_monsterType.level] == null) {
         if(Model.instance.progress.monstersResults[_monsterType.id] == null) {
             Model.instance.progress.monstersResults[_monsterType.id] = 0;
-//            Model.instance.progress.monstersResults[_monsterType.id + "."+_monsterType.level] = 0;
         }
-        _stars.setProgress(Model.instance.progress.monstersResults[_monsterType.id]);
-//        _stars.setProgress(Model.instance.progress.monstersResults[_monsterType.id + "."+_monsterType.level]);
 
-        _monsterArea = Model.instance.monsters.getMonsterArea(_monsterType.id);
-        _lifetime = (_monsterArea.lifetime_min + (_monsterArea.lifetime_max - _monsterArea.lifetime_min) * Math.random())*1000;
-
-//        _lifetime *= 0.25;
-
-//        trace("---",_monsterType.id, _lifetime, _monsterArea.lifetime_min, _monsterArea.lifetime_max);
-
-        App.instance.tick.addTickCallback(tick);
+        _lifetime = (_territory.area.lifemax + (_territory.area.lifemin - _territory.area.lifemax) * Math.random())*1000;
 
     }
 
-    private function tick($delta : Number) : void {
+    public function tick($delta : Number) : void {
         if(!_allowCount) return;
         if(_lifetime > 0) {
             _lifetime -= $delta;
             _time.text = Formatter.msToHHMMSS(_lifetime);
         } else {
             if(Model.instance.state == MapScreen.NAME) {
-                Model.instance.deletePoint(this);
+                _territory.deletePoint(this);
             }
         }
 
-        if(Model.instance.state != MapScreen.NAME) {
+        if(!Model.instance.isMap()) {
             return;
         }
 
@@ -142,8 +120,7 @@ public class MonsterPoint extends AbstractView {
         }
 
         if(_timeleft <= 0) {
-            var area : Rectangle = Model.instance.monsterAreas[_monsterType.id];
-            _targetPoint = new Point(area.x + area.width * Math.random(), area.y + area.height * Math.random());
+            _targetPoint = _territory.getPoint();
             _currentPoint = new Point(this.x, this.y);
             _distance = Point.distance(_targetPoint, _currentPoint);
             _pathTime = _distance * _monsterType.speed; // if speed = 100 means that distance in 10 px will be reached in 1 second
@@ -154,15 +131,8 @@ public class MonsterPoint extends AbstractView {
             this.x = newPos.x;
             this.y = newPos.y;
         }
-
-
-
     }
 
-
-    override public function destroy() : void {
-        App.instance.tick.removeTickCallback(tick)
-    }
 
     public function get monsterType() : MonsterVO {
         return _monsterType;
@@ -170,6 +140,13 @@ public class MonsterPoint extends AbstractView {
 
     public function set monsterType(value : MonsterVO) : void {
         _monsterType = value;
+        _territory = Model.instance.territories[_monsterType.id];
+        _territoryRect = _territory.rect;
+        _back.texture = _refs.gui.getTexture(_territory.area.icon);
+
+        var pt : Point = _monsterType.speed > 0 ? _territory.getPoint() : _territory.getPoint(100); // not moved point will be closer to center, max 145;
+        this.x = pt.x;
+        this.y = pt.y;
     }
 
     public function count($val : Boolean) : void {

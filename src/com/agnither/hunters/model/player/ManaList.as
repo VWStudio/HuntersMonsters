@@ -4,6 +4,7 @@
 package com.agnither.hunters.model.player {
 import com.agnither.hunters.data.outer.MagicTypeVO;
 import com.agnither.hunters.data.outer.DamageTypeVO;
+import com.agnither.hunters.model.player.inventory.Item;
 import com.agnither.hunters.model.player.inventory.Spell;
 
 import flash.utils.Dictionary;
@@ -65,8 +66,10 @@ public class ManaList extends EventDispatcher {
         return mana && mana.value >= value;
     }
 
-    public function checkSpell(spell: Spell):Boolean {
-        var mana: Object = spell.extension_drop;
+    public function checkSpell($item: Item):Boolean {
+        if(!$item.isSpell()) return false;
+
+        var mana: Object = $item.mana;
         for (var key: * in mana) {
             var manaType: MagicTypeVO = MagicTypeVO.DICT[key];
             if (!checkMana(manaType.name, mana[key])) {
@@ -76,8 +79,10 @@ public class ManaList extends EventDispatcher {
         return true;
     }
 
-    public function useSpell(spell: Spell):void {
-        var mana: Object = spell.extension_drop;
+    public function useSpell($item: Item):void {
+        if(!$item.isSpell()) return;
+
+        var mana: Object = $item.mana;
         for (var key: * in mana) {
             var manaType: MagicTypeVO = MagicTypeVO.DICT[key];
             releaseMana(manaType.name, mana[key]);

@@ -71,7 +71,7 @@ public class HousePopup extends Popup {
         createFromConfig(_refs.guiConfig.house_popup);
 
 
-        _back = _links["bitmap__bg"];
+        _back = _links["bitmap_common_back"];
         _closeButton = _links["close_btn"];
         _closeButton.addEventListener(Event.TRIGGERED, handleClose);
 
@@ -163,7 +163,7 @@ public class HousePopup extends Popup {
                     var item : ItemVO = houseData.unlockItems[i];
 //                    var item : ItemVO = ItemVO.DICT[id];
 //                    _items.push(item);
-                    var iview : ItemView = ItemView.getItemView(Item.createItem(item, item.extension));
+                    var iview : ItemView = ItemView.getItemView(Item.create(item));
                     _itemsContainer.addChild(iview);
                     iview.y = i * 70;
             }
@@ -174,7 +174,7 @@ public class HousePopup extends Popup {
 
         _currentItem = houseData.nextRandomItem;
 //        _currentItem = houseData.nextRandomItem = ItemVO.THINGS[int(ItemVO.THINGS.length * Math.random())];
-        _item = ItemView.getItemView(Item.createItem(_currentItem, _currentItem.extension));
+        _item = ItemView.getItemView(Item.create(_currentItem));
         _randomContainer.addChild(_item);
         if(_isOwner) {
             _getPrizeButton.text = "Взять";

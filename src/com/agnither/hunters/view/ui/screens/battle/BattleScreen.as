@@ -1,40 +1,29 @@
 /**
  * Created by agnither on 12.08.14.
  */
-package com.agnither.hunters.view.ui.screens.battle {
+package com.agnither.hunters.view.ui.screens.battle
+{
 import com.agnither.hunters.App;
-import com.agnither.hunters.App;
-import com.agnither.hunters.App;
-import com.agnither.hunters.data.outer.DamageTypeVO;
-import com.agnither.hunters.data.outer.DropVO;
 import com.agnither.hunters.data.outer.ItemTypeVO;
 import com.agnither.hunters.data.outer.MagicTypeVO;
-import com.agnither.hunters.model.match3.Match3Game;
 import com.agnither.hunters.model.Model;
-import com.agnither.hunters.model.player.drop.DropSlot;
-import com.agnither.hunters.model.player.drop.GoldDrop;
-import com.agnither.hunters.model.player.drop.GoldDrop;
-import com.agnither.hunters.model.player.drop.ItemDrop;
+import com.agnither.hunters.model.match3.Match3Game;
 import com.agnither.hunters.model.player.inventory.Item;
-import com.agnither.hunters.view.ui.UI;
 import com.agnither.hunters.view.ui.common.GoldView;
-import com.agnither.hunters.view.ui.popups.monsters.SelectMonsterPopup;
 import com.agnither.hunters.view.ui.popups.house.HousePopup;
 import com.agnither.hunters.view.ui.popups.hunt.HuntStepsPopup;
+import com.agnither.hunters.view.ui.popups.monsters.SelectMonsterPopup;
 import com.agnither.hunters.view.ui.popups.win.WinPopup;
 import com.agnither.hunters.view.ui.screens.battle.match3.FieldView;
 import com.agnither.hunters.view.ui.screens.battle.player.DropListView;
 import com.agnither.hunters.view.ui.screens.battle.player.DropSlotView;
-import com.agnither.hunters.view.ui.screens.battle.player.PersonageView;
 import com.agnither.hunters.view.ui.screens.battle.player.ManaListView;
+import com.agnither.hunters.view.ui.screens.battle.player.PersonageView;
 import com.agnither.hunters.view.ui.screens.battle.player.inventory.BattleInventoryView;
-import com.agnither.hunters.view.ui.screens.battle.player.inventory.ItemView;
 import com.agnither.hunters.view.ui.screens.battle.player.inventory.ItemView;
 import com.agnither.hunters.view.ui.screens.map.HousePoint;
 import com.agnither.hunters.view.ui.screens.map.MapScreen;
 import com.agnither.ui.Screen;
-import com.agnither.utils.CommonRefs;
-import com.agnither.utils.ResourcesManager;
 import com.cemaprjl.core.coreAddListener;
 import com.cemaprjl.core.coreExecute;
 import com.cemaprjl.core.coreRemoveListener;
@@ -42,61 +31,62 @@ import com.cemaprjl.viewmanage.ShowPopupCmd;
 import com.cemaprjl.viewmanage.ShowScreenCmd;
 
 import flash.geom.Point;
-
 import flash.geom.Rectangle;
 import flash.utils.clearTimeout;
 import flash.utils.setTimeout;
 
-import starling.animation.Juggler;
 import starling.core.Starling;
-
 import starling.display.Button;
 import starling.display.Image;
 import starling.display.Sprite;
 import starling.events.Event;
 
-public class BattleScreen extends Screen {
+public class BattleScreen extends Screen
+{
 
-    public static const NAME: String = "BattleScreen";
+    public static const NAME : String = "BattleScreen";
 
-    public static const SELECT_MONSTER: String = "select_monster_BattleScreen";
+    public static const SELECT_MONSTER : String = "select_monster_BattleScreen";
 
-    private var _game: Match3Game;
+    private var _game : Match3Game;
 
-    private var _player: PersonageView;
-    private var _playerPet: PersonageView;
-    private var _enemy: PersonageView;
-    private var _enemyPet: PersonageView;
+    private var _player : PersonageView;
+    private var _playerPet : PersonageView;
+    private var _enemy : PersonageView;
+    private var _enemyPet : PersonageView;
 
-    private var _playerMana: ManaListView;
-    private var _enemyMana: ManaListView;
+    private var _playerMana : ManaListView;
+    private var _enemyMana : ManaListView;
 
-    private var _playerSpells: BattleInventoryView;
-    private var _enemySpells: BattleInventoryView;
+    private var _playerSpells : BattleInventoryView;
+    private var _enemySpells : BattleInventoryView;
 
-    private var _dropList: DropListView;
+    private var _dropList : DropListView;
 
-    private var _summonPetBtn: Button;
+    private var _summonPetBtn : Button;
 
-    private var _field: FieldView;
+    private var _field : FieldView;
     private var _tooltip : Sprite;
     public static const PLAY_CHEST_FLY : String = "BattleScreen.PLAY_CHEST_FLY";
     private var _effects : Sprite;
     public static const PLAY_MANA_FLY : String = "BattleScreen.PLAY_MANA_FLY";
     private var _timeout : uint;
 
-    public function BattleScreen() {
+    public function BattleScreen()
+    {
     }
 
 
-    override public function onRemove() : void {
+    override public function onRemove() : void
+    {
 
         coreRemoveListener(DropSlotView.SHOW_TOOLTIP, onShowTooltip);
         coreRemoveListener(DropSlotView.HIDE_TOOLTIP, onHideTooltip);
 
     }
 
-    override protected function initialize():void {
+    override protected function initialize() : void
+    {
 
 
         createFromConfig(_refs.guiConfig.battle_screen);
@@ -146,13 +136,15 @@ public class BattleScreen extends Screen {
         _effects = new Sprite();
     }
 
-    public function clear():void {
+    public function clear() : void
+    {
         _field.clear();
 
 
     }
 
-    override public function update() : void {
+    override public function update() : void
+    {
 
         if (!_game)
         {
@@ -192,7 +184,8 @@ public class BattleScreen extends Screen {
         coreAddListener(DropSlotView.HIDE_TOOLTIP, onHideTooltip);
     }
 
-    private function onManaFly($data : Object) : void {
+    private function onManaFly($data : Object) : void
+    {
         /**
          * TODO realize effect!!!!!!!!!!!!!!!
          * {position : match.cells[1].position, type: match.type, amount : match.amount}
@@ -207,47 +200,58 @@ public class BattleScreen extends Screen {
         img.y = position.y * FieldView.tileY + FieldView.fieldY;
         img.scaleX = img.scaleY = 2;
 
-        Starling.juggler.tween(img, 0.5, {x : img.x, y: img.y - 50, onComplete: onEndTween, alpha:0.5});
+        Starling.juggler.tween(img, 0.5, {x: img.x, y: img.y - 50, onComplete: onEndTween, alpha: 0.5});
 
-        function onEndTween():void {
+        function onEndTween() : void
+        {
             _effects.removeChild(img);
         }
 
     }
-    private function onDropFly($data : Object) : void {
 
-        var drop : DropVO = $data.drop as DropVO;
+    private function onDropFly($data : Object) : void
+    {
+
+        var drop : Item = $data.drop as Item;
         var position : Point = $data.position;
-        var pictureUrl : String = ItemTypeVO.DICT[drop.type].picture;
+        var pictureUrl : String = drop.icon;
         var img : Image = new Image(App.instance.refs.gui.getTexture(pictureUrl));
         _effects.addChild(img);
         img.x = position.x * FieldView.tileX + FieldView.fieldX;
         img.y = position.y * FieldView.tileY + FieldView.fieldY;
 
-        Starling.juggler.tween(img, 0.5, {x : img.x, y: img.y - 50, onComplete: onEndTween, alpha:0.5});
+        Starling.juggler.tween(img, 0.5, {x: img.x, y: img.y - 50, onComplete: onEndTween, alpha: 0.5});
 
-        function onEndTween():void {
+        function onEndTween() : void
+        {
             _effects.removeChild(img);
         }
 
     }
 
-    private function onHideTooltip() : void {
+    private function onHideTooltip() : void
+    {
         _tooltip.visible = false;
         _tooltip.removeChildren();
     }
 
-    private function onShowTooltip($data : Object) : void {
+    private function onShowTooltip($data : Object) : void
+    {
 
-        if($data.content is ItemDrop) {
-            _tooltip.addChild(ItemView.getItemView(($data.content as ItemDrop).item));
-            _tooltip.visible = true;
+        var item : Item = $data.content;
 
-        } else if ($data.content is GoldDrop) {
+        if (item.isGold())
+        {
             var gv : GoldView = new GoldView();
             _tooltip.addChild(gv);
-            gv.data = ($data.content as GoldDrop).gold;
+            gv.data = item.amount;
             gv.update();
+
+        }
+        else
+        {
+            _tooltip.addChild(ItemView.getItemView(item));
+            _tooltip.visible = true;
         }
         _tooltip.visible = true;
         var rect : Rectangle = ($data.item as Sprite).getBounds(this);
@@ -256,69 +260,81 @@ public class BattleScreen extends Screen {
     }
 
 
-    private function handleEndGame($isWin : Boolean) : void {
+    private function handleEndGame($isWin : Boolean) : void
+    {
 
         coreRemoveListener(Match3Game.END_GAME, handleEndGame);
         _timeout = setTimeout(gameEnds, 2500, $isWin);
 
 
-
     }
 
-    private function gameEnds($isWin : Boolean) : void {
+    private function gameEnds($isWin : Boolean) : void
+    {
 
         clearTimeout(_timeout);
         coreExecute(ShowScreenCmd, MapScreen.NAME);
 
-        switch (Model.instance.match3mode) {
+        switch (Model.instance.match3mode)
+        {
             case Match3Game.MODE_STEP:
-                if(App.instance.chestStep >= 0) {
-                    if($isWin) {
-                        if(App.instance.chestStep + 1 < App.instance.steps.length) {
+                if (App.instance.chestStep >= 0)
+                {
+                    if ($isWin)
+                    {
+                        if (App.instance.chestStep + 1 < App.instance.steps.length)
+                        {
                             App.instance.chestStep++;
-                            coreExecute(ShowPopupCmd, HuntStepsPopup.NAME, {mode : HuntStepsPopup.CONTINUE_MODE});
-                        } else {
-                            coreExecute(ShowPopupCmd, HuntStepsPopup.NAME, {mode : HuntStepsPopup.WIN_MODE});
+                            coreExecute(ShowPopupCmd, HuntStepsPopup.NAME, {mode: HuntStepsPopup.CONTINUE_MODE});
                         }
-                    } else {
-                        coreExecute(ShowPopupCmd, HuntStepsPopup.NAME, {mode : HuntStepsPopup.LOSE_MODE});
+                        else
+                        {
+                            coreExecute(ShowPopupCmd, HuntStepsPopup.NAME, {mode: HuntStepsPopup.WIN_MODE});
+                        }
+                    }
+                    else
+                    {
+                        coreExecute(ShowPopupCmd, HuntStepsPopup.NAME, {mode: HuntStepsPopup.LOSE_MODE});
                     }
                     return;
-                } else {
-                    coreExecute(ShowPopupCmd, WinPopup.NAME, {isWin : $isWin});
+                }
+                else
+                {
+                    coreExecute(ShowPopupCmd, WinPopup.NAME, {isWin: $isWin});
                 }
                 break;
 
             case Match3Game.MODE_REGULAR:
-                coreExecute(ShowPopupCmd, WinPopup.NAME, {isWin : $isWin, drops:_game.dropList});
+                coreExecute(ShowPopupCmd, WinPopup.NAME, {isWin: $isWin, drops: _game.dropList});
                 break;
             case Match3Game.MODE_HOUSE:
                 var pt : HousePoint = Model.instance.currentHousePoint;
-                if($isWin) {
+                if ($isWin)
+                {
                     Model.instance.houses[pt.name]["owner"] = Model.instance.player.id;
                     Model.instance.progress.houses.push(pt.name);
                     Model.instance.progress.sets.push(pt.name);
                     Model.instance.checkHouses();
                     Model.instance.progress.saveProgress();
 
-                } else {
+                }
+                else
+                {
 
                 }
 
-                coreExecute(ShowPopupCmd, HousePopup.NAME, {point : pt});
+                coreExecute(ShowPopupCmd, HousePopup.NAME, {point: pt});
                 break;
         }
 
 
-
-
     }
 
 
-    private function handleClick(e: Event):void {
+    private function handleClick(e : Event) : void
+    {
         coreExecute(ShowPopupCmd, SelectMonsterPopup.NAME);
     }
-
 
 
 }

@@ -17,7 +17,7 @@ public class ItemTypeVO{
 
     public var id: int;
     public var name: String;
-    public var picture: String;
+//    public var picture: String;
     public var tabMin : int = 0;
     public var tabMax : int = 0;
 
@@ -28,7 +28,7 @@ public class ItemTypeVO{
             var object: ItemTypeVO = new ItemTypeVO();
             object.id = row.id;
             object.name = row.name;
-            object.picture = row.picture;
+//            object.picture = row.picture;
             var minmax : Array = row.shoptabminmax ? row.shoptabminmax.split(",") : [0,0];
             object.tabMin = minmax[0];
             object.tabMax = minmax[1];
@@ -36,7 +36,6 @@ public class ItemTypeVO{
             LIST.push(object);
             DICT[object.id] = object;
             ItemTypeVO[object.name] = object.id;
-            trace(object.name, object.id, ItemTypeVO[object.name]);
         }
     }
 }

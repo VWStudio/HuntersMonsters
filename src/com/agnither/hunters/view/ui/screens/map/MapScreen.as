@@ -9,6 +9,7 @@ import com.agnither.hunters.model.modules.monsters.MonsterVO;
 import com.agnither.hunters.model.match3.Match3Game;
 import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.player.LocalPlayer;
+import com.agnither.hunters.model.player.Territory;
 import com.agnither.hunters.model.player.personage.Progress;
 import com.agnither.hunters.view.ui.common.MonsterArea;
 import com.agnither.hunters.view.ui.popups.traps.TrapSetPopup;
@@ -53,7 +54,7 @@ public class MapScreen extends Screen {
     private var _startPos : Point;
     private var _points : Dictionary = new Dictionary();
 //    private var _playerPositions : Dictionary = new Dictionary();
-    private var _clouds : Dictionary = new Dictionary();
+//    private var _clouds : Dictionary = new Dictionary();
     public static const INIT_MONSTER : String = "MapScreen.INIT_MONSTER";
     private var _monstersContainer : Sprite;
 //    private var _playerPositionsArr : Vector.<Point>;
@@ -71,6 +72,7 @@ public class MapScreen extends Screen {
     private var _houses : Object = {};
     private var _houseContainer : Sprite;
     private var isFirstRun : Boolean = true;
+    private var _camp : Sprite;
 
     public function MapScreen() {
 
@@ -95,12 +97,36 @@ public class MapScreen extends Screen {
         coreAddListener(ADD_CHEST, onChestAdd);
         coreAddListener(REMOVE_CHEST, onChestRemove);
 
-        _back = _links["bitmap_map_bg.png"];
+        _back = _links["bitmap_map_background"];
         _back.touchable = true;
+
+
+        var i : int = 0;
+        for (i = 0; i < MonsterAreaVO.LIST.length; i++)
+        {
+            var territory : Territory = Model.instance.territories[MonsterAreaVO.LIST[i].id];
+            territory.setCloud(_links[territory.area.id]);
+            territory.setHud(_links[territory.area.hud]);
+        }
+
+        for ( i = 0; i < _container.numChildren; i++)
+        {
+            var dobj : DisplayObject = _container.getChildAt(i);
+            if(dobj.name && dobj.name.indexOf("step_") >= 0)
+            {
+                var arr : Array = dobj.name.split("_");
+                var territory1 : Territory = Model.instance.territories["clouds_"+arr[1]];
+                var territory2 : Territory = Model.instance.territories["clouds_"+arr[2]];
+                territory1.connect(territory2, dobj);
+                territory2.connect(territory1, dobj);
+            }
+        }
+
+        _camp = _links["camp"];
 
         _monstersContainer = new Sprite();
         _monstersContainer.name = "monsters_container"; // hack
-        _container.addChildAt(_monstersContainer, _container.getChildIndex(_back) + 1);
+        _container.addChildAt(_monstersContainer, _container.getChildIndex(_camp) + 1);
 
         _trapsContainer = new Sprite();
         _trapsContainer.name = "traps_container"; // hack
@@ -110,10 +136,6 @@ public class MapScreen extends Screen {
         _chestsContainer.name = "chests_container"; // hack
         _container.addChildAt(_chestsContainer, _container.getChildIndex(_trapsContainer) + 1);
 
-        _houseContainer = new Sprite();
-        _houseContainer.name = "houses_container"; // hack
-        _container.addChildAt(_houseContainer, _container.getChildIndex(_chestsContainer) + 1);
-
         _container.x = (stage.stageWidth - _back.width) * 0.5;
         _container.y = (stage.stageHeight - _back.height) * 0.5;
 
@@ -121,47 +143,6 @@ public class MapScreen extends Screen {
         _maxY = stage.stageHeight - _back.height;
 
         _container.addEventListener(TouchEvent.TOUCH, handleTouch);
-
-        /**
-         * XXX player and monsters positions are getting and should create from progress and logic
-         * clouds/fog getting from graphic, but hide/shows according progress
-         *
-         */
-        var removeArr : Array = [];
-        for (var i : int = 0; i < _container.numChildren; i++)
-        {
-            var dobj : DisplayObject = _container.getChildAt(i);
-            if(dobj is MonsterPoint) {
-                removeArr.push(dobj);
-            } else if (dobj is MonsterArea) {
-                Model.instance.monsterAreas[dobj.name] = new Rectangle(dobj.x, dobj.y, 50 * dobj.transformationMatrix.a, 50 * dobj.transformationMatrix.d);
-                removeArr.push(dobj);
-            } else if (dobj is PlayerPoint) {
-                var ptName : String = dobj.name;
-                if(ptName.indexOf("00") > -1) {
-                    _playerPosition = dobj as PlayerPoint;
-                } else {
-                    removeArr.push(dobj);
-                }
-            } else if(dobj is HousePoint) {
-                _houses[dobj.name] = dobj;
-                dobj.visible = false;
-
-            } else if(dobj.name.indexOf("clouds") > -1) {
-                _clouds[dobj.name] = dobj;
-            }
-        }
-
-        for (var j : int = 0; j < removeArr.length; j++)
-        {
-            var dobj1 : DisplayObject = removeArr[j];
-            _container.removeChild(dobj1);
-        }
-
-
-
-
-
 
     }
 
@@ -175,17 +156,20 @@ public class MapScreen extends Screen {
     }
 
     private function onPointAdd($pt : MonsterPoint) : void {
-        var monsterRect : Rectangle = Model.instance.monsterAreas[$pt.monsterType.id];
+
+//        var monsterRect : Rectangle = Model.instance.territories[$pt.monsterType.id].rect;
 //        var mp : MonsterPoint = new MonsterPoint();
         _monstersContainer.addChild($pt);
-        var monsterPt : Point = new Point(monsterRect.x + Math.random() * monsterRect.width, monsterRect.y + Math.random() * monsterRect.height);
-        $pt.x = monsterPt.x;
-        $pt.y = monsterPt.y;
+//        var monsterPt : Point = new Point(monsterRect.x + Math.random() * monsterRect.width, monsterRect.y + Math.random() * monsterRect.height);
         $pt.update();
+//        $pt.x = monsterPt.x;
+//        $pt.y = monsterPt.y;
 
     }
 
     private function onChestRemove($chest : ChestPoint) : void {
+
+        return;
 
         if(_chestsContainer.contains($chest)) {
             _chestsContainer.removeChild($chest);
@@ -206,14 +190,16 @@ public class MapScreen extends Screen {
 
     private function onChestAdd() : void {
 
-        if(_chestsContainer.numChildren >= Model.instance.progress.unlockedMonsters.length) {
+        return;
+
+        if(_chestsContainer.numChildren >= Model.instance.progress.unlockedLocations.length) {
             return;
         }
 
         var chest : ChestPoint = new ChestPoint();
         _chestsContainer.addChild(chest);
 
-        var chestAreas : Array = Model.instance.progress.unlockedMonsters.concat([]);
+        var chestAreas : Array = Model.instance.progress.unlockedLocations.concat([]);
         for (var key : String in Model.instance.chestAreas)
         {
             var index : int = chestAreas.indexOf(key);
@@ -228,8 +214,8 @@ public class MapScreen extends Screen {
 
         var monster  : String  = chestAreas[int(Math.random() * chestAreas.length)];
 
-//        var monster  : String  = Model.instance.progress.unlockedMonsters[int(Math.random() * Model.instance.progress.unlockedMonsters.length)];
-        var rect : Rectangle = Model.instance.monsterAreas[monster];
+//        var monster  : String  = Model.instance.progress.unlockedLocations[int(Math.random() * Model.instance.progress.unlockedLocations.length)];
+        var rect : Rectangle = Model.instance.territories[monster].rect;
         var pt : Point = new Point(rect.x + rect.width * Math.random(), rect.y + rect.height * Math.random());
 
         chest.update();
@@ -243,6 +229,8 @@ public class MapScreen extends Screen {
 
     private function onTrapDelete($trap : TrapPoint) : void {
 
+        return;
+
         if(_trapsContainer.contains($trap)) {
             _trapsContainer.removeChild($trap);
         }
@@ -252,6 +240,8 @@ public class MapScreen extends Screen {
     }
 
     private function onTrapAdd($data : Object) : void {
+
+        return;
 
         var trapPoint : TrapPoint = new TrapPoint();
         _trapsContainer.addChild(trapPoint);
@@ -269,48 +259,57 @@ public class MapScreen extends Screen {
 
 
     override public function update() : void {
-        var arr : Array = Model.instance.progress.unlockedMonsters;
+
+
+
+        var arr : Array = Model.instance.progress.unlockedLocations;
+
         var i : int = 0;
-        var monsterID : String; // = Model.instance.progress.unlockedMonsters[Model.instance.progress.unlockedMonsters.length - 1];
+        var monsterID : String; // = Model.instance.progress.unlockedLocations[Model.instance.progress.unlockedLocations.length - 1];
         for (i = 0; i < arr.length; i++)
         {
-            monsterID = arr[i];
-            var monsterArea  : MonsterAreaVO = Model.instance.monsters.getMonsterArea(monsterID);
-            if(_clouds[monsterArea.area]) {
-                if(_clouds[monsterArea.area].visible) {
-                    openTerritoryTween(_clouds[monsterArea.area]);
-                } else {
-                    _clouds[monsterArea.area].visible = false;
-                }
 
+//            monsterID = arr[i];
+//            Model.instance.territories[monsterID].unlock();
+//            Model.instance.territories[monsterID].updatePoints();
 
+//            monsterID = arr[i];
+//            var area  : MonsterAreaVO = Model.instance.monsters.getMonsterArea(monsterID);
+//            if(_clouds[area.area]) {
+//                if(_clouds[area.area].visible) {
+//                    openTerritoryTween(_clouds[area.area]);
+//                } else {
+//                    _clouds[area.area].visible = false;
+//                }
+//
+//
+//
+//            }
 
-            }
-
-            if(monsterArea.house && _houses[monsterArea.house])  {
-                _houses[monsterArea.house].visible = true;
-            }
+//            if(area.house && _houses[area.house])  {
+//                _houses[area.house].visible = true;
+//            }
         }
 
-        var monsterRect : Rectangle = Model.instance.monsterAreas[monsterID];
-        _playerPosition.x = monsterRect.x + monsterRect.width * 0.5;
-        _playerPosition.y = monsterRect.y + monsterRect.height * 0.5;
+//        var centerPt : Point = Model.instance.territories[monsterID].center;
+//        _playerPosition.x = centerPt.x;
+//        _playerPosition.y = centerPt.y;
 
-        Model.instance.updatePoints();
+//        Model.instance.updatePoints();
 
 
     }
 
-    private function openTerritoryTween($cloud : DisplayObject) : void {
-
-        Starling.juggler.tween($cloud, 1, {alpha : 0, onComplete: onEndTween});
-
-        function onEndTween():void {
-            $cloud.visible = false ;
-            $cloud.alpha = 1;
-        }
-
-    }
+//    private function openTerritoryTween($cloud : DisplayObject) : void {
+//
+//        Starling.juggler.tween($cloud, 1, {alpha : 0, onComplete: onEndTween});
+//
+//        function onEndTween():void {
+//            $cloud.visible = false ;
+//            $cloud.alpha = 1;
+//        }
+//
+//    }
 
 
 
@@ -333,10 +332,10 @@ public class MapScreen extends Screen {
                     var pt : Point = _container.globalToLocal(_startPoint);
                     var trapAllowed : Boolean = false;
                     if(App.instance.trapMode) {
-                        for (var i : int = 0; i < Model.instance.progress.unlockedMonsters.length; i++)
+                        for (var i : int = 0; i < Model.instance.progress.unlockedLocations.length; i++)
                         {
-                            var key : String = Model.instance.progress.unlockedMonsters[i];
-                            var rect : Rectangle = Model.instance.monsterAreas[key];
+                            var key : String = Model.instance.progress.unlockedLocations[i];
+                            var rect : Rectangle = Model.instance.territories[key];
                             if(rect.containsPoint(pt) && Model.instance.territoryTraps[key] == null) {
                                 trapAllowed = true;
                                 break;

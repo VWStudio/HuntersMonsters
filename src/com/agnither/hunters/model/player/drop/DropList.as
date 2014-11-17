@@ -33,26 +33,32 @@ public class DropList extends EventDispatcher {
         _dropSet = dropSet;
     }
 
-    public function drop() : DropVO {
-        var drop : DropVO = _itemsAmount < _list.length - 1 ? DropVO.getRandomDrop(_dropSet) : DropVO.getRandomDrop(2); // set 2 is only gold
-        var content : Drop;
-        switch (drop.type) {
-            case ItemTypeVO.weapon:
-            case ItemTypeVO.armor:
-            case ItemTypeVO.magic:
-                content = new ItemDrop(Item.createDrop(Model.instance.items.getItem(drop.item_id)));
-                break;
-            case ItemTypeVO.gold:
-                content = new GoldDrop(drop.randomAmount);
-//                content = new GoldDrop(GoldDropVO.DICT[drop.item_id].random);
-                break;
-        }
+    public function drop() : Item {
+
+        var isOnlyGold : Boolean = _itemsAmount < _list.length - 1;
+        var content : Item = Model.instance.items.createDropItem(isOnlyGold ? _dropSet : 2);
+
+
+//        var drop : DropVO =  ? DropVO.getRandomDrop(_dropSet) : DropVO.getRandomDrop(2); // set 2 is only goldItemVO
+////        var content : Drop;
+//        switch (drop.type) {
+//            case ItemTypeVO.weapon:
+//            case ItemTypeVO.armor:
+//            case ItemTypeVO.magic:
+//                content = Model.instance.items.createDrop(drop.item_id));
+////                content = new ItemDrop(Item.createDrop(Model.instance.items.getItem(drop.item_id)));
+//                break;
+//            case ItemTypeVO.goldItemVO:
+//                content = new GoldDrop(drop.randomAmount);
+////                content = new GoldDrop(GoldDropVO.DICT[drop.item_id].random);
+//                break;
+//        }
         addContent(content);
-        return drop;
+        return content;
     }
 
-    private function addContent(content : Drop) : void {
-        if(content is GoldDrop) {
+    private function addContent(content : Item) : void {
+        if(content.isGold()) {
             if(!_goldContent) {
                 _goldContent = _list[_lastIndex];
                 _lastIndex++;

@@ -1,14 +1,11 @@
 /**
  * Created by agnither on 12.08.14.
  */
-package com.agnither.hunters.view.ui.popups.win {
-import com.agnither.hunters.App;
-import com.agnither.hunters.data.outer.LevelVO;
+package com.agnither.hunters.view.ui.popups.win
+{
 import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.player.drop.DropList;
 import com.agnither.hunters.model.player.drop.DropSlot;
-import com.agnither.hunters.model.player.drop.GoldDrop;
-import com.agnither.hunters.model.player.drop.ItemDrop;
 import com.agnither.hunters.view.ui.UI;
 import com.agnither.hunters.view.ui.common.MonsterInfo;
 import com.agnither.hunters.view.ui.screens.battle.player.DropSlotView;
@@ -18,9 +15,7 @@ import com.agnither.ui.ButtonContainer;
 import com.agnither.ui.Popup;
 import com.cemaprjl.core.coreAddListener;
 import com.cemaprjl.core.coreDispatch;
-import com.cemaprjl.core.coreExecute;
 import com.cemaprjl.core.coreRemoveListener;
-import com.cemaprjl.viewmanage.ShowScreenCmd;
 
 import flash.geom.Rectangle;
 
@@ -29,7 +24,8 @@ import starling.display.Sprite;
 import starling.events.Event;
 import starling.text.TextField;
 
-public class WinPopup extends Popup {
+public class WinPopup extends Popup
+{
 
     public static const NAME : String = "WinPopup.NAME";
 
@@ -48,24 +44,27 @@ public class WinPopup extends Popup {
     private var _gold : TextField;
     private var _tooltip : Sprite;
 
-    public function WinPopup() {
+    public function WinPopup()
+    {
 
         super();
     }
 
 
-    override public function onRemove() : void {
+    override public function onRemove() : void
+    {
 
         coreRemoveListener(DropSlotView.SHOW_TOOLTIP, onShowTooltip);
         coreRemoveListener(DropSlotView.HIDE_TOOLTIP, onHideTooltip);
 
     }
 
-    override protected function initialize() : void {
+    override protected function initialize() : void
+    {
 
         createFromConfig(_refs.guiConfig.win_popup);
 
-        _back = _links["bitmap__bg"];
+        _back = _links["bitmap_common_back"];
 //        _back.touchable = true;
 
         _title = _links["title_tf"];
@@ -93,10 +92,10 @@ public class WinPopup extends Popup {
         _tooltip.visible = false;
 
 
-
     }
 
-    override protected function handleClose(event : Event) : void {
+    override protected function handleClose(event : Event) : void
+    {
 
         coreDispatch(UI.HIDE_POPUP, NAME);
 
@@ -105,9 +104,11 @@ public class WinPopup extends Popup {
             _isClosed = true;
             coreDispatch(Model.MONSTER_CATCHED);
 
-            Model.instance.deletePoint(Model.instance.currentMonsterPoint);
+            Model.instance.deleteCurrentPoint();
 
-        } else {
+        }
+        else
+        {
             Model.instance.currentMonsterPoint.count(true);
         }
 
@@ -118,36 +119,42 @@ public class WinPopup extends Popup {
 
     }
 
-    private function onHideTooltip() : void {
+    private function onHideTooltip() : void
+    {
         _tooltip.visible = false;
         _tooltip.removeChildren();
     }
 
-    private function onShowTooltip($data : Object) : void {
+    private function onShowTooltip($data : Object) : void
+    {
 
-        if($data.content is ItemDrop) {
-            _tooltip.addChild(ItemView.getItemView(($data.content as ItemDrop).item));
-            _tooltip.visible = true;
-        }
+        _tooltip.addChild(ItemView.getItemView($data.content));
+        _tooltip.visible = true;
         _tooltip.visible = true;
         var rect : Rectangle = ($data.item as Sprite).getBounds(this);
         _tooltip.x = rect.x + rect.width + 5;
         _tooltip.y = rect.y + rect.height + 5;
     }
 
-    override public function update() : void {
+    override public function update() : void
+    {
 
         _title.text = data.isWin ? "Победа" : "Поражение";
         _playButton.text = data.isWin ? "Забрать" : "Закрыть";
 
-        _moves.text = "Ходов: "+Model.instance.movesAmount;
+        _moves.text = "Ходов: " + Model.instance.movesAmount;
 
         var stars : int = 0;
-        if(Model.instance.movesAmount < Model.instance.monster.stars[0]) {
+        if (Model.instance.movesAmount < Model.instance.monster.stars[0])
+        {
             stars = 3;
-        } else if(Model.instance.movesAmount < Model.instance.monster.stars[1]) {
+        }
+        else if (Model.instance.movesAmount < Model.instance.monster.stars[1])
+        {
             stars = 2;
-        } else if(Model.instance.movesAmount < Model.instance.monster.stars[2]) {
+        }
+        else if (Model.instance.movesAmount < Model.instance.monster.stars[2])
+        {
             stars = 1;
         }
 
@@ -162,19 +169,20 @@ public class WinPopup extends Popup {
 
         _gold.text = "";
 
-        if(data.isWin) {
+        if (data.isWin)
+        {
             for (var i : int = 0; i < dropList.list.length; i++)
             {
                 var drop : DropSlot = dropList.list[i];
+                trace(i, drop.content);
                 if (drop.content)
                 {
-                    if (drop.content is GoldDrop)
+                    if (drop.content.isGold())
                     {
-                        var gold : GoldDrop = drop.content as GoldDrop;
-                        _gold.text = "Награда: "+gold.gold+"$";
-                        Model.instance.addPlayerGold(gold.gold);
+                        _gold.text = "Награда: " + drop.content.amount + "$";
+                        Model.instance.progress.gold += drop.content.amount;
                     }
-                    else if (drop.content is ItemDrop)
+                    else
                     {
                         var dropView : DropSlotView = new DropSlotView();
                         // XXXCOMMON
@@ -182,8 +190,7 @@ public class WinPopup extends Popup {
 //                        dropView.createFromCommon(_refs.guiConfig.common.drop);
                         _drops.addChild(dropView);
                         dropView.drop = drop;
-                        var item : ItemDrop = drop.content as ItemDrop;
-                        Model.instance.addPlayerItem(item.item);
+                        Model.instance.addPlayerItem(drop.content);
                         dropView.x = _drops.numChildren * 40;
                     }
                 }

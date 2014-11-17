@@ -36,7 +36,7 @@ public class MonsterInfo extends AbstractView {
         _damageType = _links["damage_type_icon"].getChildAt(0) as Image;
         _damageVal = _links["damage_tf"];
         _armorVal = _links["armor_tf"];
-        _killed = _links["bitmap_killed"];
+        _killed = _links["bitmap_common_killed"];
         _killed.visible = false;
 
         _sellButton = _links["buy_btn"];

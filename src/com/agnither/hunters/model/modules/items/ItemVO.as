@@ -15,11 +15,28 @@ public class ItemVO {
     public var id: int;
     public var name: String;
     public var picture: String;
+    public var droppicture : String;
     public var type: int;
     public var slot: int;
     public var extension : Object;
     public var extension_drop : Object;
     public var setname : String;
+
+    public static function get goldItemVO():ItemVO {
+        var obj : Object = {};
+        obj.id = 0;
+        obj.name = "goldItemVO";
+        obj.picture = "";
+        obj.type = 5;
+        obj.slot = 0;
+        obj.extension = {};
+        obj.extension_drop = {};
+        obj.setname = "";
+        obj.droppicture = "drop_gold";
+
+
+        return ItemVO.fill(new ItemVO(), obj)
+    }
 
     public static function parseData(data: Object):void {
         for (var i: int = 0; i < data.length; i++) {
@@ -62,7 +79,6 @@ public class ItemVO {
         var object: Object = {};
         var array: Array = string.split(";");
         for (var i:int = 0; i < array.length; i++) {
-//            trace(array[i]);
 //            while (array[i].indexOf("[") >= 0 && array[i].indexOf("]") < 0) {
 //                array[i] += "," + array[i+1];
 //                array.splice(i+1, 1);

@@ -35,7 +35,7 @@ public class Progress extends EventDispatcher {
     public var magic : int = 0;
     public var gold : int = 0;
     public var monstersResults : Object = {};
-    public var unlockedMonsters : Array = [];
+    public var unlockedLocations : Array = [];
     public var tamedMonsters : Array = [];
     public var maxSummon : int = 1;
     public var skillPoints : int = 0;
@@ -48,12 +48,14 @@ public class Progress extends EventDispatcher {
     private var _pets : Object = {};
     private var _items : Object = {};
     private var _inventory : Array = [];
+    public var unlockPoints : int = 0;
+    public var unlockPointsGiven : Array = [];
 
     public function Progress() {
         _data = SharedObject.getLocal("player");
 //        version = -1;
 //        _data.clear();
-//        reset();
+        reset();
 
         if (version == -1 || !_data.data.progress || _data.data.version == null || _data.data.version != version)
         {
@@ -102,9 +104,11 @@ public class Progress extends EventDispatcher {
         skills = progressObj.skills ? progressObj.skills : {};
         sets = progressObj.sets ? progressObj.sets : [];
         houses = progressObj.houses ? progressObj.houses : [];
+        unlockPoints = progressObj.unlockPoints;
+        unlockPointsGiven = progressObj.unlockPointsGiven ? progressObj.unlockPointsGiven : [];
 
         traps = progressObj.traps ? progressObj.traps : [];
-        unlockedMonsters = progressObj.unlockedMonsters ? progressObj.unlockedMonsters : [];
+        unlockedLocations = progressObj.unlockedLocations ? progressObj.unlockedLocations : [];
         tamedMonsters = progressObj.tamedMonsters ? progressObj.tamedMonsters : [];
         monstersResults = progressObj.monstersResults ? progressObj.monstersResults : {};
 //        inventory = progressObj.inventory ? progressObj.inventory : [];
@@ -167,12 +171,12 @@ public class Progress extends EventDispatcher {
 
         _data.data.version = version;
 
-        trace("------save------");
+//        trace("------save------");
         for (var key : String in $val)
         {
             _data.data[key] = JSON.stringify($val[key]);
-            trace(key,"----------------------");
-            trace(_data.data[key]);
+//            trace(key,"----------------------");
+//            trace(_data.data[key]);
         }
 
 
@@ -212,11 +216,13 @@ public class Progress extends EventDispatcher {
         obj.gold = settings.playerInitialGold;
         obj.maxSummon = settings.playerInitialSummonMax;
         obj.skillPoints = settings.playerInitialSkillPoints;
+        obj.unlockPoints = settings.unlockPoints;
+        obj.unlockPointsGiven = [];
         obj.skills = {};
 
         obj.traps = [];
         obj.houses = [];
-        obj.unlockedMonsters = ["blue_bull"];
+        obj.unlockedLocations = ["clouds_00"];
         obj.monstersResults = {};
         obj.sets = ["default"];
 
@@ -229,7 +235,7 @@ public class Progress extends EventDispatcher {
         for (i = 0; i < playerItems.length; i++)
         {
             var playerItem : PlayerItemVO = playerItems[i];
-            var item : Object = Model.instance.items.getItem(playerItem.id);
+            var item : Object = Model.instance.items.getItemVO(playerItem.id);
             item.extension = playerItem.extension;
             var itmName : String = item.name + "." + i;
             saveObject.items[itmName] = item;

@@ -38,7 +38,7 @@ public class HuntPopup extends Popup {
         createFromConfig(_refs.guiConfig.hunt_popup);
 
 
-        _back = _links["bitmap__bg"];
+        _back = _links["bitmap_common_back"];
         _closeButton = _links["close_btn"];
         _closeButton.addEventListener(Event.TRIGGERED, handleClose);
 

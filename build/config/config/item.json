@@ -4,173 +4,191 @@
         "name": "sword",
         "type": 1,
         "slot": 1,
-        "picture": "slot_4.png",
+        "picture": "item_sword",
         "extension": "1:10;3:1",
         "extensiondrop": "1:[10,15]",
-        "setname": "default"
+        "setname": "default",
+        "droppicture": "drop_sword"
     },
     {
         "id": 2,
         "name": "steel_sword",
         "type": 1,
         "slot": 1,
-        "picture": "slot_4.png",
+        "picture": "item_sword",
         "extension": "1:18;3:1",
         "extensiondrop": "1:[18,25]",
-        "setname": "house00"
+        "setname": "house00",
+        "droppicture": "drop_sword"
     },
     {
         "id": 3,
         "name": "staff",
         "type": 1,
         "slot": 1,
-        "picture": "slot_7.png",
+        "picture": "item_staff",
         "extension": "1:20;3:1",
         "extensiondrop": "1:[20,25]",
-        "setname": "house01"
+        "setname": "house01",
+        "droppicture": "drop_staff"
     },
     {
         "id": 4,
         "name": "chest",
         "type": 2,
-        "slot": 2,
-        "picture": "slot_5.png",
+        "slot": 3,
+        "picture": "item_body",
         "extension": "2:10;3:1",
         "extensiondrop": "2:[10,15]",
-        "setname": "default"
+        "setname": "default",
+        "droppicture": "drop_body"
     },
     {
         "id": 5,
         "name": "steel_chest",
         "type": 2,
-        "slot": 2,
-        "picture": "slot_5.png",
+        "slot": 3,
+        "picture": "item_body",
         "extension": "2:15;3:1",
         "extensiondrop": "2:[15,20]",
-        "setname": "house00"
+        "setname": "house00",
+        "droppicture": "drop_body"
     },
     {
         "id": 6,
         "name": "gloves",
         "type": 2,
-        "slot": 3,
-        "picture": "slot_6.png",
+        "slot": 6,
+        "picture": "item_gloves",
         "extension": "2:6;3:1",
         "extensiondrop": "2:[5,10]",
-        "setname": "house00"
+        "setname": "house00",
+        "droppicture": "drop_gloves"
     },
     {
         "id": 7,
         "name": "pants",
         "type": 2,
         "slot": 4,
-        "picture": "slot_6.png",
+        "picture": "item_pants",
         "extension": "2:6;3:1",
         "extensiondrop": "2:[5,10]",
-        "setname": "house01"
+        "setname": "house01",
+        "droppicture": "drop_pants"
     },
     {
         "id": 8,
         "name": "helmet",
         "type": 2,
-        "slot": 5,
-        "picture": "slot_6.png",
+        "slot": 2,
+        "picture": "item_helmet",
         "extension": "2:6;3:1",
         "extensiondrop": "2:[5,10]",
-        "setname": "house01"
+        "setname": "house01",
+        "droppicture": "drop_body"
     },
     {
         "id": 9,
         "name": "boots",
         "type": 2,
-        "slot": 6,
-        "picture": "slot_6.png",
+        "slot": 5,
+        "picture": "item_boots",
         "extension": "2:6;3:1",
         "extensiondrop": "2:[5,10]",
-        "setname": "house01"
+        "setname": "house01",
+        "droppicture": "drop_boots"
     },
     {
         "id": 10,
         "name": "ring",
         "type": 3,
         "slot": 7,
-        "picture": "slot_7.png",
-        "setname": "default"
+        "picture": "item_ring",
+        "setname": "default",
+        "droppicture": "drop_ring"
     },
     {
         "id": 11,
         "name": "ring",
         "type": 3,
         "slot": 7,
-        "picture": "slot_7.png",
-        "setname": "house00"
+        "picture": "item_ring",
+        "setname": "house00",
+        "droppicture": "drop_ring"
     },
     {
         "id": 12,
         "name": "robe",
         "type": 3,
-        "slot": 2,
-        "picture": "slot_7.png",
-        "setname": "house00"
+        "slot": 3,
+        "picture": "item_ring",
+        "setname": "house00",
+        "droppicture": "drop_magic"
     },
     {
         "id": 13,
         "name": "fireball",
         "type": 4,
         "slot": 8,
-        "picture": "slot_1.png",
+        "picture": "magic_fire",
         "extension": "1:10;3:5",
         "extensiondrop": "3:5",
-        "setname": "default"
+        "setname": "default",
+        "droppicture": "drop_magic"
     },
     {
         "id": 14,
         "name": "troll",
         "type": 4,
         "slot": 8,
-        "picture": "slot_2.png",
+        "picture": "magic_earth",
         "extension": "1:50;3:3",
         "extensiondrop": "3:15",
-        "setname": "house00"
+        "setname": "house00",
+        "droppicture": "drop_magic"
     },
     {
         "id": 15,
         "name": "thunderbolt",
         "type": 4,
         "slot": 8,
-        "picture": "slot_3.png",
+        "picture": "magic_green",
         "extension": "1:35;3:6",
         "extensiondrop": "5:10",
-        "setname": "house00"
+        "setname": "house00",
+        "droppicture": "drop_magic"
     },
     {
         "id": 16,
         "name": "vampirism",
         "type": 4,
         "slot": 8,
-        "picture": "slot_3.png",
+        "picture": "magic_dark",
         "extension": "1:20;3:7",
         "extensiondrop": "4:20",
-        "setname": "house01"
+        "setname": "house01",
+        "droppicture": "drop_magic"
     },
     {
         "id": 17,
         "name": "light",
         "type": 4,
         "slot": 8,
-        "picture": "slot_3.png",
+        "picture": "magic_fire",
         "extension": "1:60;3:5",
         "extensiondrop": "5:7;3:10",
-        "setname": "house01"
+        "setname": "house01",
+        "droppicture": "drop_magic"
     },
     {
         "id": 18,
         "name": "storm",
         "type": 4,
         "slot": 8,
-        "picture": "slot_3.png",
+        "picture": "magic_water",
         "extension": "1:60;3:4",
         "extensiondrop": "4:8;5:8;3:8",
-        "setname": "house01"
+        "setname": "house01",
+        "droppicture": "drop_magic"
     }
 ]

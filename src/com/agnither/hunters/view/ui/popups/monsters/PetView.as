@@ -46,8 +46,6 @@ public class PetView extends AbstractView {
         _picture.touchable = true;
         _picture.texture = _refs.gui.getTexture(_pet.picture);
 
-//        _links.hp_icon.getChildAt(0).texture = _refs.gui.getTexture("heart.png");
-//        _links.armor_icon.getChildAt(0).texture = _refs.gui.getTexture("shild.png");
 //        _links.damage_icon.getChildAt(0).texture = _refs.gui.getTexture("hit.png");
 
         trace("_pet.params.magic", _pet.params.magic);
@@ -66,7 +64,7 @@ public class PetView extends AbstractView {
         _armor.text = String(_pet.params.defence);
         _damage.text = String(_pet.params.damage);
 
-        _killed = _links["bitmap_killed"];
+        _killed = _links["bitmap_common_killed"];
         _killed.visible = false;
 
         _sellButton = _links["buy_btn"];

@@ -3,7 +3,8 @@
  */
 package com.agnither.hunters.view.ui.screens.battle.player {
 import com.agnither.hunters.model.player.ManaList;
-import com.agnither.hunters.view.ui.common.ManaView;
+import com.agnither.hunters.view.ui.common.BattleManaView;
+import com.agnither.hunters.view.ui.common.ItemManaView;
 import com.agnither.ui.AbstractView;
 import com.agnither.utils.CommonRefs;
 
@@ -24,7 +25,7 @@ public class ManaListView extends AbstractView {
         }
     }
 
-    private var _mana: Vector.<ManaView>;
+    private var _mana: Vector.<BattleManaView>;
 
     /*
      currentPlayer.manaList.addMana(match.type, match.amount);
@@ -34,20 +35,30 @@ public class ManaListView extends AbstractView {
     }
 
     override protected function initialize():void {
-        _mana = new <ManaView>[];
 
-        var i : int = 0;
-        while (i < numChildren && numChildren > 3) {
-            if(i == 3) {
-                removeChildAt(i);
-                continue;
-            }
-            var child : ManaView = getChildAt(i) as ManaView;
+        _mana = new <BattleManaView>[];
+
+        for (var i : int = 0; i < numChildren; i++)
+        {
+            var child : BattleManaView = getChildAt(i) as BattleManaView;
             child.touchable = true;
             child.addEventListener(TouchEvent.TOUCH, onTouch);
-            _mana.push(getChildAt(i) as ManaView);
-            i++;
+            _mana.push(child);
+
         }
+
+//        var i : int = 0;
+//        while (i < numChildren && numChildren > 3) {
+//
+//
+//            var child : BattleManaView = getChildAt(i) as BattleManaView;
+//            child.touchable = true;
+//            child.addEventListener(TouchEvent.TOUCH, onTouch);
+//            _mana.push(getChildAt(i) as BattleManaView);
+//            i++;
+//        }
+
+//        trace(_mana);
 
 //        for (var i:int = 0; i < numChildren; i++) {
 //            if(i == 3) {
@@ -65,7 +76,7 @@ public class ManaListView extends AbstractView {
         var touch : Touch = event.getTouch(event.currentTarget as DisplayObject, TouchPhase.BEGAN);
         if(touch) {
 //            trace("ADD MANA");
-            var mv : ManaView = event.currentTarget as ManaView;
+            var mv : BattleManaView = event.currentTarget as BattleManaView;
             _manaList.addMana(mv.mana.type, 10);
         }
 

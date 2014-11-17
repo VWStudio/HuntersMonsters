@@ -52,7 +52,7 @@ public class TrapItem extends AbstractView {
     override protected function initialize():void {
         createFromConfig(_refs.guiConfig.common.trapItem);
 
-        _back = _links["bitmap__bg"];
+        _back = _links["bitmap_common_back"];
         _back.touchable = true;
 
         _name = _links.monster_tf;

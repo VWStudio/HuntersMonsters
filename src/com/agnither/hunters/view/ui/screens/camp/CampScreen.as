@@ -52,26 +52,6 @@ public class CampScreen extends Screen {
     private var _allowMove : Boolean = false;
     private var _startPoint : Point;
     private var _startPos : Point;
-//    private var _points : Dictionary = new Dictionary();
-//    private var _playerPositions : Dictionary = new Dictionary();
-//    private var _clouds : Dictionary = new Dictionary();
-//    public static const INIT_MONSTER : String = "MapScreen.INIT_MONSTER";
-//    private var _monstersContainer : Sprite;
-////    private var _playerPositionsArr : Vector.<Point>;
-//    private var _playerPosition : PlayerPoint;
-//    public static const START_TRAP : String = "MapScreen.START_TRAP";
-//    public static const STOP_TRAP : String = "MapScreen.STOP_TRAP";
-//    public static const ADD_TRAP : String = "MapScreen.ADD_TRAP";
-//    public static const DELETE_TRAP : String = "MapScreen.DELETE_TRAP";
-//    public static const ADD_POINT : String = "MapScreen.ADD_POINT";
-//    public static const DELETE_POINT : String = "MapScreen.DELETE_POINT";
-//    private var _trapsContainer : Sprite;
-//    public static const ADD_CHEST : String = "MapScreen.ADD_CHEST";
-//    public static const REMOVE_CHEST : String = "MapScreen.REMOVE_CHEST";
-//    private var _chestsContainer : Sprite;
-//    private var _houses : Object = {};
-//    private var _houseContainer : Sprite;
-    private var isFirstRun : Boolean = true;
     private var _skills : Sprite;
     private var _shop : Sprite;
     private var _instructor : Sprite;
@@ -98,7 +78,7 @@ public class CampScreen extends Screen {
 //        coreAddListener(ADD_CHEST, onChestAdd);
 //        coreAddListener(REMOVE_CHEST, onChestRemove);
 
-        _back = _links["bitmap_camp_bg.jpg"];
+        _back = _links["bitmap_camp_background"];
         _back.touchable = true;
 
         _skills = _links["achievements"];

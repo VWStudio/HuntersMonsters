@@ -16,8 +16,16 @@ public class Mana extends EventDispatcher {
         return _magic.name;
     }
 
+    public function get manaicon():String {
+        return _magic.manaicon;
+    }
+
     public function get icon():String {
         return _magic.picturedamage;
+    }
+
+    public function get marker():String {
+        return _magic.itemmarker;
     }
 
     private var _value: int;

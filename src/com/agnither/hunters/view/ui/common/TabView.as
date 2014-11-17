@@ -41,7 +41,7 @@ public class TabView extends AbstractView {
 
         _select = _links.select;
 
-        _back = _links.bitmap__bg;
+        _back = _links.bitmap_common_back;
 
         touchable = true;
         _back.touchable = true;

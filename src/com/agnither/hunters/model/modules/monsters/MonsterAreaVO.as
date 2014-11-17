@@ -13,57 +13,68 @@ public class MonsterAreaVO {
     public static const NAMES_LIST: Vector.<String> = new <String>[];
 
     public var id: String = "";
-    public var order: int = 0;
+    public var hud: String = "";
+    public var unlock: Array = [];
     public var area: String = "";
-    public var area_max : int = 0;
-    public var area_min : int = 0;
-    public var lifetime_max: int = 0;
-    public var lifetime_min: int = 0;
+
+    public var areamax : int = 0;
+    public var areamin : int = 0;
+    public var lifemin: int = 0;
+    public var lifemax: int = 0;
     public var respawn: int = 0;
     public var house: String = "";
-    public var chestLife: int = 0;
-    public var chestRespawn: int = 0;
+    public var icon: String = "";
+    public var chestlife: int = 0;
+    public var chestrespawn: int = 0;
     public var chestdropset: int = 0;
     public var expearned: int = 0;
     public var tameprice: Array = [];
+
+    public var isHouse: Boolean = false;
+
+
+    /*
+     "id": "clouds_00",
+     "hud": "hud00",
+     "unlock": "clouds_01,clouds_02",
+     "area": "blue_bull",
+     "areaamount": "1,2",
+     "lifetime": "60,300",
+     "respawn": 180,
+     "chesttimes": "300,300",
+     "chestdropset": "3",
+     "expearned": 50,
+     "tameprice": "1,11,21"
+     */
+
 
     public static function parseData(data: Object):void {
         for (var i: int = 0; i < data.length; i++) {
 
             var source: Object = data[i];
-            var arr : Array = source.areaamount.toString().split(",");
-            source.area_min = arr[0];
-            source.area_max = arr[1];
-            delete source.areaamount;
+            source.unlock = source.unlock ? source.unlock.split(",") : [];
 
-            arr = source.lifetime.toString().split(",");
-            source.lifetime_min = arr[0];
-            source.lifetime_max = arr[1];
-            delete source.lifetime;
-
-            arr = source.chesttimes.toString().split(",");
-            source.chestLife = arr[0];
-            source.chestRespawn = arr[1];
-            delete source.chesttimes;
-
-            source.tameprice = source.tameprice ? source.tameprice.toString().split(",") : [];
+            if(source.tameprice)
+            {
+                source.tameprice = source.tameprice.toString().split(",");
+            } else {
+                source.isHouse = true;
+            }
 
             var object: MonsterAreaVO = fill(new MonsterAreaVO(), source);
             DICT[object.id] = object;
             LIST.push(object);
         }
-        LIST.sort(sortByOrder);
+
         for (var j : int = 0; j < LIST.length; j++)
         {
-            NAMES_LIST.push(LIST[j].id);
+            if(!LIST[j].isHouse) {
+                NAMES_LIST.push(LIST[j].area);
+            }
         }
 
     }
-    private static function sortByOrder($a : MonsterAreaVO, $b : MonsterAreaVO) : Number {
-        if($a.order < $b.order) return -1;
-        if($a.order > $b.order) return 1;
-        return 0;
-    }
+
     public static function fill($target : MonsterAreaVO, $source : Object) : MonsterAreaVO {
 
         var source : Object = $source;

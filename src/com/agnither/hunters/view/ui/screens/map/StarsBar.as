@@ -44,7 +44,7 @@ public class StarsBar extends AbstractView {
 
     override protected function initialize():void {
 
-        _back = _links["bitmap_stars_back.png"];
+        _back = _links["bitmap_common_stars_back"];
 //        _back.touchable = true;
 //        this.touchable = true;
 

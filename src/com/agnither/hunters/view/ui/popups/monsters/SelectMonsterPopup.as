@@ -9,6 +9,7 @@ import com.agnither.hunters.model.modules.locale.Locale;
 import com.agnither.hunters.model.player.Player;
 import com.agnither.hunters.model.player.inventory.PetsInventory;
 import com.agnither.hunters.view.ui.UI;
+import com.agnither.hunters.view.ui.common.Scroll;
 import com.agnither.hunters.view.ui.common.TabView;
 import com.agnither.hunters.view.ui.popups.monsters.CatchedPetsView;
 import com.agnither.hunters.view.ui.popups.traps.TrapItem;
@@ -16,6 +17,10 @@ import com.agnither.hunters.view.ui.screens.battle.BattleScreen;
 import com.agnither.ui.Popup;
 import com.agnither.utils.CommonRefs;
 import com.cemaprjl.core.coreDispatch;
+
+import flash.geom.Rectangle;
+
+import starling.core.Starling;
 
 import starling.display.Button;
 import starling.display.Sprite;
@@ -36,6 +41,9 @@ public class SelectMonsterPopup extends Popup {
 
     private var _tamedmonsters : TamedPetsView;
     private var _traps : TrapsListView;
+    private var _scroll : Scroll;
+    private var _scrollMonsters : Sprite;
+    private var lineHeight : Number = 170;
 
     public function SelectMonsterPopup() {
     }
@@ -55,10 +63,13 @@ public class SelectMonsterPopup extends Popup {
         _tab3.label = Locale.getString("traps_tab");
         _tab3.addEventListener(TabView.TAB_CLICK, handleSelectTab);
 
+        _scrollMonsters = new Sprite();
+        addChild(_scrollMonsters);
+        _scrollMonsters.x = _links.monsters.x;
+        _scrollMonsters.y = _links.monsters.y;
+
         _monstersContainer = new Sprite();
-        addChild(_monstersContainer);
-        _monstersContainer.x = _links.monsters.x;
-        _monstersContainer.y = _links.monsters.y;
+        _scrollMonsters.addChild(_monstersContainer);
 
         removeChild(_links.monsters);
 
@@ -73,7 +84,17 @@ public class SelectMonsterPopup extends Popup {
         _traps = new TrapsListView();
         _monstersContainer.addChild(_traps);
 
+        _scroll = new Scroll(_links["scroll"]);
+        _scroll.onChange = onScroll;
+        _scrollMonsters.clipRect = new Rectangle(0,0,730,540);
+
         addCloseButton(_links.close_btn);
+    }
+
+    private function onScroll($val : Number) : void
+    {
+        var newy : Number = -lineHeight * $val;
+        Starling.juggler.tween(_monstersContainer, 0.4, {y : newy});
     }
 
 
@@ -92,18 +113,22 @@ public class SelectMonsterPopup extends Popup {
         _traps.visible = false;
         _monsters.visible = false;
         _tamedmonsters.visible = false;
+        _monstersContainer.y = 0;
         switch (e.currentTarget) {
             case _tab1:
                 _tamedmonsters.visible = true;
                 _tamedmonsters.update();
+                _scroll.setScrollParams(_tamedmonsters.itemsAmount, 3);
                 break;
             case _tab2:
                 _monsters.visible = true;
                 _monsters.update();
+                _scroll.setScrollParams(_monsters.itemsAmount, 3);
                 break;
             case _tab3:
                 _traps.visible = true;
                 _traps.update();
+                _scroll.setScrollParams(_traps.itemsAmount, 3);
                 break;
         }
 

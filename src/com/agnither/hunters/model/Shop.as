@@ -35,23 +35,23 @@ public class Shop
     private function generateItems($type : int) : Array
     {
 
-        trace("generateItems", $type)
+        trace("generateItems", $type);
 
         var itemType : ItemTypeVO = ItemTypeVO.DICT[$type];
-        var arr : Array = []
+        var arr : Array = [];
         var amount : Number = itemType.tabMin + int((itemType.tabMax - itemType.tabMin + 1) * Math.random());
-        trace("AMOUNT", amount);
         var i : int = 0;
-        var item : ItemVO;
+        var item : Item;
+        var itemVO : ItemVO;
         if (amount == 0)
         {
             for (i = 0; i < ItemVO.SPELLS.length; i++)
             {
 
-                item = ItemVO.SPELLS[i];
-                trace(item.name, item.setname, Model.instance.progress.sets);
-                if(Model.instance.progress.sets.indexOf(item.setname) >= 0) {
-                    arr.push(Item.createDrop(item));
+                itemVO = ItemVO.SPELLS[i].clone();
+                if(Model.instance.progress.sets.indexOf(itemVO.setname) >= 0) {
+//                    Model.instance.items.getItemVO(itemVO.id, itemVO);
+                    arr.push(Item.create(itemVO));
                 }
             }
         }
@@ -59,11 +59,11 @@ public class Shop
         {
             for (i = 0; i < amount; i++)
             {
-                var set : String = getRandomSet();
-                item = getRandomItem(set, $type);
-                if(item != null) {
-                    arr.push(Item.createDrop(item));
-                }
+//                var set : String = getRandomSet();
+//                item = getRandomItem(set, $type);
+                item = Model.instance.items.generateRandomItem($type);
+                arr.push(item);
+//                    arr.push(Item.createItem(itemVO, itemVO));
             }
 
         }
@@ -72,48 +72,13 @@ public class Shop
 
     }
 
-    private function getRandomItem($set : String, $type : int) : ItemVO
-    {
-
-        var items : Array = ItemVO.SETS[$set];
-        var itemsByType : Array = [];
-        var i : int = 0;
-        for (i = 0; i < items.length; i++)
-        {
-            var object : ItemVO = items[i];
-            if(object.type == $type) {
-                itemsByType.push(object);
-            }
-        }
-
-        return itemsByType.length > 0 ? itemsByType[int(itemsByType.length* Math.random())] : null;
-
-    }
 
 
-    private function getRandomSet() : String
-    {
-        var chances : Vector.<Number> = new <Number>[]
-        var chanceSum : Number = 0;
-        var i : int = 0;
-        for (i = 0; i < Model.instance.progress.sets.length; i++)
-        {
-            var chance : Number = (i + 1) / Model.instance.progress.sets.length;
-            chances.push(chance);
-            chanceSum += chance;
-        }
 
-        var rand : int = Math.random() * chanceSum;
-        for ( i = 0; i < chances.length; i++)
-        {
-            if(chances[i] > rand) {
-                return Model.instance.progress.sets[i];
-            }
-            rand -= chances[i];
 
-        }
-        return Model.instance.progress.sets[0];
-    }
+
+
+
 
     public function removeItem($item : Item) : void
     {
