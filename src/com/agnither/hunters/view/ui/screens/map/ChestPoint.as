@@ -7,6 +7,7 @@ import com.agnither.hunters.App;
 import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.modules.monsters.MonsterAreaVO;
 import com.agnither.hunters.model.modules.monsters.MonsterVO;
+import com.agnither.hunters.model.player.Territory;
 import com.agnither.hunters.model.player.inventory.Item;
 import com.agnither.hunters.view.ui.popups.hunt.HuntStepsPopup;
 import com.agnither.ui.AbstractView;
@@ -28,10 +29,12 @@ public class ChestPoint extends AbstractView
     private var _time : TextField;
     private var _monsters : Vector.<MonsterVO>;
     private var _drops : Array;
+    private var _territory : Territory;
 
 
     public function ChestPoint()
     {
+        createFromConfig(_refs.guiConfig.common.chestIcon);
         this.addEventListener(TouchEvent.TOUCH, handleTouch);
     }
 
@@ -71,13 +74,7 @@ public class ChestPoint extends AbstractView
 
     override protected function initialize() : void
     {
-        if (!_links["bitmap_map_icon_back"])
-        {
-            createFromConfig(_refs.guiConfig.common.chestIcon);
-        }
-
-
-        _back = _links["bitmap_map_icon_back"];
+        _back = _links["bitmap_chest_icon"];
         _back.touchable = true;
         this.touchable = true;
 
@@ -89,6 +86,7 @@ public class ChestPoint extends AbstractView
     override public function update() : void
     {
 
+        _territory = data as Territory;
         var maxMonsters : int = 1 + Math.random() * 3;
         _monsters = new <MonsterVO>[];
         for (var i : int = 0; i < maxMonsters; i++)
@@ -103,7 +101,7 @@ public class ChestPoint extends AbstractView
         for (var j : int = 0; j < 3; j++)
         {
 //            var drop : DropVO = DropVO.getRandomDrop(MonsterAreaVO.DICT[monster.id].chestdropset);
-            var item : Item = Model.instance.items.createDropItem(MonsterAreaVO.DICT[monster.id].chestdropset);
+            var item : Item = Model.instance.items.createDropItem(_territory.area.chestdropset);
             if (item.isGold())
             {
                 if (goldDrop)

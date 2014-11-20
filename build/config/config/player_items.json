@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "extension": "1:15",
+        "extension": "1:50",
         "wield": 1
     },
     {
@@ -11,7 +11,7 @@
     },
     {
         "id": 13,
-        "extension": "1:10,3:4,9:1",
+        "extension": "1:30,3:4,9:1",
         "wield": 1
     }
 ]

@@ -143,20 +143,7 @@ public class WinPopup extends Popup
         _playButton.text = data.isWin ? "Забрать" : "Закрыть";
 
         _moves.text = "Ходов: " + Model.instance.movesAmount;
-
-        var stars : int = 0;
-        if (Model.instance.movesAmount < Model.instance.monster.stars[0])
-        {
-            stars = 3;
-        }
-        else if (Model.instance.movesAmount < Model.instance.monster.stars[1])
-        {
-            stars = 2;
-        }
-        else if (Model.instance.movesAmount < Model.instance.monster.stars[2])
-        {
-            stars = 1;
-        }
+        var stars : int = Model.instance.calcStars();
 
         _stars.setProgress(data.isWin ? stars : 0);
 
@@ -174,7 +161,6 @@ public class WinPopup extends Popup
             for (var i : int = 0; i < dropList.list.length; i++)
             {
                 var drop : DropSlot = dropList.list[i];
-                trace(i, drop.content);
                 if (drop.content)
                 {
                     if (drop.content.isGold())

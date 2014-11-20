@@ -67,7 +67,7 @@
           "height": 25.95,
           "text": "10/100",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "left",
           "name": "expVal_tf"
         }
@@ -81,7 +81,7 @@
           "height": 25.95,
           "text": "Опыт:",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "left",
           "name": "expTitle_tf"
         }
@@ -95,7 +95,7 @@
           "height": 25.95,
           "text": "10",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "left",
           "name": "levelVal_tf"
         }
@@ -109,7 +109,7 @@
           "height": 29.65,
           "text": "Уровень:",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "left",
           "name": "levelTitle_tf"
         }
@@ -119,11 +119,11 @@
           "x": 165,
           "y": 24,
           "type": "text",
-          "width": 69.75,
+          "width": 69.7,
           "height": 25.95,
           "text": "Рейтинг:",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "left",
           "name": "ratingTitle_tf"
         }
@@ -137,7 +137,7 @@
           "height": 25.95,
           "text": "1022",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "left",
           "name": "ratingVal_tf"
         }
@@ -147,11 +147,11 @@
           "x": 166,
           "y": 0,
           "type": "text",
-          "width": 43.65,
+          "width": 43.6,
           "height": 25.95,
           "text": "Лига:",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "left",
           "name": "leagueTitle_tf"
         }
@@ -165,7 +165,7 @@
           "height": 25.95,
           "text": "Серебро",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "left",
           "name": "leagueVal_tf"
         }
@@ -179,7 +179,7 @@
           "height": 25.95,
           "text": "Золото:",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "left",
           "name": "goldTitle_tf"
         }
@@ -193,7 +193,7 @@
           "height": 25.95,
           "text": "1022",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "left",
           "name": "goldVal_tf"
         }
@@ -207,7 +207,7 @@
           "height": 26,
           "text": "Кнопка",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "center",
           "name": "inventory_label"
         }
@@ -234,7 +234,7 @@
           "height": 26,
           "text": "Кнопка",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "center",
           "name": "mode_label"
         }
@@ -261,7 +261,7 @@
           "height": 26,
           "text": "Кнопка",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "center",
           "name": "trap_label"
         }
@@ -288,7 +288,7 @@
           "height": 26,
           "text": "Кнопка",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "center",
           "name": "reset_label"
         }
@@ -315,7 +315,7 @@
           "height": 26,
           "text": "Кнопка",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "center",
           "name": "skills_label"
         }
@@ -342,7 +342,7 @@
           "height": 26,
           "text": "Кнопка",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "center",
           "name": "monsters_label"
         }
@@ -401,7 +401,7 @@
           "height": 38.15,
           "text": "Навыки",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "center",
           "name": "title_tf"
         }
@@ -424,7 +424,7 @@
           "height": 26,
           "text": "Уровень",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "left",
           "name": "level_tf"
         }
@@ -438,7 +438,7 @@
           "height": 26,
           "text": "Опыт",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "left",
           "name": "exp_tf"
         }
@@ -452,7 +452,7 @@
           "height": 26,
           "text": "Здоровье",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "left",
           "name": "hp_tf"
         }
@@ -466,7 +466,7 @@
           "height": 26,
           "text": "Очки навыков",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "left",
           "name": "sp_tf"
         }
@@ -480,7 +480,7 @@
           "height": 26,
           "text": "Уровень 1",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "right",
           "name": "level1_tf"
         }
@@ -494,7 +494,7 @@
           "height": 26,
           "text": "Уровень  3",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "right",
           "name": "level2_tf"
         }
@@ -508,7 +508,7 @@
           "height": 26,
           "text": "Уровень  7",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "right",
           "name": "level3_tf"
         }
@@ -522,7 +522,7 @@
           "height": 26,
           "text": "Уровень  10",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "right",
           "name": "level4_tf"
         }
@@ -536,7 +536,7 @@
           "height": 26,
           "text": "Призыв",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "left",
           "name": "summon_tf"
         }
@@ -1213,25 +1213,6 @@
                 "type": "bitmap",
                 "image": "h3",
                 "name": "bitmap_h3"
-              }
-            ]
-          ]
-        }
-      ],
-      [
-        {
-          "x": 483,
-          "y": 926,
-          "type": "movie clip",
-          "name": "camp",
-          "structure": [
-            [
-              {
-                "x": -45,
-                "y": -31,
-                "type": "bitmap",
-                "image": "camp",
-                "name": "bitmap_camp"
               }
             ]
           ]
@@ -2201,6 +2182,25 @@
       ],
       [
         {
+          "x": 483,
+          "y": 926,
+          "type": "movie clip",
+          "name": "camp",
+          "structure": [
+            [
+              {
+                "x": -45,
+                "y": -31,
+                "type": "bitmap",
+                "image": "camp",
+                "name": "bitmap_camp"
+              }
+            ]
+          ]
+        }
+      ],
+      [
+        {
           "x": 648,
           "y": 109,
           "type": "movie clip",
@@ -2500,7 +2500,7 @@
           "height": 26,
           "text": "Установить ловушку",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "center",
           "name": "title_tf"
         },
@@ -2512,7 +2512,7 @@
           "height": 26,
           "text": "Установить ловушку",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "center",
           "name": "level1chance_tf"
         },
@@ -2524,7 +2524,7 @@
           "height": 26,
           "text": "Установить ловушку",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "center",
           "name": "level2chance_tf"
         },
@@ -2536,7 +2536,7 @@
           "height": 26,
           "text": "Установить ловушку",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "center",
           "name": "level3chance_tf"
         }
@@ -2622,7 +2622,7 @@
                 "height": 29.65,
                 "text": "10",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "left",
                 "name": "armor_tf"
               }
@@ -2637,7 +2637,7 @@
                 "height": 29.65,
                 "text": "10",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "left",
                 "name": "damage_tf"
               }
@@ -2652,7 +2652,7 @@
                 "height": 29.65,
                 "text": "10",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "left",
                 "name": "hp_tf"
               }
@@ -2685,7 +2685,7 @@
                 "height": 29.65,
                 "text": "Name lv",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "center",
                 "name": "name_tf"
               }
@@ -2727,7 +2727,7 @@
                 "height": 26,
                 "text": "Забрать",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "center",
                 "name": "buy_label"
               }
@@ -2765,7 +2765,7 @@
           "height": 26,
           "text": "Кнопка",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "center",
           "name": "setNow_label"
         }
@@ -2800,7 +2800,7 @@
           "height": 26,
           "text": "Кнопка",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "center",
           "name": "set6h_label"
         }
@@ -2835,7 +2835,7 @@
           "height": 26,
           "text": "Кнопка",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "center",
           "name": "set1h_label"
         }
@@ -2894,7 +2894,7 @@
           "height": 26,
           "text": "Кнопка",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "center",
           "name": "play_label"
         }
@@ -2921,7 +2921,7 @@
           "height": 26,
           "text": "Кнопка",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "center",
           "name": "attack_label"
         }
@@ -2948,7 +2948,7 @@
           "height": 26,
           "text": "Дом",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "center",
           "name": "title_tf"
         }
@@ -2962,7 +2962,7 @@
           "height": 26,
           "text": "Награда",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "center",
           "name": "owner_tf"
         },
@@ -2974,7 +2974,7 @@
           "height": 26,
           "text": "Награда",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "center",
           "name": "price_tf"
         }
@@ -3033,7 +3033,7 @@
           "height": 26,
           "text": "Кнопка",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "center",
           "name": "play_label"
         }
@@ -3060,7 +3060,7 @@
           "height": 26,
           "text": "Охота на монстра",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "center",
           "name": "title_tf"
         },
@@ -3072,7 +3072,7 @@
           "height": 26,
           "text": "Награда",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "center",
           "name": "reward_tf"
         }
@@ -3235,7 +3235,7 @@
                 "height": 29.65,
                 "text": "10",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "left",
                 "name": "armor_tf"
               }
@@ -3250,7 +3250,7 @@
                 "height": 29.65,
                 "text": "10",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "left",
                 "name": "damage_tf"
               }
@@ -3265,7 +3265,7 @@
                 "height": 29.65,
                 "text": "10",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "left",
                 "name": "hp_tf"
               }
@@ -3298,7 +3298,7 @@
                 "height": 29.65,
                 "text": "Name lv",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "center",
                 "name": "name_tf"
               }
@@ -3340,7 +3340,7 @@
                 "height": 26,
                 "text": "Забрать",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "center",
                 "name": "buy_label"
               }
@@ -3383,7 +3383,7 @@
           "height": 26,
           "text": "Охота на монстра",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "center",
           "name": "title_tf"
         }
@@ -3398,7 +3398,7 @@
           "height": 26,
           "text": "Кнопка",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "center",
           "name": "play_label"
         }
@@ -3462,7 +3462,7 @@
           "height": 23.55,
           "text": "50",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "center",
           "name": "rewardGold_tf"
         }
@@ -3477,7 +3477,7 @@
           "height": 23.55,
           "text": "ходов",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "right",
           "name": "moves_tf"
         }
@@ -3595,7 +3595,7 @@
                 "height": 29.65,
                 "text": "10",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "left",
                 "name": "armor_tf"
               }
@@ -3610,7 +3610,7 @@
                 "height": 29.65,
                 "text": "10",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "left",
                 "name": "damage_tf"
               }
@@ -3625,7 +3625,7 @@
                 "height": 29.65,
                 "text": "10",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "left",
                 "name": "hp_tf"
               }
@@ -3658,7 +3658,7 @@
                 "height": 29.65,
                 "text": "Name lv",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "center",
                 "name": "name_tf"
               }
@@ -3700,7 +3700,7 @@
                 "height": 26,
                 "text": "Забрать",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "center",
                 "name": "buy_label"
               }
@@ -3739,7 +3739,7 @@
           "height": 26,
           "text": "Охота на монстра",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "center",
           "name": "title_tf"
         },
@@ -3751,7 +3751,7 @@
           "height": 23.55,
           "text": "12",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "left",
           "name": "stars3_tf"
         },
@@ -3763,7 +3763,7 @@
           "height": 26,
           "text": "Кнопка",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "center",
           "name": "play_label"
         },
@@ -3775,7 +3775,7 @@
           "height": 23.55,
           "text": "20",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "left",
           "name": "stars2_tf"
         },
@@ -3787,7 +3787,7 @@
           "height": 23.55,
           "text": "50",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "left",
           "name": "stars1_tf"
         },
@@ -3799,7 +3799,7 @@
           "height": 23.55,
           "text": "ходов",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "center",
           "name": "moves_tf"
         }
@@ -3905,7 +3905,7 @@
                 "height": 26,
                 "text": "Артур Артур 2 ",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "left",
                 "name": "name_tf"
               },
@@ -3917,7 +3917,7 @@
                 "height": 26,
                 "text": "1",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "center",
                 "name": "place_tf"
               }
@@ -3992,7 +3992,7 @@
                 "height": 26,
                 "text": "Артур Артур 2 ",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "left",
                 "name": "name_tf"
               },
@@ -4004,7 +4004,7 @@
                 "height": 26,
                 "text": "1",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "center",
                 "name": "place_tf"
               }
@@ -4021,7 +4021,7 @@
           "height": 26,
           "text": "Лучшие",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "center",
           "name": "title_tf"
         }
@@ -4140,7 +4140,7 @@
                 "height": 26,
                 "text": "Артур Артур 2 ",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "left",
                 "name": "name_tf"
               },
@@ -4152,7 +4152,7 @@
                 "height": 19,
                 "text": "Согласился",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "left",
                 "name": "approve_tf"
               }
@@ -4251,7 +4251,7 @@
                 "height": 26,
                 "text": "Артур Артур 2 ",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "left",
                 "name": "name_tf"
               },
@@ -4263,7 +4263,7 @@
                 "height": 19,
                 "text": "Согласился",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "left",
                 "name": "approve_tf"
               }
@@ -4278,7 +4278,7 @@
           "height": 26,
           "text": "Кнопка",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "center",
           "name": "close_label"
         }
@@ -4292,7 +4292,7 @@
           "height": 26,
           "text": "Рейд",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "center",
           "name": "title_tf"
         }
@@ -4426,7 +4426,7 @@
                 "height": 23.55,
                 "text": "Вкладка",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "center",
                 "name": "label_tf"
               }
@@ -4504,7 +4504,7 @@
                 "height": 23.55,
                 "text": "Вкладка",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "center",
                 "name": "label_tf"
               }
@@ -4582,7 +4582,7 @@
                 "height": 23.55,
                 "text": "Вкладка",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "center",
                 "name": "label_tf"
               }
@@ -4658,7 +4658,7 @@
                 "height": 23.55,
                 "text": "Вкладка",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "center",
                 "name": "label_tf"
               }
@@ -4736,7 +4736,7 @@
                 "height": 23.55,
                 "text": "Вкладка",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "center",
                 "name": "label_tf"
               }
@@ -4812,7 +4812,7 @@
                 "height": 23.55,
                 "text": "Вкладка",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "center",
                 "name": "label_tf"
               }
@@ -4916,8 +4916,8 @@
                         "b": 0,
                         "c": 0,
                         "d": 3,
-                        "tx": -0.099,
-                        "ty": -1.499
+                        "tx": -0.1,
+                        "ty": -1.5
                       },
                       "type": "bitmap",
                       "image": "common_button_back1",
@@ -5059,7 +5059,7 @@
                 "height": 23.55,
                 "text": "Вкладка",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "center",
                 "name": "label_tf"
               }
@@ -5137,7 +5137,7 @@
                 "height": 23.55,
                 "text": "Вкладка",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "center",
                 "name": "label_tf"
               }
@@ -5215,7 +5215,7 @@
                 "height": 23.55,
                 "text": "Вкладка",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "center",
                 "name": "label_tf"
               }
@@ -5293,7 +5293,7 @@
                 "height": 23.55,
                 "text": "Вкладка",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "center",
                 "name": "label_tf"
               }
@@ -5397,8 +5397,8 @@
                         "b": 0,
                         "c": 0,
                         "d": 3,
-                        "tx": -0.099,
-                        "ty": -1.499
+                        "tx": -0.1,
+                        "ty": -1.5
                       },
                       "type": "bitmap",
                       "image": "common_button_back1",
@@ -5501,7 +5501,7 @@
                       "height": 23.55,
                       "text": "10",
                       "fontName": "impact_21",
-                      "fontColor": "0xffffff",
+                      "fontColor": "0xFFFFFF",
                       "align": "center",
                       "name": "damage_tf"
                     }
@@ -5559,7 +5559,7 @@
                       "height": 23.55,
                       "text": "10",
                       "fontName": "impact_21",
-                      "fontColor": "0xffffff",
+                      "fontColor": "0xFFFFFF",
                       "align": "center",
                       "name": "damage_tf"
                     }
@@ -5629,7 +5629,7 @@
                       "height": 23.55,
                       "text": "10",
                       "fontName": "impact_21",
-                      "fontColor": "0xffffff",
+                      "fontColor": "0xFFFFFF",
                       "align": "center",
                       "name": "damage_tf"
                     }
@@ -5687,7 +5687,7 @@
                       "height": 23.55,
                       "text": "10",
                       "fontName": "impact_21",
-                      "fontColor": "0xffffff",
+                      "fontColor": "0xFFFFFF",
                       "align": "center",
                       "name": "damage_tf"
                     }
@@ -5745,7 +5745,7 @@
                       "height": 23.55,
                       "text": "10",
                       "fontName": "impact_21",
-                      "fontColor": "0xffffff",
+                      "fontColor": "0xFFFFFF",
                       "align": "center",
                       "name": "damage_tf"
                     }
@@ -5844,7 +5844,7 @@
                 "height": 23.55,
                 "text": "Вкладка",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "center",
                 "name": "label_tf"
               }
@@ -5922,7 +5922,7 @@
                 "height": 23.55,
                 "text": "Вкладка",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "center",
                 "name": "label_tf"
               }
@@ -6000,7 +6000,7 @@
                 "height": 23.55,
                 "text": "Вкладка",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "center",
                 "name": "label_tf"
               }
@@ -6078,7 +6078,7 @@
                 "height": 23.55,
                 "text": "Вкладка",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "center",
                 "name": "label_tf"
               }
@@ -6183,8 +6183,8 @@
                         "b": 0,
                         "c": 0,
                         "d": 3,
-                        "tx": -0.099,
-                        "ty": -1.499
+                        "tx": -0.1,
+                        "ty": -1.5
                       },
                       "type": "bitmap",
                       "image": "common_button_back1",
@@ -6229,7 +6229,7 @@
           "height": 28.4,
           "text": "Вкладка",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "center",
           "name": "titlle_tf"
         }
@@ -6256,7 +6256,7 @@
           "height": 26,
           "text": "Кнопка",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "center",
           "name": "mode_label"
         }
@@ -6270,7 +6270,7 @@
           "height": 28.4,
           "text": "Вкладка",
           "fontName": "impact_21",
-          "fontColor": "0xffffff",
+          "fontColor": "0xFFFFFF",
           "align": "center",
           "name": "monster_tf"
         }
@@ -6409,7 +6409,7 @@
                 "height": 23.55,
                 "text": "Вкладка",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "center",
                 "name": "label_tf"
               }
@@ -6487,7 +6487,7 @@
                 "height": 23.55,
                 "text": "Вкладка",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "center",
                 "name": "label_tf"
               }
@@ -6565,7 +6565,7 @@
                 "height": 23.55,
                 "text": "Вкладка",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "center",
                 "name": "label_tf"
               }
@@ -6656,8 +6656,8 @@
                         "b": 0,
                         "c": 0,
                         "d": 3,
-                        "tx": -0.099,
-                        "ty": -1.499
+                        "tx": -0.1,
+                        "ty": -1.5
                       },
                       "type": "bitmap",
                       "image": "common_button_back1",
@@ -6739,7 +6739,7 @@
             "height": 29.65,
             "text": "100",
             "fontName": "impact_21",
-            "fontColor": "0xffffff",
+            "fontColor": "0xFFFFFF",
             "align": "center",
             "name": "damage_tf"
           }
@@ -6779,7 +6779,7 @@
             "height": 23.55,
             "text": "10",
             "fontName": "impact_21",
-            "fontColor": "0xffffff",
+            "fontColor": "0xFFFFFF",
             "align": "center",
             "name": "damage_tf"
           }
@@ -6844,7 +6844,7 @@
                   "height": 23.55,
                   "text": "10",
                   "fontName": "impact_21",
-                  "fontColor": "0xffffff",
+                  "fontColor": "0xFFFFFF",
                   "align": "center",
                   "name": "damage_tf"
                 }
@@ -6902,7 +6902,7 @@
                   "height": 23.55,
                   "text": "10",
                   "fontName": "impact_21",
-                  "fontColor": "0xffffff",
+                  "fontColor": "0xFFFFFF",
                   "align": "center",
                   "name": "damage_tf"
                 }
@@ -7010,7 +7010,7 @@
             "height": 29.65,
             "text": "10",
             "fontName": "impact_21",
-            "fontColor": "0xffffff",
+            "fontColor": "0xFFFFFF",
             "align": "left",
             "name": "armor_tf"
           }
@@ -7025,7 +7025,7 @@
             "height": 29.65,
             "text": "10",
             "fontName": "impact_21",
-            "fontColor": "0xffffff",
+            "fontColor": "0xFFFFFF",
             "align": "left",
             "name": "damage_tf"
           }
@@ -7040,7 +7040,7 @@
             "height": 29.65,
             "text": "10",
             "fontName": "impact_21",
-            "fontColor": "0xffffff",
+            "fontColor": "0xFFFFFF",
             "align": "left",
             "name": "hp_tf"
           }
@@ -7073,7 +7073,7 @@
             "height": 29.65,
             "text": "Name lv",
             "fontName": "impact_21",
-            "fontColor": "0xffffff",
+            "fontColor": "0xFFFFFF",
             "align": "center",
             "name": "name_tf"
           }
@@ -7115,7 +7115,7 @@
             "height": 26,
             "text": "Забрать",
             "fontName": "impact_21",
-            "fontColor": "0xffffff",
+            "fontColor": "0xFFFFFF",
             "align": "center",
             "name": "buy_label"
           }
@@ -7148,7 +7148,7 @@
             "height": 16.15,
             "text": "12ч",
             "fontName": "impact_21",
-            "fontColor": "0xffffff",
+            "fontColor": "0xFFFFFF",
             "align": "left",
             "name": "time_tf"
           }
@@ -7189,7 +7189,7 @@
             "height": 16.15,
             "text": "12ч",
             "fontName": "impact_21",
-            "fontColor": "0xffffff",
+            "fontColor": "0xFFFFFF",
             "align": "center",
             "name": "time_tf"
           }
@@ -7212,30 +7212,14 @@
       "linkage": "map.Chest",
       "name": "chestIcon",
       "structure": [
+        [],
         [
           {
-            "x": -14,
-            "y": -39,
+            "x": -20,
+            "y": -44,
             "type": "bitmap",
-            "image": "map_icon_back",
-            "name": "bitmap_map_icon_back"
-          }
-        ],
-        [
-          {
-            "x": -22,
-            "y": -45,
-            "matrix": {
-              "a": 0.759613037109375,
-              "b": 0,
-              "c": 0,
-              "d": 0.759613037109375,
-              "tx": -22.049,
-              "ty": -45.049
-            },
-            "type": "bitmap",
-            "image": "chip_chest",
-            "name": "bitmap_chip_chest"
+            "image": "chest_icon",
+            "name": "bitmap_chest_icon"
           }
         ],
         [
@@ -7247,7 +7231,7 @@
             "height": 16.15,
             "text": "12ч",
             "fontName": "impact_21",
-            "fontColor": "0xffffff",
+            "fontColor": "0xFFFFFF",
             "align": "center",
             "name": "time_tf"
           }
@@ -7317,7 +7301,7 @@
             "height": 29.65,
             "text": "10",
             "fontName": "impact_21",
-            "fontColor": "0xffffff",
+            "fontColor": "0xFFFFFF",
             "align": "left",
             "name": "amount_tf"
           },
@@ -7348,8 +7332,8 @@
               "b": 0,
               "c": 0,
               "d": 1.485137939453125,
-              "tx": -0.749,
-              "ty": -0.749
+              "tx": -0.75,
+              "ty": -0.75
             },
             "type": "bitmap",
             "image": "common_back",
@@ -7365,7 +7349,7 @@
             "height": 29.65,
             "text": "Bulbasaur",
             "fontName": "impact_21",
-            "fontColor": "0xffffff",
+            "fontColor": "0xFFFFFF",
             "align": "center",
             "name": "monster_tf"
           }
@@ -7379,7 +7363,7 @@
             "height": 25.95,
             "text": "level 3 - 30%",
             "fontName": "impact_21",
-            "fontColor": "0xffffff",
+            "fontColor": "0xFFFFFF",
             "align": "center",
             "name": "level3_tf"
           }
@@ -7393,7 +7377,7 @@
             "height": 29.65,
             "text": "Area 25%",
             "fontName": "impact_21",
-            "fontColor": "0xffffff",
+            "fontColor": "0xFFFFFF",
             "align": "center",
             "name": "area_tf"
           }
@@ -7407,7 +7391,7 @@
             "height": 25.95,
             "text": "level 2 - 60%",
             "fontName": "impact_21",
-            "fontColor": "0xffffff",
+            "fontColor": "0xFFFFFF",
             "align": "center",
             "name": "level2_tf"
           }
@@ -7421,7 +7405,7 @@
             "height": 25.95,
             "text": "level 1 - 90%",
             "fontName": "impact_21",
-            "fontColor": "0xffffff",
+            "fontColor": "0xFFFFFF",
             "align": "center",
             "name": "level1_tf"
           }
@@ -7473,7 +7457,7 @@
             "height": 26,
             "text": "Забрать",
             "fontName": "impact_21",
-            "fontColor": "0xffffff",
+            "fontColor": "0xFFFFFF",
             "align": "center",
             "name": "buy_label"
           }
@@ -7532,7 +7516,7 @@
             "height": 29.65,
             "text": "10",
             "fontName": "impact_21",
-            "fontColor": "0xffffff",
+            "fontColor": "0xFFFFFF",
             "align": "left",
             "name": "points_tf"
           }
@@ -7644,7 +7628,7 @@
             "height": 29.65,
             "text": "Name lv",
             "fontName": "impact_21",
-            "fontColor": "0xffffff",
+            "fontColor": "0xFFFFFF",
             "align": "center",
             "name": "name_tf"
           },
@@ -7656,7 +7640,7 @@
             "height": 29.65,
             "text": "Name lv",
             "fontName": "impact_21",
-            "fontColor": "0xffffff",
+            "fontColor": "0xFFFFFF",
             "align": "center",
             "name": "tame_label"
           }
@@ -7703,7 +7687,7 @@
                   "height": 23.55,
                   "text": "10",
                   "fontName": "impact_21",
-                  "fontColor": "0xffffff",
+                  "fontColor": "0xFFFFFF",
                   "align": "center",
                   "name": "damage_tf"
                 }
@@ -7757,7 +7741,7 @@
             "height": 26,
             "text": "Забрать",
             "fontName": "impact_21",
-            "fontColor": "0xffffff",
+            "fontColor": "0xFFFFFF",
             "align": "center",
             "name": "buy_label"
           }
@@ -7797,7 +7781,7 @@
             "height": 29.65,
             "text": "10",
             "fontName": "impact_21",
-            "fontColor": "0xffffff",
+            "fontColor": "0xFFFFFF",
             "align": "left",
             "name": "title_tf"
           }
@@ -7838,7 +7822,7 @@
             "height": 18.65,
             "text": "99",
             "fontName": "impact_21",
-            "fontColor": "0xffffff",
+            "fontColor": "0xFFFFFF",
             "align": "center",
             "name": "value_tf"
           }
@@ -7903,7 +7887,7 @@
                 "height": 29.65,
                 "text": "100",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "center",
                 "name": "damage_tf"
               }
@@ -7946,7 +7930,7 @@
                 "height": 29.65,
                 "text": "100",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "center",
                 "name": "damage_tf"
               }
@@ -7989,7 +7973,7 @@
                 "height": 29.65,
                 "text": "100",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "center",
                 "name": "damage_tf"
               }
@@ -8153,7 +8137,7 @@
                 "height": 63.8,
                 "text": "100",
                 "fontName": "impact_49",
-                "fontColor": "0xff0000",
+                "fontColor": "0xFF0000",
                 "align": "center",
                 "name": "hit_tf"
               }
@@ -8211,7 +8195,7 @@
                 "height": 21.05,
                 "text": "10\\100",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "left",
                 "name": "hp_tf"
               }
@@ -8225,7 +8209,7 @@
                 "height": 21.05,
                 "text": "10",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "left",
                 "name": "damage_tf"
               }
@@ -8239,7 +8223,7 @@
                 "height": 21.05,
                 "text": "10",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "left",
                 "name": "armor_tf"
               }
@@ -8253,7 +8237,7 @@
                 "height": 29.65,
                 "text": "Name lv",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "left",
                 "name": "name_tf"
               }
@@ -8313,7 +8297,7 @@
                 "height": 63.8,
                 "text": "100",
                 "fontName": "impact_49",
-                "fontColor": "0xff0000",
+                "fontColor": "0xFF0000",
                 "align": "center",
                 "name": "hit_tf"
               }
@@ -8387,7 +8371,7 @@
                 "height": 21.05,
                 "text": "10\\100",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "right",
                 "name": "hp_tf"
               }
@@ -8401,7 +8385,7 @@
                 "height": 21.05,
                 "text": "10",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "right",
                 "name": "damage_tf"
               }
@@ -8415,7 +8399,7 @@
                 "height": 21.05,
                 "text": "10",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "right",
                 "name": "armor_tf"
               }
@@ -8429,7 +8413,7 @@
                 "height": 29.65,
                 "text": "Name lv",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "center",
                 "name": "name_tf"
               }
@@ -8481,7 +8465,7 @@
                 "height": 63.8,
                 "text": "100",
                 "fontName": "impact_49",
-                "fontColor": "0xff0000",
+                "fontColor": "0xFF0000",
                 "align": "center",
                 "name": "hit_tf"
               }
@@ -8539,7 +8523,7 @@
                 "height": 21.05,
                 "text": "10\\100",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "left",
                 "name": "hp_tf"
               }
@@ -8553,7 +8537,7 @@
                 "height": 21.05,
                 "text": "10",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "left",
                 "name": "damage_tf"
               }
@@ -8567,7 +8551,7 @@
                 "height": 21.05,
                 "text": "10",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "left",
                 "name": "armor_tf"
               }
@@ -8581,7 +8565,7 @@
                 "height": 29.65,
                 "text": "Name lv",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "left",
                 "name": "name_tf"
               }
@@ -8641,7 +8625,7 @@
                 "height": 63.8,
                 "text": "100",
                 "fontName": "impact_49",
-                "fontColor": "0xff0000",
+                "fontColor": "0xFF0000",
                 "align": "center",
                 "name": "hit_tf"
               }
@@ -8715,7 +8699,7 @@
                 "height": 21.05,
                 "text": "10\\100",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "right",
                 "name": "hp_tf"
               }
@@ -8729,7 +8713,7 @@
                 "height": 21.05,
                 "text": "10",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "right",
                 "name": "damage_tf"
               }
@@ -8743,7 +8727,7 @@
                 "height": 21.05,
                 "text": "10",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "right",
                 "name": "armor_tf"
               }
@@ -8757,7 +8741,7 @@
                 "height": 29.65,
                 "text": "Name lv",
                 "fontName": "impact_21",
-                "fontColor": "0xffffff",
+                "fontColor": "0xFFFFFF",
                 "align": "center",
                 "name": "name_tf"
               }
@@ -8828,7 +8812,7 @@
                       "height": 23.55,
                       "text": "10",
                       "fontName": "impact_21",
-                      "fontColor": "0xffffff",
+                      "fontColor": "0xFFFFFF",
                       "align": "center",
                       "name": "damage_tf"
                     }
@@ -8886,7 +8870,7 @@
                       "height": 23.55,
                       "text": "10",
                       "fontName": "impact_21",
-                      "fontColor": "0xffffff",
+                      "fontColor": "0xFFFFFF",
                       "align": "center",
                       "name": "damage_tf"
                     }
@@ -8956,7 +8940,7 @@
                       "height": 23.55,
                       "text": "10",
                       "fontName": "impact_21",
-                      "fontColor": "0xffffff",
+                      "fontColor": "0xFFFFFF",
                       "align": "center",
                       "name": "damage_tf"
                     }
@@ -9014,7 +8998,7 @@
                       "height": 23.55,
                       "text": "10",
                       "fontName": "impact_21",
-                      "fontColor": "0xffffff",
+                      "fontColor": "0xFFFFFF",
                       "align": "center",
                       "name": "damage_tf"
                     }
@@ -9077,7 +9061,7 @@
                       "height": 29.65,
                       "text": "10",
                       "fontName": "impact_21",
-                      "fontColor": "0xffffff",
+                      "fontColor": "0xFFFFFF",
                       "align": "center",
                       "name": "value_tf"
                     }
@@ -9109,7 +9093,7 @@
                       "height": 29.65,
                       "text": "10",
                       "fontName": "impact_21",
-                      "fontColor": "0xffffff",
+                      "fontColor": "0xFFFFFF",
                       "align": "center",
                       "name": "value_tf"
                     }
@@ -9141,7 +9125,7 @@
                       "height": 29.65,
                       "text": "10",
                       "fontName": "impact_21",
-                      "fontColor": "0xffffff",
+                      "fontColor": "0xFFFFFF",
                       "align": "center",
                       "name": "value_tf"
                     }
@@ -9186,7 +9170,7 @@
                       "height": 29.65,
                       "text": "10",
                       "fontName": "impact_21",
-                      "fontColor": "0xffffff",
+                      "fontColor": "0xFFFFFF",
                       "align": "center",
                       "name": "value_tf"
                     }
@@ -9218,7 +9202,7 @@
                       "height": 29.65,
                       "text": "10",
                       "fontName": "impact_21",
-                      "fontColor": "0xffffff",
+                      "fontColor": "0xFFFFFF",
                       "align": "center",
                       "name": "value_tf"
                     }
@@ -9250,7 +9234,7 @@
                       "height": 29.65,
                       "text": "10",
                       "fontName": "impact_21",
-                      "fontColor": "0xffffff",
+                      "fontColor": "0xFFFFFF",
                       "align": "center",
                       "name": "value_tf"
                     }

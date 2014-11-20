@@ -34,7 +34,9 @@ public class Progress extends EventDispatcher {
     public var rating : int = 0;
     public var magic : int = 0;
     public var gold : int = 0;
-    public var monstersResults : Object = {};
+    public var areaStars : Object = {};
+    public var unlockPointsGiven : Object = {};
+
     public var unlockedLocations : Array = [];
     public var tamedMonsters : Array = [];
     public var maxSummon : int = 1;
@@ -49,16 +51,16 @@ public class Progress extends EventDispatcher {
     private var _items : Object = {};
     private var _inventory : Array = [];
     public var unlockPoints : int = 0;
-    public var unlockPointsGiven : Array = [];
 
     public function Progress() {
         _data = SharedObject.getLocal("player");
 //        version = -1;
 //        _data.clear();
-        reset();
+//        reset();
 
         if (version == -1 || !_data.data.progress || _data.data.version == null || _data.data.version != version)
         {
+            trace("LOAD MOCKUP",version, _data.data.version != null, _data.data.progress != null);
 //        if (version == -1 || _data.data.version == null || _data.data.version != version) {
             save(mockup());
         }
@@ -104,13 +106,19 @@ public class Progress extends EventDispatcher {
         skills = progressObj.skills ? progressObj.skills : {};
         sets = progressObj.sets ? progressObj.sets : [];
         houses = progressObj.houses ? progressObj.houses : [];
+
         unlockPoints = progressObj.unlockPoints;
-        unlockPointsGiven = progressObj.unlockPointsGiven ? progressObj.unlockPointsGiven : [];
+        unlockPointsGiven = progressObj.unlockPointsGiven ? progressObj.unlockPointsGiven : {};
+        unlockedLocations = progressObj.unlockedLocations ? progressObj.unlockedLocations : [];
+        areaStars = progressObj.areaStars ? progressObj.areaStars : {};
+
+        trace("*** unlockedLocations", unlockedLocations) ;
+        trace("unlockPointsGiven",JSON.stringify(unlockPointsGiven));
+        trace("areaStars", JSON.stringify(areaStars));
+        trace("unlockPoints", unlockPoints) ;
 
         traps = progressObj.traps ? progressObj.traps : [];
-        unlockedLocations = progressObj.unlockedLocations ? progressObj.unlockedLocations : [];
         tamedMonsters = progressObj.tamedMonsters ? progressObj.tamedMonsters : [];
-        monstersResults = progressObj.monstersResults ? progressObj.monstersResults : {};
 //        inventory = progressObj.inventory ? progressObj.inventory : [];
 
         _items = dataObj.items ? JSON.parse(dataObj.items) : {};
@@ -179,25 +187,12 @@ public class Progress extends EventDispatcher {
 //            trace(_data.data[key]);
         }
 
-
-//        var obj : Object = JSON.parse(JSON.stringify($val));
-
-
-        // move items to another SO branch to lightweight output
-//        _data.data.items = JSON.stringify(obj.items);
-//        delete obj.items;
-//
-//        trace(JSON.stringify(obj));
-//        _data.data.progress = JSON.stringify(obj);
-
         _data.flush();
 
         coreDispatch(UPDATED);
     }
 
     private function mockup() : Object {
-        trace("--- mockup ---");
-
         var saveObject : Object = {};
 
         var settings : Object = SettingsVO.DICT;
@@ -222,8 +217,8 @@ public class Progress extends EventDispatcher {
 
         obj.traps = [];
         obj.houses = [];
-        obj.unlockedLocations = ["clouds_00"];
-        obj.monstersResults = {};
+        obj.unlockedLocations = ["blue_bull"];
+        obj.areaStars = {};
         obj.sets = ["default"];
 
 
@@ -318,6 +313,24 @@ public class Progress extends EventDispatcher {
     public function getPets() : Object
     {
         return _pets;
+    }
+
+//    public function getUnlockPoint() : void
+//    {
+//        unlockPoints = unlockPoints - 1 < 0 ? 0 : unlockPoints - 1;
+//        saveProgress();
+//    }
+
+    public function unlockLocation($id : String) : void
+    {
+        unlockedLocations.push($id);
+        trace("unlockedLocations", unlockedLocations);
+        unlockPoints--;
+        if(unlockPoints < 0) {
+            unlockPoints = 0;
+        }
+        saveProgress();
+
     }
 }
 }

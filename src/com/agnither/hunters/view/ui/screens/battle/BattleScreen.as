@@ -4,10 +4,10 @@
 package com.agnither.hunters.view.ui.screens.battle
 {
 import com.agnither.hunters.App;
-import com.agnither.hunters.data.outer.ItemTypeVO;
 import com.agnither.hunters.data.outer.MagicTypeVO;
 import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.match3.Match3Game;
+import com.agnither.hunters.model.player.Territory;
 import com.agnither.hunters.model.player.inventory.Item;
 import com.agnither.hunters.view.ui.common.GoldView;
 import com.agnither.hunters.view.ui.popups.house.HousePopup;
@@ -21,7 +21,6 @@ import com.agnither.hunters.view.ui.screens.battle.player.ManaListView;
 import com.agnither.hunters.view.ui.screens.battle.player.PersonageView;
 import com.agnither.hunters.view.ui.screens.battle.player.inventory.BattleInventoryView;
 import com.agnither.hunters.view.ui.screens.battle.player.inventory.ItemView;
-import com.agnither.hunters.view.ui.screens.map.HousePoint;
 import com.agnither.hunters.view.ui.screens.map.MapScreen;
 import com.agnither.ui.Screen;
 import com.cemaprjl.core.coreAddListener;
@@ -308,22 +307,22 @@ public class BattleScreen extends Screen
                 coreExecute(ShowPopupCmd, WinPopup.NAME, {isWin: $isWin, drops: _game.dropList});
                 break;
             case Match3Game.MODE_HOUSE:
-                var pt : HousePoint = Model.instance.currentHousePoint;
+                var territory : Territory = Model.instance.currentHouseTerritory;
                 if ($isWin)
                 {
-                    Model.instance.houses[pt.name]["owner"] = Model.instance.player.id;
-                    Model.instance.progress.houses.push(pt.name);
-                    Model.instance.progress.sets.push(pt.name);
-                    Model.instance.checkHouses();
+                    Model.instance.progress.areaStars[territory.area.area] = 1;
+                    Model.instance.progress.sets.push(territory.area.area);
+                    Model.instance.progress.houses.push(territory.area.area);
                     Model.instance.progress.saveProgress();
-
+                    territory.updateStars();
+                    territory.updateHouseData();
                 }
                 else
                 {
 
                 }
 
-                coreExecute(ShowPopupCmd, HousePopup.NAME, {point: pt});
+                coreExecute(ShowPopupCmd, HousePopup.NAME, territory);
                 break;
         }
 

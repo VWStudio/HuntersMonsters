@@ -121,7 +121,8 @@ public class CampScreen extends Screen {
                     Mouse.cursor = MouseCursor.BUTTON;
                     break;
                 case TouchPhase.ENDED:
-                    coreExecute(ShowPopupCmd, TrainerPopup.NAME);
+                    coreExecute(ShowPopupCmd, ShopPopup.NAME);
+//                    coreExecute(ShowPopupCmd, TrainerPopup.NAME);
                     break;
             }
         } else {
@@ -164,7 +165,8 @@ public class CampScreen extends Screen {
                     Mouse.cursor = MouseCursor.BUTTON;
                     break;
                 case TouchPhase.ENDED:
-                    coreExecute(ShowPopupCmd, ShopPopup.NAME);
+//                    coreExecute(ShowPopupCmd, ShopPopup.NAME);
+                    coreExecute(ShowPopupCmd, TrainerPopup.NAME);
                     break;
             }
         } else {

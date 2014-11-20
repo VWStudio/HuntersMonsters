@@ -13,7 +13,7 @@ public class Item extends EventDispatcher {
 
     public static const UPDATE: String = "update_Item";
 
-    private var _extension: Object;
+//    private var _extension: Object;
     protected var _item: ItemVO;
 
     public var uniqueId: String;
@@ -123,7 +123,6 @@ public class Item extends EventDispatcher {
 
     public function destroy():void {
         _item = null;
-//        _extension = null;
     }
 
     public function getDamage() : int
@@ -136,27 +135,12 @@ public class Item extends EventDispatcher {
         return _item.extension ? _item.extension[ExtensionVO.defence] : 0;
     }
 
-//    public function setExtension($ext : Object) : void
-//    {
-//        if($ext is Object)
-//        {
-//            _extension = $ext;
-//        }
-//        else if(type == ItemTypeVO.gold)
-//        {
-//            amount = int($ext);
-//        }
-//
-//        update();
-//    }
-
-
     /**
      * XXX required to save
      */
     public function get extension() : Object
     {
-        return _extension;
+        return _item.extension;
     }
 }
 }

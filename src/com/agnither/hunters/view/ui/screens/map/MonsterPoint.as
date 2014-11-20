@@ -91,13 +91,7 @@ public class MonsterPoint extends AbstractView {
     }
 
     override public function update() : void {
-
-        if(Model.instance.progress.monstersResults[_monsterType.id] == null) {
-            Model.instance.progress.monstersResults[_monsterType.id] = 0;
-        }
-
         _lifetime = (_territory.area.lifemax + (_territory.area.lifemin - _territory.area.lifemax) * Math.random())*1000;
-
     }
 
     public function tick($delta : Number) : void {

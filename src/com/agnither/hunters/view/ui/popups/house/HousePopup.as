@@ -6,12 +6,14 @@ import com.agnither.hunters.data.inner.InventoryVO;
 import com.agnither.hunters.model.modules.items.ItemVO;
 import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.Model;
+import com.agnither.hunters.model.player.Territory;
 import com.agnither.hunters.model.player.inventory.Item;
 import com.agnither.hunters.model.player.personage.Monster;
 import com.agnither.hunters.view.ui.popups.hunt.*;
 import com.agnither.hunters.model.modules.monsters.MonsterVO;
 import com.agnither.hunters.view.ui.UI;
 import com.agnither.hunters.view.ui.common.MonsterInfo;
+import com.agnither.hunters.view.ui.screens.battle.player.inventory.ItemView;
 import com.agnither.hunters.view.ui.screens.battle.player.inventory.ItemView;
 import com.agnither.hunters.view.ui.screens.map.*;
 import com.agnither.hunters.App;
@@ -52,14 +54,12 @@ public class HousePopup extends Popup {
     private var _attackButton : ButtonContainer;
     private var _owner : TextField;
     private var _itemsContainer : Sprite;
-    private var houseData : Object;
-    private var _isOwner : Boolean;
+//    private var houseData : Object;
     private var _items : Array;
     private var _randomContainer : Sprite;
-    private var _currentItem : ItemVO;
-    private var point : HousePoint;
     private var _priceText : TextField;
     private var _item : ItemView;
+    private var territory : Territory;
 
     public function HousePopup() {
 
@@ -105,9 +105,9 @@ public class HousePopup extends Popup {
     }
 
     private function onHouseUpdate() : void {
-        if(_isOwner && houseData) {
-            if(houseData.timeLeft > 0) {
-                _priceText.text = "Осталось:"+Formatter.msToHHMMSS(houseData.timeLeft);
+        if(territory.isHouseOwner) {
+            if(territory.houseTimeout > 0) {
+                _priceText.text = "Осталось:"+Formatter.msToHHMMSS(territory.houseTimeout);
             } else {
                 update();
             }
@@ -115,10 +115,9 @@ public class HousePopup extends Popup {
     }
 
     private function handleGet(event : Event) : void {
-        if(_currentItem) {
-            Model.instance.player.addItem(_item.item);
-            Model.instance.generateNewHouseItem(point.name);
-            _currentItem = null;
+        if(territory.nextRandomHouseItem) {
+            Model.instance.player.addItem(territory.nextRandomHouseItem);
+            territory.generateNewHouseItem();
             update();
         }
     }
@@ -131,7 +130,7 @@ public class HousePopup extends Popup {
 
 
         Model.instance.match3mode = Match3Game.MODE_HOUSE;
-        Model.instance.currentHousePoint = data["point"];
+        Model.instance.currentHouseTerritory = territory;
         coreDispatch(UI.HIDE_POPUP, NAME);
         coreDispatch(Match3Game.START_GAME, Model.instance.monsters.getRandomMonster());
 
@@ -140,29 +139,17 @@ public class HousePopup extends Popup {
 
     override public function update() : void {
 
-        point = data["point"];
-        _isOwner = false;
+        territory = data as Territory;
 
-        if(!Model.instance.houses[point.name]) {
-            Model.instance.createHouse(point.name);
-        }
-
-        if(Model.instance.houses[point.name]) {
-            houseData = Model.instance.houses[point.name];
-            _isOwner = houseData.owner == Model.instance.player.id;
-        }
-//        _isOwner = (houseData.owner && houseData.owner == Model.instance.player.id);
-        _owner.text = _isOwner ? "Вы владеете этим домом" : "Дом принадлежит не вам";
-        _attackButton.visible = !_isOwner;
+        _owner.text = territory.isHouseOwner ? "Вы владеете этим домом" : "Дом принадлежит не вам";
+        _attackButton.visible = !territory.isHouseOwner;
 
         _itemsContainer.removeChildren();
-//        _items = [];
-        if(houseData && houseData.unlockItems) {
-            for (var i : int = 0; i < houseData.unlockItems.length; i++)
+
+        if(territory.houseUnlockItems) {
+            for (var i : int = 0; i < territory.houseUnlockItems.length; i++)
             {
-                    var item : ItemVO = houseData.unlockItems[i];
-//                    var item : ItemVO = ItemVO.DICT[id];
-//                    _items.push(item);
+                    var item : ItemVO = territory.houseUnlockItems[i];
                     var iview : ItemView = ItemView.getItemView(Item.create(item));
                     _itemsContainer.addChild(iview);
                     iview.y = i * 70;
@@ -171,14 +158,11 @@ public class HousePopup extends Popup {
 
         _randomContainer.removeChildren();
 
-
-        _currentItem = houseData.nextRandomItem;
-//        _currentItem = houseData.nextRandomItem = ItemVO.THINGS[int(ItemVO.THINGS.length * Math.random())];
-        _item = ItemView.getItemView(Item.create(_currentItem));
+        _item = ItemView.getItemView(territory.nextRandomHouseItem);
         _randomContainer.addChild(_item);
-        if(_isOwner) {
+        if(territory.isHouseOwner) {
             _getPrizeButton.text = "Взять";
-            _getPrizeButton.visible = houseData.timeLeft <= 0;
+            _getPrizeButton.visible = territory.houseTimeout <= 0;
             _priceText.text = _getPrizeButton.visible ? "Вещь готова" : "";
         } else {
             _priceText.text = "Стоимость: "+200+"$";

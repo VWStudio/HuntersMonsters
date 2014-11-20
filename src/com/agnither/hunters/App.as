@@ -154,12 +154,7 @@ public class App extends Sprite {
 
     private function generateEvent() : void {
 
-//        switch (int(Math.random() * 2))
-//        {
-//            case 1:
-                coreDispatch(MapScreen.ADD_CHEST);
-//                break;
-//        }
+        coreDispatch(MapScreen.ADD_CHEST);
     }
 
     private function onTrapEnd() : void {
