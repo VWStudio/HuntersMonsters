@@ -3,26 +3,19 @@
  */
 package com.agnither.hunters.view.ui.popups.shop
 {
-import com.agnither.hunters.data.outer.ExtensionVO;
 import com.agnither.hunters.data.outer.ItemTypeVO;
-import com.agnither.hunters.data.outer.MagicTypeVO;
 import com.agnither.hunters.model.Model;
-import com.agnither.hunters.model.player.Mana;
+import com.agnither.hunters.model.modules.extensions.Extension;
 import com.agnither.hunters.model.player.inventory.Item;
-import com.agnither.hunters.model.player.inventory.Spell;
-import com.agnither.hunters.view.ui.common.ItemManaView;
 import com.agnither.hunters.view.ui.screens.battle.player.inventory.ItemView;
 import com.agnither.ui.AbstractView;
 import com.agnither.ui.ButtonContainer;
 import com.cemaprjl.core.coreDispatch;
 
-import starling.display.Image;
-import starling.display.Sprite;
 import starling.events.Event;
 import starling.events.Touch;
 import starling.events.TouchEvent;
 import starling.events.TouchPhase;
-import starling.text.TextField;
 
 public class BuyItemView extends AbstractView
 {
@@ -61,6 +54,8 @@ public class BuyItemView extends AbstractView
 
         _itemView.addEventListener(TouchEvent.TOUCH, onTouch);
 
+        _price = 0;
+
         if (_item.getDamage())
         {
 //            _links.damage_icon.getChildAt(0).texture = _refs.gui.getTexture("chip_sword");
@@ -73,31 +68,53 @@ public class BuyItemView extends AbstractView
 //            _damage.text = item.getDefence().toString();
             _price = Model.instance.getPrice(item.getDefence());
         }
+        else if (_item.ext)
+        {
+            for (var extId : String in _item.getExtObj())
+            {
+
+                var extItem : Extension = _item.getExt(extId);
+                _price += Model.instance.getPrice(extItem.getBaseValue());
+            }
+        }
+
+
 
         var isPriceEnough : Boolean = Model.instance.progress.gold >= _price;
-        if(_item.isSpell()) {
+        if (_item.isSpell())
+        {
             _buyButton.visible = !Model.instance.player.inventory.isHaveSpell(item.id) && isPriceEnough;
         }
 
     }
+
     private function onTouch(e : TouchEvent) : void
     {
-        var touch: Touch = e.getTouch(this);
+        var touch : Touch = e.getTouch(this);
 
-        if (touch == null) {
+        if (touch == null)
+        {
             coreDispatch(ShopPopup.HIDE_TOOLTIP);
-        } else if(touch.phase == TouchPhase.HOVER) {
+        }
+        else if (touch.phase == TouchPhase.HOVER)
+        {
             coreDispatch(ShopPopup.SHOW_TOOLTIP, this);
         }
 
 
-
     }
+
     private function onBuy(event : Event) : void
     {
+        if(Model.instance.progress.gold <= _price || _price <= 0)
+        {
+            return;
+        }
+
         Model.instance.progress.gold -= _price;
-        Model.instance.player.inventory.addItem(_item);
-        if(_item.type != ItemTypeVO.spell) {
+        Model.instance.addPlayerItem(_item);
+        if (_item.type != ItemTypeVO.spell)
+        {
             Model.instance.shop.removeItem(_item);
         }
         Model.instance.progress.saveProgress();

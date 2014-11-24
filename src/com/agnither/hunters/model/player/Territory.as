@@ -48,6 +48,7 @@ public class Territory
     private var _houseUnlockItems : Array;
     private var _nextRandomHouseItem : Item;
     private var _houseTimeout : Number;
+    public static const MOVE_CAMP : String = "Territory.MOVE_CAMP";
 
 
     public function getStars() : int
@@ -305,7 +306,11 @@ public class Territory
             if (territory)
             {
 //                Model.instance.progress.unlockLocation(territory.area.area);
+
                 territory.unlock();
+
+                coreDispatch(Territory.MOVE_CAMP, event.currentTarget as DisplayObject);
+
                 coreDispatch(CAN_UNLOCK);
 //                onUnlockReady();
             }

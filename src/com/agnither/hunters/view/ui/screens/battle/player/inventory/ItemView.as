@@ -123,7 +123,7 @@ public class ItemView extends AbstractView {
             _manaContainer.x = _picture.width;
 
             var i: int = 0;
-            var mana: Object = _item.mana;
+            var mana: Object = _item.getMana();
             for (var key: * in mana) {
 
                 var manaview : ItemManaView = new ItemManaView();

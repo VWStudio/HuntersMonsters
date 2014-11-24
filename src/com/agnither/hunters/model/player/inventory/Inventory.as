@@ -6,6 +6,7 @@ import com.agnither.hunters.data.outer.ExtensionVO;
 import com.agnither.hunters.data.outer.ItemSlotVO;
 import com.agnither.hunters.data.outer.ItemTypeVO;
 import com.agnither.hunters.model.Model;
+import com.agnither.hunters.model.modules.extensions.DoubleDropExt;
 import com.agnither.hunters.model.modules.items.ItemVO;
 import com.agnither.hunters.model.player.drop.Drop;
 import com.cemaprjl.utils.Util;
@@ -71,34 +72,19 @@ public class Inventory extends EventDispatcher {
             var itemData: Object = data[key];
 
             var itemVO : ItemVO = Model.instance.items.getItemVO(itemData.id);
-            itemVO.extension = itemData.extension;
+            if(itemData.ext) {
+                itemVO.ext = itemData.ext;
+            }
             var newItem : Item = Item.create(itemVO);
             newItem.uniqueId = key;
-
             addItem(newItem);
-
-//            _itemsDict[key] = newItem;
-//            _itemsByType[item.type].push(key);
         }
-
-//        for (var i : int = 0; i < 100; i++)
-//        {
-//
-//            item = Model.instance.shop.genRandomItem(ItemTypeVO.weapon);
-//            newItem = Item.createDrop(item);
-//            newItem.uniqueId = Util.uniq(item.name+ "."+i);
-//            addItem(newItem);
-//
-//        }
-
-
 
     }
 
     public function addItem($item: Item):void {
         if (!_itemsDict[$item.uniqueId]) {
             var item : Item = $item;
-            item.uniqueId = $item.uniqueId;
             _itemsDict[item.uniqueId] = item;
             _itemsByType[item.type].push(item.uniqueId);
             if(item.type == ItemTypeVO.spell) {
@@ -228,22 +214,12 @@ public class Inventory extends EventDispatcher {
         }
 
         for (var i : int = 0; i < _inventoryItems.length; i++) {
-            var item: Object = _itemsDict[_inventoryItems[i]];
-            if (item.type != ItemTypeVO.spell) {
+            var item: Item = _itemsDict[_inventoryItems[i]];
+            if (!item.isSpell()) {
 
                 _extensions[ExtensionVO.damage] += item.getDamage();
                 _extensions[ExtensionVO.defence] += item.getDefence();
 
-//                var extension:Object = item.extension;
-//                for (key in extension) {
-//                    if (!isNaN(extension[key])) {
-//                        _extensions[key] += int(extension[key]);
-//                    } else {
-//
-//                        // what should we do if value is array?
-//
-//                    }
-//                }
             }
         }
     }

@@ -35,8 +35,6 @@ public class Shop
     private function generateItems($type : int) : Array
     {
 
-        trace("generateItems", $type);
-
         var itemType : ItemTypeVO = ItemTypeVO.DICT[$type];
         var arr : Array = [];
         var amount : Number = itemType.tabMin + int((itemType.tabMax - itemType.tabMin + 1) * Math.random());

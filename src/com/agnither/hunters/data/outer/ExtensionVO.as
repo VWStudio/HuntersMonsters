@@ -8,8 +8,8 @@ public class ExtensionVO {
 
     public static var damage: int;
     public static var defence: int;
-    public static var damage_type: int;
-    public static var unlock_level: int;
+//    public static var damage_type: int;
+//    public static var unlock_level: int;
 
     public static const LIST : Vector.<ExtensionVO> = new <ExtensionVO>[];
     public static const DICT : Dictionary = new Dictionary();

@@ -6,6 +6,10 @@ package com.agnither.hunters.model
 import com.agnither.hunters.App;
 import com.agnither.hunters.data.outer.TrapVO;
 import com.agnither.hunters.model.match3.Match3Game;
+import com.agnither.hunters.model.modules.extensions.DoubleDropExt;
+import com.agnither.hunters.model.modules.extensions.ManaAddExt;
+import com.agnither.hunters.model.modules.extensions.MirrorDamageExt;
+import com.agnither.hunters.model.modules.extensions.ResurrectPetExt;
 import com.agnither.hunters.model.modules.items.Items;
 import com.agnither.hunters.model.modules.monsters.MonsterAreaVO;
 import com.agnither.hunters.model.modules.monsters.MonsterVO;
@@ -41,6 +45,11 @@ public class Model
     public var currentTrap : TrapVO;
     public var territoryTraps : Object = {};
     public var chestAreas : Object = {};
+    public var doubleDrop : DoubleDropExt;
+    public var mirrorDamage : MirrorDamageExt;
+    public var manaAdd : ManaAddExt;
+    public var spellsDefence : Array = [];
+    public var resurrectPet : ResurrectPetExt;
 
     public static function get instance() : Model
     {
@@ -118,15 +127,14 @@ public class Model
         var territory : Territory = territories[monster.id];
         territory.handleMonsterWin(calcStars());
 
-        var isJustBeaten : Boolean = progress.unlockPointsGiven[monster.id] == null;
+        var isJustBeaten : Boolean = progress.unlockPointsGiven.indexOf(monster.id) < 0;
         progress.areaStars[territory.area.area] = territory.getStars();
 //        Model.instance.progress.saveProgress();
 
-        trace("isJustBeaten", monster.id, isJustBeaten, progress.areaStars[territory.area.area]);
         if (isJustBeaten)
         {
 
-            Model.instance.progress.unlockPointsGiven[monster.id] = 1;
+            Model.instance.progress.unlockPointsGiven.push(monster.id);
             Model.instance.progress.unlockPoints += 1;
             Model.instance.progress.saveProgress();
 

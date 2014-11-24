@@ -39,6 +39,7 @@ public class DropList extends EventDispatcher {
         var content : Item = Model.instance.items.createDropItem(isOnlyGold ? _dropSet : 2);
 
 
+
 //        var drop : DropVO =  ? DropVO.getRandomDrop(_dropSet) : DropVO.getRandomDrop(2); // set 2 is only goldItemVO
 ////        var content : Drop;
 //        switch (drop.type) {

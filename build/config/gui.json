@@ -4331,14 +4331,14 @@
       ],
       [
         {
-          "x": 36,
+          "x": 250,
           "y": 92,
           "matrix": {
-            "a": 13.99993896484375,
+            "a": 9.999954223632812,
             "b": 0,
             "c": 0,
             "d": 7.9999847412109375,
-            "tx": 36.1,
+            "tx": 250,
             "ty": 91.75
           },
           "type": "movie clip",
@@ -4354,6 +4354,23 @@
               }
             ]
           ]
+        }
+      ],
+      [
+        {
+          "x": 14,
+          "y": 80,
+          "matrix": {
+            "a": 2.17822265625,
+            "b": 0,
+            "c": 0,
+            "d": 4.950531005859375,
+            "tx": 14.15,
+            "ty": 80.15
+          },
+          "type": "bitmap",
+          "image": "common_back",
+          "name": "bitmap_common_back"
         }
       ],
       [
@@ -7291,20 +7308,7 @@
             ]
           }
         ],
-        [],
         [
-          {
-            "x": 45,
-            "y": 15,
-            "type": "text",
-            "width": 111.5,
-            "height": 29.65,
-            "text": "10",
-            "fontName": "impact_21",
-            "fontColor": "0xFFFFFF",
-            "align": "left",
-            "name": "amount_tf"
-          },
           {
             "x": 14,
             "y": 16,
@@ -7313,7 +7317,20 @@
             "name": "bitmap_drop_gold"
           }
         ],
-        []
+        [
+          {
+            "x": 59,
+            "y": 15,
+            "type": "text",
+            "width": 118,
+            "height": 29.65,
+            "text": "10",
+            "fontName": "impact_21",
+            "fontColor": "0xFFFFFF",
+            "align": "left",
+            "name": "amount_tf"
+          }
+        ]
       ]
     },
     "trapItem": {
@@ -7509,6 +7526,15 @@
         ],
         [
           {
+            "x": 0,
+            "y": 0,
+            "type": "bitmap",
+            "image": "drop_magic",
+            "name": "bitmap_drop_magic"
+          }
+        ],
+        [
+          {
             "x": 54,
             "y": 8,
             "type": "text",
@@ -7519,15 +7545,6 @@
             "fontColor": "0xFFFFFF",
             "align": "left",
             "name": "points_tf"
-          }
-        ],
-        [
-          {
-            "x": 0,
-            "y": 0,
-            "type": "bitmap",
-            "image": "drop_magic",
-            "name": "bitmap_drop_magic"
           }
         ],
         [
@@ -8760,8 +8777,16 @@
       ],
       [
         {
-          "x": 210,
-          "y": 170,
+          "x": 243,
+          "y": 247,
+          "matrix": {
+            "a": 0.6631622314453125,
+            "b": 0,
+            "c": 0,
+            "d": 0.6631622314453125,
+            "tx": 243,
+            "ty": 247
+          },
           "type": "button",
           "name": "pet_btn",
           "images": [

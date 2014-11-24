@@ -1,17 +1,21 @@
 [
     {
         "id": 1,
-        "extension": "1:50",
+        "ext": "damage:15",
         "wield": 1
     },
     {
         "id": 4,
-        "extension": "2:15",
+        "ext": "defence:15",
+        "wield": 1
+    },
+    {
+        "id": 10,
+        "ext": "resurrect_pet:50",
         "wield": 1
     },
     {
         "id": 13,
-        "extension": "1:30,3:4,9:1",
         "wield": 1
     }
 ]

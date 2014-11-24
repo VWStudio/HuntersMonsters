@@ -9,12 +9,17 @@ import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.player.inventory.Inventory;
 import com.agnither.hunters.model.player.personage.Progress;
 import com.agnither.hunters.view.ui.common.GoldView;
+import com.agnither.hunters.view.ui.common.Scroll;
 import com.agnither.hunters.view.ui.common.TabView;
+import com.agnither.hunters.view.ui.popups.inventory.InventoryView;
+import com.agnither.hunters.view.ui.popups.inventory.ItemsListView;
 import com.agnither.ui.AbstractView;
 import com.agnither.ui.Popup;
 import com.cemaprjl.core.coreAddListener;
 
 import flash.geom.Rectangle;
+
+import starling.core.Starling;
 
 import starling.display.Sprite;
 import starling.events.Event;
@@ -39,6 +44,9 @@ public class ShopPopup extends Popup
     public static const HIDE_TOOLTIP : String = "ShopPopup.HIDE_TOOLTIP";
     private var _tooltip : Sprite;
     private var _gold : GoldView;
+    private var _inventoryView : InventoryView;
+    private var _scroll : Scroll;
+    private var _scrollMask : Sprite;
 
     public function ShopPopup()
     {
@@ -64,6 +72,12 @@ public class ShopPopup extends Popup
         _currentOwner = _hunterTab;
 
 
+        _inventoryView = new InventoryView();
+        addChild(_inventoryView);
+        _inventoryView.x = 20;
+        _inventoryView.y = 85;
+
+
         _weaponsTab = _links["weapon"];
         _weaponsTab.label = "Оружие";
         _weaponsTab.addEventListener(TabView.TAB_CLICK, handleSelectItems);
@@ -79,10 +93,13 @@ public class ShopPopup extends Popup
 
         _currentType = _weaponsTab;
 
+        _scrollMask = new Sprite();
+        addChild(_scrollMask);
+        _scrollMask.x = _links.items.x;
+        _scrollMask.y = _links.items.y;
+
         _container = new Sprite();
-        addChild(_container);
-        _container.x = _links.items.x;
-        _container.y = _links.items.y;
+        _scrollMask.addChild(_container);
 
         _itemsRect = _links.items.getBounds(this);
         removeChild(_links.items);
@@ -102,7 +119,20 @@ public class ShopPopup extends Popup
         _tooltip.addChild(_gold);
         _tooltip.visible = false;
 
+
+        _scroll = new Scroll(_links["scroll"]);
+        _scroll.onChange = onScroll;
+        _scrollMask.clipRect = new Rectangle(0,0,440,500);
+
+
         update();
+    }
+
+    private function onScroll($val : Number) : void
+    {
+
+        var newy : Number = -60 * $val;
+        Starling.juggler.tween(_container, 0.4, {y : newy});
     }
 
     private function showTooltip($item : AbstractView) : void
@@ -202,11 +232,11 @@ public class ShopPopup extends Popup
         {
             var tile : BuyItemView = new BuyItemView(items[i]);
             _container.addChild(tile);
-            tile.x = 210 * (i % 3);
-            tile.y = 100 * int(i / 3);
+            tile.x = 210 * (i % 2);
+            tile.y = 100 * int(i / 2);
 
         }
-
+        _scroll.setScrollParams(int((_container.numChildren + 1) / 2), 5);
     }
 
     private function showPlayerItems($type : int) : void

@@ -6,9 +6,11 @@ import com.agnither.hunters.data.outer.LevelVO;
 import com.agnither.hunters.data.outer.PlayerItemVO;
 import com.agnither.hunters.data.outer.SkillVO;
 import com.agnither.hunters.model.Model;
+import com.agnither.hunters.model.modules.items.ItemVO;
 import com.agnither.hunters.model.modules.players.PlayerPetVO;
 import com.agnither.hunters.model.modules.players.SettingsVO;
 import com.cemaprjl.core.coreDispatch;
+import com.cemaprjl.utils.Util;
 import com.cemaprjl.utils.Util;
 
 import flash.net.SharedObject;
@@ -35,7 +37,7 @@ public class Progress extends EventDispatcher {
     public var magic : int = 0;
     public var gold : int = 0;
     public var areaStars : Object = {};
-    public var unlockPointsGiven : Object = {};
+    public var unlockPointsGiven : Array = [];
 
     public var unlockedLocations : Array = [];
     public var tamedMonsters : Array = [];
@@ -90,6 +92,8 @@ public class Progress extends EventDispatcher {
         var dataObj : Object = _data.data;
         var progressObj : Object = JSON.parse(dataObj.progress);
 
+        trace(dataObj.progress);
+
         id = progressObj.id;
         name = progressObj.name;
         picture = progressObj.picture;
@@ -108,55 +112,28 @@ public class Progress extends EventDispatcher {
         houses = progressObj.houses ? progressObj.houses : [];
 
         unlockPoints = progressObj.unlockPoints;
-        unlockPointsGiven = progressObj.unlockPointsGiven ? progressObj.unlockPointsGiven : {};
+
+        unlockPointsGiven = progressObj.unlockPointsGiven ? progressObj.unlockPointsGiven : [];
+
         unlockedLocations = progressObj.unlockedLocations ? progressObj.unlockedLocations : [];
         areaStars = progressObj.areaStars ? progressObj.areaStars : {};
-
-        trace("*** unlockedLocations", unlockedLocations) ;
-        trace("unlockPointsGiven",JSON.stringify(unlockPointsGiven));
-        trace("areaStars", JSON.stringify(areaStars));
-        trace("unlockPoints", unlockPoints) ;
 
         traps = progressObj.traps ? progressObj.traps : [];
         tamedMonsters = progressObj.tamedMonsters ? progressObj.tamedMonsters : [];
 //        inventory = progressObj.inventory ? progressObj.inventory : [];
 
         _items = dataObj.items ? JSON.parse(dataObj.items) : {};
+        trace(JSON.stringify(_items));
         _inventory = dataObj.inventory ? JSON.parse(dataObj.inventory) as Array : [];
         _pets = dataObj.pets ? JSON.parse(dataObj.pets) : {};
-
-
-//        validateItems(items, inventory);
-
-//        items = $val.items ? $val.items : {};
 
         recalculateHP();
     }
 
-//    private function validateItems($items : Object, $inventory : Array) : void
-//    {
-//        for (var i : int = $inventory.length - 1; i >= 0; i--)
-//        {
-//            var itemID : String = $inventory[i];
-//            if(!$items[itemID]) {
-//                $inventory.splice(i, 1)
-//            }
-//        }
-//
-//
-//    }
-
     public function recalculateHP() : int {
         if(level < 1) return 1;
         var baseHP : int = LevelVO.DICT[level.toString()].basehp;
-        if(getSkillValue("1")) {
-            var amount : int = getSkillValue("1");
-            for (var i : int = 0; i < amount; i++)
-            {
-                baseHP *= 1.1;
-            }
-        }
-        hp = baseHP;
+        hp = baseHP * getSkillMultiplier("1");
         return baseHP;
     }
 
@@ -168,6 +145,7 @@ public class Progress extends EventDispatcher {
     {
         var obj : Object = {};
         obj.progress = JSON.parse(JSON.stringify(this));
+        trace(JSON.stringify(obj.progress));
         obj.items = JSON.parse(JSON.stringify(Model.instance.player.inventory.items));
         obj.inventory = JSON.parse(JSON.stringify(Model.instance.player.inventory.inventoryItems));
         obj.pets = JSON.parse(JSON.stringify(Model.instance.player.pets.pets));
@@ -218,6 +196,7 @@ public class Progress extends EventDispatcher {
         obj.traps = [];
         obj.houses = [];
         obj.unlockedLocations = ["blue_bull"];
+        obj.tamedMonsters = ["blue_bull"];
         obj.areaStars = {};
         obj.sets = ["default"];
 
@@ -231,8 +210,12 @@ public class Progress extends EventDispatcher {
         {
             var playerItem : PlayerItemVO = playerItems[i];
             var item : Object = Model.instance.items.getItemVO(playerItem.id);
-            item.extension = playerItem.extension;
-            var itmName : String = item.name + "." + i;
+            trace(item.name, playerItem.ext, JSON.stringify(playerItem.ext));
+            trace(JSON.stringify(playerItem));
+            if(playerItem.ext) {
+                item.ext = playerItem.ext;
+            }
+            var itmName : String = Util.uniq(item.name);
             saveObject.items[itmName] = item;
             if (playerItem.wield)
             {
@@ -296,7 +279,33 @@ public class Progress extends EventDispatcher {
 
     }
 
+    public function getSkillMultiplier($id : String) : Number {
+
+        var skillVal : Number = getSkillValue($id);
+        var returnVal : Number = 1;
+        if(skillVal > 0)
+        {
+            returnVal = (1 + skillVal * SkillVO.DICT[$id].changevalue / 100);
+        }
+        return returnVal;
+    }
+
+    public function getSkillInc($id : String) : Number {
+
+        var skillVal : Number = getSkillValue($id);
+        var returnVal : Number = 0;
+        if(skillVal > 0)
+        {
+            returnVal = skillVal * SkillVO.DICT[$id].changevalue;
+        }
+        return returnVal;
+    }
+
+
     public function getSkillValue($id : String) : Number {
+//        if(skills[SKILL_PREFIX+$id]) {
+//            trace(SKILL_PREFIX+$id, skills[SKILL_PREFIX+$id]);
+//        }
         return skills[SKILL_PREFIX+$id] != null ? skills[SKILL_PREFIX+$id] : 0;
     }
 
@@ -323,7 +332,9 @@ public class Progress extends EventDispatcher {
 
     public function unlockLocation($id : String) : void
     {
-        unlockedLocations.push($id);
+        if(unlockedLocations.indexOf($id) < 0) {
+            unlockedLocations.push($id);
+        }
         trace("unlockedLocations", unlockedLocations);
         unlockPoints--;
         if(unlockPoints < 0) {

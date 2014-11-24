@@ -2,6 +2,8 @@
  * Created by agnither on 21.08.14.
  */
 package com.agnither.hunters.data.outer {
+import com.agnither.hunters.model.modules.items.ItemVO;
+
 import flash.utils.Dictionary;
 
 public class PlayerItemVO {
@@ -15,7 +17,7 @@ public class PlayerItemVO {
 
             var object: PlayerItemVO = new PlayerItemVO();
             object.id = row.id;
-            object.extension = parseExtension(row.extension);
+            object.ext = ItemVO.parseExtension(row.ext);
             object.wield = row.wield;
 
             LIST.push(object);
@@ -45,7 +47,7 @@ public class PlayerItemVO {
     }
 
     public var id: int;
-    public var extension : Object;
+    public var ext : Object;
     public var wield : Boolean = false;
 
 }

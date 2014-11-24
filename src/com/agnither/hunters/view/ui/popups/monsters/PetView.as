@@ -48,9 +48,7 @@ public class PetView extends AbstractView {
 
 //        _links.damage_icon.getChildAt(0).texture = _refs.gui.getTexture("hit.png");
 
-        trace("_pet.params.magic", _pet.params.magic);
         var damageType: MagicTypeVO = MagicTypeVO.DICT[_pet.params.magic];
-        trace(damageType);
         _links.damage_type_icon.getChildAt(0).texture = _refs.gui.getTexture(damageType.picturedamage);
 
         _name = _links.name_tf;

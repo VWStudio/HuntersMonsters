@@ -3,6 +3,8 @@
  */
 package com.agnither.hunters.model.player.personage {
 import com.agnither.hunters.data.outer.MagicTypeVO;
+import com.agnither.hunters.data.outer.SkillVO;
+import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.modules.players.PersonageVO;
 import com.agnither.hunters.data.outer.DamageTypeVO;
 
@@ -57,9 +59,19 @@ public class Personage extends EventDispatcher {
         picture = data.picture;
     }
 
+    public function getDefence():Number {
+        if(this == Model.instance.player.hero) {
+            return defence * Model.instance.progress.getSkillMultiplier("4");
+        } else {
+            return defence;
+        }
+
+    }
+
     public function hit(value: int, ignoreDefence: Boolean = false):void {
         if (!ignoreDefence) {
-            value -= defence;
+            value -= getDefence();
+//            value -= defence;
         }
         value = Math.max(0, value);
 

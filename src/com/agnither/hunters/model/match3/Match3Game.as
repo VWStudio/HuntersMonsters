@@ -10,7 +10,6 @@ import com.agnither.hunters.model.player.LocalPlayer;
 import com.agnither.hunters.model.player.Player;
 import com.agnither.hunters.model.player.drop.DropList;
 import com.agnither.hunters.model.player.inventory.Item;
-import com.agnither.hunters.model.player.inventory.Spell;
 import com.agnither.hunters.model.player.personage.Personage;
 import com.agnither.hunters.view.ui.screens.battle.BattleScreen;
 import com.agnither.hunters.view.ui.screens.battle.match3.FieldView;
@@ -132,7 +131,8 @@ public class Match3Game extends EventDispatcher
         _drop.clearList();
         _drop.init(dropSet);
 
-        nextMove(_player);
+
+
     }
 
     public function selectCell(cell : Cell) : void
@@ -147,15 +147,17 @@ public class Match3Game extends EventDispatcher
 
     public function useSpell($item : Item) : void
     {
-        if($item.isSpell()) {
+        if ($item.isSpell())
+        {
             currentPlayer.useSpell($item.uniqueId, currentEnemy.hero);
         }
 
     }
 
-    private function nextMove(player : Player) : void
+    public function nextMove(player : Player) : void
     {
-        if(_currentPlayer) {
+        if (_currentPlayer)
+        {
             _currentPlayer.isCurrent = false;
         }
         _currentPlayer = player;
@@ -181,8 +183,15 @@ public class Match3Game extends EventDispatcher
             case MagicTypeVO.CHEST:
                 if (currentPlayer is LocalPlayer)
                 {
-                    var drop : Item = _drop.drop();
-                    coreDispatch(BattleScreen.PLAY_CHEST_FLY, {position: match.cells[1].position, drop: drop});
+//                    var drop : Item = _drop.drop();
+                    coreDispatch(BattleScreen.PLAY_CHEST_FLY, {position: match.cells[1].position, drop: _drop.drop()});
+                    if(Model.instance.doubleDrop)
+                    {
+                        if (Model.instance.doubleDrop.isLucky())
+                        {
+                            coreDispatch(BattleScreen.PLAY_CHEST_FLY, {position: match.cells[1].position, drop: _drop.drop()});
+                        }
+                    }
                 }
                 break;
             case MagicTypeVO.WEAPON:
@@ -208,8 +217,22 @@ public class Match3Game extends EventDispatcher
         if (attacker)
         {
             var aim : Personage = !currentEnemy.pet.isDead ? currentEnemy.pet : currentEnemy.hero;
-            match.showDamage(attacker.damage);
-            aim.hit(match.amount * attacker.damage);
+            var dmg : Number = attacker.damage;
+            if (attacker == Model.instance.player.hero)
+            {
+//                var warriorSkill : Number = Model.instance.progress.getSkillValue("2");
+//                if( warriorSkill > 0 ) {
+                dmg = dmg * Model.instance.progress.getSkillMultiplier("2");
+//                }
+            } else {
+                if(Model.instance.mirrorDamage) {
+                    if(Model.instance.mirrorDamage.isLucky()) {
+                        attacker.hit(match.amount * dmg * Model.instance.mirrorDamage.percent, true);
+                    }
+                }
+            }
+            match.showDamage(dmg);
+            aim.hit(match.amount * dmg);
         }
     }
 

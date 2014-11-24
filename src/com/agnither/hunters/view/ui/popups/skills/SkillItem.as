@@ -30,13 +30,13 @@ public class SkillItem extends AbstractView
     public function SkillItem()
     {
         super();
+        createFromConfig(_refs.guiConfig.common.skillItem);
+        handleFirstRun(null);
     }
 
 
     override protected function initialize() : void
     {
-
-        createFromConfig(_refs.guiConfig.common.skillItem);
 
         _icon = _links["bitmap_drop_magic"];
         _icon.touchable = false;
@@ -67,6 +67,11 @@ public class SkillItem extends AbstractView
         _disabled.visible = !isLevelEnough;
         _back.visible = isLevelEnough;
 
+
+        _icon.texture = _refs.gui.getTexture(_skill.icon);
+        _icon.readjustSize();
+        _icon.height = 50;
+        _icon.scaleX = _icon.scaleY;
 
     }
 

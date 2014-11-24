@@ -9,6 +9,7 @@ import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.match3.Match3Game;
 import com.agnither.hunters.model.player.Territory;
 import com.agnither.hunters.model.player.inventory.Item;
+import com.agnither.hunters.model.player.personage.Personage;
 import com.agnither.hunters.view.ui.common.GoldView;
 import com.agnither.hunters.view.ui.popups.house.HousePopup;
 import com.agnither.hunters.view.ui.popups.hunt.HuntStepsPopup;
@@ -159,6 +160,7 @@ public class BattleScreen extends Screen
 
         _player.personage = _game.player.hero;
         _playerPet.personage = _game.player.pet;
+//        _game.player.pet.addEventListener(Personage.DEAD, handlePetDead);
         _enemy.isStandRight = true;
         _enemy.personage = _game.enemy.hero;
         _enemyPet.personage = _game.enemy.pet;
@@ -181,14 +183,20 @@ public class BattleScreen extends Screen
         coreAddListener(BattleScreen.PLAY_MANA_FLY, onManaFly);
         coreAddListener(DropSlotView.SHOW_TOOLTIP, onShowTooltip);
         coreAddListener(DropSlotView.HIDE_TOOLTIP, onHideTooltip);
+
+        /**
+         * call nextMove after all view init add first time mana from magic item it exists
+         */
+        _game.nextMove(_game.player);
+    }
+
+    private function handlePetDead(event : Personage) : void
+    {
+
     }
 
     private function onManaFly($data : Object) : void
     {
-        /**
-         * TODO realize effect!!!!!!!!!!!!!!!
-         * {position : match.cells[1].position, type: match.type, amount : match.amount}
-         */
 
         var magicType : MagicTypeVO = MagicTypeVO.DICT[$data.type];
         var pictureUrl : String = magicType.picturedamage;

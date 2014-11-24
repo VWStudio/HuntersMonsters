@@ -20,6 +20,8 @@ import com.cemaprjl.core.coreDispatch;
 import com.cemaprjl.core.coreExecute;
 import com.cemaprjl.viewmanage.ShowPopupCmd;
 
+import flash.display.PNGEncoderOptions;
+
 import flash.geom.Point;
 
 import flash.geom.Point;
@@ -97,6 +99,8 @@ public class MapScreen extends Screen {
         coreAddListener(DELETE_TRAP, onTrapDelete);
         coreAddListener(ADD_CHEST, onChestAdd);
         coreAddListener(REMOVE_CHEST, onChestRemove);
+        //coreDispatch(Territory.MOVE_CAMP, event.currentTarget as DisplayObject);
+        coreAddListener(Territory.MOVE_CAMP, onMoveCamp);
 
         _back = _links["bitmap_map_background"];
         _back.touchable = true;
@@ -152,6 +156,15 @@ public class MapScreen extends Screen {
 
         _container.addEventListener(TouchEvent.TOUCH, handleTouch);
 
+    }
+
+    private function onMoveCamp($target : DisplayObject) : void
+    {
+        var currentPoint : Point = new Point(_camp.x, _camp.y);
+        var targetPoint : Point = new Point($target.x, $target.y);
+        var deltaPoint : Point = targetPoint.subtract(currentPoint);
+
+        Starling.juggler.tween(_camp, deltaPoint.length / 100, {x : targetPoint.x, y : targetPoint.y})
     }
 
     private function onPointDelete($pt : MonsterPoint) : void {
@@ -217,7 +230,7 @@ public class MapScreen extends Screen {
         }
 
         var territoryId  : String  = chestAreas[int(Math.random() * chestAreas.length)];
-        var territory : Territory = Model.instance.territories[territoryId];
+        territory = Model.instance.territories[territoryId];
         var pt : Point = territory.getPoint();
 
         chest.data = territory;

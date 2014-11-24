@@ -94,10 +94,12 @@ public class PersonageView extends AbstractView {
         _hp.text = String(_personage.hp) + "/" + String(_personage.maxHP);
         _progressLine.scaleX = _isRight ? -_personage.hp / _personage.maxHP : _personage.hp / _personage.maxHP;
 
-        _armor.text = String(_personage.defence);
+        _armor.text = String(_personage.getDefence());
         _damage.text = String(_personage.damage);
+//        _damage.text = String(_personage.damage);
         _currentMarker.visible = _personage.current;
-        
+
+        hideHit();
 //        for (var i : int = 0; i < numChildren; i++)
 //        {
 //            var object : Object = getChildAt(i);

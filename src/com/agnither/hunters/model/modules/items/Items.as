@@ -43,17 +43,17 @@ public class Items {
             item.amount = drop.randomAmount;
         } else {
             var itemVO : ItemVO = getItemVO(drop.item_id);
-            var extension: Object = {};
-            for (var key: * in itemVO.extension) {
-                var extString : String = itemVO.extension_drop[key] ? itemVO.extension_drop[key] : itemVO.extension[key];
-                var extObj : Object = JSON.parse(extString);
-                if(extObj is Array) {
-                    extension[key] = getRandomExtValue(extObj[0], extObj[1]);
-                } else {
-                    extension[key] = extObj as int;
-                }
-            }
-            itemVO.extension = extension;
+//            var extension: Object = {};
+//            for (var key: * in itemVO.extension) {
+//                var extString : String = itemVO.extension_drop[key] ? itemVO.extension_drop[key] : itemVO.extension[key];
+//                var extObj : Object = JSON.parse(extString);
+//                if(extObj is Array) {
+//                    extension[key] = getRandomExtValue(extObj[0], extObj[1]);
+//                } else {
+//                    extension[key] = extObj as int;
+//                }
+//            }
+//            itemVO.extension = extension;
             item = Item.create(itemVO);
             item.uniqueId = Util.uniq(item.name);
         }
@@ -106,15 +106,15 @@ public class Items {
         var itemVO : ItemVO = itemsByType.length > 0 ? itemsByType[int(itemsByType.length* Math.random())] : null;
         if(!itemVO) return null;
 
-        var ext : Object = {};
-
-        for (var key : String in itemVO.extension_drop)
-        {
-
-            var dropExt : Array = JSON.parse(itemVO.extension_drop[key]) as Array;
-            itemVO.extension[key] = getRandomExtValue(dropExt[0], dropExt[1])
-
-        }
+//        var ext : Object = {};
+//
+//        for (var key : String in itemVO.extension_drop)
+//        {
+//
+//            var dropExt : Array = JSON.parse(itemVO.extension_drop[key]) as Array;
+//            itemVO.extension[key] = getRandomExtValue(dropExt[0], dropExt[1])
+//
+//        }
 
         var item : Item = Item.create(itemVO);
 
@@ -123,21 +123,21 @@ public class Items {
 
     }
 
-    public function getRandomExtValue($min : Number, $max : Number, $factor : Number = 0.5):Number {
-        var returnVal : Number = 0;
-        var chance:Number = 2 / Math.pow(2, 6 * Math.random() + 1); //0-60%; 1-2%
-        var pSpread:Number = $max - $min;
-        if (Math.random() < $factor)
-        {
-            returnVal = pSpread * $factor * -chance;
-        }
-        else
-        {
-            returnVal = (pSpread - (pSpread * $factor)) * chance;
-        }
-        returnVal = $min + (pSpread * $factor) + returnVal;
-        return returnVal;
-    }
+//    public function getRandomExtValue($min : Number, $max : Number, $factor : Number = 0.5):Number {
+//        var returnVal : Number = 0;
+//        var chance:Number = 2 / Math.pow(2, 6 * Math.random() + 1); //0-60%; 1-2%
+//        var pSpread:Number = $max - $min;
+//        if (Math.random() < $factor)
+//        {
+//            returnVal = pSpread * $factor * -chance;
+//        }
+//        else
+//        {
+//            returnVal = (pSpread - (pSpread * $factor)) * chance;
+//        }
+//        returnVal = $min + (pSpread * $factor) + returnVal;
+//        return returnVal;
+//    }
 
 
 

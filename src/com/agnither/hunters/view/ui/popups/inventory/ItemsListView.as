@@ -51,11 +51,11 @@ public class ItemsListView extends AbstractView {
             tile = ItemView.getItemView(_inventory.getItem(data[i]));
             tile.addEventListener(TouchEvent.TOUCH, handleTouch);
             addChild(tile);
-            tile.x = itemX * (i % 3);
-            tile.y = itemY * int(i / 3);
+            tile.x = itemX * (i % 2);
+            tile.y = itemY * int(i / 2);
         }
 
-        _itemsAmount = int(numChildren / 3);
+        _itemsAmount = int(numChildren / 2);
     }
 
     private function handleTouch(e: TouchEvent):void {

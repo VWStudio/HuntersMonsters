@@ -96,6 +96,8 @@ public class SkillsPopup extends Popup {
 
     override public function update() : void {
 
+
+
         var progress :  Progress = Model.instance.progress;
         var player :  LocalPlayer = Model.instance.player;
 
@@ -119,7 +121,7 @@ public class SkillsPopup extends Popup {
             _level1.addChild(skItem);
             skItem.setSkill(skill);
             skItem.update();
-            skItem.x = i * 105;
+            skItem.x = i * 125;
         }
 
         _level2.removeChildren();
@@ -131,7 +133,7 @@ public class SkillsPopup extends Popup {
             _level2.addChild(skItem);
             skItem.setSkill(skill);
             skItem.update();
-            skItem.x = i * 105;
+            skItem.x = i * 125;
         }
 
         _level3.removeChildren();
@@ -143,7 +145,7 @@ public class SkillsPopup extends Popup {
             _level3.addChild(skItem);
             skItem.setSkill(skill);
             skItem.update();
-            skItem.x = i * 105;
+            skItem.x = i * 125;
         }
 
         _level4.removeChildren();
@@ -155,7 +157,7 @@ public class SkillsPopup extends Popup {
             _level4.addChild(skItem);
             skItem.setSkill(skill);
             skItem.update();
-            skItem.x = i * 105;
+            skItem.x = i * 125;
         }
 
     }

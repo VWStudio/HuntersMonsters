@@ -5,7 +5,12 @@ package com.agnither.hunters.model.player.inventory {
 import com.agnither.hunters.data.outer.ExtensionVO;
 import com.agnither.hunters.data.outer.ItemTypeVO;
 import com.agnither.hunters.data.outer.ItemTypeVO;
+import com.agnither.hunters.model.modules.extensions.DamageExt;
+import com.agnither.hunters.model.modules.extensions.DefenceExt;
+import com.agnither.hunters.model.modules.extensions.Extension;
+import com.agnither.hunters.model.modules.extensions.ManaExt;
 import com.agnither.hunters.model.modules.items.ItemVO;
+import com.cemaprjl.utils.Util;
 
 import starling.events.EventDispatcher;
 
@@ -19,62 +24,62 @@ public class Item extends EventDispatcher {
     public var uniqueId: String;
     public var amount: int = 0;
     public var isWearing : Boolean = false;
+    private var _extensions : Object;
+    private var _damage : int = 0;
+    private var _defence : int = 0;
 
     public static function create($data: ItemVO):Item {
         var item : Item;
         switch ($data.type) {
             case ItemTypeVO.weapon:
             case ItemTypeVO.armor:
-            case ItemTypeVO.magic:
             case ItemTypeVO.gold:
             case ItemTypeVO.spell:
+            case ItemTypeVO.magic:
                 item = new Item($data);
                 break;
-//                item = new Spell($data);
+//                trace(JSON.stringify($data));
+//                item = new Item($data);
 //                break;
+//                item = new Spell($data);
         }
 //        if(item && $extension) {
 //            item.setExtension($extension);
 //        }
-
+        item.uniqueId = Util.uniq(item.name);
 
         return item;
     }
 
     public function Item($item: ItemVO) {
         _item = $item;
+        _extensions = fillExtensions();
+        updateProperties();
+
     }
 
-//    protected function updateExtensions() : void
-//    {
-//
-//        for (var key : String in _extension)
-//        {
-//            if(ExtensionVO.damage.toString() == key) {
-//                _damage = _extension[key];
-//            }
-//            if(ExtensionVO.defence.toString() == key) {
-//                _defence = _extension[key];
-//            }
-//        }
-//    }
+    private function updateProperties() : void
+    {
+        for (var key : String in _extensions)
+        {
+            var ext : Extension = _extensions[key];
+            ext.updateItem(this);
+            _item.ext[key] = ext.toObject();
+        }
+    }
 
-//    public static function createDrop(data: ItemVO):Item {
-//        var extension: Object = {};
-//        for (var key: * in data.extension) {
-//            extension[key] = data.getDropExtensionValue(key);
-//        }
-//        var item : Item = new Item(data, extension);
-//        item.uniqueId = Util.uniq(ItemTypeVO.DICT[item.type].name);
-//        return item;
-//    }
+    private function fillExtensions() : Object
+    {
+        var resultObj : Object = {};
+        for (var key : String in _item.ext)
+        {
+            var ext : Extension = Extension.create(key, _item.ext[key] is Array ? _item.ext[key]  : [_item.ext[key]]);
+            resultObj[key] = ext;
+        }
 
+        return resultObj;
+    }
 
-
-
-//    public function get extension():Object {
-//        return _extension;
-//    }
     public function get id():int {
         return _item.id;
     }
@@ -99,22 +104,9 @@ public class Item extends EventDispatcher {
     public function get icon():String {
         return _item.droppicture;
     }
-    public function get mana():Object {
-        return _item.extension_drop;
+    public function getMana():Object {
+        return _item.ext[ManaExt.TYPE];
     }
-
-//    public function get extension_drop():Object {
-//        return _item.extension_drop;
-//    }
-
-//    private var _isWearing: Boolean;
-//    public function set isWearing(value: Boolean):void {
-//        _isWearing = value;
-//        update();
-//    }
-//    public function get isWearing():Boolean {
-//        return _isWearing;
-//    }
 
 
     public function update():void {
@@ -125,22 +117,37 @@ public class Item extends EventDispatcher {
         _item = null;
     }
 
+    public function set damage($val : int):void
+    {
+        _damage = $val;
+    }
+
     public function getDamage() : int
     {
-        return _item.extension ? _item.extension[ExtensionVO.damage] : 0;
+        return _damage;
     }
 
+    public function set defence($val : int):void
+    {
+        _defence = $val;
+    }
     public function getDefence() : int
     {
-        return _item.extension ? _item.extension[ExtensionVO.defence] : 0;
+        return _defence;
     }
 
-    /**
-     * XXX required to save
-     */
-    public function get extension() : Object
+    public function getExtObj() : Object {
+        return _extensions;
+    }
+
+
+    public function get ext() : Object
     {
-        return _item.extension;
+        return _item.ext;
+    }
+    public function getExt($type) : Extension
+    {
+        return _extensions[$type];
     }
 }
 }

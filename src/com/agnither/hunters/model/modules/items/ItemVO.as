@@ -18,8 +18,9 @@ public class ItemVO {
     public var droppicture : String;
     public var type: int;
     public var slot: int;
-    public var extension : Object;
-    public var extension_drop : Object;
+    public var ext : Object;
+//    public var extension : Object;
+//    public var extension_drop : Object;
     public var setname : String;
 
     public static function get goldItemVO():ItemVO {
@@ -29,11 +30,10 @@ public class ItemVO {
         obj.picture = "";
         obj.type = 5;
         obj.slot = 0;
-        obj.extension = {};
-        obj.extension_drop = {};
+//        obj.extension = {};
+//        obj.extension_drop = {};
         obj.setname = "";
         obj.droppicture = "drop_gold";
-
 
         return ItemVO.fill(new ItemVO(), obj)
     }
@@ -41,8 +41,9 @@ public class ItemVO {
     public static function parseData(data: Object):void {
         for (var i: int = 0; i < data.length; i++) {
             var source: Object = data[i];
-            source.extension = parseExtension(source.extension);
-            source.extension_drop = parseExtension(source.extensiondrop);
+            source.ext = parseExtension(source.ext);
+//            source.extension = parseExtension(source.extension);
+//            source.extension_drop = parseExtension(source.extensiondrop);
 
             var object: ItemVO = fill(new ItemVO(), source);
 //            object.id = row.id;
@@ -61,6 +62,7 @@ public class ItemVO {
             if(object.type == 1 || object.type == 2 || object.type == 3) {
                 THINGS.push(object);
             } else {
+//                trace(object.id, JSON.stringify(object));
                 SPELLS.push(object);
             }
 
@@ -71,7 +73,7 @@ public class ItemVO {
         }
     }
 
-    private static function parseExtension(string: String):Object {
+    public static function parseExtension(string: String):Object {
         if (!string) {
             return null;
         }
@@ -86,7 +88,8 @@ public class ItemVO {
             var row: Array = array[i].split(":");
             var id: String = row[0];
             var value: String = row[1];
-            object[id] = value;
+            var obj : Object = JSON.parse(value);
+            object[id] = obj is Array ? obj : [obj];
         }
         return object;
     }
@@ -102,9 +105,9 @@ public class ItemVO {
     }
 
 
-    public function getDropExtensionValue(key: String):int {
-        return extension_drop[key] ? getValue(extension_drop[key]) : getValue(extension[key]);
-    }
+//    public function getDropExtensionValue(key: String):int {
+//        return extension_drop[key] ? getValue(extension_drop[key]) : getValue(extension[key]);
+//    }
 
 
     public static function fill($target : ItemVO, $source : Object) : ItemVO {

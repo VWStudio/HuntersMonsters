@@ -29,6 +29,8 @@ import com.cemaprjl.viewmanage.ViewFactory;
 
 import flash.net.registerClassAlias;
 
+import starling.display.Image;
+
 import starling.display.Quad;
 import starling.display.Sprite;
 import starling.events.Event;
@@ -48,7 +50,7 @@ public class UI extends Screen {
 //    public static var PANELS : Dictionary = new Dictionary();
 
     private var _screensContainer : Sprite;
-    private var _darkness : Quad;
+    private var _darkness : Image;
     private var _popupContainer : Sprite;
     private var _darkness2 : Quad;
     private var _alertsContainer : Sprite;
@@ -89,10 +91,9 @@ public class UI extends Screen {
 
 //        _screensContainer.touchable = true;
 
-        _darkness = new Quad(1,1, 0);
-//        _darkness = new Quad(stage.stageWidth, stage.stageHeight, 0);
-//        _darkness.addEventListener(TouchEvent.TOUCH, handleClosePopup);
-        _darkness.alpha = 0.8;
+        _darkness = new Image(_refs.gui.getTexture("tint"));
+//        _darkness = new Quad(1,1, 0);
+//        _darkness.alpha = 0.8;
         _darkness.visible = false;
         addChild(_darkness);
 

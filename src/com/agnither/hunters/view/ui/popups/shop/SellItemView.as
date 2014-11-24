@@ -3,27 +3,17 @@
  */
 package com.agnither.hunters.view.ui.popups.shop
 {
-import com.agnither.hunters.data.outer.ExtensionVO;
-import com.agnither.hunters.data.outer.ItemTypeVO;
-import com.agnither.hunters.data.outer.MagicTypeVO;
 import com.agnither.hunters.model.Model;
-import com.agnither.hunters.model.player.Mana;
 import com.agnither.hunters.model.player.inventory.Item;
-import com.agnither.hunters.model.player.inventory.Spell;
-import com.agnither.hunters.view.ui.common.ItemManaView;
-import com.agnither.hunters.view.ui.screens.battle.player.DropSlotView;
 import com.agnither.hunters.view.ui.screens.battle.player.inventory.ItemView;
 import com.agnither.ui.AbstractView;
 import com.agnither.ui.ButtonContainer;
 import com.cemaprjl.core.coreDispatch;
 
-import starling.display.Image;
-import starling.display.Sprite;
 import starling.events.Event;
 import starling.events.Touch;
 import starling.events.TouchEvent;
 import starling.events.TouchPhase;
-import starling.text.TextField;
 
 public class SellItemView extends AbstractView
 {
@@ -138,11 +128,14 @@ public class SellItemView extends AbstractView
 
     private function onTouch(e : TouchEvent) : void
     {
-        var touch: Touch = e.getTouch(_itemView);
+        var touch : Touch = e.getTouch(_itemView);
 
-        if (touch == null) {
+        if (touch == null)
+        {
             coreDispatch(ShopPopup.HIDE_TOOLTIP);
-        } else if(touch.phase == TouchPhase.HOVER) {
+        }
+        else if (touch.phase == TouchPhase.HOVER)
+        {
             coreDispatch(ShopPopup.SHOW_TOOLTIP, this);
         }
 

@@ -49,6 +49,7 @@ public class SkillVO {
     public var unlocklevel: int;
     public var points: int;
     public var changevalue: int;
+    public var icon: String;
 
 }
 }
