@@ -27,9 +27,11 @@ public class ManaExt extends Extension
     {
 
         _mana = {};
+        trace("MANA FILL", JSON.stringify(_arguments));
         for (var i : int = 0; i < int(_arguments.length / 2); i++)
         {
             var magic: MagicTypeVO = MagicTypeVO.DICT[_arguments[i * 2].toString()];
+            trace(i, magic, magic.name);
             _mana[magic.name] = _arguments[i * 2 + 1];
         }
 
@@ -37,11 +39,9 @@ public class ManaExt extends Extension
     }
 
 
-    override public function updateItem($item : Item) : void
+    public function getManaObj() : Object
     {
-//        if($item.hasOwnProperty(TYPE)) {
-//            $item[TYPE] = _mana;
-//        }
+        return _mana;
     }
 
 
@@ -50,7 +50,7 @@ public class ManaExt extends Extension
 //        var obj : Object = {};
 //        obj[TYPE] = _mana;
 //        return obj;
-        return _mana;
+        return _arguments;
     }
 }
 }

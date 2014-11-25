@@ -1,0 +1,211 @@
+[
+    {
+        "id": 1,
+        "name": "sword",
+        "type": 1,
+        "slot": 1,
+        "picture": "item_sword",
+        "ext": "damage:[10,15]",
+        "setname": "default",
+        "droppicture": "drop_sword"
+    },
+    {
+        "id": 2,
+        "name": "steel_sword",
+        "type": 1,
+        "slot": 1,
+        "picture": "item_sword",
+        "ext": "damage:[18,25]",
+        "setname": "house00",
+        "droppicture": "drop_sword"
+    },
+    {
+        "id": 3,
+        "name": "staff",
+        "type": 1,
+        "slot": 1,
+        "picture": "item_staff",
+        "ext": "damage:[20,25]",
+        "setname": "house01",
+        "droppicture": "drop_staff"
+    },
+    {
+        "id": 4,
+        "name": "body",
+        "type": 2,
+        "slot": 3,
+        "picture": "item_body",
+        "ext": "defence:[10,15]",
+        "setname": "default",
+        "droppicture": "drop_body"
+    },
+    {
+        "id": 5,
+        "name": "steel_chest",
+        "type": 2,
+        "slot": 3,
+        "picture": "item_body",
+        "ext": "defence:[15,20]",
+        "setname": "house00",
+        "droppicture": "drop_body"
+    },
+    {
+        "id": 6,
+        "name": "gloves",
+        "type": 2,
+        "slot": 6,
+        "picture": "item_gloves",
+        "ext": "defence:[5,10]",
+        "setname": "house00",
+        "droppicture": "drop_gloves"
+    },
+    {
+        "id": 7,
+        "name": "pants",
+        "type": 2,
+        "slot": 4,
+        "picture": "item_pants",
+        "ext": "defence:[5,10]",
+        "setname": "house01",
+        "droppicture": "drop_pants"
+    },
+    {
+        "id": 8,
+        "name": "helmet",
+        "type": 2,
+        "slot": 2,
+        "picture": "item_helmet",
+        "ext": "defence:[5,10]",
+        "setname": "house01",
+        "droppicture": "drop_body"
+    },
+    {
+        "id": 9,
+        "name": "boots",
+        "type": 2,
+        "slot": 5,
+        "picture": "item_boots",
+        "ext": "defence:[5,10]",
+        "setname": "house01",
+        "droppicture": "drop_boots"
+    },
+    {
+        "id": 10,
+        "name": "ring",
+        "type": 3,
+        "slot": 7,
+        "picture": "item_ring",
+        "ext": "double_drop:[20]",
+        "setname": "default",
+        "droppicture": "drop_ring"
+    },
+    {
+        "id": 11,
+        "name": "ring",
+        "type": 3,
+        "slot": 7,
+        "picture": "item_ring",
+        "ext": "resurrect_pet:[50]",
+        "setname": "house00",
+        "droppicture": "drop_ring"
+    },
+    {
+        "id": 12,
+        "name": "robe",
+        "type": 3,
+        "slot": 3,
+        "picture": "item_ring",
+        "setname": "house00",
+        "droppicture": "drop_magic"
+    },
+    {
+        "id": 13,
+        "name": "fireball",
+        "type": 4,
+        "slot": 8,
+        "picture": "magic_fire",
+        "ext": "damage:10;mana:[3,5]",
+        "setname": "default",
+        "droppicture": "drop_magic"
+    },
+    {
+        "id": 14,
+        "name": "troll",
+        "type": 4,
+        "slot": 8,
+        "picture": "magic_earth",
+        "ext": "damage:50;mana:[3,15]",
+        "setname": "house00",
+        "droppicture": "drop_magic"
+    },
+    {
+        "id": 15,
+        "name": "thunderbolt",
+        "type": 4,
+        "slot": 8,
+        "picture": "magic_green",
+        "ext": "damage:35;mana:[5,10]",
+        "setname": "house00",
+        "droppicture": "drop_magic"
+    },
+    {
+        "id": 16,
+        "name": "vampirism",
+        "type": 4,
+        "slot": 8,
+        "picture": "magic_dark",
+        "ext": "damage:20;mana:[4,20]",
+        "setname": "house01",
+        "droppicture": "drop_magic"
+    },
+    {
+        "id": 17,
+        "name": "light",
+        "type": 4,
+        "slot": 8,
+        "picture": "magic_fire",
+        "ext": "damage:60;mana:[5,7,3,10]",
+        "setname": "house01",
+        "droppicture": "drop_magic"
+    },
+    {
+        "id": 18,
+        "name": "storm",
+        "type": 4,
+        "slot": 8,
+        "picture": "magic_water",
+        "ext": "damage:60;mana:[4,8,5,8,3,8]",
+        "setname": "house01",
+        "droppicture": "drop_magic"
+    },
+    {
+        "id": 19,
+        "name": "ring",
+        "type": 3,
+        "slot": 7,
+        "picture": "item_ring",
+        "ext": "mirror_damage:[20,50]",
+        "setname": "default",
+        "droppicture": "drop_ring"
+    },
+    {
+        "id": 20,
+        "name": "ring",
+        "type": 3,
+        "slot": 7,
+        "picture": "item_ring",
+        "ext": "spell_defence:[3,1]",
+        "setname": "default",
+        "droppicture": "drop_ring"
+    },
+    {
+        "id": 21,
+        "name": "ring",
+        "type": 3,
+        "slot": 7,
+        "picture": "item_ring",
+        "ext": "mana_add:[3,5]",
+        "setname": "default",
+        "droppicture": "drop_ring"
+    }
+]

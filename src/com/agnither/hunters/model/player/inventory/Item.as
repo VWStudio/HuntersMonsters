@@ -54,18 +54,9 @@ public class Item extends EventDispatcher {
     public function Item($item: ItemVO) {
         _item = $item;
         _extensions = fillExtensions();
+
         updateProperties();
 
-    }
-
-    private function updateProperties() : void
-    {
-        for (var key : String in _extensions)
-        {
-            var ext : Extension = _extensions[key];
-            ext.updateItem(this);
-            _item.ext[key] = ext.toObject();
-        }
     }
 
     private function fillExtensions() : Object
@@ -75,10 +66,22 @@ public class Item extends EventDispatcher {
         {
             var ext : Extension = Extension.create(key, _item.ext[key] is Array ? _item.ext[key]  : [_item.ext[key]]);
             resultObj[key] = ext;
-        }
 
+             // refill ext in case of generating random to constant values
+            _item.ext[key] = ext.toObject();
+        }
         return resultObj;
     }
+
+    private function updateProperties() : void
+    {
+        for (var key : String in _extensions)
+        {
+            var ext : Extension = _extensions[key];
+            ext.updateItem(this);
+        }
+    }
+
 
     public function get id():int {
         return _item.id;
@@ -105,7 +108,7 @@ public class Item extends EventDispatcher {
         return _item.droppicture;
     }
     public function getMana():Object {
-        return _item.ext[ManaExt.TYPE];
+        return (_extensions[ManaExt.TYPE] as ManaExt).getManaObj();
     }
 
 

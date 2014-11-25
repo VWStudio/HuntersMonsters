@@ -7333,6 +7333,43 @@
         ]
       ]
     },
+    "tooltip": {
+      "x": 0,
+      "y": 0,
+      "type": "movie clip",
+      "name": "tooltip",
+      "structure": [
+        [
+          {
+            "x": 0,
+            "y": 0,
+            "matrix": {
+              "a": 1.980194091796875,
+              "b": 0,
+              "c": 0,
+              "d": 1.4851531982421875,
+              "tx": 0,
+              "ty": 0
+            },
+            "type": "bitmap",
+            "image": "common_back",
+            "name": "bitmap_common_back"
+          },
+          {
+            "x": 10,
+            "y": 8,
+            "type": "text",
+            "width": 180,
+            "height": 133.8,
+            "text": "+10% здоровья за 1 пункт",
+            "fontName": "impact_21",
+            "fontColor": "0xFFFFFF",
+            "align": "left",
+            "name": "tip_tf"
+          }
+        ]
+      ]
+    },
     "trapItem": {
       "x": 0,
       "y": 0,

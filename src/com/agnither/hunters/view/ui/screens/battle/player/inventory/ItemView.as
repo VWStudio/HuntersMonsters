@@ -3,6 +3,8 @@
  */
 package com.agnither.hunters.view.ui.screens.battle.player.inventory {
 import com.agnither.hunters.data.outer.MagicTypeVO;
+import com.agnither.hunters.model.modules.extensions.Extension;
+import com.agnither.hunters.model.modules.extensions.ManaExt;
 import com.agnither.hunters.model.player.Mana;
 import com.agnither.hunters.view.ui.common.ItemManaView;
 import com.agnither.hunters.view.ui.common.ItemManaView;
@@ -121,12 +123,15 @@ public class ItemView extends AbstractView {
 
             var i: int = 0;
             var mana: Object = _item.getMana();
+            trace("SPELL", _item.id, JSON.stringify(mana));
             for (var key: * in mana) {
 
+                trace(key, mana[key])
                 var manaview : ItemManaView = new ItemManaView();
                 _manaContainer.addChild(manaview);
                 manaview.x = - (i + 1) * 20;
                 var manaType: MagicTypeVO = MagicTypeVO.DICT[key];
+                trace(manaType, manaType.name);
                 var manaObj: Mana = new Mana(manaType.name);
                 manaObj.addMana(mana[key]);
                 manaview.mana = manaObj;

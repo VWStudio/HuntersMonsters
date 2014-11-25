@@ -58,7 +58,7 @@ public class Progress extends EventDispatcher {
         _data = SharedObject.getLocal("player");
 //        version = -1;
 //        _data.clear();
-//        reset();
+        reset();
 
         if (version == -1 || !_data.data.progress || _data.data.version == null || _data.data.version != version)
         {

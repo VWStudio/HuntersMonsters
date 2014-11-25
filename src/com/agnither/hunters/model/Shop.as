@@ -60,7 +60,9 @@ public class Shop
 //                var set : String = getRandomSet();
 //                item = getRandomItem(set, $type);
                 item = Model.instance.items.generateRandomItem($type);
-                arr.push(item);
+                if(item) {
+                    arr.push(item);
+                }
 //                    arr.push(Item.createItem(itemVO, itemVO));
             }
 
