@@ -38,24 +38,14 @@ public class Items {
 
         var item : Item;
         var drop : DropVO = DropVO.getRandomDrop($dropSetID); // set 2 is only goldItemVO
-        if(drop.type == ItemTypeVO.gold) {
-            item = Item.create(ItemVO.goldItemVO);
-            item.amount = drop.randomAmount;
-        } else {
+        if(drop.item_id && ItemVO.DICT[drop.item_id]) {
             var itemVO : ItemVO = getItemVO(drop.item_id);
-//            var extension: Object = {};
-//            for (var key: * in itemVO.extension) {
-//                var extString : String = itemVO.extension_drop[key] ? itemVO.extension_drop[key] : itemVO.extension[key];
-//                var extObj : Object = JSON.parse(extString);
-//                if(extObj is Array) {
-//                    extension[key] = getRandomExtValue(extObj[0], extObj[1]);
-//                } else {
-//                    extension[key] = extObj as int;
-//                }
-//            }
-//            itemVO.extension = extension;
             item = Item.create(itemVO);
             item.uniqueId = Util.uniq(item.name);
+        }
+        else {
+            item = Item.create(ItemVO.goldItemVO);
+            item.amount = drop.randomAmount;
         }
         return item;
     }

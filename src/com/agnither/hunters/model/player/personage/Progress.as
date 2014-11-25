@@ -195,7 +195,7 @@ public class Progress extends EventDispatcher {
 
         obj.traps = [];
         obj.houses = [];
-        obj.unlockedLocations = ["blue_bull"];
+        obj.unlockedLocations = settings.unlockedLocations;
         obj.tamedMonsters = ["blue_bull"];
         obj.areaStars = {};
         obj.sets = ["default"];

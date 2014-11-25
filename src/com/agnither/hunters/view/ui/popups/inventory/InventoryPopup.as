@@ -8,6 +8,7 @@ import com.agnither.hunters.model.modules.locale.Locale;
 import com.agnither.hunters.model.player.Player;
 import com.agnither.hunters.view.ui.UI;
 import com.agnither.hunters.view.ui.common.Scroll;
+import com.agnither.hunters.view.ui.common.Tooltip;
 import com.agnither.hunters.view.ui.popups.inventory.InventoryView;
 import com.agnither.hunters.view.ui.popups.inventory.ItemsListView;
 import com.agnither.hunters.view.ui.common.TabView;
@@ -40,6 +41,7 @@ public class InventoryPopup extends Popup {
 
     private var _closeBtn: Button;
     private var _scroll : Scroll;
+    private var _tooltip : Tooltip;
 
     public function InventoryPopup() {
     }
@@ -94,6 +96,12 @@ public class InventoryPopup extends Popup {
         _scroll = new Scroll(_links["scroll"]);
         _scroll.onChange = onScroll;
         _itemsContainer.clipRect = new Rectangle(0,0,600,500);
+
+
+
+        _tooltip = new Tooltip();
+        addChild(_tooltip);
+        _tooltip.visible = false;
     }
 
     private function onScroll($val : Number) : void

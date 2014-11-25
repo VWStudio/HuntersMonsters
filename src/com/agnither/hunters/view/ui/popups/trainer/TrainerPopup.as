@@ -45,7 +45,7 @@ public class TrainerPopup extends Popup
     {
         createFromConfig(_refs.guiConfig.trainerPopup);
 
-        addCloseButton(_links["close_btn"]);
+        handleCloseButton(_links["close_btn"]);
 
         _trainerTab = _links["trainer"];
         _trainerTab.label = "Торговец";

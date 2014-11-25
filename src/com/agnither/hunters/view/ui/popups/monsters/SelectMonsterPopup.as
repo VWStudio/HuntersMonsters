@@ -88,7 +88,7 @@ public class SelectMonsterPopup extends Popup {
         _scroll.onChange = onScroll;
         _scrollMonsters.clipRect = new Rectangle(0,0,730,540);
 
-        addCloseButton(_links.close_btn);
+        handleCloseButton(_links.close_btn);
     }
 
     private function onScroll($val : Number) : void

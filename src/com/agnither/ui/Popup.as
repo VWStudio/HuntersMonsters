@@ -24,11 +24,13 @@ public class Popup extends AbstractView {
         return _darkened;
     }
 
+    public var isActive : Boolean = false;
+
     public function Popup() {
         super();
     }
 
-    public function addCloseButton($cb : DisplayObject):void {
+    public function handleCloseButton($cb : DisplayObject):void {
         if($cb == null) return;
 
         _popup_closeButton = $cb;

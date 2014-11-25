@@ -185,12 +185,14 @@ public class UI extends Screen {
                 _darkness.width = stage.stageWidth;
                 _darkness.height = stage.stageHeight;
                 _popupContainer.addChild(_currentPopup);
+                _currentPopup.isActive = true;
                 _currentPopup.update();
                 /**
                  * deleting previous after current may be required for effects
                  */
                 if (_prevPopup)
                 {
+                    _prevPopup.isActive = false;
                     _popupContainer.removeChild(_prevPopup);
                 }
                 else
@@ -201,105 +203,19 @@ public class UI extends Screen {
         }
     }
 
-//    public function hidePopup() : void {
     private function hidePopup(id : String = "") : void {
         if (_currentPopup)
         {
             _darkness.visible = false;
             _popupContainer.removeChild(_currentPopup);
+            _currentPopup.isActive = false;
             _currentPopup.onRemove();
             _currentPopup = null;
             _currentPopupName = "";
-
-//            hidePanels(false);
-//            restorePanels();
         }
     }
 
-//    public function showAlert(id : String, data : Object = null) : void {
-//        if (_currentAlert == POPUPS[id])
-//        {
-//            return;
-//        }
-//
-//        hideAlert();
-//
-//        _currentAlert = POPUPS[id];
-//        if (_currentAlert)
-//        {
-//            _currentAlert.data = data;
-//            _darkness2.visible = _currentAlert.darkened;
-//            _currentAlert.addEventListener(Popup.CLOSE, hideAlert);
-//            _alertsContainer.addChild(_currentAlert);
-//        }
-//    }
 
-//    public function hideAlert(e : Event = null) : void {
-//        if (_currentAlert)
-//        {
-//            _darkness2.visible = false;
-//            _currentAlert.removeEventListener(Popup.CLOSE, hideAlert);
-//            _alertsContainer.removeChild(_currentAlert);
-//            _currentAlert = null;
-//        }
-//    }
-//
-//    public function showPanel(id : String) : void {
-//        var panel : AbstractView = PANELS[id];
-//        if (panel)
-//        {
-//            _currentPanels.push(panel);
-//            _popupContainer.addChild(panel);
-////            panel.open();
-//        }
-//    }
-
-//    public function restorePanels() : void {
-//        while (_closedPanels.length > 0)
-//        {
-//            var panel : AbstractView = _closedPanels.shift();
-//            _currentPanels.push(panel);
-//            _popupContainer.addChild(panel);
-////            panel.open();
-//        }
-//    }
-//
-//    public function hidePanels(cache : Boolean = true) : void {
-//        if (cache)
-//        {
-//            _closedPanels.length = 0;
-//        }
-//
-//        while (_currentPanels.length > 0)
-//        {
-//            var panel : AbstractView = _currentPanels.shift();
-//            if (cache)
-//            {
-//                _closedPanels.push(panel);
-//            }
-////            panel.close();
-//        }
-//    }
-
-//    public function clearScreen() : void {
-//        hideScreen();
-//        _darkness.visible = false;
-//        hidePopup();
-//        hidePanels(false);
-//    }
-//
-//    public function clearPopup() : void {
-//        hidePopup();
-//        hidePanels();
-//    }
-
-//    private function handleTouch(e : TouchEvent) : void {
-//        var touch : Touch = e.getTouch(_darkness, TouchPhase.ENDED);
-//        if (touch && _currentPopup)
-//        {
-////            _currentPopup.forceClose();
-//        }
-//    }
     public function get currentPopup() : Popup
     {
         return _currentPopup;

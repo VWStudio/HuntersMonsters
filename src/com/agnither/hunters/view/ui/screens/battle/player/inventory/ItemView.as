@@ -123,15 +123,12 @@ public class ItemView extends AbstractView {
 
             var i: int = 0;
             var mana: Object = _item.getMana();
-            trace("SPELL", _item.id, JSON.stringify(mana));
             for (var key: * in mana) {
 
-                trace(key, mana[key])
                 var manaview : ItemManaView = new ItemManaView();
                 _manaContainer.addChild(manaview);
                 manaview.x = - (i + 1) * 20;
                 var manaType: MagicTypeVO = MagicTypeVO.DICT[key];
-                trace(manaType, manaType.name);
                 var manaObj: Mana = new Mana(manaType.name);
                 manaObj.addMana(mana[key]);
                 manaview.mana = manaObj;

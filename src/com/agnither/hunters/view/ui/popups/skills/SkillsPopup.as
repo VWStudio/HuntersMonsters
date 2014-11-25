@@ -45,7 +45,7 @@ public class SkillsPopup extends Popup {
 
         _hero = _links["bitmap_hero.png"];
 
-        addCloseButton(_links["close_btn"]);
+        handleCloseButton(_links["close_btn"]);
 
         _level = _links["level_tf"];
         _exp = _links["exp_tf"];

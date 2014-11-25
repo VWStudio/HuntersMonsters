@@ -58,7 +58,7 @@ public class ShopPopup extends Popup
     {
         createFromConfig(_refs.guiConfig.shop);
 
-        addCloseButton(_links["close_btn"]);
+        handleCloseButton(_links["close_btn"]);
 
         _traderTab = _links["trainer"];
         _traderTab.label = "Торговец";

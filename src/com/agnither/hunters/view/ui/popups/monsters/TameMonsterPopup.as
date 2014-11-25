@@ -59,7 +59,7 @@ public class TameMonsterPopup extends Popup {
         removeChild(_links.price);
         delete _links.price;
 
-        addCloseButton(_links.close_btn);
+        handleCloseButton(_links.close_btn);
     }
 
 
