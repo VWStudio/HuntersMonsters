@@ -20,6 +20,8 @@ import starling.events.Event;
 import starling.text.TextField;
 
 public class ItemView extends AbstractView {
+    public static const HOVER : String = "ItemView.HOVER";
+    public static const HOVER_OUT : String = "ItemView.HOVER_OUT";
 
     public static function getItemView(item: Item):ItemView {
 //        switch (item.type) {

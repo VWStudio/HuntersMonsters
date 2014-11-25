@@ -70,9 +70,10 @@ public class ItemsListView extends AbstractView {
             }
             else if(touch.phase == TouchPhase.HOVER)
             {
-
+                coreDispatch(ItemView.HOVER, item);
             }
         } else {
+            coreDispatch(ItemView.HOVER_OUT);
             Mouse.cursor = MouseCursor.AUTO;
         }
     }

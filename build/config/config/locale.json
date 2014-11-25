@@ -21,11 +21,11 @@
     },
     {
         "id": "tamed_tab",
-        "russian": "Прирученные"
+        "russian": "Пойманные"
     },
     {
         "id": "untamed_tab",
-        "russian": "Пойманные"
+        "russian": "Не пойманные"
     },
     {
         "id": "blue_bull",
@@ -33,7 +33,7 @@
     },
     {
         "id": "pikachu",
-        "russian": "Пикачу"
+        "russian": "Огонек"
     },
     {
         "id": "meowut",
@@ -66,5 +66,25 @@
     {
         "id": "zubat",
         "russian": "Зубат"
+    },
+    {
+        "id": "resurrect_pet",
+        "russian": "Восстанавливает вызванного монстра после смерти"
+    },
+    {
+        "id": "double_drop",
+        "russian": "Дает шанс двойного дропа."
+    },
+    {
+        "id": "mirror_damage",
+        "russian": "Отражает часть повреждений на противника"
+    },
+    {
+        "id": "spell_defence",
+        "russian": "Защищает от заклинаний"
+    },
+    {
+        "id": "mana_add",
+        "russian": "Прибавляет каждый ход немного маны"
     }
 ]

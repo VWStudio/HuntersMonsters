@@ -139,15 +139,24 @@ public class Item extends EventDispatcher {
         return _defence;
     }
 
+    /*
+     dictionary of *Ext classes
+     */
     public function getExtObj() : Object {
         return _extensions;
     }
 
-
+    /*
+        extensions converted from *Ext class
+     */
     public function get ext() : Object
     {
         return _item.ext;
     }
+
+    /*
+     *Ext class
+     */
     public function getExt($type : String) : Extension
     {
         return _extensions[$type];

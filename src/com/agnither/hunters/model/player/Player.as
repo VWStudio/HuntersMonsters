@@ -3,6 +3,7 @@
  */
 package com.agnither.hunters.model.player
 {
+import com.agnither.hunters.data.outer.MagicTypeVO;
 import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.modules.extensions.SpellDefenceExt;
 import com.agnither.hunters.model.player.inventory.Inventory;
@@ -88,19 +89,19 @@ public class Player extends EventDispatcher
             var mana : Mana = _manaList.list[i];
             switch (mana.type)
             {
-                case "fire":
+                case MagicTypeVO.FIRE:
                     mana.addMana(Model.instance.progress.getSkillInc("5"));
                     break;
-                case "water":
+                case MagicTypeVO.WATER:
                     mana.addMana(Model.instance.progress.getSkillInc("6"));
                     break;
-                case "nature":
+                case MagicTypeVO.NATURE:
                     mana.addMana(Model.instance.progress.getSkillInc("7"));
                     break;
-                case "add1":
+                case MagicTypeVO.DARK:
                     mana.addMana(Model.instance.progress.getSkillInc("11"));
                     break;
-                case "add2":
+                case MagicTypeVO.STONE:
                     mana.addMana(Model.instance.progress.getSkillInc("13"));
                     break;
             }
@@ -109,8 +110,8 @@ public class Player extends EventDispatcher
              nature
              water
              fire
-             add1
-             add2
+             dark
+             stone
              */
 
 

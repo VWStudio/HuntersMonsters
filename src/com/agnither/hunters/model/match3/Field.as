@@ -67,7 +67,7 @@ public class Field extends EventDispatcher {
     public function initChips(special1: String, special2: String):void {
         _chipTypes.length = 0;
 
-        var allTypes : Array = [MagicTypeVO.NATURE, MagicTypeVO.ADD1, MagicTypeVO.ADD2, MagicTypeVO.ADD3];
+        var allTypes : Array = [MagicTypeVO.NATURE, MagicTypeVO.DARK, MagicTypeVO.STONE, MagicTypeVO.ADD3];
 
         _chipTypes.push(MagicTypeVO.CHEST);
         _chipTypes.push(MagicTypeVO.WEAPON);

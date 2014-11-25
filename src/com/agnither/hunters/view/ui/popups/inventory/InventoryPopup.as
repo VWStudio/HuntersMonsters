@@ -4,6 +4,9 @@
 package com.agnither.hunters.view.ui.popups.inventory {
 import com.agnither.hunters.App;
 import com.agnither.hunters.data.outer.ItemTypeVO;
+import com.agnither.hunters.model.modules.extensions.DamageExt;
+import com.agnither.hunters.model.modules.extensions.DefenceExt;
+import com.agnither.hunters.model.modules.extensions.ManaExt;
 import com.agnither.hunters.model.modules.locale.Locale;
 import com.agnither.hunters.model.player.Player;
 import com.agnither.hunters.view.ui.UI;
@@ -12,8 +15,10 @@ import com.agnither.hunters.view.ui.common.Tooltip;
 import com.agnither.hunters.view.ui.popups.inventory.InventoryView;
 import com.agnither.hunters.view.ui.popups.inventory.ItemsListView;
 import com.agnither.hunters.view.ui.common.TabView;
+import com.agnither.hunters.view.ui.screens.battle.player.inventory.ItemView;
 import com.agnither.ui.Popup;
 import com.agnither.utils.CommonRefs;
+import com.cemaprjl.core.coreAddListener;
 import com.cemaprjl.core.coreDispatch;
 
 import flash.geom.Rectangle;
@@ -102,6 +107,40 @@ public class InventoryPopup extends Popup {
         _tooltip = new Tooltip();
         addChild(_tooltip);
         _tooltip.visible = false;
+
+        coreAddListener(ItemView.HOVER, onItemHover);
+        coreAddListener(ItemView.HOVER_OUT, onItemHoverOut);
+        //coreDispatch(ItemView.HOVER, item.item);
+    }
+
+    private function onItemHoverOut() : void
+    {
+        _tooltip.visible = false;
+    }
+
+    private function onItemHover($item : ItemView) : void
+    {
+        if(!isActive) return;
+        if($item) {
+            var rect : Rectangle = $item.getBounds(this);
+            _tooltip.x = rect.right;
+            _tooltip.y = rect.bottom;
+            var str : String = "";
+            for (var key : String in $item.item.ext)
+            {
+                if(key == DamageExt.TYPE || key == DefenceExt.TYPE || key == ManaExt.TYPE) {
+                    continue;
+                }
+                if(str.length > 0)
+                {
+                    str += "\n";
+                }
+                str += Locale.getString(key);
+            }
+            _tooltip.text = str;
+            _tooltip.visible = str.length > 0;
+        }
+
     }
 
     private function onScroll($val : Number) : void

@@ -14,7 +14,7 @@ public class Locale {
             return lvo[current];
         }
         trace("NO LOCALE FOR: ", $id, current);
-        return "";
+        return $id;
 
 
     }
