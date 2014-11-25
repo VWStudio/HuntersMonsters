@@ -44,6 +44,9 @@ public class InventoryView extends AbstractView {
     }
 
     private function handleUpdate(e: Event = null):void {
+
+        if(!this.stage) return;
+
         while (numChildren > 0) {
             var itemView: ItemView = removeChildAt(0) as ItemView;
             if (itemView) {

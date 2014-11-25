@@ -76,6 +76,7 @@ public class ShopPopup extends Popup
         addChild(_inventoryView);
         _inventoryView.x = 20;
         _inventoryView.y = 85;
+        _inventoryView.name = "SHOP POPUP ITEMS";
 
 
         _weaponsTab = _links["weapon"];
@@ -248,11 +249,11 @@ public class ShopPopup extends Popup
         {
             var tile : SellItemView = new SellItemView(_inventory.getItem(items[i]));
             _container.addChild(tile);
-            tile.x = 210 * (i % 3);
-            tile.y = 100 * int(i / 3);
+            tile.x = 210 * (i % 2);
+            tile.y = 100 * int(i / 2);
 
         }
-
+        _scroll.setScrollParams(int((_container.numChildren + 1) / 2), 5);
 
     }
 

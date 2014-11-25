@@ -156,7 +156,7 @@ public class Player extends EventDispatcher
         var dmg : Number = spell.getDamage();
         if (this == Model.instance.player)
         {
-            dmg = dmg * Model.instance.progress.getSkillMultiplier("3");
+            dmg = dmg * Model.instance.progress.getSkillMultiplier("8");
         } else {
             if(Model.instance.spellsDefence.length > 0) 
             {

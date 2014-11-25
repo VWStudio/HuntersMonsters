@@ -49,10 +49,11 @@ public class ItemView extends AbstractView {
 
     public function ItemView(item: Item) {
         _item = item;
+        createFromConfig(_refs.guiConfig.common.spell);
     }
 
     override protected function initialize():void {
-        createFromConfig(_refs.guiConfig.common.spell);
+
         this.touchable = true;
 
         _select = _links.bitmap_item_select;
@@ -66,10 +67,6 @@ public class ItemView extends AbstractView {
         _magicBack.visible = false;
 
         _damage = _links.damage_tf;
-
-
-
-
 
 
         var texName : String = "";

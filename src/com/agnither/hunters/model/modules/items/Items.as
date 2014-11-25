@@ -84,7 +84,7 @@ public class Items {
         return Model.instance.progress.sets[0];
     }
 
-    public function generateRandomItem($type):Item {
+    public function generateRandomItem($type : int):Item {
         var set : String = getRandomSet();
         return getRandomItem(set, $type);
     }

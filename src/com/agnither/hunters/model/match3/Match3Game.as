@@ -201,7 +201,14 @@ public class Match3Game extends EventDispatcher
                 if (!currentPlayer.pet.isDead && currentPlayer.pet.magic.name == match.type)
                 {
                     attacker = currentPlayer.pet;
+                } else if (match.type == "azazaz") {
+                    /**
+                     * TODO handle magic attack here
+                     */
+
+                    Model.instance.progress.getSkillMultiplier("3");
                 }
+
                 currentPlayer.manaList.addMana(match.type, match.amount);
                 if (currentPlayer is LocalPlayer)
                 {

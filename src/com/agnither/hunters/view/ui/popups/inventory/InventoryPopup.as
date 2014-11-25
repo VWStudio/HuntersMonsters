@@ -79,11 +79,13 @@ public class InventoryPopup extends Popup {
         _itemsContainer = _links.items;
         _itemsContainer.addChild(_items);
 
+
         _links.slots.visible = false;
         _inventoryView = new InventoryView();
         addChild(_inventoryView);
         _inventoryView.x = _links.slots.x;
         _inventoryView.y = _links.slots.y;
+        _inventoryView.name = "INVENTORY POPUP ITEMS";
 
         _closeBtn = _links.close_btn;
         _closeBtn.touchable = true;

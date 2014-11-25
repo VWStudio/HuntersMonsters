@@ -145,7 +145,7 @@ public class Item extends EventDispatcher {
     {
         return _item.ext;
     }
-    public function getExt($type) : Extension
+    public function getExt($type : String) : Extension
     {
         return _extensions[$type];
     }
