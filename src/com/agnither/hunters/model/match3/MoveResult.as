@@ -29,6 +29,17 @@ public class MoveResult {
         _score = 0;
     }
 
+    public function isHaveResultType($type: String) : Boolean {
+        for (var i : int = 0; i < _results.length; i++)
+        {
+            var result : MatchResult = _results[i];
+            if(result.type == $type) {
+                return true;
+            }
+        }
+
+        return false;
+    }
     public function addResult(result: MatchResult):void {
         if (result.type == MagicTypeVO.WEAPON) {
             _haveWeapon = true;

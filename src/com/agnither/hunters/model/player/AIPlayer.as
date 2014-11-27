@@ -23,7 +23,7 @@ public class AIPlayer extends Player
     private var _difficulty : int;
 
     private var _spellResults : Dictionary;
-    private var _weaponResults : Array;
+    private var _damageResults : Array;
     private var _otherResults : Array;
     private var _spellMovesResults : Array;
 
@@ -96,17 +96,24 @@ public class AIPlayer extends Player
 
     private function processMoves() : void
     {
-        _weaponResults = [];
-        _otherResults = [];
+        _damageResults = [];
         _spellMovesResults = [];
+        _otherResults = [];
+        var currentType : String = hero.damageType;
+        var currentMagicType : String = hero.magic.name;
         var moves : Vector.<Move> = game.field.availableMoves;
         var l : int = moves.length;
         for (var i : int = 0; i < l; i++)
         {
             var result : MoveResult = game.field.checkMove(moves[i], _spellResults);
-            if (result.haveWeapon)
+
+            if (result.isHaveResultType(currentType))
             {
-                _weaponResults.push(result);
+                _damageResults.push(result);
+            }
+            else if(result.isHaveResultType(currentMagicType))
+            {
+                _spellMovesResults.push(result);
             }
             else
             {
@@ -117,7 +124,15 @@ public class AIPlayer extends Player
 
     private function selectMove(difficulty : int) : void
     {
-        var results : Array = _weaponResults.length > 0 ? _weaponResults : _otherResults;
+        var results : Array = _otherResults;
+        if(_damageResults.length > 0) {
+            results = _damageResults;
+        }
+        else if(_spellMovesResults.length > 0)
+        {
+            results = _spellMovesResults;
+        }
+
         results.sortOn("score", Array.NUMERIC);
 
         var rand : int = (100 - difficulty) / 100 * results.length * Math.random();
