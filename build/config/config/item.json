@@ -5,7 +5,7 @@
         "type": 1,
         "slot": 1,
         "picture": "item_sword",
-        "ext": "damage:[1,5]",
+        "ext": "damage:[\"weapon\",1,5]",
         "setname": "default",
         "droppicture": "drop_sword"
     },
@@ -15,7 +15,7 @@
         "type": 1,
         "slot": 1,
         "picture": "item_sword",
-        "ext": "damage:[5,10]",
+        "ext": "damage:[\"weapon\",5,10]",
         "setname": "house00",
         "droppicture": "drop_sword"
     },
@@ -25,7 +25,7 @@
         "type": 1,
         "slot": 1,
         "picture": "item_staff",
-        "ext": "damage:[5,10]",
+        "ext": "damage:[\"fire\",5,10]",
         "setname": "house00",
         "droppicture": "drop_staff"
     },
@@ -124,7 +124,7 @@
         "type": 4,
         "slot": 8,
         "picture": "magic_fire",
-        "ext": "damage:10;mana:[\"fire\",5]",
+        "ext": "damage:[\"fire\",6];mana:[\"fire\",5]",
         "setname": "default",
         "droppicture": "drop_magic"
     },
@@ -134,7 +134,7 @@
         "type": 4,
         "slot": 8,
         "picture": "magic_water",
-        "ext": "damage:10;mana:[\"water\",5]",
+        "ext": "damage:[\"water\",6];mana:[\"water\",5]",
         "setname": "default",
         "droppicture": "drop_magic"
     },
@@ -144,7 +144,7 @@
         "type": 4,
         "slot": 8,
         "picture": "magic_green",
-        "ext": "damage:15;mana:[\"nature\",5]",
+        "ext": "damage:[\"nature\",10];mana:[\"nature\",5]",
         "setname": "default",
         "droppicture": "drop_magic"
     },
@@ -154,7 +154,7 @@
         "type": 4,
         "slot": 8,
         "picture": "magic_earth",
-        "ext": "damage:20;mana:[\"stone\",5]",
+        "ext": "damage:[\"stone\",14];mana:[\"stone\",5]",
         "setname": "house00",
         "droppicture": "drop_magic"
     },
@@ -164,7 +164,7 @@
         "type": 4,
         "slot": 8,
         "picture": "magic_dark",
-        "ext": "damage:25;mana:[\"dark\",5]",
+        "ext": "damage:[\"dark\",20];mana:[\"dark\",5]",
         "setname": "house00",
         "droppicture": "drop_magic"
     },
@@ -174,7 +174,7 @@
         "type": 4,
         "slot": 8,
         "picture": "magic_fire",
-        "ext": "damage:30;mana:[\"fire\",10,\"nature\",5]",
+        "ext": "damage:[\"fire\",25];mana:[\"fire\",10,\"nature\",5]",
         "setname": "house00",
         "droppicture": "drop_magic"
     },

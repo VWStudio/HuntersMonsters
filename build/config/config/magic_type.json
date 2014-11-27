@@ -39,7 +39,7 @@
     },
     {
         "id": 6,
-        "name": "add1",
+        "name": "dark",
         "picturechip": "chip_red",
         "picturedamage": "chip_red",
         "itemmarker": "itemmagic_red",
@@ -47,7 +47,7 @@
     },
     {
         "id": 7,
-        "name": "add2",
+        "name": "stone",
         "picturechip": "chip_white",
         "picturedamage": "chip_white",
         "itemmarker": "itemmagic_white",

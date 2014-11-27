@@ -99,8 +99,10 @@ public class Progress extends EventDispatcher {
         picture = progressObj.picture;
         level = progressObj.level;
         exp = progressObj.exp;
-        damage = progressObj.damage;
-        defence = progressObj.defence;
+        damage = 0;
+//        damage = progressObj.damage;
+        defence = 0;
+//        defence = progressObj.defence;
         league = progressObj.league;
         rating = progressObj.rating;
         magic = progressObj.magic;
@@ -181,8 +183,10 @@ public class Progress extends EventDispatcher {
         obj.level = settings.playerInitialLevel;
         obj.exp = settings.playerInitialExp;
         obj.hp = settings.playerInitialHp;
-        obj.damage = settings.playerInitialDmg;
-        obj.defence = settings.playerInitialDef;
+        obj.damage = 0;
+//        obj.damage = settings.playerInitialDmg;
+        obj.defence = 0;
+//        obj.defence = settings.playerInitialDef;
         obj.league = settings.playerInitialLeague;
         obj.rating = settings.playerInitialRating;
         obj.magic = settings.playerInitialMagic;

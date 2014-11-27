@@ -3,6 +3,9 @@
  */
 package com.agnither.hunters.view.ui.screens.battle.player.inventory {
 import com.agnither.hunters.data.outer.MagicTypeVO;
+import com.agnither.hunters.data.outer.MagicTypeVO;
+import com.agnither.hunters.model.modules.extensions.DamageExt;
+import com.agnither.hunters.model.modules.extensions.DamageExt;
 import com.agnither.hunters.model.modules.extensions.Extension;
 import com.agnither.hunters.model.modules.extensions.ManaExt;
 import com.agnither.hunters.model.player.Mana;
@@ -82,7 +85,10 @@ public class ItemView extends AbstractView {
             _damage.text = item.getDamage().toString();
         } else if(_item.getDamage())
         {
-            texName = "chip_sword";
+            var dmgExt : DamageExt = _item.getExt(DamageExt.TYPE) as DamageExt;
+            var magicType : MagicTypeVO = MagicTypeVO.DICT[dmgExt.getType()];
+            texName = magicType.picturedamage;
+//            texName = "chip_sword";
             _damage.text = item.getDamage().toString();
         }
         else if(_item.getDefence())

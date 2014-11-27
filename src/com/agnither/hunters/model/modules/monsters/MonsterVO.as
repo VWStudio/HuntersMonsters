@@ -13,11 +13,11 @@ public dynamic class MonsterVO extends PersonageVO {
     public static const DICT: Dictionary = new Dictionary();
 
     public var id: String;
-    public var order: Number = 0;
     public var difficulty: int;
     public var drop: int;
     public var expearned: int;
     public var speed: uint = 75;
+    public var damagetype: String;
 
     public var items: Array = [];
     public var stars: Array = [];

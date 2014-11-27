@@ -194,19 +194,20 @@ public class Match3Game extends EventDispatcher
                     }
                 }
                 break;
-            case MagicTypeVO.WEAPON:
-                attacker = currentPlayer.hero;
-                break;
             default:
+//            case MagicTypeVO.WEAPON:
+//                attacker = currentPlayer.hero;
+//                break;
+                trace(match.type, currentPlayer.damageType);
                 if (!currentPlayer.pet.isDead && currentPlayer.pet.magic.name == match.type)
                 {
                     attacker = currentPlayer.pet;
-                } else if (match.type == "azazaz") {
+                } else if (match.type == currentPlayer.damageType) {
                     /**
                      * TODO handle magic attack here
                      */
-
-                    Model.instance.progress.getSkillMultiplier("3");
+                    attacker = currentPlayer.hero;
+//                    Model.instance.progress.getSkillMultiplier("3");
                 }
 
                 currentPlayer.manaList.addMana(match.type, match.amount);
@@ -238,8 +239,10 @@ public class Match3Game extends EventDispatcher
                     }
                 }
             }
-            match.showDamage(dmg);
-            aim.hit(match.amount * dmg);
+            if(dmg > 0) {
+                match.showDamage(dmg);
+                aim.hit(match.amount * dmg);
+            }
         }
     }
 

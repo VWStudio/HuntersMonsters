@@ -1,21 +1,36 @@
 [
     {
         "id": 1,
-        "ext": "damage:15",
+        "ext": "damage:[\"weapon\",3]",
+        "wield": 1
+    },
+    {
+        "id": 3,
+        "ext": "damage:[\"fire\",5]",
         "wield": 1
     },
     {
         "id": 4,
-        "ext": "defence:15",
-        "wield": 1
-    },
-    {
-        "id": 10,
-        "ext": "resurrect_pet:50",
+        "ext": "defence:2",
         "wield": 1
     },
     {
         "id": 13,
         "wield": 1
+    },
+    {
+        "id": 10
+    },
+    {
+        "id": 11
+    },
+    {
+        "id": 19
+    },
+    {
+        "id": 20
+    },
+    {
+        "id": 21
     }
 ]

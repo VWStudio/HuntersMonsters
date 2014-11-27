@@ -182,5 +182,10 @@ public class Player extends EventDispatcher
         _hero.current = _isCurrent;
         _hero.update();
     }
+
+    public function get damageType() : String
+    {
+        return _hero.damageType;
+    }
 }
 }

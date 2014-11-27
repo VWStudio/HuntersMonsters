@@ -4,6 +4,7 @@
 package com.agnither.hunters.model.player {
 import com.agnither.hunters.data.outer.MagicTypeVO;
 import com.agnither.hunters.model.Model;
+import com.agnither.hunters.model.modules.extensions.DamageExt;
 import com.agnither.hunters.model.modules.extensions.DoubleDropExt;
 import com.agnither.hunters.model.modules.extensions.ManaAddExt;
 import com.agnither.hunters.model.modules.extensions.MirrorDamageExt;
@@ -101,6 +102,9 @@ public class LocalPlayer extends Player {
 
                 for (var extType : String in item.getExtObj())
                 {
+                    if(extType == DamageExt.TYPE) {
+                        _hero.damageType = (item.getExt(extType) as DamageExt).getType();
+                    }
                     if(extType == DoubleDropExt.TYPE) {
                         Model.instance.doubleDrop = item.getExt(extType) as DoubleDropExt;
                     }

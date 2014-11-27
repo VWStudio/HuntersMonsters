@@ -33,6 +33,7 @@ public class AIPlayer extends Player
         super();
 
         init(data);
+        _hero.damageType = data.damagetype;
         loadInventory(data);
     }
 

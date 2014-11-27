@@ -10,6 +10,7 @@ public class DamageExt extends Extension
 
     public static const TYPE : String = "damage";
     private var _damage : Number;
+    private var _damageType : String;
 
     public function DamageExt($args : Array)
     {
@@ -24,14 +25,15 @@ public class DamageExt extends Extension
 
     override protected function fill() : void
     {
-        if(_arguments.length > 1) {
-            var min : Number = _arguments[0];
-            var max : Number = _arguments[1];
+        _damageType = _arguments[0];
+        if(_arguments.length > 2) {
+            var min : Number = _arguments[1];
+            var max : Number = _arguments[2];
             _damage = getRandomExtValue(min, max);
-            _arguments = [_damage];
+            _arguments = [_damageType,_damage];
         } else
         {
-            _damage = _arguments[0];
+            _damage = _arguments[1];
         }
     }
 
@@ -44,14 +46,17 @@ public class DamageExt extends Extension
     }
 
 
-    override public function toObject() : Object
+//    override public function toObject() : Object
+//    {
+////        var obj : Object = {};
+////        obj[TYPE] = _damage;
+//        return _damage;
+//    }
+
+    public function getType() : String
     {
-//        var obj : Object = {};
-//        obj[TYPE] = _damage;
-        return _damage;
+        return _damageType;
     }
-
-
     override public function getBaseValue() : Number
     {
         return _damage;

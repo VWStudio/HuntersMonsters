@@ -27,6 +27,7 @@ public class Personage extends EventDispatcher {
     public var maxSummon: int = 1;
     private var _damage: int = 0;
     private var _defence: int = 0;
+    public var damageType : String = "weapon";
 
     public function get isDead():Boolean {
         return hp <= 0;
@@ -51,6 +52,7 @@ public class Personage extends EventDispatcher {
         _damage = data.damage;
         _defence = data.defence;
         _magic = data.magic;
+//        damageType = data["damagetype"];
 
         exp = data.exp;
 //        skillPoints = data.skillPoints;
@@ -62,6 +64,7 @@ public class Personage extends EventDispatcher {
     public function getDefence():Number {
         if(this == Model.instance.player.hero) {
             return defence * Model.instance.progress.getSkillMultiplier("4");
+//            return defence * Model.instance.progress.getSkillMultiplier("4");
         } else {
             return defence;
         }
@@ -97,11 +100,11 @@ public class Personage extends EventDispatcher {
     }
 
     public function get damage() : int {
-        return _damage;
+        return 0;
     }
 
     public function get defence() : int {
-        return _defence;
+        return 0;
     }
 
     public function get id() : String {
