@@ -62,6 +62,7 @@ public class Player extends EventDispatcher
         _pets = new PetsInventory();
 
         _hero = new Hero(_inventory);
+
         _pet = new Monster();
 
         _manaList = new ManaList();

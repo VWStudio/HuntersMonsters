@@ -95,7 +95,7 @@ public class PersonageView extends AbstractView {
         _progressLine.scaleX = _isRight ? -_personage.hp / _personage.maxHP : _personage.hp / _personage.maxHP;
 
         _armor.text = String(_personage.getDefence());
-        _damage.text = String(_personage.damage * 3);
+        _damage.text = String(_personage.damage);
 //        _damage.text = String(_personage.damage);
         _currentMarker.visible = _personage.current;
 

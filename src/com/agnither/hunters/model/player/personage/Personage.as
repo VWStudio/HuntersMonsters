@@ -18,7 +18,6 @@ public class Personage extends EventDispatcher {
 
     public var current : Boolean = false;
 
-    private var _name: String;
     public var exp : int = 0;
     public var picture : String;
     public var level: int = 0;
@@ -100,11 +99,11 @@ public class Personage extends EventDispatcher {
     }
 
     public function get damage() : int {
-        return 0;
+        return _damage;
     }
 
     public function get defence() : int {
-        return 0;
+        return _defence;
     }
 
     public function get id() : String {

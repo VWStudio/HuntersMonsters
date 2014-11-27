@@ -213,12 +213,13 @@ public class Progress extends EventDispatcher {
         for (i = 0; i < playerItems.length; i++)
         {
             var playerItem : PlayerItemVO = playerItems[i];
-            var item : Object = Model.instance.items.getItemVO(playerItem.id);
-            trace(item.name, playerItem.ext, JSON.stringify(playerItem.ext));
-            trace(JSON.stringify(playerItem));
+            var item : ItemVO = Model.instance.items.getItemVO(playerItem.id);
+            trace(item.name, JSON.stringify(playerItem.ext));
+            trace(JSON.stringify(item));
             if(playerItem.ext) {
                 item.ext = playerItem.ext;
             }
+            trace("*",JSON.stringify(item));
             var itmName : String = Util.uniq(item.name);
             saveObject.items[itmName] = item;
             if (playerItem.wield)

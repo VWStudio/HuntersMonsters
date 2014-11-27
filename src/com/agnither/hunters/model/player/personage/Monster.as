@@ -22,5 +22,7 @@ public class Monster extends Personage {
         _pet = null;
         hp = 0;
     }
+
+
 }
 }

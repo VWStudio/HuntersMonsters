@@ -120,6 +120,7 @@ public class Match3Game extends EventDispatcher
 
 
         _player = player;
+//        _player.hero.isPlayer = true;
         _player.hero.addEventListener(Personage.DEAD, handlePlayerDead);
 
         _enemy = enemy;
@@ -225,7 +226,7 @@ public class Match3Game extends EventDispatcher
         if (attacker)
         {
             var aim : Personage = !currentEnemy.pet.isDead ? currentEnemy.pet : currentEnemy.hero;
-            var dmg : Number = attacker.damage;
+            var dmg : Number = attacker.damage / 3;
             if (attacker == Model.instance.player.hero)
             {
 //                var warriorSkill : Number = Model.instance.progress.getSkillValue("2");

@@ -7,6 +7,7 @@ import com.agnither.hunters.model.player.inventory.Inventory;
 public class Hero extends Personage {
 
     private var _inventory: Inventory;
+    public var isPlayer : Boolean = false;
 
 
 
@@ -15,11 +16,12 @@ public class Hero extends Personage {
     }
 
     override public function get damage():int {
-        return super.damage + _inventory.damage;
+        return isPlayer ? _inventory.damage : super.damage;
+//        return isPlayer ? _inventory.damage : damage;
     }
 
     override public function get defence():int {
-        return super.defence + _inventory.defence;
+        return isPlayer ? _inventory.defence : super.defence;
     }
 
     public function Hero(inventory: Inventory) {

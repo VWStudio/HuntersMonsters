@@ -5,7 +5,7 @@
         "type": 1,
         "slot": 1,
         "picture": "item_sword",
-        "ext": "damage:[\"weapon\",1,5]",
+        "ext": "damage:[\"weapon\",10,15]",
         "setname": "default",
         "droppicture": "drop_sword"
     },
@@ -15,7 +15,7 @@
         "type": 1,
         "slot": 1,
         "picture": "item_sword",
-        "ext": "damage:[\"weapon\",5,10]",
+        "ext": "damage:[\"weapon\",15,20]",
         "setname": "house00",
         "droppicture": "drop_sword"
     },
@@ -25,7 +25,7 @@
         "type": 1,
         "slot": 1,
         "picture": "item_staff",
-        "ext": "damage:[\"fire\",5,10]",
+        "ext": "damage:[\"fire\",6,12]",
         "setname": "house00",
         "droppicture": "drop_staff"
     },
@@ -119,6 +119,36 @@
         "droppicture": "drop_magic"
     },
     {
+        "id": 19,
+        "name": "ring",
+        "type": 3,
+        "slot": 7,
+        "picture": "item_ring",
+        "ext": "mirror_damage:[20,50]",
+        "setname": "house00",
+        "droppicture": "drop_ring"
+    },
+    {
+        "id": 20,
+        "name": "ring",
+        "type": 3,
+        "slot": 7,
+        "picture": "item_ring",
+        "ext": "spell_defence:[3,1]",
+        "setname": "house00",
+        "droppicture": "drop_ring"
+    },
+    {
+        "id": 21,
+        "name": "ring",
+        "type": 3,
+        "slot": 7,
+        "picture": "item_ring",
+        "ext": "mana_add:[3,5]",
+        "setname": "house00",
+        "droppicture": "drop_ring"
+    },
+    {
         "id": 13,
         "name": "fireball",
         "type": 4,
@@ -177,35 +207,5 @@
         "ext": "damage:[\"fire\",25];mana:[\"fire\",10,\"nature\",5]",
         "setname": "house00",
         "droppicture": "drop_magic"
-    },
-    {
-        "id": 19,
-        "name": "ring",
-        "type": 3,
-        "slot": 7,
-        "picture": "item_ring",
-        "ext": "mirror_damage:[20,50]",
-        "setname": "house00",
-        "droppicture": "drop_ring"
-    },
-    {
-        "id": 20,
-        "name": "ring",
-        "type": 3,
-        "slot": 7,
-        "picture": "item_ring",
-        "ext": "spell_defence:[3,1]",
-        "setname": "house00",
-        "droppicture": "drop_ring"
-    },
-    {
-        "id": 21,
-        "name": "ring",
-        "type": 3,
-        "slot": 7,
-        "picture": "item_ring",
-        "ext": "mana_add:[3,5]",
-        "setname": "house00",
-        "droppicture": "drop_ring"
     }
 ]

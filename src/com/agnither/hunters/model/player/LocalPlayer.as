@@ -32,6 +32,7 @@ public class LocalPlayer extends Player {
     public function LocalPlayer() {
         id = "player user";
         super();
+        hero.isPlayer = true;
         coreAddListener(LocalPlayer.ITEM_SELECTED, selectItem);
         coreAddListener(LocalPlayer.PET_SELECTED, handleSummonPet);
     }
