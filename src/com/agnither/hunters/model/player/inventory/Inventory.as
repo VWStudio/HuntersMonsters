@@ -40,9 +40,43 @@ public class Inventory extends EventDispatcher {
 
     private var _extensions: Dictionary = new Dictionary();
     private var _spells : Object = {};
+    private var _manaPriority : Array;
     public function getExtension(type: int):int {
         return _extensions[type];
     }
+
+    public function getSpellsManaTypes():Array {
+        var arr : Array = [];
+        var obj : Object = {};
+        for (var key : String in _spells)
+        {
+            var spell : Item = _spells[key];
+            if(spell.isWearing) {
+                var manas : Object = spell.getMana();
+                for (var manaID : String in manas)
+                {
+                    if(arr.indexOf(manaID) >= 0) {
+                        obj[manaID] += manas[manaID];
+                    } else {
+                        arr.push(manaID);
+                        obj[manaID] = manas[manaID];
+                    }
+                }
+            }
+        }
+        arr.sort(sortManas);
+        function sortManas($a : String, $b : String) : Number
+        {
+            if(obj[$a] > obj[$b]) return -1;
+            if(obj[$a] < obj[$b]) return 1;
+            return 0;
+        }
+
+        trace("INVENTORY", arr, JSON.stringify(obj));
+
+        return arr;
+    }
+
 
     public function get damage():int {
         return getExtension(ExtensionVO.damage);
@@ -138,6 +172,8 @@ public class Inventory extends EventDispatcher {
 
         _inventoryItems.sort(sortInventory);
 
+
+        _manaPriority = getSpellsManaTypes();
         dispatchEventWith(UPDATE);
     }
 
@@ -239,6 +275,11 @@ public class Inventory extends EventDispatcher {
     public function get items() : Object
     {
         return _itemsDict;
+    }
+
+    public function get manaPriority() : Array
+    {
+        return _manaPriority;
     }
 }
 }

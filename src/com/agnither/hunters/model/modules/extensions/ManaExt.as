@@ -27,7 +27,7 @@ public class ManaExt extends Extension
     {
 
         _mana = {};
-        trace("MANA FILL", JSON.stringify(_arguments));
+//        trace("MANA FILL", JSON.stringify(_arguments));
         for (var i : int = 0; i < int(_arguments.length / 2); i++)
         {
             var magic: MagicTypeVO = MagicTypeVO.DICT[_arguments[i * 2].toString()];

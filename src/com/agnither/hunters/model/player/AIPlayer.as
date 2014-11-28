@@ -26,6 +26,8 @@ public class AIPlayer extends Player
     private var _damageResults : Array;
     private var _otherResults : Array;
     private var _spellMovesResults : Array;
+    private var _currentSpellsObj : Object = {};
+    private var _currentSpellsMana : Array = [];
 
     public function AIPlayer(data : MonsterVO) : void
     {
@@ -97,10 +99,17 @@ public class AIPlayer extends Player
     private function processMoves() : void
     {
         _damageResults = [];
-        _spellMovesResults = [];
+        _currentSpellsMana = hero.inventory.manaPriority;
+        _currentSpellsObj = {};
         _otherResults = [];
+
+
+
+//        _spellMovesResults = [];
+
+
         var currentType : String = hero.damageType;
-        var currentMagicType : String = hero.magic.name;
+
         var moves : Vector.<Move> = game.field.availableMoves;
         var l : int = moves.length;
         for (var i : int = 0; i < l; i++)
@@ -111,26 +120,65 @@ public class AIPlayer extends Player
             {
                 _damageResults.push(result);
             }
-            else if(result.isHaveResultType(currentMagicType))
-            {
-                _spellMovesResults.push(result);
-            }
             else
             {
-                _otherResults.push(result);
+                var used : Boolean = false;
+                for (var ii : int = 0; ii < _currentSpellsMana.length; ii++)
+                {
+                    if(result.isHaveResultType(_currentSpellsMana[ii]))
+                    {
+//                        _spellMovesResults.push(result);
+                        if(!_currentSpellsObj[_currentSpellsMana[ii]]) {
+                            _currentSpellsObj[_currentSpellsMana[ii]] = [];
+                        }
+                        _currentSpellsObj[_currentSpellsMana[ii]].push(result);
+                        used = true;
+                    }
+                }
+                if(!used) {
+                    _otherResults.push(result);
+                }
             }
         }
+
+//        _spellMovesResults.sort(sortSpellMoves);
+//        function sortSpellMoves($a : MoveResult, $b : MoveResult) : Number
+//        {
+//            for (var i : int = 0; i < currentSpellsMana.length; i++)
+//            {
+//                var haveA : Boolean =
+//
+//                if($a.isHaveResultType(currentSpellsMana[i]))
+//
+//            }
+//
+//
+//
+//        }
+
     }
+
 
     private function selectMove(difficulty : int) : void
     {
-        var results : Array = _otherResults;
+        var results : Array;
         if(_damageResults.length > 0) {
             results = _damageResults;
         }
-        else if(_spellMovesResults.length > 0)
+        else
         {
-            results = _spellMovesResults;
+            for (var i : int = 0; i < _currentSpellsMana.length; i++)
+            {
+                var manaID : String = _currentSpellsMana[i];
+                if(_currentSpellsObj[manaID] && _currentSpellsObj[manaID].length > 0) {
+                    results = _currentSpellsObj[manaID];
+                }
+            }
+            if(!results) {
+                results = _otherResults;
+            }
+//            if(_spellMovesResults.length > 0)
+//            results = _spellMovesResults;
         }
 
         results.sortOn("score", Array.NUMERIC);

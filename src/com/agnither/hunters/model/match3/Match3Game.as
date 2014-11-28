@@ -231,7 +231,7 @@ public class Match3Game extends EventDispatcher
             {
 //                var warriorSkill : Number = Model.instance.progress.getSkillValue("2");
 //                if( warriorSkill > 0 ) {
-                dmg = dmg * Model.instance.progress.getSkillMultiplier("2");
+                dmg = dmg * (attacker.damageType == MagicTypeVO.WEAPON ? Model.instance.progress.getSkillMultiplier("2") : Model.instance.progress.getSkillMultiplier("3"));
 //                }
             } else {
                 if(Model.instance.mirrorDamage) {
