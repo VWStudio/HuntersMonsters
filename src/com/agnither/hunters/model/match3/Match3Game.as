@@ -32,6 +32,8 @@ public class Match3Game extends EventDispatcher
     public static const MODE_BOSS : String = "Match3Game.MODE_BOSS";
     public static const MODE_STEP : String = "Match3Game.MODE_STEP";
 
+    public static var ignoreGraphic : Boolean = true;
+
     private var _player : Player;
     public function get player() : Player
     {
@@ -182,7 +184,7 @@ public class Match3Game extends EventDispatcher
         switch (match.type)
         {
             case MagicTypeVO.CHEST:
-                if (currentPlayer is LocalPlayer)
+                if (currentPlayer is LocalPlayer && !ignoreGraphic)
                 {
 //                    var drop : Item = _drop.drop();
                     coreDispatch(BattleScreen.PLAY_CHEST_FLY, {position: match.cells[1].position, drop: _drop.drop()});
@@ -196,10 +198,6 @@ public class Match3Game extends EventDispatcher
                 }
                 break;
             default:
-//            case MagicTypeVO.WEAPON:
-//                attacker = currentPlayer.hero;
-//                break;
-                trace(match.type, currentPlayer.damageType);
                 if (!currentPlayer.pet.isDead && currentPlayer.pet.magic.name == match.type)
                 {
                     attacker = currentPlayer.pet;
@@ -208,11 +206,10 @@ public class Match3Game extends EventDispatcher
                      * TODO handle magic attack here
                      */
                     attacker = currentPlayer.hero;
-//                    Model.instance.progress.getSkillMultiplier("3");
                 }
 
                 currentPlayer.manaList.addMana(match.type, match.amount);
-                if (currentPlayer is LocalPlayer)
+                if (currentPlayer is LocalPlayer && !ignoreGraphic)
                 {
                     coreDispatch(BattleScreen.PLAY_MANA_FLY, {
                         position: match.cells[1].position,

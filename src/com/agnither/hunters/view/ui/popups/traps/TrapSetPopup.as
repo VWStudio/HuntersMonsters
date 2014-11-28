@@ -93,7 +93,10 @@ public class TrapSetPopup extends Popup {
         _chance2.text = "Уровень 2: "+int(baseChance * _trap.leveleffect[1] + 1)+"%";
         _chance3.text = "Уровень 3: "+int(baseChance * _trap.leveleffect[2] + 1)+"%";
 
-        _chances = [int(baseChance * _trap.leveleffect[0] + 1),int(baseChance * _trap.leveleffect[1] + 1),int(baseChance * _trap.leveleffect[2] + 1)];
+        _chances = [
+            int(baseChance * _trap.leveleffect[0] * Model.instance.progress.getSkillMultiplier("9") + 1),
+            int(baseChance * _trap.leveleffect[1] * Model.instance.progress.getSkillMultiplier("9") + 1),
+            int(baseChance * _trap.leveleffect[2] * Model.instance.progress.getSkillMultiplier("9") + 1)];
         data["chances"] = _chances;
 
         if(data.id) {

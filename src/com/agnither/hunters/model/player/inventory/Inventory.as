@@ -281,5 +281,15 @@ public class Inventory extends EventDispatcher {
     {
         return _manaPriority;
     }
+
+    public function get spells() : Object
+    {
+        return _spells;
+    }
+
+    public function set spells(value : Object) : void
+    {
+        _spells = value;
+    }
 }
 }

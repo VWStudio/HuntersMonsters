@@ -22,10 +22,10 @@ public class AIPlayer extends Player
 
     private var _difficulty : int;
 
-    private var _spellResults : Dictionary;
+//    private var _spellResults : Dictionary;
     private var _damageResults : Array;
     private var _otherResults : Array;
-    private var _spellMovesResults : Array;
+//    private var _spellMovesResults : Array;
     private var _currentSpellsObj : Object = {};
     private var _currentSpellsMana : Array = [];
 
@@ -59,41 +59,53 @@ public class AIPlayer extends Player
         selectMove(_difficulty);
     }
 
-    private function processSpells(difficulty : int) : void
+    private function processSpells(difficulty : int) : Boolean
     {
-        var results : Array = [];
-        if (Math.random() * 100 < difficulty)
+        for (var key : String in _inventory.spells)
         {
-            for (var i : int = 0; i < _inventory.inventoryItems.length; i++)
+            var spellItem : Item = _inventory.spells[key];
+            var result : CheckManaResult = new CheckManaResult(_manaList, spellItem);
+            if (result.enough)
             {
-
-                var spellItem : Item = _inventory.getItem(_inventory.inventoryItems[i]);
-//                var spell: Spell = _inventory.getItem(_inventory.inventoryItems[i]) as Spell;
-                if (spellItem.isSpell())
-                {
-                    var result : CheckManaResult = new CheckManaResult(_manaList, spellItem);
-                    if (result.enough)
-                    {
-
-                        game.useSpell(spellItem);
-                    }
-                    else
-                    {
-                        results.push(result);
-                    }
-                }
+                game.useSpell(spellItem);
+                return processSpells(difficulty);
             }
         }
+        return false;
 
-        _spellResults = new Dictionary();
-        if (results.length > 0)
-        {
-            results.sortOn("delta", Array.NUMERIC);
-            for (var key : * in results[0].results)
-            {
-                _spellResults[key] = true;
-            }
-        }
+//        var results : Array = [];
+//        if (Math.random() * 100 < difficulty)
+//        {
+//            for (var i : int = 0; i < _inventory.length; i++)
+//            {
+//
+//                var spellItem : Item = _inventory.getItem(_inventory.inventoryItems[i]);
+////                var spell: Spell = _inventory.getItem(_inventory.inventoryItems[i]) as Spell;
+//                if (spellItem.isSpell())
+//                {
+//                    var result : CheckManaResult = new CheckManaResult(_manaList, spellItem);
+//                    if (result.enough)
+//                    {
+//
+//                        game.useSpell(spellItem);
+//                    }
+////                    else
+////                    {
+////                        results.push(result);
+////                    }
+//                }
+//            }
+////        }
+
+//        _spellResults = new Dictionary();
+//        if (results.length > 0)
+//        {
+//            results.sortOn("delta", Array.NUMERIC);
+//            for (var key : * in results[0].results)
+//            {
+//                _spellResults[key] = true;
+//            }
+//        }
     }
 
     private function processMoves() : void
@@ -114,7 +126,8 @@ public class AIPlayer extends Player
         var l : int = moves.length;
         for (var i : int = 0; i < l; i++)
         {
-            var result : MoveResult = game.field.checkMove(moves[i], _spellResults);
+            var result : MoveResult = game.field.checkMove(moves[i], new Dictionary());
+//            var result : MoveResult = game.field.checkMove(moves[i], _spellResults);
 
             if (result.isHaveResultType(currentType))
             {

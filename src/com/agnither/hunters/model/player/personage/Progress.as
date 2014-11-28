@@ -180,6 +180,7 @@ public class Progress extends EventDispatcher {
         var obj : Object = {};
         obj.id = "local player";
         obj.name = settings.playerInitialName;
+//        obj.level = 20;
         obj.level = settings.playerInitialLevel;
         obj.exp = settings.playerInitialExp;
         obj.hp = settings.playerInitialHp;
@@ -192,6 +193,7 @@ public class Progress extends EventDispatcher {
         obj.magic = settings.playerInitialMagic;
         obj.gold = settings.playerInitialGold;
         obj.maxSummon = settings.playerInitialSummonMax;
+//        obj.skillPoints = 10;
         obj.skillPoints = settings.playerInitialSkillPoints;
         obj.unlockPoints = settings.unlockPoints;
         obj.unlockPointsGiven = [];
@@ -214,12 +216,12 @@ public class Progress extends EventDispatcher {
         {
             var playerItem : PlayerItemVO = playerItems[i];
             var item : ItemVO = Model.instance.items.getItemVO(playerItem.id);
-            trace(item.name, JSON.stringify(playerItem.ext));
-            trace(JSON.stringify(item));
+//            trace(item.name, JSON.stringify(playerItem.ext));
+//            trace(JSON.stringify(item));
             if(playerItem.ext) {
                 item.ext = playerItem.ext;
             }
-            trace("*",JSON.stringify(item));
+//            trace("*",JSON.stringify(item));
             var itmName : String = Util.uniq(item.name);
             saveObject.items[itmName] = item;
             if (playerItem.wield)
@@ -279,8 +281,27 @@ public class Progress extends EventDispatcher {
 
         skillPoints--;
 
+        if($id == "10") {
+            magic = 6;
+        }
+        if($id == "12") {
+            magic = 7;
+        }
+
+        Model.instance.player.hero.init(this);
+        Model.instance.player.resetMana();
+
+        updateAfterSkill();
         recalculateHP();
         saveProgress();
+
+    }
+
+    private function updateAfterSkill() : void
+    {
+
+
+
 
     }
 

@@ -7,6 +7,7 @@ import com.agnither.hunters.App;
 import com.agnither.hunters.data.outer.MagicTypeVO;
 import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.match3.Match3Game;
+import com.agnither.hunters.model.player.AIPlayer;
 import com.agnither.hunters.model.player.Territory;
 import com.agnither.hunters.model.player.inventory.Item;
 import com.agnither.hunters.model.player.personage.Personage;
@@ -71,6 +72,9 @@ public class BattleScreen extends Screen
     private var _effects : Sprite;
     public static const PLAY_MANA_FLY : String = "BattleScreen.PLAY_MANA_FLY";
     private var _timeout : uint;
+
+
+
 
     public function BattleScreen()
     {
@@ -150,6 +154,7 @@ public class BattleScreen extends Screen
         {
             _game = new Match3Game(stage);
         }
+//        _game.init(new AIPlayer(Model.instance.monsters.getRandomMonster()), new AIPlayer(Model.instance.monsters.getRandomMonster()), 2);
         _game.init(Model.instance.player, Model.instance.enemy, Model.instance.drop);
 
         _field.clear();
