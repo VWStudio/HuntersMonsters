@@ -5,6 +5,8 @@ package com.agnither.hunters.view.ui.popups.shop
 {
 import com.agnither.hunters.data.outer.ItemTypeVO;
 import com.agnither.hunters.model.Model;
+import com.agnither.hunters.model.modules.extensions.DamageExt;
+import com.agnither.hunters.model.modules.extensions.DefenceExt;
 import com.agnither.hunters.model.modules.extensions.Extension;
 import com.agnither.hunters.model.player.inventory.Item;
 import com.agnither.hunters.view.ui.screens.battle.player.inventory.ItemView;
@@ -60,13 +62,13 @@ public class BuyItemView extends AbstractView
         {
 //            _links.damage_icon.getChildAt(0).texture = _refs.gui.getTexture("chip_sword");
 //            _damage.text = item.getDamage().toString();
-            _price = Model.instance.getPrice(item.getDamage());
+            _price = Model.instance.getPrice(item.getDamage(),DamageExt.TYPE);
         }
         else if (_item.getDefence())
         {
 //            _links.damage_icon.getChildAt(0).texture = _refs.gui.getTexture("itemicon_shield");
 //            _damage.text = item.getDefence().toString();
-            _price = Model.instance.getPrice(item.getDefence());
+            _price = Model.instance.getPrice(item.getDefence(), DefenceExt.TYPE);
         }
         else if (_item.ext)
         {
@@ -74,7 +76,7 @@ public class BuyItemView extends AbstractView
             {
 
                 var extItem : Extension = _item.getExt(extId);
-                _price += Model.instance.getPrice(extItem.getBaseValue());
+                _price += Model.instance.getPrice(extItem.getBaseValue(), (extItem as Object).constructor["TYPE"]);
             }
         }
 

@@ -70,7 +70,7 @@ public class PetView extends AbstractView {
         _sellButton.addEventListener(Event.TRIGGERED, onSell);
         _sellButton.visible = false;
 
-        _price = Model.instance.getPrice(pet.level);
+        _price = Model.instance.getPrice(pet.level, "pet_level");
 
     }
 

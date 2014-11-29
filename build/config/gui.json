@@ -745,424 +745,6 @@
       ],
       [
         {
-          "x": 655,
-          "y": 904,
-          "type": "movie clip",
-          "name": "step_00_01",
-          "structure": [
-            [
-              {
-                "x": 0,
-                "y": 0,
-                "type": "bitmap",
-                "image": "step_icon",
-                "name": "bitmap_step_icon"
-              }
-            ]
-          ]
-        }
-      ],
-      [
-        {
-          "x": 561,
-          "y": 824,
-          "type": "movie clip",
-          "name": "step_00_02",
-          "structure": [
-            [
-              {
-                "x": 0,
-                "y": 0,
-                "type": "bitmap",
-                "image": "step_icon",
-                "name": "bitmap_step_icon"
-              }
-            ]
-          ]
-        }
-      ],
-      [
-        {
-          "x": 756,
-          "y": 824,
-          "type": "movie clip",
-          "name": "step_01_02",
-          "structure": [
-            [
-              {
-                "x": 0,
-                "y": 0,
-                "type": "bitmap",
-                "image": "step_icon",
-                "name": "bitmap_step_icon"
-              }
-            ]
-          ]
-        }
-      ],
-      [
-        {
-          "x": 901,
-          "y": 822,
-          "type": "movie clip",
-          "name": "step_01_05",
-          "structure": [
-            [
-              {
-                "x": 0,
-                "y": 0,
-                "type": "bitmap",
-                "image": "step_icon",
-                "name": "bitmap_step_icon"
-              }
-            ]
-          ]
-        }
-      ],
-      [
-        {
-          "x": 1014,
-          "y": 901,
-          "type": "movie clip",
-          "name": "step_01_04",
-          "structure": [
-            [
-              {
-                "x": 0,
-                "y": 0,
-                "type": "bitmap",
-                "image": "step_icon",
-                "name": "bitmap_step_icon"
-              }
-            ]
-          ]
-        }
-      ],
-      [
-        {
-          "x": 567,
-          "y": 655,
-          "type": "movie clip",
-          "name": "step_02_03",
-          "structure": [
-            [
-              {
-                "x": 0,
-                "y": 0,
-                "type": "bitmap",
-                "image": "step_icon",
-                "name": "bitmap_step_icon"
-              }
-            ]
-          ]
-        }
-      ],
-      [
-        {
-          "x": 748,
-          "y": 658,
-          "type": "movie clip",
-          "name": "step_02_06",
-          "structure": [
-            [
-              {
-                "x": 0,
-                "y": 0,
-                "type": "bitmap",
-                "image": "step_icon",
-                "name": "bitmap_step_icon"
-              }
-            ]
-          ]
-        }
-      ],
-      [
-        {
-          "x": 655,
-          "y": 568,
-          "type": "movie clip",
-          "name": "step_03_06",
-          "structure": [
-            [
-              {
-                "x": 0,
-                "y": 0,
-                "type": "bitmap",
-                "image": "step_icon",
-                "name": "bitmap_step_icon"
-              }
-            ]
-          ]
-        }
-      ],
-      [
-        {
-          "x": 845,
-          "y": 738,
-          "type": "movie clip",
-          "name": "step_02_05",
-          "structure": [
-            [
-              {
-                "x": 0,
-                "y": 0,
-                "type": "bitmap",
-                "image": "step_icon",
-                "name": "bitmap_step_icon"
-              }
-            ]
-          ]
-        }
-      ],
-      [
-        {
-          "x": 926,
-          "y": 655,
-          "type": "movie clip",
-          "name": "step_05_06",
-          "structure": [
-            [
-              {
-                "x": 0,
-                "y": 0,
-                "type": "bitmap",
-                "image": "step_icon",
-                "name": "bitmap_step_icon"
-              }
-            ]
-          ]
-        }
-      ],
-      [
-        {
-          "x": 1091,
-          "y": 658,
-          "type": "movie clip",
-          "name": "step_05_08",
-          "structure": [
-            [
-              {
-                "x": 0,
-                "y": 0,
-                "type": "bitmap",
-                "image": "step_icon",
-                "name": "bitmap_step_icon"
-              }
-            ]
-          ]
-        }
-      ],
-      [
-        {
-          "x": 1101,
-          "y": 824,
-          "type": "movie clip",
-          "name": "step_04_05",
-          "structure": [
-            [
-              {
-                "x": 0,
-                "y": 0,
-                "type": "bitmap",
-                "image": "step_icon",
-                "name": "bitmap_step_icon"
-              }
-            ]
-          ]
-        }
-      ],
-      [
-        {
-          "x": 1271,
-          "y": 819,
-          "type": "movie clip",
-          "name": "step_04_07",
-          "structure": [
-            [
-              {
-                "x": 0,
-                "y": 0,
-                "type": "bitmap",
-                "image": "step_icon",
-                "name": "bitmap_step_icon"
-              }
-            ]
-          ]
-        }
-      ],
-      [
-        {
-          "x": 1187,
-          "y": 738,
-          "type": "movie clip",
-          "name": "step_05_07",
-          "structure": [
-            [
-              {
-                "x": 0,
-                "y": 0,
-                "type": "bitmap",
-                "image": "step_icon",
-                "name": "bitmap_step_icon"
-              }
-            ]
-          ]
-        }
-      ],
-      [
-        {
-          "x": 1271,
-          "y": 662,
-          "type": "movie clip",
-          "name": "step_07_08",
-          "structure": [
-            [
-              {
-                "x": 0,
-                "y": 0,
-                "type": "bitmap",
-                "image": "step_icon",
-                "name": "bitmap_step_icon"
-              }
-            ]
-          ]
-        }
-      ],
-      [
-        {
-          "x": 1458,
-          "y": 667,
-          "type": "movie clip",
-          "name": "step_07_09",
-          "structure": [
-            [
-              {
-                "x": 0,
-                "y": 0,
-                "type": "bitmap",
-                "image": "step_icon",
-                "name": "bitmap_step_icon"
-              }
-            ]
-          ]
-        }
-      ],
-      [
-        {
-          "x": 1010,
-          "y": 576,
-          "type": "movie clip",
-          "name": "step_06_08",
-          "structure": [
-            [
-              {
-                "x": 0,
-                "y": 0,
-                "type": "bitmap",
-                "image": "step_icon",
-                "name": "bitmap_step_icon"
-              }
-            ]
-          ]
-        }
-      ],
-      [
-        {
-          "x": 1378,
-          "y": 586,
-          "type": "movie clip",
-          "name": "step_08_09",
-          "structure": [
-            [
-              {
-                "x": 0,
-                "y": 0,
-                "type": "bitmap",
-                "image": "step_icon",
-                "name": "bitmap_step_icon"
-              }
-            ]
-          ]
-        }
-      ],
-      [
-        {
-          "x": 1292,
-          "y": 502,
-          "type": "movie clip",
-          "name": "step_08_10",
-          "structure": [
-            [
-              {
-                "x": 0,
-                "y": 0,
-                "type": "bitmap",
-                "image": "step_icon",
-                "name": "bitmap_step_icon"
-              }
-            ]
-          ]
-        }
-      ],
-      [
-        {
-          "x": 1467,
-          "y": 502,
-          "type": "movie clip",
-          "name": "step_09_10",
-          "structure": [
-            [
-              {
-                "x": 0,
-                "y": 0,
-                "type": "bitmap",
-                "image": "step_icon",
-                "name": "bitmap_step_icon"
-              }
-            ]
-          ]
-        }
-      ],
-      [
-        {
-          "x": 1281,
-          "y": 337,
-          "type": "movie clip",
-          "name": "step_10_11",
-          "structure": [
-            [
-              {
-                "x": 0,
-                "y": 0,
-                "type": "bitmap",
-                "image": "step_icon",
-                "name": "bitmap_step_icon"
-              }
-            ]
-          ]
-        }
-      ],
-      [
-        {
-          "x": 1010,
-          "y": 247,
-          "type": "movie clip",
-          "name": "step_11_12",
-          "structure": [
-            [
-              {
-                "x": 0,
-                "y": 0,
-                "type": "bitmap",
-                "image": "step_icon",
-                "name": "bitmap_step_icon"
-              }
-            ]
-          ]
-        }
-      ],
-      [
-        {
           "x": 462,
           "y": 561,
           "type": "movie clip",
@@ -1213,6 +795,253 @@
                 "type": "bitmap",
                 "image": "h3",
                 "name": "bitmap_h3"
+              }
+            ]
+          ]
+        }
+      ],
+      [
+        {
+          "x": 648,
+          "y": 109,
+          "type": "movie clip",
+          "name": "clouds_12",
+          "structure": [
+            [
+              {
+                "x": 0,
+                "y": 0,
+                "type": "bitmap",
+                "image": "map_cloud",
+                "name": "bitmap_map_cloud"
+              }
+            ]
+          ]
+        }
+      ],
+      [
+        {
+          "x": 1013,
+          "y": 114,
+          "type": "movie clip",
+          "name": "clouds_11",
+          "structure": [
+            [
+              {
+                "x": 0,
+                "y": 0,
+                "type": "bitmap",
+                "image": "map_cloud",
+                "name": "bitmap_map_cloud"
+              }
+            ]
+          ]
+        }
+      ],
+      [
+        {
+          "x": 1191,
+          "y": 274,
+          "type": "movie clip",
+          "name": "clouds_10",
+          "structure": [
+            [
+              {
+                "x": 0,
+                "y": 0,
+                "type": "bitmap",
+                "image": "map_cloud",
+                "name": "bitmap_map_cloud"
+              }
+            ]
+          ]
+        }
+      ],
+      [
+        {
+          "x": 1374,
+          "y": 441,
+          "type": "movie clip",
+          "name": "clouds_09",
+          "structure": [
+            [
+              {
+                "x": 0,
+                "y": 0,
+                "type": "bitmap",
+                "image": "map_cloud",
+                "name": "bitmap_map_cloud"
+              }
+            ]
+          ]
+        }
+      ],
+      [
+        {
+          "x": 1007,
+          "y": 419,
+          "type": "movie clip",
+          "name": "clouds_08",
+          "structure": [
+            [
+              {
+                "x": 0,
+                "y": 0,
+                "type": "bitmap",
+                "image": "map_cloud",
+                "name": "bitmap_map_cloud"
+              }
+            ]
+          ]
+        }
+      ],
+      [
+        {
+          "x": 638,
+          "y": 422,
+          "type": "movie clip",
+          "name": "clouds_06",
+          "structure": [
+            [
+              {
+                "x": 0,
+                "y": 0,
+                "type": "bitmap",
+                "image": "map_cloud",
+                "name": "bitmap_map_cloud"
+              }
+            ]
+          ]
+        }
+      ],
+      [
+        {
+          "x": 1195,
+          "y": 587,
+          "type": "movie clip",
+          "name": "clouds_07",
+          "structure": [
+            [
+              {
+                "x": 0,
+                "y": 0,
+                "type": "bitmap",
+                "image": "map_cloud",
+                "name": "bitmap_map_cloud"
+              }
+            ]
+          ]
+        }
+      ],
+      [
+        {
+          "x": 829,
+          "y": 587,
+          "type": "movie clip",
+          "name": "clouds_05",
+          "structure": [
+            [
+              {
+                "x": 0,
+                "y": 0,
+                "type": "bitmap",
+                "image": "map_cloud",
+                "name": "bitmap_map_cloud"
+              }
+            ]
+          ]
+        }
+      ],
+      [
+        {
+          "x": 275,
+          "y": 429,
+          "type": "movie clip",
+          "name": "clouds_03",
+          "structure": [
+            [
+              {
+                "x": 0,
+                "y": 0,
+                "type": "bitmap",
+                "image": "map_cloud",
+                "name": "bitmap_map_cloud"
+              }
+            ]
+          ]
+        }
+      ],
+      [
+        {
+          "x": 464,
+          "y": 589,
+          "type": "movie clip",
+          "name": "clouds_02",
+          "structure": [
+            [
+              {
+                "x": 0,
+                "y": 0,
+                "type": "bitmap",
+                "image": "map_cloud",
+                "name": "bitmap_map_cloud"
+              }
+            ]
+          ]
+        }
+      ],
+      [
+        {
+          "x": 1007,
+          "y": 756,
+          "type": "movie clip",
+          "name": "clouds_04",
+          "structure": [
+            [
+              {
+                "x": 0,
+                "y": 0,
+                "type": "bitmap",
+                "image": "map_cloud",
+                "name": "bitmap_map_cloud"
+              }
+            ]
+          ]
+        }
+      ],
+      [
+        {
+          "x": 638,
+          "y": 752,
+          "type": "movie clip",
+          "name": "clouds_01",
+          "structure": [
+            [
+              {
+                "x": 0,
+                "y": 0,
+                "type": "bitmap",
+                "image": "map_cloud",
+                "name": "bitmap_map_cloud"
+              }
+            ]
+          ]
+        }
+      ],
+      [
+        {
+          "x": 280,
+          "y": 752,
+          "type": "movie clip",
+          "name": "clouds_00",
+          "structure": [
+            [
+              {
+                "x": 0,
+                "y": 0,
+                "type": "bitmap",
+                "image": "map_cloud",
+                "name": "bitmap_map_cloud"
               }
             ]
           ]
@@ -2201,18 +2030,18 @@
       ],
       [
         {
-          "x": 648,
-          "y": 109,
+          "x": 655,
+          "y": 904,
           "type": "movie clip",
-          "name": "clouds_12",
+          "name": "step_00_01",
           "structure": [
             [
               {
                 "x": 0,
                 "y": 0,
                 "type": "bitmap",
-                "image": "map_cloud",
-                "name": "bitmap_map_cloud"
+                "image": "step_icon",
+                "name": "bitmap_step_icon"
               }
             ]
           ]
@@ -2220,18 +2049,18 @@
       ],
       [
         {
-          "x": 1013,
-          "y": 114,
+          "x": 561,
+          "y": 824,
           "type": "movie clip",
-          "name": "clouds_11",
+          "name": "step_00_02",
           "structure": [
             [
               {
                 "x": 0,
                 "y": 0,
                 "type": "bitmap",
-                "image": "map_cloud",
-                "name": "bitmap_map_cloud"
+                "image": "step_icon",
+                "name": "bitmap_step_icon"
               }
             ]
           ]
@@ -2239,18 +2068,18 @@
       ],
       [
         {
-          "x": 1191,
-          "y": 274,
+          "x": 756,
+          "y": 824,
           "type": "movie clip",
-          "name": "clouds_10",
+          "name": "step_01_02",
           "structure": [
             [
               {
                 "x": 0,
                 "y": 0,
                 "type": "bitmap",
-                "image": "map_cloud",
-                "name": "bitmap_map_cloud"
+                "image": "step_icon",
+                "name": "bitmap_step_icon"
               }
             ]
           ]
@@ -2258,18 +2087,18 @@
       ],
       [
         {
-          "x": 1374,
-          "y": 441,
+          "x": 901,
+          "y": 822,
           "type": "movie clip",
-          "name": "clouds_09",
+          "name": "step_01_05",
           "structure": [
             [
               {
                 "x": 0,
                 "y": 0,
                 "type": "bitmap",
-                "image": "map_cloud",
-                "name": "bitmap_map_cloud"
+                "image": "step_icon",
+                "name": "bitmap_step_icon"
               }
             ]
           ]
@@ -2277,18 +2106,18 @@
       ],
       [
         {
-          "x": 1007,
-          "y": 419,
+          "x": 1014,
+          "y": 901,
           "type": "movie clip",
-          "name": "clouds_08",
+          "name": "step_01_04",
           "structure": [
             [
               {
                 "x": 0,
                 "y": 0,
                 "type": "bitmap",
-                "image": "map_cloud",
-                "name": "bitmap_map_cloud"
+                "image": "step_icon",
+                "name": "bitmap_step_icon"
               }
             ]
           ]
@@ -2296,18 +2125,18 @@
       ],
       [
         {
-          "x": 638,
-          "y": 422,
+          "x": 567,
+          "y": 655,
           "type": "movie clip",
-          "name": "clouds_06",
+          "name": "step_02_03",
           "structure": [
             [
               {
                 "x": 0,
                 "y": 0,
                 "type": "bitmap",
-                "image": "map_cloud",
-                "name": "bitmap_map_cloud"
+                "image": "step_icon",
+                "name": "bitmap_step_icon"
               }
             ]
           ]
@@ -2315,18 +2144,18 @@
       ],
       [
         {
-          "x": 1195,
-          "y": 587,
+          "x": 748,
+          "y": 658,
           "type": "movie clip",
-          "name": "clouds_07",
+          "name": "step_02_06",
           "structure": [
             [
               {
                 "x": 0,
                 "y": 0,
                 "type": "bitmap",
-                "image": "map_cloud",
-                "name": "bitmap_map_cloud"
+                "image": "step_icon",
+                "name": "bitmap_step_icon"
               }
             ]
           ]
@@ -2334,18 +2163,18 @@
       ],
       [
         {
-          "x": 829,
-          "y": 587,
+          "x": 655,
+          "y": 568,
           "type": "movie clip",
-          "name": "clouds_05",
+          "name": "step_03_06",
           "structure": [
             [
               {
                 "x": 0,
                 "y": 0,
                 "type": "bitmap",
-                "image": "map_cloud",
-                "name": "bitmap_map_cloud"
+                "image": "step_icon",
+                "name": "bitmap_step_icon"
               }
             ]
           ]
@@ -2353,18 +2182,18 @@
       ],
       [
         {
-          "x": 275,
-          "y": 429,
+          "x": 845,
+          "y": 738,
           "type": "movie clip",
-          "name": "clouds_03",
+          "name": "step_02_05",
           "structure": [
             [
               {
                 "x": 0,
                 "y": 0,
                 "type": "bitmap",
-                "image": "map_cloud",
-                "name": "bitmap_map_cloud"
+                "image": "step_icon",
+                "name": "bitmap_step_icon"
               }
             ]
           ]
@@ -2372,18 +2201,18 @@
       ],
       [
         {
-          "x": 464,
-          "y": 589,
+          "x": 926,
+          "y": 655,
           "type": "movie clip",
-          "name": "clouds_02",
+          "name": "step_05_06",
           "structure": [
             [
               {
                 "x": 0,
                 "y": 0,
                 "type": "bitmap",
-                "image": "map_cloud",
-                "name": "bitmap_map_cloud"
+                "image": "step_icon",
+                "name": "bitmap_step_icon"
               }
             ]
           ]
@@ -2391,18 +2220,18 @@
       ],
       [
         {
-          "x": 1007,
-          "y": 756,
+          "x": 1091,
+          "y": 658,
           "type": "movie clip",
-          "name": "clouds_04",
+          "name": "step_05_08",
           "structure": [
             [
               {
                 "x": 0,
                 "y": 0,
                 "type": "bitmap",
-                "image": "map_cloud",
-                "name": "bitmap_map_cloud"
+                "image": "step_icon",
+                "name": "bitmap_step_icon"
               }
             ]
           ]
@@ -2410,18 +2239,18 @@
       ],
       [
         {
-          "x": 638,
-          "y": 752,
+          "x": 1101,
+          "y": 824,
           "type": "movie clip",
-          "name": "clouds_01",
+          "name": "step_04_05",
           "structure": [
             [
               {
                 "x": 0,
                 "y": 0,
                 "type": "bitmap",
-                "image": "map_cloud",
-                "name": "bitmap_map_cloud"
+                "image": "step_icon",
+                "name": "bitmap_step_icon"
               }
             ]
           ]
@@ -2429,18 +2258,189 @@
       ],
       [
         {
-          "x": 280,
-          "y": 752,
+          "x": 1271,
+          "y": 819,
           "type": "movie clip",
-          "name": "clouds_00",
+          "name": "step_04_07",
           "structure": [
             [
               {
                 "x": 0,
                 "y": 0,
                 "type": "bitmap",
-                "image": "map_cloud",
-                "name": "bitmap_map_cloud"
+                "image": "step_icon",
+                "name": "bitmap_step_icon"
+              }
+            ]
+          ]
+        }
+      ],
+      [
+        {
+          "x": 1187,
+          "y": 738,
+          "type": "movie clip",
+          "name": "step_05_07",
+          "structure": [
+            [
+              {
+                "x": 0,
+                "y": 0,
+                "type": "bitmap",
+                "image": "step_icon",
+                "name": "bitmap_step_icon"
+              }
+            ]
+          ]
+        }
+      ],
+      [
+        {
+          "x": 1271,
+          "y": 662,
+          "type": "movie clip",
+          "name": "step_07_08",
+          "structure": [
+            [
+              {
+                "x": 0,
+                "y": 0,
+                "type": "bitmap",
+                "image": "step_icon",
+                "name": "bitmap_step_icon"
+              }
+            ]
+          ]
+        }
+      ],
+      [
+        {
+          "x": 1458,
+          "y": 667,
+          "type": "movie clip",
+          "name": "step_07_09",
+          "structure": [
+            [
+              {
+                "x": 0,
+                "y": 0,
+                "type": "bitmap",
+                "image": "step_icon",
+                "name": "bitmap_step_icon"
+              }
+            ]
+          ]
+        }
+      ],
+      [
+        {
+          "x": 1010,
+          "y": 576,
+          "type": "movie clip",
+          "name": "step_06_08",
+          "structure": [
+            [
+              {
+                "x": 0,
+                "y": 0,
+                "type": "bitmap",
+                "image": "step_icon",
+                "name": "bitmap_step_icon"
+              }
+            ]
+          ]
+        }
+      ],
+      [
+        {
+          "x": 1378,
+          "y": 586,
+          "type": "movie clip",
+          "name": "step_08_09",
+          "structure": [
+            [
+              {
+                "x": 0,
+                "y": 0,
+                "type": "bitmap",
+                "image": "step_icon",
+                "name": "bitmap_step_icon"
+              }
+            ]
+          ]
+        }
+      ],
+      [
+        {
+          "x": 1292,
+          "y": 502,
+          "type": "movie clip",
+          "name": "step_08_10",
+          "structure": [
+            [
+              {
+                "x": 0,
+                "y": 0,
+                "type": "bitmap",
+                "image": "step_icon",
+                "name": "bitmap_step_icon"
+              }
+            ]
+          ]
+        }
+      ],
+      [
+        {
+          "x": 1467,
+          "y": 502,
+          "type": "movie clip",
+          "name": "step_09_10",
+          "structure": [
+            [
+              {
+                "x": 0,
+                "y": 0,
+                "type": "bitmap",
+                "image": "step_icon",
+                "name": "bitmap_step_icon"
+              }
+            ]
+          ]
+        }
+      ],
+      [
+        {
+          "x": 1281,
+          "y": 337,
+          "type": "movie clip",
+          "name": "step_10_11",
+          "structure": [
+            [
+              {
+                "x": 0,
+                "y": 0,
+                "type": "bitmap",
+                "image": "step_icon",
+                "name": "bitmap_step_icon"
+              }
+            ]
+          ]
+        }
+      ],
+      [
+        {
+          "x": 1010,
+          "y": 247,
+          "type": "movie clip",
+          "name": "step_11_12",
+          "structure": [
+            [
+              {
+                "x": 0,
+                "y": 0,
+                "type": "bitmap",
+                "image": "step_icon",
+                "name": "bitmap_step_icon"
               }
             ]
           ]
@@ -4334,7 +4334,7 @@
           "x": 250,
           "y": 92,
           "matrix": {
-            "a": 9.999954223632812,
+            "a": 9.99993896484375,
             "b": 0,
             "c": 0,
             "d": 7.9999847412109375,

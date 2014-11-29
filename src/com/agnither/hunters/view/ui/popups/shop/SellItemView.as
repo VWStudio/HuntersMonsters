@@ -4,6 +4,8 @@
 package com.agnither.hunters.view.ui.popups.shop
 {
 import com.agnither.hunters.model.Model;
+import com.agnither.hunters.model.modules.extensions.DamageExt;
+import com.agnither.hunters.model.modules.extensions.DefenceExt;
 import com.agnither.hunters.model.player.inventory.Item;
 import com.agnither.hunters.view.ui.screens.battle.player.inventory.ItemView;
 import com.agnither.ui.AbstractView;
@@ -66,11 +68,11 @@ public class SellItemView extends AbstractView
 
         if (_item.getDamage())
         {
-            _price = int(Model.instance.getPrice(item.getDamage()) * 0.6);
+            _price = int(Model.instance.getPrice(item.getDamage(), DamageExt.TYPE) * 0.6);
         }
         else if (_item.getDefence())
         {
-            _price = int(Model.instance.getPrice(item.getDefence() * 0.6));
+            _price = int(Model.instance.getPrice(item.getDefence(), DefenceExt.TYPE) * 0.6);
         }
         if (item.isSpell())
         {

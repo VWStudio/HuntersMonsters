@@ -180,9 +180,11 @@ public class Model
 
 
 
-    public function getPrice($val : Number) : Number
+    public function getPrice($val : Number, $coeffName : String) : Number
     {
-        return int($val * SettingsVO.DICT["pointValue"] + ( (SettingsVO.DICT["pointPercent"] + 100) / 100) * $val);
+        var mult : Number = SettingsVO.DICT[$coeffName + "PriceMult"];
+        return int($val * $val * mult);
+//        return int($val * SettingsVO.DICT["pointValue"] + ( (SettingsVO.DICT["pointPercent"] + 100) / 100) * $val);
     }
 
     public function deleteCurrentPoint() : void

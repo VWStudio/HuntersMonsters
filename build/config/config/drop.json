@@ -76,5 +76,11 @@
         "itemset": 3,
         "probability": 50,
         "amount": "100,200"
+    },
+    {
+        "id": 14,
+        "itemset": 4,
+        "itemid": 18,
+        "probability": 100
     }
 ]

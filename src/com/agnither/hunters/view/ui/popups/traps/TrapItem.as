@@ -132,7 +132,7 @@ public class TrapItem extends AbstractView {
         _buyMode = $val;
 
 
-        _price =  Model.instance.getPrice(_trap.level);
+        _price =  Model.instance.getPrice(_trap.level, "trap");
 //        _price =  _trap.level * SettingsVO.DICT["pointValue"] + ( 1 + (SettingsVO.DICT["pointPercent"] / 100) * _trap.level) ;
 
         _buy.visible = _buyMode && _price <= Model.instance.progress.gold;

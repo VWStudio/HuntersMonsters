@@ -53,6 +53,7 @@ public class Progress extends EventDispatcher {
     private var _items : Object = {};
     private var _inventory : Array = [];
     public var unlockPoints : int = 0;
+    public var fullExp : int = 0;
 
     public function Progress() {
         _data = SharedObject.getLocal("player");
@@ -99,6 +100,7 @@ public class Progress extends EventDispatcher {
         picture = progressObj.picture;
         level = progressObj.level;
         exp = progressObj.exp;
+        fullExp = progressObj.fullExp;
         damage = 0;
 //        damage = progressObj.damage;
         defence = 0;
@@ -187,6 +189,7 @@ public class Progress extends EventDispatcher {
         obj.damage = 0;
 //        obj.damage = settings.playerInitialDmg;
         obj.defence = 0;
+        obj.fullExp = 0;
 //        obj.defence = settings.playerInitialDef;
         obj.league = settings.playerInitialLeague;
         obj.rating = settings.playerInitialRating;
@@ -250,11 +253,11 @@ public class Progress extends EventDispatcher {
 
 
         exp += $val;
+        fullExp += exp;
         var lv : LevelVO = LevelVO.DICT[level];
         if (exp >= lv.exp)
         {
             level++;
-
             exp = exp - lv.exp;
             skillPoints += 1;
             if (level % 5 == 0)

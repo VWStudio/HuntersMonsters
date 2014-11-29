@@ -128,7 +128,7 @@ public class HudScreen extends Screen {
     override public function update() : void {
         var progress :  Progress = Model.instance.progress;
         _playerLevel.text = progress.level.toString();
-        _playerExp.text = progress.exp.toString() + "/" +LevelVO.DICT[progress.level.toString()].exp;
+        _playerExp.text = progress.fullExp.toString() + "/" +(LevelVO.DICT[progress.level.toString()].exp - progress.exp);
         _playerLeague.text = LeagueVO.DICT[progress.league.toString()].name;
         _playerRating.text = progress.rating.toString();
         _playerGold.text = progress.gold.toString();

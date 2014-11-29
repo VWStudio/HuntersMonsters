@@ -32,7 +32,8 @@ public class Match3Game extends EventDispatcher
     public static const MODE_BOSS : String = "Match3Game.MODE_BOSS";
     public static const MODE_STEP : String = "Match3Game.MODE_STEP";
 
-    public static var ignoreGraphic : Boolean = true;
+    public static var ignoreGraphic : Boolean = false;
+//    public static var ignoreGraphic : Boolean = true;
 
     private var _player : Player;
     public function get player() : Player
