@@ -120,9 +120,6 @@ public class Model
         fillTerritories();
 
         App.instance.tick.addTickCallback(territoriesTick);
-
-        progress.skillPoints++;
-        progress.incSkill("14");
     }
 
     private function onMonsterCatched() : void
