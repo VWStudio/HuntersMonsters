@@ -354,6 +354,7 @@ public class BattleScreen extends Screen
                     Model.instance.progress.saveProgress();
                     territory.updateStars();
                     territory.updateHouseData();
+                    Model.instance.shop.updateGoods();
                 }
                 else
                 {

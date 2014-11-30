@@ -72,6 +72,9 @@ public class Shop
 
     }
 
+    public function updateGoods():void {
+        _itemsDict = new Dictionary();
+    }
 
 
 
