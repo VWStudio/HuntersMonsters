@@ -49,6 +49,7 @@ public class PersonageView extends AbstractView {
     private var _progressLine : Image;
     private var _attackType : Image;
     private var _hitImage : Image;
+    public var isPet : Boolean = false;
 
     public function PersonageView() {
     }
@@ -87,7 +88,7 @@ public class PersonageView extends AbstractView {
                 _picture.x = _isRight ? _picture.width : 0;
             }
         } else {
-
+            this.visible = isPet ? false : true;
         }
 
         _name.text = (_personage.name ? String(_personage.name) : Locale.getString(_personage.id)) + " [lvl " + String(_personage.level)+"]";

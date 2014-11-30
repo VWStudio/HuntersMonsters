@@ -72,6 +72,7 @@ public class BattleScreen extends Screen
     private var _effects : Sprite;
     public static const PLAY_MANA_FLY : String = "BattleScreen.PLAY_MANA_FLY";
     private var _timeout : uint;
+    public static const SUMMON_BUTTON_UPDATE : String = "BattleScreen.SUMMON_BUTTON_UPDATE";
 
 
 
@@ -86,7 +87,21 @@ public class BattleScreen extends Screen
 
         coreRemoveListener(DropSlotView.SHOW_TOOLTIP, onShowTooltip);
         coreRemoveListener(DropSlotView.HIDE_TOOLTIP, onHideTooltip);
+        coreRemoveListener(BattleScreen.SUMMON_BUTTON_UPDATE, onSummonButtonUpdate);
 
+    }
+
+    private function onSummonButtonUpdate() : void
+    {
+        var isSummonedOnce : Boolean = Model.instance.summonTimes > 0;
+        var isSummonedTwice : Boolean = Model.instance.summonTimes > 1;
+        var allowSecondSummon : Boolean = isSummonedOnce && !isSummonedTwice && Model.instance.progress.getSkillValue("14") > 0;
+        var isPetSummoned : Boolean = !Model.instance.player.pet.isDead;
+
+        //coreDispatch(BattleScreen.SUMMON_BUTTON_UPDATE);
+        trace(Model.instance.summonTimes, isSummonedOnce, isSummonedTwice, isPetSummoned, allowSecondSummon);
+        _summonPetBtn.visible = !isPetSummoned && (!isSummonedOnce || (!isSummonedTwice && allowSecondSummon));
+        trace("_summonPetBtn.visible", _summonPetBtn.visible);
     }
 
     override protected function initialize() : void
@@ -164,10 +179,12 @@ public class BattleScreen extends Screen
         _enemySpells.inventory = _game.enemy.inventory;
 
         _player.personage = _game.player.hero;
+        _playerPet.isPet = true;
         _playerPet.personage = _game.player.pet;
 //        _game.player.pet.addEventListener(Personage.DEAD, handlePetDead);
         _enemy.isStandRight = true;
         _enemy.personage = _game.enemy.hero;
+        _enemyPet.isPet = true;
         _enemyPet.personage = _game.enemy.pet;
 
         _game.player.resetMana();
@@ -188,11 +205,14 @@ public class BattleScreen extends Screen
         coreAddListener(BattleScreen.PLAY_MANA_FLY, onManaFly);
         coreAddListener(DropSlotView.SHOW_TOOLTIP, onShowTooltip);
         coreAddListener(DropSlotView.HIDE_TOOLTIP, onHideTooltip);
+        coreAddListener(BattleScreen.SUMMON_BUTTON_UPDATE, onSummonButtonUpdate);
 
         /**
          * call nextMove after all view init add first time mana from magic item it exists
          */
         _game.nextMove(_game.player);
+
+        onSummonButtonUpdate();
     }
 
     private function handlePetDead(event : Personage) : void
@@ -276,6 +296,11 @@ public class BattleScreen extends Screen
     {
 
         coreRemoveListener(Match3Game.END_GAME, handleEndGame);
+        coreRemoveListener(BattleScreen.PLAY_CHEST_FLY, onDropFly);
+        coreRemoveListener(BattleScreen.PLAY_MANA_FLY, onManaFly);
+        coreRemoveListener(DropSlotView.SHOW_TOOLTIP, onShowTooltip);
+        coreRemoveListener(DropSlotView.HIDE_TOOLTIP, onHideTooltip);
+
         _timeout = setTimeout(gameEnds, 2500, $isWin);
 
 

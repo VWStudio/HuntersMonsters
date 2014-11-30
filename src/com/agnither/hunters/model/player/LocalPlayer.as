@@ -15,6 +15,7 @@ import com.agnither.hunters.model.player.inventory.Item;
 import com.agnither.hunters.model.player.inventory.Pet;
 import com.agnither.hunters.model.player.personage.Personage;
 import com.agnither.hunters.model.player.personage.Progress;
+import com.agnither.hunters.view.ui.screens.battle.BattleScreen;
 import com.cemaprjl.core.coreAddListener;
 import com.cemaprjl.core.coreDispatch;
 
@@ -56,8 +57,11 @@ public class LocalPlayer extends Player {
             monster.hp = monster.hp * 0.5 * Model.instance.resurrectPet.getPercent();
             var pet : Pet = new Pet(monster, monster);
             _ressurrectedPet = true;
-            coreDispatch(LocalPlayer.PET_SELECTED, pet);
+            handleSummonPet(pet);
+//            coreDispatch(LocalPlayer.PET_SELECTED, pet, true);
         }
+
+        coreDispatch(BattleScreen.SUMMON_BUTTON_UPDATE);
 
     }
 

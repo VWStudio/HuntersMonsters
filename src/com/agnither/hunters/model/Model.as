@@ -50,6 +50,7 @@ public class Model
     public var manaAdd : ManaAddExt;
     public var spellsDefence : Array = [];
     public var resurrectPet : ResurrectPetExt;
+    public var summonTimes : int = 0;
 
     public static function get instance() : Model
     {
@@ -119,6 +120,9 @@ public class Model
         fillTerritories();
 
         App.instance.tick.addTickCallback(territoriesTick);
+
+        progress.skillPoints++;
+        progress.incSkill("14");
     }
 
     private function onMonsterCatched() : void
@@ -158,7 +162,7 @@ public class Model
         monster = $monster;
         drop = monster.drop;
         enemy = new AIPlayer(monster);
-
+        summonTimes = 0;
         coreExecute(ShowScreenCmd, BattleScreen.NAME);
     }
 

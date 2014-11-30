@@ -63,6 +63,7 @@ public class MonsterAreaVO {
 
             var object: MonsterAreaVO = fill(new MonsterAreaVO(), source);
             DICT[object.id] = object;
+            DICT[object.area] = object;
             LIST.push(object);
         }
 

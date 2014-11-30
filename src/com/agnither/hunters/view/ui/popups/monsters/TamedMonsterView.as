@@ -95,9 +95,11 @@ public class TamedMonsterView extends AbstractView {
             monster.hp = monster.hp * 0.5;
             var pet : Pet = new Pet(monster, monster);
 
+            Model.instance.summonTimes++;
             coreDispatch(LocalPlayer.PET_SELECTED, pet);
             coreDispatch(UI.HIDE_POPUP, SelectMonsterPopup.NAME);
 
+            coreDispatch(BattleScreen.SUMMON_BUTTON_UPDATE);
 
         } else {
             coreExecute(ShowPopupCmd, TameMonsterPopup.NAME, _monsterID);

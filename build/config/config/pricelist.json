@@ -2,61 +2,61 @@
     {
         "id": 1,
         "type": "monster",
-        "code": "blue_bull.2",
-        "amount": 2
+        "code": "pikachu.1",
+        "amount": 1
     },
     {
         "id": 2,
         "type": "monster",
-        "code": "pikachu.2",
-        "amount": 2
+        "code": "blue_bull.1",
+        "amount": 1
     },
     {
         "id": 3,
         "type": "monster",
-        "code": "meowut.2",
+        "code": "meowut.1",
         "amount": 2
     },
     {
         "id": 4,
         "type": "monster",
-        "code": "slowpoke.2",
+        "code": "slowpoke.1",
         "amount": 2
     },
     {
         "id": 5,
         "type": "monster",
-        "code": "charmander.2",
+        "code": "charmander.1",
         "amount": 2
     },
     {
         "id": 6,
         "type": "monster",
-        "code": "bulbasaur.2",
+        "code": "bulbasaur.1",
         "amount": 2
     },
     {
         "id": 7,
         "type": "monster",
-        "code": "squirtle.2",
+        "code": "squirtle.1",
         "amount": 2
     },
     {
         "id": 8,
         "type": "monster",
-        "code": "pidgey.2",
+        "code": "pidgey.1",
         "amount": 2
     },
     {
         "id": 9,
         "type": "monster",
-        "code": "ratata.2",
+        "code": "ratata.1",
         "amount": 2
     },
     {
         "id": 10,
         "type": "monster",
-        "code": "zubat.2",
+        "code": "zubat.1",
         "amount": 2
     },
     {
