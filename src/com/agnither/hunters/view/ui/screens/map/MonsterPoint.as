@@ -137,6 +137,7 @@ public class MonsterPoint extends AbstractView {
         _territory = Model.instance.territories[_monsterType.id];
         _territoryRect = _territory.rect;
         _back.texture = _refs.gui.getTexture(_territory.area.icon);
+        _back.readjustSize();
 
         var pt : Point = _monsterType.speed > 0 ? _territory.getPoint() : _territory.getPoint(100); // not moved point will be closer to center, max 145;
         this.x = pt.x;

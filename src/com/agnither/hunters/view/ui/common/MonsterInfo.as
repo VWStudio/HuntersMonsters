@@ -10,6 +10,7 @@ import com.agnither.ui.AbstractView;
 import com.agnither.ui.ButtonContainer;
 
 import starling.display.Image;
+import starling.display.Sprite;
 
 import starling.text.TextField;
 
@@ -23,12 +24,15 @@ public class MonsterInfo extends AbstractView {
     private var _icon : Image;
     private var _damageType : Image;
     private var _sellButton : ButtonContainer;
+    private var _back : Sprite;
     public function MonsterInfo() {
         super();
     }
 
 
     override protected function initialize() : void {
+
+        _back = getChildAt(0) as Sprite;
 
         _nameVal = _links["name_tf"];
         _hpVal = _links["hp_tf"];
@@ -54,6 +58,19 @@ public class MonsterInfo extends AbstractView {
         _killed.visible = false;
 
         _icon.texture = _refs.gui.getTexture(_monster.picture);
+        _icon.readjustSize();
+        var byWid : Boolean = _icon.width > _icon.height;
+        if(byWid) {
+            _icon.width = _back.width;
+            _icon.scaleY = _icon.scaleX;
+        } else {
+            _icon.height = _back.height;
+            _icon.scaleX = _icon.scaleY;
+        }
+        _icon.x = (_back.width - _icon.width) * 0.5;
+        _icon.y = (_back.height - _icon.height) * 0.5;
+
+
         _damageType.texture = _refs.gui.getTexture(MagicTypeVO.DICT[_monster.magic].picturedamage);
     }
 

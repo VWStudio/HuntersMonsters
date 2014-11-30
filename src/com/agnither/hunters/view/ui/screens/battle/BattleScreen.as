@@ -180,9 +180,10 @@ public class BattleScreen extends Screen
 
         _player.personage = _game.player.hero;
         _playerPet.isPet = true;
+        _playerPet.isStandRight = true;
         _playerPet.personage = _game.player.pet;
 //        _game.player.pet.addEventListener(Personage.DEAD, handlePetDead);
-        _enemy.isStandRight = true;
+//        _enemy.isStandRight = true;
         _enemy.personage = _game.enemy.hero;
         _enemyPet.isPet = true;
         _enemyPet.personage = _game.enemy.pet;

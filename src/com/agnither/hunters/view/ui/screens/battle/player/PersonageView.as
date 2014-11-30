@@ -83,9 +83,10 @@ public class PersonageView extends AbstractView {
             if (_personage.picture) {
                 _picture.texture = _refs.gui.getTexture(_personage.picture);
                 _picture.readjustSize();
-                _picture.scaleX = _isRight ? -1 : 1;
-                _picture.y = 0;
-                _picture.x = _isRight ? _picture.width : 0;
+                _picture.height = 191;
+                _picture.scaleX = _isRight ? -_picture.scaleY : _picture.scaleY;
+//                _picture.y = 0;
+                _picture.x = _isRight ? _picture.width : 0 + (164 - _picture.width) * 0.5;
             }
         } else {
             this.visible = isPet ? false : true;
