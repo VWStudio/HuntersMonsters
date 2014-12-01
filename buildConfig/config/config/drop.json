@@ -1,0 +1,86 @@
+[
+    {
+        "id": 1,
+        "itemset": 1,
+        "itemid": 1,
+        "probability": 20
+    },
+    {
+        "id": 2,
+        "itemset": 1,
+        "itemid": 4,
+        "probability": 30
+    },
+    {
+        "id": 3,
+        "itemset": 1,
+        "itemid": 7,
+        "probability": 20
+    },
+    {
+        "id": 4,
+        "itemset": 1,
+        "probability": 10,
+        "amount": "10,50"
+    },
+    {
+        "id": 5,
+        "itemset": 1,
+        "probability": 10,
+        "amount": "50,100"
+    },
+    {
+        "id": 6,
+        "itemset": 1,
+        "probability": 10,
+        "amount": "100,200"
+    },
+    {
+        "id": 7,
+        "itemset": 2,
+        "probability": 34,
+        "amount": "10,50"
+    },
+    {
+        "id": 8,
+        "itemset": 2,
+        "probability": 33,
+        "amount": "50,100"
+    },
+    {
+        "id": 9,
+        "itemset": 2,
+        "probability": 33,
+        "amount": "100,200"
+    },
+    {
+        "id": 10,
+        "itemset": 3,
+        "itemid": 1,
+        "probability": 25
+    },
+    {
+        "id": 11,
+        "itemset": 3,
+        "itemid": 4,
+        "probability": 25
+    },
+    {
+        "id": 12,
+        "itemset": 3,
+        "itemid": 7,
+        "probability": 25
+    },
+    {
+        "id": 13,
+        "itemset": 3,
+        "probability": 50,
+        "amount": "100,200"
+    },
+    {
+        "id": 14,
+        "itemset": 4,
+        "itemid": 18,
+        "probability": 100
+    }
+]

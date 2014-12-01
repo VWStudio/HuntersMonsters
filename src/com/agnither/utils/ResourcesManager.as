@@ -17,7 +17,8 @@ public class ResourcesManager {
     public static const ON_PROGRESS : String = "ResourcesManager.ON_PROGRESS";
     public static const ON_ERROR : String = "ResourcesManager.ON_ERROR";
 
-    public static const isLocal : Boolean = false;
+//    public static const isLocal : Boolean = false;
+    public static const isLocal : Boolean = true;
 
     private var _info : DeviceResInfo;
     public function get info() : DeviceResInfo {

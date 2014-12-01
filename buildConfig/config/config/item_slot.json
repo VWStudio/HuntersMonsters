@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "name": "weapon",
+        "max": 1
+    },
+    {
+        "id": 2,
+        "name": "body",
+        "max": 1
+    },
+    {
+        "id": 3,
+        "name": "gloves",
+        "max": 1
+    },
+    {
+        "id": 4,
+        "name": "legs",
+        "max": 1
+    },
+    {
+        "id": 5,
+        "name": "head",
+        "max": 1
+    },
+    {
+        "id": 6,
+        "name": "feet",
+        "max": 1
+    },
+    {
+        "id": 7,
+        "name": "ring",
+        "max": 0
+    },
+    {
+        "id": 8,
+        "name": "spell",
+        "max": 0
+    }
+]

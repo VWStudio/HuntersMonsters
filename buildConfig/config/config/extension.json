@@ -1,0 +1,18 @@
+[
+    {
+        "id": 1,
+        "type": "damage"
+    },
+    {
+        "id": 2,
+        "type": "defence"
+    },
+    {
+        "id": 3,
+        "type": "damage_type"
+    },
+    {
+        "id": 4,
+        "type": "unlock_level"
+    }
+]

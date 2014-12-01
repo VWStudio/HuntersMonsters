@@ -1,0 +1,63 @@
+[
+    {
+        "id": 1,
+        "name": "chest",
+        "picturechip": "chip_chest",
+        "picturedamage": "drop_gold",
+        "itemmarker": "drop_gold"
+    },
+    {
+        "id": 2,
+        "name": "weapon",
+        "picturechip": "chip_sword",
+        "picturedamage": "chip_sword",
+        "itemmarker": "chip_sword"
+    },
+    {
+        "id": 3,
+        "name": "nature",
+        "picturechip": "chip_green",
+        "picturedamage": "chip_green",
+        "itemmarker": "itemmagic_green",
+        "manaicon": "mana_green"
+    },
+    {
+        "id": 4,
+        "name": "water",
+        "picturechip": "chip_blue",
+        "picturedamage": "chip_blue",
+        "itemmarker": "itemmagic_blue",
+        "manaicon": "mana_blue"
+    },
+    {
+        "id": 5,
+        "name": "fire",
+        "picturechip": "chip_fire",
+        "picturedamage": "chip_fire",
+        "itemmarker": "itemmagic_orange",
+        "manaicon": "mana_fire"
+    },
+    {
+        "id": 6,
+        "name": "dark",
+        "picturechip": "chip_red",
+        "picturedamage": "chip_red",
+        "itemmarker": "itemmagic_red",
+        "manaicon": "mana_red"
+    },
+    {
+        "id": 7,
+        "name": "stone",
+        "picturechip": "chip_white",
+        "picturedamage": "chip_white",
+        "itemmarker": "itemmagic_white",
+        "manaicon": "mana_white"
+    },
+    {
+        "id": 8,
+        "name": "add3",
+        "picturechip": "chip_white",
+        "picturedamage": "chip_white",
+        "itemmarker": "chip_white"
+    }
+]

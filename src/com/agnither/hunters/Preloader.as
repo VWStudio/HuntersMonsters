@@ -7,6 +7,7 @@ import app.PreloaderAsset;
 
 import com.agnither.hunters.model.Model;
 import com.agnither.utils.ResourcesManager;
+import com.agnither.utils.ResourcesManager;
 
 import flash.display.DisplayObject;
 import flash.display.Loader;
@@ -61,7 +62,7 @@ public class Preloader extends MovieClip
     }
     private function progress(e : ProgressEvent) : void {
         var pc : Number = e.bytesLoaded / e.bytesTotal;
-        setProgress(pc * 0.5);
+        setProgress(pc * (ResourcesManager.isLocal ? 1 : 0.5));
     }
     private function onMainLoadEnterFrame(event : Event) : void {
         if (loaderInfo.bytesLoaded >= loaderInfo.bytesTotal)
@@ -110,30 +111,7 @@ public class Preloader extends MovieClip
         initApp();
     }
 
-    /*
-     /*
-     access_token=b68e518bfb06d7dee3697d1955cc2a31ffc659ad53c8e07dedf370b20cb588d800ffec533e1965ff59867&
-     ad_info=ElsdCQVYQFVkBgBfAwJSXHt4A0Q8HTJXUVBBJRVBNwoIFjI2HA8E&
-     api_id=4607351&
-     api_settings=256&
-     api_url=http%3A%2F%2Fapi.vk.com%2Fapi.php&
-     auth_key=fd14ef7de708a575bd501abe0c946ae3&
-     group_id=0&
-     hash=&
-     is_app_user=1&
-     is_secure=0&
-     language=0&
-     lc_name=5180a0ac&
-     parent_language=0&
-     referrer=unknown&
-     secret=e7cf436db4&
-     sid=fed6f3774d9b6c41ffd216782667fdc1bc52669d990ebe3796706c29840ea0060bac78758420e4b841233&
-     user_id=0&
-     viewer_id=44100344&
-     viewer_type=0
-     */
-
-    private function initApp() : void {
+     private function initApp() : void {
         trace("INIT APP");
 //            nextFrame();
         var mainClass : Object = getDefinitionByName("game.Main");

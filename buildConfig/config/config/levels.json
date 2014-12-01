@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "exptolevel": 80,
+        "basehp": 30
+    },
+    {
+        "id": 2,
+        "exptolevel": 220,
+        "basehp": 40
+    },
+    {
+        "id": 3,
+        "exptolevel": 1000,
+        "basehp": 50
+    },
+    {
+        "id": 4,
+        "exptolevel": 3300,
+        "basehp": 60
+    },
+    {
+        "id": 5,
+        "exptolevel": 9000,
+        "basehp": 70
+    },
+    {
+        "id": 6,
+        "exptolevel": 20000,
+        "basehp": 80
+    }
+]
