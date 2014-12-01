@@ -2,21 +2,22 @@
     {
         "id": 1,
         "name": "weapon",
-        "shoptabminmax": "5,10"
+        "shoptabminmax": "4,6"
     },
     {
         "id": 2,
         "name": "armor",
-        "shoptabminmax": "10,15"
+        "shoptabminmax": "4,8"
     },
     {
         "id": 3,
         "name": "magic",
-        "shoptabminmax": "2,4"
+        "shoptabminmax": "2,3"
     },
     {
         "id": 4,
-        "name": "spell"
+        "name": "spell",
+        "shoptabminmax": "2,3"
     },
     {
         "id": 5,
