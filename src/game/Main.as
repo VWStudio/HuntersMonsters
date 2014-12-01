@@ -1,6 +1,7 @@
 package game {
 import com.agnither.hunters.*;
 import com.agnither.hunters.App;
+import com.agnither.hunters.model.Model;
 
 //import flash.display.Bitmap;
 
@@ -28,6 +29,8 @@ public class Main extends Sprite {
         Starling.handleLostContext = true;
 
         var deviceSize: Rectangle = new Rectangle(0, 0, stage.stageWidth, stage.stageHeight);
+
+        Model.instance.flashvars = stage.loaderInfo.parameters;
 
         _starling = new Starling(App, stage, deviceSize, null, "auto", "auto");
         _starling.antiAliasing = 0;

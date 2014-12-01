@@ -16,28 +16,29 @@ public class CommonRefs {
     }
 
     public function get guiConfig():Object {
-        return _resources.main.getObject("gui");
+        return _resources.main.getObject("guiConfig");
+//        return _resources.main.getObject("gui");
     }
 
-    public function get main():AssetManager {
+//    public function get main():AssetManager {
+//        return _resources.main;
+//    }
+
+    public function get gui():AssetManager {
         return _resources.main;
     }
 
-    public function get gui():AssetManager {
-        return _resources.gui;
-    }
+//    public function get map():AssetManager {
+//        return _resources.map;
+//    }
 
-    public function get map():AssetManager {
-        return _resources.map;
-    }
-
-    public function get animations():AssetManager {
-        return _resources.animations;
-    }
-
-    public function get game():AssetManager {
-        return _resources.game;
-    }
+//    public function get animations():AssetManager {
+//        return _resources.animations;
+//    }
+//
+//    public function get game():AssetManager {
+//        return _resources.game;
+//    }
 
     public function getString(id: String, replace: Object = null):String {
         return LocalizationManager.getString(id, replace);

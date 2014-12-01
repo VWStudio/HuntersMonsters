@@ -56,11 +56,17 @@ public class Config {
     }
 
     public static function parse(assets : AssetManager) : void {
+        trace("config parse");
         for (var i : int = 0; i < list.length; i++)
         {
+
             var filename : String = list[i];
+            trace("assets.getObject(filename)", filename, assets.getObject(filename));
+
             config[filename].parseData(assets.getObject(filename));
         }
+
+
     }
 }
 }

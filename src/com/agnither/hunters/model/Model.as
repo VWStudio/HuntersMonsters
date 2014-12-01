@@ -51,6 +51,7 @@ public class Model
     public var spellsDefence : Array = [];
     public var resurrectPet : ResurrectPetExt;
     public var summonTimes : int = 0;
+    public var flashvars : Object;
 
     public static function get instance() : Model
     {

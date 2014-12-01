@@ -21,6 +21,7 @@ import com.agnither.hunters.view.ui.screens.map.MapScreen;
 import com.agnither.ui.Popup;
 import com.agnither.utils.CommonRefs;
 import com.agnither.utils.ResourcesManager;
+import com.agnither.utils.ResourcesManager;
 import com.cemaprjl.core.coreAddListener;
 import com.cemaprjl.core.coreDispatch;
 import com.cemaprjl.core.coreExecute;
@@ -30,6 +31,7 @@ import com.cemaprjl.viewmanage.ShowScreenCmd;
 import starling.core.Starling;
 import starling.display.Sprite;
 import starling.events.Event;
+import starling.textures.Texture;
 
 public class App extends Sprite {
 
@@ -79,12 +81,12 @@ public class App extends Sprite {
 
         _resources = new ResourcesManager(_info);
 
-        coreAddListener(ResourcesManager.ON_COMPLETE, handleComplete);
+        coreAddListener(ResourcesManager.ON_COMPLETE_LOAD, handleComplete);
 
 //        _resources.onComplete.addOnce(handleComplete);
         _resources.loadMain();
 //        _resources.loadAnimations();
-        _resources.loadGUI();
+//        _resources.loadGUI();
 //        _resources.loadGame();
         _resources.load();
     }
@@ -92,15 +94,17 @@ public class App extends Sprite {
 
 
     private function handleComplete() : void {
-        coreRemoveListener(ResourcesManager.ON_COMPLETE, handleComplete);
-        coreAddListener(ResourcesManager.ON_COMPLETE, handleInit);
-//        _resources.onComplete.addOnce(handleLoadAnimation);
-//        _resources.onComplete.addOnce(handleInit);
+        trace("HANDLE COMPLETE");
+        coreRemoveListener(ResourcesManager.ON_COMPLETE_LOAD, handleComplete);
 
-//        SoundManager.init();
-
-        initLocale();
-        Config.parse(_resources.main);
+//        if(!ResourcesManager.isLocal) {
+//            handleInit();
+//        } else {
+//            coreAddListener(ResourcesManager.ON_COMPLETE_INIT, handleInit);
+            initLocale();
+            Config.parse(_resources.main);
+            handleInit();
+//        }
     }
 
     private function initLocale() : void {
@@ -121,8 +125,10 @@ public class App extends Sprite {
 
     private function handleInit() : void {
 
+        trace("HANDLE INIT");
         _refs = new CommonRefs(_resources);
-
+        var tex : Texture = _refs.gui.getTexture("camp");
+        trace(tex);
 
         _ui = new UI();
 

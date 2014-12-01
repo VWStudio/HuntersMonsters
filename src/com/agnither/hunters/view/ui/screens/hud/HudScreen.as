@@ -137,11 +137,21 @@ public class HudScreen extends Screen {
         _modeBtn.text = Model.instance.state == MapScreen.NAME ? "Лагерь" : "Карта";
     }
 
+    /*
+
+     */
+
     private function onReset(event : Event) : void {
 
         Model.instance.progress.reset();
 
-        var url:String = ExternalInterface.call("window.location.href.toString");
+        var url:String;
+        if(Model.instance.flashvars && Model.instance.flashvars["api_id"] != null) {
+            url = "app"+Model.instance.flashvars["api_id"];
+        } else {
+            url = ExternalInterface.call("window.location.href.toString");
+        }
+
         navigateToURL(new URLRequest(url))
 
     }
