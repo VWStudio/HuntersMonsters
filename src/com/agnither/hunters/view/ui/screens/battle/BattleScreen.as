@@ -99,9 +99,7 @@ public class BattleScreen extends Screen
         var isPetSummoned : Boolean = !Model.instance.player.pet.isDead;
 
         //coreDispatch(BattleScreen.SUMMON_BUTTON_UPDATE);
-        trace(Model.instance.summonTimes, isSummonedOnce, isSummonedTwice, isPetSummoned, allowSecondSummon);
         _summonPetBtn.visible = !isPetSummoned && (!isSummonedOnce || (!isSummonedTwice && allowSecondSummon));
-        trace("_summonPetBtn.visible", _summonPetBtn.visible);
     }
 
     override protected function initialize() : void
@@ -184,7 +182,9 @@ public class BattleScreen extends Screen
         _playerPet.personage = _game.player.pet;
 //        _game.player.pet.addEventListener(Personage.DEAD, handlePetDead);
 //        _enemy.isStandRight = true;
+        _enemy.isEnemy = true;
         _enemy.personage = _game.enemy.hero;
+        _enemyPet.isEnemy = true;
         _enemyPet.isPet = true;
         _enemyPet.personage = _game.enemy.pet;
 

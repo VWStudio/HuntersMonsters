@@ -6,6 +6,7 @@ package com.agnither.hunters.view.ui.popups.shop
 import com.agnither.hunters.App;
 import com.agnither.hunters.data.outer.ItemTypeVO;
 import com.agnither.hunters.model.Model;
+import com.agnither.hunters.model.modules.locale.Locale;
 import com.agnither.hunters.model.player.inventory.Inventory;
 import com.agnither.hunters.model.player.personage.Progress;
 import com.agnither.hunters.view.ui.common.GoldView;
@@ -61,11 +62,11 @@ public class ShopPopup extends Popup
         handleCloseButton(_links["close_btn"]);
 
         _traderTab = _links["trainer"];
-        _traderTab.label = "Торговец";
+        _traderTab.label = Locale.getString("hunter_tab");
         _traderTab.addEventListener(TabView.TAB_CLICK, handleSelectTab);
 
         _hunterTab = _links["hunter"];
-        _hunterTab.label = "Охотник";
+        _hunterTab.label = Locale.getString("seller_tab");
         _hunterTab.addEventListener(TabView.TAB_CLICK, handleSelectTab);
 
 
@@ -80,16 +81,16 @@ public class ShopPopup extends Popup
 
 
         _weaponsTab = _links["weapon"];
-        _weaponsTab.label = "Оружие";
+        _weaponsTab.label = Locale.getString("weapon_tab");
         _weaponsTab.addEventListener(TabView.TAB_CLICK, handleSelectItems);
         _armorTab = _links["armor"];
-        _armorTab.label = "Броня";
+        _armorTab.label = Locale.getString("armor_tab");
         _armorTab.addEventListener(TabView.TAB_CLICK, handleSelectItems);
         _magicTab = _links["magic"];
-        _magicTab.label = "Предметы";
+        _magicTab.label = Locale.getString("items_tab");
         _magicTab.addEventListener(TabView.TAB_CLICK, handleSelectItems);
         _spellsTab = _links["spells"];
-        _spellsTab.label = "Заклинания";
+        _spellsTab.label = Locale.getString("spells_tab");
         _spellsTab.addEventListener(TabView.TAB_CLICK, handleSelectItems);
 
         _currentType = _weaponsTab;

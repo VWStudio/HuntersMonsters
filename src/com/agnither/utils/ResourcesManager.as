@@ -171,7 +171,7 @@ public class ResourcesManager {
 
     public function load() : void {
         var asm : AssetManager = _queue.shift();
-        trace("load", asm);
+//        trace("load", asm);
         if (asm)
         {
             asm.loadQueue(handleProgress);
@@ -184,7 +184,7 @@ public class ResourcesManager {
     }
 
     private function handleProgress(value : Number) : void {
-        trace("HANDLE PROGRESS", (_loaded + value), _loading);
+//        trace("HANDLE PROGRESS", (_loaded + value), _loading);
         coreDispatch(ON_PROGRESS, (_loaded + value) / _loading);
 //        onProgress.dispatch((_loaded+value)/_loading);
 

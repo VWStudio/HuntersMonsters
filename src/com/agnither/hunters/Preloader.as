@@ -83,12 +83,12 @@ public class Preloader extends MovieClip
     private function loadAssets() : void
     {
 
-        trace("LOAD ASSETS");
+//        trace("LOAD ASSETS");
 
         var isLocal : Boolean = stage.loaderInfo.url.indexOf("http") < 0;
 
         _libLoader = new Loader();
-        var myUrlReq : URLRequest = new URLRequest(!isLocal ? "http://cs6130.vk.me/u284790/e1e4d1f7233016.zip" : "AssetsLib.swf");
+        var myUrlReq : URLRequest = new URLRequest(!isLocal ? "http://app.vk.com/c6130/u284790/0b553d208cb178.swf" : "AssetsLib.swf");
         _libLoader.contentLoaderInfo.addEventListener(Event.COMPLETE, onGraphicLoaded);
         _libLoader.contentLoaderInfo.addEventListener(ProgressEvent.PROGRESS, libProgress);
         _libLoader.load(myUrlReq, new LoaderContext(false, ApplicationDomain.currentDomain, !isLocal ? SecurityDomain.currentDomain : null));
@@ -103,8 +103,8 @@ public class Preloader extends MovieClip
     private function onGraphicLoaded(event : Event) : void
     {
 
-        trace(_libLoader.content);
-        trace(_libLoader.contentLoaderInfo.content);
+//        trace(_libLoader.content);
+//        trace(_libLoader.contentLoaderInfo.content);
 
         _libLoader.contentLoaderInfo.removeEventListener(Event.COMPLETE, onGraphicLoaded);
         _libLoader.contentLoaderInfo.removeEventListener(ProgressEvent.PROGRESS, libProgress);
@@ -112,7 +112,7 @@ public class Preloader extends MovieClip
     }
 
      private function initApp() : void {
-        trace("INIT APP");
+//        trace("INIT APP");
 //            nextFrame();
         var mainClass : Object = getDefinitionByName("game.Main");
         addChildAt(new mainClass() as Sprite, 0);
