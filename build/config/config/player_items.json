@@ -1,15 +1,12 @@
 [
     {
         "id": 1,
-        "ext": "damage:[\"weapon\",15]"
-    },
-    {
-        "id": 3,
+        "ext": "damage:[\"weapon\",4]",
         "wield": 1
     },
     {
         "id": 4,
-        "ext": "defence:5",
+        "ext": "defence:2",
         "wield": 1
     },
     {
@@ -30,5 +27,9 @@
     },
     {
         "id": 21
+    },
+    {
+        "id": 22,
+        "wield": 1
     }
 ]

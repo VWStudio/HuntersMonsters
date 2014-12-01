@@ -1,122 +1,32 @@
 [
     {
         "id": 1,
-        "exptolevel": 100,
-        "basehp": 100
+        "exptolevel": 80,
+        "basehp": 30
     },
     {
         "id": 2,
-        "exptolevel": 122,
-        "basehp": 120
+        "exptolevel": 220,
+        "basehp": 40
     },
     {
         "id": 3,
-        "exptolevel": 160,
-        "basehp": 144
+        "exptolevel": 1000,
+        "basehp": 50
     },
     {
         "id": 4,
-        "exptolevel": 200,
-        "basehp": 173
+        "exptolevel": 3300,
+        "basehp": 60
     },
     {
         "id": 5,
-        "exptolevel": 250,
-        "basehp": 208
+        "exptolevel": 9000,
+        "basehp": 70
     },
     {
         "id": 6,
-        "exptolevel": 320,
-        "basehp": 250
-    },
-    {
-        "id": 7,
-        "exptolevel": 400,
-        "basehp": 300
-    },
-    {
-        "id": 8,
-        "exptolevel": 500,
-        "basehp": 360
-    },
-    {
-        "id": 9,
-        "exptolevel": 630,
-        "basehp": 432
-    },
-    {
-        "id": 10,
-        "exptolevel": 800,
-        "basehp": 518
-    },
-    {
-        "id": 11,
-        "exptolevel": 1000,
-        "basehp": 622
-    },
-    {
-        "id": 12,
-        "exptolevel": 1250,
-        "basehp": 746
-    },
-    {
-        "id": 13,
-        "exptolevel": 1570,
-        "basehp": 895
-    },
-    {
-        "id": 14,
-        "exptolevel": 2000,
-        "basehp": 1074
-    },
-    {
-        "id": 15,
-        "exptolevel": 2500,
-        "basehp": 1289
-    },
-    {
-        "id": 16,
-        "exptolevel": 3150,
-        "basehp": 1547
-    },
-    {
-        "id": 17,
-        "exptolevel": 3950,
-        "basehp": 1856
-    },
-    {
-        "id": 18,
-        "exptolevel": 5000,
-        "basehp": 2227
-    },
-    {
-        "id": 19,
-        "exptolevel": 6250,
-        "basehp": 2672
-    },
-    {
-        "id": 20,
-        "exptolevel": 7900,
-        "basehp": 3206
-    },
-    {
-        "id": 21,
-        "exptolevel": 10000,
-        "basehp": 3847
-    },
-    {
-        "id": 22,
-        "exptolevel": 12500,
-        "basehp": 4616
-    },
-    {
-        "id": 23,
-        "exptolevel": 15600,
-        "basehp": 5539
-    },
-    {
-        "id": 24,
         "exptolevel": 20000,
-        "basehp": 6647
+        "basehp": 80
     }
 ]

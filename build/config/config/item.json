@@ -5,7 +5,7 @@
         "type": 1,
         "slot": 1,
         "picture": "item_sword",
-        "ext": "damage:[\"weapon\",10,15]",
+        "ext": "damage:[\"weapon\",3,10]",
         "setname": "default",
         "droppicture": "drop_sword"
     },
@@ -15,7 +15,7 @@
         "type": 1,
         "slot": 1,
         "picture": "item_sword",
-        "ext": "damage:[\"weapon\",15,20]",
+        "ext": "damage:[\"weapon\",15,25]",
         "setname": "house00",
         "droppicture": "drop_sword"
     },
@@ -25,9 +25,19 @@
         "type": 1,
         "slot": 1,
         "picture": "item_staff",
-        "ext": "damage:[\"fire\",6,12]",
+        "ext": "damage:[\"fire\",4,12]",
         "setname": "house00",
         "droppicture": "drop_staff"
+    },
+    {
+        "id": 8,
+        "name": "helmet",
+        "type": 2,
+        "slot": 2,
+        "picture": "item_helmet",
+        "ext": "defence:[1,3]",
+        "setname": "default",
+        "droppicture": "drop_body"
     },
     {
         "id": 4,
@@ -50,14 +60,13 @@
         "droppicture": "drop_body"
     },
     {
-        "id": 6,
-        "name": "gloves",
-        "type": 2,
-        "slot": 6,
-        "picture": "item_gloves",
-        "ext": "defence:[1,3]",
+        "id": 12,
+        "name": "robe",
+        "type": 3,
+        "slot": 3,
+        "picture": "item_ring",
         "setname": "house00",
-        "droppicture": "drop_gloves"
+        "droppicture": "drop_magic"
     },
     {
         "id": 7,
@@ -70,16 +79,6 @@
         "droppicture": "drop_pants"
     },
     {
-        "id": 8,
-        "name": "helmet",
-        "type": 2,
-        "slot": 2,
-        "picture": "item_helmet",
-        "ext": "defence:[1,3]",
-        "setname": "default",
-        "droppicture": "drop_body"
-    },
-    {
         "id": 9,
         "name": "boots",
         "type": 2,
@@ -88,6 +87,16 @@
         "ext": "defence:[1,3]",
         "setname": "house00",
         "droppicture": "drop_boots"
+    },
+    {
+        "id": 6,
+        "name": "gloves",
+        "type": 2,
+        "slot": 6,
+        "picture": "item_gloves",
+        "ext": "defence:[1,3]",
+        "setname": "house00",
+        "droppicture": "drop_gloves"
     },
     {
         "id": 10,
@@ -108,15 +117,6 @@
         "ext": "resurrect_pet:50",
         "setname": "house00",
         "droppicture": "drop_ring"
-    },
-    {
-        "id": 12,
-        "name": "robe",
-        "type": 3,
-        "slot": 3,
-        "picture": "item_ring",
-        "setname": "house00",
-        "droppicture": "drop_magic"
     },
     {
         "id": 19,
@@ -206,6 +206,16 @@
         "picture": "magic_fire",
         "ext": "damage:[\"fire\",25];mana:[\"fire\",10,\"nature\",5]",
         "setname": "house00",
+        "droppicture": "drop_magic"
+    },
+    {
+        "id": 22,
+        "name": "fireball",
+        "type": 4,
+        "slot": 8,
+        "picture": "magic_fire",
+        "ext": "damage:[\"fire\",300];mana:[\"fire\",1]",
+        "setname": "default",
         "droppicture": "drop_magic"
     }
 ]
