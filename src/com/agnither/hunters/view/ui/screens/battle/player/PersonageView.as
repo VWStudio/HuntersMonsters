@@ -36,9 +36,26 @@ public class PersonageView extends AbstractView {
 
         if(!value || !value.id) return;
 
+
         handleUpdate();
 
+        updateImage();
+
         hideHit();
+    }
+
+    private function updateImage() : void
+    {
+        _picturePos = new Point(isEnemy ? (_progressLine.x - _progressLine.width * 0.5) : (_progressLine.x + _progressLine.width * 0.5), _progressLine.y);
+        if (_personage.picture) {
+            _picture.texture = _refs.gui.getTexture(_personage.picture);
+            _picture.readjustSize();
+            _picture.pivotX = _picture.width * 0.5;
+            _picture.pivotY = _picture.height;
+            _picture.scaleX = _isRight ? -1 : 1;
+            _picture.y = _picturePos.y;
+            _picture.x = _picturePos.x;
+        }
     }
 
     private var _picture: Image;
@@ -83,19 +100,7 @@ public class PersonageView extends AbstractView {
     private function handleUpdate(e: Event = null):void {
         if (!_personage.isDead) {
             this.visible = true;
-            _picturePos = new Point(isEnemy ? (_progressLine.x - _progressLine.width * 0.5) : (_progressLine.x + _progressLine.width * 0.5), _progressLine.y);
-            if (_personage.picture) {
-                _picture.texture = _refs.gui.getTexture(_personage.picture);
-                _picture.readjustSize();
-                _picture.pivotX = _picture.width * 0.5;
-                _picture.pivotY = _picture.height;
-//                _picture.height = 191;
-//                _picture.scaleX = _isRight ? -1 : 1;
-                _picture.scaleX = _isRight ? -1 : 1;
-                _picture.y = _picturePos.y;
-                _picture.x = _picturePos.x;
-//                _picture.x = _isRight ? _picture.width : 0 + (164 - _picture.width) * 0.5;
-            }
+
         } else {
             this.visible = isPet ? false : true;
         }

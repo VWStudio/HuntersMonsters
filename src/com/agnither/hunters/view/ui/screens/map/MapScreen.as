@@ -14,11 +14,13 @@ import com.agnither.hunters.model.player.Territory;
 import com.agnither.hunters.model.player.personage.Progress;
 import com.agnither.hunters.view.ui.common.MonsterArea;
 import com.agnither.hunters.view.ui.popups.traps.TrapSetPopup;
+import com.agnither.hunters.view.ui.screens.camp.CampScreen;
 import com.agnither.ui.Screen;
 import com.cemaprjl.core.coreAddListener;
 import com.cemaprjl.core.coreDispatch;
 import com.cemaprjl.core.coreExecute;
 import com.cemaprjl.viewmanage.ShowPopupCmd;
+import com.cemaprjl.viewmanage.ShowScreenCmd;
 
 import flash.display.PNGEncoderOptions;
 
@@ -40,6 +42,7 @@ import starling.display.Image;
 import starling.display.Sprite;
 import starling.events.Touch;
 import starling.events.TouchEvent;
+import starling.events.TouchPhase;
 import starling.events.TouchPhase;
 
 public class MapScreen extends Screen {
@@ -135,6 +138,24 @@ public class MapScreen extends Screen {
         }
 
         _camp = _links["camp"];
+        _camp.getChildAt(0).touchable = true;
+        _camp.touchable = true;
+        _camp.addEventListener(TouchEvent.TOUCH, onTouchCamp);
+
+        trace("map init", Model.instance.progress.campPosition);
+
+        if(Model.instance.progress.campPosition) {
+            _camp.x = Model.instance.progress.campPosition.x;
+            _camp.y = Model.instance.progress.campPosition.y;
+        } else {
+            Model.instance.progress.campPosition = {
+                x: _camp.x,
+                y: _camp.y
+            }
+            Model.instance.progress.saveProgress();
+        }
+
+        trace("map init 2", Model.instance.progress.campPosition);
 
         _monstersContainer = new Sprite();
         _monstersContainer.name = "monsters_container"; // hack
@@ -163,6 +184,9 @@ public class MapScreen extends Screen {
         var currentPoint : Point = new Point(_camp.x, _camp.y);
         var targetPoint : Point = new Point($target.x, $target.y);
         var deltaPoint : Point = targetPoint.subtract(currentPoint);
+
+        Model.instance.progress.campPosition = {x:targetPoint.x, y:targetPoint.y};
+        Model.instance.progress.saveProgress();
 
         Starling.juggler.tween(_camp, deltaPoint.length / 100, {x : targetPoint.x, y : targetPoint.y})
     }
@@ -400,5 +424,21 @@ public class MapScreen extends Screen {
         }
     }
 
+    private function onTouchCamp(event : TouchEvent) : void
+    {
+        var touch : Touch = event.getTouch(_camp);
+        var endTouch : Touch = event.getTouch(_camp, TouchPhase.ENDED);
+        if(endTouch) {
+            coreExecute(ShowScreenCmd, CampScreen.NAME);
+        }
+
+        if(touch) {
+            Mouse.cursor = MouseCursor.BUTTON;
+        } else {
+            Mouse.cursor = MouseCursor.AUTO;
+        }
+
+
+    }
 }
 }

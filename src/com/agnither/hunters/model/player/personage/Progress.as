@@ -54,6 +54,7 @@ public class Progress extends EventDispatcher {
     private var _inventory : Array = [];
     public var unlockPoints : int = 0;
     public var fullExp : int = 0;
+    public var campPosition : Object;
 
     public function Progress() {
         _data = SharedObject.getLocal("player");
@@ -115,6 +116,8 @@ public class Progress extends EventDispatcher {
         skills = progressObj.skills ? progressObj.skills : {};
         sets = progressObj.sets ? progressObj.sets : [];
         houses = progressObj.houses ? progressObj.houses : [];
+
+        campPosition = progressObj.campPosition ? progressObj.campPosition : null;
 
         unlockPoints = progressObj.unlockPoints;
 
@@ -206,6 +209,7 @@ public class Progress extends EventDispatcher {
         obj.traps = [];
         obj.houses = [];
         obj.unlockedLocations = settings.unlockedLocations;
+        obj.campPosition = null;
         obj.tamedMonsters = ["blue_bull"];
         obj.areaStars = {};
         obj.sets = ["default"];

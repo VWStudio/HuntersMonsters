@@ -85,6 +85,7 @@ public class Items {
         var items : Array = ItemVO.SETS[$set];
         var itemsByType : Array = [];
         var i : int = 0;
+        if(!items) return null;
         for (i = 0; i < items.length; i++)
         {
             var object : ItemVO = items[i].clone();
