@@ -5,6 +5,7 @@ package com.agnither.hunters.model.player
 {
 import com.agnither.hunters.data.outer.MagicTypeVO;
 import com.agnither.hunters.model.player.inventory.Item;
+import com.cemaprjl.core.coreDispatch;
 
 import flash.utils.Dictionary;
 
@@ -14,6 +15,7 @@ public class ManaList extends EventDispatcher
 {
 
     private var _list : Vector.<Mana>;
+    public static const MANA_ADDED : String = "ManaList.MANA_ADDED";
     public function get list() : Vector.<Mana>
     {
         return _list;
@@ -55,12 +57,15 @@ public class ManaList extends EventDispatcher
         {
             mana.addMana(value);
         }
+        coreDispatch(ManaList.MANA_ADDED)
     }
 
     public function releaseMana(type : String, value : int) : Boolean
     {
         var mana : Mana = _dict[type];
-        return mana && mana.releaseMana(value);
+        var manaReleased : Boolean = mana && mana.releaseMana(value);
+        coreDispatch(ManaList.MANA_ADDED);
+        return manaReleased;
     }
 
 //    public function emptyMana(type: String):void {

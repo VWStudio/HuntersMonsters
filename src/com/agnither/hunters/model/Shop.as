@@ -22,6 +22,7 @@ public class Shop
 
     public function getItemsByType($type : int) : Array
     {
+        trace("getItemsByType", $type, _itemsDict[$type])
 
         if (!_itemsDict[$type])
         {
@@ -41,17 +42,23 @@ public class Shop
         var i : int = 0;
         var item : Item;
         var itemVO : ItemVO;
+//        trace("GENERATE", $type, amount, itemType.tabMin, itemType.tabMax);
         if (amount == 0)
         {
-            for (i = 0; i < ItemVO.SPELLS.length; i++)
-            {
-
-                itemVO = ItemVO.SPELLS[i].clone();
-                if(Model.instance.progress.sets.indexOf(itemVO.setname) >= 0) {
-//                    Model.instance.items.getItemVO(itemVO.id, itemVO);
-                    arr.push(Item.create(itemVO));
-                }
-            }
+//            XXX deprecated, spells are random too
+//            trace("SETS:", Model.instance.progress.sets );
+//            for (i = 0; i < ItemVO.DICT[$type].length; i++)
+//            {
+//
+//                itemVO = ItemVO.SPELLS[i].clone();
+//                trace(i, itemVO.id, itemVO.setname);
+//
+//                if(Model.instance.progress.sets.indexOf(itemVO.setname) >= 0) {
+////                    Model.instance.items.getItemVO(itemVO.id, itemVO);
+//                    trace(itemVO.id, "ADDED");
+//                    arr.push(Item.create(itemVO));
+//                }
+//            }
         }
         else
         {
@@ -73,7 +80,15 @@ public class Shop
     }
 
     public function updateGoods():void {
-        _itemsDict = new Dictionary();
+        if(!_itemsDict) {
+            _itemsDict = new Dictionary();
+        } else {
+            for (var key : String in _itemsDict)
+            {
+                _itemsDict[key] = null;
+                delete _itemsDict[key];
+            }
+        }
     }
 
 

@@ -147,7 +147,14 @@ public class Territory
                 }
                 if (_area.isHouse)
                 {
+
                     coreExecute(ShowPopupCmd, HousePopup.NAME, territory);
+
+                    Model.instance.progress.sets.push(area.area);
+
+                    updateHouseData();
+                    Model.instance.shop.updateGoods();
+
                     Model.instance.progress.unlockPoints += 1;
                     coreDispatch(CAN_UNLOCK);
                 }

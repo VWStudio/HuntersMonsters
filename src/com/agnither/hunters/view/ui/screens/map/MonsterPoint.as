@@ -69,9 +69,7 @@ public class MonsterPoint extends AbstractView {
     }
 
     private function handleTouch(e : TouchEvent) : void {
-        e.stopPropagation();
-        e.stopImmediatePropagation();
-        if(App.instance.trapMode) {
+        if(App.instance.trapMode || Model.instance.screenMoved) {
             return;
         }
 
@@ -86,6 +84,8 @@ public class MonsterPoint extends AbstractView {
                 case TouchPhase.BEGAN :
                     break;
                 case TouchPhase.ENDED :
+                    e.stopPropagation();
+                    e.stopImmediatePropagation();
                     Model.instance.currentMonsterPoint = this;
                     coreExecute(ShowPopupCmd, HuntPopup.NAME, _monsterType);
                     break;

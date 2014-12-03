@@ -11,6 +11,7 @@ public class ItemVO {
     public static const THINGS: Vector.<ItemVO> = new <ItemVO>[];
     public static const SPELLS: Vector.<ItemVO> = new <ItemVO>[];
     public static const SETS: Dictionary = new Dictionary();
+    public static const ITEMS_BY_TYPE: Dictionary = new Dictionary();
 
     public var id: int;
     public var name: String;
@@ -70,6 +71,12 @@ public class ItemVO {
                 SETS[object.setname] = [];
             }
             SETS[object.setname].push(object);
+
+            if(!ITEMS_BY_TYPE[object.type]) {
+                ITEMS_BY_TYPE[object.type] = new Vector.<ItemVO>();
+            }
+
+            ITEMS_BY_TYPE[object.type].push(object)
         }
     }
 

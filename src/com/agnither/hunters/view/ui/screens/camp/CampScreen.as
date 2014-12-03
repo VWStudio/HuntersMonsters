@@ -111,16 +111,20 @@ public class CampScreen extends Screen {
     }
 
     private function onTouchInstructor(e : TouchEvent) : void {
+        if(Model.instance.screenMoved) {
+            return;
+        }
         var touch : Touch = e.getTouch(_instructor);
         if (touch)
         {
-            e.stopImmediatePropagation();
             switch (touch.phase)
             {
                 case TouchPhase.HOVER:
                     Mouse.cursor = MouseCursor.BUTTON;
                     break;
                 case TouchPhase.ENDED:
+                    e.stopImmediatePropagation();
+                    e.stopPropagation();
                     coreExecute(ShowPopupCmd, ShopPopup.NAME);
 //                    coreExecute(ShowPopupCmd, TrainerPopup.NAME);
                     break;
@@ -131,19 +135,21 @@ public class CampScreen extends Screen {
     }
 
     private function onTouchSkills(e : TouchEvent) : void {
-        e.stopImmediatePropagation();
-        e.stopPropagation();
+        if(Model.instance.screenMoved) {
+            return;
+        }
         var touch : Touch = e.getTouch(_skills);
         if (touch)
         {
 
-            e.stopImmediatePropagation();
             switch (touch.phase)
             {
                 case TouchPhase.HOVER:
                     Mouse.cursor = MouseCursor.BUTTON;
                     break;
                 case TouchPhase.ENDED:
+                    e.stopImmediatePropagation();
+                    e.stopPropagation();
                     coreExecute(ShowPopupCmd, SkillsPopup.NAME);
                     break;
             }
@@ -153,18 +159,20 @@ public class CampScreen extends Screen {
     }
 
     private function onTouchShop(e : TouchEvent) : void {
-        e.stopImmediatePropagation();
-        e.stopPropagation();
+        if(Model.instance.screenMoved) {
+            return;
+        }
         var touch : Touch = e.getTouch(_shop);
         if (touch)
         {
-            e.stopImmediatePropagation();
             switch (touch.phase)
             {
                 case TouchPhase.HOVER:
                     Mouse.cursor = MouseCursor.BUTTON;
                     break;
                 case TouchPhase.ENDED:
+                    e.stopImmediatePropagation();
+                    e.stopPropagation();
 //                    coreExecute(ShowPopupCmd, ShopPopup.NAME);
                     coreExecute(ShowPopupCmd, TrainerPopup.NAME);
                     break;
@@ -189,6 +197,7 @@ public class CampScreen extends Screen {
                     _startPoint = new Point(touch.globalX, touch.globalY);
                     _startPos = new Point(_container.x, _container.y);
                     _allowMove = true;
+                    Model.instance.screenMoved = false;
                     break;
                 case TouchPhase.MOVED:
                     if (_allowMove)
@@ -214,10 +223,12 @@ public class CampScreen extends Screen {
                         _container.y = deltaPt.y;
                         _startPoint = new Point(touch.globalX, touch.globalY);
                         _startPos = new Point(_container.x, _container.y);
+                        Model.instance.screenMoved = true;
                     }
                     break;
                 case TouchPhase.ENDED:
                     _allowMove = false;
+                    Model.instance.screenMoved = false;
                     break;
             }
         }

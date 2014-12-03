@@ -158,6 +158,10 @@ public class ItemView extends AbstractView {
         _select.visible = _item.isWearing && _allowSelection;
     }
 
+    public function set selected ($val: Boolean) :void {
+        _select.visible = $val;
+    }
+
     override public function destroy():void {
         super.destroy();
 

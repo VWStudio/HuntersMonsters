@@ -350,12 +350,11 @@ public class BattleScreen extends Screen
                 if ($isWin)
                 {
                     Model.instance.progress.areaStars[territory.area.area] = 1;
-                    Model.instance.progress.sets.push(territory.area.area);
-                    Model.instance.progress.houses.push(territory.area.area);
                     Model.instance.progress.saveProgress();
+                    Model.instance.progress.houses.push(territory.area.area);
                     territory.updateStars();
                     territory.updateHouseData();
-                    Model.instance.shop.updateGoods();
+
                 }
                 else
                 {

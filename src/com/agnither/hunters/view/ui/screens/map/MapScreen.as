@@ -142,8 +142,6 @@ public class MapScreen extends Screen {
         _camp.touchable = true;
         _camp.addEventListener(TouchEvent.TOUCH, onTouchCamp);
 
-        trace("map init", Model.instance.progress.campPosition);
-
         if(Model.instance.progress.campPosition) {
             _camp.x = Model.instance.progress.campPosition.x;
             _camp.y = Model.instance.progress.campPosition.y;
@@ -155,7 +153,6 @@ public class MapScreen extends Screen {
             Model.instance.progress.saveProgress();
         }
 
-        trace("map init 2", Model.instance.progress.campPosition);
 
         _monstersContainer = new Sprite();
         _monstersContainer.name = "monsters_container"; // hack
@@ -366,6 +363,7 @@ public class MapScreen extends Screen {
             switch (touch.phase)
             {
                 case TouchPhase.BEGAN:
+                    Model.instance.screenMoved = false;
                     _startPoint = new Point(touch.globalX, touch.globalY);
                     _startPos = new Point(_container.x, _container.y);
 
@@ -415,9 +413,11 @@ public class MapScreen extends Screen {
                         _container.y = deltaPt.y;
                         _startPoint = new Point(touch.globalX, touch.globalY);
                         _startPos = new Point(_container.x, _container.y);
+                        Model.instance.screenMoved = true;
                     }
                     break;
                 case TouchPhase.ENDED:
+                    Model.instance.screenMoved = false;
                     _allowMove = false;
                     break;
             }

@@ -40,9 +40,8 @@ public class ChestPoint extends AbstractView
 
     private function handleTouch(e : TouchEvent) : void
     {
-        e.stopPropagation();
-        e.stopImmediatePropagation();
-        if (App.instance.trapMode)
+
+        if (App.instance.trapMode  || Model.instance.screenMoved)
         {
             return;
         }
@@ -58,6 +57,8 @@ public class ChestPoint extends AbstractView
                 case TouchPhase.BEGAN :
                     break;
                 case TouchPhase.ENDED :
+                    e.stopPropagation();
+                    e.stopImmediatePropagation();
                     App.instance.chestStep = 0;
                     App.instance.steps = _monsters;
                     App.instance.chest = this;

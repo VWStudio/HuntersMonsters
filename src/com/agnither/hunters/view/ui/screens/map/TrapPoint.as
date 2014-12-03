@@ -34,9 +34,8 @@ public class TrapPoint extends AbstractView {
     }
 
     private function handleTouch(e : TouchEvent) : void {
-        e.stopPropagation();
-        e.stopImmediatePropagation();
-        if (App.instance.trapMode)
+
+        if (App.instance.trapMode || Model.instance.screenMoved)
         {
             return;
         }
@@ -52,6 +51,8 @@ public class TrapPoint extends AbstractView {
                 case TouchPhase.BEGAN :
                     break;
                 case TouchPhase.ENDED :
+                    e.stopPropagation();
+                    e.stopImmediatePropagation();
                     if (_timeleft > 0)
                     {
                         coreExecute(ShowPopupCmd, TrapSetPopup.NAME, {id: _monsterType.id, level:_monsterType.level, mode: TrapSetPopup.CHECK_MODE, marker: this});

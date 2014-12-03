@@ -2,11 +2,14 @@
  * Created by agnither on 14.08.14.
  */
 package com.agnither.hunters.view.ui.screens.battle.player.inventory {
+import com.agnither.hunters.model.Model;
+import com.agnither.hunters.model.player.ManaList;
 import com.agnither.hunters.model.player.inventory.Inventory;
 import com.agnither.hunters.model.player.inventory.Item;
 import com.agnither.hunters.view.ui.screens.battle.player.inventory.ItemView;
 import com.agnither.ui.AbstractView;
 import com.agnither.utils.CommonRefs;
+import com.cemaprjl.core.coreAddListener;
 
 import starling.display.Sprite;
 
@@ -39,6 +42,19 @@ public class BattleInventoryView extends AbstractView {
         _itemsContainer = new Sprite();
         addChild(_itemsContainer);
 
+        coreAddListener(ManaList.MANA_ADDED, onManaAdded);
+
+    }
+
+    private function onManaAdded() : void
+    {
+        for (var i : int = 0; i < _itemsContainer.numChildren; i++)
+        {
+            var item : ItemView= _itemsContainer.getChildAt(i) as ItemView;
+            if(item.item.isSpell()) {
+                item.selected = Model.instance.player.manaList.checkSpell(item.item);
+            }
+        }
     }
 
     private function handleTouch(e: TouchEvent):void {
