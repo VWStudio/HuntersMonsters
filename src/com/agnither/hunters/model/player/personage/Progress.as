@@ -258,7 +258,7 @@ public class Progress extends EventDispatcher {
 
 
         exp += $val;
-        fullExp += exp;
+        fullExp += $val;
         var lv : LevelVO = LevelVO.DICT[level];
         if (exp >= lv.exp)
         {

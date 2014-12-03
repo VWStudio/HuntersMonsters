@@ -63,7 +63,7 @@ public class InventoryView extends AbstractView {
             itemView.addEventListener(TouchEvent.TOUCH, handleTouch);
             addChild(itemView);
             itemView.y = i * tileHeight;
-            itemView.noSelection();
+//            itemView.noSelection();
         }
     }
 

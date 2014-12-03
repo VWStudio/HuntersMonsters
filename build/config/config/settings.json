@@ -84,7 +84,7 @@
   },
   {
     "parameter": "damagePriceMult",
-    "value": "2",
+    "value": "2.5",
     "type": "int"
   },
   {

@@ -46,6 +46,7 @@ public class MonsterPoint extends AbstractView {
     private var _allowCount : Boolean = true;
     private var _territory : Territory;
     private var _territoryRect : Rectangle;
+    private var _image : Image;
 
     public function MonsterPoint() {
 
@@ -56,6 +57,12 @@ public class MonsterPoint extends AbstractView {
         this.touchable = true;
 
         _time = _links["time_tf"];
+        removeChild(_time);
+
+        _image = new Image(_refs.gui.getTexture("level_1"));
+        addChild(_image);
+        _image.x = 5;
+        _image.y = -20;
 
         this.addEventListener(TouchEvent.TOUCH, handleTouch);
 
@@ -92,13 +99,16 @@ public class MonsterPoint extends AbstractView {
 
     override public function update() : void {
         _lifetime = (_territory.area.lifemax + (_territory.area.lifemin - _territory.area.lifemax) * Math.random())*1000;
+
+
+
     }
 
     public function tick($delta : Number) : void {
         if(!_allowCount) return;
         if(_lifetime > 0) {
             _lifetime -= $delta;
-            _time.text = Formatter.msToHHMMSS(_lifetime);
+//            _time.text = Formatter.msToHHMMSS(_lifetime);
         } else {
             if(Model.instance.state == MapScreen.NAME) {
                 _territory.deletePoint(this);
@@ -138,6 +148,10 @@ public class MonsterPoint extends AbstractView {
         _territoryRect = _territory.rect;
         _back.texture = _refs.gui.getTexture(_territory.area.icon);
         _back.readjustSize();
+        _back.y = -_back.height + 10;
+
+        _image.texture = _refs.gui.getTexture("level_"+value.level);
+        _image.readjustSize();
 
         var pt : Point = _monsterType.speed > 0 ? _territory.getPoint() : _territory.getPoint(100); // not moved point will be closer to center, max 145;
         this.x = pt.x;

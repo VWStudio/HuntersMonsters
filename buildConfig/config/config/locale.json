@@ -86,5 +86,13 @@
     {
         "id": "mana_add",
         "russian": "Прибавляет каждый ход немного маны"
+    },
+    {
+        "id": "hunter_tab",
+        "russian": "Купить"
+    },
+    {
+        "id": "seller_tab",
+        "russian": "Продать"
     }
 ]
