@@ -24,6 +24,7 @@ import flash.system.ApplicationDomain;
 import flash.system.LoaderContext;
 import flash.system.SecurityDomain;
 import flash.utils.getDefinitionByName;
+import flash.utils.getTimer;
 import flash.utils.setTimeout;
 
 [SWF(frameRate="60", width="1000", height="720", backgroundColor="#000000")]
@@ -61,6 +62,8 @@ public class Preloader extends MovieClip
         trace(e.text);
     }
     private function progress(e : ProgressEvent) : void {
+
+        trace(e.bytesLoaded, "of", e.bytesTotal, "--", getTimer());
         var pc : Number = e.bytesLoaded / e.bytesTotal;
         setProgress(pc * (ResourcesManager.isLocal ? 1 : 0.5));
     }
@@ -88,7 +91,7 @@ public class Preloader extends MovieClip
         var isLocal : Boolean = stage.loaderInfo.url.indexOf("http") < 0;
 
         _libLoader = new Loader();
-        var myUrlReq : URLRequest = new URLRequest(!isLocal ? "http://app.vk.com/c6130/u284790/0b553d208cb178.swf" : "AssetsLib.swf");
+        var myUrlReq : URLRequest = new URLRequest(!isLocal ? "http://app.vk.com/c6130/u284790/7db47f1516a93d.swf" : "AssetsLib.swf");
         _libLoader.contentLoaderInfo.addEventListener(Event.COMPLETE, onGraphicLoaded);
         _libLoader.contentLoaderInfo.addEventListener(ProgressEvent.PROGRESS, libProgress);
         _libLoader.load(myUrlReq, new LoaderContext(false, ApplicationDomain.currentDomain, !isLocal ? SecurityDomain.currentDomain : null));
@@ -96,6 +99,9 @@ public class Preloader extends MovieClip
 
     private function libProgress(e : ProgressEvent) : void
     {
+
+
+
         var pc : Number = e.bytesLoaded / e.bytesTotal;
         setProgress(0.5 + pc * 0.5);
     }

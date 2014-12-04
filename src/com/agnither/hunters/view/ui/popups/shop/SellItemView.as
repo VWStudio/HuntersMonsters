@@ -6,6 +6,7 @@ package com.agnither.hunters.view.ui.popups.shop
 import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.modules.extensions.DamageExt;
 import com.agnither.hunters.model.modules.extensions.DefenceExt;
+import com.agnither.hunters.model.modules.extensions.Extension;
 import com.agnither.hunters.model.player.inventory.Item;
 import com.agnither.hunters.view.ui.screens.battle.player.inventory.ItemView;
 import com.agnither.ui.AbstractView;
@@ -66,7 +67,12 @@ public class SellItemView extends AbstractView
         _itemView.addEventListener(TouchEvent.TOUCH, onTouch);
 //        _damage = _links.damage_tf;
 
-        if (_item.getDamage())
+        _price = 0;
+        if (item.isSpell())
+        {
+            _buyButton.visible = false;
+        }
+        else if (_item.getDamage())
         {
             _price = int(Model.instance.getPrice(item.getDamage(), DamageExt.TYPE) * 0.6);
         }
@@ -74,11 +80,15 @@ public class SellItemView extends AbstractView
         {
             _price = int(Model.instance.getPrice(item.getDefence(), DefenceExt.TYPE) * 0.6);
         }
-        if (item.isSpell())
+        else
         {
-            _price = 0;
-            _buyButton.visible = false;
+            for (var extId : String in _item.getExtObj())
+            {
+                var extItem : Extension = _item.getExt(extId);
+                _price += Model.instance.getPrice(extItem.getBaseValue(), (extItem as Object).constructor["TYPE"]);
+            }
         }
+
 
     }
 

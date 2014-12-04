@@ -3,6 +3,7 @@
  */
 package com.agnither.hunters.model.modules.extensions
 {
+import com.agnither.hunters.data.outer.MagicTypeVO;
 import com.agnither.hunters.model.player.inventory.Item;
 
 public class ManaAddExt extends Extension
@@ -53,5 +54,14 @@ public class ManaAddExt extends Extension
         return _amount;
     }
 
+    override public function getDescription() : String
+    {
+        var magic : MagicTypeVO = MagicTypeVO.DICT[_type];
+        var description : String = super.getDescription() + ",\n"
+                                   +_amount+" "+magic.name;
+
+
+        return description;
+    }
 }
 }

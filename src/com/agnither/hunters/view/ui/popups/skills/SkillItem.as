@@ -6,6 +6,7 @@ package com.agnither.hunters.view.ui.popups.skills
 import com.agnither.hunters.data.outer.SkillVO;
 import com.agnither.hunters.model.Model;
 import com.agnither.ui.AbstractView;
+import com.cemaprjl.core.coreDispatch;
 
 import flash.ui.Mouse;
 import flash.ui.MouseCursor;
@@ -26,6 +27,8 @@ public class SkillItem extends AbstractView
     private var isLevelEnough : Boolean = false;
     private var _disabled : Image;
     private var isNotMax : Boolean = true;
+    public static const HOVER : String = "SkillItem.HOVER";
+    public static const HOVER_OUT : String = "SkillItem.HOVER_OUT";
 
     public function SkillItem()
     {
@@ -42,7 +45,7 @@ public class SkillItem extends AbstractView
         _icon.touchable = false;
         _back = _links["bitmap_common_hitrect"];
         _disabled = _links["bitmap_common_disabled_tint"];
-        _disabled.touchable = false;
+        _disabled.touchable = true;
         _disabled.visible = false;
         _points = _links["points_tf"];
         _points.touchable = false;
@@ -50,6 +53,20 @@ public class SkillItem extends AbstractView
         _back.touchable = true;
         _back.addEventListener(TouchEvent.TOUCH, onTouch);
 
+        _disabled.addEventListener(TouchEvent.TOUCH, onDisabledTouch);
+
+    }
+
+    private function onDisabledTouch(event : TouchEvent) : void
+    {
+        var touch : Touch = event.getTouch(_disabled);
+        if (touch)
+        {
+            coreDispatch(SkillItem.HOVER, this);
+        }
+        else {
+            coreDispatch(SkillItem.HOVER_OUT);
+        }
     }
 
 
@@ -95,6 +112,7 @@ public class SkillItem extends AbstractView
             switch (touch.phase)
             {
                 case TouchPhase.HOVER :
+                    coreDispatch(SkillItem.HOVER, this);
                     break;
                 case TouchPhase.BEGAN :
                     break;
@@ -105,11 +123,17 @@ public class SkillItem extends AbstractView
         }
         else
         {
+            coreDispatch(SkillItem.HOVER, this);
             Mouse.cursor = MouseCursor.AUTO;
 
         }
 
 
+    }
+
+    public function get skill() : SkillVO
+    {
+        return _skill;
     }
 }
 }

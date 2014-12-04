@@ -29,10 +29,14 @@ public class ChipView extends AbstractView {
 
     override protected function initialize():void {
         _view = new Image(_refs.gui.getTexture(_chip.iconChip));
-        _view.pivotX = _view.width/2;
-        _view.pivotY = _view.height/2;
-        _view.x = _view.pivotX;
-        _view.y = _view.pivotY;
+        _view.pivotX = _view.width * 0.5 + 2;
+
+//        _view.pivotX = _view.width * 0.5;
+        _view.pivotY = _view.height * 0.5 + 3;
+//        _view.pivotY = _view.height * 0.5;
+        _view.x = 24;
+        _view.y = 24;
+//        _view.y = _view.pivotY;
         addChildAt(_view, 0);
 
         if(_chip.cell) {

@@ -46,7 +46,7 @@
   },
   {
     "parameter": "playerInitialName",
-    "value": "Hunter",
+    "value": "Охотник",
     "type": "str"
   },
   {
@@ -84,47 +84,52 @@
   },
   {
     "parameter": "damagePriceMult",
-    "value": "2.5",
+    "value": "0.6",
     "type": "int"
   },
   {
     "parameter": "defencePriceMult",
-    "value": "3",
+    "value": "1.2",
     "type": "int"
   },
   {
     "parameter": "double_dropPriceMult",
-    "value": "4",
+    "value": "1",
     "type": "int"
   },
   {
     "parameter": "resurrect_petPriceMult",
-    "value": "5",
+    "value": "1",
     "type": "int"
   },
   {
     "parameter": "mirror_damagePriceMult",
-    "value": "6",
+    "value": "1",
     "type": "int"
   },
   {
     "parameter": "spell_defencePriceMult",
-    "value": "7",
+    "value": "1",
     "type": "int"
   },
   {
     "parameter": "mana_addPriceMult",
-    "value": "8",
+    "value": "1",
     "type": "int"
   },
   {
     "parameter": "pet_levelPriceMult",
-    "value": "9",
+    "value": "1",
     "type": "int"
   },
   {
     "parameter": "trapPriceMult",
-    "value": "10",
+    "value": "1",
+    "type": "int"
+  },
+  {
+    "parameter": "shopDeliverTimeMin",
+    "value": 1,
     "type": "int"
   }
 ]

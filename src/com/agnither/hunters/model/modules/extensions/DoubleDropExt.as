@@ -3,6 +3,7 @@
  */
 package com.agnither.hunters.model.modules.extensions
 {
+import com.agnither.hunters.model.modules.locale.Locale;
 import com.agnither.hunters.model.player.inventory.Item;
 
 public class DoubleDropExt extends Extension
@@ -45,6 +46,16 @@ public class DoubleDropExt extends Extension
     override public function getBaseValue() : Number
     {
         return _chance;
+    }
+
+
+    override public function getDescription() : String
+    {
+        var description : String = super.getDescription() + ", "
+                +_chance+"%";
+
+
+        return description;
     }
 }
 }

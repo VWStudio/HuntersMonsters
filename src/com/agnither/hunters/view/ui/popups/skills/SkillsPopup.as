@@ -7,8 +7,11 @@ import com.agnither.hunters.data.outer.SkillVO;
 import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.player.LocalPlayer;
 import com.agnither.hunters.model.player.personage.Progress;
+import com.agnither.hunters.view.ui.common.Tooltip;
 import com.agnither.ui.Popup;
 import com.cemaprjl.core.coreAddListener;
+
+import flash.geom.Rectangle;
 
 import starling.display.Image;
 
@@ -34,6 +37,7 @@ public class SkillsPopup extends Popup {
     private var _level3 : Sprite;
     private var _level4 : Sprite;
     private var _hero : Image;
+    private var _tooltip : Tooltip;
 
     public function SkillsPopup() {
         super();
@@ -90,6 +94,31 @@ public class SkillsPopup extends Popup {
 
         coreAddListener(Progress.UPDATED, update);
 
+
+        _tooltip = new Tooltip();
+        addChild(_tooltip);
+        _tooltip.visible = false;
+
+        coreAddListener(SkillItem.HOVER, onItemHover);
+        coreAddListener(SkillItem.HOVER_OUT, onItemHoverOut);
+    }
+
+    private function onItemHoverOut() : void
+    {
+        _tooltip.visible = false;
+    }
+
+    private function onItemHover($item : SkillItem) : void
+    {
+        if(!isActive) return;
+        if($item) {
+            var rect : Rectangle = $item.getBounds(this);
+            _tooltip.x = rect.right;
+            _tooltip.y = rect.bottom;
+            var str : String = $item.skill.description;
+            _tooltip.visible = str.length > 0;
+            _tooltip.text = str;
+        }
     }
 
 

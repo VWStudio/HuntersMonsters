@@ -6,17 +6,24 @@ package com.agnither.hunters.view.ui.popups.shop
 import com.agnither.hunters.App;
 import com.agnither.hunters.data.outer.ItemTypeVO;
 import com.agnither.hunters.model.Model;
+import com.agnither.hunters.model.Shop;
+import com.agnither.hunters.model.modules.extensions.DamageExt;
+import com.agnither.hunters.model.modules.extensions.DefenceExt;
+import com.agnither.hunters.model.modules.extensions.ManaExt;
 import com.agnither.hunters.model.modules.locale.Locale;
 import com.agnither.hunters.model.player.inventory.Inventory;
 import com.agnither.hunters.model.player.personage.Progress;
 import com.agnither.hunters.view.ui.common.GoldView;
 import com.agnither.hunters.view.ui.common.Scroll;
 import com.agnither.hunters.view.ui.common.TabView;
+import com.agnither.hunters.view.ui.common.Tooltip;
 import com.agnither.hunters.view.ui.popups.inventory.InventoryView;
 import com.agnither.hunters.view.ui.popups.inventory.ItemsListView;
+import com.agnither.hunters.view.ui.screens.battle.player.inventory.ItemView;
 import com.agnither.ui.AbstractView;
 import com.agnither.ui.Popup;
 import com.cemaprjl.core.coreAddListener;
+import com.cemaprjl.utils.Formatter;
 
 import flash.geom.Rectangle;
 
@@ -24,6 +31,7 @@ import starling.core.Starling;
 
 import starling.display.Sprite;
 import starling.events.Event;
+import starling.text.TextField;
 
 public class ShopPopup extends Popup
 {
@@ -48,6 +56,9 @@ public class ShopPopup extends Popup
     private var _inventoryView : InventoryView;
     private var _scroll : Scroll;
     private var _scrollMask : Sprite;
+    private var _tooltipItem : Tooltip;
+    private var _deliver : TextField;
+    private var _deliverTime : TextField;
 
     public function ShopPopup()
     {
@@ -114,6 +125,9 @@ public class ShopPopup extends Popup
         coreAddListener(ShopPopup.SHOW_TOOLTIP, showTooltip);
         coreAddListener(ShopPopup.HIDE_TOOLTIP, hideTip);
 
+        coreAddListener(Shop.NEW_DELIVER, onNewDeliver);
+        coreAddListener(Shop.DELIVER_TIME, onDeliverTime);
+
         _tooltip = new Sprite();
         addChild(_tooltip);
 
@@ -126,8 +140,28 @@ public class ShopPopup extends Popup
         _scroll.onChange = onScroll;
         _scrollMask.clipRect = new Rectangle(0,0,440,500);
 
+        _tooltipItem = new Tooltip();
+        _tooltip.addChild(_tooltipItem);
+        _tooltipItem.visible = false;
+        _tooltipItem.y = 50;
+
+        _deliver = _links["deliver_tf"];
+        _deliverTime = _links["deliverTime_tf"];
+
 
         update();
+    }
+
+    private function onNewDeliver() : void
+    {
+        if(!isActive) return;
+        update();
+    }
+
+    private function onDeliverTime() : void
+    {
+        if(!isActive) return;
+        _deliverTime.text = Formatter.msToHHMMSS(Model.instance.deliverTime);
     }
 
     private function onScroll($val : Number) : void
@@ -139,7 +173,6 @@ public class ShopPopup extends Popup
 
     private function showTooltip($item : AbstractView) : void
     {
-
         var price : Number = $item["price"];
         if (!price)
         {
@@ -149,10 +182,29 @@ public class ShopPopup extends Popup
         var rect : Rectangle = $item.getBounds(this);
 
         _tooltip.visible = true;
-        _gold.x = rect.x + rect.width;
-        _gold.y = rect.y + rect.height;
+        _tooltip.x = rect.x + rect.width;
+        _tooltip.y = rect.y + rect.height;
         _gold.data = price;
         _gold.update();
+
+        var str : String = "";
+        var exts : Object = $item["item"].getExtObj();
+        for (var key : String in exts)
+        {
+            if(key == DamageExt.TYPE || key == DefenceExt.TYPE || key == ManaExt.TYPE) {
+                continue;
+            }
+            if(str.length > 0)
+            {
+                str += "\n";
+            }
+            str += exts[key].getDescription();
+//                str += Locale.getString(key);
+        }
+        _tooltipItem.visible = str.length > 0;
+        if(str.length > 0) {
+            _tooltipItem.text = str;
+        }
 
     }
 
@@ -214,6 +266,9 @@ public class ShopPopup extends Popup
                 }
                 break;
         }
+
+
+        _deliver.text = "Сделующая поставка:";
 
         _hunterTab.setIsSelected(_currentOwner);
         _traderTab.setIsSelected(_currentOwner);

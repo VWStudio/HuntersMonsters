@@ -80,6 +80,7 @@ public class Model
     public var progress : Progress;
     public var traps : Traps;
     public var shop : Shop;
+    public var deliverTime : Number = -1;
 
     public function Model()
     {
@@ -177,6 +178,22 @@ public class Model
         {
             var territory : Territory = territories[progress.unlockedLocations[i]];
             territory.tick($delta);
+        }
+
+        updateDeliver($delta);
+    }
+
+    private function updateDeliver($delta : Number) : void
+    {
+        deliverTime -= $delta;
+        if(deliverTime <= 0) {
+            deliverTime = SettingsVO.DICT["shopDeliverTimeMin"] * 60 * 1000;
+            shop.updateGoods();
+            coreDispatch(Shop.NEW_DELIVER);
+        }
+        else
+        {
+            coreDispatch(Shop.DELIVER_TIME);
         }
     }
 

@@ -110,15 +110,21 @@ public class MapScreen extends Screen {
 
 
         var i : int = 0;
+        var territory : Territory;
         for (i = 0; i < MonsterAreaVO.LIST.length; i++)
         {
-            var territory : Territory = Model.instance.territories[MonsterAreaVO.LIST[i].id];
+            territory = Model.instance.territories[MonsterAreaVO.LIST[i].id];
             territory.setCloud(_links[territory.area.id]);
             territory.setHud(_links[territory.area.hud]);
             if(territory.area.isHouse) {
                 territory.setHouse(_links[territory.area.area]);
             }
         }
+
+        if(territory) {
+            territory.setBoss(_links["bitmap_boss"]);
+        }
+
 
         for ( i = 0; i < _container.numChildren; i++)
         {

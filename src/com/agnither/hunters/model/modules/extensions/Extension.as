@@ -3,12 +3,15 @@
  */
 package com.agnither.hunters.model.modules.extensions
 {
+import com.agnither.hunters.model.modules.locale.Locale;
 import com.agnither.hunters.model.player.inventory.Item;
 
 public class Extension
 {
     protected var _arguments : Array;
 
+
+    public static const TYPE : String = "extension";
 
 
     public static function create($type : String, $args : Array):Extension {
@@ -79,5 +82,10 @@ public class Extension
     {
         return 0;
     }
+
+    public function getDescription():String {
+        return Locale.getString((this as Object).constructor["TYPE"]);
+    }
+
 }
 }

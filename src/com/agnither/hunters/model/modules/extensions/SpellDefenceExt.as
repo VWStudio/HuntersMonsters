@@ -52,5 +52,14 @@ public class SpellDefenceExt extends Extension
         return _amount;
     }
 
+    override public function getDescription() : String
+    {
+        var description : String = super.getDescription() + ", "
+                                   +_type+", "+_amount;
+
+
+        return description;
+    }
+
 }
 }

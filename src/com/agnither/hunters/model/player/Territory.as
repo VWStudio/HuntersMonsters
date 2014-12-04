@@ -24,6 +24,7 @@ import flash.utils.Dictionary;
 
 import starling.core.Starling;
 import starling.display.DisplayObject;
+import starling.display.Image;
 import starling.display.Sprite;
 import starling.events.Touch;
 import starling.events.TouchEvent;
@@ -49,6 +50,7 @@ public class Territory
     private var _nextRandomHouseItem : Item;
     private var _houseTimeout : Number;
     public static const MOVE_CAMP : String = "Territory.MOVE_CAMP";
+    private var _boss : Image;
 
 
     public function getStars() : int
@@ -145,6 +147,9 @@ public class Territory
                 {
                     _house.visible = true;
                 }
+                if(_boss) {
+                    _boss.visible = !isUnlocked;
+                }
                 if (_area.isHouse)
                 {
 
@@ -181,6 +186,7 @@ public class Territory
 
     private function onHouseTouch(event : TouchEvent) : void
     {
+        if(!isUnlocked) return;
         var touch : Touch = event.getTouch(_house);
 
         if (touch)
@@ -444,6 +450,12 @@ public class Territory
     public function get nextRandomHouseItem() : Item
     {
         return _nextRandomHouseItem;
+    }
+
+    public function setBoss($bossImg : Image) : void
+    {
+        _boss = $bossImg;
+        _boss.visible = !isUnlocked;
     }
 }
 }

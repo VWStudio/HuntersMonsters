@@ -44,5 +44,15 @@ public class ResurrectPetExt extends Extension
     {
         return _hpPercent;
     }
+
+    override public function getDescription() : String
+    {
+        var description : String = super.getDescription() + ", "
+                                   +"hp "+_hpPercent+"%";
+
+
+        return description;
+    }
+
 }
 }

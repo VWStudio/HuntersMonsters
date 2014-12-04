@@ -12,6 +12,8 @@ import flash.utils.Dictionary;
 public class Shop
 {
     private var _itemsDict : Dictionary;
+    public static const DELIVER_TIME : String = "Shop.DELIVER_TIME";
+    public static const NEW_DELIVER : String = "Shop.NEW_DELIVER";
 
     public function Shop()
     {
@@ -22,7 +24,7 @@ public class Shop
 
     public function getItemsByType($type : int) : Array
     {
-        trace("getItemsByType", $type, _itemsDict[$type])
+        trace("getItemsByType", $type, _itemsDict[$type]);
 
         if (!_itemsDict[$type])
         {

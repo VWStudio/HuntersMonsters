@@ -126,7 +126,8 @@ public class InventoryPopup extends Popup {
             _tooltip.x = rect.right;
             _tooltip.y = rect.bottom;
             var str : String = "";
-            for (var key : String in $item.item.ext)
+            var exts : Object = $item.item.getExtObj();
+            for (var key : String in exts)
             {
                 if(key == DamageExt.TYPE || key == DefenceExt.TYPE || key == ManaExt.TYPE) {
                     continue;
@@ -135,7 +136,8 @@ public class InventoryPopup extends Popup {
                 {
                     str += "\n";
                 }
-                str += Locale.getString(key);
+                str += exts[key].getDescription();
+//                str += Locale.getString(key);
             }
             _tooltip.text = str;
             _tooltip.visible = str.length > 0;

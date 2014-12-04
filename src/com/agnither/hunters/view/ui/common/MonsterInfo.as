@@ -38,6 +38,9 @@ public class MonsterInfo extends AbstractView {
         _hpVal = _links["hp_tf"];
         _icon = _links["icon"].getChildAt(0) as Image;
         _damageType = _links["damage_type_icon"].getChildAt(0) as Image;
+
+//        _damageType = _links["bitmap_chip_sword"];
+
         _damageVal = _links["damage_tf"];
         _armorVal = _links["armor_tf"];
         _killed = _links["bitmap_common_killed"];
@@ -69,7 +72,6 @@ public class MonsterInfo extends AbstractView {
         }
         _icon.x = (_back.width - _icon.width) * 0.5;
         _icon.y = (_back.height - _icon.height) * 0.5;
-
 
         _damageType.texture = _refs.gui.getTexture(MagicTypeVO.DICT[_monster.magic].picturedamage);
     }

@@ -54,5 +54,13 @@ public class MirrorDamageExt extends Extension
         return _chance;
     }
 
+    override public function getDescription() : String
+    {
+        var description : String = super.getDescription() + ", "
+                                   +_chance+"%";
+
+
+        return description;
+    }
 }
 }
