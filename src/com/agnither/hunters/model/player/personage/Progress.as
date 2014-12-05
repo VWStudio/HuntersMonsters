@@ -270,6 +270,7 @@ public class Progress extends EventDispatcher {
                 skillPoints += 1;
             }
             recalculateHP();
+            Model.instance.player.hero.init(this);
         }
 
 

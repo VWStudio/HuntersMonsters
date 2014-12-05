@@ -186,7 +186,7 @@ public class Territory
 
     private function onHouseTouch(event : TouchEvent) : void
     {
-        if(!isUnlocked) return;
+        if(!isUnlocked || Model.instance.screenMoved) return;
         var touch : Touch = event.getTouch(_house);
 
         if (touch)

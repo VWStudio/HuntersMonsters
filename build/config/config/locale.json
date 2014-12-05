@@ -73,7 +73,7 @@
     },
     {
         "id": "double_drop",
-        "russian": "Дает шанс двойного дропа."
+        "russian": "Шанс двойного дропа."
     },
     {
         "id": "mirror_damage",
@@ -94,5 +94,29 @@
     {
         "id": "seller_tab",
         "russian": "Продать"
+    },
+    {
+        "id": "weapon",
+        "russian": "Оружие"
+    },
+    {
+        "id": "nature",
+        "russian": "Природа"
+    },
+    {
+        "id": "water",
+        "russian": "Вода"
+    },
+    {
+        "id": "fire",
+        "russian": "Огонь"
+    },
+    {
+        "id": "dark",
+        "russian": "Кровь"
+    },
+    {
+        "id": "stone",
+        "russian": "Камень"
     }
 ]

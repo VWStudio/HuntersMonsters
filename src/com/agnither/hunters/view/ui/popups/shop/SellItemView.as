@@ -62,7 +62,7 @@ public class SellItemView extends AbstractView
         _itemView = ItemView.getItemView(_item);
         addChild(_itemView);
         _itemView.touchable = true;
-        _itemView.noSelection();
+//        _itemView.noSelection();
 
         _itemView.addEventListener(TouchEvent.TOUCH, onTouch);
 //        _damage = _links.damage_tf;

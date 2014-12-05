@@ -432,6 +432,9 @@ public class MapScreen extends Screen {
 
     private function onTouchCamp(event : TouchEvent) : void
     {
+
+        if(Model.instance.screenMoved) return;
+
         var touch : Touch = event.getTouch(_camp);
         var endTouch : Touch = event.getTouch(_camp, TouchPhase.ENDED);
         if(endTouch) {

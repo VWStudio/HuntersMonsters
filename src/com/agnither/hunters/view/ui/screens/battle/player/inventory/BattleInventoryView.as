@@ -4,6 +4,7 @@
 package com.agnither.hunters.view.ui.screens.battle.player.inventory {
 import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.player.ManaList;
+import com.agnither.hunters.model.player.Player;
 import com.agnither.hunters.model.player.inventory.Inventory;
 import com.agnither.hunters.model.player.inventory.Item;
 import com.agnither.hunters.view.ui.screens.battle.player.inventory.ItemView;
@@ -25,6 +26,7 @@ public class BattleInventoryView extends AbstractView {
 
     private var _inventory: Inventory;
     private var _itemsContainer : Sprite;
+    public var player : Player;
 
     public function BattleInventoryView() {
     }
@@ -52,7 +54,7 @@ public class BattleInventoryView extends AbstractView {
         {
             var item : ItemView= _itemsContainer.getChildAt(i) as ItemView;
             if(item.item.isSpell()) {
-                item.selected = Model.instance.player.manaList.checkSpell(item.item);
+                item.selected = player.manaList.checkSpell(item.item);
             }
         }
     }

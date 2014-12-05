@@ -8,6 +8,7 @@ import com.agnither.hunters.data.outer.MagicTypeVO;
 import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.match3.Match3Game;
 import com.agnither.hunters.model.player.AIPlayer;
+import com.agnither.hunters.model.player.Player;
 import com.agnither.hunters.model.player.Territory;
 import com.agnither.hunters.model.player.inventory.Item;
 import com.agnither.hunters.model.player.personage.Personage;
@@ -134,6 +135,7 @@ public class BattleScreen extends Screen
         _playerSpells.x = _links.slotsPlayer.x;
         _playerSpells.y = _links.slotsPlayer.y;
 
+
         _enemySpells = new BattleInventoryView();
         addChild(_enemySpells);
         _enemySpells.x = _links.slotsEnemy.x;
@@ -174,7 +176,12 @@ public class BattleScreen extends Screen
         _field.field = _game.field;
 
         _playerSpells.inventory = _game.player.inventory;
+        _playerSpells.player = _game.player;
+
         _enemySpells.inventory = _game.enemy.inventory;
+        _enemySpells.player = _game.enemy;
+
+
 
         _player.personage = _game.player.hero;
         _playerPet.isPet = true;

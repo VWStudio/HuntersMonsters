@@ -82,7 +82,7 @@ public class SkillItem extends AbstractView
         isAllowedToIncrease = Model.instance.progress.skillPoints > 0 && isLevelEnough && isNotMax;
         _points.text = owned + "/" + _skill.points + (isAllowedToIncrease ? "(+)" : "");
         _disabled.visible = !isLevelEnough;
-        _back.visible = isLevelEnough;
+//        _back.visible = isLevelEnough;
 
 
         _icon.texture = _refs.gui.getTexture(_skill.icon);
@@ -99,10 +99,7 @@ public class SkillItem extends AbstractView
 
     private function onTouch(e : TouchEvent) : void
     {
-        if (!isAllowedToIncrease)
-        {
-            return;
-        }
+
         e.stopImmediatePropagation();
         e.stopPropagation();
         var touch : Touch = e.getTouch(_back);
@@ -117,7 +114,9 @@ public class SkillItem extends AbstractView
                 case TouchPhase.BEGAN :
                     break;
                 case TouchPhase.ENDED :
-                    Model.instance.progress.incSkill(_skill.id.toString());
+                    if(isAllowedToIncrease) {
+                        Model.instance.progress.incSkill(_skill.id.toString());
+                    }
                     break;
             }
         }
