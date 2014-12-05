@@ -73,39 +73,7 @@ public class AIPlayer extends Player
         }
         return false;
 
-//        var results : Array = [];
-//        if (Math.random() * 100 < difficulty)
-//        {
-//            for (var i : int = 0; i < _inventory.length; i++)
-//            {
-//
-//                var spellItem : Item = _inventory.getItem(_inventory.inventoryItems[i]);
-////                var spell: Spell = _inventory.getItem(_inventory.inventoryItems[i]) as Spell;
-//                if (spellItem.isSpell())
-//                {
-//                    var result : CheckManaResult = new CheckManaResult(_manaList, spellItem);
-//                    if (result.enough)
-//                    {
-//
-//                        game.useSpell(spellItem);
-//                    }
-////                    else
-////                    {
-////                        results.push(result);
-////                    }
-//                }
-//            }
-////        }
 
-//        _spellResults = new Dictionary();
-//        if (results.length > 0)
-//        {
-//            results.sortOn("delta", Array.NUMERIC);
-//            for (var key : * in results[0].results)
-//            {
-//                _spellResults[key] = true;
-//            }
-//        }
     }
 
     private function processMoves() : void
@@ -131,7 +99,9 @@ public class AIPlayer extends Player
 
             if (result.isHaveResultType(currentType))
             {
-                _damageResults.push(result);
+//                if(_damageResults.indexOf(result) == -1) {
+                    _damageResults.push(result);
+//                }
             }
             else
             {
@@ -144,12 +114,16 @@ public class AIPlayer extends Player
                         if(!_currentSpellsObj[_currentSpellsMana[ii]]) {
                             _currentSpellsObj[_currentSpellsMana[ii]] = [];
                         }
-                        _currentSpellsObj[_currentSpellsMana[ii]].push(result);
+//                        if(_currentSpellsObj[_currentSpellsMana[ii]].indexOf(result) == -1) {
+                            _currentSpellsObj[_currentSpellsMana[ii]].push(result);
+//                        }
                         used = true;
                     }
                 }
                 if(!used) {
-                    _otherResults.push(result);
+//                    if(_otherResults.indexOf(result) == -1) {
+                        _otherResults.push(result);
+//                    }
                 }
             }
         }
@@ -175,32 +149,49 @@ public class AIPlayer extends Player
     private function selectMove(difficulty : int) : void
     {
         var results : Array;
+//                , spells:_currentSpellsObj, mana : _currentSpellsMana, other : _otherResults} ));
         if(_damageResults.length > 0) {
+//            trace(JSON.stringify(_damageResults));
+//            trace("DAMAGE RES");
             results = _damageResults;
         }
         else
         {
+//            trace(JSON.stringify(_currentSpellsObj));
+//            trace(JSON.stringify(_currentSpellsMana));
             for (var i : int = 0; i < _currentSpellsMana.length; i++)
             {
                 var manaID : String = _currentSpellsMana[i];
                 if(_currentSpellsObj[manaID] && _currentSpellsObj[manaID].length > 0) {
                     results = _currentSpellsObj[manaID];
+//                    trace("SPELLS RES", manaID);
                 }
             }
             if(!results) {
+//                trace(JSON.stringify(_otherResults));
+//                trace("OTHER RES");
                 results = _otherResults;
             }
 //            if(_spellMovesResults.length > 0)
 //            results = _spellMovesResults;
         }
 
-        results.sortOn("score", Array.NUMERIC);
+        results.sort(sortResults);
+//        results.sortOn("score", Array.NUMERIC);
 
         var rand : int = (100 - difficulty) / 100 * results.length * Math.random();
+//        trace(rand, difficulty, JSON.stringify(results));
         var move : Move = results[rand].move;
 
         Starling.juggler.delayCall(game.selectCell, 0.5, move.cell2);
         Starling.juggler.delayCall(game.selectCell, 1, move.cell1);
+    }
+
+    private function sortResults($a : MoveResult, $b : MoveResult) : Number
+    {
+        if($a.score > $b.score) return -1;
+        if($a.score < $b.score) return 1;
+        return 0;
     }
 }
 }
