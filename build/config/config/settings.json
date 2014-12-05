@@ -129,7 +129,47 @@
   },
   {
     "parameter": "shopDeliverTimeMin",
-    "value": 1,
+    "value": "1",
+    "type": "int"
+  },
+  {
+    "parameter": "weaponTabMin",
+    "value": "3",
+    "type": "int"
+  },
+  {
+    "parameter": "armorTabMin",
+    "value": "3",
+    "type": "int"
+  },
+  {
+    "parameter": "magicTabMin",
+    "value": "3",
+    "type": "int"
+  },
+  {
+    "parameter": "spellTabMin",
+    "value": "3",
+    "type": "int"
+  },
+  {
+    "parameter": "weaponTabMax",
+    "value": "10",
+    "type": "int"
+  },
+  {
+    "parameter": "armorTabMax",
+    "value": "10",
+    "type": "int"
+  },
+  {
+    "parameter": "magicTabMax",
+    "value": "10",
+    "type": "int"
+  },
+  {
+    "parameter": "spellTabMax",
+    "value": "10",
     "type": "int"
   }
 ]

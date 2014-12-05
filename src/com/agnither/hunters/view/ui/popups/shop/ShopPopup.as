@@ -10,6 +10,7 @@ import com.agnither.hunters.model.Shop;
 import com.agnither.hunters.model.modules.extensions.DamageExt;
 import com.agnither.hunters.model.modules.extensions.DefenceExt;
 import com.agnither.hunters.model.modules.extensions.ManaExt;
+import com.agnither.hunters.model.modules.items.ItemVO;
 import com.agnither.hunters.model.modules.locale.Locale;
 import com.agnither.hunters.model.player.inventory.Inventory;
 import com.agnither.hunters.model.player.personage.Progress;
@@ -228,41 +229,43 @@ public class ShopPopup extends Popup
             case _weaponsTab :
                 if (_currentOwner == _traderTab)
                 {
-                    showSellerItems(ItemTypeVO.weapon);
+                    showSellerItems(ItemVO.TYPE_WEAPON);
+//                    showSellerItems(ItemTypeVO.weapon);
                 }
                 else
                 {
-                    showPlayerItems(ItemTypeVO.weapon);
+                    showPlayerItems(ItemVO.TYPE_WEAPON);
+//                    showPlayerItems(ItemTypeVO.weapon);
                 }
                 break;
             case _armorTab :
                 if (_currentOwner == _traderTab)
                 {
-                    showSellerItems(ItemTypeVO.armor);
+                    showSellerItems(ItemVO.TYPE_ARMOR);
                 }
                 else
                 {
-                    showPlayerItems(ItemTypeVO.armor);
+                    showPlayerItems(ItemVO.TYPE_ARMOR);
                 }
                 break;
             case _magicTab :
                 if (_currentOwner == _traderTab)
                 {
-                    showSellerItems(ItemTypeVO.magic);
+                    showSellerItems(ItemVO.TYPE_MAGIC);
                 }
                 else
                 {
-                    showPlayerItems(ItemTypeVO.magic);
+                    showPlayerItems(ItemVO.TYPE_MAGIC);
                 }
                 break;
             case _spellsTab :
                 if (_currentOwner == _traderTab)
                 {
-                    showSellerItems(ItemTypeVO.spell);
+                    showSellerItems(ItemVO.TYPE_SPELL);
                 }
                 else
                 {
-                    showPlayerItems(ItemTypeVO.spell);
+                    showPlayerItems(ItemVO.TYPE_SPELL);
                 }
                 break;
         }
@@ -280,7 +283,7 @@ public class ShopPopup extends Popup
 
     }
 
-    private function showSellerItems($type : int) : void
+    private function showSellerItems($type : String) : void
     {
 
         var items : Array = Model.instance.shop.getItemsByType($type);
@@ -296,7 +299,7 @@ public class ShopPopup extends Popup
         _scroll.setScrollParams(int((_container.numChildren + 1) / 2), 5);
     }
 
-    private function showPlayerItems($type : int) : void
+    private function showPlayerItems($type : String) : void
     {
 
         var items : Array = _inventory.getItemsByType($type);

@@ -5,6 +5,7 @@ package com.agnither.hunters.model
 {
 import com.agnither.hunters.data.outer.ItemTypeVO;
 import com.agnither.hunters.model.modules.items.ItemVO;
+import com.agnither.hunters.model.modules.players.SettingsVO;
 import com.agnither.hunters.model.player.inventory.Item;
 
 import flash.utils.Dictionary;
@@ -22,7 +23,7 @@ public class Shop
 
     }
 
-    public function getItemsByType($type : int) : Array
+    public function getItemsByType($type : String) : Array
     {
         trace("getItemsByType", $type, _itemsDict[$type]);
 
@@ -35,12 +36,13 @@ public class Shop
 
     }
 
-    private function generateItems($type : int) : Array
+    private function generateItems($type : String) : Array
     {
 
-        var itemType : ItemTypeVO = ItemTypeVO.DICT[$type];
+        var itemsMin : int = SettingsVO.DICT[$type+"TabMin"];
+        var itemsMax : int = SettingsVO.DICT[$type+"TabMax"];
         var arr : Array = [];
-        var amount : Number = itemType.tabMin + int((itemType.tabMax - itemType.tabMin + 1) * Math.random());
+        var amount : Number = itemsMin + int((itemsMax - itemsMin + 1) * Math.random());
         var i : int = 0;
         var item : Item;
         var itemVO : ItemVO;

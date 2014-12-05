@@ -7,6 +7,7 @@ import com.agnither.hunters.data.outer.ItemTypeVO;
 import com.agnither.hunters.model.modules.extensions.DamageExt;
 import com.agnither.hunters.model.modules.extensions.DefenceExt;
 import com.agnither.hunters.model.modules.extensions.ManaExt;
+import com.agnither.hunters.model.modules.items.ItemVO;
 import com.agnither.hunters.model.modules.locale.Locale;
 import com.agnither.hunters.model.player.Player;
 import com.agnither.hunters.view.ui.UI;
@@ -168,21 +169,25 @@ public class InventoryPopup extends Popup {
         _items.y = 0;
         switch (e.currentTarget) {
             case _weaponTab:
-                _items.showType(ItemTypeVO.weapon);
+                _items.showType(ItemVO.TYPE_WEAPON);
+//                _items.showType(ItemTypeVO.weapon);
 
                 _scroll.setScrollParams(_items.itemsAmount, 8);
 
                 break;
             case _armorTab:
-                _items.showType(ItemTypeVO.armor);
+                _items.showType(ItemVO.TYPE_ARMOR);
+//                _items.showType(ItemTypeVO.armor);
                 _scroll.setScrollParams(_items.itemsAmount, 8);
                 break;
             case _itemTab:
-                _items.showType(ItemTypeVO.magic);
+                _items.showType(ItemVO.TYPE_MAGIC);
+//                _items.showType(ItemTypeVO.magic);
                 _scroll.setScrollParams(_items.itemsAmount, 8);
                 break;
             case _spellTab:
-                _items.showType(ItemTypeVO.spell);
+                _items.showType(ItemVO.TYPE_SPELL);
+//                _items.showType(ItemTypeVO.spell);
                 _scroll.setScrollParams(_items.itemsAmount, 8);
 
                 break;

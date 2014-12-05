@@ -34,7 +34,8 @@ public class Inventory extends EventDispatcher {
     }
 
     private var _itemsByType: Dictionary = new Dictionary();
-    public function getItemsByType(type : int):Array { // of String
+    public function getItemsByType(type : String):Array { // of String
+//    public function getItemsByType(type : int):Array { // of String
         return _itemsByType[type];
     }
 
@@ -91,8 +92,9 @@ public class Inventory extends EventDispatcher {
     }
 
     public function init():void {
-        for (var i: int = 0; i < ItemTypeVO.LIST.length; i++) {
-            _itemsByType[ItemTypeVO.LIST[i].id] = [];
+//        for (var i: int = 0; i < ItemTypeVO.LIST.length; i++) {
+        for (var i: int = 0; i < ItemVO.TYPES.length; i++) {
+            _itemsByType[ItemVO.TYPES[i]] = [];
         }
         var extArray : Vector.<ExtensionVO> = Model.instance.items.getExtensions();
         for (i = 0; i < extArray.length; i++) {
@@ -121,7 +123,8 @@ public class Inventory extends EventDispatcher {
             var item : Item = $item;
             _itemsDict[item.uniqueId] = item;
             _itemsByType[item.type].push(item.uniqueId);
-            if(item.type == ItemTypeVO.spell) {
+            if(item.isSpell()) {
+//            if(item.type == ItemTypeVO.spell) {
                 _spells["spell"+item.id] = item;
             }
         }

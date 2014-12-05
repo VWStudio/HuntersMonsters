@@ -10,6 +10,7 @@ import com.agnither.hunters.model.modules.extensions.DefenceExt;
 import com.agnither.hunters.model.modules.extensions.Extension;
 import com.agnither.hunters.model.modules.extensions.ManaExt;
 import com.agnither.hunters.model.modules.items.ItemVO;
+import com.agnither.hunters.model.modules.items.ItemVO;
 import com.cemaprjl.utils.Util;
 
 import starling.events.EventDispatcher;
@@ -30,22 +31,23 @@ public class Item extends EventDispatcher {
 
     public static function create($data: ItemVO):Item {
         var item : Item;
-        switch ($data.type) {
-            case ItemTypeVO.weapon:
-            case ItemTypeVO.armor:
-            case ItemTypeVO.gold:
-            case ItemTypeVO.spell:
-            case ItemTypeVO.magic:
-                item = new Item($data);
-                break;
+//        switch ($data.type) {
+//            case ItemTypeVO.weapon:
+//            case ItemTypeVO.armor:
+//            case ItemTypeVO.gold:
+//            case ItemTypeVO.spell:
+//            case ItemTypeVO.magic:
+//                item = new Item($data);
+//                break;
 //                trace(JSON.stringify($data));
 //                item = new Item($data);
 //                break;
 //                item = new Spell($data);
-        }
+//        }
 //        if(item && $extension) {
 //            item.setExtension($extension);
 //        }
+        item = new Item($data);
         item.uniqueId = Util.uniq(item.name);
 
         return item;
@@ -92,14 +94,14 @@ public class Item extends EventDispatcher {
     public function get picture():String {
         return _item.picture;
     }
-    public function get type():int {
+    public function get type():String {
         return _item.type;
     }
     public function isGold() : Boolean {
-        return _item.type == ItemTypeVO.gold;
+        return _item.type == ItemVO.TYPE_GOLD;
     }
     public function isSpell() : Boolean {
-        return _item.type == ItemTypeVO.spell;
+        return _item.type == ItemVO.TYPE_SPELL;
     }
     public function get slot():int {
         return _item.slot;

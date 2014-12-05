@@ -35,7 +35,7 @@ public class ItemsListView extends AbstractView {
     override protected function initialize():void {
     }
 
-    public function showType(type: int):void {
+    public function showType(type: String):void {
         updateList(_inventory.getItemsByType(type));
 //        updateList(_inventory.getItemsByType(type).concat(_inventory.getItemsByType(type)).concat(_inventory.getItemsByType(type)).concat(_inventory.getItemsByType(type)));
     }

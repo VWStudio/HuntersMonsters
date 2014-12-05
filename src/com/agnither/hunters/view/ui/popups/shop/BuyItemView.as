@@ -114,7 +114,8 @@ public class BuyItemView extends AbstractView
 
         Model.instance.progress.gold -= _price;
         Model.instance.addPlayerItem(_item);
-        if (_item.type != ItemTypeVO.spell)
+        if (!_item.isSpell())
+//        if (_item.type != ItemTypeVO.spell)
         {
             Model.instance.shop.removeItem(_item);
         }

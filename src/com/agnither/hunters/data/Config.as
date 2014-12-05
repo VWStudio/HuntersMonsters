@@ -35,7 +35,7 @@ public class Config {
         addConfig("settings", SettingsVO);
         addConfig("league", LeagueVO);
         addConfig("item", ItemVO);
-        addConfig("item_type", ItemTypeVO);
+//        addConfig("item_type", ItemTypeVO);
         addConfig("item_slot", ItemSlotVO);
         addConfig("extension", ExtensionVO);
         addConfig("drop", DropVO);

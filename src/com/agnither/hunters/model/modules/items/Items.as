@@ -74,12 +74,12 @@ public class Items {
         return Model.instance.progress.sets[0];
     }
 
-    public function generateRandomItem($type : int):Item {
+    public function generateRandomItem($type : String):Item {
         var set : String = getRandomSet();
         return getRandomItem(set, $type);
     }
 
-    private function getRandomItem($set : String, $type : int) : Item
+    private function getRandomItem($set : String, $type : String) : Item
     {
 
         var items : Array = ItemVO.SETS[$set];
