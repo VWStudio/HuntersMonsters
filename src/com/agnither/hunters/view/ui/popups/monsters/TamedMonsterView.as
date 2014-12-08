@@ -99,7 +99,7 @@ public class TamedMonsterView extends AbstractView {
             coreDispatch(LocalPlayer.PET_SELECTED, pet);
             coreDispatch(UI.HIDE_POPUP, SelectMonsterPopup.NAME);
 
-            coreDispatch(BattleScreen.SUMMON_BUTTON_UPDATE);
+//            coreDispatch(BattleScreen.SUMMON_BUTTON_UPDATE);
 
         } else {
             coreExecute(ShowPopupCmd, TameMonsterPopup.NAME, _monsterID);

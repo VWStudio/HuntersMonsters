@@ -9,7 +9,7 @@ public class SpellDefenceExt extends Extension
 {
 
     public static const TYPE : String = "spell_defence";
-    private var _type : Number;
+    private var _type : String;
     private var _amount : Number;
 
     public function SpellDefenceExt($args : Array)
@@ -37,7 +37,7 @@ public class SpellDefenceExt extends Extension
         return [_type, _amount];
     }
 
-    public function getType() : Number
+    public function getType() : String
     {
         return _type;
     }

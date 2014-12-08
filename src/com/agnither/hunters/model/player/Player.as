@@ -159,13 +159,16 @@ public class Player extends EventDispatcher
         if (this == Model.instance.player)
         {
             dmg = dmg * Model.instance.progress.getSkillMultiplier("8");
-        } else {
-            if(Model.instance.spellsDefence.length > 0) 
+        }
+        else
+        {
+            if (Model.instance.spellsDefence.length > 0)
             {
                 for (var i : int = 0; i < Model.instance.spellsDefence.length; i++)
                 {
                     var sd : SpellDefenceExt = Model.instance.spellsDefence[i] as SpellDefenceExt;
-                    if(sd && sd.getType() == spell.type) {
+                    if (sd && sd.getType() == spell.type)
+                    {
                         dmg -= sd.getAmount();
                     }
                 }

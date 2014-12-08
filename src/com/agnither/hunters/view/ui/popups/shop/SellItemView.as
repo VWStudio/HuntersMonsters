@@ -8,7 +8,7 @@ import com.agnither.hunters.model.modules.extensions.DamageExt;
 import com.agnither.hunters.model.modules.extensions.DefenceExt;
 import com.agnither.hunters.model.modules.extensions.Extension;
 import com.agnither.hunters.model.player.inventory.Item;
-import com.agnither.hunters.view.ui.screens.battle.player.inventory.ItemView;
+import com.agnither.hunters.view.ui.common.items.ItemView;
 import com.agnither.ui.AbstractView;
 import com.agnither.ui.ButtonContainer;
 import com.cemaprjl.core.coreDispatch;
@@ -59,9 +59,10 @@ public class SellItemView extends AbstractView
         _buyButton.addEventListener(Event.TRIGGERED, onSell);
 
 
-        _itemView = ItemView.getItemView(_item);
+        _itemView = ItemView.create(_item);
         addChild(_itemView);
         _itemView.touchable = true;
+        _itemView.update();
 //        _itemView.noSelection();
 
         _itemView.addEventListener(TouchEvent.TOUCH, onTouch);

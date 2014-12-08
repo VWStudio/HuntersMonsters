@@ -5495,20 +5495,44 @@
     ]
   },
   "inventory_popup": {
-    "x": 147,
-    "y": 62,
+    "x": 17,
+    "y": 58,
     "structure": [
       [
         {
-          "x": 0,
-          "y": 0,
+          "x": 233,
+          "y": 3,
           "matrix": {
             "a": 7.0296478271484375,
             "b": 0,
             "c": 0,
             "d": 6,
-            "tx": 0,
-            "ty": 0
+            "tx": 232.95,
+            "ty": 3.15
+          },
+          "type": "movie clip",
+          "structure": [
+            [
+              {
+                "x": 0,
+                "y": 0,
+                "type": "bitmap",
+                "image": "common_back",
+                "name": "bitmap_common_back"
+              }
+            ]
+          ]
+        },
+        {
+          "x": 1,
+          "y": 2,
+          "matrix": {
+            "a": 2.188934326171875,
+            "b": 0,
+            "c": 0,
+            "d": 4.158416748046875,
+            "tx": 1.05,
+            "ty": 2.1
           },
           "type": "movie clip",
           "structure": [
@@ -5526,8 +5550,8 @@
       ],
       [
         {
-          "x": 20,
-          "y": 42,
+          "x": 6,
+          "y": 76,
           "type": "bitmap",
           "image": "inventory_player_set_bg",
           "name": "bitmap_inventory_player_set_bg"
@@ -5535,8 +5559,8 @@
       ],
       [
         {
-          "x": 20,
-          "y": 41,
+          "x": 6,
+          "y": 75,
           "type": "movie clip",
           "name": "slots",
           "structure": [
@@ -5577,6 +5601,37 @@
                       "fontColor": "0xFFFFFF",
                       "align": "center",
                       "name": "damage_tf"
+                    }
+                  ],
+                  [
+                    {
+                      "x": 3,
+                      "y": 0,
+                      "type": "text",
+                      "width": 200.7,
+                      "height": 21.05,
+                      "text": "меч",
+                      "fontName": "impact_21",
+                      "fontColor": "0xFFFFFF",
+                      "align": "center",
+                      "name": "name_tf"
+                    }
+                  ],
+                  [
+                    {
+                      "x": 0,
+                      "y": 0,
+                      "matrix": {
+                        "a": 4.7674560546875,
+                        "b": 0,
+                        "c": 0,
+                        "d": 1.3095703125,
+                        "tx": 0,
+                        "ty": 0
+                      },
+                      "type": "bitmap",
+                      "image": "common_disabled_tint",
+                      "name": "bitmap_common_disabled_tint"
                     }
                   ],
                   [
@@ -5639,6 +5694,37 @@
                   ],
                   [
                     {
+                      "x": 3,
+                      "y": 0,
+                      "type": "text",
+                      "width": 200.7,
+                      "height": 21.05,
+                      "text": "меч",
+                      "fontName": "impact_21",
+                      "fontColor": "0xFFFFFF",
+                      "align": "center",
+                      "name": "name_tf"
+                    }
+                  ],
+                  [
+                    {
+                      "x": 0,
+                      "y": 0,
+                      "matrix": {
+                        "a": 4.7674560546875,
+                        "b": 0,
+                        "c": 0,
+                        "d": 1.3095703125,
+                        "tx": 0,
+                        "ty": 0
+                      },
+                      "type": "bitmap",
+                      "image": "common_disabled_tint",
+                      "name": "bitmap_common_disabled_tint"
+                    }
+                  ],
+                  [
+                    {
                       "x": 134,
                       "y": 37,
                       "type": "bitmap",
@@ -5663,8 +5749,8 @@
       ],
       [
         {
-          "x": 250,
-          "y": 41,
+          "x": 249,
+          "y": 44,
           "type": "movie clip",
           "name": "items",
           "structure": [
@@ -5705,6 +5791,37 @@
                       "fontColor": "0xFFFFFF",
                       "align": "center",
                       "name": "damage_tf"
+                    }
+                  ],
+                  [
+                    {
+                      "x": 3,
+                      "y": 0,
+                      "type": "text",
+                      "width": 200.7,
+                      "height": 21.05,
+                      "text": "меч",
+                      "fontName": "impact_21",
+                      "fontColor": "0xFFFFFF",
+                      "align": "center",
+                      "name": "name_tf"
+                    }
+                  ],
+                  [
+                    {
+                      "x": 0,
+                      "y": 0,
+                      "matrix": {
+                        "a": 4.7674560546875,
+                        "b": 0,
+                        "c": 0,
+                        "d": 1.3095703125,
+                        "tx": 0,
+                        "ty": 0
+                      },
+                      "type": "bitmap",
+                      "image": "common_disabled_tint",
+                      "name": "bitmap_common_disabled_tint"
                     }
                   ],
                   [
@@ -5767,6 +5884,37 @@
                   ],
                   [
                     {
+                      "x": 3,
+                      "y": 0,
+                      "type": "text",
+                      "width": 200.7,
+                      "height": 21.05,
+                      "text": "меч",
+                      "fontName": "impact_21",
+                      "fontColor": "0xFFFFFF",
+                      "align": "center",
+                      "name": "name_tf"
+                    }
+                  ],
+                  [
+                    {
+                      "x": 0,
+                      "y": 0,
+                      "matrix": {
+                        "a": 4.7674560546875,
+                        "b": 0,
+                        "c": 0,
+                        "d": 1.3095703125,
+                        "tx": 0,
+                        "ty": 0
+                      },
+                      "type": "bitmap",
+                      "image": "common_disabled_tint",
+                      "name": "bitmap_common_disabled_tint"
+                    }
+                  ],
+                  [
+                    {
                       "x": 134,
                       "y": 37,
                       "type": "bitmap",
@@ -5825,6 +5973,37 @@
                   ],
                   [
                     {
+                      "x": 3,
+                      "y": 0,
+                      "type": "text",
+                      "width": 200.7,
+                      "height": 21.05,
+                      "text": "меч",
+                      "fontName": "impact_21",
+                      "fontColor": "0xFFFFFF",
+                      "align": "center",
+                      "name": "name_tf"
+                    }
+                  ],
+                  [
+                    {
+                      "x": 0,
+                      "y": 0,
+                      "matrix": {
+                        "a": 4.7674560546875,
+                        "b": 0,
+                        "c": 0,
+                        "d": 1.3095703125,
+                        "tx": 0,
+                        "ty": 0
+                      },
+                      "type": "bitmap",
+                      "image": "common_disabled_tint",
+                      "name": "bitmap_common_disabled_tint"
+                    }
+                  ],
+                  [
+                    {
                       "x": 134,
                       "y": 37,
                       "type": "bitmap",
@@ -5849,8 +6028,8 @@
       ],
       [
         {
-          "x": 38,
-          "y": -3,
+          "x": 357,
+          "y": 0,
           "type": "movie clip",
           "linkage": "common.TabView",
           "name": "tab1",
@@ -5923,12 +6102,24 @@
               }
             ]
           ]
+        },
+        {
+          "x": 0,
+          "y": 13,
+          "type": "text",
+          "width": 213,
+          "height": 40.25,
+          "text": "Инвентарь",
+          "fontName": "impact_21",
+          "fontColor": "0xFFFFFF",
+          "align": "center",
+          "name": "label_tf"
         }
       ],
       [
         {
-          "x": 189,
-          "y": -3,
+          "x": 508,
+          "y": 0,
           "type": "movie clip",
           "linkage": "common.TabView",
           "name": "tab2",
@@ -6005,8 +6196,8 @@
       ],
       [
         {
-          "x": 340,
-          "y": -3,
+          "x": 659,
+          "y": 0,
           "type": "movie clip",
           "linkage": "common.TabView",
           "name": "tab3",
@@ -6081,89 +6272,12 @@
           ]
         }
       ],
-      [
-        {
-          "x": 491,
-          "y": -3,
-          "type": "movie clip",
-          "linkage": "common.TabView",
-          "name": "tab4",
-          "structure": [
-            [
-              {
-                "x": 0,
-                "y": 0,
-                "matrix": {
-                  "a": 1.5,
-                  "b": 0,
-                  "c": 0,
-                  "d": 0.29998779296875,
-                  "tx": 0,
-                  "ty": 0
-                },
-                "type": "movie clip",
-                "structure": [
-                  [
-                    {
-                      "x": 0,
-                      "y": 0,
-                      "type": "bitmap",
-                      "image": "common_back",
-                      "name": "bitmap_common_back"
-                    }
-                  ]
-                ]
-              }
-            ],
-            [
-              {
-                "x": 0,
-                "y": 0,
-                "type": "movie clip",
-                "name": "select",
-                "structure": [
-                  [
-                    {
-                      "x": 0,
-                      "y": 0,
-                      "matrix": {
-                        "a": 0.738922119140625,
-                        "b": 0,
-                        "c": 0,
-                        "d": 0.5660400390625,
-                        "tx": 0,
-                        "ty": 0
-                      },
-                      "type": "bitmap",
-                      "image": "item_select",
-                      "name": "bitmap_item_select"
-                    }
-                  ]
-                ]
-              }
-            ],
-            [
-              {
-                "x": 0,
-                "y": 2,
-                "type": "text",
-                "width": 150,
-                "height": 23.55,
-                "text": "Вкладка",
-                "fontName": "impact_21",
-                "fontColor": "0xFFFFFF",
-                "align": "center",
-                "name": "label_tf"
-              }
-            ]
-          ]
-        }
-      ],
+      [],
       [],
       [
         {
-          "x": 676,
-          "y": -3,
+          "x": 909,
+          "y": 1,
           "type": "button",
           "name": "close_btn",
           "images": [
@@ -6175,8 +6289,8 @@
       ],
       [
         {
-          "x": 676,
-          "y": 43,
+          "x": 909,
+          "y": 46,
           "type": "movie clip",
           "name": "scroll",
           "structure": [
@@ -6859,6 +6973,37 @@
         ],
         [
           {
+            "x": 3,
+            "y": 0,
+            "type": "text",
+            "width": 200.7,
+            "height": 21.05,
+            "text": "меч",
+            "fontName": "impact_21",
+            "fontColor": "0xFFFFFF",
+            "align": "center",
+            "name": "name_tf"
+          }
+        ],
+        [
+          {
+            "x": 0,
+            "y": 0,
+            "matrix": {
+              "a": 4.7674560546875,
+              "b": 0,
+              "c": 0,
+              "d": 1.3095703125,
+              "tx": 0,
+              "ty": 0
+            },
+            "type": "bitmap",
+            "image": "common_disabled_tint",
+            "name": "bitmap_common_disabled_tint"
+          }
+        ],
+        [
+          {
             "x": 134,
             "y": 37,
             "type": "bitmap",
@@ -6924,6 +7069,37 @@
               ],
               [
                 {
+                  "x": 3,
+                  "y": 0,
+                  "type": "text",
+                  "width": 200.7,
+                  "height": 21.05,
+                  "text": "меч",
+                  "fontName": "impact_21",
+                  "fontColor": "0xFFFFFF",
+                  "align": "center",
+                  "name": "name_tf"
+                }
+              ],
+              [
+                {
+                  "x": 0,
+                  "y": 0,
+                  "matrix": {
+                    "a": 4.7674560546875,
+                    "b": 0,
+                    "c": 0,
+                    "d": 1.3095703125,
+                    "tx": 0,
+                    "ty": 0
+                  },
+                  "type": "bitmap",
+                  "image": "common_disabled_tint",
+                  "name": "bitmap_common_disabled_tint"
+                }
+              ],
+              [
+                {
                   "x": 134,
                   "y": 37,
                   "type": "bitmap",
@@ -6978,6 +7154,37 @@
                   "fontColor": "0xFFFFFF",
                   "align": "center",
                   "name": "damage_tf"
+                }
+              ],
+              [
+                {
+                  "x": 3,
+                  "y": 0,
+                  "type": "text",
+                  "width": 200.7,
+                  "height": 21.05,
+                  "text": "меч",
+                  "fontName": "impact_21",
+                  "fontColor": "0xFFFFFF",
+                  "align": "center",
+                  "name": "name_tf"
+                }
+              ],
+              [
+                {
+                  "x": 0,
+                  "y": 0,
+                  "matrix": {
+                    "a": 4.7674560546875,
+                    "b": 0,
+                    "c": 0,
+                    "d": 1.3095703125,
+                    "tx": 0,
+                    "ty": 0
+                  },
+                  "type": "bitmap",
+                  "image": "common_disabled_tint",
+                  "name": "bitmap_common_disabled_tint"
                 }
               ],
               [
@@ -7800,6 +8007,37 @@
                   "fontColor": "0xFFFFFF",
                   "align": "center",
                   "name": "damage_tf"
+                }
+              ],
+              [
+                {
+                  "x": 3,
+                  "y": 0,
+                  "type": "text",
+                  "width": 200.7,
+                  "height": 21.05,
+                  "text": "меч",
+                  "fontName": "impact_21",
+                  "fontColor": "0xFFFFFF",
+                  "align": "center",
+                  "name": "name_tf"
+                }
+              ],
+              [
+                {
+                  "x": 0,
+                  "y": 0,
+                  "matrix": {
+                    "a": 4.7674560546875,
+                    "b": 0,
+                    "c": 0,
+                    "d": 1.3095703125,
+                    "tx": 0,
+                    "ty": 0
+                  },
+                  "type": "bitmap",
+                  "image": "common_disabled_tint",
+                  "name": "bitmap_common_disabled_tint"
                 }
               ],
               [
@@ -8937,6 +9175,37 @@
                   ],
                   [
                     {
+                      "x": 3,
+                      "y": 0,
+                      "type": "text",
+                      "width": 200.7,
+                      "height": 21.05,
+                      "text": "меч",
+                      "fontName": "impact_21",
+                      "fontColor": "0xFFFFFF",
+                      "align": "center",
+                      "name": "name_tf"
+                    }
+                  ],
+                  [
+                    {
+                      "x": 0,
+                      "y": 0,
+                      "matrix": {
+                        "a": 4.7674560546875,
+                        "b": 0,
+                        "c": 0,
+                        "d": 1.3095703125,
+                        "tx": 0,
+                        "ty": 0
+                      },
+                      "type": "bitmap",
+                      "image": "common_disabled_tint",
+                      "name": "bitmap_common_disabled_tint"
+                    }
+                  ],
+                  [
+                    {
                       "x": 134,
                       "y": 37,
                       "type": "bitmap",
@@ -8991,6 +9260,37 @@
                       "fontColor": "0xFFFFFF",
                       "align": "center",
                       "name": "damage_tf"
+                    }
+                  ],
+                  [
+                    {
+                      "x": 3,
+                      "y": 0,
+                      "type": "text",
+                      "width": 200.7,
+                      "height": 21.05,
+                      "text": "меч",
+                      "fontName": "impact_21",
+                      "fontColor": "0xFFFFFF",
+                      "align": "center",
+                      "name": "name_tf"
+                    }
+                  ],
+                  [
+                    {
+                      "x": 0,
+                      "y": 0,
+                      "matrix": {
+                        "a": 4.7674560546875,
+                        "b": 0,
+                        "c": 0,
+                        "d": 1.3095703125,
+                        "tx": 0,
+                        "ty": 0
+                      },
+                      "type": "bitmap",
+                      "image": "common_disabled_tint",
+                      "name": "bitmap_common_disabled_tint"
                     }
                   ],
                   [
@@ -9065,6 +9365,37 @@
                   ],
                   [
                     {
+                      "x": 3,
+                      "y": 0,
+                      "type": "text",
+                      "width": 200.7,
+                      "height": 21.05,
+                      "text": "меч",
+                      "fontName": "impact_21",
+                      "fontColor": "0xFFFFFF",
+                      "align": "center",
+                      "name": "name_tf"
+                    }
+                  ],
+                  [
+                    {
+                      "x": 0,
+                      "y": 0,
+                      "matrix": {
+                        "a": 4.7674560546875,
+                        "b": 0,
+                        "c": 0,
+                        "d": 1.3095703125,
+                        "tx": 0,
+                        "ty": 0
+                      },
+                      "type": "bitmap",
+                      "image": "common_disabled_tint",
+                      "name": "bitmap_common_disabled_tint"
+                    }
+                  ],
+                  [
+                    {
                       "x": 134,
                       "y": 37,
                       "type": "bitmap",
@@ -9119,6 +9450,37 @@
                       "fontColor": "0xFFFFFF",
                       "align": "center",
                       "name": "damage_tf"
+                    }
+                  ],
+                  [
+                    {
+                      "x": 3,
+                      "y": 0,
+                      "type": "text",
+                      "width": 200.7,
+                      "height": 21.05,
+                      "text": "меч",
+                      "fontName": "impact_21",
+                      "fontColor": "0xFFFFFF",
+                      "align": "center",
+                      "name": "name_tf"
+                    }
+                  ],
+                  [
+                    {
+                      "x": 0,
+                      "y": 0,
+                      "matrix": {
+                        "a": 4.7674560546875,
+                        "b": 0,
+                        "c": 0,
+                        "d": 1.3095703125,
+                        "tx": 0,
+                        "ty": 0
+                      },
+                      "type": "bitmap",
+                      "image": "common_disabled_tint",
+                      "name": "bitmap_common_disabled_tint"
                     }
                   ],
                   [

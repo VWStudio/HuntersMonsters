@@ -1,11 +1,10 @@
 /**
  * Created by agnither on 11.06.14.
  */
-package com.agnither.hunters.data {
+package com.agnither.hunters.data
+{
 import com.agnither.hunters.data.outer.DropVO;
-import com.agnither.hunters.data.outer.ExtensionVO;
 import com.agnither.hunters.data.outer.ItemSlotVO;
-import com.agnither.hunters.data.outer.ItemTypeVO;
 import com.agnither.hunters.data.outer.LeagueVO;
 import com.agnither.hunters.data.outer.LevelVO;
 import com.agnither.hunters.data.outer.MagicTypeVO;
@@ -24,22 +23,21 @@ import flash.utils.Dictionary;
 
 import starling.utils.AssetManager;
 
-public class Config {
+public class Config
+{
 
     private static var config : Dictionary = new Dictionary();
     public static var list : Array = [];
 
-    public static function init() : void {
+    public static function init() : void
+    {
         addConfig("monster", MonsterVO);
         addConfig("levels", LevelVO);
         addConfig("settings", SettingsVO);
         addConfig("league", LeagueVO);
         addConfig("item", ItemVO);
-//        addConfig("item_type", ItemTypeVO);
         addConfig("item_slot", ItemSlotVO);
-        addConfig("extension", ExtensionVO);
         addConfig("drop", DropVO);
-//        addConfig("gold_drop", GoldDropVO);
         addConfig("magic_type", MagicTypeVO);
         addConfig("player_items", PlayerItemVO);
         addConfig("player_pets", PlayerPetVO);
@@ -50,12 +48,14 @@ public class Config {
         addConfig("pricelist", PriceItemVO);
     }
 
-    public static function addConfig(id : String, ClassRef : Class) : void {
+    public static function addConfig(id : String, ClassRef : Class) : void
+    {
         config[id] = ClassRef;
         list.push(id);
     }
 
-    public static function parse(assets : AssetManager) : void {
+    public static function parse(assets : AssetManager) : void
+    {
         for (var i : int = 0; i < list.length; i++)
         {
 

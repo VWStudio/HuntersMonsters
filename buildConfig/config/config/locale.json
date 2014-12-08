@@ -1,19 +1,23 @@
 [
     {
-        "id": "weapon_tab",
-        "russian": "Оружие"
-    },
-    {
-        "id": "armor_tab",
-        "russian": "Броня"
-    },
-    {
         "id": "items_tab",
         "russian": "Предметы"
     },
     {
         "id": "spells_tab",
         "russian": "Магия"
+    },
+    {
+        "id": "monster_tab",
+        "russian": "Питомцы"
+    },
+    {
+        "id": "weapon_tab",
+        "russian": "Оружие"
+    },
+    {
+        "id": "armor_tab",
+        "russian": "Броня"
     },
     {
         "id": "traps_tab",

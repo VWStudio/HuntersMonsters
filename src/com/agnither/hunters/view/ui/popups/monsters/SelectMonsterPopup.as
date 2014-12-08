@@ -40,7 +40,7 @@ public class SelectMonsterPopup extends Popup {
     private var _monstersContainer: Sprite;
 
     private var _tamedmonsters : TamedPetsView;
-    private var _traps : TrapsListView;
+//    private var _traps : TrapsListView;
     private var _scroll : Scroll;
     private var _scrollMonsters : Sprite;
     private var lineHeight : Number = 170;
@@ -56,12 +56,14 @@ public class SelectMonsterPopup extends Popup {
         _tab1.addEventListener(TabView.TAB_CLICK, handleSelectTab);
 
         _tab2 = _links.tab2;
-        _tab2.label = Locale.getString("untamed_tab");
-        _tab2.addEventListener(TabView.TAB_CLICK, handleSelectTab);
+        _tab2.visible = false;
+//        _tab2.label = Locale.getString("untamed_tab");
+//        _tab2.addEventListener(TabView.TAB_CLICK, handleSelectTab);
 
         _tab3 = _links.tab3;
-        _tab3.label = Locale.getString("traps_tab");
-        _tab3.addEventListener(TabView.TAB_CLICK, handleSelectTab);
+        _tab3.visible = false;
+//        _tab3.label = Locale.getString("traps_tab");
+//        _tab3.addEventListener(TabView.TAB_CLICK, handleSelectTab);
 
         _scrollMonsters = new Sprite();
         addChild(_scrollMonsters);
@@ -81,8 +83,8 @@ public class SelectMonsterPopup extends Popup {
         _tamedmonsters = new TamedPetsView();
         _monstersContainer.addChild(_tamedmonsters);
 
-        _traps = new TrapsListView();
-        _monstersContainer.addChild(_traps);
+//        _traps = new TrapsListView();
+//        _monstersContainer.addChild(_traps);
 
         _scroll = new Scroll(_links["scroll"]);
         _scroll.onChange = onScroll;
@@ -110,7 +112,7 @@ public class SelectMonsterPopup extends Popup {
 
         }
 
-        _traps.visible = false;
+//        _traps.visible = false;
         _monsters.visible = false;
         _tamedmonsters.visible = false;
         _monstersContainer.y = 0;
@@ -126,15 +128,15 @@ public class SelectMonsterPopup extends Popup {
                 _scroll.setScrollParams(_monsters.itemsAmount, 3);
                 break;
             case _tab3:
-                _traps.visible = true;
-                _traps.update();
-                _scroll.setScrollParams(_traps.itemsAmount, 3);
+//                _traps.visible = true;
+//                _traps.update();
+//                _scroll.setScrollParams(_traps.itemsAmount, 3);
                 break;
         }
 
         _tab1.setIsSelected(e.currentTarget as TabView);
-        _tab2.setIsSelected(e.currentTarget as TabView);
-        _tab3.setIsSelected(e.currentTarget as TabView);
+//        _tab2.setIsSelected(e.currentTarget as TabView);
+//        _tab3.setIsSelected(e.currentTarget as TabView);
 
     }
 }

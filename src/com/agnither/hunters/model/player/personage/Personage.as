@@ -5,6 +5,7 @@ package com.agnither.hunters.model.player.personage {
 import com.agnither.hunters.data.outer.MagicTypeVO;
 import com.agnither.hunters.data.outer.SkillVO;
 import com.agnither.hunters.model.Model;
+import com.agnither.hunters.model.modules.monsters.MonsterVO;
 import com.agnither.hunters.model.modules.players.PersonageVO;
 import com.agnither.hunters.data.outer.DamageTypeVO;
 
@@ -34,6 +35,13 @@ public class Personage extends EventDispatcher {
 
     private var _magic: int = 0;
     private var data : Object;
+
+    public function get monster():MonsterVO {
+        if(data is MonsterVO) return data as MonsterVO;
+
+        return null;
+    }
+
     public function get magic():MagicTypeVO {
         return MagicTypeVO.DICT[_magic];
     }
@@ -70,12 +78,14 @@ public class Personage extends EventDispatcher {
 
     }
 
-    public function hit(value: int, ignoreDefence: Boolean = false):void {
+    public function hit(value: int, ignoreDefence: Boolean = false):Number {
         if (!ignoreDefence) {
             value -= getDefence();
 //            value -= defence;
         }
         value = Math.max(0, value);
+
+
 
         hp -= value;
         hp = Math.max(0, hp);
@@ -86,6 +96,8 @@ public class Personage extends EventDispatcher {
         if (isDead) {
             dispatchEventWith(DEAD);
         }
+
+        return value / maxHP;
     }
 
     public function heal(value: int):void {

@@ -174,7 +174,8 @@ public class CampScreen extends Screen {
                     e.stopImmediatePropagation();
                     e.stopPropagation();
 //                    coreExecute(ShowPopupCmd, ShopPopup.NAME);
-                    coreExecute(ShowPopupCmd, TrainerPopup.NAME);
+                    coreExecute(ShowPopupCmd, SelectMonsterPopup.NAME);
+//                    coreExecute(ShowPopupCmd, TrainerPopup.NAME);
                     break;
             }
         } else {

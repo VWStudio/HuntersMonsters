@@ -3,13 +3,12 @@
  */
 package com.agnither.hunters.view.ui.popups.shop
 {
-import com.agnither.hunters.data.outer.ItemTypeVO;
 import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.modules.extensions.DamageExt;
 import com.agnither.hunters.model.modules.extensions.DefenceExt;
 import com.agnither.hunters.model.modules.extensions.Extension;
 import com.agnither.hunters.model.player.inventory.Item;
-import com.agnither.hunters.view.ui.screens.battle.player.inventory.ItemView;
+import com.agnither.hunters.view.ui.common.items.ItemView;
 import com.agnither.ui.AbstractView;
 import com.agnither.ui.ButtonContainer;
 import com.cemaprjl.core.coreDispatch;
@@ -49,10 +48,11 @@ public class BuyItemView extends AbstractView
         _buyButton.text = "Купить";
         _buyButton.addEventListener(Event.TRIGGERED, onBuy);
 
-        _itemView = ItemView.getItemView(_item);
+        _itemView = ItemView.create(_item);
         addChild(_itemView);
         _itemView.touchable = true;
         _itemView.noSelection();
+        _itemView.update();
 
         _itemView.addEventListener(TouchEvent.TOUCH, onTouch);
 
@@ -62,7 +62,7 @@ public class BuyItemView extends AbstractView
         {
 //            _links.damage_icon.getChildAt(0).texture = _refs.gui.getTexture("chip_sword");
 //            _damage.text = item.getDamage().toString();
-            _price = Model.instance.getPrice(item.getDamage(),DamageExt.TYPE);
+            _price = Model.instance.getPrice(item.getDamage(), DamageExt.TYPE);
         }
         else if (_item.getDefence())
         {
@@ -78,7 +78,6 @@ public class BuyItemView extends AbstractView
                 _price += Model.instance.getPrice(extItem.getBaseValue(), (extItem as Object).constructor["TYPE"]);
             }
         }
-
 
 
         var isPriceEnough : Boolean = Model.instance.progress.gold >= _price;
@@ -107,7 +106,7 @@ public class BuyItemView extends AbstractView
 
     private function onBuy(event : Event) : void
     {
-        if(Model.instance.progress.gold <= _price || _price <= 0)
+        if (Model.instance.progress.gold <= _price || _price <= 0)
         {
             return;
         }

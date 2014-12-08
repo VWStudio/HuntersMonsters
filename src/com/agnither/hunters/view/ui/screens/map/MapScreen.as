@@ -65,13 +65,13 @@ public class MapScreen extends Screen {
     private var _monstersContainer : Sprite;
 //    private var _playerPositionsArr : Vector.<Point>;
     private var _playerPosition : PlayerPoint;
-    public static const START_TRAP : String = "MapScreen.START_TRAP";
-    public static const STOP_TRAP : String = "MapScreen.STOP_TRAP";
-    public static const ADD_TRAP : String = "MapScreen.ADD_TRAP";
-    public static const DELETE_TRAP : String = "MapScreen.DELETE_TRAP";
+//    public static const START_TRAP : String = "MapScreen.START_TRAP";
+//    public static const STOP_TRAP : String = "MapScreen.STOP_TRAP";
+//    public static const ADD_TRAP : String = "MapScreen.ADD_TRAP";
+//    public static const DELETE_TRAP : String = "MapScreen.DELETE_TRAP";
     public static const ADD_POINT : String = "MapScreen.ADD_POINT";
     public static const DELETE_POINT : String = "MapScreen.DELETE_POINT";
-    private var _trapsContainer : Sprite;
+//    private var _trapsContainer : Sprite;
     public static const ADD_CHEST : String = "MapScreen.ADD_CHEST";
     public static const REMOVE_CHEST : String = "MapScreen.REMOVE_CHEST";
     private var _chestsContainer : Sprite;
@@ -98,8 +98,8 @@ public class MapScreen extends Screen {
         coreAddListener(Progress.UPDATED, update);
         coreAddListener(ADD_POINT, onPointAdd);
         coreAddListener(DELETE_POINT, onPointDelete);
-        coreAddListener(ADD_TRAP, onTrapAdd);
-        coreAddListener(DELETE_TRAP, onTrapDelete);
+//        coreAddListener(ADD_TRAP, onTrapAdd);
+//        coreAddListener(DELETE_TRAP, onTrapDelete);
         coreAddListener(ADD_CHEST, onChestAdd);
         coreAddListener(REMOVE_CHEST, onChestRemove);
         //coreDispatch(Territory.MOVE_CAMP, event.currentTarget as DisplayObject);
@@ -164,13 +164,14 @@ public class MapScreen extends Screen {
         _monstersContainer.name = "monsters_container"; // hack
         _container.addChildAt(_monstersContainer, _container.getChildIndex(_camp) + 1);
 
-        _trapsContainer = new Sprite();
-        _trapsContainer.name = "traps_container"; // hack
-        _container.addChildAt(_trapsContainer, _container.getChildIndex(_monstersContainer) + 1);
+//        _trapsContainer = new Sprite();
+//        _trapsContainer.name = "traps_container"; // hack
+//        _container.addChildAt(_trapsContainer, _container.getChildIndex(_monstersContainer) + 1);
 
         _chestsContainer = new Sprite();
         _chestsContainer.name = "chests_container"; // hack
-        _container.addChildAt(_chestsContainer, _container.getChildIndex(_trapsContainer) + 1);
+        _container.addChildAt(_chestsContainer, _container.getChildIndex(_monstersContainer) + 1);
+//        _container.addChildAt(_chestsContainer, _container.getChildIndex(_trapsContainer) + 1);
 
         _container.x = (stage.stageWidth - _back.width) * 0.5;
         _container.y = (stage.stageHeight - _back.height) * 0.5;
@@ -270,34 +271,34 @@ public class MapScreen extends Screen {
 
     }
 
-    private function onTrapDelete($trap : TrapPoint) : void {
-
-        return;
-
-        if(_trapsContainer.contains($trap)) {
-            _trapsContainer.removeChild($trap);
-        }
-        delete  Model.instance.territoryTraps[$trap.monsterType.id];
-        $trap.destroy();
-
-    }
-
-    private function onTrapAdd($data : Object) : void {
-
-        return;
-
-        var trapPoint : TrapPoint = new TrapPoint();
-        _trapsContainer.addChild(trapPoint);
-        trapPoint.data = $data;
-        trapPoint.update();
-
-        var position : Point = $data.position;
-
-        trapPoint.x = position.x;
-        trapPoint.y = position.y;
-
-        Model.instance.territoryTraps[$data.id] = trapPoint;
-    }
+//    private function onTrapDelete($trap : TrapPoint) : void {
+//
+//        return;
+//
+//        if(_trapsContainer.contains($trap)) {
+//            _trapsContainer.removeChild($trap);
+//        }
+//        delete  Model.instance.territoryTraps[$trap.monsterType.id];
+//        $trap.destroy();
+//
+//    }
+//
+//    private function onTrapAdd($data : Object) : void {
+//
+//        return;
+//
+//        var trapPoint : TrapPoint = new TrapPoint();
+//        _trapsContainer.addChild(trapPoint);
+//        trapPoint.data = $data;
+//        trapPoint.update();
+//
+//        var position : Point = $data.position;
+//
+//        trapPoint.x = position.x;
+//        trapPoint.y = position.y;
+//
+//        Model.instance.territoryTraps[$data.id] = trapPoint;
+//    }
 
 
 
@@ -380,18 +381,18 @@ public class MapScreen extends Screen {
                         {
                             var key : String = Model.instance.progress.unlockedLocations[i];
                             var rect : Rectangle = Model.instance.territories[key];
-                            if(rect.containsPoint(pt) && Model.instance.territoryTraps[key] == null) {
-                                trapAllowed = true;
-                                break;
-                            }
+//                            if(rect.containsPoint(pt) && Model.instance.territoryTraps[key] == null) {
+//                                trapAllowed = true;
+//                                break;
+//                            }
                         }
-                        if(trapAllowed) {
-                            coreExecute(ShowPopupCmd, TrapSetPopup.NAME, {id : key, position : pt, mode:TrapSetPopup.SET_MODE});
-                            coreDispatch(MapScreen.STOP_TRAP);
-                            return;
-                        } else {
-                            coreDispatch(MapScreen.STOP_TRAP);
-                        }
+//                        if(trapAllowed) {
+//                            coreExecute(ShowPopupCmd, TrapSetPopup.NAME, {id : key, position : pt, mode:TrapSetPopup.SET_MODE});
+//                            coreDispatch(MapScreen.STOP_TRAP);
+//                            return;
+//                        } else {
+//                            coreDispatch(MapScreen.STOP_TRAP);
+//                        }
                     }
                     _allowMove = true;
                     break;

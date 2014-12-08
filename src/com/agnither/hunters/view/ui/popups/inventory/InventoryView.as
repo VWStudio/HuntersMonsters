@@ -5,6 +5,7 @@ package com.agnither.hunters.view.ui.popups.inventory {
 import com.agnither.hunters.App;
 import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.player.LocalPlayer;
+import com.agnither.hunters.view.ui.common.items.ItemView;
 import com.agnither.hunters.view.ui.screens.battle.player.inventory.*;
 import com.agnither.hunters.model.player.inventory.Inventory;
 import com.agnither.hunters.model.player.inventory.Item;
@@ -50,7 +51,6 @@ public class InventoryView extends AbstractView {
         while (numChildren > 0) {
             var itemView: ItemView = removeChildAt(0) as ItemView;
             if (itemView) {
-                itemView.update();
                 itemView.removeEventListener(TouchEvent.TOUCH, handleTouch);
                 itemView.destroy();
             }
@@ -59,10 +59,11 @@ public class InventoryView extends AbstractView {
         var l: int = _inventory.inventoryItems.length;
         for (var i:int = 0; i < l; i++) {
             var item: Item = _inventory.getItem(_inventory.inventoryItems[i]);
-            itemView = ItemView.getItemView(item);
+            itemView = ItemView.create(item);
             itemView.addEventListener(TouchEvent.TOUCH, handleTouch);
             addChild(itemView);
             itemView.y = i * tileHeight;
+            itemView.update();
 //            itemView.noSelection();
         }
     }

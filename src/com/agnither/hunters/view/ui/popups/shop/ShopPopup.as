@@ -4,7 +4,6 @@
 package com.agnither.hunters.view.ui.popups.shop
 {
 import com.agnither.hunters.App;
-import com.agnither.hunters.data.outer.ItemTypeVO;
 import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.Shop;
 import com.agnither.hunters.model.modules.extensions.DamageExt;
@@ -19,8 +18,6 @@ import com.agnither.hunters.view.ui.common.Scroll;
 import com.agnither.hunters.view.ui.common.TabView;
 import com.agnither.hunters.view.ui.common.Tooltip;
 import com.agnither.hunters.view.ui.popups.inventory.InventoryView;
-import com.agnither.hunters.view.ui.popups.inventory.ItemsListView;
-import com.agnither.hunters.view.ui.screens.battle.player.inventory.ItemView;
 import com.agnither.ui.AbstractView;
 import com.agnither.ui.Popup;
 import com.cemaprjl.core.coreAddListener;
@@ -29,7 +26,6 @@ import com.cemaprjl.utils.Formatter;
 import flash.geom.Rectangle;
 
 import starling.core.Starling;
-
 import starling.display.Sprite;
 import starling.events.Event;
 import starling.text.TextField;
@@ -139,7 +135,7 @@ public class ShopPopup extends Popup
 
         _scroll = new Scroll(_links["scroll"]);
         _scroll.onChange = onScroll;
-        _scrollMask.clipRect = new Rectangle(0,0,440,500);
+        _scrollMask.clipRect = new Rectangle(0, 0, 440, 500);
 
         _tooltipItem = new Tooltip();
         _tooltip.addChild(_tooltipItem);
@@ -155,13 +151,19 @@ public class ShopPopup extends Popup
 
     private function onNewDeliver() : void
     {
-        if(!isActive) return;
+        if (!isActive)
+        {
+            return;
+        }
         update();
     }
 
     private function onDeliverTime() : void
     {
-        if(!isActive) return;
+        if (!isActive)
+        {
+            return;
+        }
         _deliverTime.text = Formatter.msToHHMMSS(Model.instance.deliverTime);
     }
 
@@ -169,7 +171,7 @@ public class ShopPopup extends Popup
     {
 
         var newy : Number = -60 * $val;
-        Starling.juggler.tween(_container, 0.4, {y : newy});
+        Starling.juggler.tween(_container, 0.4, {y: newy});
     }
 
     private function showTooltip($item : AbstractView) : void
@@ -192,10 +194,11 @@ public class ShopPopup extends Popup
         var exts : Object = $item["item"].getExtObj();
         for (var key : String in exts)
         {
-            if(key == DamageExt.TYPE || key == DefenceExt.TYPE || key == ManaExt.TYPE) {
+            if (key == DamageExt.TYPE || key == DefenceExt.TYPE || key == ManaExt.TYPE)
+            {
                 continue;
             }
-            if(str.length > 0)
+            if (str.length > 0)
             {
                 str += "\n";
             }
@@ -203,7 +206,8 @@ public class ShopPopup extends Popup
 //                str += Locale.getString(key);
         }
         _tooltipItem.visible = str.length > 0;
-        if(str.length > 0) {
+        if (str.length > 0)
+        {
             _tooltipItem.text = str;
         }
 

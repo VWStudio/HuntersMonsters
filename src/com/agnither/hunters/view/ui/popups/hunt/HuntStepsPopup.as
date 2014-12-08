@@ -12,7 +12,7 @@ import com.agnither.hunters.model.player.drop.ItemDrop;
 import com.agnither.hunters.view.ui.UI;
 import com.agnither.hunters.view.ui.common.MonsterInfo;
 import com.agnither.hunters.view.ui.screens.battle.player.DropSlotView;
-import com.agnither.hunters.view.ui.screens.battle.player.inventory.ItemView;
+import com.agnither.hunters.view.ui.common.items.ItemView;
 import com.agnither.hunters.view.ui.screens.map.*;
 import com.agnither.ui.ButtonContainer;
 import com.agnither.ui.Popup;
@@ -108,8 +108,10 @@ public class HuntStepsPopup extends Popup
 
         if ($data.content is ItemDrop)
         {
-            _tooltip.addChild(ItemView.getItemView(($data.content as ItemDrop).item));
+            var itemView : ItemView =ItemView.create(($data.content as ItemDrop).item)
+            _tooltip.addChild(itemView);
             _tooltip.visible = true;
+            itemView.update();
         }
         _tooltip.visible = true;
         var rect : Rectangle = ($data.item as Sprite).getBounds(this);

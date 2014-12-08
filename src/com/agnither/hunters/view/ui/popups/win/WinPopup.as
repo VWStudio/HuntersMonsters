@@ -9,7 +9,7 @@ import com.agnither.hunters.model.player.drop.DropSlot;
 import com.agnither.hunters.view.ui.UI;
 import com.agnither.hunters.view.ui.common.MonsterInfo;
 import com.agnither.hunters.view.ui.screens.battle.player.DropSlotView;
-import com.agnither.hunters.view.ui.screens.battle.player.inventory.ItemView;
+import com.agnither.hunters.view.ui.common.items.ItemView;
 import com.agnither.hunters.view.ui.screens.map.*;
 import com.agnither.ui.ButtonContainer;
 import com.agnither.ui.Popup;
@@ -128,12 +128,14 @@ public class WinPopup extends Popup
     private function onShowTooltip($data : Object) : void
     {
 
-        _tooltip.addChild(ItemView.getItemView($data.content));
+        var itemView : ItemView = ItemView.create($data.content);
+        _tooltip.addChild(itemView);
         _tooltip.visible = true;
         _tooltip.visible = true;
         var rect : Rectangle = ($data.item as Sprite).getBounds(this);
         _tooltip.x = rect.x + rect.width + 5;
         _tooltip.y = rect.y + rect.height + 5;
+        itemView.update();
     }
 
     override public function update() : void

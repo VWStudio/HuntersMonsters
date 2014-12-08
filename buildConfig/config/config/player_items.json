@@ -29,6 +29,10 @@
         "id": 21
     },
     {
+        "id": 23,
+        "ext": "monster:[\"pikachu\"]"
+    },
+    {
         "id": 22,
         "wield": 1
     }

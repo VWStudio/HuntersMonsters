@@ -1,75 +1,76 @@
 /**
  * Created by agnither on 21.08.14.
  */
-package com.agnither.hunters.view.ui.popups.inventory {
-import com.agnither.hunters.App;
-import com.agnither.hunters.data.outer.ItemTypeVO;
+package com.agnither.hunters.view.ui.popups.inventory
+{
 import com.agnither.hunters.model.modules.extensions.DamageExt;
 import com.agnither.hunters.model.modules.extensions.DefenceExt;
 import com.agnither.hunters.model.modules.extensions.ManaExt;
 import com.agnither.hunters.model.modules.items.ItemVO;
 import com.agnither.hunters.model.modules.locale.Locale;
-import com.agnither.hunters.model.player.Player;
 import com.agnither.hunters.view.ui.UI;
 import com.agnither.hunters.view.ui.common.Scroll;
-import com.agnither.hunters.view.ui.common.Tooltip;
-import com.agnither.hunters.view.ui.popups.inventory.InventoryView;
-import com.agnither.hunters.view.ui.popups.inventory.ItemsListView;
 import com.agnither.hunters.view.ui.common.TabView;
-import com.agnither.hunters.view.ui.screens.battle.player.inventory.ItemView;
+import com.agnither.hunters.view.ui.common.Tooltip;
+import com.agnither.hunters.view.ui.common.items.ItemView;
 import com.agnither.ui.Popup;
-import com.agnither.utils.CommonRefs;
 import com.cemaprjl.core.coreAddListener;
 import com.cemaprjl.core.coreDispatch;
 
 import flash.geom.Rectangle;
 
 import starling.core.Starling;
-
 import starling.display.Button;
 import starling.display.Sprite;
 import starling.events.Event;
+import starling.text.TextField;
 
-public class InventoryPopup extends Popup {
+public class InventoryPopup extends Popup
+{
 
-    public static const NAME: String = "InventoryPopup";
+    public static const NAME : String = "InventoryPopup";
 
-    private var _weaponTab: TabView;
-    private var _armorTab: TabView;
-    private var _itemTab: TabView;
-    private var _spellTab: TabView;
+    private var _itemsTab : TabView;
+//    private var _armorTab : TabView;
+    private var _spellTab : TabView;
+    private var _petsTab : TabView;
 //    private var _trapsTab: TabView;
 
-    private var _inventoryView: InventoryView;
+    private var _inventoryView : InventoryView;
 
-    private var _items: ItemsListView;
-    private var _itemsContainer: Sprite;
+    private var _items : ItemsListView;
+    private var _itemsContainer : Sprite;
 
-    private var _closeBtn: Button;
+    private var _closeBtn : Button;
     private var _scroll : Scroll;
     private var _tooltip : Tooltip;
+    private var _invTitle : TextField;
 
-    public function InventoryPopup() {
+    public function InventoryPopup()
+    {
     }
 
-    override protected function initialize():void {
+    override protected function initialize() : void
+    {
         createFromConfig(_refs.guiConfig.inventory_popup);
 
-        _weaponTab = _links.tab1;
-        _weaponTab.label = Locale.getString("weapon_tab");
-        _weaponTab.addEventListener(TabView.TAB_CLICK, handleSelectTab);
+        _invTitle = _links["label_tf"];
 
-        _armorTab = _links.tab2;
-        _armorTab.label = Locale.getString("armor_tab");
-        _armorTab.addEventListener(TabView.TAB_CLICK, handleSelectTab);
+        _itemsTab = _links.tab1;
+        _itemsTab.label = Locale.getString("items_tab");
+        _itemsTab.addEventListener(TabView.TAB_CLICK, handleSelectTab);
 
-        _itemTab = _links.tab3;
-        _itemTab.label = Locale.getString("items_tab");
-        _itemTab.addEventListener(TabView.TAB_CLICK, handleSelectTab);
-
-        _spellTab = _links.tab4;
+        _spellTab = _links.tab2;
         _spellTab.label = Locale.getString("spells_tab");
         _spellTab.addEventListener(TabView.TAB_CLICK, handleSelectTab);
+
+        _petsTab = _links.tab3;
+        _petsTab.label = Locale.getString("monster_tab");
+        _petsTab.addEventListener(TabView.TAB_CLICK, handleSelectTab);
+
+//        _spellTab = _links.tab4;
+//        _spellTab.label = Locale.getString("spells_tab");
+//        _spellTab.addEventListener(TabView.TAB_CLICK, handleSelectTab);
 
 //        _trapsTab = _links.tab5;
 //        removeChild(_trapsTab);
@@ -101,8 +102,7 @@ public class InventoryPopup extends Popup {
 
         _scroll = new Scroll(_links["scroll"]);
         _scroll.onChange = onScroll;
-        _itemsContainer.clipRect = new Rectangle(0,0,600,500);
-
+        _itemsContainer.clipRect = new Rectangle(0, 0, 600, 500);
 
 
         _tooltip = new Tooltip();
@@ -121,19 +121,24 @@ public class InventoryPopup extends Popup {
 
     private function onItemHover($item : ItemView) : void
     {
-        if(!isActive) return;
-        if($item) {
+        if (!isActive)
+        {
+            return;
+        }
+        if ($item)
+        {
             var rect : Rectangle = $item.getBounds(this);
-            _tooltip.x = rect.right;
+            _tooltip.x = rect.left;
             _tooltip.y = rect.bottom;
             var str : String = "";
             var exts : Object = $item.item.getExtObj();
             for (var key : String in exts)
             {
-                if(key == DamageExt.TYPE || key == DefenceExt.TYPE || key == ManaExt.TYPE) {
+                if (key == DamageExt.TYPE || key == DefenceExt.TYPE || key == ManaExt.TYPE)
+                {
                     continue;
                 }
-                if(str.length > 0)
+                if (str.length > 0)
                 {
                     str += "\n";
                 }
@@ -150,12 +155,13 @@ public class InventoryPopup extends Popup {
     {
 
         var newy : Number = -60 * $val;
-        Starling.juggler.tween(_items, 0.4, {y : newy});
+        Starling.juggler.tween(_items, 0.4, {y: newy});
     }
 
 
-    override public function update() : void {
-        _weaponTab.dispatchEventWith(TabView.TAB_CLICK);
+    override public function update() : void
+    {
+        _itemsTab.dispatchEventWith(TabView.TAB_CLICK);
 //        handleSelectTab();
 //        _items.showType(ItemTypeVO.weapon);
     }
@@ -165,46 +171,52 @@ public class InventoryPopup extends Popup {
 //
 //    }
 
-    private function handleSelectTab(e: Event):void {
+    private function handleSelectTab(e : Event) : void
+    {
         _items.y = 0;
-        switch (e.currentTarget) {
-            case _weaponTab:
-                _items.showType(ItemVO.TYPE_WEAPON);
+        switch (e.currentTarget)
+        {
+            case _itemsTab:
+                _items.showThings();
+//                _items.showType(ItemVO.TYPE_WEAPON);
 //                _items.showType(ItemTypeVO.weapon);
 
                 _scroll.setScrollParams(_items.itemsAmount, 8);
 
                 break;
-            case _armorTab:
-                _items.showType(ItemVO.TYPE_ARMOR);
+            case _spellTab:
+//            case _armorTab:
+                _items.showSpells();
+//                _items.showType(ItemVO.TYPE_ARMOR);
 //                _items.showType(ItemTypeVO.armor);
                 _scroll.setScrollParams(_items.itemsAmount, 8);
                 break;
-            case _itemTab:
-                _items.showType(ItemVO.TYPE_MAGIC);
+            case _petsTab:
+                _items.showPets();
+//                _items.showType(ItemVO.TYPE_MAGIC);
 //                _items.showType(ItemTypeVO.magic);
                 _scroll.setScrollParams(_items.itemsAmount, 8);
                 break;
-            case _spellTab:
-                _items.showType(ItemVO.TYPE_SPELL);
-//                _items.showType(ItemTypeVO.spell);
-                _scroll.setScrollParams(_items.itemsAmount, 8);
+//                _items.showType(ItemVO.TYPE_SPELL);
+////                _items.showType(ItemTypeVO.spell);
+//                _scroll.setScrollParams(_items.itemsAmount, 8);
 
-                break;
-//            case _spellTab:
-//                _trapsTab
-                break;
+//                break;
+////            case _spellTab:
+////                _trapsTab
+//                break;
         }
-        _weaponTab.setIsSelected(e.currentTarget as TabView);
-        _armorTab.setIsSelected(e.currentTarget as TabView);
-        _itemTab.setIsSelected(e.currentTarget as TabView);
+        _itemsTab.setIsSelected(e.currentTarget as TabView);
+//        _armorTab.setIsSelected(e.currentTarget as TabView);
+        _petsTab.setIsSelected(e.currentTarget as TabView);
         _spellTab.setIsSelected(e.currentTarget as TabView);
 //        _trapsTab.setIsSelected(e.currentTarget as TabView);
 
 
     }
 
-    override protected function handleClose(e: Event):void {
+    override protected function handleClose(e : Event) : void
+    {
         coreDispatch(UI.HIDE_POPUP, NAME);
     }
 }

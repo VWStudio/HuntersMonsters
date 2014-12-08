@@ -80,7 +80,7 @@ public class TrapSetPopup extends Popup {
 
     override public function update() : void {
 
-        _trap = Model.instance.currentTrap;
+//        _trap = Model.instance.currentTrap;
 
 
         _currentTerritory = MonsterAreaVO.DICT[data["id"]];
@@ -174,16 +174,16 @@ public class TrapSetPopup extends Popup {
                         pet.uniqueId = petData.uniqueId;
 
                         Model.instance.player.pets.addPet(pet);
-                        coreDispatch(MapScreen.DELETE_TRAP, data.marker);
+//                        coreDispatch(MapScreen.DELETE_TRAP, data.marker);
                     } else {
-                        coreDispatch(MapScreen.DELETE_TRAP, data.marker);
+//                        coreDispatch(MapScreen.DELETE_TRAP, data.marker);
                     }
                     coreDispatch(UI.HIDE_POPUP, NAME);
                     return;
                 }
                 break;
         }
-        coreDispatch(MapScreen.ADD_TRAP, data);
+//        coreDispatch(MapScreen.ADD_TRAP, data);
         coreDispatch(UI.HIDE_POPUP, NAME);
     }
 

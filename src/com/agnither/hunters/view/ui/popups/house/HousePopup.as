@@ -13,8 +13,8 @@ import com.agnither.hunters.view.ui.popups.hunt.*;
 import com.agnither.hunters.model.modules.monsters.MonsterVO;
 import com.agnither.hunters.view.ui.UI;
 import com.agnither.hunters.view.ui.common.MonsterInfo;
-import com.agnither.hunters.view.ui.screens.battle.player.inventory.ItemView;
-import com.agnither.hunters.view.ui.screens.battle.player.inventory.ItemView;
+import com.agnither.hunters.view.ui.common.items.ItemView;
+import com.agnither.hunters.view.ui.common.items.ItemView;
 import com.agnither.hunters.view.ui.screens.map.*;
 import com.agnither.hunters.App;
 import com.agnither.hunters.model.match3.Match3Game;
@@ -150,15 +150,17 @@ public class HousePopup extends Popup {
             for (var i : int = 0; i < territory.houseUnlockItems.length; i++)
             {
                     var item : ItemVO = territory.houseUnlockItems[i];
-                    var iview : ItemView = ItemView.getItemView(Item.create(item));
+                    var iview : ItemView = ItemView.create(Item.create(item));
                     _itemsContainer.addChild(iview);
                     iview.y = i * 70;
+                    iview.update();
             }
         }
 
         _randomContainer.removeChildren();
 
-        _item = ItemView.getItemView(territory.nextRandomHouseItem);
+        _item = ItemView.create(territory.nextRandomHouseItem);
+        _item.update();
         _randomContainer.addChild(_item);
         if(territory.isHouseOwner) {
             _getPrizeButton.text = "Взять";

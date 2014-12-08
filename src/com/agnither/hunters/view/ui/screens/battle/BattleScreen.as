@@ -23,7 +23,7 @@ import com.agnither.hunters.view.ui.screens.battle.player.DropSlotView;
 import com.agnither.hunters.view.ui.screens.battle.player.ManaListView;
 import com.agnither.hunters.view.ui.screens.battle.player.PersonageView;
 import com.agnither.hunters.view.ui.screens.battle.player.inventory.BattleInventoryView;
-import com.agnither.hunters.view.ui.screens.battle.player.inventory.ItemView;
+import com.agnither.hunters.view.ui.common.items.ItemView;
 import com.agnither.hunters.view.ui.screens.map.MapScreen;
 import com.agnither.ui.Screen;
 import com.cemaprjl.core.coreAddListener;
@@ -73,7 +73,7 @@ public class BattleScreen extends Screen
     private var _effects : Sprite;
     public static const PLAY_MANA_FLY : String = "BattleScreen.PLAY_MANA_FLY";
     private var _timeout : uint;
-    public static const SUMMON_BUTTON_UPDATE : String = "BattleScreen.SUMMON_BUTTON_UPDATE";
+//    public static const SUMMON_BUTTON_UPDATE : String = "BattleScreen.SUMMON_BUTTON_UPDATE";
 
 
 
@@ -88,20 +88,20 @@ public class BattleScreen extends Screen
 
         coreRemoveListener(DropSlotView.SHOW_TOOLTIP, onShowTooltip);
         coreRemoveListener(DropSlotView.HIDE_TOOLTIP, onHideTooltip);
-        coreRemoveListener(BattleScreen.SUMMON_BUTTON_UPDATE, onSummonButtonUpdate);
+//        coreRemoveListener(BattleScreen.SUMMON_BUTTON_UPDATE, onSummonButtonUpdate);
 
     }
 
-    private function onSummonButtonUpdate() : void
-    {
-        var isSummonedOnce : Boolean = Model.instance.summonTimes > 0;
-        var isSummonedTwice : Boolean = Model.instance.summonTimes > 1;
-        var allowSecondSummon : Boolean = isSummonedOnce && !isSummonedTwice && Model.instance.progress.getSkillValue("14") > 0;
-        var isPetSummoned : Boolean = !Model.instance.player.pet.isDead;
-
-        //coreDispatch(BattleScreen.SUMMON_BUTTON_UPDATE);
-        _summonPetBtn.visible = !isPetSummoned && (!isSummonedOnce || (!isSummonedTwice && allowSecondSummon));
-    }
+//    private function onSummonButtonUpdate() : void
+//    {
+//        var isSummonedOnce : Boolean = Model.instance.summonTimes > 0;
+//        var isSummonedTwice : Boolean = Model.instance.summonTimes > 1;
+//        var allowSecondSummon : Boolean = isSummonedOnce && !isSummonedTwice && Model.instance.progress.getSkillValue("14") > 0;
+//        var isPetSummoned : Boolean = !Model.instance.player.pet.isDead;
+//
+//        //coreDispatch(BattleScreen.SUMMON_BUTTON_UPDATE);
+//        _summonPetBtn.visible = !isPetSummoned && (!isSummonedOnce || (!isSummonedTwice && allowSecondSummon));
+//    }
 
     override protected function initialize() : void
     {
@@ -125,7 +125,8 @@ public class BattleScreen extends Screen
         _enemyPet = _links.petEnemy;
 
         _summonPetBtn = _links.pet_btn;
-        _summonPetBtn.addEventListener(Event.TRIGGERED, handleClick);
+        _summonPetBtn.visible = false;
+//        _summonPetBtn.addEventListener(Event.TRIGGERED, handleClick);
 
         _playerMana = _links.manaPlayer;
         _enemyMana = _links.manaEnemy;
@@ -213,14 +214,14 @@ public class BattleScreen extends Screen
         coreAddListener(BattleScreen.PLAY_MANA_FLY, onManaFly);
         coreAddListener(DropSlotView.SHOW_TOOLTIP, onShowTooltip);
         coreAddListener(DropSlotView.HIDE_TOOLTIP, onHideTooltip);
-        coreAddListener(BattleScreen.SUMMON_BUTTON_UPDATE, onSummonButtonUpdate);
+//        coreAddListener(BattleScreen.SUMMON_BUTTON_UPDATE, onSummonButtonUpdate);
 
         /**
          * call nextMove after all view init add first time mana from magic item it exists
          */
         _game.nextMove(_game.player);
 
-        onSummonButtonUpdate();
+//        onSummonButtonUpdate();
     }
 
     private function handlePetDead(event : Personage) : void
@@ -290,8 +291,11 @@ public class BattleScreen extends Screen
         }
         else
         {
-            _tooltip.addChild(ItemView.getItemView(item));
+            var itm : ItemView = ItemView.create(item);
+            _tooltip.addChild(itm);
             _tooltip.visible = true;
+            itm.update();
+
         }
         _tooltip.visible = true;
         var rect : Rectangle = ($data.item as Sprite).getBounds(this);

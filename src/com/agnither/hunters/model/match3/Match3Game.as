@@ -182,20 +182,29 @@ public class Match3Game extends EventDispatcher
         var attacker : Personage;
 
         var match : Match = e.data as Match;
+        var dmg : Number = 0;
+        var hitPercent : Number = 0;
+
+
         switch (match.type)
         {
             case MagicTypeVO.CHEST:
                 if (currentPlayer is LocalPlayer && !ignoreGraphic)
                 {
+
+                    var aim : Personage = currentEnemy.hero;
+                    dmg = aim.maxHP * (match.amount * 2) / 100;
+                    match.showDamage(dmg / match.amount);
+                    hitPercent = aim.hit(dmg);
 //                    var drop : Item = _drop.drop();
-                    coreDispatch(BattleScreen.PLAY_CHEST_FLY, {position: match.cells[1].position, drop: _drop.drop()});
-                    if(Model.instance.doubleDrop)
-                    {
-                        if (Model.instance.doubleDrop.isLucky())
-                        {
-                            coreDispatch(BattleScreen.PLAY_CHEST_FLY, {position: match.cells[1].position, drop: _drop.drop()});
-                        }
-                    }
+//                    coreDispatch(BattleScreen.PLAY_CHEST_FLY, {position: match.cells[1].position, drop: _drop.drop()});
+//                    if(Model.instance.doubleDrop)
+//                    {
+//                        if (Model.instance.doubleDrop.isLucky())
+//                        {
+//                            coreDispatch(BattleScreen.PLAY_CHEST_FLY, {position: match.cells[1].position, drop: _drop.drop()});
+//                        }
+//                    }
                 }
                 break;
             default:
@@ -224,7 +233,7 @@ public class Match3Game extends EventDispatcher
         if (attacker)
         {
             var aim : Personage = !currentEnemy.pet.isDead ? currentEnemy.pet : currentEnemy.hero;
-            var dmg : Number = attacker.damage / 3;
+            dmg = attacker.damage / 3;
             if (attacker == Model.instance.player.hero)
             {
 //                var warriorSkill : Number = Model.instance.progress.getSkillValue("2");
@@ -240,9 +249,15 @@ public class Match3Game extends EventDispatcher
             }
             if(dmg > 0) {
                 match.showDamage(dmg);
-                aim.hit(match.amount * dmg);
+                hitPercent = aim.hit(match.amount * dmg);
             }
         }
+
+        if (currentPlayer is LocalPlayer && hitPercent > 0) {
+            // drop from monster
+            coreDispatch(DropList.GENERATE_DROP, hitPercent);
+        }
+
     }
 
     private function handleMove(e : Event) : void

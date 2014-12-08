@@ -61,7 +61,7 @@ public class LocalPlayer extends Player {
 //            coreDispatch(LocalPlayer.PET_SELECTED, pet, true);
         }
 
-        coreDispatch(BattleScreen.SUMMON_BUTTON_UPDATE);
+//        coreDispatch(BattleScreen.SUMMON_BUTTON_UPDATE);
 
     }
 

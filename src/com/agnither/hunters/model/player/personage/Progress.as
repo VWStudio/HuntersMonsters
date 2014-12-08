@@ -45,7 +45,7 @@ public class Progress extends EventDispatcher {
     public var skillPoints : int = 0;
     public var skills : Object = {};
     public static const SKILL_PREFIX : String = "skill.";
-    public var traps : Array = [];
+//    public var traps : Array = [];
     public var sets : Array = [];
     public var houses : Array = [];
 
@@ -126,7 +126,7 @@ public class Progress extends EventDispatcher {
         unlockedLocations = progressObj.unlockedLocations ? progressObj.unlockedLocations : [];
         areaStars = progressObj.areaStars ? progressObj.areaStars : {};
 
-        traps = progressObj.traps ? progressObj.traps : [];
+//        traps = progressObj.traps ? progressObj.traps : [];
         tamedMonsters = progressObj.tamedMonsters ? progressObj.tamedMonsters : [];
 //        inventory = progressObj.inventory ? progressObj.inventory : [];
 
@@ -206,7 +206,7 @@ public class Progress extends EventDispatcher {
         obj.unlockPointsGiven = [];
         obj.skills = {};
 
-        obj.traps = [];
+//        obj.traps = [];
         obj.houses = [];
         obj.unlockedLocations = settings.unlockedLocations;
         obj.campPosition = null;

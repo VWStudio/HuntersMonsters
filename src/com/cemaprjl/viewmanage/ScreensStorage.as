@@ -35,7 +35,7 @@ public class ScreensStorage {
         ViewFactory.add(TameMonsterPopup.NAME, TameMonsterPopup);
         ViewFactory.add(HuntPopup.NAME, HuntPopup);
         ViewFactory.add(WinPopup.NAME, WinPopup);
-        ViewFactory.add(TrapSetPopup.NAME, TrapSetPopup);
+//        ViewFactory.add(TrapSetPopup.NAME, TrapSetPopup);
         ViewFactory.add(HuntStepsPopup.NAME, HuntStepsPopup);
         ViewFactory.add(HousePopup.NAME, HousePopup);
         ViewFactory.add(SkillsPopup.NAME, SkillsPopup);

@@ -7,7 +7,7 @@ import com.agnither.hunters.model.player.ManaList;
 import com.agnither.hunters.model.player.Player;
 import com.agnither.hunters.model.player.inventory.Inventory;
 import com.agnither.hunters.model.player.inventory.Item;
-import com.agnither.hunters.view.ui.screens.battle.player.inventory.ItemView;
+import com.agnither.hunters.view.ui.common.items.ItemView;
 import com.agnither.ui.AbstractView;
 import com.agnither.utils.CommonRefs;
 import com.cemaprjl.core.coreAddListener;
@@ -75,11 +75,12 @@ public class BattleInventoryView extends AbstractView {
 
         for (var i:int = 0; i < l; i++) {
             var item: Item = _inventory.getItem(_inventory.inventoryItems[i]);
-            var itemView: ItemView = ItemView.getItemView(item);
+            var itemView: ItemView = ItemView.create(item);
             itemView.addEventListener(TouchEvent.TOUCH, handleTouch);
             _itemsContainer.addChild(itemView);
             itemView.y = i * tileHeight;
             itemView.noSelection();
+            itemView.update();
         }
     }
 

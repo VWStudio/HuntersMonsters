@@ -64,9 +64,10 @@ public class TrainerPopup extends Popup
 //        _monstersTab.addEventListener(TabView.TAB_CLICK, handleSelectItems);
         _trapsTab = _links["traps"];
         _trapsTab.label = "Ловушки";
+        _trapsTab.visible = false;
 //        _trapsTab.addEventListener(TabView.TAB_CLICK, handleSelectItems);
 
-        _currentType = _trapsTab;
+        _currentType = _monstersTab;
 
         _container = new Sprite();
         addChild(_container);
@@ -100,15 +101,15 @@ public class TrainerPopup extends Popup
             }
             else if (_currentType == _trapsTab)
             {
-                for (var i : int = 0; i < TrapVO.LIST.length; i++)
-                {
-                    var trap : TrapVO = TrapVO.LIST[i].clone();
-                    var trapView : TrapItem = new TrapItem(trap);
-                    _container.addChild(trapView);
-                    trapView.x = (_container.numChildren - 1) % 4 * 170;
-                    trapView.y = int(_container.numChildren / 4) * 170;
-                    trapView.buyMode(true);
-                }
+//                for (var i : int = 0; i < TrapVO.LIST.length; i++)
+//                {
+//                    var trap : TrapVO = TrapVO.LIST[i].clone();
+//                    var trapView : TrapItem = new TrapItem(trap);
+//                    _container.addChild(trapView);
+//                    trapView.x = (_container.numChildren - 1) % 4 * 170;
+//                    trapView.y = int(_container.numChildren / 4) * 170;
+//                    trapView.buyMode(true);
+//                }
             }
         }
         else if (_currentOwner == _hunterTab)
@@ -140,7 +141,7 @@ public class TrainerPopup extends Popup
         _hunterTab.setIsSelected(_currentOwner);
         _trainerTab.setIsSelected(_currentOwner);
         _monstersTab.setIsSelected(_currentType);
-        _trapsTab.setIsSelected(_currentType);
+//        _trapsTab.setIsSelected(_currentType);
 
     }
 

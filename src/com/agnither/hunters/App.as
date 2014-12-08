@@ -137,8 +137,8 @@ public class App extends Sprite {
 
         Model.instance.init();
 
-        coreAddListener(MapScreen.START_TRAP, onTrapStart);
-        coreAddListener(MapScreen.STOP_TRAP, onTrapEnd);
+//        coreAddListener(MapScreen.START_TRAP, onTrapStart);
+//        coreAddListener(MapScreen.STOP_TRAP, onTrapEnd);
 
         stage.addChildAt(_ui, 0);
 

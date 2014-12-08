@@ -83,7 +83,7 @@ public class TrapItem extends AbstractView {
 
     private function onBuy(event : Event) : void
     {
-        Model.instance.traps.addTrap(_trap);
+//        Model.instance.traps.addTrap(_trap);
         Model.instance.progress.gold -= _price;
         Model.instance.progress.saveProgress();
 
@@ -115,8 +115,8 @@ public class TrapItem extends AbstractView {
                     case TouchPhase.BEGAN :
                         break;
                     case TouchPhase.ENDED :
-                        Model.instance.currentTrap = _trap;
-                        coreDispatch(MapScreen.START_TRAP);
+//                        Model.instance.currentTrap = _trap;
+//                        coreDispatch(MapScreen.START_TRAP);
                         coreDispatch(UI.HIDE_POPUP, SelectMonsterPopup.NAME);
                         break;
                 }

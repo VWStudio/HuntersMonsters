@@ -45,7 +45,7 @@ public class HudScreen extends Screen {
     private var _musicButton : ButtonContainer;
     private var _soundButton : ButtonContainer;
     private var _inventoryBtn : ButtonContainer;
-    private var _trapBtn : ButtonContainer;
+//    private var _trapBtn : ButtonContainer;
     private var _resetBtn : ButtonContainer;
     private var _monstersBtn : ButtonContainer;
     private var _modeBtn : ButtonContainer;
@@ -70,17 +70,18 @@ public class HudScreen extends Screen {
         _inventoryBtn.text = "Инвентарь";
         _inventoryBtn.addEventListener(Event.TRIGGERED, onInventory);
 
-        _trapBtn = _links.trap_btn;
-        _trapBtn.text = "Убрать ловушку";
-        _trapBtn.addEventListener(Event.TRIGGERED, onTrap);
+        _links.trap_btn.visible = false;
+//        _trapBtn.text = "Убрать ловушку";
+//        _trapBtn.addEventListener(Event.TRIGGERED, onTrap);
 
         _resetBtn = _links.reset_btn;
         _resetBtn.text = "Сбросить все";
         _resetBtn.addEventListener(Event.TRIGGERED, onReset);
 
         _monstersBtn = _links.monsters_btn;
-        _monstersBtn.text = "Монстры";
-        _monstersBtn.addEventListener(Event.TRIGGERED, onMonster);
+        _monstersBtn.visible = false;
+//        _monstersBtn.text = "Монстры";
+//        _monstersBtn.addEventListener(Event.TRIGGERED, onMonster);
 
         _skillsButton = _links.skills_btn;
         _skillsButton.text = "Навыки";
@@ -111,14 +112,14 @@ public class HudScreen extends Screen {
         }
     }
 
-    private function onMonster(event : Event) : void {
+//    private function onMonster(event : Event) : void {
+//
+//        coreExecute(ShowPopupCmd, SelectMonsterPopup.NAME);
+//    }
 
-        coreExecute(ShowPopupCmd, SelectMonsterPopup.NAME);
-    }
-
-    private function onTrap(event : Event) : void {
-        coreDispatch(MapScreen.STOP_TRAP);
-    }
+//    private function onTrap(event : Event) : void {
+//        coreDispatch(MapScreen.STOP_TRAP);
+//    }
 
     private function onInventory(event : Event) : void {
         coreExecute(ShowPopupCmd, InventoryPopup.NAME);
@@ -133,7 +134,7 @@ public class HudScreen extends Screen {
         _playerLeague.text = LeagueVO.DICT[progress.league.toString()].name;
         _playerRating.text = progress.rating.toString();
         _playerGold.text = progress.gold.toString();
-        _trapBtn.visible = App.instance.trapMode;
+//        _trapBtn.visible = App.instance.trapMode;
 
         _modeBtn.text = Model.instance.state == MapScreen.NAME ? "Лагерь" : "Карта";
     }

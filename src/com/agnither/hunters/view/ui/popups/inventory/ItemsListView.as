@@ -4,7 +4,11 @@
 package com.agnither.hunters.view.ui.popups.inventory {
 import com.agnither.hunters.App;
 import com.agnither.hunters.model.Model;
+import com.agnither.hunters.model.modules.items.ItemVO;
 import com.agnither.hunters.model.player.LocalPlayer;
+import com.agnither.hunters.model.player.inventory.Item;
+import com.agnither.hunters.view.ui.common.items.ItemView;
+import com.agnither.hunters.view.ui.common.items.SpellView;
 import com.agnither.hunters.view.ui.screens.battle.player.inventory.*;
 import com.agnither.hunters.model.player.inventory.Inventory;
 import com.agnither.ui.AbstractView;
@@ -35,27 +39,28 @@ public class ItemsListView extends AbstractView {
     override protected function initialize():void {
     }
 
-    public function showType(type: String):void {
-        updateList(_inventory.getItemsByType(type));
-//        updateList(_inventory.getItemsByType(type).concat(_inventory.getItemsByType(type)).concat(_inventory.getItemsByType(type)).concat(_inventory.getItemsByType(type)));
-    }
+//    public function showType(type: String):void {
+//        updateList(_inventory.getItemsByType(type));
+////        updateList(_inventory.getItemsByType(type).concat(_inventory.getItemsByType(type)).concat(_inventory.getItemsByType(type)).concat(_inventory.getItemsByType(type)));
+//    }
 
-    private function updateList(data: Array):void {
+    private function updateList($data: Array):void {
         while (numChildren > 0) {
             var tile: ItemView = removeChildAt(0) as ItemView;
             tile.removeEventListener(TouchEvent.TOUCH, handleTouch);
             tile.destroy();
         }
 
-        for (var i:int = 0; i < data.length; i++) {
-            tile = ItemView.getItemView(_inventory.getItem(data[i]));
+        for (var i:int = 0; i < $data.length; i++) {
+            tile = ItemView.create(_inventory.getItem($data[i]));
             tile.addEventListener(TouchEvent.TOUCH, handleTouch);
             addChild(tile);
-            tile.x = itemX * (i % 2);
-            tile.y = itemY * int(i / 2);
+            tile.x = itemX * (i % 3);
+            tile.y = itemY * int(i / 3);
+            tile.update();
         }
 
-        _itemsAmount = int(numChildren / 2);
+        _itemsAmount = int(numChildren / 3);
     }
 
     private function handleTouch(e: TouchEvent):void {
@@ -81,6 +86,55 @@ public class ItemsListView extends AbstractView {
     public function get itemsAmount() : int
     {
         return _itemsAmount;
+    }
+
+    public function showThings() : void
+    {
+
+//        var items : Array = _inventory.getItemsByType(type);
+
+        updateList(_inventory.getItemsForView());
+    }
+
+    private function clearList():void {
+        while (numChildren > 0) {
+            var tile: ItemView = removeChildAt(0) as ItemView;
+            tile.removeEventListener(TouchEvent.TOUCH, handleTouch);
+            tile.destroy();
+        }
+    }
+
+    public function showSpells() : void
+    {
+        clearList();
+
+
+        var spellsBaseArr :Vector.<ItemVO> = ItemVO.SPELLS;
+        for (var i : int = 0; i < spellsBaseArr.length; i++)
+        {
+            var vo : ItemVO = spellsBaseArr[i];
+            var spellItem : Item = _inventory.getSpell(vo.id);
+            var tile : SpellView;
+            if(spellItem) {
+                tile = new SpellView(spellItem);
+            } else {
+                tile = new SpellView(Item.create(vo));
+                tile.isExample = true;
+            }
+            tile.addEventListener(TouchEvent.TOUCH, handleTouch);
+            addChild(tile);
+            tile.x = itemX * (i % 3);
+            tile.y = itemY * int(i / 3);
+            tile.update();
+        }
+
+        _itemsAmount = int(numChildren / 3);
+
+    }
+
+    public function showPets() : void
+    {
+        updateList([]);
     }
 }
 }

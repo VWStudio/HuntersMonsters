@@ -42,8 +42,8 @@ public class Model
     public var movesAmount : int = 0;
     public var currentMonsterPoint : MonsterPoint;
     public static const UPDATE_HOUSE : String = "Model.UPDATE_HOUSE";
-    public var currentTrap : TrapVO;
-    public var territoryTraps : Object = {};
+//    public var currentTrap : TrapVO;
+//    public var territoryTraps : Object = {};
     public var chestAreas : Object = {};
     public var doubleDrop : DoubleDropExt;
     public var mirrorDamage : MirrorDamageExt;
@@ -78,7 +78,7 @@ public class Model
     public var drop : int;
     public var enemy : AIPlayer;
     public var progress : Progress;
-    public var traps : Traps;
+//    public var traps : Traps;
     public var shop : Shop;
     public var deliverTime : Number = -1;
 
@@ -87,7 +87,7 @@ public class Model
 
         monsters = new Monsters();
         items = new Items();
-        traps = new Traps();
+//        traps = new Traps();
         shop = new Shop();
 
 

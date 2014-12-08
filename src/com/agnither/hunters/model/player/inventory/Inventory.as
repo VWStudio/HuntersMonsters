@@ -1,64 +1,75 @@
 /**
  * Created by agnither on 21.08.14.
  */
-package com.agnither.hunters.model.player.inventory {
-import com.agnither.hunters.data.outer.ExtensionVO;
+package com.agnither.hunters.model.player.inventory
+{
 import com.agnither.hunters.data.outer.ItemSlotVO;
-import com.agnither.hunters.data.outer.ItemTypeVO;
 import com.agnither.hunters.model.Model;
-import com.agnither.hunters.model.modules.extensions.DoubleDropExt;
+import com.agnither.hunters.model.modules.extensions.DamageExt;
+import com.agnither.hunters.model.modules.extensions.DefenceExt;
 import com.agnither.hunters.model.modules.items.ItemVO;
-import com.agnither.hunters.model.player.drop.Drop;
-import com.cemaprjl.utils.Util;
 
 import flash.utils.Dictionary;
 
 import starling.events.EventDispatcher;
 
-public class Inventory extends EventDispatcher {
+public class Inventory extends EventDispatcher
+{
 
-    public static const UPDATE: String = "update_Inventory";
+    public static const UPDATE : String = "update_Inventory";
 
-    public static var max_capacity: uint = 6;
+    public static var max_capacity : uint = 6;
 
 //    private var _data: Object;
 
     private var _inventoryItems : Array = []; // of String
-    public function get inventoryItems():Array {
+    public function get inventoryItems() : Array
+    {
         return _inventoryItems;
     }
 
-    private var _itemsDict: Object = new Object();
-    public function getItem(name: String):Item {
+    private var _itemsDict : Object = new Object();
+
+    public function getItem(name : String) : Item
+    {
         return _itemsDict[name];
     }
 
-    private var _itemsByType: Dictionary = new Dictionary();
-    public function getItemsByType(type : String):Array { // of String
+    private var _itemsByType : Dictionary = new Dictionary();
+
+    public function getItemsByType(type : String) : Array
+    { // of String
 //    public function getItemsByType(type : int):Array { // of String
         return _itemsByType[type];
     }
 
-    private var _extensions: Dictionary = new Dictionary();
+    private var _extensions : Dictionary = new Dictionary();
     private var _spells : Object = {};
     private var _manaPriority : Array;
-    public function getExtension(type: int):int {
+
+    public function getExtension(type : String) : int
+    {
         return _extensions[type];
     }
 
-    public function getSpellsManaTypes():Array {
+    public function getSpellsManaTypes() : Array
+    {
         var arr : Array = [];
         var obj : Object = {};
         for (var key : String in _spells)
         {
             var spell : Item = _spells[key];
-            if(spell.isWearing) {
+            if (spell.isWearing)
+            {
                 var manas : Object = spell.getMana();
                 for (var manaID : String in manas)
                 {
-                    if(arr.indexOf(manaID) >= 0) {
+                    if (arr.indexOf(manaID) >= 0)
+                    {
                         obj[manaID] += manas[manaID];
-                    } else {
+                    }
+                    else
+                    {
                         arr.push(manaID);
                         obj[manaID] = manas[manaID];
                     }
@@ -68,8 +79,14 @@ public class Inventory extends EventDispatcher {
         arr.sort(sortManas);
         function sortManas($a : String, $b : String) : Number
         {
-            if(obj[$a] > obj[$b]) return -1;
-            if(obj[$a] < obj[$b]) return 1;
+            if (obj[$a] > obj[$b])
+            {
+                return -1;
+            }
+            if (obj[$a] < obj[$b])
+            {
+                return 1;
+            }
             return 0;
         }
 
@@ -79,36 +96,44 @@ public class Inventory extends EventDispatcher {
     }
 
 
-    public function get damage():int {
-        return getExtension(ExtensionVO.damage);
+    public function get damage() : int
+    {
+        return getExtension(DamageExt.TYPE);
     }
 
-    public function get defence():int {
-        return getExtension(ExtensionVO.defence);
+    public function get defence() : int
+    {
+        return getExtension(DefenceExt.TYPE);
     }
 
-    public function Inventory() {
+    public function Inventory()
+    {
 
     }
 
-    public function init():void {
+    public function init() : void
+    {
 //        for (var i: int = 0; i < ItemTypeVO.LIST.length; i++) {
-        for (var i: int = 0; i < ItemVO.TYPES.length; i++) {
+        for (var i : int = 0; i < ItemVO.TYPES.length; i++)
+        {
             _itemsByType[ItemVO.TYPES[i]] = [];
         }
-        var extArray : Vector.<ExtensionVO> = Model.instance.items.getExtensions();
-        for (i = 0; i < extArray.length; i++) {
-            _extensions[extArray[i].id] = 0;
-        }
+//        var extArray : Vector.<ExtensionVO> = Model.instance.items.getExtensions();
+//        for (i = 0; i < extArray.length; i++) {
+//            _extensions[extArray[i].id] = 0;
+//        }
     }
 
-    public function parse(data : Object) : void {
+    public function parse(data : Object) : void
+    {
 //        _data = data;
-        for (var key: * in data) {
-            var itemData: Object = data[key];
+        for (var key : * in data)
+        {
+            var itemData : Object = data[key];
 
             var itemVO : ItemVO = Model.instance.items.getItemVO(itemData.id);
-            if(itemData.ext) {
+            if (itemData.ext)
+            {
                 itemVO.ext = itemData.ext;
             }
             var newItem : Item = Item.create(itemVO);
@@ -118,27 +143,49 @@ public class Inventory extends EventDispatcher {
 
     }
 
-    public function addItem($item: Item):void {
-        if (!_itemsDict[$item.uniqueId]) {
+    public function addItem($item : Item) : void
+    {
+        if (!_itemsDict[$item.uniqueId])
+        {
             var item : Item = $item;
             _itemsDict[item.uniqueId] = item;
             _itemsByType[item.type].push(item.uniqueId);
-            if(item.isSpell()) {
+            if (item.isSpell())
+            {
 //            if(item.type == ItemTypeVO.spell) {
-                _spells["spell"+item.id] = item;
+                _spells["spell" + item.id] = item;
             }
         }
     }
 
-    public function isHaveSpell($id : Number):Boolean {
+    public function getItemsForView():Array {
+        var arr : Array = [];
+        for (var key : String in _itemsByType)
+        {
+            if(key == ItemVO.TYPE_SPELL) continue;
+            var itemsbytype : Array = _itemsByType[key];
+            arr = arr.concat(itemsbytype);
+        }
+        return arr;
+    }
+
+    public function getSpell($id : Number) : Item
+    {
+        return _spells["spell" + $id];
+    }
+
+    public function isHaveSpell($id : Number) : Boolean
+    {
 
 //        trace("isHaveSpell", $id, _spells["spell"+$id]);
-        return _spells["spell"+$id] != null;
+        return _spells["spell" + $id] != null;
 
     }
 
-    public function removeItem(item: Item):void {
-        if (_itemsDict[item.uniqueId]) {
+    public function removeItem(item : Item) : void
+    {
+        if (_itemsDict[item.uniqueId])
+        {
 
             unwearItem(item);
 
@@ -146,31 +193,37 @@ public class Inventory extends EventDispatcher {
 //            delete _data[item.uniqueId];
 
 
-            var index: int = _itemsByType[item.type].indexOf(item.uniqueId);
-            if (index >= 0) {
+            var index : int = _itemsByType[item.type].indexOf(item.uniqueId);
+            if (index >= 0)
+            {
                 _itemsByType[item.type].splice(index, 1);
             }
         }
     }
 
-    public function wearItem(item: Item):void {
+    public function wearItem(item : Item) : void
+    {
         addToInventory(item.uniqueId);
         update();
     }
 
-    public function unwearItem(item: Item):void {
+    public function unwearItem(item : Item) : void
+    {
         removeFromInventory(item.uniqueId);
         update();
     }
 
-    public function setInventoryItems(array : Array) : void {
-        for (var i : int = 0; i < array.length; i++) {
+    public function setInventoryItems(array : Array) : void
+    {
+        for (var i : int = 0; i < array.length; i++)
+        {
             addToInventory(array[i]);
         }
         update();
     }
 
-    public function update():void {
+    public function update() : void
+    {
         updateExtensions();
 
         _inventoryItems.sort(sortInventory);
@@ -180,9 +233,11 @@ public class Inventory extends EventDispatcher {
         dispatchEventWith(UPDATE);
     }
 
-    private function addToInventory(uid : String) : void {
+    private function addToInventory(uid : String) : void
+    {
         var item : Item = _itemsDict[uid];
-        if(item == null) {
+        if (item == null)
+        {
             return;
         }
 
@@ -190,18 +245,22 @@ public class Inventory extends EventDispatcher {
         var slotMax : int = ItemSlotVO.DICT[item.slot].max; // MAX for current slot kind
 
         var isHaveFree : Boolean = _inventoryItems.length < max_capacity;
-        if(!isHaveFree) {
+        if (!isHaveFree)
+        {
             return;
         }
 
         var slotAmount : int = 0;
-        if(slotMax > 0) { // is limited slot, like only one head or only two hands
+        if (slotMax > 0)
+        { // is limited slot, like only one head or only two hands
             for (var i : int = 0; i < _inventoryItems.length; i++)
             {
                 var checkItem : Item = _itemsDict[_inventoryItems[i]];
-                if(checkItem.slot == item.slot) {
+                if (checkItem.slot == item.slot)
+                {
                     slotAmount++;
-                    if(slotAmount >= slotMax) {
+                    if (slotAmount >= slotMax)
+                    {
                         return;
                     }
                 }
@@ -221,54 +280,68 @@ public class Inventory extends EventDispatcher {
         var itemA : Item = _itemsDict[$a];
         var itemB : Item = _itemsDict[$b];
 
-        if(itemA.slot < itemB.slot) {
+        if (itemA.slot < itemB.slot)
+        {
             return -1;
         }
         else if (itemA.slot > itemB.slot)
         {
             return 1;
-        } else {
-            if(itemA.getDamage() > itemA.getDamage()) {
+        }
+        else
+        {
+            if (itemA.getDamage() > itemA.getDamage())
+            {
                 return -1;
-            } else if (itemA.getDamage() < itemA.getDamage()) {
+            }
+            else if (itemA.getDamage() < itemA.getDamage())
+            {
                 return 1;
             }
         }
         return 0;
     }
 
-    private function removeFromInventory(uid : String) : void {
+    private function removeFromInventory(uid : String) : void
+    {
         var item : Item = _itemsDict[uid];
-        var index: int = _inventoryItems.indexOf(uid);
-        if (index >= 0) {
+        var index : int = _inventoryItems.indexOf(uid);
+        if (index >= 0)
+        {
             item.isWearing = false;
             _inventoryItems.splice(index, 1);
             item.update();
         }
     }
 
-    private function updateExtensions() : void {
-        for (var key: * in _extensions) {
+    private function updateExtensions() : void
+    {
+        for (var key : String in _extensions)
+        {
             _extensions[key] = 0;
         }
 
-        for (var i : int = 0; i < _inventoryItems.length; i++) {
-            var item: Item = _itemsDict[_inventoryItems[i]];
-            if (!item.isSpell()) {
+        for (var i : int = 0; i < _inventoryItems.length; i++)
+        {
+            var item : Item = _itemsDict[_inventoryItems[i]];
+            if (!item.isSpell())
+            {
 
-                _extensions[ExtensionVO.damage] += item.getDamage();
-                _extensions[ExtensionVO.defence] += item.getDefence();
+                _extensions[DamageExt.TYPE] += item.getDamage();
+                _extensions[DefenceExt.TYPE] += item.getDefence();
 
             }
         }
     }
 
-    public function getItemsByName($code : String) : Array {
+    public function getItemsByName($code : String) : Array
+    {
         var arr : Array = [];
         for (var uid : String in _itemsDict)
         {
             var item : Item = _itemsDict[uid];
-            if(item.name == $code) {
+            if (item.name == $code)
+            {
                 arr.push(item);
             }
         }

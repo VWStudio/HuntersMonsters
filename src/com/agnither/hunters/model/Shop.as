@@ -3,7 +3,6 @@
  */
 package com.agnither.hunters.model
 {
-import com.agnither.hunters.data.outer.ItemTypeVO;
 import com.agnither.hunters.model.modules.items.ItemVO;
 import com.agnither.hunters.model.modules.players.SettingsVO;
 import com.agnither.hunters.model.player.inventory.Item;
@@ -39,8 +38,8 @@ public class Shop
     private function generateItems($type : String) : Array
     {
 
-        var itemsMin : int = SettingsVO.DICT[$type+"TabMin"];
-        var itemsMax : int = SettingsVO.DICT[$type+"TabMax"];
+        var itemsMin : int = SettingsVO.DICT[$type + "TabMin"];
+        var itemsMax : int = SettingsVO.DICT[$type + "TabMax"];
         var arr : Array = [];
         var amount : Number = itemsMin + int((itemsMax - itemsMin + 1) * Math.random());
         var i : int = 0;
@@ -71,7 +70,8 @@ public class Shop
 //                var set : String = getRandomSet();
 //                item = getRandomItem(set, $type);
                 item = Model.instance.items.generateRandomItem($type);
-                if(item) {
+                if (item)
+                {
                     arr.push(item);
                 }
 //                    arr.push(Item.createItem(itemVO, itemVO));
@@ -83,10 +83,14 @@ public class Shop
 
     }
 
-    public function updateGoods():void {
-        if(!_itemsDict) {
+    public function updateGoods() : void
+    {
+        if (!_itemsDict)
+        {
             _itemsDict = new Dictionary();
-        } else {
+        }
+        else
+        {
             for (var key : String in _itemsDict)
             {
                 _itemsDict[key] = null;
@@ -94,12 +98,6 @@ public class Shop
             }
         }
     }
-
-
-
-
-
-
 
 
     public function removeItem($item : Item) : void
