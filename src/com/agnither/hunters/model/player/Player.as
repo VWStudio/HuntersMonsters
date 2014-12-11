@@ -6,6 +6,7 @@ package com.agnither.hunters.model.player
 import com.agnither.hunters.data.outer.MagicTypeVO;
 import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.modules.extensions.SpellDefenceExt;
+import com.agnither.hunters.model.player.drop.DropList;
 import com.agnither.hunters.model.player.inventory.Inventory;
 import com.agnither.hunters.model.player.inventory.Item;
 import com.agnither.hunters.model.player.inventory.Pet;
@@ -13,6 +14,7 @@ import com.agnither.hunters.model.player.inventory.PetsInventory;
 import com.agnither.hunters.model.player.personage.Hero;
 import com.agnither.hunters.model.player.personage.Monster;
 import com.agnither.hunters.model.player.personage.Personage;
+import com.cemaprjl.core.coreDispatch;
 
 import starling.events.EventDispatcher;
 
@@ -174,10 +176,16 @@ public class Player extends EventDispatcher
                 }
             }
         }
-        target.hit(int(dmg), true);
+        var hitPercent : Number = target.hit(int(dmg), true);
 //        target.hit(spell.getDamage(), true);
 //        spell.useSpell(target);
         _manaList.useSpell(spell);
+
+
+        if (this is LocalPlayer && hitPercent > 0) {
+            // drop from monster
+            coreDispatch(DropList.GENERATE_DROP, hitPercent);
+        }
     }
 
     public function set isCurrent($val : Boolean) : void

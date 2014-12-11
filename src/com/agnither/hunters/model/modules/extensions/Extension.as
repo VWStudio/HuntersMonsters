@@ -69,6 +69,10 @@ public class Extension
 
     public function Extension($args : Array)
     {
+        setArguments($args);
+    }
+
+    public function setArguments($args : Array) : void {
         _arguments = $args;
         fill();
     }

@@ -5,11 +5,18 @@ package com.agnither.hunters.model.modules.items
 {
 import com.agnither.hunters.data.outer.DropVO;
 import com.agnither.hunters.model.Model;
+import com.agnither.hunters.model.modules.players.SettingsVO;
 import com.agnither.hunters.model.player.inventory.Item;
+import com.agnither.hunters.model.player.personage.Progress;
+import com.cemaprjl.core.coreAddListener;
 import com.cemaprjl.utils.Util;
 
 public class Items
 {
+    public var types : Array = [];
+    public var itemsByType : Object = {};
+    public var dropChanceSum : Number;
+    public var chances : Array;
     public function Items()
     {
     }
@@ -146,5 +153,46 @@ public class Items
 //    }
 
 
+    public function getUnlockedTypes() : Array
+    {
+        return types;
+    }
+
+    public function updateItems() : void
+    {
+        /**
+         * согласно сетам обновить:
+         * - типы доступных предметов
+         * - предметы
+         *
+         *
+         */
+
+        itemsByType = {};
+        types = [];
+        chances = [];
+        dropChanceSum = 0;
+
+        for (var i : int = 0; i < Model.instance.progress.sets.length; i++)
+        {
+            var setItems : Array = ItemVO.SETS[Model.instance.progress.sets[i]];
+            if(setItems) {
+                for (var j : int = 0; j < setItems.length; j++)
+                {
+
+                    var vo : ItemVO = setItems[j];
+                    if(vo.type == ItemVO.TYPE_WEAPON || vo.type == ItemVO.TYPE_ARMOR || vo.type == ItemVO.TYPE_SPELL || vo.type == ItemVO.TYPE_MAGIC) {
+                        if(!itemsByType[vo.type]) {
+                            itemsByType[vo.type] = [];
+                            types.push(vo.type);
+                            chances.push(SettingsVO.DICT[vo.type+"DropChance"]);
+                            dropChanceSum += SettingsVO.DICT[vo.type+"DropChance"];
+                        }
+                        itemsByType[vo.type].push(vo);
+                    }
+                }
+            }
+        }
+    }
 }
 }

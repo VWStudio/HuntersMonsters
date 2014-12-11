@@ -187,5 +187,14 @@ public class Item extends EventDispatcher
     {
         return _extensions[$type];
     }
+
+    public function isWeapon() : Boolean
+    {
+        return _item.type == ItemVO.TYPE_WEAPON;
+    }
+    public function isArmor() : Boolean
+    {
+        return _item.type == ItemVO.TYPE_ARMOR;
+    }
 }
 }

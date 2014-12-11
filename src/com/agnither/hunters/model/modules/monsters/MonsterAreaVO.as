@@ -24,6 +24,7 @@ public class MonsterAreaVO {
     public var respawn: int = 0;
     public var house: String = "";
     public var icon: String = "";
+    public var unlockhouse: String = "";
     public var chestlife: int = 0;
     public var chestrespawn: int = 0;
     public var chestdropset: int = 0;

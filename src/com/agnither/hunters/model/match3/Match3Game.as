@@ -184,27 +184,19 @@ public class Match3Game extends EventDispatcher
         var match : Match = e.data as Match;
         var dmg : Number = 0;
         var hitPercent : Number = 0;
-
+        var aim : Personage;
 
         switch (match.type)
         {
-            case MagicTypeVO.CHEST:
+            case MagicTypeVO.CHEST:  // SKULL
                 if (currentPlayer is LocalPlayer && !ignoreGraphic)
                 {
-
-                    var aim : Personage = currentEnemy.hero;
-                    dmg = aim.maxHP * (match.amount * 2) / 100;
+//                    attacker = currentPlayer.hero;
+                    aim = currentEnemy.hero;
+                    dmg = currentEnemy.hero.maxHP * (match.amount * 2) / 100;
                     match.showDamage(dmg / match.amount);
-                    hitPercent = aim.hit(dmg);
-//                    var drop : Item = _drop.drop();
-//                    coreDispatch(BattleScreen.PLAY_CHEST_FLY, {position: match.cells[1].position, drop: _drop.drop()});
-//                    if(Model.instance.doubleDrop)
-//                    {
-//                        if (Model.instance.doubleDrop.isLucky())
-//                        {
-//                            coreDispatch(BattleScreen.PLAY_CHEST_FLY, {position: match.cells[1].position, drop: _drop.drop()});
-//                        }
-//                    }
+                    hitPercent = aim.hit(dmg, true); // required for calculate drop
+//                    trace("CHEST HIT", aim, dmg, hitPercent);
                 }
                 break;
             default:
@@ -212,10 +204,7 @@ public class Match3Game extends EventDispatcher
                 {
                     attacker = currentPlayer.pet;
                 } else if (match.type == currentPlayer.damageType) {
-                    /**
-                     * TODO handle magic attack here
-                     */
-                    attacker = currentPlayer.hero;
+                     attacker = currentPlayer.hero;
                 }
 
                 currentPlayer.manaList.addMana(match.type, match.amount);
@@ -230,16 +219,15 @@ public class Match3Game extends EventDispatcher
                 break;
         }
 
-        if (attacker)
+
+//        trace("attacker", attacker);
+        if (attacker) // we have attacker when its not a skull
         {
-            var aim : Personage = !currentEnemy.pet.isDead ? currentEnemy.pet : currentEnemy.hero;
+            aim = !currentEnemy.pet.isDead ? currentEnemy.pet : currentEnemy.hero;
             dmg = attacker.damage / 3;
             if (attacker == Model.instance.player.hero)
             {
-//                var warriorSkill : Number = Model.instance.progress.getSkillValue("2");
-//                if( warriorSkill > 0 ) {
                 dmg = dmg * (attacker.damageType == MagicTypeVO.WEAPON ? Model.instance.progress.getSkillMultiplier("2") : Model.instance.progress.getSkillMultiplier("3"));
-//                }
             } else {
                 if(Model.instance.mirrorDamage) {
                     if(Model.instance.mirrorDamage.isLucky()) {
@@ -250,8 +238,10 @@ public class Match3Game extends EventDispatcher
             if(dmg > 0) {
                 match.showDamage(dmg);
                 hitPercent = aim.hit(match.amount * dmg);
+//                trace("OTHER HIT", aim, dmg, hitPercent);
             }
         }
+
 
         if (currentPlayer is LocalPlayer && hitPercent > 0) {
             // drop from monster

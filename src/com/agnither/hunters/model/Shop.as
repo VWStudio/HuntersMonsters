@@ -106,5 +106,7 @@ public class Shop
         var index : int = arr.indexOf($item);
         arr.splice(index, 1);
     }
+
+
 }
 }

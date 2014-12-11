@@ -171,5 +171,25 @@
     "parameter": "spellTabMax",
     "value": "10",
     "type": "int"
+  },
+  {
+    "parameter": "weaponDropChance",
+    "value": "35",
+    "type": "int"
+  },
+  {
+    "parameter": "armorDropChance",
+    "value": "45",
+    "type": "int"
+  },
+  {
+    "parameter": "magicDropChance",
+    "value": "15",
+    "type": "int"
+  },
+  {
+    "parameter": "spellDropChance",
+    "value": "5",
+    "type": "int"
   }
 ]

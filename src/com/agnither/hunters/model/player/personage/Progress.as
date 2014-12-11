@@ -55,6 +55,7 @@ public class Progress extends EventDispatcher {
     public var unlockPoints : int = 0;
     public var fullExp : int = 0;
     public var campPosition : Object;
+    public static const SETS_UPDATED : String = "Progress.SETS_UPDATED";
 
     public function Progress() {
         _data = SharedObject.getLocal("player");
@@ -370,7 +371,7 @@ public class Progress extends EventDispatcher {
         if(unlockedLocations.indexOf($id) < 0) {
             unlockedLocations.push($id);
         }
-        trace("unlockedLocations", unlockedLocations);
+//        trace("unlockedLocations", unlockedLocations);
         unlockPoints--;
         if(unlockPoints < 0) {
             unlockPoints = 0;
@@ -378,5 +379,6 @@ public class Progress extends EventDispatcher {
         saveProgress();
 
     }
+
 }
 }

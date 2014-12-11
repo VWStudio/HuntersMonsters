@@ -46,6 +46,7 @@ public class ItemView extends AbstractView
     {
         _item = item;
         createFromConfig(_refs.guiConfig.common.spell);
+        handleFirstRun();
     }
 
     override protected function initialize() : void

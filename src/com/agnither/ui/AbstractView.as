@@ -53,7 +53,7 @@ public class AbstractView extends Sprite {
 //        addEventListener(Event.REMOVED_FROM_STAGE, handleRemoved);
     }
 
-    protected function handleFirstRun(event : Event) : void {
+    protected function handleFirstRun(event : Event = null) : void {
         removeEventListener(Event.ADDED_TO_STAGE, handleFirstRun);
 //        addEventListener(Event.REMOVED_FROM_STAGE, handleRemoved);
 

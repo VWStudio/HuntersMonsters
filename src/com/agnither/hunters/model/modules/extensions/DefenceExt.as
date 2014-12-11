@@ -37,17 +37,12 @@ public class DefenceExt extends Extension
 
     override public function updateItem($item : Item) : void
     {
-        if($item.hasOwnProperty(TYPE)) {
-            $item[TYPE] = _defence;
-        }
+        $item.defence = $item.getDefence() + _defence;
     }
 
 
     override public function toObject() : Object
     {
-//        var obj : Object = {};
-//        obj[TYPE] = _defence;
-//        return obj;
         return _defence;
     }
 

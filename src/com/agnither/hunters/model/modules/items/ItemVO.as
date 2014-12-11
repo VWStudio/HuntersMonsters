@@ -3,6 +3,9 @@
  */
 package com.agnither.hunters.model.modules.items
 {
+import com.agnither.hunters.model.modules.extensions.DamageExt;
+import com.agnither.hunters.model.modules.extensions.DefenceExt;
+
 import flash.utils.Dictionary;
 
 public class ItemVO
@@ -28,6 +31,7 @@ public class ItemVO
     public var name : String;
     public var picture : String;
     public var droppicture : String;
+    public var dropparam : Array;
     public var type : String;
     public var slot : int;
     public var ext : Object;
@@ -53,6 +57,10 @@ public class ItemVO
         {
             var source : Object = data[i];
             source.ext = parseExtension(source.ext);
+
+            if(source.dropparam) {
+                source.dropparam = source.dropparam.split(",");
+            }
 
             var object : ItemVO = fill(new ItemVO(), source);
             LIST.push(object);
@@ -100,10 +108,6 @@ public class ItemVO
         var array : Array = string.split(";");
         for (var i : int = 0; i < array.length; i++)
         {
-//            while (array[i].indexOf("[") >= 0 && array[i].indexOf("]") < 0) {
-//                array[i] += "," + array[i+1];
-//                array.splice(i+1, 1);
-//            }
             var row : Array = array[i].split(":");
             var id : String = row[0];
             var value : String = row[1];
@@ -124,12 +128,6 @@ public class ItemVO
         }
         return value as int;
     }
-
-
-//    public function getDropExtensionValue(key: String):int {
-//        return extension_drop[key] ? getValue(extension_drop[key]) : getValue(extension[key]);
-//    }
-
 
     public static function fill($target : ItemVO, $source : Object) : ItemVO
     {
@@ -152,6 +150,12 @@ public class ItemVO
     public function clone() : ItemVO
     {
         return fill(new ItemVO(), this);
+    }
+
+    public function isFitsParam($val : Number) : Boolean
+    {
+        return $val >= dropparam[0] && $val <= dropparam[1];
+
     }
 }
 }

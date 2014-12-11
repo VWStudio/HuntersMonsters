@@ -87,6 +87,7 @@ public class Model
 
         monsters = new Monsters();
         items = new Items();
+
 //        traps = new Traps();
         shop = new Shop();
 
@@ -121,6 +122,8 @@ public class Model
         player.init(progress);
 
         fillTerritories();
+
+        items.updateItems();
 
         App.instance.tick.addTickCallback(territoriesTick);
     }

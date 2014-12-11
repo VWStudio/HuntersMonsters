@@ -43,7 +43,7 @@ public class Inventory extends EventDispatcher
         return _itemsByType[type];
     }
 
-    private var _extensions : Dictionary = new Dictionary();
+    private var _extensions : Object = {};
     private var _spells : Object = {};
     private var _manaPriority : Array;
 
@@ -90,7 +90,7 @@ public class Inventory extends EventDispatcher
             return 0;
         }
 
-        trace("INVENTORY", arr, JSON.stringify(obj));
+//        trace("INVENTORY", arr, JSON.stringify(obj));
 
         return arr;
     }
@@ -327,11 +327,12 @@ public class Inventory extends EventDispatcher
             if (!item.isSpell())
             {
 
-                _extensions[DamageExt.TYPE] += item.getDamage();
-                _extensions[DefenceExt.TYPE] += item.getDefence();
+                _extensions[DamageExt.TYPE] = _extensions[DamageExt.TYPE] ? _extensions[DamageExt.TYPE] + item.getDamage() : item.getDamage();
+                _extensions[DefenceExt.TYPE] = _extensions[DefenceExt.TYPE] ? _extensions[DefenceExt.TYPE] + item.getDefence() : item.getDefence();
 
             }
         }
+        trace("UPD EXTENSIONS", JSON.stringify(_extensions));
     }
 
     public function getItemsByName($code : String) : Array

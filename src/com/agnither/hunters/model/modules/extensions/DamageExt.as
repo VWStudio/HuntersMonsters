@@ -40,18 +40,9 @@ public class DamageExt extends Extension
 
     override public function updateItem($item : Item) : void
     {
-        if($item.hasOwnProperty(TYPE)) {
-            $item[TYPE] = _damage;
-        }
+        $item.damage = $item.getDamage() + _damage;
     }
 
-
-//    override public function toObject() : Object
-//    {
-////        var obj : Object = {};
-////        obj[TYPE] = _damage;
-//        return _damage;
-//    }
 
     public function getType() : String
     {

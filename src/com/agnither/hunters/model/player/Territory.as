@@ -138,6 +138,11 @@ public class Territory
             Starling.juggler.tween(_cloud, 1, {alpha: 0, onComplete: onEndTween});
             Model.instance.progress.unlockLocation(area.area);
             isUnlocked = true;
+
+            if(area.unlockhouse) {
+                (Model.instance.territories[area.unlockhouse] as Territory).unlock();
+            }
+
             function onEndTween() : void
             {
                 _cloud.visible = false;
@@ -152,16 +157,15 @@ public class Territory
                 }
                 if (_area.isHouse)
                 {
-
                     coreExecute(ShowPopupCmd, HousePopup.NAME, territory);
-
                     Model.instance.progress.sets.push(area.area);
 
                     updateHouseData();
+                    Model.instance.items.updateItems();
                     Model.instance.shop.updateGoods();
 
-                    Model.instance.progress.unlockPoints += 1;
-                    coreDispatch(CAN_UNLOCK);
+//                    Model.instance.progress.unlockPoints += 1;
+//                    coreDispatch(CAN_UNLOCK);
                 }
 
             }

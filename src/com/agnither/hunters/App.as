@@ -94,7 +94,7 @@ public class App extends Sprite {
 
 
     private function handleComplete() : void {
-        trace("HANDLE COMPLETE");
+//        trace("HANDLE COMPLETE");
         coreRemoveListener(ResourcesManager.ON_COMPLETE_LOAD, handleComplete);
 
 //        if(!ResourcesManager.isLocal) {
@@ -125,10 +125,10 @@ public class App extends Sprite {
 
     private function handleInit() : void {
 
-        trace("HANDLE INIT");
+//        trace("HANDLE INIT");
         _refs = new CommonRefs(_resources);
         var tex : Texture = _refs.gui.getTexture("camp");
-        trace(tex);
+//        trace(tex);
 
         _ui = new UI();
 

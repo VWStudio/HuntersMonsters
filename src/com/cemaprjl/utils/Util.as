@@ -12,5 +12,17 @@ public class Util {
         return $id + "." + (new Date()).time;
 
     }
+
+    public static function getIndexOfRandom($chances : Array, $sum : Number) : int
+    {
+        var rand : Number = Math.random() * $sum;
+        var index : int = 0;
+        while(rand > $chances[index]) {
+            rand -= $chances[index];
+            index++;
+        }
+        return index;
+    }
+
 }
 }
