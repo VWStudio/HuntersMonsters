@@ -17,6 +17,7 @@ public class Util {
     {
         var rand : Number = Math.random() * $sum;
         var index : int = 0;
+        trace(rand);
         while(rand > $chances[index]) {
             rand -= $chances[index];
             index++;

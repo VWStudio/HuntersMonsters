@@ -14,7 +14,7 @@
         "picture": "monster_1.png",
         "expearned": 5,
         "speed": 100,
-        "reward": 100
+        "reward": 5
     },
     {
         "level": 1,
@@ -31,7 +31,7 @@
         "picture": "monster_2.png",
         "expearned": 10,
         "speed": 100,
-        "reward": 500
+        "reward": 10
     },
     {
         "level": 1,
@@ -48,7 +48,7 @@
         "picture": "monster_4.png",
         "expearned": 17,
         "speed": 100,
-        "reward": 500
+        "reward": 17
     },
     {
         "level": 1,
@@ -65,7 +65,7 @@
         "picture": "monster_3.png",
         "expearned": 31,
         "speed": 100,
-        "reward": 500
+        "reward": 31
     },
     {
         "level": 1,
@@ -82,7 +82,7 @@
         "picture": "monster_7.png",
         "expearned": 52,
         "speed": 100,
-        "reward": 500
+        "reward": 52
     },
     {
         "level": 1,
@@ -99,7 +99,7 @@
         "picture": "monster_5.png",
         "expearned": 84,
         "speed": 100,
-        "reward": 500
+        "reward": 84
     },
     {
         "level": 1,
@@ -116,7 +116,7 @@
         "picture": "monster_6.png",
         "expearned": 126,
         "speed": 100,
-        "reward": 500
+        "reward": 126
     },
     {
         "level": 1,
@@ -133,7 +133,7 @@
         "picture": "monster_8.png",
         "expearned": 176,
         "speed": 100,
-        "reward": 500
+        "reward": 176
     },
     {
         "level": 1,
@@ -150,7 +150,7 @@
         "picture": "monster_9.png",
         "expearned": 246,
         "speed": 100,
-        "reward": 500
+        "reward": 246
     },
     {
         "level": 1,
@@ -167,6 +167,6 @@
         "picture": "monster_10.png",
         "expearned": 492,
         "speed": 100,
-        "reward": 500
+        "reward": 492
     }
 ]

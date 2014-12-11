@@ -93,6 +93,7 @@ public class DropList extends EventDispatcher
         p = pMin + (pSpread * 0.5) + p;
         var content : Item;
 //        if(false) {
+//        if(true) {
         if(isGold) {
             trace(p, pMin, pMax, pSpread);
             content = Item.create(ItemVO.goldItemVO);
@@ -111,7 +112,7 @@ public class DropList extends EventDispatcher
             trace(itemParam, items);
 
             if(items.length > 0) {
-                content = findItem(items, Math.round(itemParam));
+                content = findItem(items, Math.round(itemParam), -1);
             }
 
 
@@ -125,8 +126,9 @@ public class DropList extends EventDispatcher
         }
     }
 
-    private function findItem($items : Array, itemParam : Number) : Item
+    private function findItem($items : Array, itemParam : Number, changeValue : Number) : Item
     {
+        trace("findItem", itemParam, changeValue);
         if(itemParam < 1) return null;
 
         var selectedItems : Array = [];
@@ -139,7 +141,8 @@ public class DropList extends EventDispatcher
         }
         trace("*", itemParam, selectedItems);
         if(!selectedItems.length) {
-            return findItem($items, itemParam - 1);
+            var newChangeValue : Number = changeValue < 0 ? -1 * (changeValue - 1) : -1 * (changeValue + 1);
+            return findItem($items, itemParam + changeValue, newChangeValue);
         }
 
         var index : int = int(Math.random() * selectedItems.length);
