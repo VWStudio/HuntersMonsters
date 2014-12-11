@@ -11,7 +11,7 @@ public class ManaAddExt extends Extension
 {
 
     public static const TYPE : String = "mana_add";
-    private var _type : Number;
+    private var _type : String;
     private var _amount : Number;
 
     public function ManaAddExt($args : Array)
@@ -40,7 +40,7 @@ public class ManaAddExt extends Extension
         return [_type, _amount];
     }
 
-    public function get type() : Number
+    public function get type() : String
     {
         return _type;
     }
