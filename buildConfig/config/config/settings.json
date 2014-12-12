@@ -191,5 +191,10 @@
     "parameter": "spellDropChance",
     "value": "5",
     "type": "int"
+  },
+  {
+    "parameter": "sellPriceMult",
+    "value": "0.6",
+    "type": "int"
   }
 ]

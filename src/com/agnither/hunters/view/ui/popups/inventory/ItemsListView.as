@@ -5,10 +5,13 @@ package com.agnither.hunters.view.ui.popups.inventory {
 import com.agnither.hunters.App;
 import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.modules.items.ItemVO;
+import com.agnither.hunters.model.modules.monsters.MonsterAreaVO;
 import com.agnither.hunters.model.player.LocalPlayer;
 import com.agnither.hunters.model.player.inventory.Item;
 import com.agnither.hunters.view.ui.common.items.ItemView;
 import com.agnither.hunters.view.ui.common.items.SpellView;
+import com.agnither.hunters.view.ui.popups.monsters.TamedMonsterView;
+import com.agnither.hunters.view.ui.screens.battle.BattleScreen;
 import com.agnither.hunters.view.ui.screens.battle.player.inventory.*;
 import com.agnither.hunters.model.player.inventory.Inventory;
 import com.agnither.ui.AbstractView;
@@ -134,7 +137,22 @@ public class ItemsListView extends AbstractView {
 
     public function showPets() : void
     {
-        updateList([]);
+        clearList();
+
+        var catchedPets : Vector.<String> = MonsterAreaVO.NAMES_LIST;
+
+        removeChildren();
+
+
+        for (var i:int = 0; i < catchedPets.length; i++) {
+            var tile: TamedMonsterView = new TamedMonsterView(catchedPets[i]);
+            addChild(tile);
+            tile.allowToTame(false);
+            tile.x = 180 * (i % 3);
+            tile.y = 180 * int(i / 3);
+        }
+
+        _itemsAmount = int(numChildren / 3);
     }
 }
 }

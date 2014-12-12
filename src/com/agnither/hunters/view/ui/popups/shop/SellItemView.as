@@ -7,6 +7,7 @@ import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.modules.extensions.DamageExt;
 import com.agnither.hunters.model.modules.extensions.DefenceExt;
 import com.agnither.hunters.model.modules.extensions.Extension;
+import com.agnither.hunters.model.modules.players.SettingsVO;
 import com.agnither.hunters.model.player.inventory.Item;
 import com.agnither.hunters.view.ui.common.items.ItemView;
 import com.agnither.ui.AbstractView;
@@ -75,11 +76,12 @@ public class SellItemView extends AbstractView
         }
         else if (_item.getDamage())
         {
-            _price = int(Model.instance.getPrice(item.getDamage(), DamageExt.TYPE) * 0.6);
+            _price = int(Model.instance.getPrice(item.getDamage(), DamageExt.TYPE) * SettingsVO.DICT["sellPriceMult"]);
+//            _price = int(Model.instance.getPrice(item.getDamage(), DamageExt.TYPE) * 0.6);
         }
         else if (_item.getDefence())
         {
-            _price = int(Model.instance.getPrice(item.getDefence(), DefenceExt.TYPE) * 0.6);
+            _price = int(Model.instance.getPrice(item.getDefence(), DefenceExt.TYPE) * SettingsVO.DICT["sellPriceMult"]);
         }
         else
         {

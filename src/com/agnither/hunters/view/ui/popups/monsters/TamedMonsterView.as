@@ -107,6 +107,10 @@ public class TamedMonsterView extends AbstractView {
 
     }
 
+    public function allowToTame($val : Boolean):void {
+        _tame.visible = $val;
+    }
+
 
     override public function destroy():void {
         super.destroy();

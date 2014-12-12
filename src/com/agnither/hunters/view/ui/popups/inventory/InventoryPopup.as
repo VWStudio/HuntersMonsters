@@ -45,6 +45,7 @@ public class InventoryPopup extends Popup
     private var _scroll : Scroll;
     private var _tooltip : Tooltip;
     private var _invTitle : TextField;
+    private var _itemHeight : Number = 60;
 
     public function InventoryPopup()
     {
@@ -154,7 +155,7 @@ public class InventoryPopup extends Popup
     private function onScroll($val : Number) : void
     {
 
-        var newy : Number = -60 * $val;
+        var newy : Number = -_itemHeight * $val;
         Starling.juggler.tween(_items, 0.4, {y: newy});
     }
 
@@ -180,7 +181,7 @@ public class InventoryPopup extends Popup
                 _items.showThings();
 //                _items.showType(ItemVO.TYPE_WEAPON);
 //                _items.showType(ItemTypeVO.weapon);
-
+                _itemHeight = 60;
                 _scroll.setScrollParams(_items.itemsAmount, 8);
 
                 break;
@@ -189,13 +190,15 @@ public class InventoryPopup extends Popup
                 _items.showSpells();
 //                _items.showType(ItemVO.TYPE_ARMOR);
 //                _items.showType(ItemTypeVO.armor);
+                _itemHeight = 60;
                 _scroll.setScrollParams(_items.itemsAmount, 8);
                 break;
             case _petsTab:
                 _items.showPets();
 //                _items.showType(ItemVO.TYPE_MAGIC);
 //                _items.showType(ItemTypeVO.magic);
-                _scroll.setScrollParams(_items.itemsAmount, 8);
+                _itemHeight = 180;
+                _scroll.setScrollParams(_items.itemsAmount, 2);
                 break;
 //                _items.showType(ItemVO.TYPE_SPELL);
 ////                _items.showType(ItemTypeVO.spell);
