@@ -24,7 +24,7 @@ public class ResurrectPetExt extends Extension
 
     override protected function fill() : void
     {
-        _hpPercent = _arguments[0];
+        _hpPercent = _extArguments[0];
     }
 
 

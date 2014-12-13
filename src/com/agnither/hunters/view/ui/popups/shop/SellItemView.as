@@ -76,20 +76,25 @@ public class SellItemView extends AbstractView
         }
         else if (_item.getDamage())
         {
-            _price = int(Model.instance.getPrice(item.getDamage(), DamageExt.TYPE) * SettingsVO.DICT["sellPriceMult"]);
+            _price = int(Model.instance.getPrice(item.getDamage(), "slot"+item.slot)* SettingsVO.DICT["sellPriceMult"]);
+//            _price = int(Model.instance.getPrice(item.getDamage(), DamageExt.TYPE) * SettingsVO.DICT["slot"+item.slot]);
+//            _price = int(Model.instance.getPrice(item.getDamage(), DamageExt.TYPE) * SettingsVO.DICT["sellPriceMult"]);
 //            _price = int(Model.instance.getPrice(item.getDamage(), DamageExt.TYPE) * 0.6);
         }
         else if (_item.getDefence())
         {
-            _price = int(Model.instance.getPrice(item.getDefence(), DefenceExt.TYPE) * SettingsVO.DICT["sellPriceMult"]);
+            _price = int(Model.instance.getPrice(item.getDefence(), "slot"+item.slot)* SettingsVO.DICT["sellPriceMult"]);
+//            _price = int(Model.instance.getPrice(item.getDefence(), DefenceExt.TYPE) * SettingsVO.DICT["sellPriceMult"]);
         }
         else
         {
             for (var extId : String in _item.getExtObj())
             {
                 var extItem : Extension = _item.getExt(extId);
-                _price += Model.instance.getPrice(extItem.getBaseValue(), (extItem as Object).constructor["TYPE"]);
+                _price += Model.instance.getPrice(extItem.getBaseValue(), "slot"+item.slot);
+//                _price += Model.instance.getPrice(extItem.getBaseValue(), (extItem as Object).constructor["TYPE"]);
             }
+            _price = int(_price * SettingsVO.DICT["sellPriceMult"]);
         }
 
 

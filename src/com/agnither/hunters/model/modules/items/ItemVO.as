@@ -17,6 +17,7 @@ public class ItemVO
     public static const SPELLS : Vector.<ItemVO> = new <ItemVO>[];
     public static const SETS : Dictionary = new Dictionary();
     public static const ITEMS_BY_TYPE : Dictionary = new Dictionary();
+    public static const ITEMS_BY_SLOT : Dictionary = new Dictionary();
 
     public static const TYPES : Vector.<String> = new <String>[];
     public static const TYPE_WEAPON : String = "weapon";
@@ -90,10 +91,15 @@ public class ItemVO
             {
                 ITEMS_BY_TYPE[object.type] = new Vector.<ItemVO>();
                 TYPES.push(object.type);
-
             }
-
             ITEMS_BY_TYPE[object.type].push(object)
+
+            if (!ITEMS_BY_SLOT["slot"+object.slot])
+            {
+                ITEMS_BY_SLOT["slot"+object.slot] = new Vector.<ItemVO>();
+            }
+            ITEMS_BY_SLOT["slot"+object.slot].push(object);
+
         }
     }
 

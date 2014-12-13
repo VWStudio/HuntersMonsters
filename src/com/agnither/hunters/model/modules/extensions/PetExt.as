@@ -23,8 +23,8 @@ public class PetExt extends Extension
 
     override protected function fill() : void
     {
-        _monsterID = _arguments[0];
-        _monster = MonsterVO.DICT[_arguments[0]];
+        _monsterID = _extArguments[0];
+        _monster = MonsterVO.DICT[_extArguments[0]];
     }
 
 

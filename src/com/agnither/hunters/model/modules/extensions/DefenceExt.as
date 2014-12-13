@@ -23,14 +23,14 @@ public class DefenceExt extends Extension
 
     override protected function fill() : void
     {
-        if(_arguments.length > 1) {
-            var min : Number = _arguments[0];
-            var max : Number = _arguments[1];
-            _defence = getRandomExtValue(min, max);
-            _arguments = [_defence];
+        if(_extArguments.length > 1) {
+            var min : Number = _extArguments[0];
+            var max : Number = _extArguments[1];
+            _defence = Math.round(getRandomExtValue(min, max));
+            _extArguments = [_defence];
         } else
         {
-            _defence = _arguments[0];
+            _defence = _extArguments[0];
         }
     }
 

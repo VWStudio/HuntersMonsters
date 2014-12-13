@@ -9,9 +9,12 @@ import com.agnither.hunters.model.modules.extensions.DefenceExt;
 import com.agnither.hunters.model.modules.extensions.Extension;
 import com.agnither.hunters.model.modules.items.ItemVO;
 import com.agnither.hunters.model.modules.monsters.MonsterVO;
+import com.agnither.hunters.model.modules.players.SettingsVO;
 import com.agnither.hunters.model.player.inventory.Item;
 import com.cemaprjl.core.coreAddListener;
 import com.cemaprjl.utils.Util;
+
+import flash.geom.Utils3D;
 
 import starling.events.EventDispatcher;
 
@@ -50,75 +53,78 @@ public class DropList extends EventDispatcher
         var isDropped : Boolean = ($hitPercent * 300) > Math.random() * 100;
         trace("isDropped", isDropped);
 
+//        isDropped = true;
+
         if(!isDropped)
         {
             return;
         }
 
-        var isGold : Boolean = Math.random() < 0.6;
+        var isGold : Boolean = Math.random() > SettingsVO.DICT["itemDropChance"] || _itemsAmount >= _list.length;
 
-        trace("isGold", isGold);
-        /**
-         * TODO complete drop
-         */
-        /*
-         p - кол-во вападающего золота.
-         n - награда за монстра (из конфига).
-         pMin = n / 1,4 (минимальное значение золота).
-         pMax = n * 1,3 (максимальное значение золота).
 
-         chance = 2 / Math.pow(2, 6 * Math.random() + 1)
-         pSpread = pMax - pMin
-
-         if (Math.random() < 0.5)
-            p = pSpread * 0.5 * -chance
-         else
-            p = (pSpread - (pSpread * 0.5)) * chance
-         p = pMin + (pSpread * 0.5) + p
-
-         */
-
-        var pMin : Number = currentMonster.reward / 1.4;
-        var pMax : Number = currentMonster.reward * 1.3;
-        var pSpread : Number = pMax - pMin;
-        var chance : Number = 6 * Math.random() + 1;
-        chance = chance * chance;
-        chance = 2 / chance;
-        var p : Number;
-        if(Math.random() < 0.5) {
-            p = pSpread * 0.5 * -chance;
-        } else {
-            p = pSpread * 0.5 * chance;
+        var pMin : Number;
+        if (currentMonster.order == 0) {
+            pMin = 1;
         }
-        p = pMin + (pSpread * 0.5) + p;
+        else {
+            pMin = Math.round(MonsterVO.DICT["order"+(currentMonster.order-1)].reward * 0.3);
+        }
+        var pAverage :Number = Math.round(currentMonster.reward * 0.3);
+
+        var nextMonster : MonsterVO = MonsterVO.DICT["order"+(currentMonster.order + 1)];
+        var pMax : Number = Math.round(nextMonster.reward * 0.5);
+        var p : Number = Util.getRandomParam(pMin, pAverage, pMax); // возвращает кол-во золота
+
+
+        trace("isGold", isGold, p, pMin, pAverage, pMax);
+
         var content : Item;
+
 //        if(false) {
-//        if(true) {
         if(isGold) {
-            trace(p, pMin, pMax, pSpread);
             content = Item.create(ItemVO.goldItemVO);
-            content.amount = p;
+            content.amount = Math.round(p);
         }
         else
         {
-            var types : Array = Model.instance.items.types;
-//            chance = Model.instance.items.dropChanceSum * Math.random();
+//            var types : Array = Model.instance.items.slots;
+////            chance = Model.instance.items.dropChanceSum * Math.random();
             var indexOfItem : int = Util.getIndexOfRandom(Model.instance.items.chances, Model.instance.items.dropChanceSum);
-            trace("INDEX:", indexOfItem, Model.instance.items.types[indexOfItem],"SUM", Model.instance.items.dropChanceSum, "CHANCES", Model.instance.items.chances);
-            var type : String = Model.instance.items.types[indexOfItem];
-            var itemParam : Number = Math.sqrt(p / 0.6);
-            var items : Array = Model.instance.items.itemsByType[type];
+            trace("INDEX:", indexOfItem, Model.instance.items.slots[indexOfItem],"SUM", Model.instance.items.dropChanceSum, "CHANCES", Model.instance.items.chances);
+            var slot : String = Model.instance.items.slots[indexOfItem];
+//            var itemParam : Number = Math.sqrt(p / 0.6);
+            var items : Array = Model.instance.items.itemsBySlot[slot];
+//
+            var paramMult : Number = SettingsVO.DICT[slot+"ParamMult"];
 
-            trace(itemParam, items);
+//            trace(itemParam, items);
 
-            if(items.length > 0) {
+
+//            paramMult // значение из конфика (defenceParamBodyMult || damageParamWeaponMult || ...)
+            if (currentMonster.order < 3) {
+                pMin = 1;
+            }
+            else {
+                pMin = Math.round(Math.sqrt((MonsterVO.DICT["order"+(currentMonster.order - 3)].reward * (MonsterVO.DICT["order"+(currentMonster.order - 2)].difficultyFactor + 1)) / paramMult));
+            }
+            if (currentMonster.order < 1) {
+                pAverage = 1;
+            }
+            else {
+                pAverage = Math.round(Math.sqrt((MonsterVO.DICT["order"+(currentMonster.order - 1)].reward * (currentMonster.difficultyFactor + 1)) / paramMult));
+            }
+            pMax = Math.round(Math.sqrt((currentMonster.reward * (MonsterVO.DICT["order"+(currentMonster.order + 1)].difficultyFactor + 1)) / paramMult));
+
+            var itemParam : Number = Util.getRandomParam(pMin, pAverage, pMax);
+
+
+
+            trace("itemParam", itemParam, pMin, pAverage, pMax);
+
+            if(items && items.length > 0) {
                 content = findItem(items, Math.round(itemParam), -1);
             }
-
-
-
-
-
         }
 
         if(content) {
@@ -128,36 +134,38 @@ public class DropList extends EventDispatcher
 
     private function findItem($items : Array, itemParam : Number, changeValue : Number) : Item
     {
-        trace("findItem", itemParam, changeValue);
-        if(itemParam < 1) return null;
-
+        trace("findItem", itemParam, changeValue, $items);
         var selectedItems : Array = [];
-        for (var i : int = 0; i < $items.length; i++)
-        {
-            var itm : ItemVO = $items[i];
-            if(itm.isFitsParam(itemParam)) {
-                selectedItems.push(itm);
+        if(itemParam > 0) {
+            for (var i : int = 0; i < $items.length; i++)
+            {
+                var itm : ItemVO = $items[i];
+                if(itm.isFitsParam(itemParam)) {
+                    selectedItems.push(itm);
+                }
             }
         }
         trace("*", itemParam, selectedItems);
         if(!selectedItems.length) {
             var newChangeValue : Number = changeValue < 0 ? -1 * (changeValue - 1) : -1 * (changeValue + 1);
+            if(newChangeValue < 0) {
+                newChangeValue = -1 * (newChangeValue - 1)
+            }
             return findItem($items, itemParam + changeValue, newChangeValue);
         }
 
         var index : int = int(Math.random() * selectedItems.length);
 
         var itemVO : ItemVO = selectedItems[index].clone();
+
+        if(itemVO.type == ItemVO.TYPE_WEAPON) {
+            itemVO.ext[DamageExt.TYPE] = [itemVO.ext[DamageExt.TYPE][0], Math.round(itemParam)];
+        }
+        if(itemVO.type == ItemVO.TYPE_ARMOR) {
+            itemVO.ext[DefenceExt.TYPE] = [Math.round(itemParam)];
+        }
+
         var item : Item = Item.create(itemVO);
-        var ext : Extension;
-        if(item.isWeapon()) {
-            ext = item.getExt(DamageExt.TYPE);
-            ext.setArguments([ext.toObject()[0], itemParam])
-        }
-        if(item.isArmor()) {
-            ext = item.getExt(DefenceExt.TYPE);
-            ext.setArguments([itemParam])
-        }
 
         trace(index, JSON.stringify(itemVO));
 

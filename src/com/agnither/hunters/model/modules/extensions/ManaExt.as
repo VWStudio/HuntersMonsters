@@ -27,12 +27,12 @@ public class ManaExt extends Extension
     {
 
         _mana = {};
-//        trace("MANA FILL", JSON.stringify(_arguments));
-        for (var i : int = 0; i < int(_arguments.length / 2); i++)
+//        trace("MANA FILL", JSON.stringify(_extArguments));
+        for (var i : int = 0; i < int(_extArguments.length / 2); i++)
         {
-            var magic: MagicTypeVO = MagicTypeVO.DICT[_arguments[i * 2].toString()];
+            var magic: MagicTypeVO = MagicTypeVO.DICT[_extArguments[i * 2].toString()];
             trace(i, magic, magic.name);
-            _mana[magic.name] = _arguments[i * 2 + 1];
+            _mana[magic.name] = _extArguments[i * 2 + 1];
         }
 
 //        trace("Mana extension:", JSON.stringify(_mana));
@@ -50,7 +50,7 @@ public class ManaExt extends Extension
 //        var obj : Object = {};
 //        obj[TYPE] = _mana;
 //        return obj;
-        return _arguments;
+        return _extArguments;
     }
 }
 }

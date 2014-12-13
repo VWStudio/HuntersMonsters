@@ -19,10 +19,9 @@ public class DropSlot extends EventDispatcher {
     }
 
     public function addContent($content: Item):void {
-//    public function addContent(content: Item):Boolean {
         if (!_content) {
             _content = $content;
-        } else if (!_content.isGold()) {
+        } else if (_content.isGold()) {
             _content.amount += $content.amount;
         }
         dispatchEventWith(UPDATE);

@@ -83,51 +83,6 @@
     "type": "array"
   },
   {
-    "parameter": "damagePriceMult",
-    "value": "0.6",
-    "type": "int"
-  },
-  {
-    "parameter": "defencePriceMult",
-    "value": "1.2",
-    "type": "int"
-  },
-  {
-    "parameter": "double_dropPriceMult",
-    "value": "1",
-    "type": "int"
-  },
-  {
-    "parameter": "resurrect_petPriceMult",
-    "value": "1",
-    "type": "int"
-  },
-  {
-    "parameter": "mirror_damagePriceMult",
-    "value": "1",
-    "type": "int"
-  },
-  {
-    "parameter": "spell_defencePriceMult",
-    "value": "1",
-    "type": "int"
-  },
-  {
-    "parameter": "mana_addPriceMult",
-    "value": "1",
-    "type": "int"
-  },
-  {
-    "parameter": "pet_levelPriceMult",
-    "value": "1",
-    "type": "int"
-  },
-  {
-    "parameter": "trapPriceMult",
-    "value": "1",
-    "type": "int"
-  },
-  {
     "parameter": "shopDeliverTimeMin",
     "value": "1",
     "type": "int"
@@ -138,23 +93,13 @@
     "type": "int"
   },
   {
-    "parameter": "armorTabMin",
-    "value": "3",
-    "type": "int"
-  },
-  {
-    "parameter": "magicTabMin",
-    "value": "3",
-    "type": "int"
-  },
-  {
-    "parameter": "spellTabMin",
-    "value": "3",
-    "type": "int"
-  },
-  {
     "parameter": "weaponTabMax",
     "value": "10",
+    "type": "int"
+  },
+  {
+    "parameter": "armorTabMin",
+    "value": "3",
     "type": "int"
   },
   {
@@ -163,8 +108,18 @@
     "type": "int"
   },
   {
+    "parameter": "magicTabMin",
+    "value": "3",
+    "type": "int"
+  },
+  {
     "parameter": "magicTabMax",
     "value": "10",
+    "type": "int"
+  },
+  {
+    "parameter": "spellTabMin",
+    "value": "3",
     "type": "int"
   },
   {
@@ -173,28 +128,204 @@
     "type": "int"
   },
   {
-    "parameter": "weaponDropChance",
-    "value": "35",
+    "parameter": "sellPriceMult",
+    "value": "0.2",
     "type": "int"
   },
   {
-    "parameter": "armorDropChance",
-    "value": "45",
-    "type": "int"
+    "parameter": "itemDropChance",
+    "value": "0.4",
+    "type": "int",
+    "info": "gold or item drop chance"
   },
   {
-    "parameter": "magicDropChance",
+    "parameter": "slot2DropChance",
+    "value": "30",
+    "type": "int",
+    "info": "weapon slot"
+  },
+  {
+    "parameter": "slot3DropChance",
     "value": "15",
+    "type": "int",
+    "info": "helmet slot"
+  },
+  {
+    "parameter": "slot4DropChance",
+    "value": "20",
+    "type": "int",
+    "info": "body clop"
+  },
+  {
+    "parameter": "slot5DropChance",
+    "value": "0",
+    "type": "int",
+    "info": "pants slot"
+  },
+  {
+    "parameter": "slot6DropChance",
+    "value": "10",
+    "type": "int",
+    "info": "boots slot"
+  },
+  {
+    "parameter": "slot7DropChance",
+    "value": "10",
+    "type": "int",
+    "info": "gloves slot"
+  },
+  {
+    "parameter": "slot8DropChance",
+    "value": "5",
+    "type": "int",
+    "info": "rings slot"
+  },
+  {
+    "parameter": "slot9DropChance",
+    "value": "10",
+    "type": "int",
+    "info": "spell slot"
+  },
+  {
+    "parameter": "slot2ParamMult",
+    "value": "1",
+    "type": "int",
+    "info": "slot param multiplier for drop"
+  },
+  {
+    "parameter": "slot3ParamMult",
+    "value": "17",
+    "type": "int",
+    "info": "slot param multiplier for drop"
+  },
+  {
+    "parameter": "slot4ParamMult",
+    "value": "2",
+    "type": "int",
+    "info": "slot param multiplier for drop"
+  },
+  {
+    "parameter": "slot5ParamMult",
+    "value": "55",
+    "type": "int",
+    "info": "slot param multiplier for drop"
+  },
+  {
+    "parameter": "slot6ParamMult",
+    "value": "55",
+    "type": "int",
+    "info": "slot param multiplier for drop"
+  },
+  {
+    "parameter": "slot7ParamMult",
+    "value": "55",
+    "type": "int",
+    "info": "slot param multiplier for drop"
+  },
+  {
+    "parameter": "slot8ParamMult",
+    "value": "1",
+    "type": "int",
+    "info": "slot param multiplier for drop"
+  },
+  {
+    "parameter": "slot9ParamMult",
+    "value": "1",
+    "type": "int",
+    "info": "slot param multiplier for drop"
+  },
+  {
+    "parameter": "slot2PriceMult",
+    "value": "0.5",
     "type": "int"
   },
   {
-    "parameter": "spellDropChance",
+    "parameter": "slot3PriceMult",
     "value": "5",
     "type": "int"
   },
   {
-    "parameter": "sellPriceMult",
-    "value": "0.6",
+    "parameter": "slot4PriceMult",
+    "value": "0.8",
     "type": "int"
+  },
+  {
+    "parameter": "slot5PriceMult",
+    "value": "1",
+    "type": "int"
+  },
+  {
+    "parameter": "slot6PriceMult",
+    "value": "12",
+    "type": "int"
+  },
+  {
+    "parameter": "slot7PriceMult",
+    "value": "12",
+    "type": "int"
+  },
+  {
+    "parameter": "slot8PriceMult",
+    "value": "1",
+    "type": "int"
+  },
+  {
+    "parameter": "slot9PriceMult",
+    "value": "1",
+    "type": "int"
+  },
+  {
+    "parameter": "damagePriceMult",
+    "value": "0.6",
+    "type": "int",
+    "info": "что делать с этими полями?"
+  },
+  {
+    "parameter": "defencePriceMult",
+    "value": "1.2",
+    "type": "int",
+    "info": "что делать с этими полями?"
+  },
+  {
+    "parameter": "double_dropPriceMult",
+    "value": "1",
+    "type": "int",
+    "info": "что делать с этими полями?"
+  },
+  {
+    "parameter": "resurrect_petPriceMult",
+    "value": "1",
+    "type": "int",
+    "info": "что делать с этими полями?"
+  },
+  {
+    "parameter": "mirror_damagePriceMult",
+    "value": "1",
+    "type": "int",
+    "info": "что делать с этими полями?"
+  },
+  {
+    "parameter": "spell_defencePriceMult",
+    "value": "1",
+    "type": "int",
+    "info": "что делать с этими полями?"
+  },
+  {
+    "parameter": "mana_addPriceMult",
+    "value": "1",
+    "type": "int",
+    "info": "что делать с этими полями?"
+  },
+  {
+    "parameter": "pet_levelPriceMult",
+    "value": "1",
+    "type": "int",
+    "info": "что делать с этими полями?"
+  },
+  {
+    "parameter": "trapPriceMult",
+    "value": "1",
+    "type": "int",
+    "info": "что делать с этими полями?"
   }
 ]

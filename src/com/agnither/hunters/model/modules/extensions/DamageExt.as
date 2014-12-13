@@ -25,15 +25,15 @@ public class DamageExt extends Extension
 
     override protected function fill() : void
     {
-        _damageType = _arguments[0];
-        if(_arguments.length > 2) {
-            var min : Number = _arguments[1];
-            var max : Number = _arguments[2];
-            _damage = getRandomExtValue(min, max);
-            _arguments = [_damageType,_damage];
+        _damageType = _extArguments[0];
+        if(_extArguments.length > 2) {
+            var min : Number = _extArguments[1];
+            var max : Number = _extArguments[2];
+            _damage = Math.round(getRandomExtValue(min, max));
+            _extArguments = [_damageType,_damage];
         } else
         {
-            _damage = _arguments[1];
+            _damage = _extArguments[1];
         }
     }
 

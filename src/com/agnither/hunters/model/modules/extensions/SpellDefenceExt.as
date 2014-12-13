@@ -25,8 +25,8 @@ public class SpellDefenceExt extends Extension
 
     override protected function fill() : void
     {
-        _type = _arguments[0];
-        _amount = _arguments[1];
+        _type = _extArguments[0];
+        _amount = _extArguments[1];
     }
 
 

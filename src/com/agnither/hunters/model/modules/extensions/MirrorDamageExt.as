@@ -25,8 +25,8 @@ public class MirrorDamageExt extends Extension
 
     override protected function fill() : void
     {
-        _chance = _arguments[0];
-        _percent = _arguments[1];
+        _chance = _extArguments[0];
+        _percent = _extArguments[1];
     }
 
 

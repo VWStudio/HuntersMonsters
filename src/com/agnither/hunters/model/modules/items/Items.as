@@ -13,10 +13,11 @@ import com.cemaprjl.utils.Util;
 
 public class Items
 {
-    public var types : Array = [];
-    public var itemsByType : Object = {};
+    public var slots : Array = [];
+    public var itemsBySlot : Object = {};
     public var dropChanceSum : Number;
     public var chances : Array;
+//    private var itemsBySlot : Object;
     public function Items()
     {
     }
@@ -155,7 +156,7 @@ public class Items
 
     public function getUnlockedTypes() : Array
     {
-        return types;
+        return slots;
     }
 
     public function updateItems() : void
@@ -168,8 +169,9 @@ public class Items
          *
          */
 
-        itemsByType = {};
-        types = [];
+        itemsBySlot = {};
+//        itemsByType = {};
+        slots = [];
         chances = [];
         dropChanceSum = 0;
 
@@ -182,13 +184,22 @@ public class Items
 
                     var vo : ItemVO = setItems[j];
                     if(vo.type == ItemVO.TYPE_WEAPON || vo.type == ItemVO.TYPE_ARMOR || vo.type == ItemVO.TYPE_SPELL || vo.type == ItemVO.TYPE_MAGIC) {
-                        if(!itemsByType[vo.type]) {
-                            itemsByType[vo.type] = [];
-                            types.push(vo.type);
-                            chances.push(SettingsVO.DICT[vo.type+"DropChance"]);
-                            dropChanceSum += SettingsVO.DICT[vo.type+"DropChance"];
+//                        if(!itemsByType[vo.type]) {
+//                            itemsByType[vo.type] = [];
+//                            slots.push(vo.type);
+//                            chances.push(SettingsVO.DICT[vo.type+"DropChance"]);
+//                            dropChanceSum += SettingsVO.DICT[vo.type+"DropChance"];
+//                        }
+//                        itemsByType[vo.type].push(vo);
+
+                        if(!itemsBySlot["slot"+vo.slot]) {
+                            itemsBySlot["slot"+vo.slot] = [];
+                            slots.push("slot"+vo.slot);
+                            chances.push(SettingsVO.DICT["slot"+vo.slot+"DropChance"]);
+                            dropChanceSum += SettingsVO.DICT["slot"+vo.slot+"DropChance"];
                         }
-                        itemsByType[vo.type].push(vo);
+                        itemsBySlot["slot"+vo.slot].push(vo)
+
                     }
                 }
             }

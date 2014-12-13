@@ -8,7 +8,7 @@ import com.agnither.hunters.model.player.inventory.Item;
 
 public class Extension
 {
-    protected var _arguments : Array;
+    protected var _extArguments : Array;
 
 
     public static const TYPE : String = "extension";
@@ -73,13 +73,14 @@ public class Extension
     }
 
     public function setArguments($args : Array) : void {
-        _arguments = $args;
+        _extArguments = $args;
         fill();
     }
 
     public function toObject() : Object
     {
-        return _arguments;
+        trace(this, "~" ,_extArguments);
+        return _extArguments;
     }
 
     public function getBaseValue() : Number

@@ -62,21 +62,25 @@ public class BuyItemView extends AbstractView
         {
 //            _links.damage_icon.getChildAt(0).texture = _refs.gui.getTexture("chip_sword");
 //            _damage.text = item.getDamage().toString();
-            _price = Model.instance.getPrice(item.getDamage(), DamageExt.TYPE);
+            _price = Model.instance.getPrice(item.getDamage(), "slot"+item.slot);
+//            _price = Model.instance.getPrice(item.getDamage(), DamageExt.TYPE);
         }
         else if (_item.getDefence())
         {
 //            _links.damage_icon.getChildAt(0).texture = _refs.gui.getTexture("itemicon_shield");
 //            _damage.text = item.getDefence().toString();
-            _price = Model.instance.getPrice(item.getDefence(), DefenceExt.TYPE);
+            _price = Model.instance.getPrice(item.getDefence(), "slot"+item.slot);
+//            _price = Model.instance.getPrice(item.getDefence(), DefenceExt.TYPE);
         }
         else
         {
             for (var extId : String in _item.getExtObj())
             {
                 var extItem : Extension = _item.getExt(extId);
-                _price += Model.instance.getPrice(extItem.getBaseValue(), (extItem as Object).constructor["TYPE"]);
+                _price += Model.instance.getPrice(extItem.getBaseValue(), "slot"+item.slot);
+//                _price += Model.instance.getPrice(extItem.getBaseValue(), (extItem as Object).constructor["TYPE"]);
             }
+
         }
 
 

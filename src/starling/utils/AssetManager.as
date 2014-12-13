@@ -39,12 +39,12 @@ import starling.textures.TextureOptions;
  *  The 'data' property of the Event contains the URL-String that could not be loaded. */
 [Event(name="ioError", type="starling.events.Event")]
 
-/** The AssetManager handles loading and accessing a variety of asset types. You can
+/** The AssetManager handles loading and accessing a variety of asset slots. You can
  *  add assets directly (via the 'add...' methods) or asynchronously via a queue. This allows
  *  you to deal with assets in a unified way, no matter if they are loaded from a file,
  *  directory, URL, or from an embedded object.
  *
- *  <p>The class can deal with the following media types:
+ *  <p>The class can deal with the following media slots:
  *  <ul>
  *    <li>Textures, either from Bitmaps or ATF data</li>
  *    <li>Texture atlases</li>
@@ -401,7 +401,7 @@ public class AssetManager extends EventDispatcher
         dispatchEventWith(Event.CANCEL);
     }
 
-    /** Removes assets of all types, empties the queue and aborts any pending load operations.*/
+    /** Removes assets of all slots, empties the queue and aborts any pending load operations.*/
     public function purge():void
     {
         log("Purging all assets, emptying queue");
@@ -423,10 +423,10 @@ public class AssetManager extends EventDispatcher
      *  executing the "loadQueue" method. This method accepts a variety of different objects:
      *
      *  <ul>
-     *    <li>Strings containing an URL to a local or remote resource. Supported types:
+     *    <li>Strings containing an URL to a local or remote resource. Supported slots:
      *        <code>png, jpg, gif, atf, mp3, xml, fnt, json, binary</code>.</li>
      *    <li>Instances of the File class (AIR only) pointing to a directory or a file.
-     *        Directories will be scanned recursively for all supported types.</li>
+     *        Directories will be scanned recursively for all supported slots.</li>
      *    <li>Classes that contain <code>static</code> embedded assets.</li>
      *    <li>If the file extension is not recognized, the data is analyzed to see if
      *        contains XML or JSON data. If it's neither, it is stored as ByteArray.</li>
@@ -819,12 +819,12 @@ public class AssetManager extends EventDispatcher
      *  (containing the path to a file). For texture data, it will also be called after a
      *  context loss.
      *
-     *  <p>The method has to transform this object into one of the types that the AssetManager
+     *  <p>The method has to transform this object into one of the slots that the AssetManager
      *  can work with, e.g. a Bitmap, a Sound, XML data, or a ByteArray. This object needs to
      *  be passed to the 'onComplete' callback.</p>
      *
      *  <p>The calling method will then process this data accordingly (e.g. a Bitmap will be
-     *  transformed into a texture). Unknown types will be available via 'getObject()'.</p>
+     *  transformed into a texture). Unknown slots will be available via 'getObject()'.</p>
      *
      *  <p>When overriding this method, you can call 'onProgress' with a number between 0 and 1
      *  to update the total queue loading progress.</p>

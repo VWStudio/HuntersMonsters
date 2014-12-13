@@ -50,13 +50,17 @@ public class Item extends EventDispatcher
         return item;
     }
 
+
     public function Item($item : ItemVO)
     {
         _item = $item;
+        updateExtensions();
+
+    }
+
+    public function updateExtensions():void {
         _extensions = fillExtensions();
-
         updateProperties();
-
     }
 
     private function fillExtensions() : Object
@@ -136,6 +140,10 @@ public class Item extends EventDispatcher
 
     public function update() : void
     {
+
+
+
+
         dispatchEventWith(UPDATE);
     }
 

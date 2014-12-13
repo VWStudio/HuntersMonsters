@@ -14,10 +14,10 @@
         "type": "weapon",
         "slot": 2,
         "picture": "item_sword",
-        "ext": "damage:[\"weapon\",3,10]",
+        "ext": "damage:[\"weapon\",1,10]",
         "setname": "default",
         "droppicture": "drop_sword",
-        "dropparam": "3,10"
+        "dropparam": "1,10"
     },
     {
         "id": 2,

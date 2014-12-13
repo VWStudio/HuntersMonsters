@@ -25,7 +25,7 @@ public class DoubleDropExt extends Extension
 
     override protected function fill() : void
     {
-        _chance = _arguments[0];
+        _chance = _extArguments[0];
     }
 
 

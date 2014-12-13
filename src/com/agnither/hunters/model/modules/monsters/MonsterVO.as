@@ -19,6 +19,8 @@ public dynamic class MonsterVO extends PersonageVO {
     public var speed: uint = 75;
     public var damagetype: String;
     public var reward: Number = 0;
+    public var order: Number = 0;
+    public var difficultyFactor: Number = 0;
 
     public var items: Array = [];
     public var stars: Array = [];
@@ -44,6 +46,7 @@ public dynamic class MonsterVO extends PersonageVO {
             }
 
             DICT[object.id][object.level] = object;
+            DICT["order"+object.order] = object;
             LIST.push(object);
             DICT_BY_TYPE[object.id].push(object);
         }
