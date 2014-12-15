@@ -188,90 +188,90 @@
     },
     {
         "parameter": "slot2ParamMult",
-        "value": "1",
+        "value": 3,
         "type": "int",
         "info": "slot param multiplier for drop"
     },
     {
         "parameter": "slot3ParamMult",
-        "value": "17",
+        "value": 51,
         "type": "int",
         "info": "slot param multiplier for drop"
     },
     {
         "parameter": "slot4ParamMult",
-        "value": "2",
+        "value": 6,
         "type": "int",
         "info": "slot param multiplier for drop"
     },
     {
         "parameter": "slot5ParamMult",
-        "value": "55",
+        "value": 165,
         "type": "int",
         "info": "slot param multiplier for drop"
     },
     {
         "parameter": "slot6ParamMult",
-        "value": "55",
+        "value": 165,
         "type": "int",
         "info": "slot param multiplier for drop"
     },
     {
         "parameter": "slot7ParamMult",
-        "value": "55",
+        "value": 165,
         "type": "int",
         "info": "slot param multiplier for drop"
     },
     {
         "parameter": "slot8ParamMult",
-        "value": "1",
+        "value": 3,
         "type": "int",
         "info": "slot param multiplier for drop"
     },
     {
         "parameter": "slot9ParamMult",
-        "value": "1",
+        "value": 3,
         "type": "int",
         "info": "slot param multiplier for drop"
     },
     {
         "parameter": "slot2PriceMult",
-        "value": "0.5",
+        "value": 1.5,
         "type": "int"
     },
     {
         "parameter": "slot3PriceMult",
-        "value": "5",
+        "value": 15,
         "type": "int"
     },
     {
         "parameter": "slot4PriceMult",
-        "value": "0.8",
+        "value": 2.4000000000000004,
         "type": "int"
     },
     {
         "parameter": "slot5PriceMult",
-        "value": "1",
+        "value": 3,
         "type": "int"
     },
     {
         "parameter": "slot6PriceMult",
-        "value": "12",
+        "value": 36,
         "type": "int"
     },
     {
         "parameter": "slot7PriceMult",
-        "value": "12",
+        "value": 36,
         "type": "int"
     },
     {
         "parameter": "slot8PriceMult",
-        "value": "1",
+        "value": 3,
         "type": "int"
     },
     {
         "parameter": "slot9PriceMult",
-        "value": "1",
+        "value": 3,
         "type": "int"
     },
     {

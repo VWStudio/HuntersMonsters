@@ -33,43 +33,43 @@
     },
     {
         "id": "blue_bull",
-        "russian": "Синий бык"
-    },
-    {
-        "id": "pikachu",
-        "russian": "Огонек"
+        "russian": "Синий Бык"
     },
     {
         "id": "meowut",
         "russian": "Водяной"
     },
     {
-        "id": "slowpoke",
-        "russian": "Слоупок"
-    },
-    {
-        "id": "charmander",
-        "russian": "Чармандер"
-    },
-    {
-        "id": "bulbasaur",
-        "russian": "Бульбазавр"
+        "id": "pikachu",
+        "russian": "Огонек"
     },
     {
         "id": "squirtle",
-        "russian": "Сквиртл"
+        "russian": "Леший"
+    },
+    {
+        "id": "charmander",
+        "russian": "Морковь"
+    },
+    {
+        "id": "slowpoke",
+        "russian": "Медведь"
+    },
+    {
+        "id": "bulbasaur",
+        "russian": "Скала"
     },
     {
         "id": "pidgey",
-        "russian": "Пиджей"
+        "russian": "Имп"
     },
     {
         "id": "ratata",
-        "russian": "Ратата"
+        "russian": "Ракушка"
     },
     {
         "id": "zubat",
-        "russian": "Зубат"
+        "russian": "Червь"
     },
     {
         "id": "resurrect_pet",
