@@ -2,7 +2,7 @@
     {
         "level": 1,
         "id": "pikachu",
-        "hp": 200,
+        "hp": 20,
         "damage": 3,
         "damagetype": "weapon",
         "defence": 3,

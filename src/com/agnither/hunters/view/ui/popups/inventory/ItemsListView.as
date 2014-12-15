@@ -21,6 +21,10 @@ import com.cemaprjl.core.coreDispatch;
 import flash.ui.Mouse;
 import flash.ui.MouseCursor;
 
+import starling.display.DisplayObject;
+
+import starling.display.DisplayObjectContainer;
+
 import starling.events.Touch;
 import starling.events.TouchEvent;
 import starling.events.TouchPhase;
@@ -48,11 +52,15 @@ public class ItemsListView extends AbstractView {
 //    }
 
     private function updateList($data: Array):void {
-        while (numChildren > 0) {
-            var tile: ItemView = removeChildAt(0) as ItemView;
-            tile.removeEventListener(TouchEvent.TOUCH, handleTouch);
-            tile.destroy();
-        }
+//        while (numChildren > 0) {
+//            var tile: ItemView = removeChildAt(0) as ItemView;
+//            tile.removeEventListener(TouchEvent.TOUCH, handleTouch);
+//            tile.destroy();
+//        }
+
+        clearList();
+
+        var tile: ItemView;
 
         for (var i:int = 0; i < $data.length; i++) {
             tile = ItemView.create(_inventory.getItem($data[i]));
@@ -101,9 +109,12 @@ public class ItemsListView extends AbstractView {
 
     private function clearList():void {
         while (numChildren > 0) {
-            var tile: ItemView = removeChildAt(0) as ItemView;
-            tile.removeEventListener(TouchEvent.TOUCH, handleTouch);
-            tile.destroy();
+            var dobj : DisplayObject = removeChildAt(0);
+            if(dobj is ItemView) {
+                var tile: ItemView = dobj as ItemView;
+                tile.removeEventListener(TouchEvent.TOUCH, handleTouch);
+                tile.destroy();
+            }
         }
     }
 

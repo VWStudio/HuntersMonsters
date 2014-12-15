@@ -275,57 +275,33 @@
     "type": "int"
   },
   {
-    "parameter": "damagePriceMult",
-    "value": "0.6",
-    "type": "int",
-    "info": "что делать с этими полями?"
-  },
-  {
-    "parameter": "defencePriceMult",
-    "value": "1.2",
-    "type": "int",
-    "info": "что делать с этими полями?"
-  },
-  {
     "parameter": "double_dropPriceMult",
     "value": "1",
-    "type": "int",
-    "info": "что делать с этими полями?"
+    "info": "оставим на всякий случай"
   },
   {
     "parameter": "resurrect_petPriceMult",
     "value": "1",
-    "type": "int",
-    "info": "что делать с этими полями?"
+    "info": "поля где тип не прописан"
   },
   {
     "parameter": "mirror_damagePriceMult",
     "value": "1",
-    "type": "int",
-    "info": "что делать с этими полями?"
+    "info": "игнорируются"
   },
   {
     "parameter": "spell_defencePriceMult",
     "value": "1",
-    "type": "int",
-    "info": "что делать с этими полями?"
+    "info": "как считать цену у магических предметов?"
   },
   {
     "parameter": "mana_addPriceMult",
     "value": "1",
-    "type": "int",
-    "info": "что делать с этими полями?"
+    "info": "---"
   },
   {
     "parameter": "pet_levelPriceMult",
     "value": "1",
-    "type": "int",
-    "info": "что делать с этими полями?"
-  },
-  {
-    "parameter": "trapPriceMult",
-    "value": "1",
-    "type": "int",
-    "info": "что делать с этими полями?"
+    "info": "---"
   }
 ]

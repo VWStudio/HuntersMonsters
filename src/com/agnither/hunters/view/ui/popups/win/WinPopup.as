@@ -109,7 +109,7 @@ public class WinPopup extends Popup
         }
         else
         {
-            Model.instance.currentMonsterPoint.count(true);
+//            Model.instance.currentMonsterPoint.count(true);
         }
 
         Model.instance.currentMonsterPoint = null;

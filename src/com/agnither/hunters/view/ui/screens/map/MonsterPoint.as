@@ -43,7 +43,7 @@ public class MonsterPoint extends AbstractView {
     private var _time : TextField;
     private var _lifetime : Number;
     public static const STARS_UPDATE : String = "MonsterPoint.STARS_UPDATE";
-    private var _allowCount : Boolean = true;
+//    private var _allowCount : Boolean = true;
     private var _territory : Territory;
     private var _territoryRect : Rectangle;
     private var _image : Image;
@@ -98,22 +98,22 @@ public class MonsterPoint extends AbstractView {
     }
 
     override public function update() : void {
-        _lifetime = (_territory.area.lifemax + (_territory.area.lifemin - _territory.area.lifemax) * Math.random())*1000;
+//        _lifetime = (_territory.area.lifemax + (_territory.area.lifemin - _territory.area.lifemax) * Math.random())*1000;
 
 
 
     }
 
     public function tick($delta : Number) : void {
-        if(!_allowCount) return;
-        if(_lifetime > 0) {
-            _lifetime -= $delta;
-//            _time.text = Formatter.msToHHMMSS(_lifetime);
-        } else {
-            if(Model.instance.state == MapScreen.NAME) {
-                _territory.deletePoint(this);
-            }
-        }
+//        if(!_allowCount) return;
+//        if(_lifetime > 0) {
+//            _lifetime -= $delta;
+////            _time.text = Formatter.msToHHMMSS(_lifetime);
+//        } else {
+//            if(Model.instance.state == MapScreen.NAME) {
+//                _territory.deletePoint(this);
+//            }
+//        }
 
         if(!Model.instance.isMap()) {
             return;
@@ -158,8 +158,8 @@ public class MonsterPoint extends AbstractView {
         this.y = pt.y;
     }
 
-    public function count($val : Boolean) : void {
-        _allowCount = $val;
-    }
+//    public function count($val : Boolean) : void {
+//        _allowCount = $val;
+//    }
 }
 }
