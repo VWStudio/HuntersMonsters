@@ -365,7 +365,6 @@ public class Territory
         for (var areaID : String in _steps)
         {
             var area : Territory = Model.instance.territories[areaID];
-//            trace(areaID, area.isUnlocked);
             var step : DisplayObject = _steps[areaID];
             if (step.hasEventListener(TouchEvent.TOUCH))
             {
