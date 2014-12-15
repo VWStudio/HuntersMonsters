@@ -51,6 +51,8 @@ public class Territory
     private var _houseTimeout : Number;
     public static const MOVE_CAMP : String = "Territory.MOVE_CAMP";
     private var _boss : Image;
+    private var _nextMonsters : Number = 0;
+    private var _killed : uint = 0;
 
 
     public function getStars() : int
@@ -84,7 +86,8 @@ public class Territory
 
     }
 
-    public function getPoint($radius : Number = 145) : Point
+//    public function getPoint($radius : Number = 145) : Point
+    public function getPoint($radius : Number = 100) : Point
     {
         var pt : Point = Point.polar($radius, Math.random() * Math.PI * 2);
         pt.x = pt.x * 1.15;
@@ -224,6 +227,10 @@ public class Territory
         if (index > -1)
         {
             _territoryMonsters.splice(index, 1);
+            _killed++;
+            if(_territoryMonsters.length == 0) {
+                _nextMonsters = Math.random() * 60000;
+            }
         }
         coreDispatch(MapScreen.DELETE_POINT, $pt);
 
@@ -271,7 +278,7 @@ public class Territory
             return;
         }
 
-        _pointsTimeout = _pointsTimeout < 0 ? 0 : _pointsTimeout - $delta;
+//        _pointsTimeout = _pointsTimeout < 0 ? 0 : _pointsTimeout - $delta;
 
         if (!Model.instance.isMap())
         {
@@ -284,12 +291,23 @@ public class Territory
             mpt.tick($delta);
         }
 
-        if (_territoryMonsters.length < _area.areamax)
+        if(_nextMonsters > 0)
         {
-            if (_pointsTimeout <= 0 || _territoryMonsters.length < _area.areamin)
+            if(_nextMonsters > 0 && _nextMonsters - $delta <= 0) {
+                _killed = 0;
+            }
+            _nextMonsters -= $delta;
+        }
+        else
+        {
+            if (_territoryMonsters.length < _area.areamax)
             {
-                createMonster();
-                _pointsTimeout = _area.respawn * 1000;
+                if (_territoryMonsters.length + _killed < _area.areamin)
+//                if (_pointsTimeout <= 0 || _territoryMonsters.length < _area.areamin)
+                {
+                    createMonster();
+//                    _pointsTimeout = _area.respawn * 1000;
+                }
             }
         }
 
