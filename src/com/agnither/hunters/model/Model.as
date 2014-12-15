@@ -208,7 +208,6 @@ public class Model
         var mult : Number = SettingsVO.DICT[$coeffName + "PriceMult"];
 //        trace("PRICE:", int($val * $val * mult), $val, mult, $coeffName);
         return Math.round($val * $val * mult);
-//        return int($val * SettingsVO.DICT["pointValue"] + ( (SettingsVO.DICT["pointPercent"] + 100) / 100) * $val);
     }
 
     public function deleteCurrentPoint() : void
