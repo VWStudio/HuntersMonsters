@@ -4,8 +4,8 @@
     "structure": [
         [
             {
-                "x": 954,
-                "y": 8,
+                "x": 1171,
+                "y": 1,
                 "type": "button",
                 "name": "fullscreen_btn",
                 "images": ["common_button_up", "common_button_over", "common_button_up", "common_button_up"]
@@ -13,8 +13,8 @@
         ],
         [
             {
-                "x": 914,
-                "y": 8,
+                "x": 1131,
+                "y": 1,
                 "type": "button",
                 "name": "music_btn",
                 "images": ["common_button_up", "common_button_over", "common_button_up", "common_button_up"]
@@ -22,8 +22,8 @@
         ],
         [
             {
-                "x": 874,
-                "y": 8,
+                "x": 1091,
+                "y": 1,
                 "type": "button",
                 "name": "sound_btn",
                 "images": ["common_button_up", "common_button_over", "common_button_up", "common_button_up"]
@@ -31,7 +31,7 @@
         ],
         [
             {
-                "x": 199,
+                "x": 191,
                 "y": 683,
                 "type": "button",
                 "name": "inventory_btn",
@@ -40,8 +40,8 @@
         ],
         [
             {
-                "x": 59,
-                "y": 24,
+                "x": 166,
+                "y": 1,
                 "type": "text",
                 "width": 97.45,
                 "height": 25.95,
@@ -54,8 +54,8 @@
         ],
         [
             {
-                "x": 5,
-                "y": 24,
+                "x": 112,
+                "y": 1,
                 "type": "text",
                 "width": 52.15,
                 "height": 25.95,
@@ -96,8 +96,8 @@
         ],
         [
             {
-                "x": 165,
-                "y": 24,
+                "x": 1218,
+                "y": 25,
                 "type": "text",
                 "width": 69.7,
                 "height": 25.95,
@@ -110,8 +110,8 @@
         ],
         [
             {
-                "x": 236,
-                "y": 24,
+                "x": 1290,
+                "y": 25,
                 "type": "text",
                 "width": 83.65,
                 "height": 25.95,
@@ -124,8 +124,8 @@
         ],
         [
             {
-                "x": 166,
-                "y": 0,
+                "x": 1219,
+                "y": 1,
                 "type": "text",
                 "width": 43.6,
                 "height": 25.95,
@@ -138,8 +138,8 @@
         ],
         [
             {
-                "x": 210,
-                "y": 0,
+                "x": 1264,
+                "y": 1,
                 "type": "text",
                 "width": 125.25,
                 "height": 25.95,
@@ -152,8 +152,8 @@
         ],
         [
             {
-                "x": 468,
-                "y": 10,
+                "x": 9,
+                "y": 44,
                 "type": "text",
                 "width": 62.85,
                 "height": 25.95,
@@ -166,10 +166,10 @@
         ],
         [
             {
-                "x": 532,
-                "y": 10,
+                "x": 76,
+                "y": 44,
                 "type": "text",
-                "width": 83.65,
+                "width": 80.1,
                 "height": 25.95,
                 "text": "1022",
                 "fontName": "impact_21",
@@ -180,7 +180,7 @@
         ],
         [
             {
-                "x": 200,
+                "x": 192,
                 "y": 685,
                 "type": "text",
                 "width": 180,
@@ -227,7 +227,7 @@
         [
             {
                 "x": 8,
-                "y": 606,
+                "y": 608,
                 "type": "text",
                 "width": 180,
                 "height": 26,
@@ -240,8 +240,8 @@
         ],
         [
             {
-                "x": 808,
-                "y": 683,
+                "x": 751,
+                "y": 684,
                 "type": "button",
                 "name": "reset_btn",
                 "images": ["common_button_back1", "common_button_back2", "common_button_back1"]
@@ -249,8 +249,8 @@
         ],
         [
             {
-                "x": 805,
-                "y": 683,
+                "x": 751,
+                "y": 685,
                 "type": "text",
                 "width": 180,
                 "height": 26,
@@ -263,7 +263,7 @@
         ],
         [
             {
-                "x": 391,
+                "x": 379,
                 "y": 683,
                 "type": "button",
                 "name": "skills_btn",
@@ -272,8 +272,8 @@
         ],
         [
             {
-                "x": 389,
-                "y": 683,
+                "x": 378,
+                "y": 685,
                 "type": "text",
                 "width": 180,
                 "height": 26,
@@ -286,7 +286,7 @@
         ],
         [
             {
-                "x": 606,
+                "x": 564,
                 "y": 683,
                 "type": "button",
                 "name": "monsters_btn",
@@ -295,8 +295,8 @@
         ],
         [
             {
-                "x": 603,
-                "y": 683,
+                "x": 565,
+                "y": 685,
                 "type": "text",
                 "width": 180,
                 "height": 26,
@@ -507,9 +507,17 @@
                         {
                             "x": 0,
                             "y": 0,
+                            "matrix": {
+                                "a": 0.3946685791015625,
+                                "b": 0,
+                                "c": 0,
+                                "d": 0.599700927734375,
+                                "tx": 0,
+                                "ty": 0
+                            },
                             "type": "bitmap",
-                            "image": "common_hitrect",
-                            "name": "bitmap_common_hitrect"
+                            "image": "common_hitrect.png",
+                            "name": "bitmap_common_hitrect.png"
                         }
                     ]
                 ]
@@ -526,9 +534,17 @@
                         {
                             "x": 0,
                             "y": 0,
+                            "matrix": {
+                                "a": 0.3946685791015625,
+                                "b": 0,
+                                "c": 0,
+                                "d": 0.599700927734375,
+                                "tx": 0,
+                                "ty": 0
+                            },
                             "type": "bitmap",
-                            "image": "common_hitrect",
-                            "name": "bitmap_common_hitrect"
+                            "image": "common_hitrect.png",
+                            "name": "bitmap_common_hitrect.png"
                         }
                     ]
                 ]
@@ -545,9 +561,17 @@
                         {
                             "x": 0,
                             "y": 0,
+                            "matrix": {
+                                "a": 0.3946685791015625,
+                                "b": 0,
+                                "c": 0,
+                                "d": 0.599700927734375,
+                                "tx": 0,
+                                "ty": 0
+                            },
                             "type": "bitmap",
-                            "image": "common_hitrect",
-                            "name": "bitmap_common_hitrect"
+                            "image": "common_hitrect.png",
+                            "name": "bitmap_common_hitrect.png"
                         }
                     ]
                 ]
@@ -564,9 +588,17 @@
                         {
                             "x": 0,
                             "y": 0,
+                            "matrix": {
+                                "a": 0.3946685791015625,
+                                "b": 0,
+                                "c": 0,
+                                "d": 0.599700927734375,
+                                "tx": 0,
+                                "ty": 0
+                            },
                             "type": "bitmap",
-                            "image": "common_hitrect",
-                            "name": "bitmap_common_hitrect"
+                            "image": "common_hitrect.png",
+                            "name": "bitmap_common_hitrect.png"
                         }
                     ]
                 ]
@@ -583,9 +615,17 @@
                         {
                             "x": 0,
                             "y": 0,
+                            "matrix": {
+                                "a": 0.3946685791015625,
+                                "b": 0,
+                                "c": 0,
+                                "d": 0.599700927734375,
+                                "tx": 0,
+                                "ty": 0
+                            },
                             "type": "bitmap",
-                            "image": "common_hitrect",
-                            "name": "bitmap_common_hitrect"
+                            "image": "common_hitrect.png",
+                            "name": "bitmap_common_hitrect.png"
                         }
                     ]
                 ]
@@ -607,15 +647,15 @@
         ],
         [
             {
-                "x": 412,
-                "y": 408,
+                "x": 482,
+                "y": 472,
                 "matrix": {
                     "a": 4.4000091552734375,
                     "b": 0,
                     "c": 0,
                     "d": 4.3225555419921875,
-                    "tx": 412.45,
-                    "ty": 408.45
+                    "tx": 482.45,
+                    "ty": 472.45
                 },
                 "type": "movie clip",
                 "name": "shop",
@@ -624,23 +664,31 @@
                         {
                             "x": 0,
                             "y": 0,
+                            "matrix": {
+                                "a": 0.3946685791015625,
+                                "b": 0,
+                                "c": 0,
+                                "d": 0.599700927734375,
+                                "tx": 0,
+                                "ty": 0
+                            },
                             "type": "bitmap",
-                            "image": "common_hitrect",
-                            "name": "bitmap_common_hitrect"
+                            "image": "common_hitrect.png",
+                            "name": "bitmap_common_hitrect.png"
                         }
                     ]
                 ]
             },
             {
-                "x": 911,
-                "y": 324,
+                "x": 944,
+                "y": 410,
                 "matrix": {
-                    "a": 4.4000091552734375,
+                    "a": 6.9285888671875,
                     "b": 0,
                     "c": 0,
                     "d": 4.3225555419921875,
-                    "tx": 910.75,
-                    "ty": 323.5
+                    "tx": 943.75,
+                    "ty": 409.5
                 },
                 "type": "movie clip",
                 "name": "instructor",
@@ -649,23 +697,31 @@
                         {
                             "x": 0,
                             "y": 0,
+                            "matrix": {
+                                "a": 0.3946685791015625,
+                                "b": 0,
+                                "c": 0,
+                                "d": 0.599700927734375,
+                                "tx": 0,
+                                "ty": 0
+                            },
                             "type": "bitmap",
-                            "image": "common_hitrect",
-                            "name": "bitmap_common_hitrect"
+                            "image": "common_hitrect.png",
+                            "name": "bitmap_common_hitrect.png"
                         }
                     ]
                 ]
             },
             {
-                "x": 729,
-                "y": 480,
+                "x": 773,
+                "y": 492,
                 "matrix": {
                     "a": 4.4000091552734375,
                     "b": 0,
                     "c": 0,
                     "d": 4.3225555419921875,
-                    "tx": 728.7,
-                    "ty": 479.55
+                    "tx": 772.7,
+                    "ty": 491.55
                 },
                 "type": "movie clip",
                 "name": "achievements",
@@ -674,9 +730,17 @@
                         {
                             "x": 0,
                             "y": 0,
+                            "matrix": {
+                                "a": 0.3946685791015625,
+                                "b": 0,
+                                "c": 0,
+                                "d": 0.599700927734375,
+                                "tx": 0,
+                                "ty": 0
+                            },
                             "type": "bitmap",
-                            "image": "common_hitrect",
-                            "name": "bitmap_common_hitrect"
+                            "image": "common_hitrect.png",
+                            "name": "bitmap_common_hitrect.png"
                         }
                     ]
                 ]
@@ -736,8 +800,8 @@
         ],
         [
             {
-                "x": 1264,
-                "y": 323,
+                "x": 1243,
+                "y": 335,
                 "type": "movie clip",
                 "name": "house02",
                 "structure": [
@@ -1983,7 +2047,7 @@
         ],
         [
             {
-                "x": 652,
+                "x": 655,
                 "y": 904,
                 "type": "movie clip",
                 "name": "step_00_01",
@@ -2002,8 +2066,8 @@
         ],
         [
             {
-                "x": 766,
-                "y": 821,
+                "x": 756,
+                "y": 824,
                 "type": "movie clip",
                 "name": "step_01_02",
                 "structure": [
@@ -2021,8 +2085,8 @@
         ],
         [
             {
-                "x": 756,
-                "y": 659,
+                "x": 748,
+                "y": 658,
                 "type": "movie clip",
                 "name": "step_02_06",
                 "structure": [
@@ -2040,8 +2104,8 @@
         ],
         [
             {
-                "x": 1099,
-                "y": 662,
+                "x": 1091,
+                "y": 658,
                 "type": "movie clip",
                 "name": "step_05_08",
                 "structure": [
@@ -2059,8 +2123,8 @@
         ],
         [
             {
-                "x": 1188,
-                "y": 741,
+                "x": 1187,
+                "y": 738,
                 "type": "movie clip",
                 "name": "step_05_07",
                 "structure": [
@@ -2078,8 +2142,8 @@
         ],
         [
             {
-                "x": 1473,
-                "y": 671,
+                "x": 1458,
+                "y": 667,
                 "type": "movie clip",
                 "name": "step_07_09",
                 "structure": [
@@ -2097,8 +2161,8 @@
         ],
         [
             {
-                "x": 1008,
-                "y": 578,
+                "x": 1010,
+                "y": 576,
                 "type": "movie clip",
                 "name": "step_06_08",
                 "structure": [
@@ -2135,8 +2199,8 @@
         ],
         [
             {
-                "x": 1012,
-                "y": 240,
+                "x": 1010,
+                "y": 247,
                 "type": "movie clip",
                 "name": "step_11_12",
                 "structure": [
@@ -2154,7 +2218,7 @@
         ],
         [
             {
-                "x": 832,
+                "x": 827,
                 "y": 220,
                 "type": "bitmap",
                 "image": "boss",
@@ -4024,9 +4088,17 @@
                         {
                             "x": 0,
                             "y": 0,
+                            "matrix": {
+                                "a": 0.3946685791015625,
+                                "b": 0,
+                                "c": 0,
+                                "d": 0.599700927734375,
+                                "tx": 0,
+                                "ty": 0
+                            },
                             "type": "bitmap",
-                            "image": "common_hitrect",
-                            "name": "bitmap_common_hitrect"
+                            "image": "common_hitrect.png",
+                            "name": "bitmap_common_hitrect.png"
                         }
                     ]
                 ]
@@ -4677,9 +4749,17 @@
                         {
                             "x": 0,
                             "y": 0,
+                            "matrix": {
+                                "a": 0.3946685791015625,
+                                "b": 0,
+                                "c": 0,
+                                "d": 0.599700927734375,
+                                "tx": 0,
+                                "ty": 0
+                            },
                             "type": "bitmap",
-                            "image": "common_hitrect",
-                            "name": "bitmap_common_hitrect"
+                            "image": "common_hitrect.png",
+                            "name": "bitmap_common_hitrect.png"
                         }
                     ]
                 ]
@@ -6068,9 +6148,17 @@
                         {
                             "x": 0,
                             "y": 0,
+                            "matrix": {
+                                "a": 0.3946685791015625,
+                                "b": 0,
+                                "c": 0,
+                                "d": 0.599700927734375,
+                                "tx": 0,
+                                "ty": 0
+                            },
                             "type": "bitmap",
-                            "image": "common_hitrect",
-                            "name": "bitmap_common_hitrect"
+                            "image": "common_hitrect.png",
+                            "name": "bitmap_common_hitrect.png"
                         }
                     ]
                 ]
@@ -6450,9 +6538,17 @@
                         {
                             "x": 0,
                             "y": 0,
+                            "matrix": {
+                                "a": 0.3946685791015625,
+                                "b": 0,
+                                "c": 0,
+                                "d": 0.599700927734375,
+                                "tx": 0,
+                                "ty": 0
+                            },
                             "type": "bitmap",
-                            "image": "common_hitrect",
-                            "name": "bitmap_common_hitrect"
+                            "image": "common_hitrect.png",
+                            "name": "bitmap_common_hitrect.png"
                         }
                     ]
                 ]
@@ -7397,8 +7493,8 @@
                         "ty": 0
                     },
                     "type": "bitmap",
-                    "image": "common_hitrect",
-                    "name": "bitmap_common_hitrect"
+                    "image": "common_hitrect.png",
+                    "name": "bitmap_common_hitrect.png"
                 }
             ],
             [
@@ -7686,8 +7782,8 @@
                         "ty": 0
                     },
                     "type": "bitmap",
-                    "image": "common_hitrect",
-                    "name": "bitmap_common_hitrect"
+                    "image": "common_hitrect.png",
+                    "name": "bitmap_common_hitrect.png"
                 }
             ],
             [],

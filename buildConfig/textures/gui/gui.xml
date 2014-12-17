@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿﻿<?xml version="1.0" encoding="utf-8"?>
 <TextureAtlas imagePath="gui.png">
 	<!-- Created with Adobe Flash Professional version 13.1.0.226 -->
 	<!-- http://www.adobe.com/products/flash.html -->
@@ -14,10 +14,10 @@
 	<SubTexture name="camp" x="786" y="1609" width="105" height="65" pivotX="0" pivotY="0"/>
 	<SubTexture name="camp_background" x="2073" y="2" width="1650" height="1008" pivotX="0" pivotY="0"/>
 	<SubTexture name="chest_icon" x="1653" y="1654" width="70" height="51" pivotX="0" pivotY="0"/>
-	<SubTexture name="chip_blue" x="4037" y="622" width="52" height="52" pivotX="0" pivotY="0"/>
+	<SubTexture name="chip_blue" x="4037" y="676" width="52" height="52" pivotX="0" pivotY="0"/>
 	<SubTexture name="chip_chest" x="4037" y="568" width="53" height="52" pivotX="0" pivotY="0"/>
 	<SubTexture name="chip_fire" x="4037" y="453" width="53" height="56" pivotX="0" pivotY="0"/>
-	<SubTexture name="chip_green" x="4037" y="676" width="52" height="52" pivotX="0" pivotY="0"/>
+	<SubTexture name="chip_green" x="4037" y="622" width="52" height="52" pivotX="0" pivotY="0"/>
 	<SubTexture name="chip_red" x="4036" y="779" width="51" height="52" pivotX="0" pivotY="0"/>
 	<SubTexture name="chip_select" x="747" y="1461" width="48" height="48" pivotX="0" pivotY="0"/>
 	<SubTexture name="chip_sword" x="4037" y="511" width="52" height="55" pivotX="0" pivotY="0"/>
@@ -28,7 +28,7 @@
 	<SubTexture name="common_button_over" x="3954" y="980" width="32" height="25" pivotX="0" pivotY="0"/>
 	<SubTexture name="common_button_up" x="3988" y="980" width="32" height="25" pivotX="0" pivotY="0"/>
 	<SubTexture name="common_disabled_tint" x="4047" y="122" width="43" height="42" pivotX="0" pivotY="0"/>
-	<SubTexture name="common_hitrect" x="4036" y="886" width="50" height="50" pivotX="0" pivotY="0"/>
+	<SubTexture name="common_hitrect.png" x="4036" y="886" width="50" height="50" pivotX="0" pivotY="0"/>
 	<SubTexture name="common_icon_close" x="4063" y="1367" width="21" height="21" pivotX="0" pivotY="0"/>
 	<SubTexture name="common_killed" x="425" y="1461" width="169" height="169" pivotX="0" pivotY="0"/>
 	<SubTexture name="common_next" x="4047" y="53" width="27" height="67" pivotX="0" pivotY="0"/>
