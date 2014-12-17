@@ -7,9 +7,11 @@ import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.match3.Match3Game;
 import com.agnither.hunters.model.match3.Move;
 import com.agnither.hunters.model.match3.MoveResult;
+import com.agnither.hunters.model.modules.items.ItemVO;
 import com.agnither.hunters.model.modules.monsters.MonsterVO;
 import com.agnither.hunters.model.player.ai.CheckManaResult;
 import com.agnither.hunters.model.player.inventory.Item;
+import com.cemaprjl.utils.Util;
 
 import flash.utils.Dictionary;
 
@@ -49,6 +51,13 @@ public class AIPlayer extends Player
             items[id] = Model.instance.items.getItemVO(id);
             inventory.push(id);
         }
+        var petItem : ItemVO = ItemVO.createPetItemVO(monster);
+        petItem.id = 24;
+        petItem.slot = 1;
+        items[petItem.id] = petItem;
+
+
+        inventory.unshift(petItem.id.toString());
         initInventory(items, inventory);
     }
 

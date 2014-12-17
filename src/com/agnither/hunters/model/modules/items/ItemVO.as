@@ -5,6 +5,7 @@ package com.agnither.hunters.model.modules.items
 {
 import com.agnither.hunters.model.modules.extensions.DamageExt;
 import com.agnither.hunters.model.modules.extensions.DefenceExt;
+import com.agnither.hunters.model.modules.monsters.MonsterVO;
 
 import flash.utils.Dictionary;
 
@@ -38,7 +39,24 @@ public class ItemVO
     public var ext : Object;
     public var setname : String;
 
-    public static function get goldItemVO() : ItemVO
+    public static function createPetItemVO($monster : MonsterVO) : ItemVO {
+
+        var obj : Object = {};
+        obj.id = 0;
+        obj.name = $monster.id;
+        obj.picture = "magic_dark";
+        obj.type = "pet";
+        obj.slot = 0;
+        obj.setname = "";
+        obj.droppicture = "";
+        obj.ext = {monster:$monster.id};
+
+        return ItemVO.fill(new ItemVO(), obj)
+
+    }
+
+
+    public static function get createGoldItemVO() : ItemVO
     {
         var obj : Object = {};
         obj.id = 0;

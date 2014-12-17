@@ -40,6 +40,9 @@ public class Extension
             case ResurrectPetExt.TYPE:
                 return new ResurrectPetExt($args);
                 break;
+            case PetExt.TYPE:
+                return new PetExt($args);
+                break;
         }
         return new Extension($args);
     }

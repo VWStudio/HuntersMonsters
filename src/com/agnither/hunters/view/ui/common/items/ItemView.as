@@ -5,6 +5,8 @@ package com.agnither.hunters.view.ui.common.items
 {
 import com.agnither.hunters.data.outer.MagicTypeVO;
 import com.agnither.hunters.model.modules.extensions.DamageExt;
+import com.agnither.hunters.model.modules.extensions.PetExt;
+import com.agnither.hunters.model.modules.monsters.MonsterVO;
 import com.agnither.hunters.model.player.Mana;
 import com.agnither.hunters.model.player.inventory.Item;
 import com.agnither.hunters.view.ui.common.ItemManaView;
@@ -74,8 +76,9 @@ public class ItemView extends AbstractView
         _picture.texture = _refs.gui.getTexture(_item.picture);
         _picture.touchable = true;
         this.touchable = !item.isPet();
-
+        var magicType : MagicTypeVO;
         var texName : String = "";
+
         if (_item.isSpell())
         {
             texName = "itemicon_spell";
@@ -83,8 +86,8 @@ public class ItemView extends AbstractView
         }
         else if (_item.getDamage())
         {
-            var dmgExt : DamageExt = _item.getExt(DamageExt.TYPE) as DamageExt;
-            var magicType : MagicTypeVO = MagicTypeVO.DICT[dmgExt.getType()];
+            var dmgExt : DamageExt = _item.getExtension(DamageExt.TYPE) as DamageExt;
+            magicType = MagicTypeVO.DICT[dmgExt.getType()];
             texName = magicType.picturedamage;
 //            texName = "chip_sword";
             _damage.text = item.getDamage().toString();
@@ -93,6 +96,18 @@ public class ItemView extends AbstractView
         {
             texName = "itemicon_shield";
             _damage.text = item.getDefence().toString();
+        }
+        else if(_item.isPet())
+        {
+
+            var petExt : PetExt = _item.getExtension(PetExt.TYPE) as PetExt;
+            var monster : MonsterVO = petExt.getMonster();
+
+            trace("PET ITEM!!!", _item.isPet(), monster.id);
+
+            magicType = MagicTypeVO.DICT[monster.damagetype];
+            texName = magicType.picturedamage;
+            _damage.text = monster.damage.toString();
         }
         else
         {

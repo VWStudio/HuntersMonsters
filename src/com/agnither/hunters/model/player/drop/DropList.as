@@ -83,7 +83,7 @@ public class DropList extends EventDispatcher
 
 //        if(false) {
         if(isGold) {
-            content = Item.create(ItemVO.goldItemVO);
+            content = Item.create(ItemVO.createGoldItemVO);
             content.amount = Math.round(p);
         }
         else
@@ -184,7 +184,7 @@ public class DropList extends EventDispatcher
         var content : Item = Model.instance.items.createDropItem(isOnlyGold ? _dropSet : 2);
 
 
-//        var drop : DropVO =  ? DropVO.getRandomDrop(_dropSet) : DropVO.getRandomDrop(2); // set 2 is only goldItemVO
+//        var drop : DropVO =  ? DropVO.getRandomDrop(_dropSet) : DropVO.getRandomDrop(2); // set 2 is only createGoldItemVO
 ////        var content : Drop;
 //        switch (drop.type) {
 //            case ItemTypeVO.weapon:
@@ -193,7 +193,7 @@ public class DropList extends EventDispatcher
 //                content = Model.instance.items.createDrop(drop.item_id));
 ////                content = new ItemDrop(Item.createDrop(Model.instance.items.getItem(drop.item_id)));
 //                break;
-//            case ItemTypeVO.goldItemVO:
+//            case ItemTypeVO.createGoldItemVO:
 //                content = new GoldDrop(drop.randomAmount);
 ////                content = new GoldDrop(GoldDropVO.DICT[drop.item_id].random);
 //                break;

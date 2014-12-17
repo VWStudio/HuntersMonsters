@@ -3,6 +3,8 @@
  */
 package com.agnither.hunters.model.player.inventory
 {
+import com.agnither.hunters.model.modules.extensions.DamageExt;
+import com.agnither.hunters.model.modules.extensions.DefenceExt;
 import com.agnither.hunters.model.modules.extensions.Extension;
 import com.agnither.hunters.model.modules.extensions.ManaExt;
 import com.agnither.hunters.model.modules.items.ItemVO;
@@ -175,7 +177,7 @@ public class Item extends EventDispatcher
     /*
      dictionary of *Ext classes
      */
-    public function getExtObj() : Object
+    public function getExtensions() : Object
     {
         return _extensions;
     }
@@ -191,7 +193,7 @@ public class Item extends EventDispatcher
     /*
      *Ext class
      */
-    public function getExt($type : String) : Extension
+    public function getExtension($type : String) : Extension
     {
         return _extensions[$type];
     }
@@ -204,5 +206,27 @@ public class Item extends EventDispatcher
     {
         return _item.type == ItemVO.TYPE_ARMOR;
     }
+
+    public function toString():String {
+        var extension : Extension;
+        switch (type) {
+            case ItemVO.TYPE_WEAPON:
+                extension = getExtension(DamageExt.TYPE);
+                return name+"."+type+"."+(extension as DamageExt).getType()+"."+(extension as DamageExt).getBaseValue();
+                break;
+            case ItemVO.TYPE_ARMOR:
+                extension = getExtension(DefenceExt.TYPE);
+                return name+"."+type+"."+(extension as DefenceExt).getBaseValue();
+                break;
+            case ItemVO.TYPE_SPELL:
+                extension = getExtension(DamageExt.TYPE);
+                var str : String = (extension as DamageExt).getType()+"."+(extension as DamageExt).getBaseValue();
+                extension = getExtension(ManaExt.TYPE);
+                return name+"."+type+"."+str+"."+((extension as ManaExt).toObject() as Array).join(".");
+                break;
+        }
+        return name+"."+type+"."+JSON.stringify(ext);
+    }
+
 }
 }

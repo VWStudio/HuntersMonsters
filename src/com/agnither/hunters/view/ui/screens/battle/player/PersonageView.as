@@ -111,11 +111,14 @@ public class PersonageView extends AbstractView {
 
         _armor.text = String(_personage.getDefence());
         _damage.text = String(_personage.damage);
+        _damage.visible = false;
 //        _damage.text = String(_personage.damage);
         _currentMarker.visible = _personage.current;
 
         var dmgType : MagicTypeVO = MagicTypeVO.DICT[_personage.damageType];
         _attackType.texture = _refs.gui.getTexture(dmgType.picturedamage);
+        _attackType.visible = false;
+
 
         hideHit();
 //        for (var i : int = 0; i < numChildren; i++)

@@ -244,7 +244,11 @@ public class Inventory extends EventDispatcher
 
         var slotMax : int = ItemSlotVO.DICT[item.slot].max; // MAX for current slot kind
 
+
         var isHaveFree : Boolean = _inventoryItems.length < max_capacity;
+
+        trace("addToInventory", slotMax, isHaveFree);
+
         if (!isHaveFree)
         {
             return;

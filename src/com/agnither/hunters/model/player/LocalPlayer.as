@@ -105,25 +105,25 @@ public class LocalPlayer extends Player {
             var item: Item = _inventory.getItem(_inventory.inventoryItems[i]);
             if (!item.isSpell()) {
 
-                for (var extType : String in item.getExtObj())
+                for (var extType : String in item.getExtensions())
                 {
                     if(extType == DamageExt.TYPE) {
-                        _hero.damageType = (item.getExt(extType) as DamageExt).getType();
+                        _hero.damageType = (item.getExtension(extType) as DamageExt).getType();
                     }
                     if(extType == DoubleDropExt.TYPE) {
-                        Model.instance.doubleDrop = item.getExt(extType) as DoubleDropExt;
+                        Model.instance.doubleDrop = item.getExtension(extType) as DoubleDropExt;
                     }
                     if(extType == MirrorDamageExt.TYPE) {
-                        Model.instance.mirrorDamage = item.getExt(extType) as MirrorDamageExt;
+                        Model.instance.mirrorDamage = item.getExtension(extType) as MirrorDamageExt;
                     }
                     if(extType == ManaAddExt.TYPE) {
-                        Model.instance.manaAdd = item.getExt(extType) as ManaAddExt;
+                        Model.instance.manaAdd = item.getExtension(extType) as ManaAddExt;
                     }
                     if(extType == SpellDefenceExt.TYPE) {
-                        Model.instance.spellsDefence.push(item.getExt(extType));
+                        Model.instance.spellsDefence.push(item.getExtension(extType));
                     }
                     if(extType == ResurrectPetExt.TYPE) {
-                        Model.instance.resurrectPet = item.getExt(extType) as ResurrectPetExt;
+                        Model.instance.resurrectPet = item.getExtension(extType) as ResurrectPetExt;
                     }
                 }
             }

@@ -12,6 +12,7 @@ import com.agnither.hunters.model.modules.extensions.ManaExt;
 import com.agnither.hunters.model.modules.items.ItemVO;
 import com.agnither.hunters.model.modules.locale.Locale;
 import com.agnither.hunters.model.player.inventory.Inventory;
+import com.agnither.hunters.model.player.inventory.Item;
 import com.agnither.hunters.model.player.personage.Progress;
 import com.agnither.hunters.view.ui.common.GoldView;
 import com.agnither.hunters.view.ui.common.Scroll;
@@ -90,16 +91,21 @@ public class ShopPopup extends Popup
 
         _weaponsTab = _links["weapon"];
         _weaponsTab.label = Locale.getString("weapon_tab");
-        _weaponsTab.addEventListener(TabView.TAB_CLICK, handleSelectItems);
+//        _weaponsTab.addEventListener(TabView.TAB_CLICK, handleSelectItems);
         _armorTab = _links["armor"];
         _armorTab.label = Locale.getString("armor_tab");
-        _armorTab.addEventListener(TabView.TAB_CLICK, handleSelectItems);
+//        _armorTab.addEventListener(TabView.TAB_CLICK, handleSelectItems);
         _magicTab = _links["magic"];
         _magicTab.label = Locale.getString("items_tab");
-        _magicTab.addEventListener(TabView.TAB_CLICK, handleSelectItems);
+//        _magicTab.addEventListener(TabView.TAB_CLICK, handleSelectItems);
         _spellsTab = _links["spells"];
         _spellsTab.label = Locale.getString("spells_tab");
-        _spellsTab.addEventListener(TabView.TAB_CLICK, handleSelectItems);
+//        _spellsTab.addEventListener(TabView.TAB_CLICK, handleSelectItems);
+
+        _weaponsTab.visible = false;
+        _armorTab.visible = false;
+        _magicTab.visible = false;
+        _spellsTab.visible = false;
 
         _currentType = _weaponsTab;
 
@@ -191,7 +197,8 @@ public class ShopPopup extends Popup
         _gold.update();
 
         var str : String = "";
-        var exts : Object = $item["item"].getExtObj();
+        var item : Item = $item["item"];
+        var exts : Object = item.getExtensions();
         for (var key : String in exts)
         {
             if (key == DamageExt.TYPE || key == DefenceExt.TYPE || key == ManaExt.TYPE)
@@ -222,75 +229,99 @@ public class ShopPopup extends Popup
     override public function update() : void
     {
 
-        if (App.instance.currentPopup != this)
+        if (!isActive)
         {
             return;
         }
 
-        _container.removeChildren();
-        switch (_currentType)
-        {
-            case _weaponsTab :
-                if (_currentOwner == _traderTab)
-                {
-                    showSellerItems(ItemVO.TYPE_WEAPON);
-//                    showSellerItems(ItemTypeVO.weapon);
-                }
-                else
-                {
-                    showPlayerItems(ItemVO.TYPE_WEAPON);
-//                    showPlayerItems(ItemTypeVO.weapon);
-                }
-                break;
-            case _armorTab :
-                if (_currentOwner == _traderTab)
-                {
-                    showSellerItems(ItemVO.TYPE_ARMOR);
-                }
-                else
-                {
-                    showPlayerItems(ItemVO.TYPE_ARMOR);
-                }
-                break;
-            case _magicTab :
-                if (_currentOwner == _traderTab)
-                {
-                    showSellerItems(ItemVO.TYPE_MAGIC);
-                }
-                else
-                {
-                    showPlayerItems(ItemVO.TYPE_MAGIC);
-                }
-                break;
-            case _spellsTab :
-                if (_currentOwner == _traderTab)
-                {
-                    showSellerItems(ItemVO.TYPE_SPELL);
-                }
-                else
-                {
-                    showPlayerItems(ItemVO.TYPE_SPELL);
-                }
-                break;
-        }
 
+        _container.removeChildren();
+        if (_currentOwner == _traderTab)
+        {
+            showSellerItems();
+        }
+        else
+        {
+            showPlayerItems();
+        }
 
         _deliver.text = "Сделующая поставка:";
 
         _hunterTab.setIsSelected(_currentOwner);
         _traderTab.setIsSelected(_currentOwner);
 
-        _weaponsTab.setIsSelected(_currentType);
-        _armorTab.setIsSelected(_currentType);
-        _magicTab.setIsSelected(_currentType);
-        _spellsTab.setIsSelected(_currentType);
+        return;
+
+//        switch (_currentType)
+//        {
+//            case _weaponsTab :
+//                if (_currentOwner == _traderTab)
+//                {
+//                    showSellerItems(ItemVO.TYPE_WEAPON);
+////                    showSellerItems(ItemTypeVO.weapon);
+//                }
+//                else
+//                {
+//                    showPlayerItems(ItemVO.TYPE_WEAPON);
+////                    showPlayerItems(ItemTypeVO.weapon);
+//                }
+//                break;
+//            case _armorTab :
+//                if (_currentOwner == _traderTab)
+//                {
+//                    showSellerItems(ItemVO.TYPE_ARMOR);
+//                }
+//                else
+//                {
+//                    showPlayerItems(ItemVO.TYPE_ARMOR);
+//                }
+//                break;
+//            case _magicTab :
+//                if (_currentOwner == _traderTab)
+//                {
+//                    showSellerItems(ItemVO.TYPE_MAGIC);
+//                }
+//                else
+//                {
+//                    showPlayerItems(ItemVO.TYPE_MAGIC);
+//                }
+//                break;
+//            case _spellsTab :
+//                if (_currentOwner == _traderTab)
+//                {
+//                    showSellerItems(ItemVO.TYPE_SPELL);
+//                }
+//                else
+//                {
+//                    showPlayerItems(ItemVO.TYPE_SPELL);
+//                }
+//                break;
+//        }
+
+
+
+
+//        _weaponsTab.setIsSelected(_currentType);
+//        _armorTab.setIsSelected(_currentType);
+//        _magicTab.setIsSelected(_currentType);
+//        _spellsTab.setIsSelected(_currentType);
 
     }
 
-    private function showSellerItems($type : String) : void
+    private function showSellerItems($type : String = "") : void
+//    private function showSellerItems($type : String) : void
     {
 
-        var items : Array = Model.instance.shop.getItemsByType($type);
+        var items : Array = Model.instance.shop.getItemsByType(ItemVO.TYPE_WEAPON);
+        items = items.concat(Model.instance.shop.getItemsByType(ItemVO.TYPE_ARMOR));
+        items = items.concat(Model.instance.shop.getItemsByType(ItemVO.TYPE_MAGIC));
+        items = items.concat(Model.instance.shop.getItemsByType(ItemVO.TYPE_SPELL));
+//        var items : Array = Model.instance.shop.getItemsByType($type);
+
+
+
+
+
         _container.removeChildren();
         for (var i : int = 0; i < items.length; i++)
         {
@@ -303,10 +334,13 @@ public class ShopPopup extends Popup
         _scroll.setScrollParams(int((_container.numChildren + 1) / 2), 5);
     }
 
-    private function showPlayerItems($type : String) : void
+    private function showPlayerItems($type : String = "") : void
     {
 
-        var items : Array = _inventory.getItemsByType($type);
+        var items : Array = _inventory.getItemsByType(ItemVO.TYPE_WEAPON);
+        items = items.concat(_inventory.getItemsByType(ItemVO.TYPE_ARMOR));
+        items = items.concat(_inventory.getItemsByType(ItemVO.TYPE_MAGIC));
+
         _container.removeChildren();
         for (var i : int = 0; i < items.length; i++)
         {

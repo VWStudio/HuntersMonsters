@@ -49,7 +49,7 @@ public class Items
     {
 
         var item : Item;
-        var drop : DropVO = DropVO.getRandomDrop($dropSetID); // set 2 is only goldItemVO
+        var drop : DropVO = DropVO.getRandomDrop($dropSetID); // set 2 is only createGoldItemVO
         if (drop.item_id && ItemVO.DICT[drop.item_id])
         {
             var itemVO : ItemVO = getItemVO(drop.item_id);
@@ -58,7 +58,7 @@ public class Items
         }
         else
         {
-            item = Item.create(ItemVO.goldItemVO);
+            item = Item.create(ItemVO.createGoldItemVO);
             item.amount = drop.randomAmount;
         }
         return item;

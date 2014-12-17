@@ -10,6 +10,7 @@ import com.agnither.hunters.model.modules.extensions.DoubleDropExt;
 import com.agnither.hunters.model.modules.extensions.ManaAddExt;
 import com.agnither.hunters.model.modules.extensions.MirrorDamageExt;
 import com.agnither.hunters.model.modules.extensions.ResurrectPetExt;
+import com.agnither.hunters.model.modules.items.ItemVO;
 import com.agnither.hunters.model.modules.items.Items;
 import com.agnither.hunters.model.modules.monsters.MonsterAreaVO;
 import com.agnither.hunters.model.modules.monsters.MonsterVO;
@@ -53,6 +54,7 @@ public class Model
     public var summonTimes : int = 0;
     public var flashvars : Object;
     public var screenMoved : Boolean;
+    public static const RESET_GAME : String = "Model.RESET_GAME";
 
     public static function get instance() : Model
     {
@@ -148,9 +150,15 @@ public class Model
             coreDispatch(Territory.CAN_UNLOCK);
         }
 
-        var pet : Pet = new Pet(monster, monster);
-        pet.uniqueId = Util.uniq(pet.id);
-        player.pets.addPet(pet);
+
+
+        var petItem : Item = Item.create(ItemVO.createPetItemVO(monster));
+
+        player.inventory.addItem(petItem);
+
+//        var pet : Pet = new Pet(monster, monster);
+//        pet.uniqueId = Util.uniq(pet.id);
+//        player.pets.addPet(pet);
 
         progress.saveProgress();
 
@@ -206,7 +214,6 @@ public class Model
     public function getPrice($val : Number, $coeffName : String) : Number
     {
         var mult : Number = SettingsVO.DICT[$coeffName + "PriceMult"];
-//        trace("PRICE:", int($val * $val * mult), $val, mult, $coeffName);
         return Math.round($val * $val * mult);
     }
 

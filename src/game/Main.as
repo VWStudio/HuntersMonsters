@@ -2,6 +2,10 @@ package game {
 import com.agnither.hunters.*;
 import com.agnither.hunters.App;
 import com.agnither.hunters.model.Model;
+import com.cemaprjl.core.coreDispatch;
+
+import flash.events.KeyboardEvent;
+import flash.ui.Keyboard;
 
 //import flash.display.Bitmap;
 
@@ -20,6 +24,9 @@ public class Main extends Sprite {
     private var _starling: Starling;
 
     public function Main() {
+
+        trace("********************");
+
         addEventListener(Event.ADDED_TO_STAGE, handleAddedToStage);
     }
 
@@ -40,6 +47,15 @@ public class Main extends Sprite {
         _starling.simulateMultitouch = false;
         _starling.enableErrorChecking = Capabilities.isDebugger;
         _starling.start();
+
+        stage.addEventListener(KeyboardEvent.KEY_UP, onKeyUp)
+    }
+
+    private function onKeyUp(event : KeyboardEvent) : void
+    {
+        if(event.charCode == Keyboard.R || event.charCode == 114) {
+            coreDispatch(Model.RESET_GAME);
+        }
     }
 }
 }

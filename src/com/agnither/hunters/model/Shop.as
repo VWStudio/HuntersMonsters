@@ -38,6 +38,7 @@ public class Shop
     private function generateItems($type : String) : Array
     {
 
+        var createdItems : Array = [];
         var itemsMin : int = SettingsVO.DICT[$type + "TabMin"];
         var itemsMax : int = SettingsVO.DICT[$type + "TabMax"];
         var arr : Array = [];
@@ -45,36 +46,24 @@ public class Shop
         var i : int = 0;
         var item : Item;
         var itemVO : ItemVO;
-//        trace("GENERATE", $type, amount, itemType.tabMin, itemType.tabMax);
         if (amount == 0)
         {
-//            XXX deprecated, spells are random too
-//            trace("SETS:", Model.instance.progress.sets );
-//            for (i = 0; i < ItemVO.DICT[$type].length; i++)
-//            {
-//
-//                itemVO = ItemVO.SPELLS[i].clone();
-//                trace(i, itemVO.id, itemVO.setname);
-//
-//                if(Model.instance.progress.sets.indexOf(itemVO.setname) >= 0) {
-////                    Model.instance.items.getItemVO(itemVO.id, itemVO);
-//                    trace(itemVO.id, "ADDED");
-//                    arr.push(Item.create(itemVO));
-//                }
-//            }
+
         }
         else
         {
             for (i = 0; i < amount; i++)
             {
-//                var set : String = getRandomSet();
-//                item = getRandomItem(set, $type);
                 item = Model.instance.items.generateRandomItem($type);
                 if (item)
                 {
-                    arr.push(item);
+                    var itmString : String = item.toString();
+                    trace("created item:", itmString);
+                    if(createdItems.indexOf(itmString) == -1) {
+                        createdItems.push(itmString)
+                        arr.push(item);
+                    }
                 }
-//                    arr.push(Item.createItem(itemVO, itemVO));
             }
 
         }

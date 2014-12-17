@@ -13,6 +13,7 @@ public class PetExt extends Extension
     public static const TYPE : String = "monster";
     private var _monster : MonsterVO;
     private var _monsterID : String;
+    private var _monsterLevel : Number = 1;
 
     public function PetExt($args : Array)
     {
@@ -24,7 +25,8 @@ public class PetExt extends Extension
     override protected function fill() : void
     {
         _monsterID = _extArguments[0];
-        _monster = MonsterVO.DICT[_extArguments[0]];
+        _monsterLevel = _extArguments[1] ? _extArguments[1] : 1;
+        _monster = MonsterVO.DICT[_monsterID][_monsterLevel];
     }
 
 

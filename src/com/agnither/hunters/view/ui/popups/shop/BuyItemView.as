@@ -74,9 +74,9 @@ public class BuyItemView extends AbstractView
         }
         else
         {
-            for (var extId : String in _item.getExtObj())
+            for (var extId : String in _item.getExtensions())
             {
-                var extItem : Extension = _item.getExt(extId);
+                var extItem : Extension = _item.getExtension(extId);
                 _price += Model.instance.getPrice(extItem.getBaseValue(), "slot"+item.slot);
 //                _price += Model.instance.getPrice(extItem.getBaseValue(), (extItem as Object).constructor["TYPE"]);
             }

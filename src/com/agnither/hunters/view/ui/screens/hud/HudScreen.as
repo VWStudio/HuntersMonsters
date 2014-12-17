@@ -55,6 +55,8 @@ public class HudScreen extends Screen {
     }
 
     override protected function initialize() : void {
+
+
         createFromConfig(_refs.guiConfig.hud);
 
         _playerLevel = _links.levelVal_tf;
@@ -76,7 +78,8 @@ public class HudScreen extends Screen {
 
         _resetBtn = _links.reset_btn;
         _resetBtn.text = "Сбросить все";
-        _resetBtn.addEventListener(Event.TRIGGERED, onReset);
+//        _resetBtn.addEventListener(Event.TRIGGERED, onReset);
+        _resetBtn.visible = false;
 
         _monstersBtn = _links.monsters_btn;
         _monstersBtn.visible = false;
@@ -93,6 +96,7 @@ public class HudScreen extends Screen {
 
         coreAddListener(HudScreen.UPDATE, update);
         coreAddListener(Progress.UPDATED, update);
+        coreAddListener(Model.RESET_GAME, onReset);
     }
 
     private function onSkills(event : Event) : void
@@ -143,7 +147,7 @@ public class HudScreen extends Screen {
 
      */
 
-    private function onReset(event : Event) : void {
+    private function onReset(event : Event = null) : void {
 
         Model.instance.progress.reset();
 
@@ -155,7 +159,6 @@ public class HudScreen extends Screen {
         }
 
         navigateToURL(new URLRequest(url))
-
     }
 }
 }
