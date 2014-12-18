@@ -136,7 +136,10 @@ public class AssetManager extends EventDispatcher
      *  texture atlases. */
     public function getTexture(name:String):Texture
     {
-        if (name in mTextures) return mTextures[name];
+        if (name in mTextures)
+        {
+            return mTextures[name];
+        }
         else
         {
             for each (var atlas:TextureAtlas in mAtlases)

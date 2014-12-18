@@ -128,7 +128,7 @@ public class App extends Sprite {
 //        trace("HANDLE INIT");
         _refs = new CommonRefs(_resources);
         var tex : Texture = _refs.gui.getTexture("camp");
-//        trace(tex);
+        trace("camp", tex.height);
 
         _ui = new UI();
 
