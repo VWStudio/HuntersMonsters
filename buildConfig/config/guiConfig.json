@@ -516,8 +516,8 @@
                                 "ty": 0
                             },
                             "type": "bitmap",
-                            "image": "common_hitrect.png",
-                            "name": "bitmap_common_hitrect.png"
+                            "image": "common_hitrect",
+                            "name": "bitmap_common_hitrect"
                         }
                     ]
                 ]
@@ -543,8 +543,8 @@
                                 "ty": 0
                             },
                             "type": "bitmap",
-                            "image": "common_hitrect.png",
-                            "name": "bitmap_common_hitrect.png"
+                            "image": "common_hitrect",
+                            "name": "bitmap_common_hitrect"
                         }
                     ]
                 ]
@@ -570,8 +570,8 @@
                                 "ty": 0
                             },
                             "type": "bitmap",
-                            "image": "common_hitrect.png",
-                            "name": "bitmap_common_hitrect.png"
+                            "image": "common_hitrect",
+                            "name": "bitmap_common_hitrect"
                         }
                     ]
                 ]
@@ -597,8 +597,8 @@
                                 "ty": 0
                             },
                             "type": "bitmap",
-                            "image": "common_hitrect.png",
-                            "name": "bitmap_common_hitrect.png"
+                            "image": "common_hitrect",
+                            "name": "bitmap_common_hitrect"
                         }
                     ]
                 ]
@@ -624,8 +624,8 @@
                                 "ty": 0
                             },
                             "type": "bitmap",
-                            "image": "common_hitrect.png",
-                            "name": "bitmap_common_hitrect.png"
+                            "image": "common_hitrect",
+                            "name": "bitmap_common_hitrect"
                         }
                     ]
                 ]
@@ -673,8 +673,8 @@
                                 "ty": 0
                             },
                             "type": "bitmap",
-                            "image": "common_hitrect.png",
-                            "name": "bitmap_common_hitrect.png"
+                            "image": "common_hitrect",
+                            "name": "bitmap_common_hitrect"
                         }
                     ]
                 ]
@@ -706,8 +706,8 @@
                                 "ty": 0
                             },
                             "type": "bitmap",
-                            "image": "common_hitrect.png",
-                            "name": "bitmap_common_hitrect.png"
+                            "image": "common_hitrect",
+                            "name": "bitmap_common_hitrect"
                         }
                     ]
                 ]
@@ -739,8 +739,8 @@
                                 "ty": 0
                             },
                             "type": "bitmap",
-                            "image": "common_hitrect.png",
-                            "name": "bitmap_common_hitrect.png"
+                            "image": "common_hitrect",
+                            "name": "bitmap_common_hitrect"
                         }
                     ]
                 ]
@@ -4097,8 +4097,8 @@
                                 "ty": 0
                             },
                             "type": "bitmap",
-                            "image": "common_hitrect.png",
-                            "name": "bitmap_common_hitrect.png"
+                            "image": "common_hitrect",
+                            "name": "bitmap_common_hitrect"
                         }
                     ]
                 ]
@@ -4758,8 +4758,8 @@
                                 "ty": 0
                             },
                             "type": "bitmap",
-                            "image": "common_hitrect.png",
-                            "name": "bitmap_common_hitrect.png"
+                            "image": "common_hitrect",
+                            "name": "bitmap_common_hitrect"
                         }
                     ]
                 ]
@@ -5340,7 +5340,7 @@
                         },
                         {
                             "x": 0,
-                            "y": 55,
+                            "y": 72,
                             "type": "movie clip",
                             "name": "slot2",
                             "structure": [
@@ -6157,8 +6157,8 @@
                                 "ty": 0
                             },
                             "type": "bitmap",
-                            "image": "common_hitrect.png",
-                            "name": "bitmap_common_hitrect.png"
+                            "image": "common_hitrect",
+                            "name": "bitmap_common_hitrect"
                         }
                     ]
                 ]
@@ -6547,8 +6547,8 @@
                                 "ty": 0
                             },
                             "type": "bitmap",
-                            "image": "common_hitrect.png",
-                            "name": "bitmap_common_hitrect.png"
+                            "image": "common_hitrect",
+                            "name": "bitmap_common_hitrect"
                         }
                     ]
                 ]
@@ -6797,7 +6797,7 @@
                 },
                 {
                     "x": 0,
-                    "y": 55,
+                    "y": 72,
                     "type": "movie clip",
                     "name": "slot2",
                     "structure": [
@@ -7493,8 +7493,8 @@
                         "ty": 0
                     },
                     "type": "bitmap",
-                    "image": "common_hitrect.png",
-                    "name": "bitmap_common_hitrect.png"
+                    "image": "common_hitrect",
+                    "name": "bitmap_common_hitrect"
                 }
             ],
             [
@@ -7782,8 +7782,8 @@
                         "ty": 0
                     },
                     "type": "bitmap",
-                    "image": "common_hitrect.png",
-                    "name": "bitmap_common_hitrect.png"
+                    "image": "common_hitrect",
+                    "name": "bitmap_common_hitrect"
                 }
             ],
             [],
@@ -7859,8 +7859,8 @@
         ],
         [
             {
-                "x": 7,
-                "y": 272,
+                "x": 0,
+                "y": 0,
                 "type": "bitmap",
                 "image": "battle_background_field",
                 "name": "bitmap_battle_background_field"
@@ -7868,8 +7868,8 @@
         ],
         [
             {
-                "x": 311,
-                "y": 305,
+                "x": 307,
+                "y": 288,
                 "type": "movie clip",
                 "name": "chip00",
                 "structure": [
@@ -7911,8 +7911,8 @@
         ],
         [
             {
-                "x": 359,
-                "y": 305,
+                "x": 355,
+                "y": 288,
                 "type": "movie clip",
                 "name": "chip10",
                 "structure": [
@@ -7954,8 +7954,8 @@
         ],
         [
             {
-                "x": 311,
-                "y": 353,
+                "x": 307,
+                "y": 336,
                 "type": "movie clip",
                 "name": "chip01",
                 "structure": [
@@ -7997,16 +7997,16 @@
         ],
         [
             {
-                "x": 359,
-                "y": 246,
+                "x": 362,
+                "y": 221,
                 "type": "movie clip",
                 "linkage": "battle.DropListView",
                 "name": "drop",
                 "structure": [
                     [
                         {
-                            "x": 0,
-                            "y": 1,
+                            "x": 121,
+                            "y": 5,
                             "type": "movie clip",
                             "linkage": "battle.DropSlotView",
                             "name": "drop1",
@@ -8023,8 +8023,8 @@
                             ]
                         },
                         {
-                            "x": 48,
-                            "y": 1,
+                            "x": 77,
+                            "y": 6,
                             "type": "movie clip",
                             "linkage": "battle.DropSlotView",
                             "name": "drop2",
@@ -8041,8 +8041,8 @@
                             ]
                         },
                         {
-                            "x": 96,
-                            "y": 0,
+                            "x": 164,
+                            "y": 5,
                             "type": "movie clip",
                             "linkage": "battle.DropSlotView",
                             "name": "drop3",
@@ -8059,8 +8059,8 @@
                             ]
                         },
                         {
-                            "x": 144,
-                            "y": 0,
+                            "x": 33,
+                            "y": 6,
                             "type": "movie clip",
                             "linkage": "battle.DropSlotView",
                             "name": "drop4",
@@ -8077,8 +8077,8 @@
                             ]
                         },
                         {
-                            "x": 192,
-                            "y": 1,
+                            "x": 208,
+                            "y": 6,
                             "type": "movie clip",
                             "linkage": "battle.DropSlotView",
                             "name": "drop5",
@@ -8095,8 +8095,8 @@
                             ]
                         },
                         {
-                            "x": 240,
-                            "y": 1,
+                            "x": -11,
+                            "y": 6,
                             "type": "movie clip",
                             "linkage": "battle.DropSlotView",
                             "name": "drop6",
@@ -8118,16 +8118,16 @@
         ],
         [
             {
-                "x": 0,
-                "y": 0,
+                "x": 26,
+                "y": 251,
                 "type": "movie clip",
                 "linkage": "battle.PersonageView",
                 "name": "heroPlayer",
                 "structure": [
                     [
                         {
-                            "x": 50,
-                            "y": 30,
+                            "x": 0,
+                            "y": -253,
                             "type": "bitmap",
                             "image": "hero.png",
                             "name": "bitmap_hero.png"
@@ -8135,8 +8135,8 @@
                     ],
                     [
                         {
-                            "x": 0,
-                            "y": 0,
+                            "x": -33,
+                            "y": -281,
                             "type": "bitmap",
                             "image": "battle_hit",
                             "name": "bitmap_battle_hit"
@@ -8144,8 +8144,8 @@
                     ],
                     [
                         {
-                            "x": 59,
-                            "y": 91,
+                            "x": 26,
+                            "y": -190,
                             "type": "text",
                             "width": 133,
                             "height": 63.8,
@@ -8158,8 +8158,8 @@
                     ],
                     [
                         {
-                            "x": 56,
-                            "y": 197,
+                            "x": 23,
+                            "y": -84,
                             "type": "bitmap",
                             "image": "battle_stats",
                             "name": "bitmap_battle_stats"
@@ -8167,15 +8167,15 @@
                     ],
                     [
                         {
-                            "x": 40,
-                            "y": 192,
+                            "x": 7,
+                            "y": -89,
                             "matrix": {
                                 "a": 0.49749755859375,
                                 "b": 0,
                                 "c": 0,
                                 "d": 0.49749755859375,
-                                "tx": 39.6,
-                                "ty": 192.05
+                                "tx": 6.6,
+                                "ty": -88.95
                             },
                             "type": "bitmap",
                             "image": "chip_sword",
@@ -8184,8 +8184,8 @@
                     ],
                     [
                         {
-                            "x": 58,
-                            "y": 229,
+                            "x": 25,
+                            "y": -52,
                             "type": "bitmap",
                             "image": "battle_progress_line",
                             "name": "bitmap_battle_progress_line"
@@ -8193,8 +8193,8 @@
                     ],
                     [
                         {
-                            "x": 46,
-                            "y": 213,
+                            "x": 13,
+                            "y": -68,
                             "type": "bitmap",
                             "image": "battle_stats_icons",
                             "name": "bitmap_battle_stats_icons"
@@ -8202,8 +8202,8 @@
                     ],
                     [
                         {
-                            "x": 65,
-                            "y": 226,
+                            "x": 32,
+                            "y": -55,
                             "type": "text",
                             "width": 110.7,
                             "height": 21.05,
@@ -8216,8 +8216,8 @@
                     ],
                     [
                         {
-                            "x": 66,
-                            "y": 195,
+                            "x": 33,
+                            "y": -86,
                             "type": "text",
                             "width": 57.45,
                             "height": 21.05,
@@ -8230,8 +8230,8 @@
                     ],
                     [
                         {
-                            "x": 67,
-                            "y": 211,
+                            "x": 34,
+                            "y": -70,
                             "type": "text",
                             "width": 56.1,
                             "height": 21.05,
@@ -8244,22 +8244,22 @@
                     ],
                     [
                         {
-                            "x": 58,
-                            "y": -1,
+                            "x": -20,
+                            "y": -251,
                             "type": "text",
                             "width": 195,
                             "height": 29.65,
                             "text": "Name lv",
                             "fontName": "impact_21",
                             "fontColor": "0xFFFFFF",
-                            "align": "left",
+                            "align": "center",
                             "name": "name_tf"
                         }
                     ],
                     [
                         {
-                            "x": 30,
-                            "y": 4,
+                            "x": -25,
+                            "y": -246,
                             "type": "bitmap",
                             "image": "battle_current_player",
                             "name": "bitmap_battle_current_player"
@@ -8270,33 +8270,34 @@
         ],
         [
             {
-                "x": 758,
-                "y": 0,
+                "x": 783,
+                "y": 252,
                 "type": "movie clip",
                 "linkage": "battle.PersonageView",
                 "name": "heroEnemy",
                 "structure": [
                     [
                         {
-                            "x": 169,
-                            "y": 32,
+                            "x": 186,
+                            "y": -253,
                             "matrix": {
                                 "a": -1,
                                 "b": 0,
                                 "c": 0,
                                 "d": 1,
-                                "tx": 168.95,
-                                "ty": 31.65
+                                "tx": 186,
+                                "ty": -253
                             },
                             "type": "bitmap",
                             "image": "hero.png",
                             "name": "bitmap_hero.png"
                         }
                     ],
+                    [],
                     [
                         {
-                            "x": -21,
-                            "y": 10,
+                            "x": -18,
+                            "y": -272,
                             "type": "bitmap",
                             "image": "battle_hit",
                             "name": "bitmap_battle_hit"
@@ -8304,8 +8305,8 @@
                     ],
                     [
                         {
-                            "x": 30,
-                            "y": 99,
+                            "x": 33,
+                            "y": -183,
                             "type": "text",
                             "width": 133,
                             "height": 63.8,
@@ -8318,15 +8319,15 @@
                     ],
                     [
                         {
-                            "x": 161,
-                            "y": 195,
+                            "x": 164,
+                            "y": -87,
                             "matrix": {
                                 "a": -1,
                                 "b": 0,
                                 "c": 0,
                                 "d": 1,
-                                "tx": 161.3,
-                                "ty": 194.95
+                                "tx": 164.3,
+                                "ty": -87.1
                             },
                             "type": "bitmap",
                             "image": "battle_stats",
@@ -8335,15 +8336,15 @@
                     ],
                     [
                         {
-                            "x": 160,
-                            "y": 227,
+                            "x": 163,
+                            "y": -55,
                             "matrix": {
                                 "a": -1,
                                 "b": 0,
                                 "c": 0,
                                 "d": 1,
-                                "tx": 160.3,
-                                "ty": 226.95
+                                "tx": 163.3,
+                                "ty": -55.1
                             },
                             "type": "bitmap",
                             "image": "battle_progress_line",
@@ -8352,8 +8353,8 @@
                     ],
                     [
                         {
-                            "x": 154,
-                            "y": 210,
+                            "x": 157,
+                            "y": -72,
                             "type": "bitmap",
                             "image": "battle_stats_icons",
                             "name": "bitmap_battle_stats_icons"
@@ -8361,15 +8362,15 @@
                     ],
                     [
                         {
-                            "x": 149,
-                            "y": 189,
+                            "x": 152,
+                            "y": -93,
                             "matrix": {
                                 "a": 0.49749755859375,
                                 "b": 0,
                                 "c": 0,
                                 "d": 0.49749755859375,
-                                "tx": 148.9,
-                                "ty": 189.4
+                                "tx": 151.9,
+                                "ty": -92.65
                             },
                             "type": "bitmap",
                             "image": "chip_sword",
@@ -8378,8 +8379,8 @@
                     ],
                     [
                         {
-                            "x": 78,
-                            "y": 225,
+                            "x": 81,
+                            "y": -57,
                             "type": "text",
                             "width": 71,
                             "height": 21.05,
@@ -8392,8 +8393,8 @@
                     ],
                     [
                         {
-                            "x": 118,
-                            "y": 193,
+                            "x": 121,
+                            "y": -89,
                             "type": "text",
                             "width": 31,
                             "height": 21.05,
@@ -8406,8 +8407,8 @@
                     ],
                     [
                         {
-                            "x": 118,
-                            "y": 209,
+                            "x": 121,
+                            "y": -74,
                             "type": "text",
                             "width": 31,
                             "height": 21.05,
@@ -8420,10 +8421,10 @@
                     ],
                     [
                         {
-                            "x": 34,
-                            "y": 0,
+                            "x": 8,
+                            "y": -252,
                             "type": "text",
-                            "width": 161.1,
+                            "width": 193.95,
                             "height": 29.65,
                             "text": "Name lv",
                             "fontName": "impact_21",
@@ -8434,8 +8435,8 @@
                     ],
                     [
                         {
-                            "x": 5,
-                            "y": 6,
+                            "x": 189,
+                            "y": -246,
                             "type": "bitmap",
                             "image": "battle_current_player",
                             "name": "bitmap_battle_current_player"
@@ -8446,16 +8447,16 @@
         ],
         [
             {
-                "x": 172,
-                "y": 0,
+                "x": 198,
+                "y": 251,
                 "type": "movie clip",
                 "linkage": "battle.PersonageView",
                 "name": "petPlayer",
                 "structure": [
                     [
                         {
-                            "x": 50,
-                            "y": 30,
+                            "x": 0,
+                            "y": -253,
                             "type": "bitmap",
                             "image": "hero.png",
                             "name": "bitmap_hero.png"
@@ -8463,8 +8464,8 @@
                     ],
                     [
                         {
-                            "x": 0,
-                            "y": 0,
+                            "x": -33,
+                            "y": -281,
                             "type": "bitmap",
                             "image": "battle_hit",
                             "name": "bitmap_battle_hit"
@@ -8472,8 +8473,8 @@
                     ],
                     [
                         {
-                            "x": 59,
-                            "y": 91,
+                            "x": 26,
+                            "y": -190,
                             "type": "text",
                             "width": 133,
                             "height": 63.8,
@@ -8486,8 +8487,8 @@
                     ],
                     [
                         {
-                            "x": 56,
-                            "y": 197,
+                            "x": 23,
+                            "y": -84,
                             "type": "bitmap",
                             "image": "battle_stats",
                             "name": "bitmap_battle_stats"
@@ -8495,15 +8496,15 @@
                     ],
                     [
                         {
-                            "x": 40,
-                            "y": 192,
+                            "x": 7,
+                            "y": -89,
                             "matrix": {
                                 "a": 0.49749755859375,
                                 "b": 0,
                                 "c": 0,
                                 "d": 0.49749755859375,
-                                "tx": 39.6,
-                                "ty": 192.05
+                                "tx": 6.6,
+                                "ty": -88.95
                             },
                             "type": "bitmap",
                             "image": "chip_sword",
@@ -8512,8 +8513,8 @@
                     ],
                     [
                         {
-                            "x": 58,
-                            "y": 229,
+                            "x": 25,
+                            "y": -52,
                             "type": "bitmap",
                             "image": "battle_progress_line",
                             "name": "bitmap_battle_progress_line"
@@ -8521,8 +8522,8 @@
                     ],
                     [
                         {
-                            "x": 46,
-                            "y": 213,
+                            "x": 13,
+                            "y": -68,
                             "type": "bitmap",
                             "image": "battle_stats_icons",
                             "name": "bitmap_battle_stats_icons"
@@ -8530,8 +8531,8 @@
                     ],
                     [
                         {
-                            "x": 65,
-                            "y": 226,
+                            "x": 32,
+                            "y": -55,
                             "type": "text",
                             "width": 110.7,
                             "height": 21.05,
@@ -8544,8 +8545,8 @@
                     ],
                     [
                         {
-                            "x": 66,
-                            "y": 195,
+                            "x": 33,
+                            "y": -86,
                             "type": "text",
                             "width": 57.45,
                             "height": 21.05,
@@ -8558,8 +8559,8 @@
                     ],
                     [
                         {
-                            "x": 67,
-                            "y": 211,
+                            "x": 34,
+                            "y": -70,
                             "type": "text",
                             "width": 56.1,
                             "height": 21.05,
@@ -8572,22 +8573,22 @@
                     ],
                     [
                         {
-                            "x": 58,
-                            "y": -1,
+                            "x": -20,
+                            "y": -251,
                             "type": "text",
                             "width": 195,
                             "height": 29.65,
                             "text": "Name lv",
                             "fontName": "impact_21",
                             "fontColor": "0xFFFFFF",
-                            "align": "left",
+                            "align": "center",
                             "name": "name_tf"
                         }
                     ],
                     [
                         {
-                            "x": 30,
-                            "y": 4,
+                            "x": -25,
+                            "y": -246,
                             "type": "bitmap",
                             "image": "battle_current_player",
                             "name": "bitmap_battle_current_player"
@@ -8598,33 +8599,34 @@
         ],
         [
             {
-                "x": 575,
-                "y": 0,
+                "x": 604,
+                "y": 252,
                 "type": "movie clip",
                 "linkage": "battle.PersonageView",
                 "name": "petEnemy",
                 "structure": [
                     [
                         {
-                            "x": 169,
-                            "y": 32,
+                            "x": 186,
+                            "y": -253,
                             "matrix": {
                                 "a": -1,
                                 "b": 0,
                                 "c": 0,
                                 "d": 1,
-                                "tx": 168.95,
-                                "ty": 31.65
+                                "tx": 186,
+                                "ty": -253
                             },
                             "type": "bitmap",
                             "image": "hero.png",
                             "name": "bitmap_hero.png"
                         }
                     ],
+                    [],
                     [
                         {
-                            "x": -21,
-                            "y": 10,
+                            "x": -18,
+                            "y": -272,
                             "type": "bitmap",
                             "image": "battle_hit",
                             "name": "bitmap_battle_hit"
@@ -8632,8 +8634,8 @@
                     ],
                     [
                         {
-                            "x": 30,
-                            "y": 99,
+                            "x": 33,
+                            "y": -183,
                             "type": "text",
                             "width": 133,
                             "height": 63.8,
@@ -8646,15 +8648,15 @@
                     ],
                     [
                         {
-                            "x": 161,
-                            "y": 195,
+                            "x": 164,
+                            "y": -87,
                             "matrix": {
                                 "a": -1,
                                 "b": 0,
                                 "c": 0,
                                 "d": 1,
-                                "tx": 161.3,
-                                "ty": 194.95
+                                "tx": 164.3,
+                                "ty": -87.1
                             },
                             "type": "bitmap",
                             "image": "battle_stats",
@@ -8663,15 +8665,15 @@
                     ],
                     [
                         {
-                            "x": 160,
-                            "y": 227,
+                            "x": 163,
+                            "y": -55,
                             "matrix": {
                                 "a": -1,
                                 "b": 0,
                                 "c": 0,
                                 "d": 1,
-                                "tx": 160.3,
-                                "ty": 226.95
+                                "tx": 163.3,
+                                "ty": -55.1
                             },
                             "type": "bitmap",
                             "image": "battle_progress_line",
@@ -8680,8 +8682,8 @@
                     ],
                     [
                         {
-                            "x": 154,
-                            "y": 210,
+                            "x": 157,
+                            "y": -72,
                             "type": "bitmap",
                             "image": "battle_stats_icons",
                             "name": "bitmap_battle_stats_icons"
@@ -8689,15 +8691,15 @@
                     ],
                     [
                         {
-                            "x": 149,
-                            "y": 189,
+                            "x": 152,
+                            "y": -93,
                             "matrix": {
                                 "a": 0.49749755859375,
                                 "b": 0,
                                 "c": 0,
                                 "d": 0.49749755859375,
-                                "tx": 148.9,
-                                "ty": 189.4
+                                "tx": 151.9,
+                                "ty": -92.65
                             },
                             "type": "bitmap",
                             "image": "chip_sword",
@@ -8706,8 +8708,8 @@
                     ],
                     [
                         {
-                            "x": 78,
-                            "y": 225,
+                            "x": 81,
+                            "y": -57,
                             "type": "text",
                             "width": 71,
                             "height": 21.05,
@@ -8720,8 +8722,8 @@
                     ],
                     [
                         {
-                            "x": 118,
-                            "y": 193,
+                            "x": 121,
+                            "y": -89,
                             "type": "text",
                             "width": 31,
                             "height": 21.05,
@@ -8734,8 +8736,8 @@
                     ],
                     [
                         {
-                            "x": 118,
-                            "y": 209,
+                            "x": 121,
+                            "y": -74,
                             "type": "text",
                             "width": 31,
                             "height": 21.05,
@@ -8748,10 +8750,10 @@
                     ],
                     [
                         {
-                            "x": 34,
-                            "y": 0,
+                            "x": 8,
+                            "y": -252,
                             "type": "text",
-                            "width": 161.1,
+                            "width": 193.95,
                             "height": 29.65,
                             "text": "Name lv",
                             "fontName": "impact_21",
@@ -8762,8 +8764,8 @@
                     ],
                     [
                         {
-                            "x": 5,
-                            "y": 6,
+                            "x": 189,
+                            "y": -246,
                             "type": "bitmap",
                             "image": "battle_current_player",
                             "name": "bitmap_battle_current_player"
@@ -8774,15 +8776,15 @@
         ],
         [
             {
-                "x": 243,
-                "y": 247,
+                "x": 232,
+                "y": 217,
                 "matrix": {
                     "a": 0.6631622314453125,
                     "b": 0,
                     "c": 0,
                     "d": 0.6631622314453125,
-                    "tx": 243,
-                    "ty": 247
+                    "tx": 232,
+                    "ty": 216.9
                 },
                 "type": "button",
                 "name": "pet_btn",
@@ -8791,8 +8793,8 @@
         ],
         [
             {
-                "x": 46,
-                "y": 341,
+                "x": 20,
+                "y": 282,
                 "type": "movie clip",
                 "name": "slotsPlayer",
                 "structure": [
@@ -8890,7 +8892,7 @@
                         },
                         {
                             "x": 0,
-                            "y": 55,
+                            "y": 72,
                             "type": "movie clip",
                             "name": "slot2",
                             "structure": [
@@ -8985,8 +8987,8 @@
         ],
         [
             {
-                "x": 749,
-                "y": 341,
+                "x": 774,
+                "y": 281,
                 "type": "movie clip",
                 "name": "slotsEnemy",
                 "structure": [
@@ -9084,7 +9086,7 @@
                         },
                         {
                             "x": 0,
-                            "y": 55,
+                            "y": 72,
                             "type": "movie clip",
                             "name": "slot2",
                             "structure": [
@@ -9179,8 +9181,8 @@
         ],
         [
             {
-                "x": 51,
-                "y": 290,
+                "x": 32,
+                "y": 224,
                 "type": "movie clip",
                 "linkage": "battle.ManaListView",
                 "name": "manaPlayer",
@@ -9204,8 +9206,8 @@
                                 ],
                                 [
                                     {
-                                        "x": 0,
-                                        "y": 0,
+                                        "x": 1,
+                                        "y": 3,
                                         "type": "text",
                                         "width": 51.55,
                                         "height": 29.65,
@@ -9236,8 +9238,8 @@
                                 ],
                                 [
                                     {
-                                        "x": 0,
-                                        "y": 0,
+                                        "x": 1,
+                                        "y": 3,
                                         "type": "text",
                                         "width": 51.55,
                                         "height": 29.65,
@@ -9268,8 +9270,8 @@
                                 ],
                                 [
                                     {
-                                        "x": 0,
-                                        "y": 0,
+                                        "x": 1,
+                                        "y": 3,
                                         "type": "text",
                                         "width": 51.55,
                                         "height": 29.65,
@@ -9288,8 +9290,8 @@
         ],
         [
             {
-                "x": 756,
-                "y": 290,
+                "x": 787,
+                "y": 224,
                 "type": "movie clip",
                 "linkage": "battle.ManaListView",
                 "name": "manaEnemy",
@@ -9313,8 +9315,8 @@
                                 ],
                                 [
                                     {
-                                        "x": 0,
-                                        "y": 0,
+                                        "x": 1,
+                                        "y": 3,
                                         "type": "text",
                                         "width": 51.55,
                                         "height": 29.65,
@@ -9345,8 +9347,8 @@
                                 ],
                                 [
                                     {
-                                        "x": 0,
-                                        "y": 0,
+                                        "x": 1,
+                                        "y": 3,
                                         "type": "text",
                                         "width": 51.55,
                                         "height": 29.65,
@@ -9377,8 +9379,8 @@
                                 ],
                                 [
                                     {
-                                        "x": 0,
-                                        "y": 0,
+                                        "x": 1,
+                                        "y": 3,
                                         "type": "text",
                                         "width": 51.55,
                                         "height": 29.65,

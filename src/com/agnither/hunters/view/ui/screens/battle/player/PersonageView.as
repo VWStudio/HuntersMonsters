@@ -46,7 +46,7 @@ public class PersonageView extends AbstractView {
 
     private function updateImage() : void
     {
-        _picturePos = new Point(isEnemy ? (_progressLine.x - _progressLine.width * 0.5) : (_progressLine.x + _progressLine.width * 0.5), _progressLine.y);
+        _picturePos = new Point(isEnemy ? (_progressLine.x - _progressLine.width * 0.5) : (_progressLine.x + _progressLine.width * 0.5), 0);
         if (_personage.picture) {
             _picture.texture = _refs.gui.getTexture(_personage.picture);
             _picture.readjustSize();
