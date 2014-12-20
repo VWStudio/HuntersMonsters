@@ -43,9 +43,10 @@ public class Config
         addConfig("player_pets", PlayerPetVO);
         addConfig("locale", LocaleVO);
         addConfig("monster_area", MonsterAreaVO);
-        addConfig("trap", TrapVO);
+//        addConfig("trap", TrapVO);
         addConfig("skills", SkillVO);
-        addConfig("pricelist", PriceItemVO);
+        addConfig("price_items", PriceItemVO);
+//        addConfig("pricelist", PriceItemVO);
     }
 
     public static function addConfig(id : String, ClassRef : Class) : void
@@ -56,11 +57,14 @@ public class Config
 
     public static function parse(assets : AssetManager) : void
     {
+        var obj : Object = assets.getObject("gameConfig");
+
         for (var i : int = 0; i < list.length; i++)
         {
 
             var filename : String = list[i];
-            config[filename].parseData(assets.getObject(filename));
+            config[filename].parseData(obj[filename]);
+//            config[filename].parseData(assets.getObject(filename));
         }
 
 

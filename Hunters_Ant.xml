@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Hunters Compile" default="all">
+
+  <property file="Hunters_Ant.properties" />
+
+  <property name="debug" value="false" />
+  <property name="source.dir" location="${basedir}/src" />
+  <property name="output.dir" location="build" />
+  <property name="app.name" value="HuntersMonsters" />
+  <property name="output.html" value="${output.dir}/${app.name}.html" />
+  <property name="mxmlc.maxmemory" value="512m" />
+  <property name="FLEX_HOME" value="${airsdk.home}" />
+  <property name="starling" value="E:\Bin\frameworks\Gamua-Starling-Framework-def24cc_1.5.1\starling"/>
+
+
+  <target name="compile" depends="makeWrapper">
+    <mxmlc
+            file="${source.dir}/com/agnither/hunters/Preloader.as"
+            output="${output.dir}/${app.name}.swf"
+            debug="${debug}"
+            fork="true"
+            maxmemory="${mxmlc.maxmemory}"
+            args="-frame=ContentFrame,game.Main">
+      <source-path path-element="${source.dir}" />
+      <!--<compiler.library-path dir="${starling.home}" append="true" >-->
+      <compiler.library-path dir="${starling}" append="true" >
+        <include name="bin/starling.swc" />
+      </compiler.library-path>
+
+      <compiler.library-path file="${basedir}" append="true" >
+        <include name="preloader_lib.swc" />
+      </compiler.library-path>
+    </mxmlc>
+  </target>
+
+  <target name="copyConfig">
+    <copy todir="${output.dir}">
+      <fileset dir="${basedir}/buildConfig" />
+    </copy>
+  </target>
+
+  <target name="copyTemplates">
+    <copy todir="${output.dir}">
+      <fileset dir="${basedir}/html-template">
+        <exclude name="**/index.template.html" />
+      </fileset>
+    </copy>
+  </target>
+
+  <target name="clean">
+    <delete dir="${output.dir}" />
+    <mkdir dir="${output.dir}" />
+  </target>
+
+  <target name="makeWrapper" depends="clean, copyTemplates, copyConfig" description="copies index.html wrapper and needed files from html-template directory" >
+    <copy file="${basedir}/html-template/index.template.html" tofile="${output.html}" />
+    <replace file="${output.html}" token="$${title}" value="${app.name}"/>
+    <replace file="${output.html}" token="$${swf}" value="${app.name}"/>
+    <replace file="${output.html}" token="$${width}" value="1000"/>
+    <replace file="${output.html}" token="$${height}" value="720"/>
+    <replace file="${output.html}" token="$${bgcolor}" value="#000000"/>
+    <replace file="${output.html}" token="$${application}" value="${app.name}"/>
+    <replace file="${output.html}" token="$${version_major}" value="14"/>
+    <replace file="${output.html}" token="$${version_minor}" value="0"/>
+    <replace file="${output.html}" token="$${version_revision}" value="0"/>
+  </target>
+
+  <taskdef resource="flexTasks.tasks" classpath="${FLEX_HOME}/ant/lib/flexTasks.jar" />
+
+  <target name="run" depends="compile">
+    <exec executable="${browser}">
+      <arg line="${output.html}"/>
+    </exec>
+  </target>
+
+  <target name="all" depends="run" />
+</project>

@@ -1,0 +1,126 @@
+[
+    {
+        "id": "items_tab",
+        "russian": "Предметы"
+    },
+    {
+        "id": "spells_tab",
+        "russian": "Магия"
+    },
+    {
+        "id": "monster_tab",
+        "russian": "Питомцы"
+    },
+    {
+        "id": "weapon_tab",
+        "russian": "Оружие"
+    },
+    {
+        "id": "armor_tab",
+        "russian": "Броня"
+    },
+    {
+        "id": "traps_tab",
+        "russian": "Ловушки"
+    },
+    {
+        "id": "tamed_tab",
+        "russian": "Пойманные"
+    },
+    {
+        "id": "untamed_tab",
+        "russian": "Не пойманные"
+    },
+    {
+        "id": "blue_bull",
+        "russian": "Синий бык"
+    },
+    {
+        "id": "pikachu",
+        "russian": "Огонек"
+    },
+    {
+        "id": "meowut",
+        "russian": "Водяной"
+    },
+    {
+        "id": "slowpoke",
+        "russian": "Слоупок"
+    },
+    {
+        "id": "charmander",
+        "russian": "Чармандер"
+    },
+    {
+        "id": "bulbasaur",
+        "russian": "Бульбазавр"
+    },
+    {
+        "id": "squirtle",
+        "russian": "Сквиртл"
+    },
+    {
+        "id": "pidgey",
+        "russian": "Пиджей"
+    },
+    {
+        "id": "ratata",
+        "russian": "Ратата"
+    },
+    {
+        "id": "zubat",
+        "russian": "Зубат"
+    },
+    {
+        "id": "resurrect_pet",
+        "russian": "Восстанавливает вызванного монстра после смерти"
+    },
+    {
+        "id": "double_drop",
+        "russian": "Шанс двойного дропа."
+    },
+    {
+        "id": "mirror_damage",
+        "russian": "Отражает часть повреждений на противника"
+    },
+    {
+        "id": "spell_defence",
+        "russian": "Защищает от заклинаний"
+    },
+    {
+        "id": "mana_add",
+        "russian": "Прибавляет каждый ход немного маны"
+    },
+    {
+        "id": "hunter_tab",
+        "russian": "Купить"
+    },
+    {
+        "id": "seller_tab",
+        "russian": "Продать"
+    },
+    {
+        "id": "weapon",
+        "russian": "Оружие"
+    },
+    {
+        "id": "nature",
+        "russian": "Природа"
+    },
+    {
+        "id": "water",
+        "russian": "Вода"
+    },
+    {
+        "id": "fire",
+        "russian": "Огонь"
+    },
+    {
+        "id": "dark",
+        "russian": "Кровь"
+    },
+    {
+        "id": "stone",
+        "russian": "Камень"
+    }
+]

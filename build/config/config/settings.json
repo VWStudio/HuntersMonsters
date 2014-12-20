@@ -1,0 +1,307 @@
+[
+    {
+        "parameter": "chestLifetime",
+        "value": "300,1800",
+        "type": "array"
+    },
+    {
+        "parameter": "chestRespawn",
+        "value": "300",
+        "type": "int"
+    },
+    {
+        "parameter": "playerInitialLevel",
+        "value": "1",
+        "type": "int"
+    },
+    {
+        "parameter": "playerInitialDmg",
+        "value": "0",
+        "type": "int"
+    },
+    {
+        "parameter": "playerInitialDef",
+        "value": "0",
+        "type": "int"
+    },
+    {
+        "parameter": "playerInitialExp",
+        "value": "0",
+        "type": "int"
+    },
+    {
+        "parameter": "playerInitialGold",
+        "value": "0",
+        "type": "int"
+    },
+    {
+        "parameter": "playerInitialMagic",
+        "value": "3",
+        "type": "int"
+    },
+    {
+        "parameter": "playerInitialRating",
+        "value": "0",
+        "type": "int"
+    },
+    {
+        "parameter": "playerInitialName",
+        "value": "Охотник",
+        "type": "str"
+    },
+    {
+        "parameter": "playerInitialLeague",
+        "value": "1",
+        "type": "int"
+    },
+    {
+        "parameter": "playerInitialSummonMax",
+        "value": "1",
+        "type": "int"
+    },
+    {
+        "parameter": "playerInitialSkillPoints",
+        "value": "0",
+        "type": "int"
+    },
+    {
+        "parameter": "pointValue",
+        "value": "10",
+        "type": "int"
+    },
+    {
+        "parameter": "pointPercent",
+        "value": "10",
+        "type": "int"
+    },
+    {
+        "parameter": "playerInitialItems"
+    },
+    {
+        "parameter": "unlockedLocations",
+        "value": "blue_bull",
+        "type": "array"
+    },
+    {
+        "parameter": "shopDeliverTimeMin",
+        "value": "1",
+        "type": "int"
+    },
+    {
+        "parameter": "weaponTabMin",
+        "value": "3",
+        "type": "int"
+    },
+    {
+        "parameter": "weaponTabMax",
+        "value": "10",
+        "type": "int"
+    },
+    {
+        "parameter": "armorTabMin",
+        "value": "3",
+        "type": "int"
+    },
+    {
+        "parameter": "armorTabMax",
+        "value": "10",
+        "type": "int"
+    },
+    {
+        "parameter": "magicTabMin",
+        "value": "3",
+        "type": "int"
+    },
+    {
+        "parameter": "magicTabMax",
+        "value": "10",
+        "type": "int"
+    },
+    {
+        "parameter": "spellTabMin",
+        "value": "3",
+        "type": "int"
+    },
+    {
+        "parameter": "spellTabMax",
+        "value": "10",
+        "type": "int"
+    },
+    {
+        "parameter": "sellPriceMult",
+        "value": "0.2",
+        "type": "int"
+    },
+    {
+        "parameter": "itemDropChance",
+        "value": "0.4",
+        "type": "int",
+        "info": "gold or item drop chance"
+    },
+    {
+        "parameter": "slot2DropChance",
+        "value": "30",
+        "type": "int",
+        "info": "weapon slot"
+    },
+    {
+        "parameter": "slot3DropChance",
+        "value": "15",
+        "type": "int",
+        "info": "helmet slot"
+    },
+    {
+        "parameter": "slot4DropChance",
+        "value": "20",
+        "type": "int",
+        "info": "body clop"
+    },
+    {
+        "parameter": "slot5DropChance",
+        "value": "0",
+        "type": "int",
+        "info": "pants slot"
+    },
+    {
+        "parameter": "slot6DropChance",
+        "value": "10",
+        "type": "int",
+        "info": "boots slot"
+    },
+    {
+        "parameter": "slot7DropChance",
+        "value": "10",
+        "type": "int",
+        "info": "gloves slot"
+    },
+    {
+        "parameter": "slot8DropChance",
+        "value": "0",
+        "type": "int",
+        "info": "rings slot"
+    },
+    {
+        "parameter": "slot9DropChance",
+        "value": "0",
+        "type": "int",
+        "info": "spell slot"
+    },
+    {
+        "parameter": "slot2ParamMult",
+        "value": 3,
+        "type": "int",
+        "info": "slot param multiplier for drop"
+    },
+    {
+        "parameter": "slot3ParamMult",
+        "value": 51,
+        "type": "int",
+        "info": "slot param multiplier for drop"
+    },
+    {
+        "parameter": "slot4ParamMult",
+        "value": 6,
+        "type": "int",
+        "info": "slot param multiplier for drop"
+    },
+    {
+        "parameter": "slot5ParamMult",
+        "value": 165,
+        "type": "int",
+        "info": "slot param multiplier for drop"
+    },
+    {
+        "parameter": "slot6ParamMult",
+        "value": 165,
+        "type": "int",
+        "info": "slot param multiplier for drop"
+    },
+    {
+        "parameter": "slot7ParamMult",
+        "value": 165,
+        "type": "int",
+        "info": "slot param multiplier for drop"
+    },
+    {
+        "parameter": "slot8ParamMult",
+        "value": 3,
+        "type": "int",
+        "info": "slot param multiplier for drop"
+    },
+    {
+        "parameter": "slot9ParamMult",
+        "value": 3,
+        "type": "int",
+        "info": "slot param multiplier for drop"
+    },
+    {
+        "parameter": "slot2PriceMult",
+        "value": 1.5,
+        "type": "int"
+    },
+    {
+        "parameter": "slot3PriceMult",
+        "value": 15,
+        "type": "int"
+    },
+    {
+        "parameter": "slot4PriceMult",
+        "value": 2.4000000000000004,
+        "type": "int"
+    },
+    {
+        "parameter": "slot5PriceMult",
+        "value": 3,
+        "type": "int"
+    },
+    {
+        "parameter": "slot6PriceMult",
+        "value": 36,
+        "type": "int"
+    },
+    {
+        "parameter": "slot7PriceMult",
+        "value": 36,
+        "type": "int"
+    },
+    {
+        "parameter": "slot8PriceMult",
+        "value": 3,
+        "type": "int"
+    },
+    {
+        "parameter": "slot9PriceMult",
+        "value": 3,
+        "type": "int"
+    },
+    {
+        "parameter": "double_dropPriceMult",
+        "value": "1",
+        "info": "оставим на всякий случай"
+    },
+    {
+        "parameter": "resurrect_petPriceMult",
+        "value": "1",
+        "info": "поля где тип не прописан"
+    },
+    {
+        "parameter": "mirror_damagePriceMult",
+        "value": "1",
+        "info": "игнорируются"
+    },
+    {
+        "parameter": "spell_defencePriceMult",
+        "value": "1",
+        "info": "как считать цену у магических предметов?"
+    },
+    {
+        "parameter": "mana_addPriceMult",
+        "value": "1",
+        "info": "---"
+    },
+    {
+        "parameter": "pet_levelPriceMult",
+        "value": "1",
+        "info": "---"
+    }
+]

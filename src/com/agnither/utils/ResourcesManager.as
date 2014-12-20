@@ -81,10 +81,12 @@ public class ResourcesManager {
     public function loadMain() : void {
         _loading++;
         if(isLocal) {
-            for (var i : int = 0; i < Config.list.length; i++)
-            {
-                _main.enqueue("config/config/" + Config.list[i] + ".json");
-            }
+//            for (var i : int = 0; i < Config.list.length; i++)
+//            {
+//                _main.enqueue("config/config/" + Config.list[i] + ".json");
+//            }
+            _main.enqueue(
+                    "config/gameConfig.json");
             _main.enqueue(
                     "config/guiConfig.json"
             );

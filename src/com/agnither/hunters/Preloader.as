@@ -37,6 +37,8 @@ public class Preloader extends MovieClip
     {
         super();
 
+        trace("aaa");
+
         stage.scaleMode = StageScaleMode.NO_SCALE;
         stage.align = StageAlign.TOP_LEFT;
 
@@ -120,6 +122,7 @@ public class Preloader extends MovieClip
      private function initApp() : void {
 //        trace("INIT APP");
 //            nextFrame();
+        trace("bbb");
         var mainClass : Object = getDefinitionByName("game.Main");
         addChildAt(new mainClass() as Sprite, 0);
         setTimeout(removeStuff, 2000);
