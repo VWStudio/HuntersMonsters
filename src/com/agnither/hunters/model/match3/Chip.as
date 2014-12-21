@@ -16,7 +16,7 @@ public class Chip extends EventDispatcher {
 
     private var _data: MagicTypeVO;
     public function get type():String {
-        return _data.name;
+        return _data ? _data.name : null;
     }
 
     public function get iconChip():String {

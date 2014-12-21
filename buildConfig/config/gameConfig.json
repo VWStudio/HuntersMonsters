@@ -345,6 +345,10 @@
       "wield": 1
     },
     {
+      "id": 1,
+      "ext": "damage:[\"weapon\",5]"
+    },
+    {
       "id": 4,
       "ext": "defence:1",
       "wield": 1

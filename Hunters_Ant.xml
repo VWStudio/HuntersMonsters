@@ -10,8 +10,6 @@
   <property name="output.html" value="${output.dir}/${app.name}.html" />
   <property name="mxmlc.maxmemory" value="512m" />
   <property name="FLEX_HOME" value="${airsdk.home}" />
-  <property name="starling" value="E:\Bin\frameworks\Gamua-Starling-Framework-def24cc_1.5.1\starling"/>
-
 
   <target name="compile" depends="makeWrapper">
     <mxmlc
@@ -23,7 +21,7 @@
             args="-frame=ContentFrame,game.Main">
       <source-path path-element="${source.dir}" />
       <!--<compiler.library-path dir="${starling.home}" append="true" >-->
-      <compiler.library-path dir="${starling}" append="true" >
+      <compiler.library-path dir="${starling.home}" append="true" >
         <include name="bin/starling.swc" />
       </compiler.library-path>
 

@@ -3,6 +3,7 @@
  */
 package com.agnither.hunters.model.player
 {
+import com.agnither.hunters.data.outer.MagicTypeVO;
 import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.match3.Match3Game;
 import com.agnither.hunters.model.match3.Move;
@@ -30,6 +31,7 @@ public class AIPlayer extends Player
 //    private var _spellMovesResults : Array;
     private var _currentSpellsObj : Object = {};
     private var _currentSpellsMana : Array = [];
+    private var _chestResults : Array = [];
 
     public function AIPlayer(data : MonsterVO) : void
     {
@@ -88,6 +90,7 @@ public class AIPlayer extends Player
     private function processMoves() : void
     {
         _damageResults = [];
+        _chestResults = [];
         _currentSpellsMana = hero.inventory.manaPriority;
         _currentSpellsObj = {};
         _otherResults = [];
@@ -111,6 +114,10 @@ public class AIPlayer extends Player
 //                if(_damageResults.indexOf(result) == -1) {
                     _damageResults.push(result);
 //                }
+            }
+            else if(result.isHaveResultType(MagicTypeVO.CHEST))
+            {
+                    _chestResults.push(result);
             }
             else
             {
@@ -163,6 +170,10 @@ public class AIPlayer extends Player
 //            trace(JSON.stringify(_damageResults));
 //            trace("DAMAGE RES");
             results = _damageResults;
+        }
+        else if(_chestResults.length > 0)
+        {
+            results = _chestResults;
         }
         else
         {

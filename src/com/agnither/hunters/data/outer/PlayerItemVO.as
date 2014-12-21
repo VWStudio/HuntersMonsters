@@ -9,9 +9,12 @@ import flash.utils.Dictionary;
 public class PlayerItemVO {
 
     public static const LIST: Vector.<PlayerItemVO> = new <PlayerItemVO>[];
-    public static const DICT: Dictionary = new Dictionary();
+//    public static const DICT: Dictionary = new Dictionary();
 
     public static function parseData(data: Object):void {
+
+        trace(JSON.stringify(data));
+
         for (var i: int = 0; i < data.length; i++) {
             var row: Object = data[i];
 
@@ -21,7 +24,7 @@ public class PlayerItemVO {
             object.wield = row.wield;
 
             LIST.push(object);
-            DICT[object.id] = object;
+//            DICT[object.id] = object;
         }
     }
 
