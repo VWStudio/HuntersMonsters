@@ -17,8 +17,8 @@
             output="${output.dir}/${app.name}.swf"
             debug="${debug}"
             fork="true"
-            maxmemory="${mxmlc.maxmemory}"
-            args="-frame=ContentFrame,game.Main">
+            maxmemory="${mxmlc.maxmemory}">
+      <arg value="-frame=ContentFrame,game.Main"/>
       <source-path path-element="${source.dir}" />
       <!--<compiler.library-path dir="${starling.home}" append="true" >-->
       <compiler.library-path dir="${starling.home}" append="true" >
@@ -65,6 +65,7 @@
 
   <taskdef resource="flexTasks.tasks" classpath="${FLEX_HOME}/ant/lib/flexTasks.jar" />
 
+  <!--<target name="run" depends="compile">-->
   <target name="run" depends="compile">
     <exec executable="${browser}">
       <arg line="${output.html}"/>

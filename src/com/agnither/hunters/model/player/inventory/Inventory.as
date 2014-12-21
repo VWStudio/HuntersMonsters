@@ -46,6 +46,7 @@ public class Inventory extends EventDispatcher
     private var _extensions : Object = {};
     private var _spells : Object = {};
     private var _manaPriority : Array;
+    private var _slots : Object = {};
 
     public function getExtension(type : String) : int
     {
@@ -241,13 +242,26 @@ public class Inventory extends EventDispatcher
             return;
         }
 
-
+        var slotItems : Array = _slots[item.slot] ? _slots[item.slot] : [];
         var slotMax : int = ItemSlotVO.DICT[item.slot].max; // MAX for current slot kind
-
-
         var isHaveFree : Boolean = _inventoryItems.length < max_capacity;
 
-        trace("addToInventory", slotMax, isHaveFree);
+//        trace("addToInventory", slotMax, isHaveFree, item.slot, slotItems.length);
+
+        if(slotMax > 0)
+        {
+            /**
+             * unwear something if:
+             * - no more slots of this type available
+             * - have slots of this type but havent any free slot
+             */
+            if(slotItems.length >= slotMax || (!isHaveFree && slotItems.length > 0 && slotItems.length <= slotMax))
+            {
+
+                removeFromInventory((slotItems[0] as Item).uniqueId);
+            }
+        }
+
 
         if (!isHaveFree)
         {
@@ -274,6 +288,9 @@ public class Inventory extends EventDispatcher
         item.isWearing = true;
 
         _inventoryItems.push(uid);
+        slotItems.push(item);
+
+        _slots[item.slot] = slotItems;
 
         item.update();
 
@@ -313,6 +330,8 @@ public class Inventory extends EventDispatcher
         if (index >= 0)
         {
             item.isWearing = false;
+            var slotItems : Array = _slots[item.slot];
+            slotItems.splice(slotItems.indexOf(item));
             _inventoryItems.splice(index, 1);
             item.update();
         }
@@ -336,7 +355,7 @@ public class Inventory extends EventDispatcher
 
             }
         }
-        trace("UPD EXTENSIONS", JSON.stringify(_extensions));
+//        trace("UPD EXTENSIONS", JSON.stringify(_extensions));
     }
 
     public function getItemsByName($code : String) : Array

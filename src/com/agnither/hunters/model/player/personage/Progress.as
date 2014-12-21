@@ -230,7 +230,7 @@ public class Progress extends EventDispatcher {
             if(playerItem.ext) {
                 item.ext = playerItem.ext;
             }
-//            trace("*",JSON.stringify(item));
+            trace("*",i,JSON.stringify(item));
             var itmName : String = Util.uniq(item.name);
             saveObject.items[itmName] = item;
             if (playerItem.wield)
@@ -238,6 +238,9 @@ public class Progress extends EventDispatcher {
                 saveObject.inventory.push(itmName);
             }
         }
+
+        trace(JSON.stringify(saveObject.items));
+        trace(JSON.stringify(saveObject.inventory));
 
         saveObject.pets = {};
 

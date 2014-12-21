@@ -13,7 +13,7 @@ public class MagicTypeVO {
     public static var fire: MagicTypeVO;
     public static var dark: MagicTypeVO;
     public static var stone: MagicTypeVO;
-    public static var add3: MagicTypeVO;
+//    public static var add3: MagicTypeVO;
 
     public static const CHEST: String = "chest";
     public static const WEAPON: String = "weapon";
@@ -22,7 +22,7 @@ public class MagicTypeVO {
     public static const FIRE: String = "fire";
     public static const DARK: String = "dark";
     public static const STONE: String = "stone";
-    public static const ADD3: String = "add3";
+//    public static const ADD3: String = "add3";
 
     public static const LIST: Vector.<MagicTypeVO> = new <MagicTypeVO>[];
     public static const DICT: Dictionary = new Dictionary();
