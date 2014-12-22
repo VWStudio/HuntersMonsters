@@ -131,13 +131,13 @@ public class InventoryPopup extends Popup
             var rect : Rectangle = $item.getBounds(this);
             _tooltip.x = rect.left;
             _tooltip.y = rect.bottom;
-            var str : String = "";
+            var str : String = $item.item.description;
             var exts : Object = $item.item.getExtensions();
             for (var key : String in exts)
             {
                 if (key == DamageExt.TYPE || key == DefenceExt.TYPE || key == ManaExt.TYPE)
                 {
-                    continue;
+//                    continue;
                 }
                 if (str.length > 0)
                 {

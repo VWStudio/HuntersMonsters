@@ -27,6 +27,8 @@ import flash.external.ExternalInterface;
 import flash.net.URLRequest;
 import flash.net.navigateToURL;
 
+import starling.display.Image;
+
 import starling.events.Event;
 
 import starling.text.TextField;
@@ -50,6 +52,7 @@ public class HudScreen extends Screen {
     private var _monstersBtn : ButtonContainer;
     private var _modeBtn : ButtonContainer;
     private var _skillsButton : ButtonContainer;
+    private var _expProgress : Image;
 
     public function HudScreen() {
     }
@@ -61,6 +64,11 @@ public class HudScreen extends Screen {
 
         _playerLevel = _links.levelVal_tf;
         _playerExp = _links.expVal_tf;
+
+        _expProgress = _links["bitmap_battle_progress_line"];
+        _expProgress.scaleX = 0.01;
+
+
         _playerLeague = _links.leagueVal_tf;
         _playerRating = _links.ratingVal_tf;
         _playerGold = _links.goldVal_tf;
@@ -135,6 +143,9 @@ public class HudScreen extends Screen {
         _playerLevel.text = progress.level.toString();
 //        trace("EXP", progress.level, progress.fullExp, LevelVO.DICT[progress.level.toString()].exp, progress.exp);
         _playerExp.text = progress.fullExp.toString() + "/" +LevelVO.DICT[progress.level.toString()].exp;
+
+        _expProgress.scaleX = progress.fullExp / LevelVO.DICT[progress.level.toString()].exp;
+
         _playerLeague.text = LeagueVO.DICT[progress.league.toString()].name;
         _playerRating.text = progress.rating.toString();
         _playerGold.text = progress.gold.toString();

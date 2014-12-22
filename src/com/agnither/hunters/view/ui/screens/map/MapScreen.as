@@ -173,11 +173,24 @@ public class MapScreen extends Screen {
         _container.addChildAt(_chestsContainer, _container.getChildIndex(_monstersContainer) + 1);
 //        _container.addChildAt(_chestsContainer, _container.getChildIndex(_trapsContainer) + 1);
 
-        _container.x = (stage.stageWidth - _back.width) * 0.5;
-        _container.y = (stage.stageHeight - _back.height) * 0.5;
+        var centerPoint : Point = new Point(stage.stageWidth * 0.5, stage.stageHeight * 0.5);
+        var campPoint : Point = new Point(_camp.x, _camp.y);
+        var mapDelta : Point = centerPoint.subtract(campPoint);
+
+//        _container.x = (stage.stageWidth - _back.width) * 0.5;
+//        _container.y = (stage.stageHeight - _back.height) * 0.5;
 
         _maxX = stage.stageWidth - _back.width;
         _maxY = stage.stageHeight - _back.height;
+
+        mapDelta.x = Math.min(0, mapDelta.x);
+        mapDelta.x = Math.max(_maxX, mapDelta.x);
+
+        mapDelta.y = Math.min(0, mapDelta.y);
+        mapDelta.y = Math.max(_maxY, mapDelta.y);
+
+        _container.x = mapDelta.x;
+        _container.y = mapDelta.y;
 
         _container.addEventListener(TouchEvent.TOUCH, handleTouch);
 

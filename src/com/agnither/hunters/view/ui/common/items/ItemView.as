@@ -6,6 +6,8 @@ package com.agnither.hunters.view.ui.common.items
 import com.agnither.hunters.data.outer.MagicTypeVO;
 import com.agnither.hunters.model.modules.extensions.DamageExt;
 import com.agnither.hunters.model.modules.extensions.PetExt;
+import com.agnither.hunters.model.modules.locale.Locale;
+import com.agnither.hunters.model.modules.locale.Locale;
 import com.agnither.hunters.model.modules.monsters.MonsterVO;
 import com.agnither.hunters.model.player.Mana;
 import com.agnither.hunters.model.player.inventory.Item;
@@ -71,7 +73,7 @@ public class ItemView extends AbstractView
     override public function update() : void
     {
 
-        _name.text = item.name;
+        _name.text = item.title;
 
         _picture.texture = _refs.gui.getTexture(_item.picture);
         _picture.touchable = true;
@@ -194,5 +196,7 @@ public class ItemView extends AbstractView
         _allowSelection = false;
         handleUpdate();
     }
+
+
 }
 }

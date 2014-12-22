@@ -4,6 +4,7 @@
 package com.agnither.hunters.view.ui.common.items
 {
 import com.agnither.hunters.data.outer.MagicTypeVO;
+import com.agnither.hunters.model.modules.locale.Locale;
 import com.agnither.hunters.model.player.Mana;
 import com.agnither.hunters.model.player.inventory.Item;
 import com.agnither.hunters.view.ui.common.ItemManaView;
@@ -23,7 +24,7 @@ public class SpellView extends ItemView
     override public function update() : void
     {
 
-        _name.text = item.name;
+        _name.text = item.title;
 
         _disabled.visible = isExample;
 

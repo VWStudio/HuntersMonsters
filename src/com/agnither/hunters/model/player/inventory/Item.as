@@ -8,6 +8,7 @@ import com.agnither.hunters.model.modules.extensions.DefenceExt;
 import com.agnither.hunters.model.modules.extensions.Extension;
 import com.agnither.hunters.model.modules.extensions.ManaExt;
 import com.agnither.hunters.model.modules.items.ItemVO;
+import com.agnither.hunters.model.modules.locale.Locale;
 import com.cemaprjl.utils.Util;
 
 import starling.events.EventDispatcher;
@@ -226,6 +227,16 @@ public class Item extends EventDispatcher
                 break;
         }
         return name+"."+type+"."+JSON.stringify(ext);
+    }
+
+    public function get title() : String
+    {
+        return Locale.getString(_item.localekey);
+    }
+
+    public function get description() : String
+    {
+        return Locale.getString(_item.localekey+".d");
     }
 
 }

@@ -13,6 +13,10 @@ import com.agnither.ui.AbstractView;
 import com.agnither.ui.ButtonContainer;
 import com.cemaprjl.core.coreDispatch;
 
+import flash.geom.Point;
+
+import starling.display.Sprite;
+
 import starling.events.Event;
 import starling.events.Touch;
 import starling.events.TouchEvent;
@@ -27,7 +31,7 @@ public class BuyItemView extends AbstractView
         return _item;
     }
 
-    private var _buyButton : ButtonContainer;
+//    private var _buyButton : ButtonContainer;
     private var _price : Number;
     private var _itemView : ItemView;
 
@@ -44,9 +48,9 @@ public class BuyItemView extends AbstractView
 
         this.touchable = true;
 
-        _buyButton = _links["buy_btn"];
-        _buyButton.text = "Купить";
-        _buyButton.addEventListener(Event.TRIGGERED, onBuy);
+//        _buyButton = _links["buy_btn"];
+//        _buyButton.text = "Купить";
+//        _buyButton.addEventListener(Event.TRIGGERED, onBuy);
 
         _itemView = ItemView.create(_item);
         addChild(_itemView);
@@ -87,22 +91,28 @@ public class BuyItemView extends AbstractView
         var isPriceEnough : Boolean = Model.instance.progress.gold >= _price;
         if (_item.isSpell())
         {
-            _buyButton.visible = !Model.instance.player.inventory.isHaveSpell(item.id) && isPriceEnough;
+//            _buyButton.visible = !Model.instance.player.inventory.isHaveSpell(item.id) && isPriceEnough;
         }
 
     }
 
     private function onTouch(e : TouchEvent) : void
     {
-        var touch : Touch = e.getTouch(this);
+        var touch : Touch = e.getTouch(this, TouchPhase.HOVER);
+//        var touch1 : Touch =
+//        var touchTooltip : Touch = e.getTouch(Model.instance.shopTooltip);
+//        var ttInteract : Boolean = e.interactsWith(Model.instance.shopTooltip);
+//        trace(touchTooltip, ttInteract);
 
-        if (touch == null)
-        {
-            coreDispatch(ShopPopup.HIDE_TOOLTIP);
-        }
-        else if (touch.phase == TouchPhase.HOVER)
-        {
+        var isHitTooltip : Boolean = e.interactsWith(Model.instance.shopTooltip);
+        if (touch && touch.phase == TouchPhase.HOVER) {
+//            trace("Buy, TOUCH", isHitTooltip, touch.phase, item.uniqueId);
             coreDispatch(ShopPopup.SHOW_TOOLTIP, this);
+        }
+        else
+        {
+//            trace("Buy, NO Touch", isHitTooltip, touch, item.uniqueId);
+            coreDispatch(ShopPopup.HIDE_TOOLTIP, !isHitTooltip);
         }
 
 

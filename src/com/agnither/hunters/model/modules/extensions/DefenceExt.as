@@ -3,6 +3,7 @@
  */
 package com.agnither.hunters.model.modules.extensions
 {
+import com.agnither.hunters.model.modules.locale.Locale;
 import com.agnither.hunters.model.player.inventory.Item;
 
 public class DefenceExt extends Extension
@@ -44,6 +45,11 @@ public class DefenceExt extends Extension
     override public function toObject() : Object
     {
         return _defence;
+    }
+
+    override public function getDescription() : String
+    {
+        return Locale.getString(TYPE) + ":"+_defence;
     }
 
     override public function getBaseValue() : Number

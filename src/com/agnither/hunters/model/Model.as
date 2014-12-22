@@ -22,6 +22,7 @@ import com.agnither.hunters.model.player.Territory;
 import com.agnither.hunters.model.player.inventory.Item;
 import com.agnither.hunters.model.player.inventory.Pet;
 import com.agnither.hunters.model.player.personage.Progress;
+import com.agnither.hunters.view.ui.common.GoldView;
 import com.agnither.hunters.view.ui.screens.battle.BattleScreen;
 import com.agnither.hunters.view.ui.screens.map.MapScreen;
 import com.agnither.hunters.view.ui.screens.map.MonsterPoint;
@@ -55,6 +56,7 @@ public class Model
     public var flashvars : Object;
     public var screenMoved : Boolean;
     public static const RESET_GAME : String = "Model.RESET_GAME";
+    public var shopTooltip : GoldView;
 
     public static function get instance() : Model
     {

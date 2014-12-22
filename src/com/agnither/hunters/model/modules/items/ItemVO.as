@@ -38,14 +38,16 @@ public class ItemVO
     public var slot : int;
     public var ext : Object;
     public var setname : String;
+    public var localekey : String = "";
 
     public static function createPetItemVO($monster : MonsterVO) : ItemVO {
 
         var obj : Object = {};
-        obj.id = 0;
+        obj.id = 23;
         obj.name = $monster.id;
         obj.picture = "magic_dark";
         obj.type = "pet";
+        obj.localekey = $monster.id;
         obj.slot = 0;
         obj.setname = "";
         obj.droppicture = "";
@@ -110,7 +112,7 @@ public class ItemVO
                 ITEMS_BY_TYPE[object.type] = new Vector.<ItemVO>();
                 TYPES.push(object.type);
             }
-            ITEMS_BY_TYPE[object.type].push(object)
+            ITEMS_BY_TYPE[object.type].push(object);
 
             if (!ITEMS_BY_SLOT["slot"+object.slot])
             {

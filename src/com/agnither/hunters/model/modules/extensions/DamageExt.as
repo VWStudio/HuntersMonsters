@@ -3,6 +3,7 @@
  */
 package com.agnither.hunters.model.modules.extensions
 {
+import com.agnither.hunters.model.modules.locale.Locale;
 import com.agnither.hunters.model.player.inventory.Item;
 
 public class DamageExt extends Extension
@@ -51,6 +52,12 @@ public class DamageExt extends Extension
     override public function getBaseValue() : Number
     {
         return _damage;
+    }
+
+
+    override public function getDescription() : String
+    {
+        return Locale.getString(TYPE) + ":"+_damage;
     }
 }
 }

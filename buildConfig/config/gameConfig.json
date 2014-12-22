@@ -306,79 +306,278 @@
       "info": "---"
     }
   ],
-  "levels": [
+  "item": [
+    {
+      "id": 23,
+      "name": "pet",
+      "type": "pet",
+      "slot": 0,
+      "picture": "magic_dark",
+      "setname": "default",
+      "droppicture": "drop_magic",
+      "localekey": "pet"
+    },
+    {
+      "id": 24,
+      "name": "tamed_pet",
+      "type": "pet",
+      "slot": 1,
+      "picture": "magic_dark",
+      "setname": "default",
+      "droppicture": "drop_magic",
+      "localekey": "tamed_pet"
+    },
     {
       "id": 1,
-      "exptolevel": 80,
-      "basehp": 30
+      "name": "sword",
+      "type": "weapon",
+      "slot": 2,
+      "picture": "item_sword",
+      "ext": "damage:[\"weapon\",1,10]",
+      "setname": "default",
+      "droppicture": "drop_sword",
+      "dropparam": "1,10",
+      "localekey": "sword"
     },
     {
       "id": 2,
-      "exptolevel": 220,
-      "basehp": 40
+      "name": "steel_sword",
+      "type": "weapon",
+      "slot": 2,
+      "picture": "item_sword",
+      "ext": "damage:[\"weapon\",15,25]",
+      "setname": "house00",
+      "droppicture": "drop_sword",
+      "dropparam": "15,25",
+      "localekey": "steel_sword"
     },
     {
       "id": 3,
-      "exptolevel": 1000,
-      "basehp": 50
+      "name": "staff",
+      "type": "weapon",
+      "slot": 2,
+      "picture": "item_staff",
+      "ext": "damage:[\"fire\",4,12]",
+      "setname": "house00",
+      "droppicture": "drop_staff",
+      "dropparam": "4,12",
+      "localekey": "staff"
+    },
+    {
+      "id": 8,
+      "name": "helmet",
+      "type": "armor",
+      "slot": 3,
+      "picture": "item_helmet",
+      "ext": "defence:[1,3]",
+      "setname": "default",
+      "droppicture": "drop_body",
+      "dropparam": "1,3",
+      "localekey": "helmet"
     },
     {
       "id": 4,
-      "exptolevel": 3300,
-      "basehp": 60
+      "name": "body",
+      "type": "armor",
+      "slot": 4,
+      "picture": "item_body",
+      "ext": "defence:[1,5]",
+      "setname": "default",
+      "droppicture": "drop_body",
+      "dropparam": "1,5",
+      "localekey": "body"
     },
     {
       "id": 5,
-      "exptolevel": 9000,
-      "basehp": 70
+      "name": "steel_chest",
+      "type": "armor",
+      "slot": 4,
+      "picture": "item_body",
+      "ext": "defence:[5,10]",
+      "setname": "house00",
+      "droppicture": "drop_body",
+      "dropparam": "5,10",
+      "localekey": "steel_chest"
+    },
+    {
+      "id": 9,
+      "name": "boots",
+      "type": "armor",
+      "slot": 6,
+      "picture": "item_boots",
+      "ext": "defence:[1,3]",
+      "setname": "house00",
+      "droppicture": "drop_boots",
+      "dropparam": "1,3",
+      "localekey": "boots"
     },
     {
       "id": 6,
-      "exptolevel": 20000,
-      "basehp": 80
-    }
-  ],
-  "player_items": [
-    {
-      "id": 1,
-      "ext": "damage:[\"weapon\",3]",
-      "wield": 1
+      "name": "gloves",
+      "type": "armor",
+      "slot": 7,
+      "picture": "item_gloves",
+      "ext": "defence:[1,3]",
+      "setname": "house00",
+      "droppicture": "drop_gloves",
+      "dropparam": "1,3",
+      "localekey": "gloves"
     },
     {
-      "id": 1,
-      "ext": "damage:[\"weapon\",5]"
+      "id": 12,
+      "name": "ring",
+      "type": "magic",
+      "slot": 8,
+      "picture": "item_ring",
+      "ext": "resurrect_pet:50",
+      "setname": "house00",
+      "droppicture": "drop_magic",
+      "dropparam": "1,10",
+      "localekey": "ring"
     },
     {
-      "id": 4,
-      "ext": "defence:1",
-      "wield": 1
+      "id": 10,
+      "name": "ring",
+      "type": "magic",
+      "slot": 8,
+      "picture": "item_ring",
+      "ext": "double_drop:20",
+      "setname": "house00",
+      "droppicture": "drop_ring",
+      "dropparam": "10,20",
+      "localekey": "ring"
+    },
+    {
+      "id": 11,
+      "name": "ring",
+      "type": "magic",
+      "slot": 8,
+      "picture": "item_ring",
+      "ext": "resurrect_pet:50",
+      "setname": "house00",
+      "droppicture": "drop_ring",
+      "dropparam": "30,70",
+      "localekey": "ring"
+    },
+    {
+      "id": 19,
+      "name": "ring",
+      "type": "magic",
+      "slot": 8,
+      "picture": "item_ring",
+      "ext": "mirror_damage:[20,50]",
+      "setname": "house00",
+      "droppicture": "drop_ring",
+      "dropparam": "10,50",
+      "localekey": "ring"
+    },
+    {
+      "id": 20,
+      "name": "ring",
+      "type": "magic",
+      "slot": 8,
+      "picture": "item_ring",
+      "ext": "spell_defence:[\"nature\",1]",
+      "setname": "house00",
+      "droppicture": "drop_ring",
+      "dropparam": "1,5",
+      "localekey": "ring"
+    },
+    {
+      "id": 21,
+      "name": "ring",
+      "type": "magic",
+      "slot": 8,
+      "picture": "item_ring",
+      "ext": "mana_add:[\"nature\",5]",
+      "setname": "house00",
+      "droppicture": "drop_ring",
+      "dropparam": "5,10",
+      "localekey": "ring"
     },
     {
       "id": 13,
-      "wield": 1
+      "name": "fireball",
+      "type": "spell",
+      "slot": 9,
+      "picture": "magic_fire",
+      "ext": "damage:[\"fire\",4];mana:[\"fire\",5]",
+      "setname": "default",
+      "droppicture": "drop_magic",
+      "dropparam": "5,10",
+      "localekey": "fireball"
+    },
+    {
+      "id": 14,
+      "name": "storm",
+      "type": "spell",
+      "slot": 9,
+      "picture": "magic_water",
+      "ext": "damage:[\"water\",5];mana:[\"water\",5]",
+      "setname": "default",
+      "droppicture": "drop_magic",
+      "dropparam": "5,10",
+      "localekey": "storm"
+    },
+    {
+      "id": 15,
+      "name": "thunderbolt",
+      "type": "spell",
+      "slot": 9,
+      "picture": "magic_green",
+      "ext": "damage:[\"nature\",7];mana:[\"nature\",5]",
+      "setname": "default",
+      "droppicture": "drop_magic",
+      "dropparam": "5,10",
+      "localekey": "thunderbolt"
+    },
+    {
+      "id": 16,
+      "name": "troll",
+      "type": "spell",
+      "slot": 9,
+      "picture": "magic_earth",
+      "ext": "damage:[\"stone\",14];mana:[\"stone\",5]",
+      "setname": "house00",
+      "droppicture": "drop_magic",
+      "dropparam": "5,11",
+      "localekey": "troll"
+    },
+    {
+      "id": 17,
+      "name": "vampirism",
+      "type": "spell",
+      "slot": 9,
+      "picture": "magic_dark",
+      "ext": "damage:[\"dark\",20];mana:[\"dark\",5]",
+      "setname": "house00",
+      "droppicture": "drop_magic",
+      "dropparam": "5,12",
+      "localekey": "vampirism"
+    },
+    {
+      "id": 18,
+      "name": "light",
+      "type": "spell",
+      "slot": 9,
+      "picture": "magic_fire",
+      "ext": "damage:[\"fire\",25];mana:[\"fire\",10,\"nature\",5]",
+      "setname": "house00",
+      "droppicture": "drop_magic",
+      "dropparam": "5,13",
+      "localekey": "light"
     },
     {
       "id": 22,
-      "wield": 1
-    }
-  ],
-  "player_pets": [],
-  "league": [
-    {
-      "id": 0,
-      "name": "-"
-    },
-    {
-      "id": 1,
-      "name": "Бронза"
-    },
-    {
-      "id": 2,
-      "name": "Серебро"
-    },
-    {
-      "id": 3,
-      "name": "Золото"
+      "name": "fireball2",
+      "type": "spell",
+      "slot": 9,
+      "picture": "magic_fire",
+      "ext": "damage:[\"fire\",300];mana:[\"fire\",1]",
+      "setname": "default",
+      "droppicture": "drop_magic",
+      "dropparam": "20,50",
+      "localekey": "fireball"
     }
   ],
   "monster": [
@@ -592,488 +791,6 @@
       "difficultyfactor": 8
     }
   ],
-  "Copy of monster": [
-    {
-      "level": 1,
-      "id": "pikachu",
-      "hp": 50,
-      "damage": 3,
-      "damagetype": "weapon",
-      "defence": 2,
-      "magic": 3,
-      "difficulty": 100,
-      "drop": 1,
-      "items": 13,
-      "stars": "5,10,20",
-      "picture": "monster_1.png",
-      "expearned": 10,
-      "speed": 100
-    },
-    {
-      "level": 2,
-      "id": "pikachu",
-      "hp": 50,
-      "damage": 3,
-      "damagetype": "weapon",
-      "defence": 2,
-      "magic": 3,
-      "difficulty": 100,
-      "drop": 1,
-      "items": 13,
-      "stars": "5,10,20",
-      "picture": "monster_1.png",
-      "expearned": 10,
-      "speed": 100
-    },
-    {
-      "level": 3,
-      "id": "pikachu",
-      "hp": 50,
-      "damage": 3,
-      "damagetype": "weapon",
-      "defence": 2,
-      "magic": 3,
-      "difficulty": 100,
-      "drop": 1,
-      "items": 13,
-      "stars": "5,10,20",
-      "picture": "monster_1.png",
-      "expearned": 10,
-      "speed": 100
-    },
-    {
-      "level": 1,
-      "id": "blue_bull",
-      "hp": 50,
-      "damage": 4.5,
-      "damagetype": "weapon",
-      "defence": 3,
-      "magic": 3,
-      "difficulty": 100,
-      "drop": 1,
-      "items": 13,
-      "stars": "5,10,20",
-      "picture": "monster_2.png",
-      "expearned": 10,
-      "speed": 100
-    },
-    {
-      "level": 2,
-      "id": "blue_bull",
-      "hp": 50,
-      "damage": 4.5,
-      "damagetype": "weapon",
-      "defence": 3,
-      "magic": 3,
-      "difficulty": 100,
-      "drop": 1,
-      "items": 13,
-      "stars": "5,10,20",
-      "picture": "monster_2.png",
-      "expearned": 10,
-      "speed": 100
-    },
-    {
-      "level": 3,
-      "id": "blue_bull",
-      "hp": 50,
-      "damage": 4.5,
-      "damagetype": "weapon",
-      "defence": 3,
-      "magic": 3,
-      "difficulty": 100,
-      "drop": 1,
-      "items": 13,
-      "stars": "5,10,20",
-      "picture": "monster_2.png",
-      "expearned": 10,
-      "speed": 100
-    },
-    {
-      "level": 1,
-      "id": "meowut",
-      "hp": 50,
-      "damage": 7.5,
-      "damagetype": "weapon",
-      "defence": 5,
-      "magic": 3,
-      "difficulty": 100,
-      "drop": 1,
-      "items": 13,
-      "stars": "5,10,20",
-      "picture": "monster_4.png",
-      "expearned": 10,
-      "speed": 100
-    },
-    {
-      "level": 2,
-      "id": "meowut",
-      "hp": 50,
-      "damage": 7.5,
-      "damagetype": "weapon",
-      "defence": 5,
-      "magic": 3,
-      "difficulty": 100,
-      "drop": 1,
-      "items": 13,
-      "stars": "5,10,20",
-      "picture": "monster_4.png",
-      "expearned": 10,
-      "speed": 100
-    },
-    {
-      "level": 3,
-      "id": "meowut",
-      "hp": 50,
-      "damage": 7.5,
-      "damagetype": "weapon",
-      "defence": 5,
-      "magic": 3,
-      "difficulty": 100,
-      "drop": 1,
-      "items": 13,
-      "stars": "5,10,20",
-      "picture": "monster_4.png",
-      "expearned": 10,
-      "speed": 100
-    },
-    {
-      "level": 1,
-      "id": "slowpoke",
-      "hp": 50,
-      "damage": 12,
-      "damagetype": "weapon",
-      "defence": 8,
-      "magic": 3,
-      "difficulty": 100,
-      "drop": 1,
-      "items": 13,
-      "stars": "5,10,20",
-      "picture": "monster_3.png",
-      "expearned": 10,
-      "speed": 100
-    },
-    {
-      "level": 2,
-      "id": "slowpoke",
-      "hp": 50,
-      "damage": 12,
-      "damagetype": "weapon",
-      "defence": 8,
-      "magic": 3,
-      "difficulty": 100,
-      "drop": 1,
-      "items": 13,
-      "stars": "5,10,20",
-      "picture": "monster_3.png",
-      "expearned": 10,
-      "speed": 100
-    },
-    {
-      "level": 3,
-      "id": "slowpoke",
-      "hp": 50,
-      "damage": 12,
-      "damagetype": "weapon",
-      "defence": 8,
-      "magic": 3,
-      "difficulty": 100,
-      "drop": 1,
-      "items": 13,
-      "stars": "5,10,20",
-      "picture": "monster_3.png",
-      "expearned": 10,
-      "speed": 100
-    },
-    {
-      "level": 1,
-      "id": "squirtle",
-      "hp": 50,
-      "damage": 18,
-      "damagetype": "weapon",
-      "defence": 12,
-      "magic": 3,
-      "difficulty": 100,
-      "drop": 1,
-      "items": 13,
-      "stars": "5,10,20",
-      "picture": "monster_7.png",
-      "expearned": 10,
-      "speed": 100
-    },
-    {
-      "level": 2,
-      "id": "squirtle",
-      "hp": 50,
-      "damage": 18,
-      "damagetype": "weapon",
-      "defence": 12,
-      "magic": 3,
-      "difficulty": 100,
-      "drop": 1,
-      "items": 13,
-      "stars": "5,10,20",
-      "picture": "monster_7.png",
-      "expearned": 10,
-      "speed": 100
-    },
-    {
-      "level": 3,
-      "id": "squirtle",
-      "hp": 50,
-      "damage": 18,
-      "damagetype": "weapon",
-      "defence": 12,
-      "magic": 3,
-      "difficulty": 100,
-      "drop": 1,
-      "items": 13,
-      "stars": "5,10,20",
-      "picture": "monster_7.png",
-      "expearned": 10,
-      "speed": 100
-    },
-    {
-      "level": 1,
-      "id": "charmander",
-      "hp": 50,
-      "damage": 24,
-      "damagetype": "weapon",
-      "defence": 16,
-      "magic": 3,
-      "difficulty": 100,
-      "drop": 1,
-      "items": 13,
-      "stars": "5,10,20",
-      "picture": "monster_5.png",
-      "expearned": 10,
-      "speed": 100
-    },
-    {
-      "level": 2,
-      "id": "charmander",
-      "hp": 50,
-      "damage": 24,
-      "damagetype": "weapon",
-      "defence": 16,
-      "magic": 3,
-      "difficulty": 100,
-      "drop": 1,
-      "items": 13,
-      "stars": "5,10,20",
-      "picture": "monster_5.png",
-      "expearned": 10,
-      "speed": 100
-    },
-    {
-      "level": 3,
-      "id": "charmander",
-      "hp": 50,
-      "damage": 24,
-      "damagetype": "weapon",
-      "defence": 16,
-      "magic": 3,
-      "difficulty": 100,
-      "drop": 1,
-      "items": 13,
-      "stars": "5,10,20",
-      "picture": "monster_5.png",
-      "expearned": 10,
-      "speed": 100
-    },
-    {
-      "level": 1,
-      "id": "bulbasaur",
-      "hp": 50,
-      "damage": 30,
-      "damagetype": "weapon",
-      "defence": 20,
-      "magic": 3,
-      "difficulty": 100,
-      "drop": 1,
-      "items": 13,
-      "stars": "5,10,20",
-      "picture": "monster_6.png",
-      "expearned": 10,
-      "speed": 100
-    },
-    {
-      "level": 2,
-      "id": "bulbasaur",
-      "hp": 50,
-      "damage": 30,
-      "damagetype": "weapon",
-      "defence": 20,
-      "magic": 3,
-      "difficulty": 100,
-      "drop": 1,
-      "items": 13,
-      "stars": "5,10,20",
-      "picture": "monster_6.png",
-      "expearned": 10,
-      "speed": 100
-    },
-    {
-      "level": 3,
-      "id": "bulbasaur",
-      "hp": 50,
-      "damage": 30,
-      "damagetype": "weapon",
-      "defence": 20,
-      "magic": 3,
-      "difficulty": 100,
-      "drop": 1,
-      "items": 13,
-      "stars": "5,10,20",
-      "picture": "monster_6.png",
-      "expearned": 10,
-      "speed": 100
-    },
-    {
-      "level": 1,
-      "id": "pidgey",
-      "hp": 50,
-      "damage": 39,
-      "damagetype": "weapon",
-      "defence": 26,
-      "magic": 3,
-      "difficulty": 100,
-      "drop": 1,
-      "items": 13,
-      "stars": "5,10,20",
-      "picture": "monster_8.png",
-      "expearned": 10,
-      "speed": 100
-    },
-    {
-      "level": 2,
-      "id": "pidgey",
-      "hp": 50,
-      "damage": 39,
-      "damagetype": "weapon",
-      "defence": 26,
-      "magic": 3,
-      "difficulty": 100,
-      "drop": 1,
-      "items": 13,
-      "stars": "5,10,20",
-      "picture": "monster_8.png",
-      "expearned": 10,
-      "speed": 100
-    },
-    {
-      "level": 3,
-      "id": "pidgey",
-      "hp": 50,
-      "damage": 39,
-      "damagetype": "weapon",
-      "defence": 26,
-      "magic": 3,
-      "difficulty": 100,
-      "drop": 1,
-      "items": 13,
-      "stars": "5,10,20",
-      "picture": "monster_8.png",
-      "expearned": 10,
-      "speed": 100
-    },
-    {
-      "level": 1,
-      "id": "ratata",
-      "hp": 50,
-      "damage": 42,
-      "damagetype": "weapon",
-      "defence": 28,
-      "magic": 3,
-      "difficulty": 100,
-      "drop": 1,
-      "items": 13,
-      "stars": "5,10,20",
-      "picture": "monster_9.png",
-      "expearned": 10,
-      "speed": 100
-    },
-    {
-      "level": 2,
-      "id": "ratata",
-      "hp": 50,
-      "damage": 42,
-      "damagetype": "weapon",
-      "defence": 28,
-      "magic": 3,
-      "difficulty": 100,
-      "drop": 1,
-      "items": 13,
-      "stars": "5,10,20",
-      "picture": "monster_9.png",
-      "expearned": 10,
-      "speed": 100
-    },
-    {
-      "level": 3,
-      "id": "ratata",
-      "hp": 50,
-      "damage": 42,
-      "damagetype": "weapon",
-      "defence": 28,
-      "magic": 3,
-      "difficulty": 100,
-      "drop": 1,
-      "items": 13,
-      "stars": "5,10,20",
-      "picture": "monster_9.png",
-      "expearned": 10,
-      "speed": 100
-    },
-    {
-      "level": 1,
-      "id": "zubat",
-      "hp": 50,
-      "damage": 66,
-      "damagetype": "weapon",
-      "defence": 44,
-      "magic": 3,
-      "difficulty": 100,
-      "drop": 1,
-      "items": 13,
-      "stars": "5,10,20",
-      "picture": "monster_10.png",
-      "expearned": 10,
-      "speed": 100
-    },
-    {
-      "level": 2,
-      "id": "zubat",
-      "hp": 50,
-      "damage": 66,
-      "damagetype": "weapon",
-      "defence": 44,
-      "magic": 3,
-      "difficulty": 100,
-      "drop": 1,
-      "items": 13,
-      "stars": "5,10,20",
-      "picture": "monster_10.png",
-      "expearned": 10,
-      "speed": 100
-    },
-    {
-      "level": 3,
-      "id": "zubat",
-      "hp": 50,
-      "damage": 66,
-      "damagetype": "weapon",
-      "defence": 44,
-      "magic": 3,
-      "difficulty": 100,
-      "drop": 1,
-      "items": 13,
-      "stars": "5,10,20",
-      "picture": "monster_10.png",
-      "expearned": 10,
-      "speed": 100
-    }
-  ],
   "monster_area": [
     {
       "id": "clouds_00",
@@ -1278,6 +995,26 @@
       "tameprice": "10,20,30"
     }
   ],
+  "player_items": [
+    {
+      "id": 1,
+      "ext": "damage:[\"weapon\",3]",
+      "wield": 1
+    },
+    {
+      "id": 4,
+      "ext": "defence:1",
+      "wield": 1
+    },
+    {
+      "id": 13,
+      "wield": 1
+    },
+    {
+      "id": 22,
+      "wield": 1
+    }
+  ],
   "price_items": [
     {
       "id": 1,
@@ -1460,29 +1197,6 @@
       "amount": 1
     }
   ],
-  "traps": [
-    {
-      "level": 1,
-      "area": "blue_bull",
-      "areaeffect": 25,
-      "leveleffect": "0.9,0.6,0.3",
-      "timechance": "0,50,50"
-    },
-    {
-      "level": 2,
-      "area": "charmander",
-      "areaeffect": 24,
-      "leveleffect": "0.9,0.6,0.3",
-      "timechance": "0,50,50"
-    },
-    {
-      "level": 3,
-      "area": "zubat",
-      "areaeffect": 23,
-      "leveleffect": "0.9,0.6,0.3",
-      "timechance": "0,50,50"
-    }
-  ],
   "magic_type": [
     {
       "id": 1,
@@ -1539,257 +1253,6 @@
       "manaicon": "mana_white"
     }
   ],
-  "item": [
-    {
-      "id": 23,
-      "name": "pet",
-      "type": "pet",
-      "slot": 0,
-      "picture": "magic_dark",
-      "setname": "default",
-      "droppicture": "drop_magic"
-    },
-    {
-      "id": 24,
-      "name": "tamed_pet",
-      "type": "pet",
-      "slot": 1,
-      "picture": "magic_dark",
-      "setname": "default",
-      "droppicture": "drop_magic"
-    },
-    {
-      "id": 1,
-      "name": "sword",
-      "type": "weapon",
-      "slot": 2,
-      "picture": "item_sword",
-      "ext": "damage:[\"weapon\",1,10]",
-      "setname": "default",
-      "droppicture": "drop_sword",
-      "dropparam": "1,10"
-    },
-    {
-      "id": 2,
-      "name": "steel_sword",
-      "type": "weapon",
-      "slot": 2,
-      "picture": "item_sword",
-      "ext": "damage:[\"weapon\",15,25]",
-      "setname": "house00",
-      "droppicture": "drop_sword",
-      "dropparam": "15,25"
-    },
-    {
-      "id": 3,
-      "name": "staff",
-      "type": "weapon",
-      "slot": 2,
-      "picture": "item_staff",
-      "ext": "damage:[\"fire\",4,12]",
-      "setname": "house00",
-      "droppicture": "drop_staff",
-      "dropparam": "4,12"
-    },
-    {
-      "id": 8,
-      "name": "helmet",
-      "type": "armor",
-      "slot": 3,
-      "picture": "item_helmet",
-      "ext": "defence:[1,3]",
-      "setname": "default",
-      "droppicture": "drop_body",
-      "dropparam": "1,3"
-    },
-    {
-      "id": 4,
-      "name": "body",
-      "type": "armor",
-      "slot": 4,
-      "picture": "item_body",
-      "ext": "defence:[1,5]",
-      "setname": "default",
-      "droppicture": "drop_body",
-      "dropparam": "1,5"
-    },
-    {
-      "id": 5,
-      "name": "steel_chest",
-      "type": "armor",
-      "slot": 4,
-      "picture": "item_body",
-      "ext": "defence:[5,10]",
-      "setname": "house00",
-      "droppicture": "drop_body",
-      "dropparam": "5,10"
-    },
-    {
-      "id": 9,
-      "name": "boots",
-      "type": "armor",
-      "slot": 6,
-      "picture": "item_boots",
-      "ext": "defence:[1,3]",
-      "setname": "house00",
-      "droppicture": "drop_boots",
-      "dropparam": "1,3"
-    },
-    {
-      "id": 6,
-      "name": "gloves",
-      "type": "armor",
-      "slot": 7,
-      "picture": "item_gloves",
-      "ext": "defence:[1,3]",
-      "setname": "house00",
-      "droppicture": "drop_gloves",
-      "dropparam": "1,3"
-    },
-    {
-      "id": 12,
-      "name": "ring",
-      "type": "magic",
-      "slot": 8,
-      "picture": "item_ring",
-      "ext": "resurrect_pet:50",
-      "setname": "house00",
-      "droppicture": "drop_magic",
-      "dropparam": "1,10"
-    },
-    {
-      "id": 10,
-      "name": "ring",
-      "type": "magic",
-      "slot": 8,
-      "picture": "item_ring",
-      "ext": "double_drop:20",
-      "setname": "house00",
-      "droppicture": "drop_ring",
-      "dropparam": "10,20"
-    },
-    {
-      "id": 11,
-      "name": "ring",
-      "type": "magic",
-      "slot": 8,
-      "picture": "item_ring",
-      "ext": "resurrect_pet:50",
-      "setname": "house00",
-      "droppicture": "drop_ring",
-      "dropparam": "30,70"
-    },
-    {
-      "id": 19,
-      "name": "ring",
-      "type": "magic",
-      "slot": 8,
-      "picture": "item_ring",
-      "ext": "mirror_damage:[20,50]",
-      "setname": "house00",
-      "droppicture": "drop_ring",
-      "dropparam": "10,50"
-    },
-    {
-      "id": 20,
-      "name": "ring",
-      "type": "magic",
-      "slot": 8,
-      "picture": "item_ring",
-      "ext": "spell_defence:[\"nature\",1]",
-      "setname": "house00",
-      "droppicture": "drop_ring",
-      "dropparam": "1,5"
-    },
-    {
-      "id": 21,
-      "name": "ring",
-      "type": "magic",
-      "slot": 8,
-      "picture": "item_ring",
-      "ext": "mana_add:[\"nature\",5]",
-      "setname": "house00",
-      "droppicture": "drop_ring",
-      "dropparam": "5,10"
-    },
-    {
-      "id": 13,
-      "name": "fireball",
-      "type": "spell",
-      "slot": 9,
-      "picture": "magic_fire",
-      "ext": "damage:[\"fire\",4];mana:[\"fire\",5]",
-      "setname": "default",
-      "droppicture": "drop_magic",
-      "dropparam": "5,10"
-    },
-    {
-      "id": 14,
-      "name": "storm",
-      "type": "spell",
-      "slot": 9,
-      "picture": "magic_water",
-      "ext": "damage:[\"water\",5];mana:[\"water\",5]",
-      "setname": "default",
-      "droppicture": "drop_magic",
-      "dropparam": "5,10"
-    },
-    {
-      "id": 15,
-      "name": "thunderbolt",
-      "type": "spell",
-      "slot": 9,
-      "picture": "magic_green",
-      "ext": "damage:[\"nature\",7];mana:[\"nature\",5]",
-      "setname": "default",
-      "droppicture": "drop_magic",
-      "dropparam": "5,10"
-    },
-    {
-      "id": 16,
-      "name": "troll",
-      "type": "spell",
-      "slot": 9,
-      "picture": "magic_earth",
-      "ext": "damage:[\"stone\",14];mana:[\"stone\",5]",
-      "setname": "house00",
-      "droppicture": "drop_magic",
-      "dropparam": "5,11"
-    },
-    {
-      "id": 17,
-      "name": "vampirism",
-      "type": "spell",
-      "slot": 9,
-      "picture": "magic_dark",
-      "ext": "damage:[\"dark\",20];mana:[\"dark\",5]",
-      "setname": "house00",
-      "droppicture": "drop_magic",
-      "dropparam": "5,12"
-    },
-    {
-      "id": 18,
-      "name": "light",
-      "type": "spell",
-      "slot": 9,
-      "picture": "magic_fire",
-      "ext": "damage:[\"fire\",25];mana:[\"fire\",10,\"nature\",5]",
-      "setname": "house00",
-      "droppicture": "drop_magic",
-      "dropparam": "5,13"
-    },
-    {
-      "id": 22,
-      "name": "fireball2",
-      "type": "spell",
-      "slot": 9,
-      "picture": "magic_fire",
-      "ext": "damage:[\"fire\",300];mana:[\"fire\",1]",
-      "setname": "default",
-      "droppicture": "drop_magic",
-      "dropparam": "20,50"
-    }
-  ],
   "item_slot": [
     {
       "id": 1,
@@ -1835,6 +1298,39 @@
       "id": 9,
       "name": "spell",
       "max": 0
+    }
+  ],
+  "player_pets": [],
+  "levels": [
+    {
+      "id": 1,
+      "exptolevel": 80,
+      "basehp": 30
+    },
+    {
+      "id": 2,
+      "exptolevel": 220,
+      "basehp": 40
+    },
+    {
+      "id": 3,
+      "exptolevel": 1000,
+      "basehp": 50
+    },
+    {
+      "id": 4,
+      "exptolevel": 3300,
+      "basehp": 60
+    },
+    {
+      "id": 5,
+      "exptolevel": 9000,
+      "basehp": 70
+    },
+    {
+      "id": 6,
+      "exptolevel": 20000,
+      "basehp": 80
     }
   ],
   "skills": [
@@ -2047,6 +1543,47 @@
       "probability": 100
     }
   ],
+  "league": [
+    {
+      "id": 0,
+      "name": "-"
+    },
+    {
+      "id": 1,
+      "name": "Бронза"
+    },
+    {
+      "id": 2,
+      "name": "Серебро"
+    },
+    {
+      "id": 3,
+      "name": "Золото"
+    }
+  ],
+  "traps": [
+    {
+      "level": 1,
+      "area": "blue_bull",
+      "areaeffect": 25,
+      "leveleffect": "0.9,0.6,0.3",
+      "timechance": "0,50,50"
+    },
+    {
+      "level": 2,
+      "area": "charmander",
+      "areaeffect": 24,
+      "leveleffect": "0.9,0.6,0.3",
+      "timechance": "0,50,50"
+    },
+    {
+      "level": 3,
+      "area": "zubat",
+      "areaeffect": 23,
+      "leveleffect": "0.9,0.6,0.3",
+      "timechance": "0,50,50"
+    }
+  ],
   "locale": [
     {
       "id": "items_tab",
@@ -2171,6 +1708,134 @@
     {
       "id": "stone",
       "russian": "Камень"
+    },
+    {
+      "id": "sword",
+      "russian": "Деревянный меч"
+    },
+    {
+      "id": "steel_sword",
+      "russian": "Железный меч"
+    },
+    {
+      "id": "staff",
+      "russian": "Посох"
+    },
+    {
+      "id": "helmet",
+      "russian": "Шлем"
+    },
+    {
+      "id": "body",
+      "russian": "Кожаный доспех"
+    },
+    {
+      "id": "steel_chest",
+      "russian": "Железный доспех"
+    },
+    {
+      "id": "boots",
+      "russian": "Ботинки"
+    },
+    {
+      "id": "gloves",
+      "russian": "Перчатки"
+    },
+    {
+      "id": "ring",
+      "russian": "Кольцо"
+    },
+    {
+      "id": "fireball",
+      "russian": "Файрбол"
+    },
+    {
+      "id": "storm",
+      "russian": "Шторм"
+    },
+    {
+      "id": "thunderbolt",
+      "russian": "Гром"
+    },
+    {
+      "id": "troll",
+      "russian": "Троль"
+    },
+    {
+      "id": "vampirism",
+      "russian": "Вампиризм"
+    },
+    {
+      "id": "light",
+      "russian": "Свет"
+    },
+    {
+      "id": "sword.d",
+      "russian": "обычный меч"
+    },
+    {
+      "id": "steel_sword.d",
+      "russian": "крутой меч"
+    },
+    {
+      "id": "staff.d",
+      "russian": "посох"
+    },
+    {
+      "id": "helmet.d",
+      "russian": "Шлем"
+    },
+    {
+      "id": "body.d",
+      "russian": "броник"
+    },
+    {
+      "id": "steel_chest.d",
+      "russian": "броник"
+    },
+    {
+      "id": "boots.d",
+      "russian": "валенки"
+    },
+    {
+      "id": "gloves.d",
+      "russian": "перчатки"
+    },
+    {
+      "id": "ring.d",
+      "russian": "магический предмет"
+    },
+    {
+      "id": "fireball.d",
+      "russian": "вжжжжж бумс"
+    },
+    {
+      "id": "storm.d",
+      "russian": "фщщщщщ"
+    },
+    {
+      "id": "thunderbolt.d",
+      "russian": "дыдыщщщ"
+    },
+    {
+      "id": "troll.d",
+      "russian": "Аррргххх"
+    },
+    {
+      "id": "vampirism.d",
+      "russian": "пщпщ"
+    },
+    {
+      "id": "light.d",
+      "russian": "уиуиуиуиууу"
+    },
+    {
+      "id": "damage",
+      "russian": "Атака"
+    },
+    {
+      "id": "defence",
+      "russian": "Защита"
     }
   ]
 }

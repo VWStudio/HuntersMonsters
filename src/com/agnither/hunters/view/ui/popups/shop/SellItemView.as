@@ -34,7 +34,7 @@ public class SellItemView extends AbstractView
 //    protected var _picture : Image;
 
 //    protected var _damage : TextField;
-    private var _buyButton : ButtonContainer;
+//    private var _buyButton : ButtonContainer;
 //    private var _spell : Sprite;
     private var _price : Number;
 //    private var _back : Image;
@@ -55,9 +55,9 @@ public class SellItemView extends AbstractView
         this.touchable = true;
 //        _back = _links["bitmap__bg"];
 
-        _buyButton = _links["buy_btn"];
-        _buyButton.text = "Продать";
-        _buyButton.addEventListener(Event.TRIGGERED, onSell);
+//        _buyButton = _links["buy_btn"];
+//        _buyButton.text = "Продать";
+//        _buyButton.addEventListener(Event.TRIGGERED, onSell);
 
 
         _itemView = ItemView.create(_item);
@@ -72,7 +72,7 @@ public class SellItemView extends AbstractView
         _price = 0;
         if (item.isSpell())
         {
-            _buyButton.visible = false;
+//            _buyButton.visible = false;
         }
         else if (_item.getDamage())
         {
@@ -148,17 +148,29 @@ public class SellItemView extends AbstractView
 
     private function onTouch(e : TouchEvent) : void
     {
-        var touch : Touch = e.getTouch(_itemView);
+        var touch : Touch = e.getTouch(this);
+//        var touch : Touch = e.getTouch(_itemView);
 
-        if (touch == null)
-        {
-            coreDispatch(ShopPopup.HIDE_TOOLTIP);
-        }
-        else if (touch.phase == TouchPhase.HOVER)
-        {
+//        if (touch == null)
+//        {
+//            coreDispatch(ShopPopup.HIDE_TOOLTIP, true);
+//        }
+//        else if (touch.phase == TouchPhase.HOVER)
+//        {
+//            coreDispatch(ShopPopup.SHOW_TOOLTIP, this);
+//        }
+
+
+        var isHitTooltip : Boolean = e.interactsWith(Model.instance.shopTooltip);
+        if (touch && touch.phase == TouchPhase.HOVER) {
+//            trace("Buy, TOUCH", isHitTooltip, touch.phase, item.uniqueId);
             coreDispatch(ShopPopup.SHOW_TOOLTIP, this);
         }
-
+        else
+        {
+//            trace("Buy, NO Touch", isHitTooltip, touch, item.uniqueId);
+            coreDispatch(ShopPopup.HIDE_TOOLTIP, !isHitTooltip);
+        }
     }
 }
 }

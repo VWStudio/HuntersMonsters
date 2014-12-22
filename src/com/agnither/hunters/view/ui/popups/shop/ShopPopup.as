@@ -24,6 +24,8 @@ import com.agnither.ui.Popup;
 import com.cemaprjl.core.coreAddListener;
 import com.cemaprjl.utils.Formatter;
 
+import flash.geom.Point;
+
 import flash.geom.Rectangle;
 
 import starling.core.Starling;
@@ -54,7 +56,7 @@ public class ShopPopup extends Popup
     private var _inventoryView : InventoryView;
     private var _scroll : Scroll;
     private var _scrollMask : Sprite;
-    private var _tooltipItem : Tooltip;
+//    private var _tooltipItem : Tooltip;
     private var _deliver : TextField;
     private var _deliverTime : TextField;
 
@@ -138,15 +140,19 @@ public class ShopPopup extends Popup
         _tooltip.addChild(_gold);
         _tooltip.visible = false;
 
+        _gold.touchable = true;
+        _tooltip.touchable = true;
+
+        Model.instance.shopTooltip = _gold;
 
         _scroll = new Scroll(_links["scroll"]);
         _scroll.onChange = onScroll;
         _scrollMask.clipRect = new Rectangle(0, 0, 440, 500);
 
-        _tooltipItem = new Tooltip();
-        _tooltip.addChild(_tooltipItem);
-        _tooltipItem.visible = false;
-        _tooltipItem.y = 50;
+//        _tooltipItem = new Tooltip();
+//        _tooltip.addChild(_tooltipItem);
+//        _tooltipItem.visible = false;
+//        _tooltipItem.y = 50;
 
         _deliver = _links["deliver_tf"];
         _deliverTime = _links["deliverTime_tf"];
@@ -183,46 +189,31 @@ public class ShopPopup extends Popup
     private function showTooltip($item : AbstractView) : void
     {
         var price : Number = $item["price"];
-        if (!price)
-        {
-            return;
-        }
+        var item : Item = $item["item"];
+//        if (!price)
+//        {
+//            return;
+//        }
 
         var rect : Rectangle = $item.getBounds(this);
 
         _tooltip.visible = true;
-        _tooltip.x = rect.x + rect.width;
-        _tooltip.y = rect.y + rect.height;
+        _tooltip.x = rect.x;
+        _tooltip.y = rect.y + rect.height - 5;
         _gold.data = price;
+        _gold.item = item;
+        _gold.isSell = _currentOwner == _hunterTab;
         _gold.update();
 
-        var str : String = "";
-        var item : Item = $item["item"];
-        var exts : Object = item.getExtensions();
-        for (var key : String in exts)
-        {
-            if (key == DamageExt.TYPE || key == DefenceExt.TYPE || key == ManaExt.TYPE)
-            {
-                continue;
-            }
-            if (str.length > 0)
-            {
-                str += "\n";
-            }
-            str += exts[key].getDescription();
-//                str += Locale.getString(key);
-        }
-        _tooltipItem.visible = str.length > 0;
-        if (str.length > 0)
-        {
-            _tooltipItem.text = str;
-        }
+
+//        _gold.visible = str.length > 0;
 
     }
 
-    private function hideTip() : void
+    private function hideTip($val : Boolean = true) : void
     {
-        _tooltip.visible = false;
+        if(_gold.touched) return;
+        _tooltip.visible = !$val;
     }
 
 
@@ -328,7 +319,7 @@ public class ShopPopup extends Popup
             var tile : BuyItemView = new BuyItemView(items[i]);
             _container.addChild(tile);
             tile.x = 210 * (i % 2);
-            tile.y = 100 * int(i / 2);
+            tile.y = 70 * int(i / 2);
 
         }
         _scroll.setScrollParams(int((_container.numChildren + 1) / 2), 5);

@@ -134,7 +134,7 @@ public class Territory
 
     public function unlock() : void
     {
-        trace("UNLOCK", _area.area);
+//        trace("UNLOCK", _area.area);
         var territory : Territory = this;
         if (_cloud && _cloud.visible)
         {
@@ -297,9 +297,11 @@ public class Territory
                 _killed = 0;
             }
             _nextMonsters -= $delta;
+            _hud.monstersRespawn(_nextMonsters);
         }
         else
         {
+            _hud.monstersRespawn(-1);
             if (_territoryMonsters.length < _area.areamax)
             {
                 if (_territoryMonsters.length + _killed < _area.areamin)

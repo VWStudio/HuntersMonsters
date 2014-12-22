@@ -8,6 +8,7 @@ import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.modules.extensions.DamageExt;
 import com.agnither.hunters.model.modules.extensions.DefenceExt;
 import com.agnither.hunters.model.modules.items.ItemVO;
+import com.agnither.hunters.model.modules.monsters.MonsterVO;
 
 import flash.utils.Dictionary;
 
@@ -131,8 +132,16 @@ public class Inventory extends EventDispatcher
         for (var key : * in data)
         {
             var itemData : Object = data[key];
-
-            var itemVO : ItemVO = Model.instance.items.getItemVO(itemData.id);
+            var itemVO : ItemVO;
+            if(itemData.type == ItemVO.TYPE_PET)
+            {
+                var monsters : Dictionary = MonsterVO.DICT[itemData.name];
+                itemVO = ItemVO.createPetItemVO(monsters[1]);
+            }
+            else
+            {
+                itemVO = Model.instance.items.getItemVO(itemData.id);
+            }
             if (itemData.ext)
             {
                 itemVO.ext = itemData.ext;
