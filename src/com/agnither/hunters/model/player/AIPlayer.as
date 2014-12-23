@@ -53,9 +53,10 @@ public class AIPlayer extends Player
             items[id] = Model.instance.items.getItemVO(id);
             inventory.push(id);
         }
-        var petItem : ItemVO = ItemVO.createPetItemVO(monster);
-        petItem.id = 24;
-        petItem.slot = 1;
+//        var petItem : ItemVO = ItemVO.createPetItemVO(monster);
+        var petItem : ItemVO = ItemVO.createPetItemVO(monster, true);
+//        petItem.id = 24;
+//        petItem.slot = 1;
         items[petItem.id] = petItem;
 
 

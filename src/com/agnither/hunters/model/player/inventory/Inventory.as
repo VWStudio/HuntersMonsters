@@ -31,6 +31,10 @@ public class Inventory extends EventDispatcher
 
     private var _itemsDict : Object = new Object();
 
+    public function getItemsInSlot($id : String) : Array
+    {
+        return _slots[$id]
+    }
     public function getItem(name : String) : Item
     {
         return _itemsDict[name];
@@ -133,18 +137,24 @@ public class Inventory extends EventDispatcher
         {
             var itemData : Object = data[key];
             var itemVO : ItemVO;
-            if(itemData.type == ItemVO.TYPE_PET)
-            {
-                var monsters : Dictionary = MonsterVO.DICT[itemData.name];
-                itemVO = ItemVO.createPetItemVO(monsters[1]);
+            if(itemData is ItemVO) {
+                itemVO = itemData as ItemVO;
             }
             else
             {
-                itemVO = Model.instance.items.getItemVO(itemData.id);
-            }
-            if (itemData.ext)
-            {
-                itemVO.ext = itemData.ext;
+                if(itemData.type == ItemVO.TYPE_PET)
+                {
+                    var monsters : Dictionary = MonsterVO.DICT[itemData.name];
+                    itemVO = ItemVO.createPetItemVO(monsters[1], itemData.id == 24);
+                }
+                else
+                {
+                    itemVO = Model.instance.items.getItemVO(itemData.id);
+                }
+                if (itemData.ext)
+                {
+                    itemVO.ext = itemData.ext;
+                }
             }
             var newItem : Item = Item.create(itemVO);
             newItem.uniqueId = key;
@@ -399,6 +409,20 @@ public class Inventory extends EventDispatcher
     public function set spells(value : Object) : void
     {
         _spells = value;
+    }
+
+    public function clearSlot($id : String) : void
+    {
+        var arr : Array = _slots[$id];
+        if(arr) {
+            for (var i : int = 0; i < arr.length; i++)
+            {
+                var item : Item = arr[i];
+                unwearItem(item);
+                removeItem(item);
+
+            }
+        }
     }
 }
 }

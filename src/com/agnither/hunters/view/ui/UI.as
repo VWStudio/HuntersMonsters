@@ -6,6 +6,7 @@
  * To change this template use File | Settings | File Templates.
  */
 package com.agnither.hunters.view.ui {
+import com.agnither.hunters.model.Model;
 import com.agnither.hunters.view.ui.common.ItemManaView;
 import com.agnither.hunters.view.ui.common.TabView;
 import com.agnither.hunters.view.ui.screens.battle.BattleScreen;
@@ -186,6 +187,8 @@ public class UI extends Screen {
                 _darkness.height = stage.stageHeight;
                 _popupContainer.addChild(_currentPopup);
                 _currentPopup.isActive = true;
+                Model.instance.currentPopup = _currentPopup;
+                Model.instance.currentPopupName = _currentPopupName;
                 _currentPopup.update();
                 /**
                  * deleting previous after current may be required for effects

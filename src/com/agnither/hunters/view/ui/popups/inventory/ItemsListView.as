@@ -63,7 +63,9 @@ public class ItemsListView extends AbstractView {
         var tile: ItemView;
 
         for (var i:int = 0; i < $data.length; i++) {
-            tile = ItemView.create(_inventory.getItem($data[i]));
+            var item : Item = _inventory.getItem($data[i]);
+//            if(item.type == "tamed_pet") continue;
+            tile = ItemView.create(item);
             tile.addEventListener(TouchEvent.TOUCH, handleTouch);
             addChild(tile);
             tile.x = itemX * (i % 3);
@@ -158,7 +160,7 @@ public class ItemsListView extends AbstractView {
         for (var i:int = 0; i < catchedPets.length; i++) {
             var tile: TamedMonsterView = new TamedMonsterView(catchedPets[i]);
             addChild(tile);
-            tile.allowToTame(false);
+//            tile.allowToTame(false);
             tile.x = 180 * (i % 3);
             tile.y = 180 * int(i / 3);
         }

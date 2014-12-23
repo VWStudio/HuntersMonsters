@@ -29,6 +29,9 @@ public class PersonageView extends AbstractView {
     }
 
     public function set personage(value: Personage):void {
+//        if(value is Monster) {
+//            trace("SET PERSONAGE", value, value.id, value.hp, value.isDead);
+//        }
         _personage = value;
         _personage.addEventListener(Personage.UPDATE, handleUpdate);
         _personage.addEventListener(Personage.HIT, handleHit);
@@ -46,6 +49,7 @@ public class PersonageView extends AbstractView {
 
     private function updateImage() : void
     {
+//        trace("UPDATE PERS IMAGE", _personage.isDead);
         _picturePos = new Point(isEnemy ? (_progressLine.x - _progressLine.width * 0.5) : (_progressLine.x + _progressLine.width * 0.5), 0);
         if (_personage.picture) {
             _picture.texture = _refs.gui.getTexture(_personage.picture);
@@ -71,6 +75,8 @@ public class PersonageView extends AbstractView {
     private var _hitImage : Image;
     public var isPet : Boolean = false;
     private var _picturePos : Point;
+    private var _statsIcons : Image;
+    private var _statsBack : Image;
 
     public function PersonageView() {
     }
@@ -83,6 +89,8 @@ public class PersonageView extends AbstractView {
         _currentMarker.visible = false;
         _progressLine = _links["bitmap_battle_progress_line"];
 
+        _statsIcons = _links["bitmap_battle_stats_icons"];
+        _statsBack = _links["bitmap_battle_stats"];
 
 
         _attackType = _links["bitmap_chip_sword"];
@@ -98,6 +106,9 @@ public class PersonageView extends AbstractView {
     }
 
     private function handleUpdate(e: Event = null):void {
+
+//        trace("UPDATE PERS", _personage.isDead);
+
         if (!_personage.isDead) {
             this.visible = true;
 
@@ -105,17 +116,27 @@ public class PersonageView extends AbstractView {
             this.visible = isPet ? false : true;
         }
 
+        _statsIcons.visible = !isPet;
+        _statsBack.visible = !isPet;
+
+        _name.visible = !isPet;
         _name.text = (_personage.name ? String(_personage.name) : Locale.getString(_personage.id)) + " " + String(_personage.level)+"ур";
+
+        _hp.visible = !isPet;
         _hp.text = String(_personage.hp) + "/" + String(_personage.maxHP);
+        _progressLine.visible = !isPet;
         _progressLine.scaleX = isEnemy ? -_personage.hp / _personage.maxHP : _personage.hp / _personage.maxHP;
 
+        _armor.visible = !isPet;
         _armor.text = String(_personage.getDefence());
+//        _damage.visible = !isPet;
         _damage.text = String(_personage.damage);
         _damage.visible = false;
 //        _damage.text = String(_personage.damage);
         _currentMarker.visible = _personage.current;
 
         var dmgType : MagicTypeVO = MagicTypeVO.DICT[_personage.damageType];
+        _attackType.visible = false;
         _attackType.texture = _refs.gui.getTexture(dmgType.picturedamage);
         _attackType.visible = false;
 

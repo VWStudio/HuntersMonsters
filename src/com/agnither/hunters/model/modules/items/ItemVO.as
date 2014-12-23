@@ -6,6 +6,7 @@ package com.agnither.hunters.model.modules.items
 import com.agnither.hunters.model.modules.extensions.DamageExt;
 import com.agnither.hunters.model.modules.extensions.DefenceExt;
 import com.agnither.hunters.model.modules.monsters.MonsterVO;
+import com.agnither.hunters.model.modules.players.SettingsVO;
 
 import flash.utils.Dictionary;
 
@@ -27,6 +28,7 @@ public class ItemVO
     public static const TYPE_SPELL : String = "spell";
     public static const TYPE_GOLD : String = "gold";
     public static const TYPE_PET : String = "pet";
+    public static const TYPE_TAMED_PET : String = "tamed_pet";
 
 
     public var id : int;
@@ -40,18 +42,26 @@ public class ItemVO
     public var setname : String;
     public var localekey : String = "";
 
-    public static function createPetItemVO($monster : MonsterVO) : ItemVO {
+    public static function createPetItemVO($monster : MonsterVO, $isTamed : Boolean = false) : ItemVO {
 
         var obj : Object = {};
-        obj.id = 23;
+        obj.id = $isTamed ? 24 : 23;
         obj.name = $monster.id;
         obj.picture = "magic_dark";
         obj.type = "pet";
         obj.localekey = $monster.id;
-        obj.slot = 0;
+        obj.slot = $isTamed ? 1 : 0;
         obj.setname = "";
         obj.droppicture = "";
-        obj.ext = {monster:$monster.id};
+        var extObj : Object = {monster:$monster.id};
+        if(SettingsVO.DICT[$monster.id+"Extension"]) {
+            var str : String = SettingsVO.DICT[$monster.id+"Extension"];
+            trace(str)
+            var extArr : Array = str.split(":");
+            extObj[extArr[0]] = JSON.parse(extArr[1]);
+        }
+        trace($monster.id, $monster.id+"Extension", SettingsVO.DICT[$monster.id+"Extension"], JSON.stringify(extObj));
+        obj.ext = extObj;
 
         return ItemVO.fill(new ItemVO(), obj)
 

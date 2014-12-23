@@ -123,7 +123,6 @@ public class Match3Game extends EventDispatcher
 
 
         _player = player;
-//        _player.hero.isPlayer = true;
         _player.hero.addEventListener(Personage.DEAD, handlePlayerDead);
 
         _enemy = enemy;
@@ -204,7 +203,7 @@ public class Match3Game extends EventDispatcher
                 {
                     attacker = currentPlayer.pet;
                 } else if (match.type == currentPlayer.damageType) {
-                     attacker = currentPlayer.hero;
+                    attacker = currentPlayer.hero;
                 }
 
                 currentPlayer.manaList.addMana(match.type, match.amount);
@@ -223,7 +222,8 @@ public class Match3Game extends EventDispatcher
 //        trace("attacker", attacker);
         if (attacker) // we have attacker when its not a skull
         {
-            aim = !currentEnemy.pet.isDead ? currentEnemy.pet : currentEnemy.hero;
+            aim = currentEnemy.hero;
+//            aim = !currentEnemy.pet.isDead ? currentEnemy.pet : currentEnemy.hero;
             dmg = attacker.damage / 3;
             if (attacker == Model.instance.player.hero)
             {

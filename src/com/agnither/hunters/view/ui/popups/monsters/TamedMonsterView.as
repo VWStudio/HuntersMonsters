@@ -2,15 +2,21 @@
  * Created by agnither on 25.08.14.
  */
 package com.agnither.hunters.view.ui.popups.monsters {
+import com.agnither.hunters.App;
 import com.agnither.hunters.data.outer.MagicTypeVO;
 import com.agnither.hunters.data.outer.DamageTypeVO;
 import com.agnither.hunters.model.Model;
+import com.agnither.hunters.model.modules.items.ItemVO;
 import com.agnither.hunters.model.modules.locale.Locale;
 import com.agnither.hunters.model.modules.monsters.MonsterAreaVO;
 import com.agnither.hunters.model.modules.monsters.MonsterVO;
 import com.agnither.hunters.model.player.LocalPlayer;
+import com.agnither.hunters.model.player.inventory.Inventory;
+import com.agnither.hunters.model.player.inventory.Item;
 import com.agnither.hunters.model.player.inventory.Pet;
+import com.agnither.hunters.model.player.personage.Monster;
 import com.agnither.hunters.view.ui.UI;
+import com.agnither.hunters.view.ui.popups.inventory.InventoryPopup;
 import com.agnither.hunters.view.ui.screens.battle.BattleScreen;
 import com.agnither.ui.AbstractView;
 import com.agnither.ui.ButtonContainer;
@@ -42,6 +48,7 @@ public class TamedMonsterView extends AbstractView {
     private var isUnlocked : Boolean = false;
     private var isTamed : Boolean = false;
     private var isBattle : Boolean = false;
+    private var _isInstalled : Boolean = false;
 
     public function TamedMonsterView($monsterID : String) {
 //        _pet;
@@ -50,16 +57,11 @@ public class TamedMonsterView extends AbstractView {
         _monster = Model.instance.monsters.getMonster($monsterID, 1);
     }
 
-    override protected function initialize():void {
-        createFromConfig(_refs.guiConfig.common.tamedMonster);
 
-        _picture = _links["bitmap_monster_1.png"] as Image;
-//        _picture.touchable = true;
+    override public function update() : void
+    {
         _picture.texture = _refs.gui.getTexture(_monster.picture);
         _picture.readjustSize();
-
-        _name = _links.name_tf;
-        _tint = _links["bitmap_common_disabled_tint"];
 
         if(_picture.width > _tint.width) {
             _picture.width = _tint.width;
@@ -69,38 +71,81 @@ public class TamedMonsterView extends AbstractView {
             _picture.height = _tint.height;
             _picture.scaleX = _picture.scaleY;
         }
-
-        _tame = _links["tame_btn"];
-        _tame.addEventListener(Event.TRIGGERED, onTame);
-
         _name.text = Locale.getString(_monsterID);
 
         isUnlocked = Model.instance.progress.unlockedLocations.indexOf(_monsterID) >= 0;
         _tint.visible = !isUnlocked;
 
         isTamed = Model.instance.progress.tamedMonsters.indexOf(_monsterID) >= 0;
-        isBattle = Model.instance.state == BattleScreen.NAME;
+        isBattle = Model.instance.currentPopupName == InventoryPopup.NAME; // not battle, now its inventory
 
-        _tame.visible = isUnlocked && !isTamed || isBattle;
-        _tame.text = isBattle ? "Вызвать" : "Приручить";
+        _isInstalled = false;
+        var itemsInSlot : Array = Model.instance.player.inventory.getItemsInSlot("1");
+        if(itemsInSlot && itemsInSlot.length > 0) {
+            var monsterInSlot : Item = itemsInSlot[0];
+            if(monsterInSlot.name == _monsterID) {
+                _isInstalled = true;
+            }
+        }
+
+        _tame.visible = (!isBattle && isUnlocked && !isTamed) || (isBattle && isTamed); //&& isTamed || isBattle;
+        _tame.text = isTamed ? (_isInstalled ? "Убрать" : "Взять") : "Приручить";
 
 
+    }
+
+    override protected function initialize():void {
+        createFromConfig(_refs.guiConfig.common.tamedMonster);
+
+        _picture = _links["bitmap_monster_1.png"] as Image;
+//        _picture.touchable = true;
+
+        _name = _links.name_tf;
+        _tint = _links["bitmap_common_disabled_tint"];
+
+
+        _tame = _links["tame_btn"];
+        _tame.addEventListener(Event.TRIGGERED, onTame);
+
+
+        update();
     }
 
     private function onTame(event : Event) : void {
 
         if(isBattle) {
 
-            var monster : MonsterVO = Model.instance.monsters.getMonster(_monsterID, 1);
-            monster.hp = monster.hp * 0.5;
-            var pet : Pet = new Pet(monster, monster);
+            if(_isInstalled)
+            {
+                Model.instance.player.inventory.clearSlot("1");
+            }
+            else
+            {
+                var monster : MonsterVO = Model.instance.monsters.getMonster(_monsterID, 1);
+                var petItem : ItemVO = ItemVO.createPetItemVO(monster, true);
+//                petItem.id = 24;
+//                petItem.slot = 1;
+                petItem.type = "pet";
+//                var itm : Item = Item.create(petItem);
+                var itm : Item = Item.create(petItem);
+                Model.instance.player.inventory.addItem(itm);
+                coreDispatch(LocalPlayer.ITEM_SELECTED, itm);
+            }
+//            items[petItem.id] = petItem;
 
-            Model.instance.summonTimes++;
-            coreDispatch(LocalPlayer.PET_SELECTED, pet);
-            coreDispatch(UI.HIDE_POPUP, SelectMonsterPopup.NAME);
+
+//            inventory.unshift(petItem.id.toString());
+
+
+//            monster.hp = monster.hp * 0.5;
+//            var pet : Pet = new Pet(monster, monster);
+//
+//            Model.instance.summonTimes++;
+//            coreDispatch(LocalPlayer.PET_SELECTED, pet);
+//            coreDispatch(UI.HIDE_POPUP, SelectMonsterPopup.NAME);
 
 //            coreDispatch(BattleScreen.SUMMON_BUTTON_UPDATE);
-
+            update();
         } else {
             coreExecute(ShowPopupCmd, TameMonsterPopup.NAME, _monsterID);
         }

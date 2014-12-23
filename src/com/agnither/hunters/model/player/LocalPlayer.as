@@ -47,6 +47,9 @@ public class LocalPlayer extends Player {
         initPets($data.getPets());
 
         _pet.addEventListener(Personage.DEAD, handlePetDead);
+
+
+
     }
 
     private function handlePetDead(e : Event) : void
@@ -139,6 +142,14 @@ public class LocalPlayer extends Player {
         hero.healMax();
         pet.unsummon();
         _ressurrectedPet = false;
+
+        var petsInstaled : Array = inventory.getItemsInSlot("1");
+        trace("*** INIT", petsInstaled);
+        if(petsInstaled && petsInstaled.length > 0) {
+            var petItem : Item = petsInstaled[0] as Item;
+            var monster : MonsterVO = MonsterVO.DICT[petItem.name][1];
+            handleSummonPet(new Pet(monster, monster));
+        }
     }
 }
 }

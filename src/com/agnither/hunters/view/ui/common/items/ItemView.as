@@ -105,7 +105,6 @@ public class ItemView extends AbstractView
             var petExt : PetExt = _item.getExtension(PetExt.TYPE) as PetExt;
             var monster : MonsterVO = petExt.getMonster();
 
-            trace("PET ITEM!!!", _item.isPet(), monster.id);
 
             magicType = MagicTypeVO.DICT[monster.damagetype];
             texName = magicType.picturedamage;

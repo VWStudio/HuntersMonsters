@@ -26,6 +26,7 @@ import com.agnither.hunters.view.ui.common.GoldView;
 import com.agnither.hunters.view.ui.screens.battle.BattleScreen;
 import com.agnither.hunters.view.ui.screens.map.MapScreen;
 import com.agnither.hunters.view.ui.screens.map.MonsterPoint;
+import com.agnither.ui.Popup;
 import com.cemaprjl.core.coreAddListener;
 import com.cemaprjl.core.coreDispatch;
 import com.cemaprjl.core.coreExecute;
@@ -57,6 +58,8 @@ public class Model
     public var screenMoved : Boolean;
     public static const RESET_GAME : String = "Model.RESET_GAME";
     public var shopTooltip : GoldView;
+    public var currentPopup : Popup;
+    public var currentPopupName : String;
 
     public static function get instance() : Model
     {
