@@ -5,50 +5,17 @@
     "structure": [
       [
         {
-          "x": 1171,
-          "y": 1,
-          "type": "button",
-          "name": "fullscreen_btn",
-          "images": [
-            "common_button_up",
-            "common_button_over",
-            "common_button_up",
-            "common_button_up"
-          ]
+          "x": 0,
+          "y": 680,
+          "type": "bitmap",
+          "image": "hud_bg_1",
+          "name": "bitmap_hud_bg_1"
         }
       ],
       [
         {
-          "x": 1131,
-          "y": 1,
-          "type": "button",
-          "name": "music_btn",
-          "images": [
-            "common_button_up",
-            "common_button_over",
-            "common_button_up",
-            "common_button_up"
-          ]
-        }
-      ],
-      [
-        {
-          "x": 1091,
-          "y": 1,
-          "type": "button",
-          "name": "sound_btn",
-          "images": [
-            "common_button_up",
-            "common_button_over",
-            "common_button_up",
-            "common_button_up"
-          ]
-        }
-      ],
-      [
-        {
-          "x": 191,
-          "y": 683,
+          "x": 440,
+          "y": 685,
           "type": "button",
           "name": "inventory_btn",
           "images": [
@@ -60,15 +27,15 @@
       ],
       [
         {
-          "x": 8,
-          "y": 54,
+          "x": 9,
+          "y": 700,
           "type": "bitmap",
           "image": "battle_progress_back",
           "name": "bitmap_battle_progress_back"
         },
         {
           "x": 9,
-          "y": 54,
+          "y": 700,
           "type": "bitmap",
           "image": "battle_progress_line",
           "name": "bitmap_battle_progress_line"
@@ -76,38 +43,25 @@
       ],
       [
         {
-          "x": 62,
-          "y": 32,
+          "x": 11,
+          "y": 695,
           "type": "text",
-          "width": 97.45,
+          "width": 146,
           "height": 25.95,
           "text": "10/100",
           "fontName": "impact_21",
           "fontColor": "0xFFFFFF",
-          "align": "left",
+          "align": "center",
           "name": "expVal_tf"
         }
       ],
-      [
-        {
-          "x": 8,
-          "y": 32,
-          "type": "text",
-          "width": 52.15,
-          "height": 25.95,
-          "text": "Опыт:",
-          "fontName": "impact_21",
-          "fontColor": "0xFFFFFF",
-          "align": "left",
-          "name": "expTitle_tf"
-        }
-      ],
+      [],
       [
         {
           "x": 81,
-          "y": 1,
+          "y": 678,
           "type": "text",
-          "width": 75.4,
+          "width": 44.25,
           "height": 25.95,
           "text": "10",
           "fontName": "impact_21",
@@ -118,16 +72,107 @@
       ],
       [
         {
-          "x": 8,
-          "y": 1,
+          "x": 10,
+          "y": 677,
           "type": "text",
-          "width": 71.9,
-          "height": 29.65,
-          "text": "Уровень:",
+          "width": 71.95,
+          "height": 25.95,
+          "text": "Охотник",
           "fontName": "impact_21",
           "fontColor": "0xFFFFFF",
           "align": "left",
           "name": "levelTitle_tf"
+        }
+      ],
+      [
+        {
+          "x": 906,
+          "y": 685,
+          "type": "bitmap",
+          "image": "drop_gold",
+          "name": "bitmap_drop_gold"
+        }
+      ],
+      [
+        {
+          "x": 947,
+          "y": 687,
+          "type": "text",
+          "width": 57.7,
+          "height": 25.95,
+          "text": "1022",
+          "fontName": "impact_21",
+          "fontColor": "0xFFFFFF",
+          "align": "left",
+          "name": "goldVal_tf"
+        }
+      ],
+      [
+        {
+          "x": 295,
+          "y": 685,
+          "type": "button",
+          "name": "mode_btn",
+          "images": [
+            "common_button_back1",
+            "common_button_back2",
+            "common_button_back1"
+          ]
+        }
+      ],
+      [
+        {
+          "x": 297,
+          "y": 686,
+          "type": "text",
+          "width": 133,
+          "height": 26,
+          "text": "Кнопка",
+          "fontName": "impact_21",
+          "fontColor": "0xFFFFFF",
+          "align": "center",
+          "name": "mode_label"
+        }
+      ],
+      [
+        {
+          "x": 585,
+          "y": 685,
+          "type": "button",
+          "name": "skills_btn",
+          "images": [
+            "common_button_back1",
+            "common_button_back2",
+            "common_button_back1"
+          ]
+        }
+      ],
+      [
+        {
+          "x": 440,
+          "y": 686,
+          "type": "text",
+          "width": 136,
+          "height": 26,
+          "text": "Кнопка",
+          "fontName": "impact_21",
+          "fontColor": "0xFFFFFF",
+          "align": "center",
+          "name": "inventory_label"
+        }
+      ],
+      [
+        {
+          "x": 586,
+          "y": 686,
+          "type": "text",
+          "width": 134,
+          "height": 26,
+          "text": "Кнопка",
+          "fontName": "impact_21",
+          "fontColor": "0xFFFFFF",
+          "align": "center",
+          "name": "skills_label"
         }
       ],
       [
@@ -188,77 +233,50 @@
       ],
       [
         {
-          "x": 9,
-          "y": 74,
-          "type": "text",
-          "width": 62.85,
-          "height": 25.95,
-          "text": "Золото:",
-          "fontName": "impact_21",
-          "fontColor": "0xFFFFFF",
-          "align": "left",
-          "name": "goldTitle_tf"
-        }
-      ],
-      [
-        {
-          "x": 76,
-          "y": 74,
-          "type": "text",
-          "width": 80.1,
-          "height": 25.95,
-          "text": "1022",
-          "fontName": "impact_21",
-          "fontColor": "0xFFFFFF",
-          "align": "left",
-          "name": "goldVal_tf"
-        }
-      ],
-      [
-        {
-          "x": 192,
-          "y": 685,
-          "type": "text",
-          "width": 180,
-          "height": 26,
-          "text": "Кнопка",
-          "fontName": "impact_21",
-          "fontColor": "0xFFFFFF",
-          "align": "center",
-          "name": "inventory_label"
-        }
-      ],
-      [
-        {
-          "x": 5,
-          "y": 683,
+          "x": 1171,
+          "y": 1,
           "type": "button",
-          "name": "mode_btn",
+          "name": "fullscreen_btn",
           "images": [
-            "common_button_back1",
-            "common_button_back2",
-            "common_button_back1"
+            "common_button_up",
+            "common_button_over",
+            "common_button_up",
+            "common_button_up"
           ]
         }
       ],
       [
         {
-          "x": 6,
-          "y": 685,
-          "type": "text",
-          "width": 180,
-          "height": 26,
-          "text": "Кнопка",
-          "fontName": "impact_21",
-          "fontColor": "0xFFFFFF",
-          "align": "center",
-          "name": "mode_label"
+          "x": 1131,
+          "y": 1,
+          "type": "button",
+          "name": "music_btn",
+          "images": [
+            "common_button_up",
+            "common_button_over",
+            "common_button_up",
+            "common_button_up"
+          ]
         }
       ],
       [
         {
-          "x": 11,
-          "y": 794,
+          "x": 1091,
+          "y": 1,
+          "type": "button",
+          "name": "sound_btn",
+          "images": [
+            "common_button_up",
+            "common_button_over",
+            "common_button_up",
+            "common_button_up"
+          ]
+        }
+      ],
+      [
+        {
+          "x": 1028,
+          "y": 651,
           "type": "button",
           "name": "trap_btn",
           "images": [
@@ -270,8 +288,8 @@
       ],
       [
         {
-          "x": 9,
-          "y": 795,
+          "x": 1026,
+          "y": 652,
           "type": "text",
           "width": 180,
           "height": 26,
@@ -284,8 +302,8 @@
       ],
       [
         {
-          "x": 751,
-          "y": 684,
+          "x": 1215,
+          "y": 685,
           "type": "button",
           "name": "reset_btn",
           "images": [
@@ -297,8 +315,8 @@
       ],
       [
         {
-          "x": 751,
-          "y": 685,
+          "x": 1215,
+          "y": 687,
           "type": "text",
           "width": 180,
           "height": 26,
@@ -311,35 +329,8 @@
       ],
       [
         {
-          "x": 379,
-          "y": 683,
-          "type": "button",
-          "name": "skills_btn",
-          "images": [
-            "common_button_back1",
-            "common_button_back2",
-            "common_button_back1"
-          ]
-        }
-      ],
-      [
-        {
-          "x": 378,
+          "x": 1028,
           "y": 685,
-          "type": "text",
-          "width": 180,
-          "height": 26,
-          "text": "Кнопка",
-          "fontName": "impact_21",
-          "fontColor": "0xFFFFFF",
-          "align": "center",
-          "name": "skills_label"
-        }
-      ],
-      [
-        {
-          "x": 564,
-          "y": 683,
           "type": "button",
           "name": "monsters_btn",
           "images": [
@@ -351,8 +342,8 @@
       ],
       [
         {
-          "x": 565,
-          "y": 685,
+          "x": 1029,
+          "y": 686,
           "type": "text",
           "width": 180,
           "height": 26,
@@ -362,7 +353,82 @@
           "align": "center",
           "name": "monsters_label"
         }
-      ]
+      ],
+      [
+        {
+          "x": 1046,
+          "y": 283,
+          "type": "text",
+          "width": 69.7,
+          "height": 25.95,
+          "text": "Рейтинг:",
+          "fontName": "impact_21",
+          "fontColor": "0xFFFFFF",
+          "align": "left",
+          "name": "ratingTitle_tf1"
+        },
+        {
+          "x": 1118,
+          "y": 283,
+          "type": "text",
+          "width": 83.65,
+          "height": 25.95,
+          "text": "1022",
+          "fontName": "impact_21",
+          "fontColor": "0xFFFFFF",
+          "align": "left",
+          "name": "ratingVal_tf1"
+        },
+        {
+          "x": 1047,
+          "y": 259,
+          "type": "text",
+          "width": 43.6,
+          "height": 25.95,
+          "text": "Лига:",
+          "fontName": "impact_21",
+          "fontColor": "0xFFFFFF",
+          "align": "left",
+          "name": "leagueTitle_tf1"
+        },
+        {
+          "x": 1092,
+          "y": 259,
+          "type": "text",
+          "width": 125.25,
+          "height": 25.95,
+          "text": "Серебро",
+          "fontName": "impact_21",
+          "fontColor": "0xFFFFFF",
+          "align": "left",
+          "name": "leagueVal_tf1"
+        },
+        {
+          "x": 1041,
+          "y": 316,
+          "type": "text",
+          "width": 52.15,
+          "height": 25.95,
+          "text": "Опыт:",
+          "fontName": "impact_21",
+          "fontColor": "0xFFFFFF",
+          "align": "left",
+          "name": "expTitle_tf"
+        },
+        {
+          "x": 1041,
+          "y": 347,
+          "type": "text",
+          "width": 62.85,
+          "height": 25.95,
+          "text": "Золото:",
+          "fontName": "impact_21",
+          "fontColor": "0xFFFFFF",
+          "align": "left",
+          "name": "goldTitle_tf"
+        }
+      ],
+      []
     ]
   },
   "skills_popup": {
@@ -7873,7 +7939,7 @@
               "a": 1.9800262451171875,
               "b": 0,
               "c": 0,
-              "d": 1.9524688720703125,
+              "d": 1.95245361328125,
               "tx": 0.1,
               "ty": 0.65
             },
