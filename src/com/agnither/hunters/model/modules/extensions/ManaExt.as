@@ -31,7 +31,7 @@ public class ManaExt extends Extension
         for (var i : int = 0; i < int(_extArguments.length / 2); i++)
         {
             var magic: MagicTypeVO = MagicTypeVO.DICT[_extArguments[i * 2].toString()];
-            trace(i, magic, magic.name);
+//            trace(i, magic, magic.name);
             _mana[magic.name] = _extArguments[i * 2 + 1];
         }
 

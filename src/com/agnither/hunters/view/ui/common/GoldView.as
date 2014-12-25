@@ -8,13 +8,18 @@ import com.agnither.hunters.model.modules.extensions.DefenceExt;
 import com.agnither.hunters.model.modules.extensions.ManaExt;
 import com.agnither.hunters.model.player.Mana;
 import com.agnither.hunters.model.player.inventory.Item;
+import com.agnither.hunters.view.ui.common.items.ItemView;
 import com.agnither.hunters.view.ui.popups.shop.ShopPopup;
 import com.agnither.ui.AbstractView;
 import com.agnither.ui.ButtonContainer;
 import com.agnither.utils.CommonRefs;
+import com.cemaprjl.core.coreAddListener;
 import com.cemaprjl.core.coreDispatch;
 
+import flash.geom.Rectangle;
+
 import starling.display.Image;
+import starling.display.Quad;
 import starling.events.Event;
 import starling.events.Touch;
 import starling.events.TouchEvent;
@@ -27,47 +32,75 @@ public class GoldView extends AbstractView {
     private var _buy : ButtonContainer;
     public var item : Item;
     public var isSell : Boolean = true;
-    private var _price : Number;
-    public var touched : Boolean = false;
+//    private var _price : Number;
+//    public var touched : Boolean = false;
+    public var price : Number;
+    private var _goldIcon : Image;
+    private var itemView : ItemView;
+    private var _quad : Quad;
+    private var _back : Image;
 
     public function GoldView() {
         createFromConfig(_refs.guiConfig.common.goldItem);
-
         this.touchable = true;
+
+        _back = _links["bitmap_common_back"];
+        _back.touchable = true;
+
         for (var i : int = 0; i < numChildren; i++)
         {
             getChildAt(i).touchable = true;
-            
         }
 //        this.getChildAt(0).touchable = true;
 //        this.getChildAt(1).touchable = true;
 //        this.getChildAt(2).touchable = true;
 
+        _goldIcon = _links.bitmap_drop_gold;
         _value = _links.amount_tf;
+        _value.touchable = false;
         _tip = _links.tip_tf;
+        _tip.touchable = false;
         _buy = _links.buy_btn;
         _buy.addEventListener(Event.TRIGGERED, onBuy);
 
         this.addEventListener(TouchEvent.TOUCH, onTouch);
+
+//        _quad = new Quad(50,50,0xFF0000);
+//        _quad.alpha = 0.3;
+//        addChild(_quad);
+
+
+
+
+        coreAddListener(ItemView.HOVER_OUT, onItemHoverOut);
+    }
+
+    private function onItemHoverOut() : void
+    {
+        this.visible = false;
+        item = null;
+//        this.visible = price > 0 && touched;
+
+
     }
 
     private function onBuy(event : Event) : void
     {
         if(isSell)
         {
-            Model.instance.progress.gold += _price;
+            Model.instance.progress.gold += price;
             Model.instance.player.inventory.removeItem(item);
             Model.instance.progress.saveProgress();
         }
         else
         {
 
-            if (Model.instance.progress.gold <= _price || _price <= 0)
+            if (Model.instance.progress.gold <= price || price <= 0)
             {
                 return;
             }
 
-            Model.instance.progress.gold -= _price;
+            Model.instance.progress.gold -= price;
             Model.instance.addPlayerItem(item);
             if (!item.isSpell())
 //        if (_item.type != ItemTypeVO.spell)
@@ -82,8 +115,8 @@ public class GoldView extends AbstractView {
 
     override public function update() : void {
 
-        _price = data as Number;
-        _value.text = _price.toString();
+//        _price = data as Number;
+        _value.text = price.toString();
 
 
         var str : String = item.description;
@@ -114,23 +147,74 @@ public class GoldView extends AbstractView {
         else
         {
             _buy.text = "Купить";
-            var isPriceEnough : Boolean = Model.instance.progress.gold >= _price;
+            var isPriceEnough : Boolean = Model.instance.progress.gold >= price;
             _buy.visible = !Model.instance.player.inventory.isHaveSpell(item.id) && isPriceEnough
-
         }
 
 
+        _goldIcon.visible = _value.visible = price > 0;
 
-        _buy.visible = !(isSell && item.isSpell());
+//        _value.visible = price > 0;
+        _buy.visible = price > 0 && !(isSell && item.isSpell());
 
-
+        var rect : Rectangle = this.getBounds(this);
+//        _quad.width = rect.width;
+//        _quad.height = rect.height;
+//        _quad.x = rect.x;
+//        _quad.y = rect.y;
     }
 
     private function onTouch(event : TouchEvent) : void
     {
+        if(price <= 0) return;
         var touch : Touch = event.getTouch(this);
-        this.touched = touch != null;
-        coreDispatch(ShopPopup.HIDE_TOOLTIP, !this.touched);
+//        this.touched = touch != null;
+        if(!touch) {
+//            trace("ON TOUCH!!!");
+//            trace(event.target, event.currentTarget, event.touches);
+            if(event.target is TextField) {
+//            if(event.target is TextField || event.target is ButtonContainer) {
+//                trace(event.target["name"]);
+//                trace(event.target["text"]);
+            }
+            else
+            {
+                coreDispatch(ItemView.HOVER_OUT);
+            }
+        }
+    }
+
+    public function setData($item : ItemView, $price : Number, $isSell : Boolean) : void
+    {
+//        trace("SET DATA");
+        item = $item.item;
+        if(itemView) {
+            itemView.removeEventListener(TouchEvent.TOUCH, onTouchItem);
+        }
+        itemView = $item;
+        itemView.addEventListener(TouchEvent.TOUCH, onTouchItem);
+
+        price = $price;
+        isSell = $isSell;
+
+        update();
+    }
+
+    private function onTouchItem(event : TouchEvent) : void
+    {
+        var touch : Touch = event.getTouch(itemView);
+        if(!touch) {
+            if(!event.getTouch(this) || price <= 0) {
+//                trace("ON TOUCH ITEM");
+                coreDispatch(ItemView.HOVER_OUT);
+            }
+            else
+            {
+//                trace("touched tooltip");
+                event.stopImmediatePropagation();
+                event.stopPropagation();
+            }
+        }
     }
 }
 }

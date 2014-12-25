@@ -11,6 +11,7 @@ import com.agnither.hunters.view.ui.common.items.ItemView;
 import com.agnither.ui.AbstractView;
 import com.agnither.utils.CommonRefs;
 import com.cemaprjl.core.coreAddListener;
+import com.cemaprjl.core.coreDispatch;
 
 import starling.display.Sprite;
 
@@ -64,6 +65,12 @@ public class BattleInventoryView extends AbstractView {
         var touch: Touch = e.getTouch(target, TouchPhase.BEGAN);
         if (touch) {
             dispatchEventWith(ITEM_SELECTED, true, target.item);
+        }
+        var touchHover: Touch = e.getTouch(target, TouchPhase.HOVER);
+        if(touchHover) {
+            coreDispatch(ItemView.HOVER, target)
+        } else {
+//            coreDispatch(ItemView.HOVER_OUT)
         }
     }
 

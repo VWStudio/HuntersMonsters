@@ -65,7 +65,7 @@ public class HudScreen extends Screen {
         _playerLevel = _links.levelVal_tf;
         _playerExp = _links.expVal_tf;
 
-        _expProgress = _links["bitmap_battle_progress_line"];
+        _expProgress = _links["bitmap_exp_progress_line"];
         _expProgress.scaleX = 0.01;
 
 

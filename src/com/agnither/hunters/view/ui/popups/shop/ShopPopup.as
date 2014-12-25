@@ -52,7 +52,7 @@ public class ShopPopup extends Popup
     public static const SHOW_TOOLTIP : String = "ShopPopup.SHOW_TOOLTIP";
     public static const HIDE_TOOLTIP : String = "ShopPopup.HIDE_TOOLTIP";
     private var _tooltip : Sprite;
-    private var _gold : GoldView;
+//    private var _gold : GoldView;
     private var _inventoryView : InventoryView;
     private var _scroll : Scroll;
     private var _scrollMask : Sprite;
@@ -127,8 +127,8 @@ public class ShopPopup extends Popup
 
         coreAddListener(Progress.UPDATED, update);
 
-        coreAddListener(ShopPopup.SHOW_TOOLTIP, showTooltip);
-        coreAddListener(ShopPopup.HIDE_TOOLTIP, hideTip);
+//        coreAddListener(ShopPopup.SHOW_TOOLTIP, showTooltip);
+//        coreAddListener(ShopPopup.HIDE_TOOLTIP, hideTip);
 
         coreAddListener(Shop.NEW_DELIVER, onNewDeliver);
         coreAddListener(Shop.DELIVER_TIME, onDeliverTime);
@@ -136,14 +136,14 @@ public class ShopPopup extends Popup
         _tooltip = new Sprite();
         addChild(_tooltip);
 
-        _gold = new GoldView();
-        _tooltip.addChild(_gold);
-        _tooltip.visible = false;
+//        _gold = new GoldView();
+//        _tooltip.addChild(_gold);
+//        _tooltip.visible = false;
 
-        _gold.touchable = true;
-        _tooltip.touchable = true;
+//        _gold.touchable = true;
+//        _tooltip.touchable = true;
 
-        Model.instance.shopTooltip = _gold;
+//        Model.instance.itemsTooltip = _gold;
 
         _scroll = new Scroll(_links["scroll"]);
         _scroll.onChange = onScroll;
@@ -186,35 +186,35 @@ public class ShopPopup extends Popup
         Starling.juggler.tween(_container, 0.4, {y: newy});
     }
 
-    private function showTooltip($item : AbstractView) : void
-    {
-        var price : Number = $item["price"];
-        var item : Item = $item["item"];
-//        if (!price)
-//        {
-//            return;
-//        }
-
-        var rect : Rectangle = $item.getBounds(this);
-
-        _tooltip.visible = true;
-        _tooltip.x = rect.x;
-        _tooltip.y = rect.y + rect.height - 5;
-        _gold.data = price;
-        _gold.item = item;
-        _gold.isSell = _currentOwner == _hunterTab;
-        _gold.update();
-
-
-//        _gold.visible = str.length > 0;
-
-    }
-
-    private function hideTip($val : Boolean = true) : void
-    {
-        if(_gold.touched) return;
-        _tooltip.visible = !$val;
-    }
+//    private function showTooltip($item : AbstractView) : void
+//    {
+//        var price : Number = $item["price"];
+//        var item : Item = $item["item"];
+////        if (!price)
+////        {
+////            return;
+////        }
+//
+//        var rect : Rectangle = $item.getBounds(this);
+//
+//        _tooltip.visible = true;
+//        _tooltip.x = rect.x;
+//        _tooltip.y = rect.y + rect.height - 5;
+//        _gold.data = price;
+//        _gold.item = item;
+//        _gold.isSell = _currentOwner == _hunterTab;
+//        _gold.update();
+//
+//
+////        _gold.visible = str.length > 0;
+//
+//    }
+//
+//    private function hideTip($val : Boolean = true) : void
+//    {
+//        if(_gold.touched) return;
+//        _tooltip.visible = !$val;
+//    }
 
 
     override public function update() : void
@@ -331,6 +331,7 @@ public class ShopPopup extends Popup
         var items : Array = _inventory.getItemsByType(ItemVO.TYPE_WEAPON);
         items = items.concat(_inventory.getItemsByType(ItemVO.TYPE_ARMOR));
         items = items.concat(_inventory.getItemsByType(ItemVO.TYPE_MAGIC));
+        items = items.concat(_inventory.getItemsByType(ItemVO.TYPE_PET));
 
         _container.removeChildren();
         for (var i : int = 0; i < items.length; i++)

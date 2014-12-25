@@ -43,7 +43,7 @@ public class InventoryPopup extends Popup
 
     private var _closeBtn : Button;
     private var _scroll : Scroll;
-    private var _tooltip : Tooltip;
+//    private var _tooltip : Tooltip;
     private var _invTitle : TextField;
     private var _itemHeight : Number = 60;
 
@@ -106,51 +106,50 @@ public class InventoryPopup extends Popup
         _itemsContainer.clipRect = new Rectangle(0, 0, 600, 500);
 
 
-        _tooltip = new Tooltip();
-        addChild(_tooltip);
-        _tooltip.visible = false;
-
-        coreAddListener(ItemView.HOVER, onItemHover);
-        coreAddListener(ItemView.HOVER_OUT, onItemHoverOut);
+//        _tooltip = new Tooltip();
+//        addChild(_tooltip);
+//        _tooltip.visible = false;
+//
+//        coreAddListener(ItemView.HOVER, onItemHover);
+//        coreAddListener(ItemView.HOVER_OUT, onItemHoverOut);
         //coreDispatch(ItemView.HOVER, item.item);
     }
 
-    private function onItemHoverOut() : void
-    {
-        _tooltip.visible = false;
-    }
-
-    private function onItemHover($item : ItemView) : void
-    {
-        if (!isActive)
-        {
-            return;
-        }
-        if ($item)
-        {
-            var rect : Rectangle = $item.getBounds(this);
-            _tooltip.x = rect.left;
-            _tooltip.y = rect.bottom;
-            var str : String = $item.item.description;
-            var exts : Object = $item.item.getExtensions();
-            for (var key : String in exts)
-            {
-                if (key == DamageExt.TYPE || key == DefenceExt.TYPE || key == ManaExt.TYPE)
-                {
-//                    continue;
-                }
-                if (str.length > 0)
-                {
-                    str += "\n";
-                }
-                str += exts[key].getDescription();
-//                str += Locale.getString(key);
-            }
-            _tooltip.text = str;
-            _tooltip.visible = str.length > 0;
-        }
-
-    }
+//    private function onItemHoverOut() : void
+//    {
+//        _tooltip.visible = false;
+//    }
+//
+//    private function onItemHover($item : ItemView) : void
+//    {
+//        if (!isActive)
+//        {
+//            return;
+//        }
+//        if ($item)
+//        {
+//            var rect : Rectangle = $item.getBounds(this);
+//            _tooltip.x = rect.left;
+//            _tooltip.y = rect.bottom;
+//            var str : String = $item.item.description;
+//            var exts : Object = $item.item.getExtensions();
+//            for (var key : String in exts)
+//            {
+//                if (key == DamageExt.TYPE || key == DefenceExt.TYPE || key == ManaExt.TYPE)
+//                {
+////                    continue;
+//                }
+//                if (str.length > 0)
+//                {
+//                    str += "\n";
+//                }
+//                str += exts[key].getDescription();
+////                str += Locale.getString(key);
+//            }
+//            _tooltip.text = str;
+//            _tooltip.visible = str.length > 0;
+//        }
+//    }
 
     private function onScroll($val : Number) : void
     {

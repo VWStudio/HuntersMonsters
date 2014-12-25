@@ -77,7 +77,7 @@ public class ItemView extends AbstractView
 
         _picture.texture = _refs.gui.getTexture(_item.picture);
         _picture.touchable = true;
-        this.touchable = !item.isPet();
+//        this.touchable = !item.isPet();
         var magicType : MagicTypeVO;
         var texName : String = "";
 

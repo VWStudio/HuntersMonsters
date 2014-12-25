@@ -57,7 +57,6 @@ public class BuyItemView extends AbstractView
         _itemView.touchable = true;
         _itemView.noSelection();
         _itemView.update();
-
         _itemView.addEventListener(TouchEvent.TOUCH, onTouch);
 
         _price = 0;
@@ -94,25 +93,32 @@ public class BuyItemView extends AbstractView
 //            _buyButton.visible = !Model.instance.player.inventory.isHaveSpell(item.id) && isPriceEnough;
         }
 
+
+
     }
 
     private function onTouch(e : TouchEvent) : void
     {
         var touch : Touch = e.getTouch(this, TouchPhase.HOVER);
 //        var touch1 : Touch =
-//        var touchTooltip : Touch = e.getTouch(Model.instance.shopTooltip);
-//        var ttInteract : Boolean = e.interactsWith(Model.instance.shopTooltip);
+//        var touchTooltip : Touch = e.getTouch(Model.instance.itemsTooltip);
+//        var ttInteract : Boolean = e.interactsWith(Model.instance.itemsTooltip);
 //        trace(touchTooltip, ttInteract);
 
-        var isHitTooltip : Boolean = e.interactsWith(Model.instance.shopTooltip);
-        if (touch && touch.phase == TouchPhase.HOVER) {
+//        var isHitTooltip : Boolean = e.interactsWith(Model.instance.itemsTooltip);
+//        trace("+++ ON TOUCH", touch.phase);
+        if (touch && Model.instance.itemsTooltip.item != _itemView.item) {
 //            trace("Buy, TOUCH", isHitTooltip, touch.phase, item.uniqueId);
-            coreDispatch(ShopPopup.SHOW_TOOLTIP, this);
+
+            trace(touch, e.interactsWith(Model.instance.itemsTooltip));
+
+            coreDispatch(ItemView.HOVER, _itemView, _price, false);
+//            coreDispatch(ShopPopup.SHOW_TOOLTIP, this);
         }
         else
         {
 //            trace("Buy, NO Touch", isHitTooltip, touch, item.uniqueId);
-            coreDispatch(ShopPopup.HIDE_TOOLTIP, !isHitTooltip);
+//            coreDispatch(ShopPopup.HIDE_TOOLTIP, !isHitTooltip);
         }
 
 

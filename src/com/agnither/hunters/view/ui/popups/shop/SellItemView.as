@@ -97,6 +97,9 @@ public class SellItemView extends AbstractView
             _price = int(_price * SettingsVO.DICT["sellPriceMult"]);
         }
 
+        if(_price <= 1) {
+            _price = 1;
+        }
 
     }
 
@@ -148,7 +151,7 @@ public class SellItemView extends AbstractView
 
     private function onTouch(e : TouchEvent) : void
     {
-        var touch : Touch = e.getTouch(this);
+        var touch : Touch = e.getTouch(this, TouchPhase.HOVER);
 //        var touch : Touch = e.getTouch(_itemView);
 
 //        if (touch == null)
@@ -161,15 +164,16 @@ public class SellItemView extends AbstractView
 //        }
 
 
-        var isHitTooltip : Boolean = e.interactsWith(Model.instance.shopTooltip);
-        if (touch && touch.phase == TouchPhase.HOVER) {
+//        var isHitTooltip : Boolean = e.interactsWith(Model.instance.itemsTooltip);
+        if (touch && Model.instance.itemsTooltip.item != _itemView.item) {
 //            trace("Buy, TOUCH", isHitTooltip, touch.phase, item.uniqueId);
-            coreDispatch(ShopPopup.SHOW_TOOLTIP, this);
+//            oreDispatch(ShopPopup.SHOW_TOOLTIP, this);
+            coreDispatch(ItemView.HOVER, _itemView, _price, true);
         }
         else
         {
 //            trace("Buy, NO Touch", isHitTooltip, touch, item.uniqueId);
-            coreDispatch(ShopPopup.HIDE_TOOLTIP, !isHitTooltip);
+//            coreDispatch(ShopPopup.HIDE_TOOLTIP, !isHitTooltip);
         }
     }
 }

@@ -24,7 +24,7 @@ public class Shop
 
     public function getItemsByType($type : String) : Array
     {
-        trace("getItemsByType", $type, _itemsDict[$type]);
+//        trace("getItemsByType", $type, _itemsDict[$type]);
 
         if (!_itemsDict[$type])
         {
@@ -58,9 +58,9 @@ public class Shop
                 if (item)
                 {
                     var itmString : String = item.toString();
-                    trace("created item:", itmString);
+//                    trace("created item:", itmString);
                     if(createdItems.indexOf(itmString) == -1) {
-                        createdItems.push(itmString)
+                        createdItems.push(itmString);
                         arr.push(item);
                     }
                 }

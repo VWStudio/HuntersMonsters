@@ -7,8 +7,11 @@
  */
 package com.agnither.hunters.view.ui {
 import com.agnither.hunters.model.Model;
+import com.agnither.hunters.model.player.inventory.Item;
+import com.agnither.hunters.view.ui.common.GoldView;
 import com.agnither.hunters.view.ui.common.ItemManaView;
 import com.agnither.hunters.view.ui.common.TabView;
+import com.agnither.hunters.view.ui.common.items.ItemView;
 import com.agnither.hunters.view.ui.screens.battle.BattleScreen;
 import com.agnither.hunters.view.ui.screens.battle.player.DropListView;
 import com.agnither.hunters.view.ui.screens.battle.player.DropSlotView;
@@ -27,6 +30,8 @@ import com.cemaprjl.core.coreAddListener;
 import com.cemaprjl.viewmanage.ClassBindings;
 import com.cemaprjl.viewmanage.ScreensStorage;
 import com.cemaprjl.viewmanage.ViewFactory;
+
+import flash.geom.Rectangle;
 
 import flash.net.registerClassAlias;
 
@@ -67,6 +72,7 @@ public class UI extends Screen {
     private var _currentPopupName : String;
     private var _prevPopup : Popup;
     private var _hud : HudScreen;
+    private var _tooltip : GoldView;
 
     public function UI() {
         super();
@@ -101,6 +107,14 @@ public class UI extends Screen {
         _popupContainer = new Sprite();
         addChild(_popupContainer);
 
+        _tooltip = new GoldView();
+        addChild(_tooltip);
+        _tooltip.visible = false;
+        Model.instance.itemsTooltip = _tooltip;
+
+        coreAddListener(ItemView.HOVER, onItemHover);
+
+
 //        _darkness2 = new Quad(stage.stageWidth, stage.stageHeight, 0);
 //        _darkness2.addEventListener(TouchEvent.TOUCH, handleTouch);
 //        _darkness2.alpha = 0.8;
@@ -110,6 +124,78 @@ public class UI extends Screen {
 //        _alertsContainer = new Sprite();
 //        addChild(_alertsContainer);
     }
+
+
+
+
+    private function onItemHover($item : ItemView, $price : Number = 0, $isSell : Boolean = false) : void
+    {
+//        if (!isActive)
+//        {
+//            return;
+//        }
+        if ($item)
+        {
+            var rect : Rectangle = $item.getBounds(this);
+            _tooltip.x = rect.x;
+            _tooltip.y = rect.y + rect.height - 5;
+            _tooltip.setData($item, $price, $isSell);
+            _tooltip.visible = true;
+//            _tooltip.item = $item.item;
+//            _tooltip.price = $price;
+//            _tooltip.isSell= $isSell;
+//            _tooltip.update();
+//            var str : String = $item.item.description;
+//            var exts : Object = $item.item.getExtensions();
+//            for (var key : String in exts)
+//            {
+////                if (key == DamageExt.TYPE || key == DefenceExt.TYPE || key == ManaExt.TYPE)
+////                {
+//////                    continue;
+////                }
+//                if (str.length > 0)
+//                {
+//                    str += "\n";
+//                }
+//                str += exts[key].getDescription();
+////                str += Locale.getString(key);
+//            }
+//            _tooltip.text = str;
+        }
+    }
+    /*
+     private function showTooltip($item : AbstractView) : void
+     {
+     var price : Number = $item["price"];
+     var item : Item = $item["item"];
+     //        if (!price)
+     //        {
+     //            return;
+     //        }
+
+     var rect : Rectangle = $item.getBounds(this);
+
+     _tooltip.visible = true;
+     _tooltip.x = rect.x;
+     _tooltip.y = rect.y + rect.height - 5;
+     _gold.data = price;
+     _gold.item = item;
+     _gold.isSell = _currentOwner == _hunterTab;
+     _gold.update();
+
+
+     //        _gold.visible = str.length > 0;
+
+     }
+
+     private function hideTip($val : Boolean = true) : void
+     {
+     if(_gold.touched) return;
+     _tooltip.visible = !$val;
+     }
+     */
+
+
 
 
     override public function update() : void {

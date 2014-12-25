@@ -142,9 +142,9 @@ public class Territory
             Model.instance.progress.unlockLocation(area.area);
             isUnlocked = true;
 
-            if(area.unlockhouse) {
-                (Model.instance.territories[area.unlockhouse] as Territory).unlock();
-            }
+//            if(area.unlockhouse) {
+//                (Model.instance.territories[area.unlockhouse] as Territory).unlock();
+//            }
 
             function onEndTween() : void
             {

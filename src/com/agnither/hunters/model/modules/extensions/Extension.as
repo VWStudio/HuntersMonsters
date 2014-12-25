@@ -82,7 +82,7 @@ public class Extension
 
     public function toObject() : Object
     {
-        trace(this, "~" ,_extArguments);
+//        trace(this, "~" ,_extArguments);
         return _extArguments;
     }
 

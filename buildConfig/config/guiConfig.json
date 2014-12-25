@@ -37,8 +37,8 @@
           "x": 9,
           "y": 700,
           "type": "bitmap",
-          "image": "battle_progress_line",
-          "name": "bitmap_battle_progress_line"
+          "image": "exp_progress_line",
+          "name": "bitmap_exp_progress_line"
         }
       ],
       [
@@ -7933,28 +7933,19 @@
       "structure": [
         [
           {
-            "x": 0,
-            "y": 1,
+            "x": -1,
+            "y": 0,
             "matrix": {
               "a": 1.9800262451171875,
               "b": 0,
               "c": 0,
               "d": 1.95245361328125,
-              "tx": 0.1,
-              "ty": 0.65
+              "tx": -0.9,
+              "ty": -0.35
             },
-            "type": "movie clip",
-            "structure": [
-              [
-                {
-                  "x": 0,
-                  "y": 0,
-                  "type": "bitmap",
-                  "image": "common_back",
-                  "name": "bitmap_common_back"
-                }
-              ]
-            ]
+            "type": "bitmap",
+            "image": "common_back",
+            "name": "bitmap_common_back"
           }
         ],
         [

@@ -57,7 +57,7 @@ public class Model
     public var flashvars : Object;
     public var screenMoved : Boolean;
     public static const RESET_GAME : String = "Model.RESET_GAME";
-    public var shopTooltip : GoldView;
+    public var itemsTooltip : GoldView;
     public var currentPopup : Popup;
     public var currentPopupName : String;
 
@@ -147,6 +147,12 @@ public class Model
 
         if (isJustBeaten)
         {
+
+
+            if(territory.area.unlockhouse) {
+                (Model.instance.territories[territory.area.unlockhouse] as Territory).unlock();
+            }
+
 
             Model.instance.progress.unlockPointsGiven.push(monster.id);
             Model.instance.progress.unlockPoints += 1;
