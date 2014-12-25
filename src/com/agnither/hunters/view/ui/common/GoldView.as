@@ -110,7 +110,7 @@ public class GoldView extends AbstractView {
             Model.instance.progress.saveProgress();
 
         }
-
+        coreDispatch(ItemView.HOVER_OUT);
     }
 
     override public function update() : void {

@@ -110,7 +110,7 @@ public class BuyItemView extends AbstractView
         if (touch && Model.instance.itemsTooltip.item != _itemView.item) {
 //            trace("Buy, TOUCH", isHitTooltip, touch.phase, item.uniqueId);
 
-            trace(touch, e.interactsWith(Model.instance.itemsTooltip));
+//            trace(touch, e.interactsWith(Model.instance.itemsTooltip));
 
             coreDispatch(ItemView.HOVER, _itemView, _price, false);
 //            coreDispatch(ShopPopup.SHOW_TOOLTIP, this);
@@ -139,6 +139,7 @@ public class BuyItemView extends AbstractView
             Model.instance.shop.removeItem(_item);
         }
         Model.instance.progress.saveProgress();
+        coreDispatch(ItemView.HOVER_OUT);
 
     }
 

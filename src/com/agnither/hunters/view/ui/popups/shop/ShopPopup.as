@@ -18,10 +18,12 @@ import com.agnither.hunters.view.ui.common.GoldView;
 import com.agnither.hunters.view.ui.common.Scroll;
 import com.agnither.hunters.view.ui.common.TabView;
 import com.agnither.hunters.view.ui.common.Tooltip;
+import com.agnither.hunters.view.ui.common.items.ItemView;
 import com.agnither.hunters.view.ui.popups.inventory.InventoryView;
 import com.agnither.ui.AbstractView;
 import com.agnither.ui.Popup;
 import com.cemaprjl.core.coreAddListener;
+import com.cemaprjl.core.coreDispatch;
 import com.cemaprjl.utils.Formatter;
 
 import flash.geom.Point;
@@ -235,7 +237,7 @@ public class ShopPopup extends Popup
         {
             showPlayerItems();
         }
-
+        coreDispatch(ItemView.HOVER_OUT);
         _deliver.text = "Сделующая поставка:";
 
         _hunterTab.setIsSelected(_currentOwner);
