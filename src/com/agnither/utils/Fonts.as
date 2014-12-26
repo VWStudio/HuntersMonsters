@@ -6,7 +6,8 @@ public class Fonts {
     
     public static var fonts: Array = [
         "impact_21",
-        "impact_49"
+        "impact_49",
+        "calibri_r_15"
     ];
 }
 }
