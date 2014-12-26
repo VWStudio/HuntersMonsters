@@ -18,6 +18,7 @@ public dynamic class MonsterVO extends PersonageVO {
     public var expearned: int;
     public var speed: uint = 75;
     public var damagetype: String;
+    public var itemimage: String;
     public var reward: Number = 0;
     public var order: Number = 0;
     public var difficultyFactor: Number = 0;

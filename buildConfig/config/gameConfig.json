@@ -603,7 +603,8 @@
       "speed": 100,
       "reward": 15,
       "order": 0,
-      "difficultyfactor": 1
+      "difficultyfactor": 1,
+      "itemimage": "card_m1"
     },
     {
       "level": 1,
@@ -622,7 +623,8 @@
       "speed": 100,
       "reward": 29,
       "order": 1,
-      "difficultyfactor": 2
+      "difficultyfactor": 2,
+      "itemimage": "card_m2"
     },
     {
       "level": 1,
@@ -641,7 +643,8 @@
       "speed": 100,
       "reward": 51,
       "order": 2,
-      "difficultyfactor": 5
+      "difficultyfactor": 5,
+      "itemimage": "card_m3"
     },
     {
       "level": 1,
@@ -660,7 +663,8 @@
       "speed": 100,
       "reward": 92,
       "order": 3,
-      "difficultyfactor": 7
+      "difficultyfactor": 7,
+      "itemimage": "card_m4"
     },
     {
       "level": 1,
@@ -679,7 +683,8 @@
       "speed": 100,
       "reward": 157,
       "order": 4,
-      "difficultyfactor": 8
+      "difficultyfactor": 8,
+      "itemimage": "card_m5"
     },
     {
       "level": 1,
@@ -698,7 +703,8 @@
       "speed": 100,
       "reward": 251,
       "order": 5,
-      "difficultyfactor": 9
+      "difficultyfactor": 9,
+      "itemimage": "card_m6"
     },
     {
       "level": 1,
@@ -717,7 +723,8 @@
       "speed": 100,
       "reward": 377,
       "order": 6,
-      "difficultyfactor": 9
+      "difficultyfactor": 9,
+      "itemimage": "card_m7"
     },
     {
       "level": 1,
@@ -736,7 +743,8 @@
       "speed": 100,
       "reward": 527,
       "order": 7,
-      "difficultyfactor": 10
+      "difficultyfactor": 10,
+      "itemimage": "card_m8"
     },
     {
       "level": 1,
@@ -755,7 +763,8 @@
       "speed": 100,
       "reward": 738,
       "order": 8,
-      "difficultyfactor": 8
+      "difficultyfactor": 8,
+      "itemimage": "card_m9"
     },
     {
       "level": 1,
@@ -774,7 +783,8 @@
       "speed": 100,
       "reward": "1 477",
       "order": 9,
-      "difficultyfactor": 15
+      "difficultyfactor": 15,
+      "itemimage": "card_m10"
     },
     {
       "level": 1,
@@ -793,7 +803,8 @@
       "speed": 100,
       "reward": "1 772",
       "order": 10,
-      "difficultyfactor": 8
+      "difficultyfactor": 8,
+      "itemimage": "card_m10"
     }
   ],
   "monster_area": [

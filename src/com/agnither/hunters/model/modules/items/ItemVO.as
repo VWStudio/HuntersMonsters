@@ -47,7 +47,8 @@ public class ItemVO
         var obj : Object = {};
         obj.id = $isTamed ? 24 : 23;
         obj.name = $monster.id;
-        obj.picture = "magic_dark";
+        obj.picture = $monster.itemimage;
+//        obj.picture = "magic_dark";
         obj.type = "pet";
         obj.localekey = $monster.id;
         obj.slot = $isTamed ? 1 : 0;
