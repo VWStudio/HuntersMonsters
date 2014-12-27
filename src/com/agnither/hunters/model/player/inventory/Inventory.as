@@ -7,6 +7,7 @@ import com.agnither.hunters.data.outer.ItemSlotVO;
 import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.modules.extensions.DamageExt;
 import com.agnither.hunters.model.modules.extensions.DefenceExt;
+import com.agnither.hunters.model.modules.extensions.PetExt;
 import com.agnither.hunters.model.modules.items.ItemVO;
 import com.agnither.hunters.model.modules.monsters.MonsterVO;
 
@@ -186,6 +187,9 @@ public class Inventory extends EventDispatcher
             var itemsbytype : Array = _itemsByType[key];
             arr = arr.concat(itemsbytype);
         }
+
+        arr = arr.sort(sortInventory);
+
         return arr;
     }
 
@@ -248,15 +252,16 @@ public class Inventory extends EventDispatcher
 
         _inventoryItems.sort(sortInventory);
 
-
         _manaPriority = getSpellsManaTypes();
         dispatchEventWith(UPDATE);
+
+        Model.instance.progress.saveProgress();
     }
 
     private function addToInventory(uid : String) : void
     {
         var item : Item = _itemsDict[uid];
-        if (item == null)
+        if (item == null || item.slot == 0)
         {
             return;
         }
@@ -281,6 +286,7 @@ public class Inventory extends EventDispatcher
             }
         }
 
+        isHaveFree = _inventoryItems.length < max_capacity; // update after removing item
 
         if (!isHaveFree)
         {
@@ -315,10 +321,67 @@ public class Inventory extends EventDispatcher
 
     }
 
-    private function sortInventory($a : String, $b : String) : int
+//    private function sortItems($a : ItemVO, $b : ItemVO) : int{
+//
+//        var itemA : ItemVO = $a;
+//        var itemB : ItemVO = $b;
+//
+//        if (itemA.slot < itemB.slot)
+//        {
+//            return -1;
+//        }
+//        else if (itemA.slot > itemB.slot)
+//        {
+//            return 1;
+//        }
+//        else
+//        {
+//            if (itemA.getDamage() > itemA.getDamage())
+//            {
+//                return -1;
+//            }
+//            else if (itemA.getDamage() < itemA.getDamage())
+//            {
+//                return 1;
+//            }
+//        }
+//        return 0;
+//
+//    }
+
+    public function sortInventory($a : String, $b : String) : int
     {
         var itemA : Item = _itemsDict[$a];
         var itemB : Item = _itemsDict[$b];
+
+        if(itemA.slot == 0) {
+            if(itemB.slot == 0) {
+                var petExt : PetExt = itemA.getExtension(PetExt.TYPE) as PetExt;
+                var monsterA : MonsterVO = petExt.getMonster();
+                petExt = itemB.getExtension(PetExt.TYPE) as PetExt;
+                var monsterB : MonsterVO = petExt.getMonster();
+
+                if(monsterA.damage > monsterB.damage) {
+                    return -1
+                }
+                if(monsterA.damage < monsterB.damage) {
+                    return 1
+                }
+                return 0;
+            }
+            else
+            {
+                return 1;
+            }
+        }
+        else
+        {
+            if(itemB.slot == 0) {
+                return -1;
+            }
+        }
+
+
 
         if (itemA.slot < itemB.slot)
         {
@@ -330,11 +393,11 @@ public class Inventory extends EventDispatcher
         }
         else
         {
-            if (itemA.getDamage() > itemA.getDamage())
+            if (itemA.getDamage() > itemB.getDamage())
             {
                 return -1;
             }
-            else if (itemA.getDamage() < itemA.getDamage())
+            else if (itemA.getDamage() < itemB.getDamage())
             {
                 return 1;
             }

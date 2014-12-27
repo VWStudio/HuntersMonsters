@@ -18,6 +18,10 @@ import com.agnither.ui.AbstractView;
 import com.agnither.utils.CommonRefs;
 import com.cemaprjl.core.coreDispatch;
 
+import flash.geom.Point;
+
+import flash.geom.Point;
+
 import flash.ui.Mouse;
 import flash.ui.MouseCursor;
 
@@ -62,14 +66,20 @@ public class ItemsListView extends AbstractView {
 
         var tile: ItemView;
 
+        var pt : Point;
         for (var i:int = 0; i < $data.length; i++) {
             var item : Item = _inventory.getItem($data[i]);
 //            if(item.type == "tamed_pet") continue;
             tile = ItemView.create(item);
+            if(!pt) {
+                pt = new Point(tile.width + 5, tile.height + 5);
+            }
             tile.addEventListener(TouchEvent.TOUCH, handleTouch);
             addChild(tile);
-            tile.x = itemX * (i % 3);
-            tile.y = itemY * int(i / 3);
+            tile.x = pt.x * (i % 3);
+//            tile.x = itemX * (i % 3);
+            tile.y = pt.y * int(i / 3);
+//            tile.y = itemY * int(i / 3);
             tile.update();
         }
 
@@ -82,7 +92,7 @@ public class ItemsListView extends AbstractView {
 //        var touch: Touch = e.getTouch(item, TouchPhase.BEGAN);
         if (touch) {
             Mouse.cursor = MouseCursor.BUTTON;
-            if(touch.phase == TouchPhase.BEGAN) {
+            if(touch.phase == TouchPhase.BEGAN && !item.item.isPet()) {
                 coreDispatch(LocalPlayer.ITEM_SELECTED, item.item);
                 item.update();
             }

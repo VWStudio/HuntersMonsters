@@ -134,8 +134,6 @@ public class Match3Game extends EventDispatcher
         _drop.clearList();
         _drop.init(dropSet);
 
-
-
     }
 
     public function selectCell(cell : Cell) : void
@@ -188,12 +186,14 @@ public class Match3Game extends EventDispatcher
         switch (match.type)
         {
             case MagicTypeVO.CHEST:  // SKULL
-                if (currentPlayer is LocalPlayer && !ignoreGraphic)
+                if (!ignoreGraphic)
+//                if (currentPlayer is LocalPlayer && !ignoreGraphic)
                 {
 //                    attacker = currentPlayer.hero;
                     aim = currentEnemy.hero;
                     dmg = currentEnemy.hero.maxHP * (match.amount * 2) / 100;
-                    match.showDamage(dmg / match.amount);
+//                    match.showDamage(dmg / match.amount);
+                    match.showDamage(dmg);
                     hitPercent = aim.hit(dmg, true); // required for calculate drop
 //                    trace("CHEST HIT", aim, dmg, hitPercent);
                 }
@@ -236,7 +236,8 @@ public class Match3Game extends EventDispatcher
                 }
             }
             if(dmg > 0) {
-                match.showDamage(dmg);
+                match.showDamage(match.amount * dmg);
+//                match.showDamage(dmg);
                 hitPercent = aim.hit(match.amount * dmg);
 //                trace("OTHER HIT", aim, dmg, hitPercent);
             }

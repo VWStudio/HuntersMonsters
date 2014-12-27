@@ -99,9 +99,10 @@ public class Match {
     }
 
     public function showDamage(value: int):void {
-        for (var i:int = 0; i < _cells.length; i++) {
-            _cells[i].showDamage(value);
-        }
+        _cells[1].showDamage(value);
+//        for (var i:int = 0; i < _cells.length; i++) {
+//            _cells[i].showDamage(value);
+//        }
     }
 
     public function getRandomCell():Cell {

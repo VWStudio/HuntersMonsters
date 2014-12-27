@@ -21,6 +21,7 @@ import com.agnither.hunters.model.player.LocalPlayer;
 import com.agnither.hunters.model.player.Territory;
 import com.agnither.hunters.model.player.inventory.Item;
 import com.agnither.hunters.model.player.inventory.Pet;
+import com.agnither.hunters.model.player.personage.Monster;
 import com.agnither.hunters.model.player.personage.Progress;
 import com.agnither.hunters.view.ui.common.GoldView;
 import com.agnither.hunters.view.ui.screens.battle.BattleScreen;
@@ -132,7 +133,20 @@ public class Model
 
         items.updateItems();
 
+        MonsterAreaVO.NAMES_LIST = MonsterAreaVO.NAMES_LIST.sort(sortNames);
+
         App.instance.tick.addTickCallback(territoriesTick);
+    }
+
+    private static function sortNames($a : String, $b : String) : Number
+    {
+        var monsterA : MonsterVO = MonsterVO.DICT_BY_TYPE[$a][0];
+        var monsterB : MonsterVO = MonsterVO.DICT_BY_TYPE[$b][0];
+        if(monsterA.order < monsterB.order) return -1;
+        if(monsterA.order > monsterB.order) return 1;
+        return 0;
+
+
     }
 
     private function onMonsterCatched() : void

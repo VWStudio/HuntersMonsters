@@ -57,7 +57,7 @@ public class MonsterInfo extends AbstractView {
         _hpVal.text = _monster.hp.toString();
         _damageVal.text = _monster.damage.toString();
         _armorVal.text = _monster.defence.toString();
-        _nameVal.text = Locale.getString(_monster.id) + " ["+_monster.level+ "]";
+        _nameVal.text = Locale.getString(_monster.id) + " "+_monster.level+ "ур";
         _killed.visible = false;
 
         _icon.texture = _refs.gui.getTexture(_monster.picture);

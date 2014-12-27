@@ -229,7 +229,7 @@ public class Territory
             _territoryMonsters.splice(index, 1);
             _killed++;
             if(_territoryMonsters.length == 0) {
-                _nextMonsters = Math.random() * 60000;
+                _nextMonsters = area.respawn * 1000 + 999;
             }
         }
         coreDispatch(MapScreen.DELETE_POINT, $pt);

@@ -9,8 +9,10 @@ import com.agnither.hunters.model.Shop;
 import com.agnither.hunters.model.modules.extensions.DamageExt;
 import com.agnither.hunters.model.modules.extensions.DefenceExt;
 import com.agnither.hunters.model.modules.extensions.ManaExt;
+import com.agnither.hunters.model.modules.extensions.PetExt;
 import com.agnither.hunters.model.modules.items.ItemVO;
 import com.agnither.hunters.model.modules.locale.Locale;
+import com.agnither.hunters.model.modules.monsters.MonsterVO;
 import com.agnither.hunters.model.player.inventory.Inventory;
 import com.agnither.hunters.model.player.inventory.Item;
 import com.agnither.hunters.model.player.personage.Progress;
@@ -313,6 +315,8 @@ public class ShopPopup extends Popup
 
 
 
+        items = items.sort(sortItems);
+        trace(JSON.stringify(items));
 
 
         _container.removeChildren();
@@ -327,6 +331,66 @@ public class ShopPopup extends Popup
         _scroll.setScrollParams(int((_container.numChildren + 1) / 2), 5);
     }
 
+    private function sortItems($a : Item, $b : Item) : int
+    {
+        var itemA : Item = $a;
+        var itemB : Item = $b;
+
+        if(itemA.slot == 0) {
+            if(itemB.slot == 0) {
+                var petExt : PetExt = itemA.getExtension(PetExt.TYPE) as PetExt;
+                var monsterA : MonsterVO = petExt.getMonster();
+                petExt = itemB.getExtension(PetExt.TYPE) as PetExt;
+                var monsterB : MonsterVO = petExt.getMonster();
+
+                if(monsterA.damage > monsterB.damage) {
+                    return -1
+                }
+                if(monsterA.damage < monsterB.damage) {
+                    return 1
+                }
+                return 0;
+            }
+            else
+            {
+                return 1;
+            }
+        }
+        else
+        {
+            if(itemB.slot == 0) {
+                return -1;
+            }
+        }
+
+
+
+        if (itemA.slot < itemB.slot)
+        {
+            return -1;
+        }
+        else if (itemA.slot > itemB.slot)
+        {
+            return 1;
+        }
+        else
+        {
+
+            trace("sort A", itemA.slot, itemA.getDamage(), itemA.uniqueId);
+            trace("sort B", itemB.slot, itemB.getDamage(), itemB.uniqueId);
+
+            if (itemA.getDamage() > itemB.getDamage())
+            {
+                return -1;
+            }
+            else if (itemA.getDamage() < itemB.getDamage())
+            {
+                return 1;
+            }
+        }
+        return 0;
+    }
+
     private function showPlayerItems($type : String = "") : void
     {
 
@@ -334,6 +398,8 @@ public class ShopPopup extends Popup
         items = items.concat(_inventory.getItemsByType(ItemVO.TYPE_ARMOR));
         items = items.concat(_inventory.getItemsByType(ItemVO.TYPE_MAGIC));
         items = items.concat(_inventory.getItemsByType(ItemVO.TYPE_PET));
+
+        items = items.sort(Model.instance.player.inventory.sortInventory);
 
         _container.removeChildren();
         for (var i : int = 0; i < items.length; i++)

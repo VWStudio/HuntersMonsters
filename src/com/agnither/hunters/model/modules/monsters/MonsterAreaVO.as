@@ -10,7 +10,7 @@ public class MonsterAreaVO {
 
     public static const DICT: Dictionary = new Dictionary();
     public static const LIST: Vector.<MonsterAreaVO> = new <MonsterAreaVO>[];
-    public static const NAMES_LIST: Vector.<String> = new <String>[];
+    public static var NAMES_LIST: Vector.<String> = new <String>[];
 
     public var id: String = "";
     public var hud: String = "";
@@ -75,7 +75,11 @@ public class MonsterAreaVO {
             }
         }
 
+
+
     }
+
+
 
     public static function fill($target : MonsterAreaVO, $source : Object) : MonsterAreaVO {
 
