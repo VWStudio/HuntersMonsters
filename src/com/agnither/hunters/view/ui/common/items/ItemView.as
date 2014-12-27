@@ -131,7 +131,7 @@ public class ItemView extends AbstractView
                 _icon.height = _picture.height * 0.7;
                 _icon.scaleX = _icon.scaleY;
             }
-            _icon.y = 10;
+            _icon.y = 15;
             _icon.x = (_damage.width - _icon.width) * 0.5;
         }
 
@@ -158,7 +158,7 @@ public class ItemView extends AbstractView
                 i++;
             }
 
-            _magicBack.visible = i > 0;
+            //_magicBack.visible = i > 0;
         }
 
 

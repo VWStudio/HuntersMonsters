@@ -103,7 +103,7 @@ public class InventoryPopup extends Popup
 
         _scroll = new Scroll(_links["scroll"]);
         _scroll.onChange = onScroll;
-        _itemsContainer.clipRect = new Rectangle(0, 0, 600, 500);
+        _itemsContainer.clipRect = new Rectangle(0, 0, 640, 460);
 
 
 //        _tooltip = new Tooltip();

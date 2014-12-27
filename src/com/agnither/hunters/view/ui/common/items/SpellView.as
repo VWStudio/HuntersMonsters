@@ -45,12 +45,12 @@ public class SpellView extends ItemView
             _icon.height = _picture.height * 0.7;
             _icon.scaleX = _icon.scaleY;
         }
-        _icon.y = 10;
+        _icon.y = 15;
         _icon.x = (_damage.width - _icon.width) * 0.5;
 
         _manaContainer = new Sprite();
         addChild(_manaContainer);
-        _manaContainer.y = 36;
+        _manaContainer.y = 52;
         _manaContainer.x = _picture.width;
 
         var i : int = 0;
@@ -68,7 +68,7 @@ public class SpellView extends ItemView
             i++;
         }
 
-        _magicBack.visible = i > 0;
+        //_magicBack.visible = i > 0;
 
         handleUpdate();
     }

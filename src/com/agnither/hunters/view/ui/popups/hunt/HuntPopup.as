@@ -51,6 +51,9 @@ public class HuntPopup extends Popup {
         _stars2 = _links["stars2_tf"];
         _stars1 = _links["stars1_tf"];
 
+        _stars1.visible = false;
+        _stars2.visible = false;
+        _stars3.visible = false;
 
         _monster = _links.monster;
 

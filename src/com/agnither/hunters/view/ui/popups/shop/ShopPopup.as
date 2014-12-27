@@ -149,7 +149,7 @@ public class ShopPopup extends Popup
 
         _scroll = new Scroll(_links["scroll"]);
         _scroll.onChange = onScroll;
-        _scrollMask.clipRect = new Rectangle(0, 0, 440, 500);
+        _scrollMask.clipRect = new Rectangle(0, 0, 640, 460);
 
 //        _tooltipItem = new Tooltip();
 //        _tooltip.addChild(_tooltipItem);

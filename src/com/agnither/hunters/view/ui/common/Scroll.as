@@ -48,6 +48,7 @@ public class Scroll extends EventDispatcher
         _up = _scrollItems.getChildByName("up_btn") as ButtonContainer;
         _down = _scrollItems.getChildByName("down_btn") as ButtonContainer;
         _back = _scrollItems.getChildAt(0) as Sprite;
+        _back.visible = false;
 
         _up.touchable = true;
         _up.addEventListener(Event.TRIGGERED, onButton);
