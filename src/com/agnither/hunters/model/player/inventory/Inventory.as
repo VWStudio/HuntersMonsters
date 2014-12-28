@@ -255,6 +255,8 @@ public class Inventory extends EventDispatcher
         _manaPriority = getSpellsManaTypes();
         dispatchEventWith(UPDATE);
 
+
+
         Model.instance.progress.saveProgress();
     }
 

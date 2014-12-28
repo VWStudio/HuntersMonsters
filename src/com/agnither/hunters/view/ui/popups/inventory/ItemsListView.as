@@ -66,9 +66,13 @@ public class ItemsListView extends AbstractView {
 
         var tile: ItemView;
 
+        var arr : Array = $data;
+//        arr = arr.concat(arr);
+//        arr = arr.concat(arr);
+
         var pt : Point;
-        for (var i:int = 0; i < $data.length; i++) {
-            var item : Item = _inventory.getItem($data[i]);
+        for (var i:int = 0; i < arr.length; i++) {
+            var item : Item = _inventory.getItem(arr[i]);
 //            if(item.type == "tamed_pet") continue;
             tile = ItemView.create(item);
             if(!pt) {

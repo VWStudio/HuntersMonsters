@@ -56,9 +56,15 @@ public class InventoryView extends AbstractView {
             }
         }
 
-        var l: int = _inventory.inventoryItems.length;
+        var arr : Array = _inventory.inventoryItems;
+//        var arr : Array = _inventory.inventoryItems.concat(_inventory.inventoryItems);
+//        arr = arr.concat(arr);
+
+        var l: int = arr.length;
+//        var l: int = _inventory.inventoryItems.length;
         for (var i:int = 0; i < l; i++) {
-            var item: Item = _inventory.getItem(_inventory.inventoryItems[i]);
+            var item: Item = _inventory.getItem(arr[i]);
+//            var item: Item = _inventory.getItem(_inventory.inventoryItems[i]);
             itemView = ItemView.create(item);
             itemView.addEventListener(TouchEvent.TOUCH, handleTouch);
             addChild(itemView);

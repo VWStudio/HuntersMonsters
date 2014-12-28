@@ -186,7 +186,8 @@ public class ShopPopup extends Popup
     private function onScroll($val : Number) : void
     {
 
-        var newy : Number = -60 * $val;
+        var newy : Number = -$val;
+//        var newy : Number = -60 * $val;
         Starling.juggler.tween(_container, 0.4, {y: newy});
     }
 
@@ -316,19 +317,26 @@ public class ShopPopup extends Popup
 
 
         items = items.sort(sortItems);
-        trace(JSON.stringify(items));
+//        trace(JSON.stringify(items));
 
 
         _container.removeChildren();
+        var pt :Point;
         for (var i : int = 0; i < items.length; i++)
         {
             var tile : BuyItemView = new BuyItemView(items[i]);
+            if(!pt) {
+                pt = new Point(tile.width + 5, tile.height + 5);
+            }
             _container.addChild(tile);
-            tile.x = 210 * (i % 2);
-            tile.y = 70 * int(i / 2);
+            tile.x = pt.x  * (i % 3);
+//            tile.x = 210 * (i % 3);
+            tile.y = pt.y * int(i / 3);
+//            tile.y = 70 * int(i / 3);
 
         }
-        _scroll.setScrollParams(int((_container.numChildren + 1) / 2), 5);
+        _scroll.setScrollParams(_container.height, 460);
+//        _scroll.setScrollParams(int((_container.numChildren + 1) / 2), 5);
     }
 
     private function sortItems($a : Item, $b : Item) : int
@@ -376,8 +384,8 @@ public class ShopPopup extends Popup
         else
         {
 
-            trace("sort A", itemA.slot, itemA.getDamage(), itemA.uniqueId);
-            trace("sort B", itemB.slot, itemB.getDamage(), itemB.uniqueId);
+//            trace("sort A", itemA.slot, itemA.getDamage(), itemA.uniqueId);
+//            trace("sort B", itemB.slot, itemB.getDamage(), itemB.uniqueId);
 
             if (itemA.getDamage() > itemB.getDamage())
             {
@@ -402,15 +410,22 @@ public class ShopPopup extends Popup
         items = items.sort(Model.instance.player.inventory.sortInventory);
 
         _container.removeChildren();
+
+
+        var pt : Point;
         for (var i : int = 0; i < items.length; i++)
         {
             var tile : SellItemView = new SellItemView(_inventory.getItem(items[i]));
+            if(!pt) {
+                pt = new Point(tile.width + 5, tile.height + 5);
+            }
             _container.addChild(tile);
-            tile.x = 210 * (i % 2);
-            tile.y = 100 * int(i / 2);
+            tile.x = pt.x * (i % 3);
+            tile.y = pt.y * int(i / 3);
 
         }
-        _scroll.setScrollParams(int((_container.numChildren + 1) / 2), 5);
+        _scroll.setScrollParams(_container.height, 460);
+//        _scroll.setScrollParams(int((_container.numChildren + 1) / 2), 5);
 
     }
 

@@ -561,27 +561,15 @@
       "localekey": "vampirism"
     },
     {
-      "id": 18,
-      "name": "light",
-      "type": "spell",
-      "slot": 9,
-      "picture": "card_s5",
-      "ext": "damage:[\"fire\",25];mana:[\"fire\",10,\"nature\",5]",
-      "setname": "house00",
-      "droppicture": "drop_magic",
-      "dropparam": "5,13",
-      "localekey": "light"
-    },
-    {
       "id": 22,
-      "name": "fireball2",
+      "name": "fireball",
       "type": "spell",
       "slot": 9,
       "picture": "card_s1",
-      "ext": "damage:[\"fire\",300];mana:[\"fire\",1]",
+      "ext": "damage:[\"fire\",300];mana:[\"fire\",5]",
       "setname": "default",
       "droppicture": "drop_magic",
-      "dropparam": "20,50",
+      "dropparam": "5,10",
       "localekey": "fireball"
     }
   ],
@@ -604,7 +592,8 @@
       "reward": 15,
       "order": 0,
       "difficultyfactor": 1,
-      "itemimage": "card_m1"
+      "itemimage": "card_m1",
+      "extension": "mana_add:[\"nature\",5]"
     },
     {
       "level": 1,
@@ -624,7 +613,8 @@
       "reward": 29,
       "order": 1,
       "difficultyfactor": 2,
-      "itemimage": "card_m2"
+      "itemimage": "card_m2",
+      "extension": "mana_add:[\"nature\",5]"
     },
     {
       "level": 1,
@@ -644,7 +634,8 @@
       "reward": 51,
       "order": 2,
       "difficultyfactor": 5,
-      "itemimage": "card_m3"
+      "itemimage": "card_m3",
+      "extension": "mana_add:[\"nature\",5]"
     },
     {
       "level": 1,
@@ -664,7 +655,8 @@
       "reward": 92,
       "order": 3,
       "difficultyfactor": 7,
-      "itemimage": "card_m4"
+      "itemimage": "card_m4",
+      "extension": "mana_add:[\"nature\",5]"
     },
     {
       "level": 1,
@@ -684,7 +676,8 @@
       "reward": 157,
       "order": 4,
       "difficultyfactor": 8,
-      "itemimage": "card_m5"
+      "itemimage": "card_m5",
+      "extension": "mana_add:[\"nature\",5]"
     },
     {
       "level": 1,
@@ -704,7 +697,8 @@
       "reward": 251,
       "order": 5,
       "difficultyfactor": 9,
-      "itemimage": "card_m6"
+      "itemimage": "card_m6",
+      "extension": "mana_add:[\"nature\",5]"
     },
     {
       "level": 1,
@@ -724,7 +718,8 @@
       "reward": 377,
       "order": 6,
       "difficultyfactor": 9,
-      "itemimage": "card_m7"
+      "itemimage": "card_m7",
+      "extension": "mana_add:[\"nature\",5]"
     },
     {
       "level": 1,
@@ -744,7 +739,8 @@
       "reward": 527,
       "order": 7,
       "difficultyfactor": 10,
-      "itemimage": "card_m8"
+      "itemimage": "card_m8",
+      "extension": "mana_add:[\"nature\",5]"
     },
     {
       "level": 1,
@@ -764,7 +760,8 @@
       "reward": 738,
       "order": 8,
       "difficultyfactor": 8,
-      "itemimage": "card_m9"
+      "itemimage": "card_m9",
+      "extension": "mana_add:[\"nature\",5]"
     },
     {
       "level": 1,
@@ -784,7 +781,8 @@
       "reward": "1 477",
       "order": 9,
       "difficultyfactor": 15,
-      "itemimage": "card_m10"
+      "itemimage": "card_m10",
+      "extension": "mana_add:[\"nature\",5]"
     },
     {
       "level": 1,
@@ -804,7 +802,8 @@
       "reward": "1 772",
       "order": 10,
       "difficultyfactor": 8,
-      "itemimage": "card_m10"
+      "itemimage": "card_m10",
+      "extension": "mana_add:[\"nature\",5]"
     }
   ],
   "monster_area": [
@@ -1856,6 +1855,50 @@
     {
       "id": "mana",
       "russian": "мана"
+    },
+    {
+      "id": "monster",
+      "russian": "Зверюга"
+    },
+    {
+      "id": "blue_bull.d",
+      "russian": " "
+    },
+    {
+      "id": "meowut.d",
+      "russian": " "
+    },
+    {
+      "id": "pikachu.d",
+      "russian": " "
+    },
+    {
+      "id": "squirtle.d",
+      "russian": " "
+    },
+    {
+      "id": "charmander.d",
+      "russian": " "
+    },
+    {
+      "id": "slowpoke.d",
+      "russian": " "
+    },
+    {
+      "id": "bulbasaur.d",
+      "russian": " "
+    },
+    {
+      "id": "pidgey.d",
+      "russian": " "
+    },
+    {
+      "id": "ratata.d",
+      "russian": " "
+    },
+    {
+      "id": "zubat.d",
+      "russian": " "
     }
   ]
 }

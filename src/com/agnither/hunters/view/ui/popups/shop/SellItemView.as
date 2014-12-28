@@ -45,6 +45,7 @@ public class SellItemView extends AbstractView
     {
         super();
         _item = $item;
+        handleFirstRun();
     }
 
     override protected function initialize() : void

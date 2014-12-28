@@ -283,10 +283,10 @@ public class BattleScreen extends Screen
 
         if (item.isGold())
         {
-            var gv : GoldView = new GoldView();
-            _tooltip.addChild(gv);
-            gv.data = item.amount;
-            gv.update();
+//            var gv : GoldView = new GoldView();
+//            _tooltip.addChild(gv);
+//            gv.data = item.amount;
+//            gv.update();
 
         }
         else

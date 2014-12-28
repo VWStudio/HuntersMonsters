@@ -19,6 +19,7 @@ public dynamic class MonsterVO extends PersonageVO {
     public var speed: uint = 75;
     public var damagetype: String;
     public var itemimage: String;
+    public var extension: Object;
     public var reward: Number = 0;
     public var order: Number = 0;
     public var difficultyFactor: Number = 0;
@@ -36,7 +37,7 @@ public dynamic class MonsterVO extends PersonageVO {
 
             source.items = source.items ? source.items.toString().split(",") : [];
             source.stars = source.stars ? source.stars.toString().split(",") : [];
-
+            source.extension = parseExtension(source.extension);
             var object: MonsterVO = fill(new MonsterVO(), source);
 
             var monsterID : String = source["monster"];
@@ -51,6 +52,28 @@ public dynamic class MonsterVO extends PersonageVO {
             LIST.push(object);
             DICT_BY_TYPE[object.id].push(object);
         }
+    }
+
+
+
+    public static function parseExtension(string : String) : Object
+    {
+        if (!string)
+        {
+            return null;
+        }
+
+        var object : Object = {};
+        var array : Array = string.split(";");
+        for (var i : int = 0; i < array.length; i++)
+        {
+            var row : Array = array[i].split(":");
+            var id : String = row[0];
+            var value : String = row[1];
+            var obj : Object = JSON.parse(value);
+            object[id] = obj is Array ? obj : [obj];
+        }
+        return object;
     }
 
 

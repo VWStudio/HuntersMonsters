@@ -229,9 +229,9 @@ public class Match3Game extends EventDispatcher
             {
                 dmg = dmg * (attacker.damageType == MagicTypeVO.WEAPON ? Model.instance.progress.getSkillMultiplier("2") : Model.instance.progress.getSkillMultiplier("3"));
             } else {
-                if(Model.instance.mirrorDamage) {
-                    if(Model.instance.mirrorDamage.isLucky()) {
-                        attacker.hit(match.amount * dmg * Model.instance.mirrorDamage.percent, true);
+                if(currentEnemy.mirrorDamage) {
+                    if(currentEnemy.mirrorDamage.isLucky()) {
+                        attacker.hit(match.amount * dmg * currentEnemy.mirrorDamage.percent, true);
                     }
                 }
             }

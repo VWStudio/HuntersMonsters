@@ -163,15 +163,16 @@ public class WinPopup extends Popup
             for (var i : int = 0; i < dropList.list.length; i++)
             {
                 var drop : DropSlot = dropList.list[i];
+                _gold.visible = false;
                 if (drop.content)
                 {
-                    if (drop.content.isGold())
-                    {
-                        _gold.text = "Награда: " + drop.content.amount + "$";
-                        Model.instance.progress.gold += drop.content.amount;
-                    }
-                    else
-                    {
+//                    if (drop.content.isGold())
+//                    {
+//                        _gold.text = "Награда: " + drop.content.amount + "$";
+//                        Model.instance.progress.gold += drop.content.amount;
+//                    }
+//                    else
+//                    {
                         var dropView : DropSlotView = new DropSlotView();
                         // XXXCOMMON
                         dropView.createFromConfig(_refs.guiConfig.common.drop);
@@ -180,7 +181,7 @@ public class WinPopup extends Popup
                         dropView.drop = drop;
                         Model.instance.addPlayerItem(drop.content);
                         dropView.x = _drops.numChildren * 40;
-                    }
+//                    }
                 }
             }
 

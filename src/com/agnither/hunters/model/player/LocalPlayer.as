@@ -90,49 +90,49 @@ public class LocalPlayer extends Player {
 
     override public function startMove() : void
     {
-        if(Model.instance.manaAdd) {
-            var mana : MagicTypeVO = MagicTypeVO.DICT[Model.instance.manaAdd.type];
-            _manaList.addMana(mana.name, Model.instance.manaAdd.amount);
+        if(manaAdd) {
+            var mana : MagicTypeVO = MagicTypeVO.DICT[manaAdd.type];
+            _manaList.addMana(mana.name, manaAdd.amount);
         }
     }
 
-    private function updateGlobalExtensions() : void
-    {
-        Model.instance.doubleDrop = null;
-        Model.instance.mirrorDamage = null;
-        Model.instance.manaAdd = null;
-        Model.instance.spellsDefence = [];
-        Model.instance.resurrectPet = null;
-
-        for (var i : int = 0; i < _inventory.inventoryItems.length; i++) {
-            var item: Item = _inventory.getItem(_inventory.inventoryItems[i]);
-            if (!item.isSpell()) {
-
-                for (var extType : String in item.getExtensions())
-                {
-                    if(extType == DamageExt.TYPE) {
-                        _hero.damageType = (item.getExtension(extType) as DamageExt).getType();
-                    }
-                    if(extType == DoubleDropExt.TYPE) {
-                        Model.instance.doubleDrop = item.getExtension(extType) as DoubleDropExt;
-                    }
-                    if(extType == MirrorDamageExt.TYPE) {
-                        Model.instance.mirrorDamage = item.getExtension(extType) as MirrorDamageExt;
-                    }
-                    if(extType == ManaAddExt.TYPE) {
-                        Model.instance.manaAdd = item.getExtension(extType) as ManaAddExt;
-                    }
-                    if(extType == SpellDefenceExt.TYPE) {
-                        Model.instance.spellsDefence.push(item.getExtension(extType));
-                    }
-                    if(extType == ResurrectPetExt.TYPE) {
-                        Model.instance.resurrectPet = item.getExtension(extType) as ResurrectPetExt;
-                    }
-                }
-            }
-        }
-
-    }
+//    private function updateGlobalExtensions() : void
+//    {
+//        Model.instance.doubleDrop = null;
+//        Model.instance.mirrorDamage = null;
+//        Model.instance.manaAdd = null;
+//        Model.instance.spellsDefence = [];
+////        Model.instance.resurrectPet = null;
+//
+//        for (var i : int = 0; i < _inventory.inventoryItems.length; i++) {
+//            var item: Item = _inventory.getItem(_inventory.inventoryItems[i]);
+//            if (!item.isSpell()) {
+//
+//                for (var extType : String in item.getExtensions())
+//                {
+//                    if(extType == DamageExt.TYPE) {
+//                        _hero.damageType = (item.getExtension(extType) as DamageExt).getType();
+//                    }
+//                    if(extType == DoubleDropExt.TYPE) {
+//                        Model.instance.doubleDrop = item.getExtension(extType) as DoubleDropExt;
+//                    }
+//                    if(extType == MirrorDamageExt.TYPE) {
+//                        Model.instance.mirrorDamage = item.getExtension(extType) as MirrorDamageExt;
+//                    }
+//                    if(extType == ManaAddExt.TYPE) {
+//                        Model.instance.manaAdd = item.getExtension(extType) as ManaAddExt;
+//                    }
+//                    if(extType == SpellDefenceExt.TYPE) {
+//                        Model.instance.spellsDefence.push(item.getExtension(extType));
+//                    }
+////                    if(extType == ResurrectPetExt.TYPE) {
+////                        Model.instance.resurrectPet = item.getExtension(extType) as ResurrectPetExt;
+////                    }
+//                }
+//            }
+//        }
+//
+//    }
 
 //    public function get progress() : Progress {
 //        return _progress;

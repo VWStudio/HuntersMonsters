@@ -14,6 +14,7 @@ import starling.events.Event;
 import starling.events.Touch;
 import starling.events.TouchEvent;
 import starling.events.TouchPhase;
+import starling.text.TextField;
 
 public class DropSlotView extends AbstractView
 {
@@ -38,6 +39,8 @@ public class DropSlotView extends AbstractView
 
     private var _icon : Image;
     private var _touched : Boolean = false;
+    private var _goldBack : Image;
+    private var _goldValue : TextField;
 
     public function DropSlotView()
     {
@@ -45,9 +48,12 @@ public class DropSlotView extends AbstractView
 
     override protected function initialize() : void
     {
-        _icon = getChildAt(0) as Image;
+        _icon = _links.bitmap_drop_gold;
         this.touchable = true;
         _icon.touchable = true;
+        _goldBack = _links.bitmap_itemmagic_back;
+        _goldValue = _links.gold_tf;
+
         addEventListener(TouchEvent.TOUCH, handleTouch);
     }
 
@@ -57,10 +63,18 @@ public class DropSlotView extends AbstractView
         {
             _icon.texture = _refs.gui.getTexture(_dropSlot.content.icon);
             _icon.visible = true;
+
+            _goldBack.visible = _dropSlot.content.isGold();
+            _goldValue.visible = _dropSlot.content.isGold();
+            if(_dropSlot.content.isGold()) {
+                _goldValue.text = _dropSlot.content.amount.toString();
+            }
         }
         else
         {
             _icon.visible = false;
+            _goldBack.visible = false;
+            _goldValue.visible = false;
         }
     }
 

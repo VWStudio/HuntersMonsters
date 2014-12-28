@@ -49,10 +49,10 @@ public class Model
 //    public var currentTrap : TrapVO;
 //    public var territoryTraps : Object = {};
     public var chestAreas : Object = {};
-    public var doubleDrop : DoubleDropExt;
-    public var mirrorDamage : MirrorDamageExt;
-    public var manaAdd : ManaAddExt;
-    public var spellsDefence : Array = [];
+//    public var doubleDrop : DoubleDropExt;
+//    public var mirrorDamage : MirrorDamageExt;
+//    public var manaAdd : ManaAddExt;
+//    public var spellsDefence : Array = [];
     public var resurrectPet : ResurrectPetExt;
     public var summonTimes : int = 0;
     public var flashvars : Object;

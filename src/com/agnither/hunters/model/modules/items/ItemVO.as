@@ -55,12 +55,20 @@ public class ItemVO
         obj.setname = "";
         obj.droppicture = "";
         var extObj : Object = {monster:$monster.id};
-        if(SettingsVO.DICT[$monster.id+"Extension"]) {
-            var str : String = SettingsVO.DICT[$monster.id+"Extension"];
-            trace(str)
-            var extArr : Array = str.split(":");
-            extObj[extArr[0]] = JSON.parse(extArr[1]);
+        if($monster.extension) {
+            for (var meKey : String in $monster.extension)
+            {
+                extObj[meKey] = $monster.extension[meKey];
+            }
+
+
         }
+//        if(SettingsVO.DICT[$monster.id+"Extension"]) {
+//            var str : String = SettingsVO.DICT[$monster.id+"Extension"];
+//            trace(str)
+//            var extArr : Array = str.split(":");
+//            extObj[extArr[0]] = JSON.parse(extArr[1]);
+//        }
         trace($monster.id, $monster.id+"Extension", SettingsVO.DICT[$monster.id+"Extension"], JSON.stringify(extObj));
         obj.ext = extObj;
 
@@ -78,6 +86,7 @@ public class ItemVO
         obj.type = "gold";
         obj.slot = 0;
         obj.setname = "";
+        obj.localekey = "gold";
         obj.droppicture = "drop_gold";
 
         return ItemVO.fill(new ItemVO(), obj)

@@ -29,6 +29,7 @@ public class ItemManaView extends AbstractView {
 
     public function ItemManaView() {
         createFromConfig(_refs.guiConfig.common.mana)
+        handleFirstRun();
     }
 
     override protected function initialize():void {

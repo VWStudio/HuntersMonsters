@@ -5,6 +5,10 @@ package com.agnither.hunters.model.player
 {
 import com.agnither.hunters.data.outer.MagicTypeVO;
 import com.agnither.hunters.model.Model;
+import com.agnither.hunters.model.modules.extensions.DamageExt;
+import com.agnither.hunters.model.modules.extensions.DoubleDropExt;
+import com.agnither.hunters.model.modules.extensions.ManaAddExt;
+import com.agnither.hunters.model.modules.extensions.MirrorDamageExt;
 import com.agnither.hunters.model.modules.extensions.SpellDefenceExt;
 import com.agnither.hunters.model.player.drop.DropList;
 import com.agnither.hunters.model.player.inventory.Inventory;
@@ -24,6 +28,11 @@ public class Player extends EventDispatcher
 //    public static const UPDATE: String = "update_Player";
 
     public var id : String = "0";
+
+    public var doubleDrop : DoubleDropExt;
+    public var mirrorDamage : MirrorDamageExt;
+    public var manaAdd : ManaAddExt;
+    public var spellsDefence : Array = [];
 
     protected var _inventory : Inventory;
     public function get inventory() : Inventory
@@ -126,6 +135,7 @@ public class Player extends EventDispatcher
         _inventory.init();
         _inventory.parse(items);
         _inventory.setInventoryItems(inventory);
+        updateGlobalExtensions();
     }
 
     public function initPets(pets : Object) : void
@@ -164,11 +174,12 @@ public class Player extends EventDispatcher
         }
         else
         {
-            if (Model.instance.spellsDefence.length > 0)
+            if (spellsDefence.length > 0)
+//            if (Model.instance.spellsDefence.length > 0)
             {
-                for (var i : int = 0; i < Model.instance.spellsDefence.length; i++)
+                for (var i : int = 0; i < spellsDefence.length; i++)
                 {
-                    var sd : SpellDefenceExt = Model.instance.spellsDefence[i] as SpellDefenceExt;
+                    var sd : SpellDefenceExt = spellsDefence[i] as SpellDefenceExt;
                     if (sd && sd.getType() == spell.type)
                     {
                         dmg -= sd.getAmount();
@@ -186,6 +197,44 @@ public class Player extends EventDispatcher
             // drop from monster
             coreDispatch(DropList.GENERATE_DROP, hitPercent);
         }
+    }
+
+    protected function updateGlobalExtensions() : void
+    {
+        doubleDrop = null;
+        mirrorDamage = null;
+        manaAdd = null;
+        spellsDefence = [];
+//        Model.instance.resurrectPet = null;
+
+        for (var i : int = 0; i < _inventory.inventoryItems.length; i++) {
+            var item: Item = _inventory.getItem(_inventory.inventoryItems[i]);
+            if (!item.isSpell()) {
+
+                for (var extType : String in item.getExtensions())
+                {
+                    if(extType == DamageExt.TYPE) {
+                        _hero.damageType = (item.getExtension(extType) as DamageExt).getType();
+                    }
+                    if(extType == DoubleDropExt.TYPE) {
+                        doubleDrop = item.getExtension(extType) as DoubleDropExt;
+                    }
+                    if(extType == MirrorDamageExt.TYPE) {
+                        mirrorDamage = item.getExtension(extType) as MirrorDamageExt;
+                    }
+                    if(extType == ManaAddExt.TYPE) {
+                        manaAdd = item.getExtension(extType) as ManaAddExt;
+                    }
+                    if(extType == SpellDefenceExt.TYPE) {
+                        spellsDefence.push(item.getExtension(extType));
+                    }
+//                    if(extType == ResurrectPetExt.TYPE) {
+//                        Model.instance.resurrectPet = item.getExtension(extType) as ResurrectPetExt;
+//                    }
+                }
+            }
+        }
+
     }
 
     public function set isCurrent($val : Boolean) : void

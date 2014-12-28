@@ -66,6 +66,10 @@ public class AIPlayer extends Player
 
     override public function startMove() : void
     {
+        if(manaAdd) {
+            var mana : MagicTypeVO = MagicTypeVO.DICT[manaAdd.type];
+            _manaList.addMana(mana.name, manaAdd.amount);
+        }
         processSpells(_difficulty);
         processMoves();
         selectMove(_difficulty);
