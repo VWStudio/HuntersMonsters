@@ -304,16 +304,11 @@
       "parameter": "pet_levelPriceMult",
       "value": "1",
       "info": "---"
-    },
-    {
-      "parameter": "blue_bullExtension",
-      "value": "mana_add:[\"nature\",5]",
-      "type": "str"
     }
   ],
   "item": [
     {
-      "id": 23,
+      "id": 22,
       "name": "pet",
       "type": "pet",
       "slot": 0,
@@ -323,7 +318,7 @@
       "localekey": "pet"
     },
     {
-      "id": 24,
+      "id": 23,
       "name": "tamed_pet",
       "type": "pet",
       "slot": 1,
@@ -334,243 +329,339 @@
     },
     {
       "id": 1,
-      "name": "sword",
+      "name": "card_w1",
       "type": "weapon",
       "slot": 2,
       "picture": "card_w1",
-      "ext": "damage:[\"weapon\",1,10]",
+      "ext": "damage:[\"weapon\",1,9]",
       "setname": "default",
       "droppicture": "drop_sword",
       "dropparam": "1,10",
-      "localekey": "sword"
+      "localekey": "card_w1"
     },
     {
       "id": 2,
-      "name": "steel_sword",
+      "name": "card_w2",
       "type": "weapon",
       "slot": 2,
-      "picture": "card_w1",
-      "ext": "damage:[\"weapon\",15,25]",
+      "picture": "card_w2",
+      "ext": "damage:[\"weapon\",8,24]",
       "setname": "house00",
       "droppicture": "drop_sword",
       "dropparam": "15,25",
-      "localekey": "steel_sword"
+      "localekey": "card_w2"
     },
     {
       "id": 3,
-      "name": "staff",
+      "name": "card_wm1",
       "type": "weapon",
       "slot": 2,
       "picture": "card_wm1",
-      "ext": "damage:[\"fire\",4,12]",
-      "setname": "house00",
+      "ext": "damage:[\"fire\",20,35]",
+      "setname": "house01",
       "droppicture": "drop_staff",
       "dropparam": "4,12",
-      "localekey": "staff"
+      "localekey": "card_wm1"
     },
     {
-      "id": 8,
-      "name": "helmet",
+      "id": 24,
+      "name": "card_w3",
+      "type": "weapon",
+      "slot": 2,
+      "picture": "card_w3",
+      "ext": "damage:[\"weapon\",23,38]",
+      "setname": "house00",
+      "droppicture": "drop_sword",
+      "dropparam": "15,25",
+      "localekey": "card_w3"
+    },
+    {
+      "id": 25,
+      "name": "card_w4",
+      "type": "weapon",
+      "slot": 2,
+      "picture": "card_w4",
+      "ext": "damage:[\"weapon\",36,68]",
+      "setname": "house02",
+      "droppicture": "drop_sword",
+      "dropparam": "15,25",
+      "localekey": "card_w4"
+    },
+    {
+      "id": 7,
+      "name": "card_ah1",
       "type": "armor",
       "slot": 3,
-      "picture": "card_a4",
-      "ext": "defence:[1,3]",
-      "setname": "default",
+      "picture": "card_ah1",
+      "ext": "defence:[1,9]",
+      "setname": "house00",
       "droppicture": "drop_body",
       "dropparam": "1,3",
-      "localekey": "helmet"
+      "localekey": "card_ah1"
+    },
+    {
+      "id": 26,
+      "name": "card_ah2",
+      "type": "armor",
+      "slot": 3,
+      "picture": "card_ah2",
+      "ext": "defence:[8,16]",
+      "setname": "house02",
+      "droppicture": "drop_body",
+      "dropparam": "1,3",
+      "localekey": "card_ah2"
     },
     {
       "id": 4,
-      "name": "body",
+      "name": "card_ab1",
       "type": "armor",
       "slot": 4,
-      "picture": "card_a3",
-      "ext": "defence:[1,5]",
+      "picture": "card_ab1",
+      "ext": "defence:[1,6]",
       "setname": "default",
       "droppicture": "drop_body",
       "dropparam": "1,5",
-      "localekey": "body"
+      "localekey": "card_ab1"
     },
     {
       "id": 5,
-      "name": "steel_chest",
+      "name": "card_ab2",
       "type": "armor",
       "slot": 4,
-      "picture": "card_a3",
-      "ext": "defence:[5,10]",
+      "picture": "card_ab2",
+      "ext": "defence:[4,27]",
       "setname": "house00",
       "droppicture": "drop_body",
       "dropparam": "5,10",
-      "localekey": "steel_chest"
+      "localekey": "card_ab2"
     },
     {
-      "id": 9,
-      "name": "boots",
+      "id": 27,
+      "name": "card_ab3",
+      "type": "armor",
+      "slot": 4,
+      "picture": "card_ab3",
+      "ext": "defence:[25,48]",
+      "setname": "house02",
+      "droppicture": "drop_body",
+      "dropparam": "1,5",
+      "localekey": "card_ab3"
+    },
+    {
+      "id": 28,
+      "name": "card_ab4",
+      "type": "armor",
+      "slot": 4,
+      "picture": "card_ab4",
+      "ext": "defence:[46,71]",
+      "setname": "house02",
+      "droppicture": "drop_body",
+      "dropparam": "1,5",
+      "localekey": "card_ab4"
+    },
+    {
+      "id": 8,
+      "name": "card_al1",
       "type": "armor",
       "slot": 6,
-      "picture": "card_a1",
-      "ext": "defence:[1,3]",
-      "setname": "house00",
+      "picture": "card_al1",
+      "ext": "defence:[1,5]",
+      "setname": "default",
       "droppicture": "drop_boots",
       "dropparam": "1,3",
-      "localekey": "boots"
+      "localekey": "card_al1"
+    },
+    {
+      "id": 29,
+      "name": "card_al2",
+      "type": "armor",
+      "slot": 6,
+      "picture": "card_al2",
+      "ext": "defence:[4,9]",
+      "setname": "house02",
+      "droppicture": "drop_boots",
+      "dropparam": "1,3",
+      "localekey": "card_al2"
     },
     {
       "id": 6,
-      "name": "gloves",
+      "name": "card_ag1",
       "type": "armor",
       "slot": 7,
-      "picture": "card_a2",
-      "ext": "defence:[1,3]",
+      "picture": "card_ag1",
+      "ext": "defence:[1,5]",
       "setname": "house00",
       "droppicture": "drop_gloves",
       "dropparam": "1,3",
-      "localekey": "gloves"
+      "localekey": "card_ag1"
     },
     {
-      "id": 12,
-      "name": "ring",
-      "type": "magic",
-      "slot": 8,
-      "picture": "card_am1",
-      "ext": "resurrect_pet:50",
-      "setname": "house00",
-      "droppicture": "drop_magic",
-      "dropparam": "1,10",
-      "localekey": "ring"
+      "id": 30,
+      "name": "card_ag2",
+      "type": "armor",
+      "slot": 7,
+      "picture": "card_ag2",
+      "ext": "defence:[4,9]",
+      "setname": "house02",
+      "droppicture": "drop_gloves",
+      "dropparam": "1,3",
+      "localekey": "card_ag2"
     },
     {
-      "id": 10,
-      "name": "ring",
+      "id": 9,
+      "name": "card_am1",
       "type": "magic",
       "slot": 8,
       "picture": "card_am1",
       "ext": "double_drop:20",
-      "setname": "house00",
+      "setname": "house03",
       "droppicture": "drop_ring",
       "dropparam": "10,20",
-      "localekey": "ring"
+      "localekey": "card_am1"
     },
     {
-      "id": 11,
-      "name": "ring",
+      "id": 10,
+      "name": "card_am1",
       "type": "magic",
       "slot": 8,
       "picture": "card_am1",
       "ext": "resurrect_pet:50",
-      "setname": "house00",
+      "setname": "house03",
       "droppicture": "drop_ring",
       "dropparam": "30,70",
-      "localekey": "ring"
+      "localekey": "card_am1"
+    },
+    {
+      "id": 11,
+      "name": "card_am1",
+      "type": "magic",
+      "slot": 8,
+      "picture": "card_am1",
+      "ext": "resurrect_pet:50",
+      "setname": "house03",
+      "droppicture": "drop_magic",
+      "dropparam": "1,10",
+      "localekey": "card_am1"
     },
     {
       "id": 19,
-      "name": "ring",
+      "name": "card_am1",
       "type": "magic",
       "slot": 8,
       "picture": "card_am1",
       "ext": "mirror_damage:[20,50]",
-      "setname": "house00",
+      "setname": "house03",
       "droppicture": "drop_ring",
       "dropparam": "10,50",
-      "localekey": "ring"
+      "localekey": "card_am1"
     },
     {
       "id": 20,
-      "name": "ring",
+      "name": "card_am1",
       "type": "magic",
       "slot": 8,
       "picture": "card_am1",
       "ext": "spell_defence:[\"nature\",1]",
-      "setname": "house00",
+      "setname": "house03",
       "droppicture": "drop_ring",
       "dropparam": "1,5",
-      "localekey": "ring"
+      "localekey": "card_am1"
     },
     {
       "id": 21,
-      "name": "ring",
+      "name": "card_am1",
       "type": "magic",
       "slot": 8,
       "picture": "card_am1",
       "ext": "mana_add:[\"nature\",5]",
-      "setname": "house00",
+      "setname": "house03",
       "droppicture": "drop_ring",
       "dropparam": "5,10",
-      "localekey": "ring"
+      "localekey": "card_am1"
+    },
+    {
+      "id": 12,
+      "name": "card_s1_1",
+      "type": "spell",
+      "slot": 9,
+      "picture": "card_s1_1",
+      "ext": "damage:[\"fire\",3];mana:[\"fire\",4]",
+      "setname": "default",
+      "droppicture": "drop_magic",
+      "dropparam": "5,10",
+      "localekey": "card_s1_1"
     },
     {
       "id": 13,
-      "name": "fireball",
+      "name": "card_s2_1",
       "type": "spell",
       "slot": 9,
-      "picture": "card_s1",
-      "ext": "damage:[\"fire\",4];mana:[\"fire\",5]",
+      "picture": "card_s2_1",
+      "ext": "damage:[\"water\",4];mana:[\"water\",5]",
       "setname": "default",
       "droppicture": "drop_magic",
       "dropparam": "5,10",
-      "localekey": "fireball"
+      "localekey": "card_s2_1"
     },
     {
       "id": 14,
-      "name": "storm",
+      "name": "card_s2_1",
       "type": "spell",
       "slot": 9,
-      "picture": "card_s2",
-      "ext": "damage:[\"water\",5];mana:[\"water\",5]",
+      "picture": "card_s2_2",
+      "ext": "damage:[\"water\",12];mana:[\"fire\",6,\"water\",8]",
       "setname": "default",
       "droppicture": "drop_magic",
       "dropparam": "5,10",
-      "localekey": "storm"
+      "localekey": "card_s2_2"
     },
     {
       "id": 15,
-      "name": "thunderbolt",
+      "name": "card_s3_1",
       "type": "spell",
       "slot": 9,
-      "picture": "card_s3",
-      "ext": "damage:[\"nature\",7];mana:[\"nature\",5]",
-      "setname": "default",
+      "picture": "card_s3_1",
+      "ext": "damage:[\"nature\",8];mana:[\"nature\",7]",
+      "setname": "house01",
       "droppicture": "drop_magic",
       "dropparam": "5,10",
-      "localekey": "thunderbolt"
+      "localekey": "card_s3_1"
     },
     {
       "id": 16,
-      "name": "troll",
+      "name": "card_s1_2",
       "type": "spell",
       "slot": 9,
-      "picture": "card_s4",
-      "ext": "damage:[\"stone\",14];mana:[\"stone\",5]",
-      "setname": "house00",
+      "picture": "card_s1_2",
+      "ext": "damage:[\"fire\",10];mana:[\"fire\",6]",
+      "setname": "house01",
       "droppicture": "drop_magic",
-      "dropparam": "5,11",
-      "localekey": "troll"
+      "dropparam": "5,10",
+      "localekey": "card_s1_2"
     },
     {
       "id": 17,
-      "name": "vampirism",
+      "name": "card_s4_1",
       "type": "spell",
       "slot": 9,
-      "picture": "card_s5",
-      "ext": "damage:[\"dark\",20];mana:[\"dark\",5]",
-      "setname": "house00",
+      "picture": "card_s4_1",
+      "ext": "damage:[\"stone\",20];mana:[\"stone\",12]",
+      "setname": "house01",
       "droppicture": "drop_magic",
-      "dropparam": "5,12",
-      "localekey": "vampirism"
+      "dropparam": "5,11",
+      "localekey": "card_s4_1"
     },
     {
-      "id": 22,
-      "name": "fireball",
+      "id": 18,
+      "name": "card_s5_1",
       "type": "spell",
       "slot": 9,
-      "picture": "card_s1",
-      "ext": "damage:[\"fire\",300];mana:[\"fire\",5]",
-      "setname": "default",
+      "picture": "card_s5_1",
+      "ext": "damage:[\"dark\",13];mana:[\"dark\",6]",
+      "setname": "house01",
       "droppicture": "drop_magic",
-      "dropparam": "5,10",
-      "localekey": "fireball"
+      "dropparam": "5,12",
+      "localekey": "card_s5_1"
     }
   ],
   "monster": [
@@ -1022,11 +1113,7 @@
       "wield": 1
     },
     {
-      "id": 13,
-      "wield": 1
-    },
-    {
-      "id": 22,
+      "id": 12,
       "wield": 1
     }
   ],
@@ -1725,68 +1812,100 @@
       "russian": "Камень"
     },
     {
-      "id": "sword",
-      "russian": "Деревянный меч"
+      "id": "card_w1",
+      "russian": "Меч Странника"
     },
     {
-      "id": "steel_sword",
-      "russian": "Железный меч"
+      "id": "card_w2",
+      "russian": "Охотничий Топор"
     },
     {
-      "id": "staff",
-      "russian": "Посох"
+      "id": "card_w3",
+      "russian": "Клык"
     },
     {
-      "id": "helmet",
-      "russian": "Шлем"
+      "id": "card_w4",
+      "russian": "Клинок Севера"
     },
     {
-      "id": "body",
-      "russian": "Кожаный доспех"
+      "id": "card_am",
+      "russian": "Пылающий Посох"
     },
     {
-      "id": "steel_chest",
-      "russian": "Железный доспех"
+      "id": "card_ah1",
+      "russian": "Шапка Охотника"
     },
     {
-      "id": "boots",
-      "russian": "Ботинки"
+      "id": "card_ah2",
+      "russian": "Шлем Норда"
     },
     {
-      "id": "gloves",
+      "id": "card_ab1",
+      "russian": "Кожанка"
+    },
+    {
+      "id": "card_ab2",
+      "russian": "Нагрудник"
+    },
+    {
+      "id": "card_ab3",
+      "russian": "Кираса"
+    },
+    {
+      "id": "card_ab4",
+      "russian": "Стальной Панцирь"
+    },
+    {
+      "id": "card_al1",
+      "russian": "Болотные Сапоги"
+    },
+    {
+      "id": "card_al2",
+      "russian": "Ходоки"
+    },
+    {
+      "id": "card_ag1",
       "russian": "Перчатки"
     },
     {
-      "id": "ring",
+      "id": "card_ag2",
+      "russian": "Стальная Хватки"
+    },
+    {
+      "id": "card_am1",
       "russian": "Кольцо"
     },
     {
-      "id": "fireball",
-      "russian": "Файрбол"
+      "id": "card_s1_1",
+      "russian": "Искра"
     },
     {
-      "id": "storm",
-      "russian": "Шторм"
+      "id": "card_s2_1",
+      "russian": "Дикая Жажда"
     },
     {
-      "id": "thunderbolt",
-      "russian": "Гром"
+      "id": "card_s3_1",
+      "russian": "Узы Плюща"
     },
     {
-      "id": "troll",
-      "russian": "Троль"
+      "id": "card_s4_1",
+      "russian": "Голем"
     },
     {
-      "id": "vampirism",
+      "id": "card_s5_1",
       "russian": "Вампиризм"
     },
     {
-      "id": "light",
-      "russian": "Свет"
+      "id": "card_s1_2",
+      "russian": "Огненный Шар"
     },
     {
-      "id": "sword.d",
-      "russian": "обычный меч"
+      "id": "card_s2_2",
+      "russian": "Ядовитый Пар"
+    },
+    {
+      "id": "card_w1.d",
+      "russian": "Наносит урон фишками холодного оружия."
     },
     {
       "id": "steel_sword.d",

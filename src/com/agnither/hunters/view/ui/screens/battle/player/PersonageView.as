@@ -123,7 +123,7 @@ public class PersonageView extends AbstractView {
         _name.text = (_personage.name ? String(_personage.name) : Locale.getString(_personage.id)) + " " + String(_personage.level)+"ур";
 
         _hp.visible = !isPet;
-        _hp.text = String(_personage.hp) + "/" + String(_personage.maxHP);
+        _hp.text = String(_personage.hp); //+ "/" + String(_personage.maxHP)
         _progressLine.visible = !isPet;
         _progressLine.scaleX = isEnemy ? -_personage.hp / _personage.maxHP : _personage.hp / _personage.maxHP;
 

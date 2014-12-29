@@ -140,7 +140,7 @@ public class ItemView extends AbstractView
 
             _manaContainer = new Sprite();
             addChild(_manaContainer);
-            _manaContainer.y = 36;
+            _manaContainer.y = 52;
             _manaContainer.x = _picture.width;
 
             var i : int = 0;

@@ -6,47 +6,58 @@
 	<SubTexture name="battle_background_field" x="3075" y="1012" width="1000" height="720" pivotX="0" pivotY="0"/>
 	<SubTexture name="battle_current_player" x="1609" y="1893" width="28" height="24" pivotX="0" pivotY="0"/>
 	<SubTexture name="battle_hit" x="2221" y="1734" width="232" height="259" pivotX="0" pivotY="0"/>
-	<SubTexture name="battle_monster_button" x="1615" y="2005" width="95" height="66" pivotX="0" pivotY="0"/>
-	<SubTexture name="battle_progress_back" x="156" y="1877" width="152" height="16" pivotX="0" pivotY="0"/>
-	<SubTexture name="battle_progress_line" x="310" y="1877" width="120" height="16" pivotX="0" pivotY="0"/>
+	<SubTexture name="battle_monster_button" x="3992" y="1990" width="95" height="66" pivotX="0" pivotY="0"/>
+	<SubTexture name="battle_progress_back" x="184" y="1877" width="152" height="16" pivotX="0" pivotY="0"/>
+	<SubTexture name="battle_progress_line" x="2" y="1877" width="180" height="16" pivotX="0" pivotY="0"/>
 	<SubTexture name="battle_stats" x="1206" y="1909" width="186" height="24" pivotX="0" pivotY="0"/>
 	<SubTexture name="battle_stats_icons" x="608" y="1858" width="224" height="36" pivotX="0" pivotY="0"/>
-	<SubTexture name="boss" x="3583" y="2011" width="80" height="75" pivotX="0" pivotY="0"/>
+	<SubTexture name="boss" x="820" y="2059" width="80" height="75" pivotX="0" pivotY="0"/>
 	<SubTexture name="btn_scroll" x="4076" y="53" width="13" height="60" pivotX="0" pivotY="0"/>
 	<SubTexture name="btn_tab_off" x="810" y="1943" width="121" height="26" pivotX="0" pivotY="0"/>
 	<SubTexture name="btn_tab_on" x="1206" y="1935" width="121" height="27" pivotX="0" pivotY="0"/>
-	<SubTexture name="calibri_r_15.png" x="1963" y="1734" width="256" height="256" pivotX="0" pivotY="0"/>
+	<SubTexture name="calibri_r_15.png" x="1205" y="1575" width="256" height="256" pivotX="0" pivotY="0"/>
 	<SubTexture name="camp" x="889" y="1782" width="105" height="65" pivotX="0" pivotY="0"/>
 	<SubTexture name="camp_background" x="2073" y="2" width="1650" height="1008" pivotX="0" pivotY="0"/>
-	<SubTexture name="card_a1" x="1463" y="1741" width="200" height="74" pivotX="0" pivotY="0"/>
-	<SubTexture name="card_a2" x="687" y="1782" width="200" height="74" pivotX="0" pivotY="0"/>
-	<SubTexture name="card_a3" x="3345" y="1795" width="200" height="74" pivotX="0" pivotY="0"/>
-	<SubTexture name="card_a4" x="2" y="1801" width="200" height="74" pivotX="0" pivotY="0"/>
-	<SubTexture name="card_am1" x="204" y="1801" width="200" height="74" pivotX="0" pivotY="0"/>
-	<SubTexture name="card_m1" x="406" y="1801" width="200" height="74" pivotX="0" pivotY="0"/>
-	<SubTexture name="card_m10" x="1463" y="1817" width="200" height="74" pivotX="0" pivotY="0"/>
-	<SubTexture name="card_m2" x="3854" y="1823" width="200" height="74" pivotX="0" pivotY="0"/>
-	<SubTexture name="card_m3" x="1205" y="1833" width="200" height="74" pivotX="0" pivotY="0"/>
-	<SubTexture name="card_m4" x="1665" y="1853" width="200" height="74" pivotX="0" pivotY="0"/>
-	<SubTexture name="card_m5" x="3547" y="1859" width="200" height="74" pivotX="0" pivotY="0"/>
-	<SubTexture name="card_m6" x="3345" y="1871" width="200" height="74" pivotX="0" pivotY="0"/>
-	<SubTexture name="card_m7" x="1407" y="1893" width="200" height="74" pivotX="0" pivotY="0"/>
-	<SubTexture name="card_m8" x="3749" y="1899" width="200" height="74" pivotX="0" pivotY="0"/>
-	<SubTexture name="card_m9" x="1004" y="1909" width="200" height="74" pivotX="0" pivotY="0"/>
-	<SubTexture name="card_s1" x="1609" y="1929" width="200" height="74" pivotX="0" pivotY="0"/>
-	<SubTexture name="card_s2" x="3547" y="1935" width="200" height="74" pivotX="0" pivotY="0"/>
-	<SubTexture name="card_s3" x="2" y="1943" width="200" height="74" pivotX="0" pivotY="0"/>
-	<SubTexture name="card_s4" x="204" y="1943" width="200" height="74" pivotX="0" pivotY="0"/>
-	<SubTexture name="card_s5" x="406" y="1943" width="200" height="74" pivotX="0" pivotY="0"/>
-	<SubTexture name="card_w1" x="608" y="1943" width="200" height="74" pivotX="0" pivotY="0"/>
-	<SubTexture name="card_wm1" x="3174" y="1947" width="200" height="74" pivotX="0" pivotY="0"/>
+	<SubTexture name="card_ab1" x="3345" y="1871" width="200" height="73" pivotX="0" pivotY="0"/>
+	<SubTexture name="card_ab2" x="1407" y="1893" width="200" height="73" pivotX="0" pivotY="0"/>
+	<SubTexture name="card_ab3" x="3749" y="1899" width="200" height="73" pivotX="0" pivotY="0"/>
+	<SubTexture name="card_ab4" x="1004" y="1909" width="200" height="73" pivotX="0" pivotY="0"/>
+	<SubTexture name="card_ag1" x="1609" y="1929" width="200" height="73" pivotX="0" pivotY="0"/>
+	<SubTexture name="card_ag2" x="3547" y="1935" width="200" height="73" pivotX="0" pivotY="0"/>
+	<SubTexture name="card_ah1" x="2" y="1943" width="200" height="73" pivotX="0" pivotY="0"/>
+	<SubTexture name="card_ah2" x="204" y="1943" width="200" height="73" pivotX="0" pivotY="0"/>
+	<SubTexture name="card_al1" x="406" y="1943" width="200" height="73" pivotX="0" pivotY="0"/>
+	<SubTexture name="card_al2" x="608" y="1943" width="200" height="73" pivotX="0" pivotY="0"/>
+	<SubTexture name="card_am1" x="1463" y="1741" width="200" height="74" pivotX="0" pivotY="0"/>
+	<SubTexture name="card_m1" x="687" y="1782" width="200" height="74" pivotX="0" pivotY="0"/>
+	<SubTexture name="card_m10" x="3345" y="1795" width="200" height="74" pivotX="0" pivotY="0"/>
+	<SubTexture name="card_m2" x="2" y="1801" width="200" height="74" pivotX="0" pivotY="0"/>
+	<SubTexture name="card_m3" x="204" y="1801" width="200" height="74" pivotX="0" pivotY="0"/>
+	<SubTexture name="card_m4" x="406" y="1801" width="200" height="74" pivotX="0" pivotY="0"/>
+	<SubTexture name="card_m5" x="1463" y="1817" width="200" height="74" pivotX="0" pivotY="0"/>
+	<SubTexture name="card_m6" x="3854" y="1823" width="200" height="74" pivotX="0" pivotY="0"/>
+	<SubTexture name="card_m7" x="1205" y="1833" width="200" height="74" pivotX="0" pivotY="0"/>
+	<SubTexture name="card_m8" x="1665" y="1853" width="200" height="74" pivotX="0" pivotY="0"/>
+	<SubTexture name="card_m9" x="3547" y="1859" width="200" height="74" pivotX="0" pivotY="0"/>
+	<SubTexture name="card_s1_1" x="3174" y="1946" width="200" height="73" pivotX="0" pivotY="0"/>
+	<SubTexture name="card_s1_2" x="1206" y="1968" width="200" height="73" pivotX="0" pivotY="0"/>
+	<SubTexture name="card_s2_1" x="3749" y="1974" width="200" height="73" pivotX="0" pivotY="0"/>
+	<SubTexture name="card_s2_2" x="810" y="1984" width="200" height="73" pivotX="0" pivotY="0"/>
+	<SubTexture name="card_s3_1" x="2636" y="1989" width="200" height="73" pivotX="0" pivotY="0"/>
+	<SubTexture name="card_s4_1" x="1811" y="1992" width="200" height="73" pivotX="0" pivotY="0"/>
+	<SubTexture name="card_s5_1" x="2013" y="1992" width="200" height="73" pivotX="0" pivotY="0"/>
+	<SubTexture name="card_w1" x="2215" y="1995" width="200" height="73" pivotX="0" pivotY="0"/>
+	<SubTexture name="card_w2" x="1408" y="2004" width="200" height="73" pivotX="0" pivotY="0"/>
+	<SubTexture name="card_w3" x="3376" y="2010" width="200" height="73" pivotX="0" pivotY="0"/>
+	<SubTexture name="card_w4" x="2838" y="2017" width="200" height="73" pivotX="0" pivotY="0"/>
+	<SubTexture name="card_wm" x="2" y="2018" width="200" height="73" pivotX="0" pivotY="0"/>
 	<SubTexture name="chest_icon" x="3629" y="1795" width="70" height="51" pivotX="0" pivotY="0"/>
 	<SubTexture name="chip_blue" x="4037" y="622" width="52" height="52" pivotX="0" pivotY="0"/>
 	<SubTexture name="chip_chest" x="4037" y="568" width="53" height="52" pivotX="0" pivotY="0"/>
 	<SubTexture name="chip_fire" x="4037" y="453" width="53" height="56" pivotX="0" pivotY="0"/>
 	<SubTexture name="chip_green" x="4037" y="676" width="52" height="52" pivotX="0" pivotY="0"/>
 	<SubTexture name="chip_red" x="1665" y="1741" width="51" height="52" pivotX="0" pivotY="0"/>
-	<SubTexture name="chip_select" x="1137" y="1985" width="48" height="48" pivotX="0" pivotY="0"/>
+	<SubTexture name="chip_select" x="1012" y="1984" width="48" height="48" pivotX="0" pivotY="0"/>
 	<SubTexture name="chip_sword" x="4037" y="511" width="52" height="55" pivotX="0" pivotY="0"/>
 	<SubTexture name="chip_white" x="1665" y="1795" width="51" height="51" pivotX="0" pivotY="0"/>
 	<SubTexture name="common_back" x="3983" y="795" width="101" height="101" pivotX="0" pivotY="0"/>
@@ -68,30 +79,30 @@
 	<SubTexture name="drop_gloves" x="3749" y="1859" width="65" height="37" pivotX="0" pivotY="0"/>
 	<SubTexture name="drop_gold" x="4047" y="332" width="40" height="34" pivotX="0" pivotY="0"/>
 	<SubTexture name="drop_magic" x="4037" y="730" width="57" height="47" pivotX="0" pivotY="0"/>
-	<SubTexture name="drop_pants" x="3826" y="2032" width="46" height="49" pivotX="0" pivotY="0"/>
+	<SubTexture name="drop_pants" x="1062" y="1984" width="46" height="49" pivotX="0" pivotY="0"/>
 	<SubTexture name="drop_ring" x="1040" y="1541" width="33" height="26" pivotX="0" pivotY="0"/>
 	<SubTexture name="drop_shield" x="608" y="1801" width="71" height="44" pivotX="0" pivotY="0"/>
-	<SubTexture name="drop_staff" x="3459" y="1947" width="78" height="53" pivotX="0" pivotY="0"/>
-	<SubTexture name="drop_sword" x="3376" y="1947" width="81" height="52" pivotX="0" pivotY="0"/>
-	<SubTexture name="exp_progress_line" x="2" y="1877" width="152" height="16" pivotX="0" pivotY="0"/>
-	<SubTexture name="h1" x="1017" y="1985" width="118" height="83" pivotX="0" pivotY="0"/>
-	<SubTexture name="h2" x="3956" y="1899" width="118" height="89" pivotX="0" pivotY="0"/>
+	<SubTexture name="drop_staff" x="3459" y="1946" width="78" height="53" pivotX="0" pivotY="0"/>
+	<SubTexture name="drop_sword" x="3376" y="1946" width="81" height="52" pivotX="0" pivotY="0"/>
+	<SubTexture name="exp_progress_line" x="338" y="1877" width="152" height="16" pivotX="0" pivotY="0"/>
+	<SubTexture name="h1" x="3247" y="2021" width="118" height="83" pivotX="0" pivotY="0"/>
+	<SubTexture name="h2" x="3951" y="1899" width="118" height="89" pivotX="0" pivotY="0"/>
 	<SubTexture name="h3" x="3703" y="1734" width="149" height="123" pivotX="0" pivotY="0"/>
 	<SubTexture name="hero.png" x="2636" y="1734" width="186" height="253" pivotX="0" pivotY="0"/>
 	<SubTexture name="hud_bg_1" x="2" y="1901" width="1000" height="40" pivotX="0" pivotY="0"/>
-	<SubTexture name="impact_21.png" x="1205" y="1575" width="256" height="256" pivotX="0" pivotY="0"/>
+	<SubTexture name="impact_21.png" x="1963" y="1734" width="256" height="256" pivotX="0" pivotY="0"/>
 	<SubTexture name="impact_49.png" x="3725" y="795" width="256" height="128" pivotX="0" pivotY="0"/>
 	<SubTexture name="inventory_bg" x="2" y="1241" width="683" height="558" pivotX="0" pivotY="0"/>
 	<SubTexture name="inventory_player_set_bg" x="998" y="1575" width="205" height="324" pivotX="0" pivotY="0"/>
-	<SubTexture name="item_body" x="3749" y="1975" width="205" height="55" pivotX="0" pivotY="0"/>
-	<SubTexture name="item_boots" x="810" y="1985" width="205" height="55" pivotX="0" pivotY="0"/>
-	<SubTexture name="item_gloves" x="2636" y="1989" width="205" height="55" pivotX="0" pivotY="0"/>
-	<SubTexture name="item_helmet" x="1811" y="1992" width="205" height="55" pivotX="0" pivotY="0"/>
-	<SubTexture name="item_pants" x="2018" y="1995" width="205" height="55" pivotX="0" pivotY="0"/>
-	<SubTexture name="item_ring" x="2225" y="1995" width="205" height="55" pivotX="0" pivotY="0"/>
-	<SubTexture name="item_select" x="3050" y="2023" width="203" height="53" pivotX="0" pivotY="0"/>
-	<SubTexture name="item_staff" x="1408" y="2005" width="205" height="55" pivotX="0" pivotY="0"/>
-	<SubTexture name="item_sword" x="1206" y="1969" width="200" height="74" pivotX="0" pivotY="0"/>
+	<SubTexture name="item_body" x="406" y="2018" width="205" height="55" pivotX="0" pivotY="0"/>
+	<SubTexture name="item_boots" x="3040" y="2021" width="205" height="55" pivotX="0" pivotY="0"/>
+	<SubTexture name="item_gloves" x="1012" y="2043" width="205" height="55" pivotX="0" pivotY="0"/>
+	<SubTexture name="item_helmet" x="2417" y="2043" width="205" height="55" pivotX="0" pivotY="0"/>
+	<SubTexture name="item_pants" x="3578" y="2049" width="205" height="55" pivotX="0" pivotY="0"/>
+	<SubTexture name="item_ring" x="3785" y="2049" width="205" height="55" pivotX="0" pivotY="0"/>
+	<SubTexture name="item_select" x="3040" y="2078" width="203" height="53" pivotX="0" pivotY="0"/>
+	<SubTexture name="item_staff" x="613" y="2059" width="205" height="55" pivotX="0" pivotY="0"/>
+	<SubTexture name="item_sword" x="204" y="2018" width="200" height="73" pivotX="0" pivotY="0"/>
 	<SubTexture name="itemicon_magicshield" x="4056" y="1852" width="32" height="34" pivotX="0" pivotY="0"/>
 	<SubTexture name="itemicon_shield" x="3816" y="1859" width="28" height="34" pivotX="0" pivotY="0"/>
 	<SubTexture name="itemicon_spell" x="4056" y="1816" width="33" height="34" pivotX="0" pivotY="0"/>
@@ -111,14 +122,14 @@
 	<SubTexture name="level_2" x="1963" y="1625" width="23" height="26" pivotX="0" pivotY="0"/>
 	<SubTexture name="level_3" x="1963" y="1542" width="27" height="26" pivotX="0" pivotY="0"/>
 	<SubTexture name="level_4" x="1963" y="1570" width="26" height="26" pivotX="0" pivotY="0"/>
-	<SubTexture name="magic_dark" x="3376" y="2011" width="205" height="55" pivotX="0" pivotY="0"/>
-	<SubTexture name="magic_earth" x="2843" y="2017" width="205" height="55" pivotX="0" pivotY="0"/>
-	<SubTexture name="magic_fire" x="2" y="2019" width="205" height="55" pivotX="0" pivotY="0"/>
-	<SubTexture name="magic_green" x="209" y="2019" width="205" height="55" pivotX="0" pivotY="0"/>
-	<SubTexture name="magic_water" x="416" y="2019" width="205" height="55" pivotX="0" pivotY="0"/>
+	<SubTexture name="magic_dark" x="2624" y="2064" width="205" height="55" pivotX="0" pivotY="0"/>
+	<SubTexture name="magic_earth" x="1610" y="2067" width="205" height="55" pivotX="0" pivotY="0"/>
+	<SubTexture name="magic_fire" x="1817" y="2067" width="205" height="55" pivotX="0" pivotY="0"/>
+	<SubTexture name="magic_green" x="2024" y="2070" width="205" height="55" pivotX="0" pivotY="0"/>
+	<SubTexture name="magic_water" x="406" y="2075" width="205" height="55" pivotX="0" pivotY="0"/>
 	<SubTexture name="mana_blue" x="933" y="1943" width="54" height="37" pivotX="0" pivotY="0"/>
-	<SubTexture name="mana_fire" x="2843" y="1976" width="54" height="37" pivotX="0" pivotY="0"/>
-	<SubTexture name="mana_green" x="2899" y="1976" width="54" height="37" pivotX="0" pivotY="0"/>
+	<SubTexture name="mana_fire" x="2838" y="1976" width="54" height="37" pivotX="0" pivotY="0"/>
+	<SubTexture name="mana_green" x="2894" y="1976" width="54" height="37" pivotX="0" pivotY="0"/>
 	<SubTexture name="mana_red" x="4047" y="166" width="44" height="41" pivotX="0" pivotY="0"/>
 	<SubTexture name="mana_white" x="4047" y="295" width="44" height="35" pivotX="0" pivotY="0"/>
 	<SubTexture name="map_background" x="2" y="2" width="2069" height="1237" pivotX="0" pivotY="0"/>
@@ -142,16 +153,16 @@
 	<SubTexture name="monster_7.png" x="2455" y="1734" width="179" height="307" pivotX="0" pivotY="0"/>
 	<SubTexture name="monster_8.png" x="687" y="1541" width="309" height="239" pivotX="0" pivotY="0"/>
 	<SubTexture name="monster_9.png" x="3021" y="1734" width="151" height="281" pivotX="0" pivotY="0"/>
-	<SubTexture name="monster_icon_1" x="1712" y="2005" width="79" height="76" pivotX="0" pivotY="0"/>
+	<SubTexture name="monster_icon_1" x="3992" y="2058" width="79" height="76" pivotX="0" pivotY="0"/>
 	<SubTexture name="monster_icon_10" x="3547" y="1795" width="80" height="60" pivotX="0" pivotY="0"/>
 	<SubTexture name="monster_icon_2" x="1867" y="1853" width="81" height="79" pivotX="0" pivotY="0"/>
-	<SubTexture name="monster_icon_3" x="623" y="2019" width="89" height="64" pivotX="0" pivotY="0"/>
-	<SubTexture name="monster_icon_4" x="714" y="2019" width="80" height="69" pivotX="0" pivotY="0"/>
-	<SubTexture name="monster_icon_5" x="3255" y="2023" width="79" height="67" pivotX="0" pivotY="0"/>
+	<SubTexture name="monster_icon_3" x="902" y="2059" width="89" height="64" pivotX="0" pivotY="0"/>
+	<SubTexture name="monster_icon_4" x="2311" y="2070" width="80" height="69" pivotX="0" pivotY="0"/>
+	<SubTexture name="monster_icon_5" x="1338" y="2079" width="79" height="67" pivotX="0" pivotY="0"/>
 	<SubTexture name="monster_icon_6" x="1811" y="1934" width="78" height="55" pivotX="0" pivotY="0"/>
-	<SubTexture name="monster_icon_7" x="3665" y="2011" width="78" height="72" pivotX="0" pivotY="0"/>
-	<SubTexture name="monster_icon_8" x="3956" y="1990" width="117" height="65" pivotX="0" pivotY="0"/>
-	<SubTexture name="monster_icon_9" x="3745" y="2032" width="79" height="65" pivotX="0" pivotY="0"/>
+	<SubTexture name="monster_icon_7" x="2231" y="2070" width="78" height="72" pivotX="0" pivotY="0"/>
+	<SubTexture name="monster_icon_8" x="1219" y="2043" width="117" height="65" pivotX="0" pivotY="0"/>
+	<SubTexture name="monster_icon_9" x="1419" y="2079" width="79" height="65" pivotX="0" pivotY="0"/>
 	<SubTexture name="player_hero" x="2824" y="1734" width="195" height="240" pivotX="0" pivotY="0"/>
 	<SubTexture name="slots_bg" x="1486" y="1241" width="247" height="498" pivotX="0" pivotY="0"/>
 	<SubTexture name="step_icon" x="998" y="1541" width="40" height="31" pivotX="0" pivotY="0"/>
