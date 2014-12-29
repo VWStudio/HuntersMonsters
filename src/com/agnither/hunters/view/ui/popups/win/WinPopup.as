@@ -6,6 +6,7 @@ package com.agnither.hunters.view.ui.popups.win
 import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.player.drop.DropList;
 import com.agnither.hunters.model.player.drop.DropSlot;
+import com.agnither.hunters.model.player.inventory.Item;
 import com.agnither.hunters.view.ui.UI;
 import com.agnither.hunters.view.ui.common.MonsterInfo;
 import com.agnither.hunters.view.ui.screens.battle.player.DropSlotView;
@@ -127,6 +128,7 @@ public class WinPopup extends Popup
 
     private function onShowTooltip($data : Object) : void
     {
+        if(($data.content as Item).isGold()) return;
 
         var itemView : ItemView = ItemView.create($data.content);
         _tooltip.addChild(itemView);
@@ -166,22 +168,19 @@ public class WinPopup extends Popup
                 _gold.visible = false;
                 if (drop.content)
                 {
-//                    if (drop.content.isGold())
-//                    {
-//                        _gold.text = "Награда: " + drop.content.amount + "$";
-//                        Model.instance.progress.gold += drop.content.amount;
-//                    }
-//                    else
-//                    {
                         var dropView : DropSlotView = new DropSlotView();
-                        // XXXCOMMON
                         dropView.createFromConfig(_refs.guiConfig.common.drop);
-//                        dropView.createFromCommon(_refs.guiConfig.common.drop);
                         _drops.addChild(dropView);
                         dropView.drop = drop;
-                        Model.instance.addPlayerItem(drop.content);
                         dropView.x = _drops.numChildren * 40;
-//                    }
+                    if (drop.content.isGold())
+                    {
+                        Model.instance.progress.gold += drop.content.amount;
+                    }
+                    else
+                    {
+                        Model.instance.addPlayerItem(drop.content);
+                    }
                 }
             }
 
