@@ -112,7 +112,7 @@ public class HousePopup extends Popup {
             if(territory.houseTimeout > 0) {
                 _priceText.text = "Осталось:"+Formatter.msToHHMMSS(territory.houseTimeout);
             } else {
-                update();
+                //update();
             }
         }
     }
