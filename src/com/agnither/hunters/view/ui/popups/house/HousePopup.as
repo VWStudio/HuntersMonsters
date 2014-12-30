@@ -1,46 +1,36 @@
 /**
  * Created by agnither on 12.08.14.
  */
-package com.agnither.hunters.view.ui.popups.house {
-import com.agnither.hunters.data.inner.InventoryVO;
+package com.agnither.hunters.view.ui.popups.house
+{
+import com.agnither.hunters.model.Model;
+import com.agnither.hunters.model.match3.Match3Game;
 import com.agnither.hunters.model.modules.items.ItemVO;
-import com.agnither.hunters.model.Model;
-import com.agnither.hunters.model.Model;
+import com.agnither.hunters.model.modules.locale.Locale;
+import com.agnither.hunters.model.modules.monsters.MonsterVO;
 import com.agnither.hunters.model.player.Territory;
 import com.agnither.hunters.model.player.inventory.Item;
-import com.agnither.hunters.model.player.personage.Monster;
-import com.agnither.hunters.view.ui.popups.hunt.*;
-import com.agnither.hunters.model.modules.monsters.MonsterVO;
 import com.agnither.hunters.view.ui.UI;
-import com.agnither.hunters.view.ui.common.MonsterInfo;
 import com.agnither.hunters.view.ui.common.items.ItemView;
-import com.agnither.hunters.view.ui.common.items.ItemView;
-import com.agnither.hunters.view.ui.screens.map.*;
-import com.agnither.hunters.App;
-import com.agnither.hunters.model.match3.Match3Game;
-import com.agnither.hunters.model.player.LocalPlayer;
 import com.agnither.ui.ButtonContainer;
 import com.agnither.ui.Popup;
-import com.agnither.ui.Screen;
 import com.cemaprjl.core.coreAddListener;
 import com.cemaprjl.core.coreDispatch;
 import com.cemaprjl.utils.Formatter;
 
-import flash.geom.Point;
 import flash.ui.Mouse;
 import flash.ui.MouseCursor;
-import flash.utils.Dictionary;
-
-import starling.display.Button;
-
-import starling.display.DisplayObject;
 
 import starling.display.Image;
 import starling.display.Sprite;
 import starling.events.Event;
+import starling.events.Touch;
+import starling.events.TouchEvent;
+import starling.events.TouchPhase;
 import starling.text.TextField;
 
-public class HousePopup extends Popup {
+public class HousePopup extends Popup
+{
 
 
     public static const NAME : String = "com.agnither.hunters.view.ui.popups.house.HousePopup";
@@ -61,12 +51,14 @@ public class HousePopup extends Popup {
     private var _item : ItemView;
     private var territory : Territory;
 
-    public function HousePopup() {
+    public function HousePopup()
+    {
 
         super();
     }
 
-    override protected function initialize() : void {
+    override protected function initialize() : void
+    {
 
         createFromConfig(_refs.guiConfig.house_popup);
 
@@ -76,6 +68,8 @@ public class HousePopup extends Popup {
         _closeButton.addEventListener(Event.TRIGGERED, handleClose);
 
         _title = _links["title_tf"];
+        _title.text = Locale.getString("house");
+        _title.fontSize = 30;
         _owner = _links["owner_tf"];
 
         _attackButton = _links["play_btn"];
@@ -83,7 +77,7 @@ public class HousePopup extends Popup {
         _attackButton.text = "Захватить";
 
         _getPrizeButton = _links["attack_btn"];
-        _getPrizeButton.addEventListener(Event.TRIGGERED, handleGet );
+        _getPrizeButton.addEventListener(Event.TRIGGERED, handleGet);
         _getPrizeButton.text = "Купить";
         _getPrizeButton.visible = false;
 
@@ -107,29 +101,38 @@ public class HousePopup extends Popup {
 
     }
 
-    private function onHouseUpdate() : void {
-        if(territory.isHouseOwner) {
-            if(territory.houseTimeout > 0) {
-                _priceText.text = "Осталось:"+Formatter.msToHHMMSS(territory.houseTimeout);
-            } else {
+    private function onHouseUpdate() : void
+    {
+        if (territory.isHouseOwner)
+        {
+            if (territory.houseTimeout > 0)
+            {
+                _priceText.text = "Осталось:" + Formatter.msToHHMMSS(territory.houseTimeout);
+            }
+            else
+            {
                 //update();
             }
         }
     }
 
-    private function handleGet(event : Event) : void {
-        if(territory.nextRandomHouseItem) {
+    private function handleGet(event : Event) : void
+    {
+        if (territory.nextRandomHouseItem)
+        {
             Model.instance.player.addItem(territory.nextRandomHouseItem);
             territory.generateNewHouseItem();
             update();
         }
     }
 
-    override protected function handleClose(event : Event) : void {
+    override protected function handleClose(event : Event) : void
+    {
         coreDispatch(UI.HIDE_POPUP, NAME);
     }
 
-    private function handlePlay(event : Event) : void {
+    private function handlePlay(event : Event) : void
+    {
 
 
         Model.instance.match3mode = Match3Game.MODE_HOUSE;
@@ -140,7 +143,8 @@ public class HousePopup extends Popup {
     }
 
 
-    override public function update() : void {
+    override public function update() : void
+    {
 
         territory = data as Territory;
 
@@ -149,24 +153,42 @@ public class HousePopup extends Popup {
 
         _itemsContainer.removeChildren();
 
-        if(territory.houseUnlockItems) {
-            trace(JSON.stringify(territory.houseUnlockItems));
+        if (territory.houseUnlockItems)
+        {
 
             var houseItems : Array = territory.houseUnlockItems.slice();
 
+            var itemsArr : Array = [];
             var i : int = 0;
-            while (i < 10 && houseItems.length > 0){
+            while (i < 10 && houseItems.length > 0)
+            {
                 var item : ItemVO = houseItems.splice(int(Math.random() * houseItems.length), 1)[0];
-                var iview : ItemView = ItemView.create(Item.create(item));
+                itemsArr.push(Item.create(item));
+            }
+
+            itemsArr = itemsArr.sort(sortInventory);
+
+            trace("HOUSE ITEMS", itemsArr.length);
+
+            for (i = 0; i < itemsArr.length; i++)
+            {
+                var iview : ItemView = ItemView.create(itemsArr[i]);
+                iview.addEventListener(TouchEvent.TOUCH, handleTouch);
                 _itemsContainer.addChild(iview);
-                iview.y = i * (iview.height + 5);
-                if (i > 2)
-                {
-                    iview.x = iview.width +5;
-                    iview.y -= 3 * (iview.height + 5);
-                }
+
+                iview.x = (iview.width + 5) * (i % 2);
+                iview.y = (iview.height + 5) * int(i / 2);
+
+//                trace(i, iview.x, iview.y);
+
+//                iview.y = i * (iview.height + 5);
+//                if (i > 2)
+//                {
+//                    iview.x = iview.width + 5;
+//                    iview.y -= 3 * (iview.height + 5);
+//                }
                 iview.update();
-                i++;
+                iview.demoMode();
             }
         }
 
@@ -175,16 +197,72 @@ public class HousePopup extends Popup {
         _item = ItemView.create(territory.nextRandomHouseItem);
         _item.update();
         _randomContainer.addChild(_item);
-        if(territory.isHouseOwner) {
+        if (territory.isHouseOwner)
+        {
             _getPrizeButton.text = "Взять";
             _getPrizeButton.visible = territory.houseTimeout <= 0;
             _priceText.text = _getPrizeButton.visible ? "Вещь готова" : "";
-        } else {
-            _priceText.text = "Стоимость: "+200+"$";
+        }
+        else
+        {
+            _priceText.text = "Стоимость: " + 200 + "$";
             _getPrizeButton.text = "Купить";
         }
 
 
+    }
+
+    public function sortInventory($a : Item, $b : Item) : int
+    {
+        var itemA : Item = $a;
+        var itemB : Item = $b;
+
+        if (itemA.slot < itemB.slot)
+        {
+            return -1;
+        }
+        else if (itemA.slot > itemB.slot)
+        {
+            return 1;
+        }
+        else
+        {
+            if (itemA.getDamage() > itemB.getDamage())
+            {
+                return -1;
+            }
+            else if (itemA.getDamage() < itemB.getDamage())
+            {
+                return 1;
+            }
+        }
+        return 0;
+    }
+
+
+    private function handleTouch(e : TouchEvent) : void
+    {
+        var item : ItemView = e.currentTarget as ItemView;
+        var touch : Touch = e.getTouch(item);
+//        var touch: Touch = e.getTouch(item, TouchPhase.BEGAN);
+        if (touch)
+        {
+            Mouse.cursor = MouseCursor.BUTTON;
+            if (touch.phase == TouchPhase.BEGAN && !item.item.isPet())
+            {
+//                coreDispatch(LocalPlayer.ITEM_SELECTED, item.item);
+//                item.update();
+            }
+            else if (touch.phase == TouchPhase.HOVER)
+            {
+                coreDispatch(ItemView.HOVER, item);
+            }
+        }
+        else
+        {
+//            coreDispatch(ItemView.HOVER_OUT);
+            Mouse.cursor = MouseCursor.AUTO;
+        }
     }
 
 

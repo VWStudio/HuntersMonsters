@@ -13,6 +13,7 @@ import com.agnither.hunters.model.player.AIPlayer;
 import com.agnither.hunters.model.player.ManaList;
 import com.agnither.hunters.model.player.Player;
 import com.agnither.hunters.model.player.Territory;
+import com.agnither.hunters.model.player.drop.DropSlot;
 import com.agnither.hunters.model.player.inventory.Item;
 import com.agnither.hunters.model.player.personage.Personage;
 import com.agnither.hunters.view.ui.common.BattleManaView;
@@ -37,9 +38,15 @@ import com.cemaprjl.viewmanage.ShowPopupCmd;
 import com.cemaprjl.viewmanage.ShowScreenCmd;
 
 import flash.geom.Point;
+
+import flash.geom.Point;
 import flash.geom.Rectangle;
 import flash.utils.clearTimeout;
 import flash.utils.setTimeout;
+
+import starling.animation.Transitions;
+
+import starling.animation.Tween;
 
 import starling.core.Starling;
 import starling.display.Button;
@@ -243,7 +250,10 @@ public class BattleScreen extends Screen
 
         var magicType : MagicTypeVO = MagicTypeVO.DICT[$match.type];
         var pictureUrl : String = magicType.picturechip;
-        var mobj : BattleManaView = _playerMana.getMagicObj($match.type);
+
+        var manaListView : ManaListView = _game.currentPlayer == _game.player ? _playerMana : _enemyMana;
+
+        var mobj : BattleManaView = manaListView.getMagicObj($match.type);
         if(!mobj) return;
 
         for (var i : int = 0; i < $match.cells.length; i++)
@@ -258,7 +268,7 @@ public class BattleScreen extends Screen
 
 
 
-            Starling.juggler.tween(img, 0.2 + Math.random() * 0.4, {delay: Math.random() * 0.5  , x: mobj.x + _playerMana.x, y: mobj.y + _playerMana.y, onComplete: onEndTween, onCompleteArgs:[img], alpha: 0.2});
+            Starling.juggler.tween(img, 0.2 + Math.random() * 0.4, {delay: Math.random() * 0.5  , x: mobj.x + manaListView.x, y: mobj.y + manaListView.y, onComplete: onEndTween, onCompleteArgs:[img], alpha: 0.2});
 
             function onEndTween($img : Image) : void
             {
@@ -273,18 +283,26 @@ public class BattleScreen extends Screen
 
     }
 
-    private function onDropFly($data : Object) : void
+//    private function onDropFly($data : Object) : void
+    private function onDropFly($item : Item) : void
     {
 
-        var drop : Item = $data.drop as Item;
-        var position : Point = $data.position;
+        var drop : Item = $item;
+        var position : Point = new Point(_dropList.x + _dropList.width * 0.5, _dropList.y);
         var pictureUrl : String = drop.icon;
         var img : Image = new Image(App.instance.refs.gui.getTexture(pictureUrl));
         _effects.addChild(img);
-        img.x = position.x * FieldView.tileX + FieldView.fieldX;
-        img.y = position.y * FieldView.tileY + FieldView.fieldY;
+        img.x = _enemy.x;
+        img.y = _enemy.y - _enemy.height * 0.7;
+//        img.scaleX = 2;
+//        img.scaleY = 2;
 
-        Starling.juggler.tween(img, 0.5, {x: img.x, y: img.y - 50, onComplete: onEndTween, alpha: 0.5});
+        Starling.juggler.tween(img, 0.3, {scaleX:2, scaleY : 2,x: position.x - 30, y: position.y - 120, onComplete: onMiddleTween, alpha: 1, transition: Transitions.EASE_OUT});
+
+        function onMiddleTween() : void {
+            Starling.juggler.tween(img, 0.3, {delay : 0.2 ,scaleX:1, scaleY : 1, x: position.x, y: position.y, onComplete: onEndTween, alpha: 0.3, transition: Transitions.EASE_IN});
+        }
+
 
         function onEndTween() : void
         {

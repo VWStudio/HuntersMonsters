@@ -207,7 +207,8 @@ public class Match3Game extends EventDispatcher
                 }
 
                 currentPlayer.manaList.addMana(match.type, match.amount);
-                if (currentPlayer is LocalPlayer && !ignoreGraphic)
+                if (!ignoreGraphic)
+//                if (currentPlayer is LocalPlayer && !ignoreGraphic)
                 {
                     coreDispatch(BattleScreen.PLAY_MANA_FLY, match);
                 }

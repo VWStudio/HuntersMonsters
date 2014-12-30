@@ -56,6 +56,7 @@ public class Progress extends EventDispatcher {
     public var fullExp : int = 0;
     public var campPosition : Object;
     public static const SETS_UPDATED : String = "Progress.SETS_UPDATED";
+    public var monsterTimers : Object = {};
 
     public function Progress() {
         _data = SharedObject.getLocal("player");
@@ -113,6 +114,7 @@ public class Progress extends EventDispatcher {
         magic = progressObj.magic;
         gold = progressObj.gold;
         maxSummon = progressObj.maxSummon;
+        monsterTimers = progressObj.monsterTimers ? progressObj.monsterTimers : {};
         skillPoints = progressObj.skillPoints;
         skills = progressObj.skills ? progressObj.skills : {};
         sets = progressObj.sets ? progressObj.sets : [];
@@ -204,6 +206,7 @@ public class Progress extends EventDispatcher {
         obj.maxSummon = settings.playerInitialSummonMax;
 //        obj.skillPoints = 10;
         obj.skillPoints = settings.playerInitialSkillPoints;
+        obj.monsterTimers = {};
         obj.unlockPoints = settings.unlockPoints;
         obj.unlockPointsGiven = [];
         obj.skills = {};

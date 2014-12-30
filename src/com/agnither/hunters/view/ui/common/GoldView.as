@@ -177,12 +177,8 @@ public class GoldView extends AbstractView {
         var touch : Touch = event.getTouch(this);
 //        this.touched = touch != null;
         if(!touch) {
-//            trace("ON TOUCH!!!");
-//            trace(event.target, event.currentTarget, event.touches);
             if(event.target is TextField) {
 //            if(event.target is TextField || event.target is ButtonContainer) {
-//                trace(event.target["name"]);
-//                trace(event.target["text"]);
             }
             else
             {
@@ -212,12 +208,10 @@ public class GoldView extends AbstractView {
         var touch : Touch = event.getTouch(_itemView);
         if(!touch) {
             if(!event.getTouch(this) || price <= 0) {
-//                trace("ON TOUCH ITEM");
                 coreDispatch(ItemView.HOVER_OUT);
             }
             else
             {
-//                trace("touched tooltip");
                 event.stopImmediatePropagation();
                 event.stopPropagation();
             }

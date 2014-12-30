@@ -16,7 +16,6 @@ public class Hero extends Personage {
     }
 
     override public function get damage():int {
-//        trace("get damage", id, _inventory.damage, super.damage);
         return isPlayer ? _inventory.damage : super.damage;
 //        return isPlayer ? _inventory.damage : damage;
     }

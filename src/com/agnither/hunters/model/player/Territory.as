@@ -54,6 +54,8 @@ public class Territory
     private var _boss : Image;
     private var _nextMonsters : Number = 0;
     private var _killed : uint = 0;
+    private var _monstersAmount : int = 0;
+    private var _respawnTimeMax : Number;
 
 
     public function getStars() : int
@@ -64,10 +66,23 @@ public class Territory
     public function Territory($area : MonsterAreaVO)
     {
         _area = $area;
+
+        _respawnTimeMax = area.respawn * 1000 + 999;
+
         _territoryMonsters = new <MonsterPoint>[];
         _index = _area.hud.substr(3, 2);
+        _monstersAmount = area.areamin + Math.round(Math.random() * (area.areamax - area.areamin));
 
+//        trace(_area.id, Model.instance.progress.monsterTimers[area.id], new Date(), new Date().ge);
 
+        if(Model.instance.progress.monsterTimers[area.id] && Model.instance.progress.monsterTimers[area.id] > 0) {
+
+            _nextMonsters = Model.instance.progress.monsterTimers[area.id] + _respawnTimeMax - new Date().valueOf();
+            trace(_nextMonsters);
+            if(_nextMonsters < 0) {
+                _nextMonsters = 0;
+            }
+        }
     }
 
     public function setCloud($val : Sprite) : void
@@ -230,7 +245,12 @@ public class Territory
             _territoryMonsters.splice(index, 1);
             _killed++;
             if(_territoryMonsters.length == 0) {
-                _nextMonsters = area.respawn * 1000 + 999;
+                _nextMonsters = _respawnTimeMax;
+                Model.instance.progress.monsterTimers[area.id] = new Date().valueOf();
+                trace(area.id, "TIME START AT",Model.instance.progress.monsterTimers[area.id]);
+                _monstersAmount = area.areamin + Math.round(Math.random() * (area.areamax - area.areamin));
+                Model.instance.progress.saveProgress();
+
             }
         }
         coreDispatch(MapScreen.DELETE_POINT, $pt);
@@ -296,6 +316,8 @@ public class Territory
         {
             if(_nextMonsters > 0 && _nextMonsters - $delta <= 0) {
                 _killed = 0;
+                delete Model.instance.progress.monsterTimers[area.id];
+                Model.instance.progress.saveProgress();
             }
             _nextMonsters -= $delta;
             _hud.monstersRespawn(_nextMonsters);
@@ -305,7 +327,9 @@ public class Territory
             _hud.monstersRespawn(-1);
             if (_territoryMonsters.length < _area.areamax)
             {
-                if (_territoryMonsters.length + _killed < _area.areamin)
+//                trace(_monstersAmount);
+                if (_territoryMonsters.length + _killed < _monstersAmount)
+//                if (_territoryMonsters.length + _killed < _area.areamin)
 //                if (_pointsTimeout <= 0 || _territoryMonsters.length < _area.areamin)
                 {
                     createMonster();

@@ -870,7 +870,7 @@
       "picture": "monster_10.png",
       "expearned": 492,
       "speed": 100,
-      "reward": "1 477",
+      "reward": 1477,
       "order": 9,
       "difficultyfactor": 15,
       "itemimage": "card_m10",
@@ -891,7 +891,7 @@
       "picture": "monster_1.png",
       "expearned": 591,
       "speed": 100,
-      "reward": "1 772",
+      "reward": 1772,
       "order": 10,
       "difficultyfactor": 8,
       "itemimage": "card_m10",
@@ -2018,6 +2018,102 @@
     },
     {
       "id": "zubat.d",
+      "russian": " "
+    },
+    {
+      "id": "house",
+      "russian": "Дом"
+    },
+    {
+      "id": "card_w1.d",
+      "russian": " "
+    },
+    {
+      "id": "card_w2.d",
+      "russian": " "
+    },
+    {
+      "id": "card_w3.d",
+      "russian": " "
+    },
+    {
+      "id": "card_w4.d",
+      "russian": " "
+    },
+    {
+      "id": "card_wm.d",
+      "russian": " "
+    },
+    {
+      "id": "card_ah1.d",
+      "russian": " "
+    },
+    {
+      "id": "card_ah2.d",
+      "russian": " "
+    },
+    {
+      "id": "card_ab1.d",
+      "russian": " "
+    },
+    {
+      "id": "card_ab2.d",
+      "russian": " "
+    },
+    {
+      "id": "card_ab3.d",
+      "russian": " "
+    },
+    {
+      "id": "card_ab4.d",
+      "russian": " "
+    },
+    {
+      "id": "card_al1.d",
+      "russian": " "
+    },
+    {
+      "id": "card_al2.d",
+      "russian": " "
+    },
+    {
+      "id": "card_ag1.d",
+      "russian": " "
+    },
+    {
+      "id": "card_ag2.d",
+      "russian": " "
+    },
+    {
+      "id": "card_am1.d",
+      "russian": " "
+    },
+    {
+      "id": "card_s1_1.d",
+      "russian": " "
+    },
+    {
+      "id": "card_s2_1.d",
+      "russian": " "
+    },
+    {
+      "id": "card_s3_1.d",
+      "russian": " "
+    },
+    {
+      "id": "card_s4_1.d",
+      "russian": " "
+    },
+    {
+      "id": "card_s5_1.d",
+      "russian": " "
+    },
+    {
+      "id": "card_s1_2.d",
+      "russian": " "
+    },
+    {
+      "id": "card_s2_2.d",
       "russian": " "
     }
   ]

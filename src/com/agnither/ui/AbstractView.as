@@ -21,6 +21,7 @@ import starling.display.Image;
 import starling.display.Sprite;
 import starling.events.Event;
 import starling.text.TextField;
+import starling.text.TextFieldAutoSize;
 import starling.textures.Texture;
 
 public class AbstractView extends Sprite
@@ -182,10 +183,13 @@ public class AbstractView extends Sprite
                 {
                     if (item.name.search("_label") < 0)
                     {
-                        view = new TextField(item.width, item.height, item.text, item.fontName, -1, 0xFFFFFF);
+                        view = new TextField(item.width, item.height, item.text, item.fontName, item.size, 0xFFFFFF);
                         view.touchable = false;
                         (view as TextField).hAlign = item.align;
-                        (view as TextField).autoScale = true;
+//                        (view as TextField).autoScale = true;
+//                        (view as TextField).autoScale = false;
+                        (view as TextField).autoSize = TextFieldAutoSize.VERTICAL;
+//                        (view as TextField).autoSize = TextFieldAutoSize.BOTH_DIRECTIONS;
                         (view as TextField).batchable = true;
                     }
                     else

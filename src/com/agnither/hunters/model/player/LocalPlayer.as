@@ -144,7 +144,6 @@ public class LocalPlayer extends Player {
         _ressurrectedPet = false;
 
         var petsInstaled : Array = inventory.getItemsInSlot("1");
-        trace("*** INIT", petsInstaled);
         if(petsInstaled && petsInstaled.length > 0) {
             var petItem : Item = petsInstaled[0] as Item;
             var monster : MonsterVO = MonsterVO.DICT[petItem.name][1];

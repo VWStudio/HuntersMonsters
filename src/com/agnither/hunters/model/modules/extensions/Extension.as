@@ -12,6 +12,7 @@ public class Extension
 
 
     public static const TYPE : String = "extension";
+    protected var _initialArgs : Array;
 
 
     public static function create($type : String, $args : Array):Extension {
@@ -76,13 +77,13 @@ public class Extension
     }
 
     public function setArguments($args : Array) : void {
+        _initialArgs = $args.slice();
         _extArguments = $args;
         fill();
     }
 
     public function toObject() : Object
     {
-//        trace(this, "~" ,_extArguments);
         return _extArguments;
     }
 

@@ -25,8 +25,6 @@ public class Main extends Sprite {
 
     public function Main() {
 
-        trace("********************");
-
         addEventListener(Event.ADDED_TO_STAGE, handleAddedToStage);
     }
 

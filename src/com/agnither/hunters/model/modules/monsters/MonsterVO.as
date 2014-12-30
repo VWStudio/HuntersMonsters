@@ -27,6 +27,7 @@ public dynamic class MonsterVO extends PersonageVO {
     public var items: Array = [];
     public var stars: Array = [];
 
+    public static var maxOrder : int = 0;
 
 
 
@@ -49,6 +50,8 @@ public dynamic class MonsterVO extends PersonageVO {
 
             DICT[object.id][object.level] = object;
             DICT["order"+object.order] = object;
+            maxOrder = Math.max(object.order, maxOrder);
+            trace(object.id, object.order, maxOrder, DICT["order"+object.order], object.reward, JSON.stringify(object));
             LIST.push(object);
             DICT_BY_TYPE[object.id].push(object);
         }

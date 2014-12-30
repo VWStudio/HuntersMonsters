@@ -11,7 +11,7 @@ import com.agnither.hunters.model.player.inventory.PetsInventory;
 import com.agnither.hunters.view.ui.UI;
 import com.agnither.hunters.view.ui.common.Scroll;
 import com.agnither.hunters.view.ui.common.TabView;
-import com.agnither.hunters.view.ui.popups.monsters.CatchedPetsView;
+import com.agnither.hunters.view.ui.popups.monsters.CatchedPetsView___not_used;
 import com.agnither.hunters.view.ui.popups.traps.TrapItem;
 import com.agnither.hunters.view.ui.screens.battle.BattleScreen;
 import com.agnither.ui.Popup;
@@ -36,7 +36,7 @@ public class SelectMonsterPopup extends Popup {
 
     private var _closeBtn: Button;
 
-//    private var _monsters: CatchedPetsView;
+//    private var _monsters: CatchedPetsView___not_used;
     private var _monstersContainer: Sprite;
 
     private var _tamedmonsters : TamedPetsView;
@@ -77,7 +77,7 @@ public class SelectMonsterPopup extends Popup {
 
         delete _links.monsters;
 
-//        _monsters = new CatchedPetsView();
+//        _monsters = new CatchedPetsView___not_used();
 //        _monstersContainer.addChild(_monsters);
 
         _tamedmonsters = new TamedPetsView();

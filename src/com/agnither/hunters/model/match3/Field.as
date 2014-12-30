@@ -95,7 +95,6 @@ public class Field extends EventDispatcher {
             _chipTypes.push(allTypes[int(Math.random()*allTypes.length)]);
         }
 
-        trace("CHIP TYPES", _chipTypes);
     }
 
     public function init():void {

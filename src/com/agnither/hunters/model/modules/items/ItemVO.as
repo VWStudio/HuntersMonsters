@@ -65,11 +65,10 @@ public class ItemVO
         }
 //        if(SettingsVO.DICT[$monster.id+"Extension"]) {
 //            var str : String = SettingsVO.DICT[$monster.id+"Extension"];
-//            trace(str)
 //            var extArr : Array = str.split(":");
 //            extObj[extArr[0]] = JSON.parse(extArr[1]);
 //        }
-        trace($monster.id, $monster.id+"Extension", SettingsVO.DICT[$monster.id+"Extension"], JSON.stringify(extObj));
+//        trace($monster.id, $monster.id+"Extension", SettingsVO.DICT[$monster.id+"Extension"], JSON.stringify(extObj));
         obj.ext = extObj;
 
         return ItemVO.fill(new ItemVO(), obj)
@@ -203,5 +202,13 @@ public class ItemVO
         return $val >= dropparam[0] && $val <= dropparam[1];
 
     }
+
+    public function minval() : Number {
+        return dropparam[0];
+    }
+    public function maxval() : Number {
+        return dropparam[1];
+    }
+
 }
 }

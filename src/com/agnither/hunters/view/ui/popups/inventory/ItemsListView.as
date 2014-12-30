@@ -199,6 +199,7 @@ public class ItemsListView extends AbstractView {
                 coreDispatch(ItemView.HOVER, item);
             }
         } else {
+            coreDispatch(ItemView.HOVER_OUT, item);
 //            coreDispatch(ItemView.HOVER_OUT);
             Mouse.cursor = MouseCursor.AUTO;
         }

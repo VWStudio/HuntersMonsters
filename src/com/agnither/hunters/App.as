@@ -13,7 +13,7 @@ import com.agnither.hunters.model.player.Player;
 import com.agnither.hunters.model.player.inventory.Pet;
 import com.agnither.hunters.utils.DeviceResInfo;
 import com.agnither.hunters.view.ui.UI;
-import com.agnither.hunters.view.ui.popups.monsters.CatchedPetsView;
+import com.agnither.hunters.view.ui.popups.monsters.CatchedPetsView___not_used;
 import com.agnither.hunters.view.ui.screens.battle.BattleScreen;
 import com.agnither.hunters.view.ui.screens.hud.HudScreen;
 import com.agnither.hunters.view.ui.screens.map.ChestPoint;
@@ -94,7 +94,6 @@ public class App extends Sprite {
 
 
     private function handleComplete() : void {
-//        trace("HANDLE COMPLETE");
         coreRemoveListener(ResourcesManager.ON_COMPLETE_LOAD, handleComplete);
 
 //        if(!ResourcesManager.isLocal) {
@@ -125,7 +124,6 @@ public class App extends Sprite {
 
     private function handleInit() : void {
 
-//        trace("HANDLE INIT");
         _refs = new CommonRefs(_resources);
         var tex : Texture = _refs.gui.getTexture("camp");
         trace("camp", tex.height);

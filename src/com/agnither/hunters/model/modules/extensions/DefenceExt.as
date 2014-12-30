@@ -56,5 +56,10 @@ public class DefenceExt extends Extension
     {
         return _defence;
     }
+
+    public function getRange() : String
+    {
+        return _initialArgs[0] + (_initialArgs.length > 1 ? "-"+_initialArgs[1] : "");
+    }
 }
 }

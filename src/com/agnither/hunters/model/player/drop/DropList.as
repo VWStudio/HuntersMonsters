@@ -11,7 +11,9 @@ import com.agnither.hunters.model.modules.items.ItemVO;
 import com.agnither.hunters.model.modules.monsters.MonsterVO;
 import com.agnither.hunters.model.modules.players.SettingsVO;
 import com.agnither.hunters.model.player.inventory.Item;
+import com.agnither.hunters.view.ui.screens.battle.BattleScreen;
 import com.cemaprjl.core.coreAddListener;
+import com.cemaprjl.core.coreDispatch;
 import com.cemaprjl.utils.Util;
 
 import flash.geom.Utils3D;
@@ -47,11 +49,9 @@ public class DropList extends EventDispatcher
     private function onDropGenerate($hitPercent : Number) : void
     {
         var currentMonster : MonsterVO = Model.instance.enemy.hero.monster;
-        trace("GENERATE DROP", currentMonster, $hitPercent);
         if(!currentMonster) return;
 
         var isDropped : Boolean = ($hitPercent * 300) > Math.random() * 100;
-        trace("isDropped", isDropped);
 
 //        isDropped = true;
 
@@ -72,19 +72,27 @@ public class DropList extends EventDispatcher
         }
         var pAverage :Number = Math.round(currentMonster.reward * 0.3);
 
-        var nextMonster : MonsterVO = MonsterVO.DICT["order"+(currentMonster.order + 1)];
+        var nextMonster : MonsterVO
+        if(currentMonster.order < MonsterVO.maxOrder) {
+            var monOrder : int = currentMonster.order + 1;
+            nextMonster = MonsterVO.DICT["order"+monOrder];
+        } else {
+            nextMonster = currentMonster;
+        }
+
+
         var pMax : Number = Math.round(nextMonster.reward * 0.5);
         var p : Number = Util.getRandomParam(pMin, pAverage, pMax); // возвращает кол-во золота
 
 
-        trace("isGold", isGold, p, pMin, pAverage, pMax);
+        trace("isGold", isGold, p, pMin, pAverage, pMax, MonsterVO.maxOrder, currentMonster.order);
 
         var content : Item;
 
 //        if(false) {
         if(isGold) {
             content = Item.create(ItemVO.createGoldItemVO);
-            content.amount = Math.round(p);
+            content.amount = Math.ceil(p);
         }
         else
         {
@@ -98,7 +106,6 @@ public class DropList extends EventDispatcher
 //
             var paramMult : Number = SettingsVO.DICT[slot+"ParamMult"];
 
-//            trace(itemParam, items);
 
 
 //            paramMult // значение из конфика (defenceParamBodyMult || damageParamWeaponMult || ...)
@@ -137,18 +144,31 @@ public class DropList extends EventDispatcher
         trace("findItem", itemParam, changeValue, $items);
         var selectedItems : Array = [];
         if(itemParam > 0) {
+            var minVal : Number
+            var maxVal : Number
             for (var i : int = 0; i < $items.length; i++)
             {
                 var itm : ItemVO = $items[i];
+                if(!minVal) {
+                    minVal = itm.minval();
+                } else {
+                    minVal = Math.min(minVal, itm.minval());
+                }
+                if(!maxVal) {
+                    maxVal = itm.maxval();
+                } else {
+                    maxVal = Math.max(maxVal, itm.maxval());
+                }
+
                 if(itm.isFitsParam(itemParam)) {
                     selectedItems.push(itm);
                 }
             }
         }
-        trace("*", itemParam, selectedItems);
+        trace("*", itemParam, selectedItems, minVal, maxVal);
         if(!selectedItems.length) {
             var newChangeValue : Number = changeValue < 0 ? -1 * (changeValue - 1) : -1 * (changeValue + 1);
-            if(newChangeValue < 0) {
+            if(itemParam + newChangeValue < 0) {
                 newChangeValue = -1 * (newChangeValue - 1)
             }
             return findItem($items, itemParam + changeValue, newChangeValue);
@@ -204,6 +224,7 @@ public class DropList extends EventDispatcher
 
     private function addContent(content : Item) : void
     {
+        coreDispatch(BattleScreen.PLAY_CHEST_FLY, content);
         if (content.isGold())
         {
             if (!_goldContent)
@@ -219,6 +240,7 @@ public class DropList extends EventDispatcher
             if (_lastIndex < _list.length)
             {
                 _list[_lastIndex].addContent(content);
+//                coreDispatch(BattleScreen.PLAY_CHEST_FLY, content);
             }
             _itemsAmount++;
             _lastIndex++;

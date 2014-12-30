@@ -106,21 +106,16 @@ public class BuyItemView extends AbstractView
 //        var touch1 : Touch =
 //        var touchTooltip : Touch = e.getTouch(Model.instance.itemsTooltip);
 //        var ttInteract : Boolean = e.interactsWith(Model.instance.itemsTooltip);
-//        trace(touchTooltip, ttInteract);
 
 //        var isHitTooltip : Boolean = e.interactsWith(Model.instance.itemsTooltip);
-//        trace("+++ ON TOUCH", touch.phase);
         if (touch && Model.instance.itemsTooltip.item != _itemView.item) {
-//            trace("Buy, TOUCH", isHitTooltip, touch.phase, item.uniqueId);
 
-//            trace(touch, e.interactsWith(Model.instance.itemsTooltip));
 
             coreDispatch(ItemView.HOVER, _itemView, _price, false);
 //            coreDispatch(ShopPopup.SHOW_TOOLTIP, this);
         }
         else
         {
-//            trace("Buy, NO Touch", isHitTooltip, touch, item.uniqueId);
 //            coreDispatch(ShopPopup.HIDE_TOOLTIP, !isHitTooltip);
         }
 

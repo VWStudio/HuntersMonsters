@@ -12,7 +12,7 @@ import com.agnither.hunters.view.ui.UI;
 import com.agnither.hunters.view.ui.common.items.ItemView;
 import com.agnither.hunters.view.ui.popups.monsters.SelectMonsterPopup;
 import com.agnither.hunters.view.ui.popups.monsters.PetView;
-import com.agnither.hunters.view.ui.popups.monsters.CatchedPetsView;
+import com.agnither.hunters.view.ui.popups.monsters.CatchedPetsView___not_used;
 import com.agnither.hunters.view.ui.screens.map.MapScreen;
 import com.agnither.ui.AbstractView;
 import com.agnither.utils.CommonRefs;
@@ -26,7 +26,7 @@ import starling.events.Touch;
 import starling.events.TouchEvent;
 import starling.events.TouchPhase;
 
-public class CatchedPetsView extends AbstractView {
+public class CatchedPetsView___not_used extends AbstractView {
 
 
 
@@ -35,7 +35,7 @@ public class CatchedPetsView extends AbstractView {
 
     private var _pets: PetsInventory;
 
-    public function CatchedPetsView() {
+    public function CatchedPetsView___not_used() {
         _pets = Model.instance.player.pets;
     }
 
@@ -111,7 +111,7 @@ public class CatchedPetsView extends AbstractView {
                 coreDispatch(ItemView.HOVER, item);
             }
         } else {
-//            coreDispatch(ItemView.HOVER_OUT);
+            coreDispatch(ItemView.HOVER_OUT);
             Mouse.cursor = MouseCursor.AUTO;
         }
     }

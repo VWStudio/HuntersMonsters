@@ -59,5 +59,10 @@ public class DamageExt extends Extension
     {
         return Locale.getString(TYPE) + ":"+_damage;
     }
+
+    public function getRange() : String
+    {
+        return _initialArgs[1] + (_initialArgs.length > 2 ? "-"+_initialArgs[2] : "");
+    }
 }
 }

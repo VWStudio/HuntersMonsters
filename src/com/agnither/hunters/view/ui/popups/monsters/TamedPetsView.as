@@ -11,7 +11,7 @@ import com.agnither.hunters.view.ui.UI;
 import com.agnither.hunters.view.ui.common.items.ItemView;
 import com.agnither.hunters.view.ui.popups.monsters.SelectMonsterPopup;
 import com.agnither.hunters.view.ui.popups.monsters.PetView;
-import com.agnither.hunters.view.ui.popups.monsters.CatchedPetsView;
+import com.agnither.hunters.view.ui.popups.monsters.CatchedPetsView___not_used;
 import com.agnither.hunters.view.ui.screens.battle.BattleScreen;
 import com.agnither.hunters.view.ui.screens.map.MapScreen;
 import com.agnither.ui.AbstractView;
@@ -75,7 +75,7 @@ public class TamedPetsView extends AbstractView {
                 coreDispatch(ItemView.HOVER, item);
             }
         } else {
-//            coreDispatch(ItemView.HOVER_OUT);
+            coreDispatch(ItemView.HOVER_OUT);
             Mouse.cursor = MouseCursor.AUTO;
         }
     }

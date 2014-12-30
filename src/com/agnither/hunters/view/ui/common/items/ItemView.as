@@ -5,6 +5,7 @@ package com.agnither.hunters.view.ui.common.items
 {
 import com.agnither.hunters.data.outer.MagicTypeVO;
 import com.agnither.hunters.model.modules.extensions.DamageExt;
+import com.agnither.hunters.model.modules.extensions.DefenceExt;
 import com.agnither.hunters.model.modules.extensions.PetExt;
 import com.agnither.hunters.model.modules.locale.Locale;
 import com.agnither.hunters.model.modules.locale.Locale;
@@ -197,5 +198,20 @@ public class ItemView extends AbstractView
     }
 
 
+    public function demoMode() : void
+    {
+        if (_item.isSpell() || _item.getDamage())
+        {
+            _damage.text = (item.getExtension(DamageExt.TYPE) as DamageExt).getRange();
+        }
+        else if (_item.getDefence())
+        {
+            _damage.text = (item.getExtension(DefenceExt.TYPE) as DefenceExt).getRange();
+        }
+        else
+        {
+            _damage.visible = false;
+        }
+    }
 }
 }

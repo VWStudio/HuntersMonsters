@@ -12,7 +12,7 @@ import com.agnither.hunters.model.player.Player;
 import com.agnither.hunters.model.player.inventory.PetsInventory;
 import com.agnither.hunters.view.ui.UI;
 import com.agnither.hunters.view.ui.common.TabView;
-import com.agnither.hunters.view.ui.popups.monsters.CatchedPetsView;
+import com.agnither.hunters.view.ui.popups.monsters.CatchedPetsView___not_used;
 import com.agnither.hunters.view.ui.popups.traps.TrapItem;
 import com.agnither.ui.ButtonContainer;
 import com.agnither.ui.Popup;

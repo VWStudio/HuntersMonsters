@@ -40,7 +40,6 @@ public class Item extends EventDispatcher
 //            case ItemTypeVO.magic:
 //                item = new Item($data);
 //                break;
-//                trace(JSON.stringify($data));
 //                item = new Item($data);
 //                break;
 //                item = new Spell($data);

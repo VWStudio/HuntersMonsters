@@ -172,8 +172,6 @@ public class AIPlayer extends Player
         var results : Array;
 //                , spells:_currentSpellsObj, mana : _currentSpellsMana, other : _otherResults} ));
         if(_damageResults.length > 0) {
-//            trace(JSON.stringify(_damageResults));
-//            trace("DAMAGE RES");
             results = _damageResults;
         }
         else if(_chestResults.length > 0)
@@ -182,19 +180,14 @@ public class AIPlayer extends Player
         }
         else
         {
-//            trace(JSON.stringify(_currentSpellsObj));
-//            trace(JSON.stringify(_currentSpellsMana));
             for (var i : int = 0; i < _currentSpellsMana.length; i++)
             {
                 var manaID : String = _currentSpellsMana[i];
                 if(_currentSpellsObj[manaID] && _currentSpellsObj[manaID].length > 0) {
                     results = _currentSpellsObj[manaID];
-//                    trace("SPELLS RES", manaID);
                 }
             }
             if(!results) {
-//                trace(JSON.stringify(_otherResults));
-//                trace("OTHER RES");
                 results = _otherResults;
             }
 //            if(_spellMovesResults.length > 0)

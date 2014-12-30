@@ -97,7 +97,6 @@ public class Inventory extends EventDispatcher
             return 0;
         }
 
-//        trace("INVENTORY", arr, JSON.stringify(obj));
 
         return arr;
     }
@@ -201,7 +200,6 @@ public class Inventory extends EventDispatcher
     public function isHaveSpell($id : Number) : Boolean
     {
 
-//        trace("isHaveSpell", $id, _spells["spell"+$id]);
         return _spells["spell" + $id] != null;
 
     }
@@ -272,7 +270,6 @@ public class Inventory extends EventDispatcher
         var slotMax : int = ItemSlotVO.DICT[item.slot].max; // MAX for current slot kind
         var isHaveFree : Boolean = _inventoryItems.length < max_capacity;
 
-//        trace("addToInventory", slotMax, isHaveFree, item.slot, slotItems.length);
 
         if(slotMax > 0)
         {
@@ -439,7 +436,6 @@ public class Inventory extends EventDispatcher
 
             }
         }
-//        trace("UPD EXTENSIONS", JSON.stringify(_extensions));
     }
 
     public function getItemsByName($code : String) : Array

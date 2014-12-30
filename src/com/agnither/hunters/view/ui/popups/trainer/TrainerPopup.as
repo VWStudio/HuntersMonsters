@@ -100,24 +100,24 @@ public class TrainerPopup extends Popup
         _container.removeChildren();
         if (_currentOwner == _trainerTab)
         {
-            _currentType = _trapsTab;  // XXX hack
-            if (_currentType == _monstersTab)
-            {
-
-
-            }
-            else if (_currentType == _trapsTab)
-            {
-//                for (var i : int = 0; i < TrapVO.LIST.length; i++)
-//                {
-//                    var trap : TrapVO = TrapVO.LIST[i].clone();
-//                    var trapView : TrapItem = new TrapItem(trap);
-//                    _container.addChild(trapView);
-//                    trapView.x = (_container.numChildren - 1) % 4 * 170;
-//                    trapView.y = int(_container.numChildren / 4) * 170;
-//                    trapView.buyMode(true);
-//                }
-            }
+//            _currentType = _trapsTab;  // XXX hack
+//            if (_currentType == _monstersTab)
+//            {
+//
+//
+//            }
+//            else if (_currentType == _trapsTab)
+//            {
+////                for (var i : int = 0; i < TrapVO.LIST.length; i++)
+////                {
+////                    var trap : TrapVO = TrapVO.LIST[i].clone();
+////                    var trapView : TrapItem = new TrapItem(trap);
+////                    _container.addChild(trapView);
+////                    trapView.x = (_container.numChildren - 1) % 4 * 170;
+////                    trapView.y = int(_container.numChildren / 4) * 170;
+////                    trapView.buyMode(true);
+////                }
+//            }
         }
         else if (_currentOwner == _hunterTab)
         {

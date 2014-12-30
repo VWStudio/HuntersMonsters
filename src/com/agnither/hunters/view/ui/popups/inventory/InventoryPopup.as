@@ -183,7 +183,6 @@ public class InventoryPopup extends Popup
 //                _items.showType(ItemVO.TYPE_WEAPON);
 //                _items.showType(ItemTypeVO.weapon);
                 _itemHeight = 60;
-//                trace("!!!!!HEIGHT!!!!", _items.height, _items.getBounds(_items).height, _items.getBounds(this).height);
                 _scroll.setScrollParams(_items.height + 10, 460);
 
                 break;

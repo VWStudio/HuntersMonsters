@@ -10,7 +10,7 @@ import com.agnither.hunters.model.player.LocalPlayer;
 import com.agnither.hunters.model.player.personage.Progress;
 import com.agnither.hunters.view.ui.popups.inventory.InventoryPopup;
 import com.agnither.hunters.view.ui.popups.monsters.SelectMonsterPopup;
-import com.agnither.hunters.view.ui.popups.monsters.CatchedPetsView;
+import com.agnither.hunters.view.ui.popups.monsters.CatchedPetsView___not_used;
 import com.agnither.hunters.view.ui.popups.skills.SkillsPopup;
 import com.agnither.hunters.view.ui.screens.camp.CampScreen;
 import com.agnither.hunters.view.ui.screens.map.MapScreen;
@@ -141,7 +141,6 @@ public class HudScreen extends Screen {
     override public function update() : void {
         var progress :  Progress = Model.instance.progress;
         _playerLevel.text = progress.level.toString() + " ур";
-//        trace("EXP", progress.level, progress.fullExp, LevelVO.DICT[progress.level.toString()].exp, progress.exp);
         progress.fullExp.toString() + "/" +LevelVO.DICT[progress.level.toString()].exp;
 
         _playerLeague.text = LeagueVO.DICT[progress.league.toString()].name;

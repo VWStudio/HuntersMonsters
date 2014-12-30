@@ -10,7 +10,7 @@ import com.agnither.hunters.model.player.inventory.PetsInventory;
 import com.agnither.hunters.view.ui.UI;
 import com.agnither.hunters.view.ui.popups.monsters.SelectMonsterPopup;
 import com.agnither.hunters.view.ui.popups.monsters.PetView;
-import com.agnither.hunters.view.ui.popups.monsters.CatchedPetsView;
+import com.agnither.hunters.view.ui.popups.monsters.CatchedPetsView___not_used;
 import com.agnither.hunters.view.ui.popups.traps.TrapItem;
 import com.agnither.hunters.view.ui.screens.map.MapScreen;
 import com.agnither.ui.AbstractView;
