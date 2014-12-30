@@ -88,7 +88,7 @@ public class ManaListView extends AbstractView {
         if(touch) {
 //            trace("ADD MANA");
             var mv : BattleManaView = event.currentTarget as BattleManaView;
-            _manaList.addMana(mv.mana.type, 10);
+            _manaList.addMana(mv.mana.type, 300);
         }
 
     }

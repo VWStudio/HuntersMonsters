@@ -85,19 +85,22 @@ public class HousePopup extends Popup {
         _getPrizeButton = _links["attack_btn"];
         _getPrizeButton.addEventListener(Event.TRIGGERED, handleGet );
         _getPrizeButton.text = "Купить";
+        _getPrizeButton.visible = false;
 
         _priceText = _links["price_tf"];
         _priceText.text = "";
+        _priceText.visible = false;
 
         _itemsContainer = new Sprite();
         addChild(_itemsContainer);
-        _itemsContainer.x = 100;
-        _itemsContainer.y = 100;
+        _itemsContainer.x = 210;
+        _itemsContainer.y = 70;
 
         _randomContainer = new Sprite();
         addChild(_randomContainer);
         _randomContainer.x = 400;
         _randomContainer.y = 200;
+        _randomContainer.visible = false;
 
         coreAddListener(Model.UPDATE_HOUSE, onHouseUpdate);
 
@@ -141,7 +144,7 @@ public class HousePopup extends Popup {
 
         territory = data as Territory;
 
-        _owner.text = territory.isHouseOwner ? "Вы владеете этим домом" : "Дом принадлежит не вам";
+        _owner.text = territory.isHouseOwner ? "Открывает новые товары для магазина:" : "Открывает новые товары для магазина:";
         _attackButton.visible = !territory.isHouseOwner;
 
         _itemsContainer.removeChildren();
@@ -152,11 +155,16 @@ public class HousePopup extends Popup {
             var houseItems : Array = territory.houseUnlockItems.slice();
 
             var i : int = 0;
-            while (i < 3 && houseItems.length > 0){
+            while (i < 10 && houseItems.length > 0){
                 var item : ItemVO = houseItems.splice(int(Math.random() * houseItems.length), 1)[0];
                 var iview : ItemView = ItemView.create(Item.create(item));
                 _itemsContainer.addChild(iview);
-                iview.y = i * (iview.height + 1);
+                iview.y = i * (iview.height + 5);
+                if (i > 2)
+                {
+                    iview.x = iview.width +5;
+                    iview.y -= 3 * (iview.height + 5);
+                }
                 iview.update();
                 i++;
             }
