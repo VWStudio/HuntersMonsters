@@ -36,9 +36,10 @@ public class GoldView extends AbstractView {
 //    public var touched : Boolean = false;
     public var price : Number;
     private var _goldIcon : Image;
-    private var itemView : ItemView;
+    private var _itemView : ItemView;
     private var _quad : Quad;
     private var _back : Image;
+    private var isNew : Boolean = true;
 
     public function GoldView() {
         createFromConfig(_refs.guiConfig.common.goldItem);
@@ -115,6 +116,11 @@ public class GoldView extends AbstractView {
 
     override public function update() : void {
 
+        if(!isNew)
+        {
+            return;
+        }
+
 //        _price = data as Number;
         _value.text = price.toString();
 
@@ -162,6 +168,7 @@ public class GoldView extends AbstractView {
 //        _quad.height = rect.height;
 //        _quad.x = rect.x;
 //        _quad.y = rect.y;
+        isNew = false;
     }
 
     private function onTouch(event : TouchEvent) : void
@@ -187,12 +194,12 @@ public class GoldView extends AbstractView {
     public function setData($item : ItemView, $price : Number, $isSell : Boolean) : void
     {
 //        trace("SET DATA");
-        item = $item.item;
-        if(itemView) {
-            itemView.removeEventListener(TouchEvent.TOUCH, onTouchItem);
+        if(_itemView) {
+            _itemView.removeEventListener(TouchEvent.TOUCH, onTouchItem);
         }
         itemView = $item;
-        itemView.addEventListener(TouchEvent.TOUCH, onTouchItem);
+        item = $item.item;
+        _itemView.addEventListener(TouchEvent.TOUCH, onTouchItem);
 
         price = $price;
         isSell = $isSell;
@@ -202,7 +209,7 @@ public class GoldView extends AbstractView {
 
     private function onTouchItem(event : TouchEvent) : void
     {
-        var touch : Touch = event.getTouch(itemView);
+        var touch : Touch = event.getTouch(_itemView);
         if(!touch) {
             if(!event.getTouch(this) || price <= 0) {
 //                trace("ON TOUCH ITEM");
@@ -214,6 +221,23 @@ public class GoldView extends AbstractView {
                 event.stopImmediatePropagation();
                 event.stopPropagation();
             }
+        }
+    }
+
+    public function get itemView() : ItemView
+    {
+        return _itemView;
+    }
+
+    public function set itemView(value : ItemView) : void
+    {
+        if(_itemView == value) {
+            return
+        }
+        else
+        {
+            _itemView = value;
+            isNew = true;
         }
     }
 }

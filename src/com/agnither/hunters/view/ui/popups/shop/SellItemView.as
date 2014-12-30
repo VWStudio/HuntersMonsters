@@ -51,7 +51,7 @@ public class SellItemView extends AbstractView
     override protected function initialize() : void
     {
         // XXXCOMMON
-        createFromConfig(_refs.guiConfig.common.shopItem);
+//        createFromConfig(_refs.guiConfig.common.shopItem);
 
         this.touchable = true;
 //        _back = _links["bitmap__bg"];

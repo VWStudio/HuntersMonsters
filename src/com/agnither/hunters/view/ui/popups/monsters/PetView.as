@@ -5,8 +5,11 @@ package com.agnither.hunters.view.ui.popups.monsters {
 import com.agnither.hunters.data.outer.MagicTypeVO;
 import com.agnither.hunters.data.outer.DamageTypeVO;
 import com.agnither.hunters.model.Model;
+import com.agnither.hunters.model.modules.items.ItemVO;
 import com.agnither.hunters.model.modules.locale.Locale;
+import com.agnither.hunters.model.player.inventory.Item;
 import com.agnither.hunters.model.player.inventory.Pet;
+import com.agnither.hunters.view.ui.common.items.ItemView;
 import com.agnither.ui.AbstractView;
 import com.agnither.ui.ButtonContainer;
 import com.agnither.utils.CommonRefs;
@@ -32,9 +35,11 @@ public class PetView extends AbstractView {
     private var _sellButton : ButtonContainer;
     private var _price : Number = 0;
     private var _buyable : Boolean;
+    private var _item : ItemView;
 
     public function PetView(pet: Pet) {
         _pet = pet;
+        _item = ItemView.create(Item.create(ItemVO.createPetItemVO(_pet.monster)))
     }
 
     override protected function initialize():void {
@@ -45,6 +50,7 @@ public class PetView extends AbstractView {
         _picture = _links.icon.getChildAt(0) as Image;
         _picture.touchable = true;
         _picture.texture = _refs.gui.getTexture(_pet.picture);
+        this.touchable = true;
 
 //        _links.damage_icon.getChildAt(0).texture = _refs.gui.getTexture("hit.png");
 
@@ -96,6 +102,16 @@ public class PetView extends AbstractView {
         _hp = null;
         _armor = null;
         _damage = null;
+    }
+
+    public function get item() : ItemView
+    {
+        return _item;
+    }
+
+    public function set item(value : ItemView) : void
+    {
+        _item = value;
     }
 }
 }

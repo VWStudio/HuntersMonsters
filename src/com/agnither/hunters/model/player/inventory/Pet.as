@@ -60,5 +60,10 @@ public class Pet extends EventDispatcher {
         _monster = null;
         _params = null;
     }
+
+    public function get monster() : MonsterVO
+    {
+        return _monster;
+    }
 }
 }

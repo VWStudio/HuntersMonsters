@@ -147,13 +147,18 @@ public class HousePopup extends Popup {
         _itemsContainer.removeChildren();
 
         if(territory.houseUnlockItems) {
-            for (var i : int = 0; i < territory.houseUnlockItems.length; i++)
-            {
-                    var item : ItemVO = territory.houseUnlockItems[i];
-                    var iview : ItemView = ItemView.create(Item.create(item));
-                    _itemsContainer.addChild(iview);
-                    iview.y = i * 70;
-                    iview.update();
+            trace(JSON.stringify(territory.houseUnlockItems));
+
+            var houseItems : Array = territory.houseUnlockItems.slice();
+
+            var i : int = 0;
+            while (i < 3 && houseItems.length > 0){
+                var item : ItemVO = houseItems.splice(int(Math.random() * houseItems.length), 1)[0];
+                var iview : ItemView = ItemView.create(Item.create(item));
+                _itemsContainer.addChild(iview);
+                iview.y = i * (iview.height + 1);
+                iview.update();
+                i++;
             }
         }
 

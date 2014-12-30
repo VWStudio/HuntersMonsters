@@ -163,6 +163,7 @@ public class InventoryPopup extends Popup
     override public function update() : void
     {
         _itemsTab.dispatchEventWith(TabView.TAB_CLICK);
+        _inventoryView.update();
 //        handleSelectTab();
 //        _items.showType(ItemTypeVO.weapon);
     }

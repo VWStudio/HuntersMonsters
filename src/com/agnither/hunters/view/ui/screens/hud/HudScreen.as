@@ -151,7 +151,9 @@ public class HudScreen extends Screen {
 
         _modeBtn.text = Model.instance.state == MapScreen.NAME ? "Лагерь" : "Карта";
 
-        if(progress.fullExp < LevelVO.DICT[progress.level.toString()].exp) {
+        var lvvo : LevelVO = LevelVO.DICT[progress.level.toString()];
+
+        if(progress.fullExp < lvvo.exp) {
             _playerExp.text = progress.fullExp.toString() + "/" +LevelVO.DICT[progress.level.toString()].exp;
             _expProgress.scaleX = progress.fullExp / LevelVO.DICT[progress.level.toString()].exp;
         } else {

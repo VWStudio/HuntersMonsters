@@ -6,12 +6,16 @@ package com.agnither.hunters.view.ui.screens.battle
 import com.agnither.hunters.App;
 import com.agnither.hunters.data.outer.MagicTypeVO;
 import com.agnither.hunters.model.Model;
+import com.agnither.hunters.model.match3.Cell;
+import com.agnither.hunters.model.match3.Match;
 import com.agnither.hunters.model.match3.Match3Game;
 import com.agnither.hunters.model.player.AIPlayer;
+import com.agnither.hunters.model.player.ManaList;
 import com.agnither.hunters.model.player.Player;
 import com.agnither.hunters.model.player.Territory;
 import com.agnither.hunters.model.player.inventory.Item;
 import com.agnither.hunters.model.player.personage.Personage;
+import com.agnither.hunters.view.ui.common.BattleManaView;
 import com.agnither.hunters.view.ui.common.GoldView;
 import com.agnither.hunters.view.ui.popups.house.HousePopup;
 import com.agnither.hunters.view.ui.popups.hunt.HuntStepsPopup;
@@ -229,24 +233,43 @@ public class BattleScreen extends Screen
 
     }
 
-    private function onManaFly($data : Object) : void
+    private function onManaFly($match : Match) : void
     {
+        /*
+         position: match.cells[1].position,
+         type    : match.type,
+         amount  : match.amount
+         */
 
-        var magicType : MagicTypeVO = MagicTypeVO.DICT[$data.type];
-        var pictureUrl : String = magicType.picturedamage;
-        var img : Image = new Image(App.instance.refs.gui.getTexture(pictureUrl));
-        _effects.addChild(img);
-        var position : Point = $data.position;
-        img.x = position.x * FieldView.tileX + FieldView.fieldX;
-        img.y = position.y * FieldView.tileY + FieldView.fieldY;
-        img.scaleX = img.scaleY = 2;
+        var magicType : MagicTypeVO = MagicTypeVO.DICT[$match.type];
+        var pictureUrl : String = magicType.picturechip;
+        var mobj : BattleManaView = _playerMana.getMagicObj($match.type);
+        if(!mobj) return;
 
-        Starling.juggler.tween(img, 0.5, {x: img.x, y: img.y - 50, onComplete: onEndTween, alpha: 0.5});
-
-        function onEndTween() : void
+        for (var i : int = 0; i < $match.cells.length; i++)
         {
-            _effects.removeChild(img);
+            var cell : Cell = $match.cells[i];
+            var img : Image = new Image(App.instance.refs.gui.getTexture(pictureUrl));
+            _effects.addChild(img);
+            var position : Point = cell.position;
+            img.x = position.x * FieldView.tileX + FieldView.fieldX;
+            img.y = position.y * FieldView.tileY + FieldView.fieldY;
+
+
+
+
+            Starling.juggler.tween(img, 0.2 + Math.random() * 0.4, {delay: Math.random() * 0.5  , x: mobj.x + _playerMana.x, y: mobj.y + _playerMana.y, onComplete: onEndTween, onCompleteArgs:[img], alpha: 0.2});
+
+            function onEndTween($img : Image) : void
+            {
+                _effects.removeChild($img);
+            }
+
+
         }
+
+
+
 
     }
 

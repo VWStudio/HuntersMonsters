@@ -45,9 +45,11 @@ public class BuyItemView extends AbstractView
     override protected function initialize() : void
     {
         // XXXCOMMON
-        createFromConfig(_refs.guiConfig.common.shopItem);
+//        createFromConfig(_refs.guiConfig.common.shopItem);
 
         this.touchable = true;
+
+        _itemView = _links.spell;
 
 //        _buyButton = _links["buy_btn"];
 //        _buyButton.text = "Купить";

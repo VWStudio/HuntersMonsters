@@ -4,6 +4,7 @@
 package com.agnither.hunters.model.player
 {
 import com.agnither.hunters.model.Model;
+import com.agnither.hunters.model.modules.items.ItemVO;
 import com.agnither.hunters.model.modules.monsters.MonsterAreaVO;
 import com.agnither.hunters.model.player.inventory.Item;
 import com.agnither.hunters.view.ui.common.AreaHud;
@@ -434,8 +435,11 @@ public class Territory
 
     public function updateHouseData() : void {
         _isHouseOwner = Model.instance.progress.houses.indexOf(_area.area) >= 0;
+
+        trace("UPDATE HOUSE DATA", area.id, _houseUnlockItems );
+
         if(!_houseUnlockItems) {
-            _houseUnlockItems = [Model.instance.items.getRandomThing(), Model.instance.items.getRandomThing(), Model.instance.items.getRandomThing()];
+            _houseUnlockItems = ItemVO.SETS[area.area];
         }
         if(!_nextRandomHouseItem) {
             generateNewHouseItem();

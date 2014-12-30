@@ -31,6 +31,12 @@ public class InventoryView extends AbstractView {
         _inventory = Model.instance.player.inventory;
     }
 
+
+    override public function update() : void
+    {
+        handleUpdate();
+    }
+
     override protected function initialize():void {
         // XXXCOMMON
         createFromConfig(_refs.guiConfig.common.spellsList);

@@ -231,6 +231,8 @@ public class ShopPopup extends Popup
         }
 
 
+        _inventoryView.update();
+
         _container.removeChildren();
         if (_currentOwner == _traderTab)
         {

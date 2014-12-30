@@ -9,17 +9,24 @@ import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.player.inventory.Pet;
 import com.agnither.hunters.model.player.personage.Progress;
 import com.agnither.hunters.view.ui.common.TabView;
+import com.agnither.hunters.view.ui.common.items.ItemView;
 import com.agnither.hunters.view.ui.popups.monsters.PetView;
+import com.agnither.hunters.view.ui.popups.monsters.TamedMonsterView;
 import com.agnither.hunters.view.ui.popups.traps.TrapItem;
 import com.agnither.ui.Popup;
 import com.cemaprjl.core.coreAddListener;
 import com.cemaprjl.core.coreDispatch;
 
 import flash.geom.Rectangle;
+import flash.ui.Mouse;
+import flash.ui.MouseCursor;
 
 import starling.display.Sprite;
 
 import starling.events.Event;
+import starling.events.Touch;
+import starling.events.TouchEvent;
+import starling.events.TouchPhase;
 
 public class TrainerPopup extends Popup
 {
@@ -123,7 +130,7 @@ public class TrainerPopup extends Popup
                 var tile: PetView;
                 for (var j:int = 0; j < catchedPets.length; j++) {
                     tile = new PetView(Model.instance.player.pets.getPet(catchedPets[j].uniqueId));
-//            tile.addEventListener(TouchEvent.TOUCH, handleTouch);
+//                    tile.addEventListener(TouchEvent.TOUCH, onTouchPet);
                     _container.addChild(tile);
                     tile.x = 180 * (j % 4);
                     tile.y = 180 * int(j / 4);
@@ -144,6 +151,29 @@ public class TrainerPopup extends Popup
 //        _trapsTab.setIsSelected(_currentType);
 
     }
+
+
+//    private function onTouchPet(e: TouchEvent):void {
+//        var item: PetView = e.currentTarget as PetView;
+//        var touch: Touch = e.getTouch(item);
+////        var touch: Touch = e.getTouch(item, TouchPhase.BEGAN);
+//        if (touch) {
+//            Mouse.cursor = MouseCursor.BUTTON;
+////            if(touch.phase == TouchPhase.BEGAN && !item.item.isPet()) {
+////                coreDispatch(LocalPlayer.ITEM_SELECTED, item.item);
+////                item.update();
+////            }
+////            else
+//            if(touch.phase == TouchPhase.HOVER)
+//            {
+//                coreDispatch(ItemView.HOVER, item);
+//            }
+//        } else {
+////            coreDispatch(ItemView.HOVER_OUT);
+//            Mouse.cursor = MouseCursor.AUTO;
+//        }
+//    }
+
 
     private function handleSelectItems(event : Event) : void
     {

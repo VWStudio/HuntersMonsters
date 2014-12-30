@@ -36,7 +36,7 @@ public class SelectMonsterPopup extends Popup {
 
     private var _closeBtn: Button;
 
-    private var _monsters: CatchedPetsView;
+//    private var _monsters: CatchedPetsView;
     private var _monstersContainer: Sprite;
 
     private var _tamedmonsters : TamedPetsView;
@@ -77,8 +77,8 @@ public class SelectMonsterPopup extends Popup {
 
         delete _links.monsters;
 
-        _monsters = new CatchedPetsView();
-        _monstersContainer.addChild(_monsters);
+//        _monsters = new CatchedPetsView();
+//        _monstersContainer.addChild(_monsters);
 
         _tamedmonsters = new TamedPetsView();
         _monstersContainer.addChild(_tamedmonsters);
@@ -113,7 +113,7 @@ public class SelectMonsterPopup extends Popup {
         }
 
 //        _traps.visible = false;
-        _monsters.visible = false;
+//        _monsters.visible = false;
         _tamedmonsters.visible = false;
         _monstersContainer.y = 0;
         switch (e.currentTarget) {
@@ -123,9 +123,9 @@ public class SelectMonsterPopup extends Popup {
                 _scroll.setScrollParams(_tamedmonsters.itemsAmount, 3);
                 break;
             case _tab2:
-                _monsters.visible = true;
-                _monsters.update();
-                _scroll.setScrollParams(_monsters.itemsAmount, 3);
+//                _monsters.visible = true;
+//                _monsters.update();
+//                _scroll.setScrollParams(_monsters.itemsAmount, 3);
                 break;
             case _tab3:
 //                _traps.visible = true;

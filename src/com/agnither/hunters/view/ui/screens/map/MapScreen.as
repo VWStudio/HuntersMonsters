@@ -249,16 +249,14 @@ public class MapScreen extends Screen {
             return;
         }
 
-        var chest : ChestPoint = new ChestPoint();
-        _chestsContainer.addChild(chest);
 
         var chestAreas : Array = [];
         var territory : Territory;
         for (var i : int = 0; i < Model.instance.progress.unlockedLocations.length; i++)
         {
             var locID : String = Model.instance.progress.unlockedLocations[i];
-            if(!Model.instance.chestAreas[locID]) {
-                territory = Model.instance.territories[locID];
+            territory = Model.instance.territories[locID];
+            if(!Model.instance.chestAreas[locID] && territory.area.chestlife > 0) {
 //                if(!territory.area.isHouse) {
                     chestAreas.push(locID);
 //                }
@@ -274,6 +272,8 @@ public class MapScreen extends Screen {
         territory = Model.instance.territories[territoryId];
         var pt : Point = territory.getPoint();
 
+        var chest : ChestPoint = new ChestPoint();
+        _chestsContainer.addChild(chest);
         chest.data = territory;
         chest.update();
 

@@ -8,7 +8,8 @@
     {
       "parameter": "chestRespawn",
       "value": "300",
-      "type": "int"
+      "type": "int",
+      "info": "не используется"
     },
     {
       "parameter": "playerInitialLevel",
@@ -353,15 +354,15 @@
     },
     {
       "id": 3,
-      "name": "card_wm1",
+      "name": "card_wm",
       "type": "weapon",
       "slot": 2,
-      "picture": "card_wm1",
+      "picture": "card_wm",
       "ext": "damage:[\"fire\",20,35]",
       "setname": "house01",
       "droppicture": "drop_staff",
       "dropparam": "4,12",
-      "localekey": "card_wm1"
+      "localekey": "card_wm"
     },
     {
       "id": 24,
@@ -395,7 +396,7 @@
       "picture": "card_ah1",
       "ext": "defence:[1,9]",
       "setname": "house00",
-      "droppicture": "drop_body",
+      "droppicture": "drop_shield",
       "dropparam": "1,3",
       "localekey": "card_ah1"
     },
@@ -407,7 +408,7 @@
       "picture": "card_ah2",
       "ext": "defence:[8,16]",
       "setname": "house02",
-      "droppicture": "drop_body",
+      "droppicture": "drop_shield",
       "dropparam": "1,3",
       "localekey": "card_ah2"
     },
@@ -539,7 +540,7 @@
       "picture": "card_am1",
       "ext": "resurrect_pet:50",
       "setname": "house03",
-      "droppicture": "drop_magic",
+      "droppicture": "drop_ring",
       "dropparam": "1,10",
       "localekey": "card_am1"
     },
@@ -909,7 +910,7 @@
       "lifemin": 60,
       "lifemax": 60,
       "respawn": 60,
-      "chestlife": 60,
+      "chestlife": 0,
       "chestrespawn": 60,
       "chestdropset": 3,
       "expearned": 50,
@@ -926,7 +927,7 @@
       "lifemin": 60,
       "lifemax": 60,
       "respawn": 60,
-      "chestlife": 60,
+      "chestlife": 0,
       "chestrespawn": 60,
       "chestdropset": 3,
       "expearned": 50,
@@ -944,7 +945,7 @@
       "lifemin": 60,
       "lifemax": 60,
       "respawn": 60,
-      "chestlife": 60,
+      "chestlife": 0,
       "chestrespawn": 60,
       "chestdropset": 3,
       "expearned": 50,
@@ -955,7 +956,7 @@
       "hud": "hud03",
       "unlock": "clouds_02,clouds_06",
       "area": "house00",
-      "chestlife": 60,
+      "chestlife": 0,
       "chestrespawn": 60,
       "chestdropset": 3,
       "expearned": 50
@@ -965,7 +966,7 @@
       "hud": "hud04",
       "unlock": "clouds_01,clouds_05,clouds_07",
       "area": "house01",
-      "chestlife": 60,
+      "chestlife": 0,
       "chestrespawn": 60,
       "chestdropset": 3,
       "expearned": 50
@@ -982,7 +983,7 @@
       "lifemin": 60,
       "lifemax": 60,
       "respawn": 60,
-      "chestlife": 60,
+      "chestlife": 0,
       "chestrespawn": 60,
       "chestdropset": 3,
       "expearned": 50,
@@ -999,7 +1000,7 @@
       "lifemin": 60,
       "lifemax": 60,
       "respawn": 60,
-      "chestlife": 60,
+      "chestlife": 0,
       "chestrespawn": 60,
       "chestdropset": 3,
       "expearned": 50,
@@ -1016,7 +1017,7 @@
       "lifemin": 60,
       "lifemax": 60,
       "respawn": 60,
-      "chestlife": 60,
+      "chestlife": 0,
       "chestrespawn": 60,
       "chestdropset": 3,
       "expearned": 50,
@@ -1033,7 +1034,7 @@
       "lifemin": 60,
       "lifemax": 60,
       "respawn": 60,
-      "chestlife": 60,
+      "chestlife": 0,
       "chestrespawn": 60,
       "chestdropset": 3,
       "expearned": 50,
@@ -1051,7 +1052,7 @@
       "lifemin": 60,
       "lifemax": 60,
       "respawn": 60,
-      "chestlife": 60,
+      "chestlife": 0,
       "chestrespawn": 60,
       "chestdropset": 3,
       "expearned": 50,
@@ -1062,7 +1063,7 @@
       "hud": "hud10",
       "unlock": "clouds_08,clouds_09,clouds_11",
       "area": "house02",
-      "chestlife": 60,
+      "chestlife": 0,
       "chestrespawn": 60,
       "chestdropset": 3,
       "expearned": 50
@@ -1078,7 +1079,7 @@
       "lifemin": 60,
       "lifemax": 60,
       "respawn": 60,
-      "chestlife": 60,
+      "chestlife": 0,
       "chestrespawn": 60,
       "chestdropset": 3,
       "expearned": 50,
@@ -1094,7 +1095,7 @@
       "lifemin": 60,
       "lifemax": 60,
       "respawn": 60,
-      "chestlife": 60,
+      "chestlife": 0,
       "chestrespawn": 60,
       "chestdropset": 3,
       "expearned": 50,
@@ -1828,7 +1829,7 @@
       "russian": "Клинок Севера"
     },
     {
-      "id": "card_am",
+      "id": "card_wm",
       "russian": "Пылающий Посох"
     },
     {

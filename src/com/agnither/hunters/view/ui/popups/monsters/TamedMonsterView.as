@@ -16,6 +16,7 @@ import com.agnither.hunters.model.player.inventory.Item;
 import com.agnither.hunters.model.player.inventory.Pet;
 import com.agnither.hunters.model.player.personage.Monster;
 import com.agnither.hunters.view.ui.UI;
+import com.agnither.hunters.view.ui.common.items.ItemView;
 import com.agnither.hunters.view.ui.popups.inventory.InventoryPopup;
 import com.agnither.hunters.view.ui.screens.battle.BattleScreen;
 import com.agnither.ui.AbstractView;
@@ -49,19 +50,26 @@ public class TamedMonsterView extends AbstractView {
     private var isTamed : Boolean = false;
     private var isBattle : Boolean = false;
     private var _isInstalled : Boolean = false;
+    private var _item : ItemView;
+    private var _back : Image;
 
     public function TamedMonsterView($monsterID : String) {
 //        _pet;
         _monsterID = $monsterID;
         _monsterArea = MonsterAreaVO.DICT[$monsterID];
         _monster = Model.instance.monsters.getMonster($monsterID, 1);
+        _item = ItemView.create(Item.create(ItemVO.createPetItemVO(_monster)))
     }
 
 
     override public function update() : void
     {
+
+
         _picture.texture = _refs.gui.getTexture(_monster.picture);
         _picture.readjustSize();
+        _picture.touchable = true;
+        this.touchable = true;
 
         if(_picture.width > _tint.width) {
             _picture.width = _tint.width;
@@ -97,7 +105,10 @@ public class TamedMonsterView extends AbstractView {
     override protected function initialize():void {
         createFromConfig(_refs.guiConfig.common.tamedMonster);
 
-        _picture = _links["bitmap_monster_1.png"] as Image;
+        _back = _links["bitmap_common_back"];
+        _back.touchable = true;
+
+                _picture = _links["bitmap_monster_1.png"] as Image;
 //        _picture.touchable = true;
 
         _name = _links.name_tf;
@@ -163,6 +174,11 @@ public class TamedMonsterView extends AbstractView {
         _pet = null;
         _picture = null;
         _name = null;
+    }
+
+    public function get item() : ItemView
+    {
+        return _item;
     }
 }
 }

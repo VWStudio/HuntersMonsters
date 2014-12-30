@@ -8,6 +8,8 @@ import com.agnither.hunters.view.ui.common.ItemManaView;
 import com.agnither.ui.AbstractView;
 import com.agnither.utils.CommonRefs;
 
+import flash.utils.Dictionary;
+
 import starling.display.DisplayObject;
 
 import starling.events.Touch;
@@ -20,12 +22,15 @@ public class ManaListView extends AbstractView {
     private var _manaList: ManaList;
     public function set mana(value: ManaList):void {
         _manaList = value;
+        _manas = new Dictionary();
         for (var i:int = 0; i < _mana.length; i++) {
             _mana[i].mana = _manaList.list.length > i ? _manaList.list[i] : null;
+            _manas[_mana[i].mana.type] = _mana[i];
         }
     }
 
     private var _mana: Vector.<BattleManaView>;
+    private var _manas : Dictionary;
 
     /*
      currentPlayer.manaList.addMana(match.type, match.amount);
@@ -38,12 +43,14 @@ public class ManaListView extends AbstractView {
 
         _mana = new <BattleManaView>[];
 
+
         for (var i : int = 0; i < numChildren; i++)
         {
             var child : BattleManaView = getChildAt(i) as BattleManaView;
             child.touchable = true;
             child.addEventListener(TouchEvent.TOUCH, onTouch);
             _mana.push(child);
+
 
         }
 
@@ -68,6 +75,10 @@ public class ManaListView extends AbstractView {
 
 
 
+    }
+
+    public function getMagicObj($type) : BattleManaView {
+        return _manas[$type];
     }
 
     private function onTouch(event : TouchEvent) : void

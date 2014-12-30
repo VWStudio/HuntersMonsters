@@ -153,8 +153,9 @@ public class Progress extends EventDispatcher {
     private function prepareData() : Object
     {
         var obj : Object = {};
-        obj.progress = JSON.parse(JSON.stringify(this));
-        trace(JSON.stringify(obj.progress));
+        var str : String = JSON.stringify(this);
+        trace(str);
+        obj.progress = JSON.parse(str);
         obj.items = JSON.parse(JSON.stringify(Model.instance.player.inventory.items));
         obj.inventory = JSON.parse(JSON.stringify(Model.instance.player.inventory.inventoryItems));
         obj.pets = JSON.parse(JSON.stringify(Model.instance.player.pets.pets));
@@ -261,13 +262,17 @@ public class Progress extends EventDispatcher {
     public function addExp($val : int) : void {
 
 
-        exp += $val;
+//        exp += $val;
         fullExp += $val;
         var lv : LevelVO = LevelVO.DICT[level];
-        if (exp >= lv.exp)
+//        if (exp >= lv.exp)
+        if (fullExp >= lv.exp)
         {
             level++;
-            exp = exp - lv.exp;
+//            exp = exp - lv.exp;
+//            if(exp < 0) {
+//                exp = 0;
+//            }
             skillPoints += 1;
             if (level % 5 == 0)
             {
