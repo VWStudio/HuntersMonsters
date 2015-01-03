@@ -337,7 +337,7 @@
       "ext": "damage:[\"weapon\",1,9]",
       "setname": "default",
       "droppicture": "drop_sword",
-      "dropparam": "1,10",
+      "dropparam": "1,9",
       "localekey": "card_w1"
     },
     {
@@ -349,7 +349,7 @@
       "ext": "damage:[\"weapon\",8,24]",
       "setname": "house00",
       "droppicture": "drop_sword",
-      "dropparam": "15,25",
+      "dropparam": "8,24",
       "localekey": "card_w2"
     },
     {
@@ -361,7 +361,7 @@
       "ext": "damage:[\"fire\",20,35]",
       "setname": "house01",
       "droppicture": "drop_staff",
-      "dropparam": "4,12",
+      "dropparam": "20,35",
       "localekey": "card_wm"
     },
     {
@@ -373,7 +373,7 @@
       "ext": "damage:[\"weapon\",23,38]",
       "setname": "house00",
       "droppicture": "drop_sword",
-      "dropparam": "15,25",
+      "dropparam": "23,38",
       "localekey": "card_w3"
     },
     {
@@ -385,7 +385,7 @@
       "ext": "damage:[\"weapon\",36,68]",
       "setname": "house02",
       "droppicture": "drop_sword",
-      "dropparam": "15,25",
+      "dropparam": "36,68",
       "localekey": "card_w4"
     },
     {
@@ -397,7 +397,7 @@
       "ext": "defence:[1,9]",
       "setname": "house00",
       "droppicture": "drop_shield",
-      "dropparam": "1,3",
+      "dropparam": "1,9",
       "localekey": "card_ah1"
     },
     {
@@ -409,7 +409,7 @@
       "ext": "defence:[8,16]",
       "setname": "house02",
       "droppicture": "drop_shield",
-      "dropparam": "1,3",
+      "dropparam": "8,16",
       "localekey": "card_ah2"
     },
     {
@@ -421,7 +421,7 @@
       "ext": "defence:[1,6]",
       "setname": "default",
       "droppicture": "drop_body",
-      "dropparam": "1,5",
+      "dropparam": "1,6",
       "localekey": "card_ab1"
     },
     {
@@ -433,7 +433,7 @@
       "ext": "defence:[4,27]",
       "setname": "house00",
       "droppicture": "drop_body",
-      "dropparam": "5,10",
+      "dropparam": "4,27",
       "localekey": "card_ab2"
     },
     {
@@ -445,7 +445,7 @@
       "ext": "defence:[25,48]",
       "setname": "house02",
       "droppicture": "drop_body",
-      "dropparam": "1,5",
+      "dropparam": "25,48",
       "localekey": "card_ab3"
     },
     {
@@ -457,7 +457,7 @@
       "ext": "defence:[46,71]",
       "setname": "house02",
       "droppicture": "drop_body",
-      "dropparam": "1,5",
+      "dropparam": "46,71",
       "localekey": "card_ab4"
     },
     {
@@ -469,7 +469,7 @@
       "ext": "defence:[1,5]",
       "setname": "default",
       "droppicture": "drop_boots",
-      "dropparam": "1,3",
+      "dropparam": "1,5",
       "localekey": "card_al1"
     },
     {
@@ -481,7 +481,7 @@
       "ext": "defence:[4,9]",
       "setname": "house02",
       "droppicture": "drop_boots",
-      "dropparam": "1,3",
+      "dropparam": "4,9",
       "localekey": "card_al2"
     },
     {
@@ -493,7 +493,7 @@
       "ext": "defence:[1,5]",
       "setname": "house00",
       "droppicture": "drop_gloves",
-      "dropparam": "1,3",
+      "dropparam": "1,5",
       "localekey": "card_ag1"
     },
     {
@@ -505,7 +505,7 @@
       "ext": "defence:[4,9]",
       "setname": "house02",
       "droppicture": "drop_gloves",
-      "dropparam": "1,3",
+      "dropparam": "4,9",
       "localekey": "card_ag2"
     },
     {
@@ -541,7 +541,7 @@
       "ext": "resurrect_pet:50",
       "setname": "house03",
       "droppicture": "drop_ring",
-      "dropparam": "1,10",
+      "dropparam": "1,50",
       "localekey": "card_am1"
     },
     {
@@ -553,7 +553,7 @@
       "ext": "mirror_damage:[20,50]",
       "setname": "house03",
       "droppicture": "drop_ring",
-      "dropparam": "10,50",
+      "dropparam": "20,50",
       "localekey": "card_am1"
     },
     {
@@ -1075,7 +1075,7 @@
       "area": "ratata",
       "icon": "monster_icon_9",
       "areamin": 1,
-      "areamax": 2,
+      "areamax": 1,
       "lifemin": 60,
       "lifemax": 60,
       "respawn": 60,
@@ -1091,7 +1091,7 @@
       "area": "zubat",
       "icon": "monster_icon_10",
       "areamin": 1,
-      "areamax": 2,
+      "areamax": 1,
       "lifemin": 60,
       "lifemax": 60,
       "respawn": 60,
@@ -1905,10 +1905,6 @@
       "russian": "Ядовитый Пар"
     },
     {
-      "id": "card_w1.d",
-      "russian": "Наносит урон фишками холодного оружия."
-    },
-    {
       "id": "steel_sword.d",
       "russian": "крутой меч"
     },
@@ -2026,7 +2022,7 @@
     },
     {
       "id": "card_w1.d",
-      "russian": " "
+      "russian": "Наносит урон фишками холодного оружия."
     },
     {
       "id": "card_w2.d",

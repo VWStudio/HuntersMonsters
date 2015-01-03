@@ -62,6 +62,7 @@ public class DamageExt extends Extension
 
     public function getRange() : String
     {
+        trace(_initialArgs);
         return _initialArgs[1] + (_initialArgs.length > 2 ? "-"+_initialArgs[2] : "");
     }
 }

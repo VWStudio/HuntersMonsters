@@ -163,12 +163,10 @@ public class HousePopup extends Popup
             while (i < 10 && houseItems.length > 0)
             {
                 var item : ItemVO = houseItems.splice(int(Math.random() * houseItems.length), 1)[0];
-                itemsArr.push(Item.create(item));
+                itemsArr.push(Item.create(item.clone()));
             }
 
             itemsArr = itemsArr.sort(sortInventory);
-
-            trace("HOUSE ITEMS", itemsArr.length);
 
             for (i = 0; i < itemsArr.length; i++)
             {

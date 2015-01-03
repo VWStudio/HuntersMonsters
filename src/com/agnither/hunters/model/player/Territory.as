@@ -71,14 +71,14 @@ public class Territory
 
         _territoryMonsters = new <MonsterPoint>[];
         _index = _area.hud.substr(3, 2);
-        _monstersAmount = area.areamin + Math.round(Math.random() * (area.areamax - area.areamin));
-
+        _monstersAmount =  Model.instance.progress.monsterAmounts[area.id] ?  Model.instance.progress.monsterAmounts[area.id] : area.areamin + Math.round(Math.random() * (area.areamax - area.areamin));
+        Model.instance.progress.monsterAmounts[area.id] = _monstersAmount;
 //        trace(_area.id, Model.instance.progress.monsterTimers[area.id], new Date(), new Date().ge);
 
         if(Model.instance.progress.monsterTimers[area.id] && Model.instance.progress.monsterTimers[area.id] > 0) {
 
             _nextMonsters = Model.instance.progress.monsterTimers[area.id] + _respawnTimeMax - new Date().valueOf();
-            trace(_nextMonsters);
+//            trace(_nextMonsters);
             if(_nextMonsters < 0) {
                 _nextMonsters = 0;
             }
@@ -247,8 +247,9 @@ public class Territory
             if(_territoryMonsters.length == 0) {
                 _nextMonsters = _respawnTimeMax;
                 Model.instance.progress.monsterTimers[area.id] = new Date().valueOf();
-                trace(area.id, "TIME START AT",Model.instance.progress.monsterTimers[area.id]);
                 _monstersAmount = area.areamin + Math.round(Math.random() * (area.areamax - area.areamin));
+                Model.instance.progress.monsterAmounts[area.id] = _monstersAmount;
+                trace(area.id, "TIME START AT",Model.instance.progress.monsterTimers[area.id]);
                 Model.instance.progress.saveProgress();
 
             }
@@ -301,10 +302,10 @@ public class Territory
 
 //        _pointsTimeout = _pointsTimeout < 0 ? 0 : _pointsTimeout - $delta;
 
-        if (!Model.instance.isMap())
-        {
-            return;
-        }
+//        if (!Model.instance.isMap())
+//        {
+//            return;
+//        }
 
         for (var i : int = 0; i < _territoryMonsters.length; i++)
         {
@@ -325,13 +326,14 @@ public class Territory
         else
         {
             _hud.monstersRespawn(-1);
-            if (_territoryMonsters.length < _area.areamax)
+            if (_territoryMonsters.length < _area.areamax && Model.instance.isMap())
             {
 //                trace(_monstersAmount);
                 if (_territoryMonsters.length + _killed < _monstersAmount)
 //                if (_territoryMonsters.length + _killed < _area.areamin)
 //                if (_pointsTimeout <= 0 || _territoryMonsters.length < _area.areamin)
                 {
+
                     createMonster();
 //                    _pointsTimeout = _area.respawn * 1000;
                 }

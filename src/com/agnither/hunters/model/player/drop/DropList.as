@@ -53,7 +53,7 @@ public class DropList extends EventDispatcher
 
         var isDropped : Boolean = ($hitPercent * 300) > Math.random() * 100;
 
-//        isDropped = true;
+        isDropped = true;
 
         if(!isDropped)
         {
@@ -62,6 +62,7 @@ public class DropList extends EventDispatcher
 
         var isGold : Boolean = Math.random() > SettingsVO.DICT["itemDropChance"] || _itemsAmount >= _list.length;
 
+        isGold = false;
 
         var pMin : Number;
         if (currentMonster.order == 0) {
@@ -72,7 +73,7 @@ public class DropList extends EventDispatcher
         }
         var pAverage :Number = Math.round(currentMonster.reward * 0.3);
 
-        var nextMonster : MonsterVO
+        var nextMonster : MonsterVO;
         if(currentMonster.order < MonsterVO.maxOrder) {
             var monOrder : int = currentMonster.order + 1;
             nextMonster = MonsterVO.DICT["order"+monOrder];
