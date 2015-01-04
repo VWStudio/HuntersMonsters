@@ -249,9 +249,12 @@ public class Territory
                 Model.instance.progress.monsterTimers[area.id] = new Date().valueOf();
                 _monstersAmount = area.areamin + Math.round(Math.random() * (area.areamax - area.areamin));
                 Model.instance.progress.monsterAmounts[area.id] = _monstersAmount;
-                trace(area.id, "TIME START AT",Model.instance.progress.monsterTimers[area.id]);
+//                trace(area.id, "TIME START AT",Model.instance.progress.monsterTimers[area.id]);
                 Model.instance.progress.saveProgress();
 
+            } else {
+                Model.instance.progress.monsterAmounts[area.id] = _monstersAmount - _killed;
+                Model.instance.progress.saveProgress();
             }
         }
         coreDispatch(MapScreen.DELETE_POINT, $pt);
