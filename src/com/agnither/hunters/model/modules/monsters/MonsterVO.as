@@ -22,7 +22,7 @@ public dynamic class MonsterVO extends PersonageVO {
     public var extension: Object;
     public var reward: Number = 0;
     public var order: Number = 0;
-    public var difficultyFactor: Number = 0;
+    public var difficultyfactor: Number = 0;
 
     public var items: Array = [];
     public var stars: Array = [];

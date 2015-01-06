@@ -52,92 +52,61 @@ public class DropList extends EventDispatcher
         if(!currentMonster) return;
 
         var isDropped : Boolean = ($hitPercent * 300) > Math.random() * 100;
-
-//        isDropped = true;
-
-        if(!isDropped)
-        {
-            return;
-        }
+        if(!isDropped) return;
 
         var isGold : Boolean = Math.random() > SettingsVO.DICT["itemDropChance"] || _itemsAmount >= _list.length;
-
-//        isGold = false;
-
-        var pMin : Number;
-        if (currentMonster.order == 0) {
-            pMin = 1;
-        }
-        else {
-            pMin = Math.round(MonsterVO.DICT["order"+(currentMonster.order-1)].reward * 0.3);
-        }
-        var pAverage :Number = Math.round(currentMonster.reward * 0.3);
-
-        var nextMonster : MonsterVO;
-        if(currentMonster.order < MonsterVO.maxOrder) {
-            var monOrder : int = currentMonster.order + 1;
-            nextMonster = MonsterVO.DICT["order"+monOrder];
-        } else {
-            nextMonster = currentMonster;
-        }
-
-
-        var pMax : Number = Math.round(nextMonster.reward * 0.5);
-        var p : Number = Util.getRandomParam(pMin, pAverage, pMax); // возвращает кол-во золота
-
-
-        trace("isGold", isGold, p, pMin, pAverage, pMax, MonsterVO.maxOrder, currentMonster.order);
-
         var content : Item;
 
-//        if(false) {
-        if(isGold) {
+        //isGold = false;
+        if(isGold)
+        {
+            var pMin : Number;
+            if (currentMonster.order == 0)  pMin = 1;
+            else pMin = Math.round(MonsterVO.DICT["order"+(currentMonster.order-1)].reward * 0.3);
+
+            var pAverage :Number = Math.round(currentMonster.reward * 0.3);
+
+            var nextMonster : MonsterVO;
+            if(currentMonster.order < MonsterVO.maxOrder) {
+                var monOrder : int = currentMonster.order + 1;
+                nextMonster = MonsterVO.DICT["order"+monOrder];
+            } else {
+                nextMonster = currentMonster;
+            }
+
+            var pMax : Number = Math.round(nextMonster.reward * 0.5);
+            var p : Number = Util.getRandomParam(pMin, pAverage, pMax); // возвращает кол-во золота
+
             content = Item.create(ItemVO.createGoldItemVO);
             content.amount = Math.ceil(p);
         }
         else
         {
-//            var types : Array = Model.instance.items.slots;
-////            chance = Model.instance.items.dropChanceSum * Math.random();
+//          var types : Array = Model.instance.items.slots;
+////        chance = Model.instance.items.dropChanceSum * Math.random();
+
             var indexOfItem : int = Util.getIndexOfRandom(Model.instance.items.chances, Model.instance.items.dropChanceSum);
-            trace("INDEX:", indexOfItem, Model.instance.items.slots[indexOfItem],"SUM", Model.instance.items.dropChanceSum, "CHANCES", Model.instance.items.chances);
             var slot : String = Model.instance.items.slots[indexOfItem];
-//            var itemParam : Number = Math.sqrt(p / 0.6);
             var items : Array = Model.instance.items.itemsBySlot[slot];
-//
             var paramMult : Number = SettingsVO.DICT[slot+"ParamMult"];
 
-
-
-//            paramMult // значение из конфика (defenceParamBodyMult || damageParamWeaponMult || ...)
-            if (currentMonster.order < 3) {
-                pMin = 1;
-            }
+            if (currentMonster.order < 3) pMin = 1;
             else {
-                pMin = Math.round(Math.sqrt((MonsterVO.DICT["order"+(currentMonster.order - 3)].reward * (MonsterVO.DICT["order"+(currentMonster.order - 2)].difficultyFactor + 1)) / paramMult));
+                pMin = Math.round(Math.sqrt((MonsterVO.DICT["order"+(currentMonster.order - 3)].reward * (MonsterVO.DICT["order"+(currentMonster.order - 2)].difficultyfactor + 1)) / paramMult));
             }
-            if (currentMonster.order < 1) {
-                pAverage = 1;
-            }
+
+            if (currentMonster.order < 1) pAverage = 1;
             else {
-                pAverage = Math.round(Math.sqrt((MonsterVO.DICT["order"+(currentMonster.order - 1)].reward * (currentMonster.difficultyFactor + 1)) / paramMult));
+                pAverage = Math.round(Math.sqrt((MonsterVO.DICT["order"+(currentMonster.order - 1)].reward * (currentMonster.difficultyfactor + 1)) / paramMult));
             }
-            pMax = Math.round(Math.sqrt((currentMonster.reward * (MonsterVO.DICT["order"+(currentMonster.order + 1)].difficultyFactor + 1)) / paramMult));
+
+            pMax = Math.round(Math.sqrt((currentMonster.reward * (MonsterVO.DICT["order"+(currentMonster.order + 1)].difficultyfactor + 1)) / paramMult));
 
             var itemParam : Number = Util.getRandomParam(pMin, pAverage, pMax);
-
-
-
-            trace("itemParam", itemParam, pMin, pAverage, pMax);
-
-            if(items && items.length > 0) {
-                content = findItem(items, Math.round(itemParam), -1);
-            }
+            //trace("dropItem min:" + pMin + " pAverage:" + pAverage + " pMax:" + pMax + " itemParam:" + itemParam);
+            if(items && items.length > 0) content = findItem(items, Math.round(itemParam), -1);
         }
-
-        if(content) {
-            addContent(content);
-        }
+        if(content) addContent(content);
     }
 
     private function findItem($items : Array, itemParam : Number, changeValue : Number) : Item

@@ -41,7 +41,7 @@ public class Main extends Sprite {
         _starling.antiAliasing = 0;
         _starling.stage.stageWidth = deviceSize.width;
         _starling.stage.stageHeight = deviceSize.height;
-        _starling.showStatsAt("right", "bottom");
+        //_starling.showStatsAt("right", "bottom");
         _starling.simulateMultitouch = false;
         _starling.enableErrorChecking = Capabilities.isDebugger;
         _starling.start();

@@ -76,7 +76,7 @@ public class InventoryView extends AbstractView {
             addChild(itemView);
             itemView.y = i * tileHeight;
             itemView.update();
-//            itemView.noSelection();
+            itemView.noSelection();
         }
     }
 
