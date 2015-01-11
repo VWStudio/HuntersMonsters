@@ -3,6 +3,7 @@
  */
 package com.agnither.hunters.model.modules.items
 {
+import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.modules.extensions.DamageExt;
 import com.agnither.hunters.model.modules.extensions.DefenceExt;
 import com.agnither.hunters.model.modules.monsters.MonsterVO;
@@ -41,8 +42,9 @@ public class ItemVO
     public var ext : Object;
     public var setname : String;
     public var localekey : String = "";
+    public var enemy : Boolean;
 
-    public static function createPetItemVO($monster : MonsterVO, $isTamed : Boolean = false) : ItemVO {
+    public static function createPetItemVO($monster : MonsterVO, $isTamed : Boolean = false, isEnemy:Boolean = false) : ItemVO {
 
         var obj : Object = {};
         obj.id = $isTamed ? 24 : 23;
@@ -51,7 +53,13 @@ public class ItemVO
 //        obj.picture = "magic_dark";
         obj.type = "pet";
         obj.localekey = $monster.id;
+
+        obj.slot = 0;
+        //if (Model.instance.progress.tamedMonsters.indexOf($monster.id) >= 0) obj.slot = 1;
         obj.slot = $isTamed ? 1 : 0;
+
+        obj.enemy = isEnemy;
+
         obj.setname = "";
         obj.droppicture = "";
         var extObj : Object = {monster:$monster.id};

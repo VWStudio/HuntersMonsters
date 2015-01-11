@@ -4,6 +4,8 @@
 package com.agnither.hunters.view.ui.popups.win
 {
 import com.agnither.hunters.model.Model;
+import com.agnither.hunters.model.modules.locale.Locale;
+import com.agnither.hunters.model.modules.monsters.MonsterVO;
 import com.agnither.hunters.model.player.drop.DropList;
 import com.agnither.hunters.model.player.drop.DropSlot;
 import com.agnither.hunters.model.player.inventory.Item;
@@ -84,7 +86,8 @@ public class WinPopup extends Popup
 
         _drops = new Sprite();
         addChild(_drops);
-        _drops.y = 320;
+        _drops.x = 50;
+        _drops.y = 340;
 
         _monster = _links.monster;
 
@@ -152,8 +155,11 @@ public class WinPopup extends Popup
         _stars.setProgress(data.isWin ? stars : 0);
 
         _monster.data = Model.instance.monster;
+        _monster.hideInfo = true;
         _monster.update();
         _isClosed = false;
+
+        _title.text = Locale.getString(_monster.data.id);
 
         var dropList : DropList = data.drops;
         _drops.removeChildren();

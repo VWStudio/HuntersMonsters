@@ -262,31 +262,26 @@ public class BattleScreen extends Screen
             var img : Image = new Image(App.instance.refs.gui.getTexture(pictureUrl));
             _effects.addChild(img);
             var position : Point = cell.position;
-            img.x = position.x * FieldView.tileX + FieldView.fieldX;
-            img.y = position.y * FieldView.tileY + FieldView.fieldY;
+            //img.x = position.x * (FieldView.tileX) + FieldView.fieldX;
+            //img.y = position.y * (FieldView.tileY) + FieldView.fieldY;
+            img.x = position.x * FieldView.tileX + FieldView.fieldX -4;
+            img.y = position.y * FieldView.tileY + FieldView.fieldY -5;
 
 
 
 
-            Starling.juggler.tween(img, 0.2 + Math.random() * 0.4, {delay: Math.random() * 0.5  , x: mobj.x + manaListView.x, y: mobj.y + manaListView.y, onComplete: onEndTween, onCompleteArgs:[img], alpha: 0.2});
+            Starling.juggler.tween(img, 0.2 + Math.random() * 0.5, {delay: Math.random() * 0.1  , x: mobj.x + manaListView.x, y: mobj.y + manaListView.y, onComplete: onEndTween, onCompleteArgs:[img], alpha: 0.2});
 
             function onEndTween($img : Image) : void
             {
                 _effects.removeChild($img);
             }
-
-
         }
-
-
-
-
     }
 
 //    private function onDropFly($data : Object) : void
     private function onDropFly($item : Item) : void
     {
-
         var drop : Item = $item;
         var position : Point = new Point(_dropList.x + _dropList.width * 0.5, _dropList.y);
         var pictureUrl : String = drop.icon;
@@ -297,10 +292,10 @@ public class BattleScreen extends Screen
 //        img.scaleX = 2;
 //        img.scaleY = 2;
 
-        Starling.juggler.tween(img, 0.3, {scaleX:2, scaleY : 2,x: position.x - 30, y: position.y - 120, onComplete: onMiddleTween, alpha: 1, transition: Transitions.EASE_OUT});
+        Starling.juggler.tween(img, 0.3, {scaleX:1, scaleY:1, x: position.x, y: position.y - 120, onComplete: onMiddleTween, alpha: 1, transition: Transitions.EASE_OUT});
 
         function onMiddleTween() : void {
-            Starling.juggler.tween(img, 0.3, {delay : 0.2 ,scaleX:1, scaleY : 1, x: position.x, y: position.y, onComplete: onEndTween, alpha: 0.3, transition: Transitions.EASE_IN});
+            Starling.juggler.tween(img, 0.3, {delay : 0.2 ,scaleX:1, scaleY:1, x: position.x, y: position.y, onComplete: onEndTween, alpha: 0.3, transition: Transitions.EASE_IN});
         }
 
 
@@ -349,18 +344,22 @@ public class BattleScreen extends Screen
     {
 
         coreRemoveListener(Match3Game.END_GAME, handleEndGame);
-        coreRemoveListener(BattleScreen.PLAY_CHEST_FLY, onDropFly);
-        coreRemoveListener(BattleScreen.PLAY_MANA_FLY, onManaFly);
-        coreRemoveListener(DropSlotView.SHOW_TOOLTIP, onShowTooltip);
-        coreRemoveListener(DropSlotView.HIDE_TOOLTIP, onHideTooltip);
+        //coreRemoveListener(BattleScreen.PLAY_CHEST_FLY, onDropFly);
+        //coreRemoveListener(BattleScreen.PLAY_MANA_FLY, onManaFly);
+        //coreRemoveListener(DropSlotView.SHOW_TOOLTIP, onShowTooltip);
+        //coreRemoveListener(DropSlotView.HIDE_TOOLTIP, onHideTooltip);
 
-        _timeout = setTimeout(gameEnds, 2500, $isWin);
+        _timeout = setTimeout(gameEnds, 2000, $isWin);
 
 
     }
 
     private function gameEnds($isWin : Boolean) : void
     {
+        coreRemoveListener(BattleScreen.PLAY_CHEST_FLY, onDropFly);
+        coreRemoveListener(BattleScreen.PLAY_MANA_FLY, onManaFly);
+        coreRemoveListener(DropSlotView.SHOW_TOOLTIP, onShowTooltip);
+        coreRemoveListener(DropSlotView.HIDE_TOOLTIP, onHideTooltip);
 
         clearTimeout(_timeout);
         coreExecute(ShowScreenCmd, MapScreen.NAME);
@@ -395,7 +394,7 @@ public class BattleScreen extends Screen
                 break;
 
             case Match3Game.MODE_REGULAR:
-                coreExecute(ShowPopupCmd, WinPopup.NAME, {isWin: $isWin, drops: _game.dropList});
+                if ($isWin) coreExecute(ShowPopupCmd, WinPopup.NAME, {isWin: $isWin, drops: _game.dropList});
                 break;
             case Match3Game.MODE_HOUSE:
                 var territory : Territory = Model.instance.currentHouseTerritory;

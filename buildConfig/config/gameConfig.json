@@ -86,7 +86,7 @@
     },
     {
       "parameter": "shopDeliverTimeMin",
-      "value": "1",
+      "value": "3",
       "type": "int"
     },
     {
@@ -136,13 +136,13 @@
     },
     {
       "parameter": "itemDropChance",
-      "value": "0.4",
+      "value": "0.7",
       "type": "int",
       "info": "gold or item drop chance"
     },
     {
       "parameter": "slot2DropChance",
-      "value": "30",
+      "value": "40",
       "type": "int",
       "info": "weapon slot"
     },
@@ -154,7 +154,7 @@
     },
     {
       "parameter": "slot4DropChance",
-      "value": "20",
+      "value": "25",
       "type": "int",
       "info": "body clop"
     },
@@ -307,595 +307,237 @@
       "info": "---"
     }
   ],
-  "item": [
-    {
-      "id": 22,
-      "name": "pet",
-      "type": "pet",
-      "slot": 0,
-      "picture": "card_m1",
-      "setname": "default",
-      "droppicture": "drop_magic",
-      "localekey": "pet"
-    },
-    {
-      "id": 23,
-      "name": "tamed_pet",
-      "type": "pet",
-      "slot": 1,
-      "picture": "card_m1",
-      "setname": "default",
-      "droppicture": "drop_magic",
-      "localekey": "tamed_pet"
-    },
-    {
-      "id": 1,
-      "name": "card_w1",
-      "type": "weapon",
-      "slot": 2,
-      "picture": "card_w1",
-      "ext": "damage:[\"weapon\",1,9]",
-      "setname": "default",
-      "droppicture": "drop_sword",
-      "dropparam": "1,9",
-      "localekey": "card_w1"
-    },
-    {
-      "id": 2,
-      "name": "card_w2",
-      "type": "weapon",
-      "slot": 2,
-      "picture": "card_w2",
-      "ext": "damage:[\"weapon\",8,24]",
-      "setname": "house00",
-      "droppicture": "drop_sword",
-      "dropparam": "8,24",
-      "localekey": "card_w2"
-    },
-    {
-      "id": 3,
-      "name": "card_wm",
-      "type": "weapon",
-      "slot": 2,
-      "picture": "card_wm",
-      "ext": "damage:[\"fire\",20,35]",
-      "setname": "house01",
-      "droppicture": "drop_staff",
-      "dropparam": "20,35",
-      "localekey": "card_wm"
-    },
-    {
-      "id": 24,
-      "name": "card_w3",
-      "type": "weapon",
-      "slot": 2,
-      "picture": "card_w3",
-      "ext": "damage:[\"weapon\",23,38]",
-      "setname": "house00",
-      "droppicture": "drop_sword",
-      "dropparam": "23,38",
-      "localekey": "card_w3"
-    },
-    {
-      "id": 25,
-      "name": "card_w4",
-      "type": "weapon",
-      "slot": 2,
-      "picture": "card_w4",
-      "ext": "damage:[\"weapon\",36,68]",
-      "setname": "house02",
-      "droppicture": "drop_sword",
-      "dropparam": "36,68",
-      "localekey": "card_w4"
-    },
-    {
-      "id": 7,
-      "name": "card_ah1",
-      "type": "armor",
-      "slot": 3,
-      "picture": "card_ah1",
-      "ext": "defence:[1,9]",
-      "setname": "house00",
-      "droppicture": "drop_shield",
-      "dropparam": "1,9",
-      "localekey": "card_ah1"
-    },
-    {
-      "id": 26,
-      "name": "card_ah2",
-      "type": "armor",
-      "slot": 3,
-      "picture": "card_ah2",
-      "ext": "defence:[8,16]",
-      "setname": "house02",
-      "droppicture": "drop_shield",
-      "dropparam": "8,16",
-      "localekey": "card_ah2"
-    },
-    {
-      "id": 4,
-      "name": "card_ab1",
-      "type": "armor",
-      "slot": 4,
-      "picture": "card_ab1",
-      "ext": "defence:[1,6]",
-      "setname": "default",
-      "droppicture": "drop_body",
-      "dropparam": "1,6",
-      "localekey": "card_ab1"
-    },
-    {
-      "id": 5,
-      "name": "card_ab2",
-      "type": "armor",
-      "slot": 4,
-      "picture": "card_ab2",
-      "ext": "defence:[4,27]",
-      "setname": "house00",
-      "droppicture": "drop_body",
-      "dropparam": "4,27",
-      "localekey": "card_ab2"
-    },
-    {
-      "id": 27,
-      "name": "card_ab3",
-      "type": "armor",
-      "slot": 4,
-      "picture": "card_ab3",
-      "ext": "defence:[25,48]",
-      "setname": "house02",
-      "droppicture": "drop_body",
-      "dropparam": "25,48",
-      "localekey": "card_ab3"
-    },
-    {
-      "id": 28,
-      "name": "card_ab4",
-      "type": "armor",
-      "slot": 4,
-      "picture": "card_ab4",
-      "ext": "defence:[46,71]",
-      "setname": "house02",
-      "droppicture": "drop_body",
-      "dropparam": "46,71",
-      "localekey": "card_ab4"
-    },
-    {
-      "id": 8,
-      "name": "card_al1",
-      "type": "armor",
-      "slot": 6,
-      "picture": "card_al1",
-      "ext": "defence:[1,5]",
-      "setname": "default",
-      "droppicture": "drop_boots",
-      "dropparam": "1,5",
-      "localekey": "card_al1"
-    },
-    {
-      "id": 29,
-      "name": "card_al2",
-      "type": "armor",
-      "slot": 6,
-      "picture": "card_al2",
-      "ext": "defence:[4,9]",
-      "setname": "house02",
-      "droppicture": "drop_boots",
-      "dropparam": "4,9",
-      "localekey": "card_al2"
-    },
-    {
-      "id": 6,
-      "name": "card_ag1",
-      "type": "armor",
-      "slot": 7,
-      "picture": "card_ag1",
-      "ext": "defence:[1,5]",
-      "setname": "house00",
-      "droppicture": "drop_gloves",
-      "dropparam": "1,5",
-      "localekey": "card_ag1"
-    },
-    {
-      "id": 30,
-      "name": "card_ag2",
-      "type": "armor",
-      "slot": 7,
-      "picture": "card_ag2",
-      "ext": "defence:[4,9]",
-      "setname": "house02",
-      "droppicture": "drop_gloves",
-      "dropparam": "4,9",
-      "localekey": "card_ag2"
-    },
-    {
-      "id": 9,
-      "name": "card_am1",
-      "type": "magic",
-      "slot": 8,
-      "picture": "card_am1",
-      "ext": "double_drop:20",
-      "setname": "house03",
-      "droppicture": "drop_ring",
-      "dropparam": "10,20",
-      "localekey": "card_am1"
-    },
-    {
-      "id": 10,
-      "name": "card_am1",
-      "type": "magic",
-      "slot": 8,
-      "picture": "card_am1",
-      "ext": "resurrect_pet:50",
-      "setname": "house03",
-      "droppicture": "drop_ring",
-      "dropparam": "30,70",
-      "localekey": "card_am1"
-    },
-    {
-      "id": 11,
-      "name": "card_am1",
-      "type": "magic",
-      "slot": 8,
-      "picture": "card_am1",
-      "ext": "resurrect_pet:50",
-      "setname": "house03",
-      "droppicture": "drop_ring",
-      "dropparam": "1,50",
-      "localekey": "card_am1"
-    },
-    {
-      "id": 19,
-      "name": "card_am1",
-      "type": "magic",
-      "slot": 8,
-      "picture": "card_am1",
-      "ext": "mirror_damage:[20,50]",
-      "setname": "house03",
-      "droppicture": "drop_ring",
-      "dropparam": "20,50",
-      "localekey": "card_am1"
-    },
-    {
-      "id": 20,
-      "name": "card_am1",
-      "type": "magic",
-      "slot": 8,
-      "picture": "card_am1",
-      "ext": "spell_defence:[\"nature\",1]",
-      "setname": "house03",
-      "droppicture": "drop_ring",
-      "dropparam": "1,5",
-      "localekey": "card_am1"
-    },
-    {
-      "id": 21,
-      "name": "card_am1",
-      "type": "magic",
-      "slot": 8,
-      "picture": "card_am1",
-      "ext": "mana_add:[\"nature\",5]",
-      "setname": "house03",
-      "droppicture": "drop_ring",
-      "dropparam": "5,10",
-      "localekey": "card_am1"
-    },
-    {
-      "id": 12,
-      "name": "card_s1_1",
-      "type": "spell",
-      "slot": 9,
-      "picture": "card_s1_1",
-      "ext": "damage:[\"fire\",3];mana:[\"fire\",4]",
-      "setname": "default",
-      "droppicture": "drop_magic",
-      "dropparam": "5,10",
-      "localekey": "card_s1_1"
-    },
-    {
-      "id": 13,
-      "name": "card_s2_1",
-      "type": "spell",
-      "slot": 9,
-      "picture": "card_s2_1",
-      "ext": "damage:[\"water\",4];mana:[\"water\",5]",
-      "setname": "default",
-      "droppicture": "drop_magic",
-      "dropparam": "5,10",
-      "localekey": "card_s2_1"
-    },
-    {
-      "id": 14,
-      "name": "card_s2_1",
-      "type": "spell",
-      "slot": 9,
-      "picture": "card_s2_2",
-      "ext": "damage:[\"water\",12];mana:[\"fire\",6,\"water\",8]",
-      "setname": "default",
-      "droppicture": "drop_magic",
-      "dropparam": "5,10",
-      "localekey": "card_s2_2"
-    },
-    {
-      "id": 15,
-      "name": "card_s3_1",
-      "type": "spell",
-      "slot": 9,
-      "picture": "card_s3_1",
-      "ext": "damage:[\"nature\",8];mana:[\"nature\",7]",
-      "setname": "house01",
-      "droppicture": "drop_magic",
-      "dropparam": "5,10",
-      "localekey": "card_s3_1"
-    },
-    {
-      "id": 16,
-      "name": "card_s1_2",
-      "type": "spell",
-      "slot": 9,
-      "picture": "card_s1_2",
-      "ext": "damage:[\"fire\",10];mana:[\"fire\",6]",
-      "setname": "house01",
-      "droppicture": "drop_magic",
-      "dropparam": "5,10",
-      "localekey": "card_s1_2"
-    },
-    {
-      "id": 17,
-      "name": "card_s4_1",
-      "type": "spell",
-      "slot": 9,
-      "picture": "card_s4_1",
-      "ext": "damage:[\"stone\",20];mana:[\"stone\",12]",
-      "setname": "house01",
-      "droppicture": "drop_magic",
-      "dropparam": "5,11",
-      "localekey": "card_s4_1"
-    },
-    {
-      "id": 18,
-      "name": "card_s5_1",
-      "type": "spell",
-      "slot": 9,
-      "picture": "card_s5_1",
-      "ext": "damage:[\"dark\",13];mana:[\"dark\",6]",
-      "setname": "house01",
-      "droppicture": "drop_magic",
-      "dropparam": "5,12",
-      "localekey": "card_s5_1"
-    }
-  ],
   "monster": [
     {
-      "level": 1,
+      "order": 0,
       "id": "blue_bull",
+      "picture": "monster_2.png",
+      "itemimage": "card_m1",
+      "level": 1,
       "hp": 20,
+      "defence": 1,
       "damage": 3,
       "damagetype": "weapon",
-      "defence": 1,
       "magic": 3,
-      "difficulty": 100,
-      "drop": 1,
-      "items": 13,
-      "stars": "5,10,20",
-      "picture": "monster_2.png",
-      "expearned": 5,
+      "items": 12,
+      "extension": "mana_add:[\"nature\",1]",
       "speed": 100,
-      "reward": 15,
-      "order": 0,
+      "stars": "5,10,20",
       "difficultyfactor": 1,
-      "itemimage": "card_m1",
-      "extension": "mana_add:[\"nature\",5]"
+      "expearned": 5,
+      "reward": 15,
+      "difficulty": 100,
+      "drop": 1
     },
     {
-      "level": 1,
-      "id": "meowut",
-      "hp": 29,
-      "damage": 4,
-      "damagetype": "weapon",
-      "defence": 4,
-      "magic": 3,
-      "difficulty": 100,
-      "drop": 1,
-      "items": 13,
-      "stars": "5,10,20",
-      "picture": "monster_4.png",
-      "expearned": 10,
-      "speed": 100,
-      "reward": 29,
       "order": 1,
-      "difficultyfactor": 2,
+      "id": "meowut",
+      "picture": "monster_4.png",
       "itemimage": "card_m2",
-      "extension": "mana_add:[\"nature\",5]"
-    },
-    {
       "level": 1,
-      "id": "pikachu",
-      "hp": 38,
-      "damage": 8,
-      "damagetype": "weapon",
-      "defence": 8,
+      "hp": 29,
+      "defence": 4,
+      "damage": 4,
+      "damagetype": "water",
       "magic": 3,
-      "difficulty": 100,
-      "drop": 1,
       "items": 13,
-      "stars": "5,10,20",
-      "picture": "monster_1.png",
-      "expearned": 17,
+      "extension": "mana_add:[\"nature\",1]",
       "speed": 100,
-      "reward": 51,
-      "order": 2,
-      "difficultyfactor": 5,
-      "itemimage": "card_m3",
-      "extension": "mana_add:[\"nature\",5]"
+      "stars": "5,10,20",
+      "difficultyfactor": 2,
+      "expearned": 10,
+      "reward": 29,
+      "difficulty": 100,
+      "drop": 1
     },
     {
+      "order": 2,
+      "id": "pikachu",
+      "picture": "monster_1.png",
+      "itemimage": "card_m3",
       "level": 1,
+      "hp": 38,
+      "defence": 7,
+      "damage": 10,
+      "damagetype": "fire",
+      "magic": 3,
+      "items": 12,
+      "extension": "mana_add:[\"nature\",1]",
+      "speed": 100,
+      "stars": "5,10,20",
+      "difficultyfactor": 5,
+      "expearned": 17,
+      "reward": 51,
+      "difficulty": 100,
+      "drop": 1
+    },
+    {
+      "order": 3,
       "id": "squirtle",
+      "picture": "monster_7.png",
+      "itemimage": "card_m4",
+      "level": 1,
       "hp": 52,
+      "defence": 12,
       "damage": 12,
       "damagetype": "weapon",
-      "defence": 12,
       "magic": 3,
-      "difficulty": 100,
-      "drop": 1,
-      "items": 13,
-      "stars": "5,10,20",
-      "picture": "monster_7.png",
-      "expearned": 31,
+      "items": 12,
+      "extension": "mana_add:[\"nature\",1]",
       "speed": 100,
-      "reward": 92,
-      "order": 3,
+      "stars": "5,10,20",
       "difficultyfactor": 7,
-      "itemimage": "card_m4",
-      "extension": "mana_add:[\"nature\",5]"
+      "expearned": 31,
+      "reward": 92,
+      "difficulty": 100,
+      "drop": 1
     },
     {
-      "level": 1,
+      "order": 4,
       "id": "charmander",
+      "picture": "monster_5.png",
+      "itemimage": "card_m5",
+      "level": 1,
       "hp": 66,
+      "defence": 18,
       "damage": 17,
       "damagetype": "weapon",
-      "defence": 18,
       "magic": 3,
-      "difficulty": 100,
-      "drop": 1,
-      "items": 13,
-      "stars": "5,10,20",
-      "picture": "monster_5.png",
-      "expearned": 52,
+      "items": 12,
+      "extension": "mana_add:[\"nature\",1]",
       "speed": 100,
-      "reward": 157,
-      "order": 4,
+      "stars": "5,10,20",
       "difficultyfactor": 8,
-      "itemimage": "card_m5",
-      "extension": "mana_add:[\"nature\",5]"
+      "expearned": 52,
+      "reward": 157,
+      "difficulty": 100,
+      "drop": 1
     },
     {
-      "level": 1,
+      "order": 5,
       "id": "slowpoke",
+      "picture": "monster_3.png",
+      "itemimage": "card_m6",
+      "level": 1,
       "hp": 79,
+      "defence": 24,
       "damage": 23,
       "damagetype": "weapon",
-      "defence": 24,
       "magic": 3,
-      "difficulty": 100,
-      "drop": 1,
-      "items": 13,
-      "stars": "5,10,20",
-      "picture": "monster_3.png",
-      "expearned": 84,
+      "items": 12,
+      "extension": "mana_add:[\"nature\",1]",
       "speed": 100,
-      "reward": 251,
-      "order": 5,
+      "stars": "5,10,20",
       "difficultyfactor": 9,
-      "itemimage": "card_m6",
-      "extension": "mana_add:[\"nature\",5]"
+      "expearned": 84,
+      "reward": 251,
+      "difficulty": 100,
+      "drop": 1
     },
     {
-      "level": 1,
+      "order": 6,
       "id": "bulbasaur",
+      "picture": "monster_6.png",
+      "itemimage": "card_m7",
+      "level": 1,
       "hp": 89,
+      "defence": 31,
       "damage": 29,
       "damagetype": "weapon",
-      "defence": 31,
       "magic": 3,
-      "difficulty": 100,
-      "drop": 1,
-      "items": 13,
-      "stars": "5,10,20",
-      "picture": "monster_6.png",
-      "expearned": 126,
+      "items": 12,
+      "extension": "mana_add:[\"nature\",1]",
       "speed": 100,
-      "reward": 377,
-      "order": 6,
+      "stars": "5,10,20",
       "difficultyfactor": 9,
-      "itemimage": "card_m7",
-      "extension": "mana_add:[\"nature\",5]"
+      "expearned": 126,
+      "reward": 377,
+      "difficulty": 100,
+      "drop": 1
     },
     {
-      "level": 1,
+      "order": 7,
       "id": "pidgey",
+      "picture": "monster_8.png",
+      "itemimage": "card_m8",
+      "level": 1,
       "hp": 94,
+      "defence": 39,
       "damage": 37,
       "damagetype": "weapon",
-      "defence": 39,
       "magic": 3,
-      "difficulty": 100,
-      "drop": 1,
-      "items": 13,
-      "stars": "5,10,20",
-      "picture": "monster_8.png",
-      "expearned": 176,
+      "items": 12,
+      "extension": "mana_add:[\"nature\",1]",
       "speed": 100,
-      "reward": 527,
-      "order": 7,
+      "stars": "5,10,20",
       "difficultyfactor": 10,
-      "itemimage": "card_m8",
-      "extension": "mana_add:[\"nature\",5]"
+      "expearned": 176,
+      "reward": 527,
+      "difficulty": 100,
+      "drop": 1
     },
     {
-      "level": 1,
+      "order": 8,
       "id": "ratata",
+      "picture": "monster_9.png",
+      "itemimage": "card_m9",
+      "level": 1,
       "hp": 99,
+      "defence": 42,
       "damage": 40,
       "damagetype": "weapon",
-      "defence": 42,
       "magic": 3,
-      "difficulty": 100,
-      "drop": 1,
-      "items": 13,
-      "stars": "5,10,20",
-      "picture": "monster_9.png",
-      "expearned": 246,
+      "items": 12,
+      "extension": "mana_add:[\"nature\",1]",
       "speed": 100,
-      "reward": 738,
-      "order": 8,
+      "stars": "5,10,20",
       "difficultyfactor": 8,
-      "itemimage": "card_m9",
-      "extension": "mana_add:[\"nature\",5]"
+      "expearned": 246,
+      "reward": 738,
+      "difficulty": 100,
+      "drop": 1
     },
     {
-      "level": 1,
+      "order": 9,
       "id": "zubat",
+      "picture": "monster_10.png",
+      "itemimage": "card_m10",
+      "level": 1,
       "hp": 148,
+      "defence": 67,
       "damage": 63,
       "damagetype": "weapon",
-      "defence": 67,
       "magic": 3,
-      "difficulty": 100,
-      "drop": 1,
-      "items": 13,
+      "items": 12,
+      "extension": "mana_add:[\"nature\",1]",
+      "speed": 0,
       "stars": "5,10,20",
-      "picture": "monster_10.png",
-      "expearned": 492,
-      "speed": 100,
-      "reward": 1477,
-      "order": 9,
       "difficultyfactor": 15,
-      "itemimage": "card_m10",
-      "extension": "mana_add:[\"nature\",5]"
+      "expearned": 492,
+      "reward": 1477,
+      "difficulty": 100,
+      "drop": 1
     },
     {
-      "level": 1,
+      "order": 10,
       "id": "end",
+      "picture": "monster_1.png",
+      "itemimage": "card_m1",
+      "level": 1,
       "hp": 133,
+      "defence": 71,
       "damage": 67,
       "damagetype": "weapon",
-      "defence": 71,
       "magic": 3,
-      "difficulty": 100,
-      "drop": 1,
-      "items": 13,
+      "items": 12,
+      "extension": "mana_add:[\"nature\",1]",
+      "speed": 0,
       "stars": "5,10,20",
-      "picture": "monster_1.png",
-      "expearned": 591,
-      "speed": 100,
-      "reward": 1772,
-      "order": 10,
       "difficultyfactor": 8,
-      "itemimage": "card_m10",
-      "extension": "mana_add:[\"nature\",5]"
+      "expearned": 591,
+      "reward": 1772,
+      "difficulty": 100,
+      "drop": 1
     }
   ],
   "monster_area": [
@@ -914,7 +556,7 @@
       "chestrespawn": 60,
       "chestdropset": 3,
       "expearned": 50,
-      "tameprice": "1,11,21"
+      "tameprice": "1,11"
     },
     {
       "id": "clouds_01",
@@ -931,7 +573,7 @@
       "chestrespawn": 60,
       "chestdropset": 3,
       "expearned": 50,
-      "tameprice": "2,12,22"
+      "tameprice": "2,12"
     },
     {
       "id": "clouds_02",
@@ -949,7 +591,7 @@
       "chestrespawn": 60,
       "chestdropset": 3,
       "expearned": 50,
-      "tameprice": "3,13,23"
+      "tameprice": "3,13"
     },
     {
       "id": "clouds_03",
@@ -962,14 +604,38 @@
       "expearned": 50
     },
     {
-      "id": "clouds_04",
-      "hud": "hud04",
-      "unlock": "clouds_01,clouds_05,clouds_07",
-      "area": "house01",
+      "id": "clouds_06",
+      "hud": "hud06",
+      "unlock": "clouds_02,clouds_03,clouds_05,clouds_08",
+      "area": "squirtle",
+      "icon": "monster_icon_7",
+      "areamin": 1,
+      "areamax": 2,
+      "lifemin": 60,
+      "lifemax": 60,
+      "respawn": 60,
       "chestlife": 0,
       "chestrespawn": 60,
       "chestdropset": 3,
-      "expearned": 50
+      "expearned": 50,
+      "tameprice": "4,14"
+    },
+    {
+      "id": "clouds_08",
+      "hud": "hud08",
+      "unlock": "clouds_05,clouds_06,clouds_07,clouds_09,clouds_10",
+      "area": "charmander",
+      "icon": "monster_icon_5",
+      "areamin": 1,
+      "areamax": 2,
+      "lifemin": 60,
+      "lifemax": 60,
+      "respawn": 60,
+      "chestlife": 0,
+      "chestrespawn": 60,
+      "chestdropset": 3,
+      "expearned": 50,
+      "tameprice": "5,15"
     },
     {
       "id": "clouds_05",
@@ -987,24 +653,17 @@
       "chestrespawn": 60,
       "chestdropset": 3,
       "expearned": 50,
-      "tameprice": "4,14,24"
+      "tameprice": "6,16"
     },
     {
-      "id": "clouds_06",
-      "hud": "hud06",
-      "unlock": "clouds_02,clouds_03,clouds_05,clouds_08",
-      "area": "squirtle",
-      "icon": "monster_icon_7",
-      "areamin": 1,
-      "areamax": 2,
-      "lifemin": 60,
-      "lifemax": 60,
-      "respawn": 60,
+      "id": "clouds_04",
+      "hud": "hud04",
+      "unlock": "clouds_01,clouds_05,clouds_07",
+      "area": "house01",
       "chestlife": 0,
       "chestrespawn": 60,
       "chestdropset": 3,
-      "expearned": 50,
-      "tameprice": "5,15,25"
+      "expearned": 50
     },
     {
       "id": "clouds_07",
@@ -1021,24 +680,7 @@
       "chestrespawn": 60,
       "chestdropset": 3,
       "expearned": 50,
-      "tameprice": "6,16,26"
-    },
-    {
-      "id": "clouds_08",
-      "hud": "hud08",
-      "unlock": "clouds_05,clouds_06,clouds_07,clouds_09,clouds_10",
-      "area": "charmander",
-      "icon": "monster_icon_5",
-      "areamin": 1,
-      "areamax": 2,
-      "lifemin": 60,
-      "lifemax": 60,
-      "respawn": 60,
-      "chestlife": 0,
-      "chestrespawn": 60,
-      "chestdropset": 3,
-      "expearned": 50,
-      "tameprice": "7,17,27"
+      "tameprice": "7,17"
     },
     {
       "id": "clouds_09",
@@ -1056,7 +698,7 @@
       "chestrespawn": 60,
       "chestdropset": 3,
       "expearned": 50,
-      "tameprice": "8,18,28"
+      "tameprice": "8,18"
     },
     {
       "id": "clouds_10",
@@ -1075,7 +717,7 @@
       "area": "ratata",
       "icon": "monster_icon_9",
       "areamin": 1,
-      "areamax": 1,
+      "areamax": 2,
       "lifemin": 60,
       "lifemax": 60,
       "respawn": 60,
@@ -1083,7 +725,7 @@
       "chestrespawn": 60,
       "chestdropset": 3,
       "expearned": 50,
-      "tameprice": "9,19,29"
+      "tameprice": "9,19"
     },
     {
       "id": "clouds_12",
@@ -1099,7 +741,487 @@
       "chestrespawn": 60,
       "chestdropset": 3,
       "expearned": 50,
-      "tameprice": "10,20,30"
+      "tameprice": "10,20"
+    }
+  ],
+  "item": [
+    {
+      "id": 22,
+      "name": "pet",
+      "type": "pet",
+      "slot": 0,
+      "picture": "card_m1",
+      "droppicture": "drop_magic",
+      "setname": "default",
+      "localekey": "pet"
+    },
+    {
+      "id": 23,
+      "name": "tamed_pet",
+      "type": "pet",
+      "slot": 1,
+      "picture": "card_m1",
+      "droppicture": "drop_magic",
+      "setname": "default",
+      "localekey": "tamed_pet"
+    },
+    {
+      "id": 1,
+      "name": "card_w1",
+      "type": "weapon",
+      "slot": 2,
+      "picture": "card_w1",
+      "droppicture": "drop_sword",
+      "ext": "damage:[\"weapon\",1,9]",
+      "setname": "default",
+      "dropparam": "1,9",
+      "localekey": "card_w1"
+    },
+    {
+      "id": 2,
+      "name": "card_w2",
+      "type": "weapon",
+      "slot": 2,
+      "picture": "card_w2",
+      "droppicture": "drop_sword",
+      "ext": "damage:[\"weapon\",8,24]",
+      "setname": "house00",
+      "dropparam": "8,24",
+      "localekey": "card_w2"
+    },
+    {
+      "id": 3,
+      "name": "card_wm",
+      "type": "weapon",
+      "slot": 2,
+      "picture": "card_wm",
+      "droppicture": "drop_staff",
+      "ext": "damage:[\"fire\",20,35]",
+      "setname": "house01",
+      "dropparam": "20,35",
+      "localekey": "card_wm"
+    },
+    {
+      "id": 24,
+      "name": "card_w3",
+      "type": "weapon",
+      "slot": 2,
+      "picture": "card_w3",
+      "droppicture": "drop_sword",
+      "ext": "damage:[\"weapon\",23,38]",
+      "setname": "house00",
+      "dropparam": "23,38",
+      "localekey": "card_w3"
+    },
+    {
+      "id": 25,
+      "name": "card_w4",
+      "type": "weapon",
+      "slot": 2,
+      "picture": "card_w4",
+      "droppicture": "drop_sword",
+      "ext": "damage:[\"weapon\",36,68]",
+      "setname": "house02",
+      "dropparam": "36,68",
+      "localekey": "card_w4"
+    },
+    {
+      "id": 7,
+      "name": "card_ah1",
+      "type": "armor",
+      "slot": 3,
+      "picture": "card_ah1",
+      "droppicture": "drop_shield",
+      "ext": "defence:[1,9]",
+      "setname": "house00",
+      "dropparam": "1,9",
+      "localekey": "card_ah1"
+    },
+    {
+      "id": 26,
+      "name": "card_ah2",
+      "type": "armor",
+      "slot": 3,
+      "picture": "card_ah2",
+      "droppicture": "drop_shield",
+      "ext": "defence:[8,16]",
+      "setname": "house02",
+      "dropparam": "8,16",
+      "localekey": "card_ah2"
+    },
+    {
+      "id": 4,
+      "name": "card_ab1",
+      "type": "armor",
+      "slot": 4,
+      "picture": "card_ab1",
+      "droppicture": "drop_body",
+      "ext": "defence:[1,6]",
+      "setname": "default",
+      "dropparam": "1,6",
+      "localekey": "card_ab1"
+    },
+    {
+      "id": 5,
+      "name": "card_ab2",
+      "type": "armor",
+      "slot": 4,
+      "picture": "card_ab2",
+      "droppicture": "drop_body",
+      "ext": "defence:[4,27]",
+      "setname": "house00",
+      "dropparam": "4,27",
+      "localekey": "card_ab2"
+    },
+    {
+      "id": 27,
+      "name": "card_ab3",
+      "type": "armor",
+      "slot": 4,
+      "picture": "card_ab3",
+      "droppicture": "drop_body",
+      "ext": "defence:[25,48]",
+      "setname": "house02",
+      "dropparam": "25,48",
+      "localekey": "card_ab3"
+    },
+    {
+      "id": 28,
+      "name": "card_ab4",
+      "type": "armor",
+      "slot": 4,
+      "picture": "card_ab4",
+      "droppicture": "drop_body",
+      "ext": "defence:[46,71]",
+      "setname": "house02",
+      "dropparam": "46,71",
+      "localekey": "card_ab4"
+    },
+    {
+      "id": 8,
+      "name": "card_al1",
+      "type": "armor",
+      "slot": 6,
+      "picture": "card_al1",
+      "droppicture": "drop_boots",
+      "ext": "defence:[1,5]",
+      "setname": "default",
+      "dropparam": "1,5",
+      "localekey": "card_al1"
+    },
+    {
+      "id": 29,
+      "name": "card_al2",
+      "type": "armor",
+      "slot": 6,
+      "picture": "card_al2",
+      "droppicture": "drop_boots",
+      "ext": "defence:[4,9]",
+      "setname": "house02",
+      "dropparam": "4,9",
+      "localekey": "card_al2"
+    },
+    {
+      "id": 6,
+      "name": "card_ag1",
+      "type": "armor",
+      "slot": 7,
+      "picture": "card_ag1",
+      "droppicture": "drop_gloves",
+      "ext": "defence:[1,5]",
+      "setname": "house00",
+      "dropparam": "1,5",
+      "localekey": "card_ag1"
+    },
+    {
+      "id": 30,
+      "name": "card_ag2",
+      "type": "armor",
+      "slot": 7,
+      "picture": "card_ag2",
+      "droppicture": "drop_gloves",
+      "ext": "defence:[4,9]",
+      "setname": "house02",
+      "dropparam": "4,9",
+      "localekey": "card_ag2"
+    },
+    {
+      "id": 9,
+      "name": "card_am1",
+      "type": "magic",
+      "slot": 8,
+      "picture": "card_am1",
+      "droppicture": "drop_ring",
+      "ext": "double_drop:20",
+      "setname": "house03",
+      "dropparam": "10,20",
+      "localekey": "card_am1"
+    },
+    {
+      "id": 10,
+      "name": "card_am1",
+      "type": "magic",
+      "slot": 8,
+      "picture": "card_am1",
+      "droppicture": "drop_ring",
+      "ext": "resurrect_pet:50",
+      "setname": "house03",
+      "dropparam": "30,70",
+      "localekey": "card_am1"
+    },
+    {
+      "id": 11,
+      "name": "card_am1",
+      "type": "magic",
+      "slot": 8,
+      "picture": "card_am1",
+      "droppicture": "drop_ring",
+      "ext": "resurrect_pet:50",
+      "setname": "house03",
+      "dropparam": "1,50",
+      "localekey": "card_am1"
+    },
+    {
+      "id": 19,
+      "name": "card_am1",
+      "type": "magic",
+      "slot": 8,
+      "picture": "card_am1",
+      "droppicture": "drop_ring",
+      "ext": "mirror_damage:[20,50]",
+      "setname": "house03",
+      "dropparam": "20,50",
+      "localekey": "card_am1"
+    },
+    {
+      "id": 20,
+      "name": "card_am1",
+      "type": "magic",
+      "slot": 8,
+      "picture": "card_am1",
+      "droppicture": "drop_ring",
+      "ext": "spell_defence:[\"nature\",1]",
+      "setname": "house03",
+      "dropparam": "1,5",
+      "localekey": "card_am1"
+    },
+    {
+      "id": 21,
+      "name": "card_am1",
+      "type": "magic",
+      "slot": 8,
+      "picture": "card_am1",
+      "droppicture": "drop_ring",
+      "ext": "mana_add:[\"nature\",5]",
+      "setname": "house03",
+      "dropparam": "5,10",
+      "localekey": "card_am1"
+    },
+    {
+      "id": 12,
+      "name": "card_s1_1",
+      "type": "spell",
+      "slot": 9,
+      "picture": "card_s1_1",
+      "droppicture": "drop_magic",
+      "ext": "damage:[\"fire\",3];mana:[\"fire\",4]",
+      "setname": "default",
+      "dropparam": "5,10",
+      "localekey": "card_s1_1"
+    },
+    {
+      "id": 13,
+      "name": "card_s2_1",
+      "type": "spell",
+      "slot": 9,
+      "picture": "card_s2_1",
+      "droppicture": "drop_magic",
+      "ext": "damage:[\"water\",4];mana:[\"water\",5]",
+      "setname": "default",
+      "dropparam": "5,10",
+      "localekey": "card_s2_1"
+    },
+    {
+      "id": 14,
+      "name": "card_s2_1",
+      "type": "spell",
+      "slot": 9,
+      "picture": "card_s2_2",
+      "droppicture": "drop_magic",
+      "ext": "damage:[\"water\",12];mana:[\"fire\",6,\"water\",8]",
+      "setname": "default",
+      "dropparam": "5,10",
+      "localekey": "card_s2_2"
+    },
+    {
+      "id": 15,
+      "name": "card_s3_1",
+      "type": "spell",
+      "slot": 9,
+      "picture": "card_s3_1",
+      "droppicture": "drop_magic",
+      "ext": "damage:[\"nature\",8];mana:[\"nature\",7]",
+      "setname": "house01",
+      "dropparam": "5,10",
+      "localekey": "card_s3_1"
+    },
+    {
+      "id": 16,
+      "name": "card_s1_2",
+      "type": "spell",
+      "slot": 9,
+      "picture": "card_s1_2",
+      "droppicture": "drop_magic",
+      "ext": "damage:[\"fire\",10];mana:[\"fire\",6]",
+      "setname": "house01",
+      "dropparam": "5,10",
+      "localekey": "card_s1_2"
+    },
+    {
+      "id": 17,
+      "name": "card_s4_1",
+      "type": "spell",
+      "slot": 9,
+      "picture": "card_s4_1",
+      "droppicture": "drop_magic",
+      "ext": "damage:[\"stone\",20];mana:[\"stone\",12]",
+      "setname": "house01",
+      "dropparam": "5,11",
+      "localekey": "card_s4_1"
+    },
+    {
+      "id": 18,
+      "name": "card_s5_1",
+      "type": "spell",
+      "slot": 9,
+      "picture": "card_s5_1",
+      "droppicture": "drop_magic",
+      "ext": "damage:[\"dark\",13];mana:[\"dark\",6]",
+      "setname": "house01",
+      "dropparam": "5,12",
+      "localekey": "card_s5_1"
+    }
+  ],
+  "price_items": [
+    {
+      "id": 1,
+      "type": "monster",
+      "code": "blue_bull",
+      "amount": 2
+    },
+    {
+      "id": 2,
+      "type": "monster",
+      "code": "meowut",
+      "amount": 2
+    },
+    {
+      "id": 3,
+      "type": "monster",
+      "code": "pikachu",
+      "amount": 2
+    },
+    {
+      "id": 4,
+      "type": "monster",
+      "code": "squirtle",
+      "amount": 2
+    },
+    {
+      "id": 5,
+      "type": "monster",
+      "code": "charmander",
+      "amount": 2
+    },
+    {
+      "id": 6,
+      "type": "monster",
+      "code": "slowpoke",
+      "amount": 2
+    },
+    {
+      "id": 7,
+      "type": "monster",
+      "code": "bulbasaur",
+      "amount": 2
+    },
+    {
+      "id": 8,
+      "type": "monster",
+      "code": "pidgey",
+      "amount": 2
+    },
+    {
+      "id": 9,
+      "type": "monster",
+      "code": "ratata",
+      "amount": 2
+    },
+    {
+      "id": 10,
+      "type": "monster",
+      "code": "zubat",
+      "amount": 2
+    },
+    {
+      "id": 11,
+      "type": "money",
+      "code": "gold",
+      "amount": 120
+    },
+    {
+      "id": 12,
+      "type": "money",
+      "code": "gold",
+      "amount": 250
+    },
+    {
+      "id": 13,
+      "type": "money",
+      "code": "gold",
+      "amount": 400
+    },
+    {
+      "id": 14,
+      "type": "money",
+      "code": "gold",
+      "amount": 800
+    },
+    {
+      "id": 15,
+      "type": "money",
+      "code": "gold",
+      "amount": 1300
+    },
+    {
+      "id": 16,
+      "type": "money",
+      "code": "gold",
+      "amount": 2000
+    },
+    {
+      "id": 17,
+      "type": "money",
+      "code": "gold",
+      "amount": 3000
+    },
+    {
+      "id": 18,
+      "type": "money",
+      "code": "gold",
+      "amount": 4200
+    },
+    {
+      "id": 19,
+      "type": "money",
+      "code": "gold",
+      "amount": 6000
+    },
+    {
+      "id": 20,
+      "type": "money",
+      "code": "gold",
+      "amount": 12000
     }
   ],
   "player_items": [
@@ -1116,188 +1238,6 @@
     {
       "id": 12,
       "wield": 1
-    }
-  ],
-  "price_items": [
-    {
-      "id": 1,
-      "type": "monster",
-      "code": "pikachu.1",
-      "amount": 1
-    },
-    {
-      "id": 2,
-      "type": "monster",
-      "code": "blue_bull.1",
-      "amount": 1
-    },
-    {
-      "id": 3,
-      "type": "monster",
-      "code": "meowut.1",
-      "amount": 2
-    },
-    {
-      "id": 4,
-      "type": "monster",
-      "code": "slowpoke.1",
-      "amount": 2
-    },
-    {
-      "id": 5,
-      "type": "monster",
-      "code": "charmander.1",
-      "amount": 2
-    },
-    {
-      "id": 6,
-      "type": "monster",
-      "code": "bulbasaur.1",
-      "amount": 2
-    },
-    {
-      "id": 7,
-      "type": "monster",
-      "code": "squirtle.1",
-      "amount": 2
-    },
-    {
-      "id": 8,
-      "type": "monster",
-      "code": "pidgey.1",
-      "amount": 2
-    },
-    {
-      "id": 9,
-      "type": "monster",
-      "code": "ratata.1",
-      "amount": 2
-    },
-    {
-      "id": 10,
-      "type": "monster",
-      "code": "zubat.1",
-      "amount": 2
-    },
-    {
-      "id": 11,
-      "type": "money",
-      "code": "gold",
-      "amount": 100
-    },
-    {
-      "id": 12,
-      "type": "money",
-      "code": "gold",
-      "amount": 200
-    },
-    {
-      "id": 13,
-      "type": "money",
-      "code": "gold",
-      "amount": 300
-    },
-    {
-      "id": 14,
-      "type": "money",
-      "code": "gold",
-      "amount": 400
-    },
-    {
-      "id": 15,
-      "type": "money",
-      "code": "gold",
-      "amount": 500
-    },
-    {
-      "id": 16,
-      "type": "money",
-      "code": "gold",
-      "amount": 600
-    },
-    {
-      "id": 17,
-      "type": "money",
-      "code": "gold",
-      "amount": 700
-    },
-    {
-      "id": 18,
-      "type": "money",
-      "code": "gold",
-      "amount": 800
-    },
-    {
-      "id": 19,
-      "type": "money",
-      "code": "gold",
-      "amount": 900
-    },
-    {
-      "id": 20,
-      "type": "money",
-      "code": "gold",
-      "amount": 1000
-    },
-    {
-      "id": 21,
-      "type": "item",
-      "code": "sword",
-      "amount": 1
-    },
-    {
-      "id": 22,
-      "type": "item",
-      "code": "chest",
-      "amount": 1
-    },
-    {
-      "id": 23,
-      "type": "item",
-      "code": "boots",
-      "amount": 1
-    },
-    {
-      "id": 24,
-      "type": "item",
-      "code": "sword",
-      "amount": 1
-    },
-    {
-      "id": 25,
-      "type": "item",
-      "code": "chest",
-      "amount": 1
-    },
-    {
-      "id": 26,
-      "type": "item",
-      "code": "boots",
-      "amount": 1
-    },
-    {
-      "id": 27,
-      "type": "item",
-      "code": "sword",
-      "amount": 1
-    },
-    {
-      "id": 28,
-      "type": "item",
-      "code": "chest",
-      "amount": 1
-    },
-    {
-      "id": 29,
-      "type": "item",
-      "code": "boots",
-      "amount": 1
-    },
-    {
-      "id": 30,
-      "type": "item",
-      "code": "sword",
-      "amount": 1
     }
   ],
   "magic_type": [
@@ -1721,46 +1661,6 @@
       "russian": "Не пойманные"
     },
     {
-      "id": "blue_bull",
-      "russian": "Синий Бык"
-    },
-    {
-      "id": "meowut",
-      "russian": "Водяной"
-    },
-    {
-      "id": "pikachu",
-      "russian": "Огонек"
-    },
-    {
-      "id": "squirtle",
-      "russian": "Леший"
-    },
-    {
-      "id": "charmander",
-      "russian": "Морковь"
-    },
-    {
-      "id": "slowpoke",
-      "russian": "Медведь"
-    },
-    {
-      "id": "bulbasaur",
-      "russian": "Скала"
-    },
-    {
-      "id": "pidgey",
-      "russian": "Имп"
-    },
-    {
-      "id": "ratata",
-      "russian": "Ракушка"
-    },
-    {
-      "id": "zubat",
-      "russian": "Червь"
-    },
-    {
       "id": "resurrect_pet",
       "russian": "Восстанавливает вызванного монстра после смерти"
     },
@@ -1811,6 +1711,66 @@
     {
       "id": "stone",
       "russian": "Камень"
+    },
+    {
+      "id": "house",
+      "russian": "Дом"
+    },
+    {
+      "id": "damage",
+      "russian": "Атака"
+    },
+    {
+      "id": "defence",
+      "russian": "Защита"
+    },
+    {
+      "id": "mana",
+      "russian": "Мана"
+    },
+    {
+      "id": "monster",
+      "russian": "Зверюга"
+    },
+    {
+      "id": "blue_bull",
+      "russian": "Синий Бык"
+    },
+    {
+      "id": "meowut",
+      "russian": "Водяной"
+    },
+    {
+      "id": "pikachu",
+      "russian": "Огонек"
+    },
+    {
+      "id": "squirtle",
+      "russian": "Леший"
+    },
+    {
+      "id": "charmander",
+      "russian": "Морковь"
+    },
+    {
+      "id": "slowpoke",
+      "russian": "Медведь"
+    },
+    {
+      "id": "bulbasaur",
+      "russian": "Скала"
+    },
+    {
+      "id": "pidgey",
+      "russian": "Имп"
+    },
+    {
+      "id": "ratata",
+      "russian": "Ракушка"
+    },
+    {
+      "id": "zubat",
+      "russian": "Червь"
     },
     {
       "id": "card_w1",
@@ -1905,78 +1865,6 @@
       "russian": "Ядовитый Пар"
     },
     {
-      "id": "steel_sword.d",
-      "russian": "крутой меч"
-    },
-    {
-      "id": "staff.d",
-      "russian": "посох"
-    },
-    {
-      "id": "helmet.d",
-      "russian": "Шлем"
-    },
-    {
-      "id": "body.d",
-      "russian": "броник"
-    },
-    {
-      "id": "steel_chest.d",
-      "russian": "броник"
-    },
-    {
-      "id": "boots.d",
-      "russian": "валенки"
-    },
-    {
-      "id": "gloves.d",
-      "russian": "перчатки"
-    },
-    {
-      "id": "ring.d",
-      "russian": "магический предмет"
-    },
-    {
-      "id": "fireball.d",
-      "russian": "вжжжжж бумс"
-    },
-    {
-      "id": "storm.d",
-      "russian": "фщщщщщ"
-    },
-    {
-      "id": "thunderbolt.d",
-      "russian": "дыдыщщщ"
-    },
-    {
-      "id": "troll.d",
-      "russian": "Аррргххх"
-    },
-    {
-      "id": "vampirism.d",
-      "russian": "пщпщ"
-    },
-    {
-      "id": "light.d",
-      "russian": "уиуиуиуиууу"
-    },
-    {
-      "id": "damage",
-      "russian": "Атака"
-    },
-    {
-      "id": "defence",
-      "russian": "Защита"
-    },
-    {
-      "id": "mana",
-      "russian": "мана"
-    },
-    {
-      "id": "monster",
-      "russian": "Зверюга"
-    },
-    {
       "id": "blue_bull.d",
       "russian": " "
     },
@@ -2015,10 +1903,6 @@
     {
       "id": "zubat.d",
       "russian": " "
-    },
-    {
-      "id": "house",
-      "russian": "Дом"
     },
     {
       "id": "card_w1.d",

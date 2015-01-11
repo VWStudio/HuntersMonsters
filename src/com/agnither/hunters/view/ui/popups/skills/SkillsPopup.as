@@ -52,7 +52,9 @@ public class SkillsPopup extends Popup {
         handleCloseButton(_links["close_btn"]);
 
         _level = _links["level_tf"];
+        _level.visible = false;
         _exp = _links["exp_tf"];
+        _exp.visible = false;
         _hp = _links["hp_tf"];
         _summon = _links["summon_tf"];
         _skillPoints = _links["sp_tf"];
@@ -133,9 +135,9 @@ public class SkillsPopup extends Popup {
 
         _level.text = "Уровень: "+ progress.level.toString();
         _exp.text = "Опыт: "+progress.exp.toString() + "/" +LevelVO.DICT[progress.level.toString()].exp;
-        _hp.text = "Здоровье: "+progress.hp.toString();
-        _summon.text = "Призыв: "+player.hero.maxSummon.toString();
-        _skillPoints.text = "Очки навыков: "+progress.skillPoints.toString();
+        _hp.text = "Здоровье:  "+progress.hp.toString() + "       (+10 за каждый новый уровень)";
+        _summon.text = "Питомцы:  "+player.hero.maxSummon.toString();
+        _skillPoints.text = "Очки навыков:  "+progress.skillPoints.toString() + "       (+1 за каждый новый уровень)";
         _level1tf.text = "Уровень 1";
         _level2tf.text = "Уровень 3";
         _level3tf.text = "Уровень 7";

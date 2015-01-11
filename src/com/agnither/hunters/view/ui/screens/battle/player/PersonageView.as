@@ -76,6 +76,7 @@ public class PersonageView extends AbstractView {
     public var isPet : Boolean = false;
     private var _picturePos : Point;
     private var _statsIcons : Image;
+    private var _statsIconsShield : Image;
     private var _statsBack : Image;
 
     public function PersonageView() {
@@ -92,6 +93,7 @@ public class PersonageView extends AbstractView {
         _statsIcons = _links["bitmap_battle_stats_icons"];
         _statsBack = _links["bitmap_battle_stats"];
 
+        _statsIconsShield = _links["bitmap_itemicon_shield"];
 
         _attackType = _links["bitmap_chip_sword"];
 
@@ -118,6 +120,7 @@ public class PersonageView extends AbstractView {
 
         _statsIcons.visible = !isPet;
         _statsBack.visible = !isPet;
+        _statsIconsShield.visible = !isPet;
 
         _name.visible = !isPet;
         _name.text = (_personage.name ? String(_personage.name) : Locale.getString(_personage.id)) + " " + String(_personage.level)+"ур";
@@ -141,7 +144,7 @@ public class PersonageView extends AbstractView {
         _attackType.visible = false;
 
 
-        hideHit();
+        //hideHit();
 //        for (var i : int = 0; i < numChildren; i++)
 //        {
 //            var object : Object = getChildAt(i);
@@ -156,7 +159,12 @@ public class PersonageView extends AbstractView {
         _hitImage.visible = true;
         _hitImage.alpha = 0;
         Starling.juggler.tween(_hitImage, 0.2, {alpha:1});
-        Starling.juggler.delayCall(hideHit, 0.7);
+        Starling.juggler.delayCall(alphaHit, 0.8);
+    }
+
+    private function alphaHit():void {
+        Starling.juggler.tween(_hitImage, 0.8, {alpha:0});
+        Starling.juggler.delayCall(hideHit, 0.8);
     }
 
     private function hideHit():void {

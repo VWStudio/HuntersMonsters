@@ -9,6 +9,7 @@ import com.agnither.hunters.model.modules.extensions.DamageExt;
 import com.agnither.hunters.model.modules.extensions.DoubleDropExt;
 import com.agnither.hunters.model.modules.extensions.ManaAddExt;
 import com.agnither.hunters.model.modules.extensions.MirrorDamageExt;
+import com.agnither.hunters.model.modules.extensions.ResurrectPetExt;
 import com.agnither.hunters.model.modules.extensions.SpellDefenceExt;
 import com.agnither.hunters.model.player.drop.DropList;
 import com.agnither.hunters.model.player.inventory.Inventory;
@@ -195,7 +196,7 @@ public class Player extends EventDispatcher
 
         if (this is LocalPlayer && hitPercent > 0) {
             // drop from monster
-            coreDispatch(DropList.GENERATE_DROP, hitPercent);
+            coreDispatch(DropList.GENERATE_DROP, hitPercent, target.hp);
         }
     }
 
@@ -228,9 +229,9 @@ public class Player extends EventDispatcher
                     if(extType == SpellDefenceExt.TYPE) {
                         spellsDefence.push(item.getExtension(extType));
                     }
-//                    if(extType == ResurrectPetExt.TYPE) {
-//                        Model.instance.resurrectPet = item.getExtension(extType) as ResurrectPetExt;
-//                    }
+                    if(extType == ResurrectPetExt.TYPE) {
+                        Model.instance.resurrectPet = item.getExtension(extType) as ResurrectPetExt;
+                    }
                 }
             }
         }

@@ -145,7 +145,8 @@ public class Inventory extends EventDispatcher
                 if(itemData.type == ItemVO.TYPE_PET)
                 {
                     var monsters : Dictionary = MonsterVO.DICT[itemData.name];
-                    itemVO = ItemVO.createPetItemVO(monsters[1], itemData.id == 24);
+                    var isTame:Boolean = Model.instance.progress.tamedMonsters.indexOf(itemData.name) >= 0;
+                    itemVO = ItemVO.createPetItemVO(monsters[1], isTame);// itemData.id == 24);
                 }
                 else
                 {
@@ -183,12 +184,43 @@ public class Inventory extends EventDispatcher
         for (var key : String in _itemsByType)
         {
             if(key == ItemVO.TYPE_SPELL) continue;
+            if(key == ItemVO.TYPE_PET) continue;
             var itemsbytype : Array = _itemsByType[key];
             arr = arr.concat(itemsbytype);
         }
 
         arr = arr.sort(sortInventory);
+        return arr;
+    }
 
+    public function getSpellsForView():Array {
+        var arr : Array = [];
+        for (var key : String in _itemsByType)
+        {
+            if(key != ItemVO.TYPE_SPELL) continue;
+            var itemsbytype : Array = _itemsByType[key];
+            arr = arr.concat(itemsbytype);
+        }
+
+        arr = arr.sort(sortInventory);
+        return arr;
+    }
+
+    public function getPetsForView():Array {
+        var arr : Array = [];
+        for (var key : String in _itemsByType)
+        {
+            if(key != ItemVO.TYPE_PET) continue;
+
+
+            //var isUnlocked:Boolean = Model.instance.progress.unlockedLocations.indexOf(_monsterID) >= 0;
+
+
+            var itemsbytype : Array = _itemsByType[key];
+            arr = arr.concat(itemsbytype);
+        }
+
+        arr = arr.sort(sortInventory);
         return arr;
     }
 
@@ -248,7 +280,7 @@ public class Inventory extends EventDispatcher
     {
         updateExtensions();
 
-        _inventoryItems.sort(sortInventory);
+        _inventoryItems.sort(sortInventoryActive);
 
         _manaPriority = getSpellsManaTypes();
         dispatchEventWith(UPDATE);
@@ -261,6 +293,15 @@ public class Inventory extends EventDispatcher
     private function addToInventory(uid : String) : void
     {
         var item : Item = _itemsDict[uid];
+
+        //trace(item);
+
+        //if (item != null || item.slot == 0)
+        //{
+            //var isUnlocked:Boolean = Model.instance.progress.unlockedLocations.indexOf(item.id) >= 0;
+            //if (isUnlocked) item.slot = 1;
+        //}
+
         if (item == null || item.slot == 0)
         {
             return;
@@ -353,6 +394,76 @@ public class Inventory extends EventDispatcher
         var itemA : Item = _itemsDict[$a];
         var itemB : Item = _itemsDict[$b];
 
+
+
+
+        if(itemA.slot < 2) {
+            if(itemB.slot < 2) {
+                var petExt : PetExt = itemA.getExtension(PetExt.TYPE) as PetExt;
+                var monsterA : MonsterVO = petExt.getMonster();
+                petExt = itemB.getExtension(PetExt.TYPE) as PetExt;
+                var monsterB : MonsterVO = petExt.getMonster();
+
+                if(monsterA.order > monsterB.order) {
+                    return 1
+                }
+                if(monsterA.order < monsterB.order) {
+                    return -1
+                }
+                return 0;
+            }
+            else
+            {
+                return 1;
+            }
+        }
+        else
+        {
+            if(itemB.slot < 2) {
+                return -1;
+            }
+        }
+
+
+
+
+        if(itemA.slot == 9) {
+            if(itemB.slot == 9) {
+                if (itemA.id > itemB.id) return 1;
+                else return -1;
+            }
+        }
+
+        if (itemA.slot < itemB.slot)
+        {
+            return -1;
+        }
+        else if (itemA.slot > itemB.slot)
+        {
+            return 1;
+        }
+        else
+        {
+            if (itemA.getDamage() > itemB.getDamage())
+            {
+                return -1;
+            }
+            else if (itemA.getDamage() < itemB.getDamage())
+            {
+                return 1;
+            }
+        }
+        return 0;
+    }
+
+    public function sortInventoryActive($a : String, $b : String) : int
+    {
+        var itemA : Item = _itemsDict[$a];
+        var itemB : Item = _itemsDict[$b];
+
+
+
+
         if(itemA.slot == 0) {
             if(itemB.slot == 0) {
                 var petExt : PetExt = itemA.getExtension(PetExt.TYPE) as PetExt;
@@ -360,11 +471,11 @@ public class Inventory extends EventDispatcher
                 petExt = itemB.getExtension(PetExt.TYPE) as PetExt;
                 var monsterB : MonsterVO = petExt.getMonster();
 
-                if(monsterA.damage > monsterB.damage) {
-                    return -1
-                }
-                if(monsterA.damage < monsterB.damage) {
+                if(monsterA.order > monsterB.order) {
                     return 1
+                }
+                if(monsterA.order < monsterB.order) {
+                    return -1
                 }
                 return 0;
             }
@@ -381,6 +492,14 @@ public class Inventory extends EventDispatcher
         }
 
 
+
+
+        if(itemA.slot == 9) {
+            if(itemB.slot == 9) {
+                   if (itemA.id > itemB.id) return 1;
+                   else return -1;
+            }
+        }
 
         if (itemA.slot < itemB.slot)
         {

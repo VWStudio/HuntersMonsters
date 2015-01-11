@@ -54,7 +54,7 @@ public class AIPlayer extends Player
             inventory.push(id);
         }
 //        var petItem : ItemVO = ItemVO.createPetItemVO(monster);
-        var petItem : ItemVO = ItemVO.createPetItemVO(monster, true);
+        var petItem : ItemVO = ItemVO.createPetItemVO(monster, true, true);
 //        petItem.id = 24;
 //        petItem.slot = 1;
         items[petItem.id] = petItem;

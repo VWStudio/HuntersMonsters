@@ -4,6 +4,7 @@
 package com.agnither.hunters.view.ui.popups.monsters {
 import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.modules.locale.Locale;
+import com.agnither.hunters.model.modules.monsters.MonsterVO;
 import com.agnither.hunters.model.modules.monsters.PriceItemVO;
 import com.agnither.hunters.model.player.inventory.Item;
 import com.agnither.hunters.model.player.inventory.Pet;
@@ -35,10 +36,14 @@ public class TamePriceRow extends AbstractView {
         isEnough = false;
         switch (price.type) {
             case "monster":
-                var monsters : Array = Model.instance.player.pets.getPetsByType(price.code);
+                //var monsters : Array = Model.instance.player.pets.getPetsByType(price.code);
+                //isEnough = monsters.length >= price.amount;
+                //var mon : Array = price.code.split(".");
+                //_title.text = price.amount + " x " + Locale.getString(mon[0]) +" " +mon[1]+" ур.";
+
+                var monsters : Array = Model.instance.player.inventory.getItemsByName(price.code);
+                _title.text = price.amount + " " + Locale.getString(price.code);
                 isEnough = monsters.length >= price.amount;
-                var mon : Array = price.code.split(".");
-                _title.text = price.amount + " x " + Locale.getString(mon[0]) +" " +mon[1]+" ур.";
                 break;
             case "money":
                 _title.text = price.amount + " золота";
@@ -60,7 +65,8 @@ public class TamePriceRow extends AbstractView {
     public function pay() : void {
         switch (price.type) {
             case "monster":
-                removePets();
+                //removePets();
+                removeItems();
                 break;
             case "money":
                 Model.instance.progress.gold -= price.amount;

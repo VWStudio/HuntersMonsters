@@ -53,6 +53,7 @@ public class SelectMonsterPopup extends Popup {
 
         _tab1 = _links.tab1;
         _tab1.label = Locale.getString("tamed_tab");
+        _tab1.visible = false;
         _tab1.addEventListener(TabView.TAB_CLICK, handleSelectTab);
 
         _tab2 = _links.tab2;

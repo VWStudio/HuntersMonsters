@@ -23,6 +23,7 @@ import starling.display.Quad;
 import starling.events.Event;
 import starling.events.Touch;
 import starling.events.TouchEvent;
+import starling.events.TouchPhase;
 import starling.text.TextField;
 
 public class GoldView extends AbstractView {
@@ -40,6 +41,7 @@ public class GoldView extends AbstractView {
     private var _quad : Quad;
     private var _back : Image;
     private var isNew : Boolean = true;
+    private var isBuy : Boolean = false;
 
     public function GoldView() {
         createFromConfig(_refs.guiConfig.common.goldItem);
@@ -79,7 +81,7 @@ public class GoldView extends AbstractView {
     private function onItemHoverOut() : void
     {
         this.visible = false;
-        item = null;
+        //item = null;
 //        this.visible = price > 0 && touched;
 
 
@@ -87,6 +89,7 @@ public class GoldView extends AbstractView {
 
     private function onBuy(event : Event) : void
     {
+
         if(isSell)
         {
             Model.instance.progress.gold += price;
@@ -96,7 +99,7 @@ public class GoldView extends AbstractView {
         else
         {
 
-            if (Model.instance.progress.gold <= price || price <= 0)
+            if (Model.instance.progress.gold < price || price <= 0)
             {
                 return;
             }
@@ -112,6 +115,7 @@ public class GoldView extends AbstractView {
 
         }
         coreDispatch(ItemView.HOVER_OUT);
+        item = null;
     }
 
     override public function update() : void {
@@ -175,6 +179,7 @@ public class GoldView extends AbstractView {
     {
         if(price <= 0) return;
         var touch : Touch = event.getTouch(this);
+
 //        this.touched = touch != null;
         if(!touch) {
             if(event.target is TextField) {
@@ -183,12 +188,17 @@ public class GoldView extends AbstractView {
             else
             {
                 coreDispatch(ItemView.HOVER_OUT);
+                item = null;
             }
         }
+
+        var touchBuy : Touch = event.getTouch(_buy, TouchPhase.HOVER);
+        if (!touchBuy) coreDispatch(ItemView.HOVER_OUT);
     }
 
     public function setData($item : ItemView, $price : Number, $isSell : Boolean) : void
     {
+        item = null;
 //        trace("SET DATA");
         if(_itemView) {
             _itemView.removeEventListener(TouchEvent.TOUCH, onTouchItem);
@@ -214,6 +224,7 @@ public class GoldView extends AbstractView {
             {
                 event.stopImmediatePropagation();
                 event.stopPropagation();
+                //coreDispatch(ItemView.HOVER_OUT);
             }
         }
     }

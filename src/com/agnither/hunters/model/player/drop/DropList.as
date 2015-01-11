@@ -46,12 +46,17 @@ public class DropList extends EventDispatcher
         coreAddListener(DropList.GENERATE_DROP, onDropGenerate);
     }
 
-    private function onDropGenerate($hitPercent : Number) : void
+    private function onDropGenerate($hitPercent : Number, hp : Number = 0) : void
     {
         var currentMonster : MonsterVO = Model.instance.enemy.hero.monster;
         if(!currentMonster) return;
 
-        var isDropped : Boolean = ($hitPercent * 300) > Math.random() * 100;
+        var isDropped : Boolean = ($hitPercent * 200) > Math.random() * 100;
+        if(!hp && $hitPercent)
+        {
+            isDropped = true;
+        }
+       //isDropped = true;
         if(!isDropped) return;
 
         var isGold : Boolean = Math.random() > SettingsVO.DICT["itemDropChance"] || _itemsAmount >= _list.length;
@@ -103,7 +108,7 @@ public class DropList extends EventDispatcher
             pMax = Math.round(Math.sqrt((currentMonster.reward * (MonsterVO.DICT["order"+(currentMonster.order + 1)].difficultyfactor + 1)) / paramMult));
 
             var itemParam : Number = Util.getRandomParam(pMin, pAverage, pMax);
-            //trace("dropItem min:" + pMin + " pAverage:" + pAverage + " pMax:" + pMax + " itemParam:" + itemParam);
+            trace("dropItem min:" + pMin + " pAverage:" + pAverage + " pMax:" + pMax + " itemParam:" + itemParam);
             if(items && items.length > 0) content = findItem(items, Math.round(itemParam), -1);
         }
         if(content) addContent(content);

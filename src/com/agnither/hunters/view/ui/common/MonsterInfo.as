@@ -23,8 +23,13 @@ public class MonsterInfo extends AbstractView {
     private var _killed : Image;
     private var _icon : Image;
     private var _damageType : Image;
+    private var _iconShield : Image;
+    private var _iconHp : Image;
     private var _sellButton : ButtonContainer;
     private var _back : Sprite;
+
+    private var _hideInfo : Boolean;
+
     public function MonsterInfo() {
         super();
     }
@@ -37,9 +42,19 @@ public class MonsterInfo extends AbstractView {
         _nameVal = _links["name_tf"];
         _hpVal = _links["hp_tf"];
         _icon = _links["icon"].getChildAt(0) as Image;
-        _damageType = _links["damage_type_icon"].getChildAt(0) as Image;
 
-//        _damageType = _links["bitmap_chip_sword"];
+
+        //_damageType = new Image(_refs.gui.getTexture(MagicTypeVO.DICT[_monster.damagetype].picturedamage));
+
+        //_damageType = _links["damage_type_icon"].getChildAt(0) as Image;
+        //_damageType.visible = false;
+
+        _damageType = _links["bitmap_chip_sword"];
+        _iconShield = _links["bitmap_itemicon_shield"];
+        _iconShield.visible = false;
+        _iconHp = _links["bitmap_battle_stats_icons"];
+        _iconHp.visible = false;
+        //_damageType.visible = false;
 
         _damageVal = _links["damage_tf"];
         _armorVal = _links["armor_tf"];
@@ -48,18 +63,42 @@ public class MonsterInfo extends AbstractView {
 
         _sellButton = _links["buy_btn"];
         _sellButton.visible = false;
+
+        _hideInfo = false;
     }
 
 
     override public function update() : void {
 
-        _monster = (data as MonsterVO);
-        _hpVal.text = _monster.hp.toString();
-        _damageVal.text = _monster.damage.toString();
-        _armorVal.text = _monster.defence.toString();
-        _nameVal.text = Locale.getString(_monster.id) + " "+_monster.level+ "ур";
-        _killed.visible = false;
+        //var petExt : PetExt = _item.getExtension(PetExt.TYPE) as PetExt;
+        //var monster : MonsterVO = petExt.getMonster();
+        //magicType = MagicTypeVO.DICT[monster.damagetype];
+        //texName = magicType.picturedamage;
 
+
+        _monster = (data as MonsterVO);
+        if (_hideInfo)
+        {
+            _hpVal.text = "";
+            _damageVal.text = "";
+            _armorVal.text = "";
+            _nameVal.text = "";
+            _damageType.visible = false;
+            _iconShield.visible = false;
+            _iconHp.visible = false;
+        }
+        else
+        {
+            _hpVal.text = _monster.hp.toString();
+            _damageVal.text = _monster.damage.toString();
+            _armorVal.text = _monster.defence.toString();
+            _nameVal.text = Locale.getString(_monster.id) + " "+_monster.level+ "ур";
+            _damageType.texture = _refs.gui.getTexture(MagicTypeVO.DICT[_monster.damagetype].picturedamage);
+            _iconShield.visible = true;
+            _iconHp.visible = true;
+        }
+
+        _killed.visible = false;
         _icon.texture = _refs.gui.getTexture(_monster.picture);
         _icon.readjustSize();
         var byWid : Boolean = _icon.width > _icon.height;
@@ -72,8 +111,10 @@ public class MonsterInfo extends AbstractView {
         }
         _icon.x = (_back.width - _icon.width) * 0.5;
         _icon.y = (_back.height - _icon.height) * 0.5;
+    }
 
-        _damageType.texture = _refs.gui.getTexture(MagicTypeVO.DICT[_monster.magic].picturedamage);
+    public function set hideInfo($val : Boolean):void {
+        _hideInfo = $val;
     }
 
     public function set killed($val : Boolean):void {

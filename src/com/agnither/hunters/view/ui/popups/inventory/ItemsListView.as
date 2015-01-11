@@ -63,40 +63,61 @@ public class ItemsListView extends AbstractView {
 //        }
 
         clearList();
-
         var tile: ItemView;
-
         var arr : Array = $data;
-//        arr = arr.concat(arr);
-//        arr = arr.concat(arr);
 
         var pt : Point;
         for (var i:int = 0; i < arr.length; i++) {
             var item : Item = _inventory.getItem(arr[i]);
+
+            if(item.type == "pet")
+            {
+                item.updateSlot();
+            }
+
 //            if(item.type == "tamed_pet") continue;
             tile = ItemView.create(item);
-            if(!pt) {
-                pt = new Point(tile.width + 5, tile.height + 5);
-            }
+            if(!pt) pt = new Point(tile.width + 5, tile.height + 5);
             tile.addEventListener(TouchEvent.TOUCH, handleTouch);
             addChild(tile);
             tile.x = pt.x * (i % 3);
-//            tile.x = itemX * (i % 3);
             tile.y = pt.y * int(i / 3);
-//            tile.y = itemY * int(i / 3);
             tile.update();
         }
 
         _itemsAmount = int(numChildren / 3);
     }
 
+    /*public function showPets() : void
+     {
+
+     clearList();
+
+     var catchedPets : Vector.<String> = MonsterAreaVO.NAMES_LIST;
+     removeChildren();
+
+
+     for (var i:int = 0; i < catchedPets.length; i++) {
+     var tile: TamedMonsterView = new TamedMonsterView(catchedPets[i]);
+     tile.addEventListener(TouchEvent.TOUCH, onTouchPet);
+     addChild(tile);
+     //            tile.allowToTame(false);
+     tile.x = 180 * (i % 3);
+     tile.y = 180 * int(i / 3);
+     }
+
+     _itemsAmount = int(numChildren / 3);
+     } */
+
     private function handleTouch(e: TouchEvent):void {
+
         var item: ItemView = e.currentTarget as ItemView;
         var touch: Touch = e.getTouch(item);
 //        var touch: Touch = e.getTouch(item, TouchPhase.BEGAN);
         if (touch) {
             Mouse.cursor = MouseCursor.BUTTON;
-            if(touch.phase == TouchPhase.BEGAN && !item.item.isPet()) {
+            if(touch.phase == TouchPhase.BEGAN) {
+                //if (item.item.isPet()) coreDispatch(LocalPlayer.PET_SELECTED, item.item);
                 coreDispatch(LocalPlayer.ITEM_SELECTED, item.item);
                 item.update();
             }
@@ -115,14 +136,6 @@ public class ItemsListView extends AbstractView {
         return _itemsAmount;
     }
 
-    public function showThings() : void
-    {
-
-//        var items : Array = _inventory.getItemsByType(type);
-
-        updateList(_inventory.getItemsForView());
-    }
-
     private function clearList():void {
         while (numChildren > 0) {
             var dobj : DisplayObject = removeChildAt(0);
@@ -134,7 +147,17 @@ public class ItemsListView extends AbstractView {
         }
     }
 
+    public function showThings() : void
+    {
+        updateList(_inventory.getItemsForView());
+    }
+
     public function showSpells() : void
+    {
+        updateList(_inventory.getSpellsForView());
+    }
+
+    /*public function showSpells() : void
     {
         clearList();
 
@@ -160,28 +183,14 @@ public class ItemsListView extends AbstractView {
 
         _itemsAmount = int(numChildren / 3);
 
-    }
+    }*/
 
     public function showPets() : void
     {
-        clearList();
-
-        var catchedPets : Vector.<String> = MonsterAreaVO.NAMES_LIST;
-
-        removeChildren();
-
-
-        for (var i:int = 0; i < catchedPets.length; i++) {
-            var tile: TamedMonsterView = new TamedMonsterView(catchedPets[i]);
-            tile.addEventListener(TouchEvent.TOUCH, onTouchPet);
-            addChild(tile);
-//            tile.allowToTame(false);
-            tile.x = 180 * (i % 3);
-            tile.y = 180 * int(i / 3);
-        }
-
-        _itemsAmount = int(numChildren / 3);
+        updateList(_inventory.getPetsForView());
     }
+
+
 
     private function onTouchPet(e: TouchEvent):void {
         var item: TamedMonsterView = e.currentTarget as TamedMonsterView;

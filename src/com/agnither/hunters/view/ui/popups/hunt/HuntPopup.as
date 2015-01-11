@@ -45,7 +45,7 @@ public class HuntPopup extends Popup {
 
         _playButton = _links["play_btn"];
         _playButton.addEventListener(Event.TRIGGERED, handlePlay);
-        _playButton.text = "Напасть";
+        _playButton.text = "Охотиться";
 
         _stars3 = _links["stars3_tf"];
         _stars2 = _links["stars2_tf"];
@@ -67,7 +67,7 @@ public class HuntPopup extends Popup {
 
     private function handlePlay(event : Event) : void {
 
-        Model.instance.match3mode = Match3Game.MODE_REGULAR;
+        Model.instance.match3mode = Match3Game.MODE_REGULAR; //
 //        Model.instance.currentMonsterPoint.count(false);
         coreDispatch(UI.HIDE_POPUP, NAME);
         coreDispatch(Match3Game.START_GAME, data);

@@ -124,7 +124,7 @@ public class BuyItemView extends AbstractView
 
     private function onBuy(event : Event) : void
     {
-        if (Model.instance.progress.gold <= _price || _price <= 0)
+        if (Model.instance.progress.gold < _price || _price <= 0)
         {
             return;
         }

@@ -52,6 +52,7 @@ public class DropSlotView extends AbstractView
         this.touchable = true;
         _icon.touchable = true;
         _goldBack = _links.bitmap_itemmagic_back;
+        _goldBack.visible = false;
         _goldValue = _links.gold_tf;
 
         addEventListener(TouchEvent.TOUCH, handleTouch);
@@ -64,7 +65,7 @@ public class DropSlotView extends AbstractView
             _icon.texture = _refs.gui.getTexture(_dropSlot.content.icon);
             _icon.visible = true;
 
-            _goldBack.visible = _dropSlot.content.isGold();
+            //_goldBack.visible = _dropSlot.content.isGold();
             _goldValue.visible = _dropSlot.content.isGold();
             if(_dropSlot.content.isGold()) {
                 _goldValue.text = _dropSlot.content.amount.toString();

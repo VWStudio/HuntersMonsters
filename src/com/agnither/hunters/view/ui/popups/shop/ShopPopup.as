@@ -85,7 +85,7 @@ public class ShopPopup extends Popup
         _hunterTab.addEventListener(TabView.TAB_CLICK, handleSelectTab);
 
 
-        _currentOwner = _hunterTab;
+        _currentOwner = _traderTab;
 
 
         _inventoryView = new InventoryView();
@@ -243,7 +243,7 @@ public class ShopPopup extends Popup
             showPlayerItems();
         }
         coreDispatch(ItemView.HOVER_OUT);
-        _deliver.text = "Сделующая поставка:";
+        _deliver.text = "Следующая поставка товара через:";
 
         _hunterTab.setIsSelected(_currentOwner);
         _traderTab.setIsSelected(_currentOwner);
@@ -437,6 +437,7 @@ public class ShopPopup extends Popup
         _currentType = event.currentTarget as TabView;
 
         update();
+        //_currentOwner = _traderTab;
 
     }
 
@@ -446,6 +447,7 @@ public class ShopPopup extends Popup
 
 
         update();
+        //_currentOwner = _traderTab;
     }
 }
 }

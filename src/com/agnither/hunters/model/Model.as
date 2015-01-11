@@ -164,7 +164,8 @@ public class Model
 
 
             if(territory.area.unlockhouse) {
-                (Model.instance.territories[territory.area.unlockhouse] as Territory).unlock();
+                Model.instance.progress.unlockPoints += 1;
+                //(Model.instance.territories[territory.area.unlockhouse] as Territory).unlock();
             }
 
 
@@ -177,7 +178,8 @@ public class Model
 
 
 
-        var petItem : Item = Item.create(ItemVO.createPetItemVO(monster));
+        var isTame:Boolean = Model.instance.progress.tamedMonsters.indexOf(monster.id) >= 0;
+        var petItem : Item = Item.create(ItemVO.createPetItemVO(monster,isTame));
 
         player.inventory.addItem(petItem);
 

@@ -3,6 +3,7 @@
  */
 package com.agnither.hunters.model.player.inventory
 {
+import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.modules.extensions.DamageExt;
 import com.agnither.hunters.model.modules.extensions.DefenceExt;
 import com.agnither.hunters.model.modules.extensions.Extension;
@@ -66,6 +67,11 @@ public class Item extends EventDispatcher
         updateProperties();
     }
 
+    public function updateSlot():void
+    {
+        if (Model.instance.progress.tamedMonsters.indexOf(_item.name) >= 0) _item.slot = 1;
+    }
+
     private function fillExtensions() : Object
     {
         var resultObj : Object = {};
@@ -89,7 +95,6 @@ public class Item extends EventDispatcher
         }
     }
 
-
     public function get id() : int
     {
         return _item.id;
@@ -108,6 +113,11 @@ public class Item extends EventDispatcher
     public function get type() : String
     {
         return _item.type;
+    }
+
+    public function get enemy() : Boolean
+    {
+        return _item.enemy;
     }
 
     public function isGold() : Boolean
@@ -226,7 +236,7 @@ public class Item extends EventDispatcher
                 return name+"."+type+"."+str+"."+((extension as ManaExt).toObject() as Array).join(".");
                 break;
         }
-        return name+"."+type+"."+JSON.stringify(ext);
+        return name+"."+type+"."+"."+slot+"."+JSON.stringify(ext);
     }
 
     public function get title() : String

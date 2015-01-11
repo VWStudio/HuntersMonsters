@@ -199,10 +199,11 @@ public class Match3Game extends EventDispatcher
                 }
                 break;
             default:
-                if (!currentPlayer.pet.isDead && currentPlayer.pet.magic.name == match.type)
-                {
-                    attacker = currentPlayer.pet;
-                } else if (match.type == currentPlayer.damageType) {
+                //if (!currentPlayer.pet.isDead && currentPlayer.pet.magic.name == match.type)
+                //{
+                //    attacker = currentPlayer.pet;
+                //} else
+                if (match.type == currentPlayer.damageType) {
                     attacker = currentPlayer.hero;
                 }
 
@@ -243,7 +244,7 @@ public class Match3Game extends EventDispatcher
 
         if (currentPlayer is LocalPlayer && hitPercent > 0) {
             // drop from monster
-            coreDispatch(DropList.GENERATE_DROP, hitPercent);
+            coreDispatch(DropList.GENERATE_DROP, hitPercent, currentEnemy.hero.hp);
         }
 
     }

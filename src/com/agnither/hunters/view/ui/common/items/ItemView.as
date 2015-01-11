@@ -102,14 +102,22 @@ public class ItemView extends AbstractView
         }
         else if(_item.isPet())
         {
+            if (_item.slot == 1) {
+                if (!_item.enemy) {
+                    texName = "itemicon_tamed";
+                    _damage.text = "";
+                }else{
+                    var petExt : PetExt = _item.getExtension(PetExt.TYPE) as PetExt;
+                    var monster : MonsterVO = petExt.getMonster();
+                    magicType = MagicTypeVO.DICT[monster.damagetype];
+                    texName = magicType.picturedamage;
+                    _damage.text = monster.damage.toString();
+                }
+            }else {
+                texName = "";
+                _damage.text = "";
+            }
 
-            var petExt : PetExt = _item.getExtension(PetExt.TYPE) as PetExt;
-            var monster : MonsterVO = petExt.getMonster();
-
-
-            magicType = MagicTypeVO.DICT[monster.damagetype];
-            texName = magicType.picturedamage;
-            _damage.text = monster.damage.toString();
         }
         else
         {

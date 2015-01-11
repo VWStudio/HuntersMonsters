@@ -52,13 +52,15 @@ public class TamedMonsterView extends AbstractView {
     private var _isInstalled : Boolean = false;
     private var _item : ItemView;
     private var _back : Image;
+    private var _tameIcon : Image;
 
     public function TamedMonsterView($monsterID : String) {
 //        _pet;
         _monsterID = $monsterID;
         _monsterArea = MonsterAreaVO.DICT[$monsterID];
         _monster = Model.instance.monsters.getMonster($monsterID, 1);
-        _item = ItemView.create(Item.create(ItemVO.createPetItemVO(_monster)))
+        var isTame:Boolean = Model.instance.progress.tamedMonsters.indexOf(_monster.id) >= 0;
+        _item = ItemView.create(Item.create(ItemVO.createPetItemVO(_monster,isTame)))
     }
 
 
@@ -96,6 +98,8 @@ public class TamedMonsterView extends AbstractView {
             }
         }
 
+        if (isTamed) _tameIcon.visible = true;
+
         _tame.visible = (!isBattle && isUnlocked && !isTamed) || (isBattle && isTamed); //&& isTamed || isBattle;
         _tame.text = isTamed ? (_isInstalled ? "Убрать" : "Взять") : "Приручить";
 
@@ -114,6 +118,9 @@ public class TamedMonsterView extends AbstractView {
         _name = _links.name_tf;
         _tint = _links["bitmap_common_disabled_tint"];
 
+
+        _tameIcon = _links["bitmap_itemicon_tamed"];
+        _tameIcon.visible = false;
 
         _tame = _links["tame_btn"];
         _tame.addEventListener(Event.TRIGGERED, onTame);
@@ -135,7 +142,7 @@ public class TamedMonsterView extends AbstractView {
                 var monster : MonsterVO = Model.instance.monsters.getMonster(_monsterID, 1);
                 var petItem : ItemVO = ItemVO.createPetItemVO(monster, true);
 //                petItem.id = 24;
-//                petItem.slot = 1;
+                //petItem.slot = 1;
                 petItem.type = "pet";
 //                var itm : Item = Item.create(petItem);
                 var itm : Item = Item.create(petItem);
@@ -158,6 +165,7 @@ public class TamedMonsterView extends AbstractView {
 //            coreDispatch(BattleScreen.SUMMON_BUTTON_UPDATE);
             update();
         } else {
+            coreDispatch(ItemView.HOVER_OUT);
             coreExecute(ShowPopupCmd, TameMonsterPopup.NAME, _monsterID);
         }
 

@@ -75,6 +75,7 @@ public class HousePopup extends Popup
         _attackButton = _links["play_btn"];
         _attackButton.addEventListener(Event.TRIGGERED, handlePlay);
         _attackButton.text = "Захватить";
+        _attackButton.visible = false;
 
         _getPrizeButton = _links["attack_btn"];
         _getPrizeButton.addEventListener(Event.TRIGGERED, handleGet);
@@ -149,7 +150,7 @@ public class HousePopup extends Popup
         territory = data as Territory;
 
         _owner.text = territory.isHouseOwner ? "Открывает новые товары для магазина:" : "Открывает новые товары для магазина:";
-        _attackButton.visible = !territory.isHouseOwner;
+        //_attackButton.visible = !territory.isHouseOwner;
 
         _itemsContainer.removeChildren();
 

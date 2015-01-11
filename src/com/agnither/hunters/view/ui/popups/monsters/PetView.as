@@ -39,7 +39,8 @@ public class PetView extends AbstractView {
 
     public function PetView(pet: Pet) {
         _pet = pet;
-        _item = ItemView.create(Item.create(ItemVO.createPetItemVO(_pet.monster)))
+        var isTame:Boolean = Model.instance.progress.tamedMonsters.indexOf(_pet.monster.id) >= 0;
+        _item = ItemView.create(Item.create(ItemVO.createPetItemVO(_pet.monster,isTame)))
     }
 
     override protected function initialize():void {
@@ -56,6 +57,7 @@ public class PetView extends AbstractView {
 
         var damageType: MagicTypeVO = MagicTypeVO.DICT[_pet.params.magic];
         _links.damage_type_icon.getChildAt(0).texture = _refs.gui.getTexture(damageType.picturedamage);
+        //_links.damage_type_icon.visible = false;
 
         _name = _links.name_tf;
         _hp = _links.hp_tf;

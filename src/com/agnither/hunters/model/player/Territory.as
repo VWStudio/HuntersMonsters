@@ -403,7 +403,7 @@ public class Territory
                 step.removeEventListener(TouchEvent.TOUCH, onStepTouch);
             }
 
-            if (!area.isUnlocked && isHavePoints && !area.area.isHouse)
+            if (!area.isUnlocked && isHavePoints)// && !area.area.isHouse)
             {
                 step.visible = true;
                 step.touchable = true;

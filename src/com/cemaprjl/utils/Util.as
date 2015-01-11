@@ -35,18 +35,18 @@ public class Util {
         if (pMax < 1) {
             pMax = 1;
         }
-        var pFactor : Number = 0.1;
+        var pFactor : Number = 0;
         if(pMax == pMin) { //avoud of divide by zero
             pFactor = 0.1;
         } else {
-            pFactor = (pAverage - pMin) / (pMax - pMin) - 0.1;
+            pFactor = (pAverage - pMin) / (pMax - pMin);
         }
         if (pFactor < 0.1 || !pFactor)
         {
             pFactor = 0.1;
         }
 
-        var chance : Number = 2 / Math.pow(2, 6 * Math.random() + 1) ;
+        var chance : Number = 2 / Math.pow(2, 5.5 * Math.random() + 1) ;
         var pSpread : Number = pMax - pMin;
 
         var p : Number;

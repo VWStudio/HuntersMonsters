@@ -4,13 +4,18 @@
 package com.agnither.hunters.view.ui.popups.shop
 {
 import com.agnither.hunters.model.Model;
+import com.agnither.hunters.model.match3.Match;
 import com.agnither.hunters.model.modules.extensions.DamageExt;
 import com.agnither.hunters.model.modules.extensions.DefenceExt;
 import com.agnither.hunters.model.modules.extensions.Extension;
+import com.agnither.hunters.model.modules.extensions.PetExt;
 import com.agnither.hunters.model.modules.players.SettingsVO;
 import com.agnither.hunters.model.player.inventory.Item;
 import com.agnither.hunters.view.ui.common.items.ItemView;
 import com.agnither.ui.AbstractView;
+import com.agnither.hunters.model.player.LocalPlayer;
+import com.agnither.hunters.model.modules.monsters.MonsterVO;
+import com.agnither.hunters.App;
 import com.agnither.ui.ButtonContainer;
 import com.cemaprjl.core.coreDispatch;
 
@@ -18,6 +23,9 @@ import starling.events.Event;
 import starling.events.Touch;
 import starling.events.TouchEvent;
 import starling.events.TouchPhase;
+
+import flash.ui.Mouse;
+import flash.ui.MouseCursor
 
 public class SellItemView extends AbstractView
 {
@@ -92,10 +100,17 @@ public class SellItemView extends AbstractView
             for (var extId : String in _item.getExtensions())
             {
                 var extItem : Extension = _item.getExtension(extId);
-                _price += Model.instance.getPrice(extItem.getBaseValue(), "slot"+item.slot);
-//                _price += Model.instance.getPrice(extItem.getBaseValue(), (extItem as Object).constructor["TYPE"]);
+
+                if (extId == "monster")
+                {
+                    var currentMonster : MonsterVO = PetExt(extItem).getMonster();
+                    _price = Math.round(currentMonster.reward * 0.3);
+                }
+                //_price += Model.instance.getPrice(extItem.getBaseValue(), "slot" + item.slot);
+//              _price += Model.instance.getPrice(extItem.getBaseValue(), (extItem as Object).constructor["TYPE"]);
             }
-            _price = int(_price * SettingsVO.DICT["sellPriceMult"]);
+            //_price = int(_price * SettingsVO.DICT["sellPriceMult"]);
+
         }
 
         if(_price <= 1) {
@@ -152,7 +167,18 @@ public class SellItemView extends AbstractView
 
     private function onTouch(e : TouchEvent) : void
     {
-        var touch : Touch = e.getTouch(this, TouchPhase.HOVER);
+        var item: ItemView = e.currentTarget as ItemView;
+        var touch: Touch = e.getTouch(item);
+        if(touch && touch.phase == TouchPhase.BEGAN) {
+                coreDispatch(LocalPlayer.ITEM_SELECTED, item.item);
+        } else {
+            //coreDispatch(ItemView.HOVER_OUT, item);
+            //coreDispatch(ItemView.HOVER_OUT);
+            //Mouse.cursor = MouseCursor.AUTO;
+        }
+
+        //var touchBtn: Touch = e.getTouch(item)
+
 //        var touch : Touch = e.getTouch(_itemView);
 
 //        if (touch == null)
@@ -164,18 +190,30 @@ public class SellItemView extends AbstractView
 //            coreDispatch(ShopPopup.SHOW_TOOLTIP, this);
 //        }
 
-
-//        var isHitTooltip : Boolean = e.interactsWith(Model.instance.itemsTooltip);
-        if (touch && Model.instance.itemsTooltip.item != _itemView.item) {
-//            trace("Buy, TOUCH", isHitTooltip, touch.phase, item.uniqueId);
-//            oreDispatch(ShopPopup.SHOW_TOOLTIP, this);
+        touch = e.getTouch(this, TouchPhase.HOVER);
+        if (touch && Model.instance.itemsTooltip.item != _itemView.item)
+        {
             coreDispatch(ItemView.HOVER, _itemView, _price, true);
         }
         else
         {
+            //var touchTooltip : Touch = e.getTouch(Model.instance.itemsTooltip, TouchPhase.HOVER);
+            //var touchBuy : Touch = e.getTouch(Model.instance.itemsTooltip._buy, TouchPhase.HOVER);
+            //if (touchTooltip && !touchBuy) coreDispatch(ItemView.HOVER_OUT, item);
+        }
+
+
+//        var isHitTooltip : Boolean = e.interactsWith(Model.instance.itemsTooltip);
+        //if (touch && Model.instance.itemsTooltip.item != _itemView.item) {
+//            trace("Buy, TOUCH", isHitTooltip, touch.phase, item.uniqueId);
+//            oreDispatch(ShopPopup.SHOW_TOOLTIP, this);
+            //coreDispatch(ItemView.HOVER, _itemView, _price, true);
+        //}
+       // else
+        //{
 //            trace("Buy, NO Touch", isHitTooltip, touch, item.uniqueId);
 //            coreDispatch(ShopPopup.HIDE_TOOLTIP, !isHitTooltip);
-        }
+        //}
     }
 }
 }
