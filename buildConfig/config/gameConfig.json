@@ -1025,6 +1025,7 @@
       "picture": "card_s1_1",
       "droppicture": "drop_magic",
       "ext": "damage:[\"fire\",3];mana:[\"fire\",4]",
+      "price": 100,
       "setname": "default",
       "dropparam": "5,10",
       "localekey": "card_s1_1"
@@ -1037,6 +1038,7 @@
       "picture": "card_s2_1",
       "droppicture": "drop_magic",
       "ext": "damage:[\"water\",4];mana:[\"water\",5]",
+      "price": 100,
       "setname": "default",
       "dropparam": "5,10",
       "localekey": "card_s2_1"
@@ -1049,6 +1051,7 @@
       "picture": "card_s2_2",
       "droppicture": "drop_magic",
       "ext": "damage:[\"water\",12];mana:[\"fire\",6,\"water\",8]",
+      "price": 250,
       "setname": "default",
       "dropparam": "5,10",
       "localekey": "card_s2_2"
@@ -1061,6 +1064,7 @@
       "picture": "card_s3_1",
       "droppicture": "drop_magic",
       "ext": "damage:[\"nature\",8];mana:[\"nature\",7]",
+      "price": 400,
       "setname": "house01",
       "dropparam": "5,10",
       "localekey": "card_s3_1"
@@ -1073,6 +1077,7 @@
       "picture": "card_s1_2",
       "droppicture": "drop_magic",
       "ext": "damage:[\"fire\",10];mana:[\"fire\",6]",
+      "price": 1100,
       "setname": "house01",
       "dropparam": "5,10",
       "localekey": "card_s1_2"
@@ -1085,6 +1090,7 @@
       "picture": "card_s4_1",
       "droppicture": "drop_magic",
       "ext": "damage:[\"stone\",20];mana:[\"stone\",12]",
+      "price": 1600,
       "setname": "house01",
       "dropparam": "5,11",
       "localekey": "card_s4_1"
@@ -1097,6 +1103,7 @@
       "picture": "card_s5_1",
       "droppicture": "drop_magic",
       "ext": "damage:[\"dark\",13];mana:[\"dark\",6]",
+      "price": 2200,
       "setname": "house01",
       "dropparam": "5,12",
       "localekey": "card_s5_1"

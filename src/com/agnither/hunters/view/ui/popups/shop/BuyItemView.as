@@ -68,8 +68,11 @@ public class BuyItemView extends AbstractView
         {
 //            _links.damage_icon.getChildAt(0).texture = _refs.gui.getTexture("chip_sword");
 //            _damage.text = item.getDamage().toString();
-            _price = Model.instance.getPrice(item.getDamage(), "slot"+item.slot);
+            //_price = Model.instance.getPrice(item.getDamage(), "slot"+item.slot);
 //            _price = Model.instance.getPrice(item.getDamage(), DamageExt.TYPE);
+
+            if (_item.isSpell()) _price = _item.price;
+            else _price = Model.instance.getPrice(item.getDamage(), "slot"+item.slot);
         }
         else if (_item.getDefence())
         {

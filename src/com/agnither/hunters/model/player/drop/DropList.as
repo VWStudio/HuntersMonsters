@@ -67,7 +67,7 @@ public class DropList extends EventDispatcher
         {
             var pMin : Number;
             if (currentMonster.order == 0)  pMin = 1;
-            else pMin = Math.round(MonsterVO.DICT["order"+(currentMonster.order-1)].reward * 0.3);
+            else pMin = Math.round(MonsterVO.DICT["order"+(currentMonster.order-1)].reward * 0.2);
 
             var pAverage :Number = Math.round(currentMonster.reward * 0.3);
 
@@ -79,7 +79,7 @@ public class DropList extends EventDispatcher
                 nextMonster = currentMonster;
             }
 
-            var pMax : Number = Math.round(nextMonster.reward * 0.5);
+            var pMax : Number = Math.round(nextMonster.reward * 0.2);
             var p : Number = Util.getRandomParam(pMin, pAverage, pMax); // возвращает кол-во золота
 
             content = Item.create(ItemVO.createGoldItemVO);
@@ -108,7 +108,7 @@ public class DropList extends EventDispatcher
             pMax = Math.round(Math.sqrt((currentMonster.reward * (MonsterVO.DICT["order"+(currentMonster.order + 1)].difficultyfactor + 1)) / paramMult));
 
             var itemParam : Number = Util.getRandomParam(pMin, pAverage, pMax);
-            trace("dropItem min:" + pMin + " pAverage:" + pAverage + " pMax:" + pMax + " itemParam:" + itemParam);
+            trace("dropItem min:" + pMin + " pAverage:" + pAverage + " pMax:" + pMax + " itemParam:" + itemParam + "slot: " + slot);
             if(items && items.length > 0) content = findItem(items, Math.round(itemParam), -1);
         }
         if(content) addContent(content);
@@ -143,7 +143,7 @@ public class DropList extends EventDispatcher
         trace("*", itemParam, selectedItems, minVal, maxVal);
         if(!selectedItems.length) {
             var newChangeValue : Number = changeValue < 0 ? -1 * (changeValue - 1) : -1 * (changeValue + 1);
-            if(itemParam + newChangeValue < 0) {
+            if(itemParam + changeValue + newChangeValue < 0) {
                 newChangeValue = -1 * (newChangeValue - 1)
             }
             return findItem($items, itemParam + changeValue, newChangeValue);

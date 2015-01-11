@@ -39,6 +39,7 @@ public class ItemVO
     public var dropparam : Array;
     public var type : String;
     public var slot : int;
+    public var price : int;
     public var ext : Object;
     public var setname : String;
     public var localekey : String = "";
@@ -50,6 +51,7 @@ public class ItemVO
         obj.id = $isTamed ? 24 : 23;
         obj.name = $monster.id;
         obj.picture = $monster.itemimage;
+        obj.price = 0;
 //        obj.picture = "magic_dark";
         obj.type = "pet";
         obj.localekey = $monster.id;
@@ -91,6 +93,7 @@ public class ItemVO
         obj.name = "goldItemVO";
         obj.picture = "";
         obj.type = "gold";
+        obj.price = 0;
         obj.slot = 0;
         obj.setname = "";
         obj.localekey = "gold";

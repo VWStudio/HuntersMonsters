@@ -196,9 +196,10 @@ public class AbstractView extends Sprite
                     {
                         link = item.name.replace("_label", "_btn");
                         btn = _links[link];
-                        btn.textBounds = new Rectangle(item.x - btn.x, item.y - btn.y, item.width, item.height);
+                        //btn.textBounds = new Rectangle(item.x - btn.x-100, item.y - btn.y, item.width+100, item.height);
+                        //btn.textBounds = new Rectangle(item.x - btn.x, item.y - btn.y, item.width, item.height);
                         btn.fontName = item.fontName;
-                        btn.fontSize = -1;
+                        btn.fontSize = item.size;
                         btn.fontColor = 0xFFFFFF;
                         btn.text = item.text;
                     }
@@ -313,7 +314,7 @@ public class AbstractView extends Sprite
                         {
                             btn.textBounds = new Rectangle(item.x - btn.x, item.y - btn.y, item.width, item.height);
                             btn.fontName = item.fontName;
-                            btn.fontSize = -1;
+                            btn.fontSize = item.size;
                             btn.fontColor = 0xFFFFFF;
                             btn.text = item.text;
                         }

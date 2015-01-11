@@ -58,10 +58,19 @@ public class Shop
                 if (item)
                 {
                     var itmString : String = item.toString();
-//                    trace("created item:", itmString);
-                    if(createdItems.indexOf(itmString) == -1) {
-                        createdItems.push(itmString);
-                        arr.push(item);
+                    if (item.isSpell())
+                    {
+                        if(!Model.instance.player.inventory.isHaveSpell(item.id) && createdItems.indexOf(itmString) == -1) {
+                            createdItems.push(itmString);
+                            arr.push(item);
+                        }
+                    }
+                    else
+                    {
+                        if(createdItems.indexOf(itmString) == -1) {
+                            createdItems.push(itmString);
+                            arr.push(item);
+                        }
                     }
                 }
             }

@@ -69,7 +69,7 @@ public class HousePopup extends Popup
 
         _title = _links["title_tf"];
         _title.text = Locale.getString("house");
-        _title.fontSize = 30;
+        //_title.fontSize = 30;
         _owner = _links["owner_tf"];
 
         _attackButton = _links["play_btn"];

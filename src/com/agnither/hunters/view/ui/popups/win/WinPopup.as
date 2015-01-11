@@ -147,7 +147,7 @@ public class WinPopup extends Popup
     {
 
         _title.text = data.isWin ? "Победа" : "Поражение";
-        _playButton.text = data.isWin ? "Забрать" : "Закрыть";
+        //_playButton.text = data.isWin ? "Забрать Награду" : "Закрыть";
 
         _moves.text = "Ходов: " + Model.instance.movesAmount;
         var stars : int = Model.instance.calcStars();

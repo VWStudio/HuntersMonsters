@@ -110,6 +110,11 @@ public class Item extends EventDispatcher
         return _item.picture;
     }
 
+    public function get price() : int
+    {
+        return _item.price;
+    }
+
     public function get type() : String
     {
         return _item.type;

@@ -106,11 +106,11 @@ public class GoldView extends AbstractView {
 
             Model.instance.progress.gold -= price;
             Model.instance.addPlayerItem(item);
-            if (!item.isSpell())
+            //if (!item.isSpell())
 //        if (_item.type != ItemTypeVO.spell)
-            {
+            //{
                 Model.instance.shop.removeItem(item);
-            }
+            //}
             Model.instance.progress.saveProgress();
 
         }
