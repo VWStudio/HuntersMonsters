@@ -101,6 +101,8 @@ public class UI extends Screen {
         _darkness = new Image(_refs.gui.getTexture("tint"));
 //        _darkness = new Quad(1,1, 0);
 //        _darkness.alpha = 0.8;
+        //_darkness.width += 100;
+        //_darkness.x -= 50;
         _darkness.visible = false;
         addChild(_darkness);
 
@@ -113,6 +115,8 @@ public class UI extends Screen {
         Model.instance.itemsTooltip = _tooltip;
 
         coreAddListener(ItemView.HOVER, onItemHover);
+
+        _darkness.addEventListener(TouchEvent.TOUCH, handleClosePopup);
 
 
 //        _darkness2 = new Quad(stage.stageWidth, stage.stageHeight, 0);
@@ -273,8 +277,10 @@ public class UI extends Screen {
                 _prevPopup = _currentPopup;
                 _currentPopup = newPopup;
                 _darkness.visible = _currentPopup.darkened;
-                _darkness.width = stage.stageWidth;
-                _darkness.height = stage.stageHeight;
+                _darkness.width = stage.stageWidth+100;
+                _darkness.height = stage.stageHeight+100;
+                _darkness.x = -50;
+                _darkness.y = -50;
                 _popupContainer.addChild(_currentPopup);
                 _currentPopup.isActive = true;
                 Model.instance.currentPopup = _currentPopup;
