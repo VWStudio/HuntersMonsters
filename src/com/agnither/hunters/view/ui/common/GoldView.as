@@ -33,6 +33,7 @@ public class GoldView extends AbstractView {
     private var _buy : ButtonContainer;
     public var item : Item;
     public var isSell : Boolean = true;
+    public var isBattle : Boolean = false;
 //    private var _price : Number;
 //    public var touched : Boolean = false;
     public var price : Number;
@@ -120,36 +121,46 @@ public class GoldView extends AbstractView {
 
     override public function update() : void {
 
-        if(!isNew)
-        {
-            return;
-        }
+        if (!isNew) return;
 
-//        _price = data as Number;
         _value.text = price.toString();
-
-
-        var str : String = item.description;
+        var str:String = "";
+        str += item.description;
         var exts : Object = item.getExtensions();
         for (var key : String in exts)
         {
-            if (key == DamageExt.TYPE || key == DefenceExt.TYPE || key == ManaExt.TYPE)
+            if (key == ManaExt.TYPE)
             {
+                str += "\n\n";
+                str += "Требует магии:\n";
+                str += exts[key].getDescription();
             }
-            if (str.length > 0)
-            {
-                str += "\n";
-            }
-            str += exts[key].getDescription();
-//                str += Locale.getString(key);
-        }
-        if (str.length > 0)
-        {
-            _tip.text = str;
         }
 
+        if (item.isArmor() || item.isWeapon())
+        {
+            str += "\n\n";
+            str += "Слот: ";
+            switch (item.slot)
+            {
+                case 2: str += "Оружие"; break;
+                case 3: str += "Голова"; break;
+                case 4: str += "Тело"; break;
+                case 6: str += "Руки"; break;
+                case 7: str += "Ноги"; break;
+            }
+        }
+
+        if (item.slot == 0)
+        {
+            str += "\n\n";
+            str += "Не прирученный монстр.";
+        }
+
+        if (str.length > 0) _tip.text = str;
+
         _buy.visible = true;
-//        !Model.instance.player.inventory.isHaveSpell(item.id) && isPriceEnough;
+
         if(isSell) {
             _buy.visible = !item.isSpell();
             _buy.text = "Продать";
@@ -160,19 +171,22 @@ public class GoldView extends AbstractView {
             var isPriceEnough : Boolean = Model.instance.progress.gold >= price;
             _buy.visible = !Model.instance.player.inventory.isHaveSpell(item.id) && isPriceEnough
         }
-
-
-        _goldIcon.visible = _value.visible = price > 0;
-
-//        _value.visible = price > 0;
         _buy.visible = price > 0 && !(isSell && item.isSpell());
-
-        var rect : Rectangle = this.getBounds(this);
-//        _quad.width = rect.width;
-//        _quad.height = rect.height;
-//        _quad.x = rect.x;
-//        _quad.y = rect.y;
+        _goldIcon.visible = _value.visible = price > 0;
         isNew = false;
+
+        if (price > 0)
+        {
+            _tip.y = _back.y + 22;
+            _back.height = _tip.height + 22 + 40;
+            _goldIcon.y = _tip.height + 32;
+            _value.y = _goldIcon.y;
+        }
+        else
+        {
+            _tip.y = _back.y + 12;
+            _back.height = _tip.height + 12 + 12;
+        }
     }
 
     private function onTouch(event : TouchEvent) : void
@@ -196,7 +210,7 @@ public class GoldView extends AbstractView {
         if (!touchBuy) coreDispatch(ItemView.HOVER_OUT);
     }
 
-    public function setData($item : ItemView, $price : Number, $isSell : Boolean) : void
+    public function setData($item : ItemView, $price : Number, $isSell : Boolean, $isBattle : Boolean) : void
     {
         item = null;
 //        trace("SET DATA");
@@ -209,6 +223,7 @@ public class GoldView extends AbstractView {
 
         price = $price;
         isSell = $isSell;
+        isBattle = $isBattle;
 
         update();
     }

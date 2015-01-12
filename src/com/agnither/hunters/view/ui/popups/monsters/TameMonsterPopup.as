@@ -92,8 +92,9 @@ public class TameMonsterPopup extends Popup {
     override public function update() : void {
 
         _monsterID = data.toString();
-        _title.text = "Приручить монстра";
-        _monster_tf.text = Locale.getString(_monsterID);
+        _title.text = "Приручить монстра:  " + Locale.getString(_monsterID);
+        _title.x -= 10;
+        _monster_tf.text = "Требуется:";
 
         _monsterArea = MonsterAreaVO.DICT[_monsterID];
         _monster = Model.instance.monsters.getMonster(_monsterID, 1);
@@ -108,6 +109,7 @@ public class TameMonsterPopup extends Popup {
             priceItem.y = i * 60;
             _isEnough = _isEnough && priceItem.isEnough;
         }
+        _container.x = (-_container.width/2) + (width/2) + 30;
 
         _tame.visible = _isEnough;
 

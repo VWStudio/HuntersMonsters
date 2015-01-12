@@ -4,6 +4,7 @@
 package com.agnither.hunters.model.modules.extensions
 {
 import com.agnither.hunters.data.outer.MagicTypeVO;
+import com.agnither.hunters.model.modules.locale.Locale;
 import com.agnither.hunters.model.player.inventory.Item;
 
 public class ManaExt extends Extension
@@ -41,6 +42,22 @@ public class ManaExt extends Extension
     public function getManaObj() : Object
     {
         return _mana;
+    }
+
+    override public function getDescription() : String
+    {
+        var str : String = "";
+
+        for (var i : int = 0; i < int(_extArguments.length / 2); i++)
+        {
+            str += _extArguments[i*2+1];
+            str += " ";
+            str += Locale.getString(_extArguments[i*2]);
+            if (i+1 < int(_extArguments.length / 2)) str += "    ";
+        }
+
+        return str;
+        //return Locale.getString(TYPE) + ": ";
     }
 
 

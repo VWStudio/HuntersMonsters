@@ -42,15 +42,15 @@ public class TamePriceRow extends AbstractView {
                 //_title.text = price.amount + " x " + Locale.getString(mon[0]) +" " +mon[1]+" ур.";
 
                 var monsters : Array = Model.instance.player.inventory.getItemsByName(price.code);
-                _title.text = price.amount + " " + Locale.getString(price.code);
+                _title.text = price.amount + "   " + Locale.getString(price.code);
                 isEnough = monsters.length >= price.amount;
                 break;
             case "money":
-                _title.text = price.amount + " золота";
+                _title.text = price.amount + "   золота";
                 isEnough = Model.instance.progress.gold >= price.amount;
                 break;
             case "item":
-                _title.text = price.amount + " " + price.code;
+                _title.text = price.amount + "   " + price.code;
                 var items : Array = Model.instance.player.inventory.getItemsByName(price.code);
                 isEnough = items.length >= price.amount;
                 break;

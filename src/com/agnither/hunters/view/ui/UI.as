@@ -128,7 +128,7 @@ public class UI extends Screen {
 
 
 
-    private function onItemHover($item : Object, $price : Number = 0, $isSell : Boolean = false) : void
+    private function onItemHover($item : Object, $price : Number = 0, $isSell : Boolean = false, $isBattle : Boolean = false) : void
     {
 //        if (!isActive)
 //        {
@@ -138,12 +138,12 @@ public class UI extends Screen {
         {
             var rect : Rectangle = $item.getBounds(this);
             _tooltip.x = rect.x;
-            _tooltip.y = rect.y + rect.height - 5;
+            _tooltip.y = rect.y + rect.height;
             _tooltip.visible = true;
             if($item is ItemView) {
-                _tooltip.setData($item as ItemView, $price, $isSell);
+                _tooltip.setData($item as ItemView, $price, $isSell, $isBattle);
             } else {
-                _tooltip.setData($item.item as ItemView, $price, $isSell);
+                _tooltip.setData($item.item as ItemView, $price, $isSell, $isBattle);
             }
 //            _tooltip.item = $item.item;
 //            _tooltip.price = $price;

@@ -165,13 +165,13 @@
       "info": "pants slot"
     },
     {
-      "parameter": "slot6DropChance",
+      "parameter": "slot7DropChance",
       "value": "10",
       "type": "int",
       "info": "boots slot"
     },
     {
-      "parameter": "slot7DropChance",
+      "parameter": "slot6DropChance",
       "value": "10",
       "type": "int",
       "info": "gloves slot"
@@ -213,13 +213,13 @@
       "info": "slot param multiplier for drop"
     },
     {
-      "parameter": "slot6ParamMult",
+      "parameter": "slot7ParamMult",
       "value": 165,
       "type": "int",
       "info": "slot param multiplier for drop"
     },
     {
-      "parameter": "slot7ParamMult",
+      "parameter": "slot6ParamMult",
       "value": 165,
       "type": "int",
       "info": "slot param multiplier for drop"
@@ -257,12 +257,12 @@
       "type": "int"
     },
     {
-      "parameter": "slot6PriceMult",
+      "parameter": "slot7PriceMult",
       "value": 36,
       "type": "int"
     },
     {
-      "parameter": "slot7PriceMult",
+      "parameter": "slot6PriceMult",
       "value": 36,
       "type": "int"
     },
@@ -319,7 +319,6 @@
       "damage": 3,
       "damagetype": "weapon",
       "magic": 3,
-      "items": 12,
       "extension": "mana_add:[\"nature\",1]",
       "speed": 100,
       "stars": "5,10,20",
@@ -898,34 +897,10 @@
       "localekey": "card_ab4"
     },
     {
-      "id": 8,
-      "name": "card_al1",
-      "type": "armor",
-      "slot": 6,
-      "picture": "card_al1",
-      "droppicture": "drop_boots",
-      "ext": "defence:[1,5]",
-      "setname": "default",
-      "dropparam": "1,5",
-      "localekey": "card_al1"
-    },
-    {
-      "id": 29,
-      "name": "card_al2",
-      "type": "armor",
-      "slot": 6,
-      "picture": "card_al2",
-      "droppicture": "drop_boots",
-      "ext": "defence:[4,9]",
-      "setname": "house02",
-      "dropparam": "4,9",
-      "localekey": "card_al2"
-    },
-    {
       "id": 6,
       "name": "card_ag1",
       "type": "armor",
-      "slot": 7,
+      "slot": 6,
       "picture": "card_ag1",
       "droppicture": "drop_gloves",
       "ext": "defence:[1,5]",
@@ -937,13 +912,37 @@
       "id": 30,
       "name": "card_ag2",
       "type": "armor",
-      "slot": 7,
+      "slot": 6,
       "picture": "card_ag2",
       "droppicture": "drop_gloves",
       "ext": "defence:[4,9]",
       "setname": "house02",
       "dropparam": "4,9",
       "localekey": "card_ag2"
+    },
+    {
+      "id": 8,
+      "name": "card_al1",
+      "type": "armor",
+      "slot": 7,
+      "picture": "card_al1",
+      "droppicture": "drop_boots",
+      "ext": "defence:[1,5]",
+      "setname": "default",
+      "dropparam": "1,5",
+      "localekey": "card_al1"
+    },
+    {
+      "id": 29,
+      "name": "card_al2",
+      "type": "armor",
+      "slot": 7,
+      "picture": "card_al2",
+      "droppicture": "drop_boots",
+      "ext": "defence:[4,9]",
+      "setname": "house02",
+      "dropparam": "4,9",
+      "localekey": "card_al2"
     },
     {
       "id": 9,
@@ -1645,7 +1644,7 @@
     },
     {
       "id": "monster_tab",
-      "russian": "Питомцы"
+      "russian": "Монстры"
     },
     {
       "id": "weapon_tab",
@@ -1873,43 +1872,43 @@
     },
     {
       "id": "blue_bull.d",
-      "russian": " "
+      "russian": "Каждый ход приносит 1 магию воды."
     },
     {
       "id": "meowut.d",
-      "russian": " "
+      "russian": "Каждый ход приносит 1 магию воды."
     },
     {
       "id": "pikachu.d",
-      "russian": " "
+      "russian": "Каждый ход приносит 1 магию воды."
     },
     {
       "id": "squirtle.d",
-      "russian": " "
+      "russian": "Каждый ход приносит 1 магию воды."
     },
     {
       "id": "charmander.d",
-      "russian": " "
+      "russian": "Каждый ход приносит 1 магию воды."
     },
     {
       "id": "slowpoke.d",
-      "russian": " "
+      "russian": "Каждый ход приносит 1 магию воды."
     },
     {
       "id": "bulbasaur.d",
-      "russian": " "
+      "russian": "Каждый ход приносит 1 магию воды."
     },
     {
       "id": "pidgey.d",
-      "russian": " "
+      "russian": "Каждый ход приносит 1 магию воды."
     },
     {
       "id": "ratata.d",
-      "russian": " "
+      "russian": "Каждый ход приносит 1 магию воды."
     },
     {
       "id": "zubat.d",
-      "russian": " "
+      "russian": "Каждый ход приносит 1 магию воды."
     },
     {
       "id": "card_w1.d",
@@ -1917,59 +1916,59 @@
     },
     {
       "id": "card_w2.d",
-      "russian": " "
+      "russian": "Наносит урон фишками холодного оружия."
     },
     {
       "id": "card_w3.d",
-      "russian": " "
+      "russian": "Наносит урон фишками холодного оружия."
     },
     {
       "id": "card_w4.d",
-      "russian": " "
+      "russian": "Наносит урон фишками холодного оружия."
     },
     {
       "id": "card_wm.d",
-      "russian": " "
+      "russian": "Наносит урон фишками магии."
     },
     {
       "id": "card_ah1.d",
-      "russian": " "
+      "russian": "Защищает от урона фишками."
     },
     {
       "id": "card_ah2.d",
-      "russian": " "
+      "russian": "Защищает от урона фишками."
     },
     {
       "id": "card_ab1.d",
-      "russian": " "
+      "russian": "Защищает от урона фишками."
     },
     {
       "id": "card_ab2.d",
-      "russian": " "
+      "russian": "Защищает от урона фишками."
     },
     {
       "id": "card_ab3.d",
-      "russian": " "
+      "russian": "Защищает от урона фишками."
     },
     {
       "id": "card_ab4.d",
-      "russian": " "
+      "russian": "Защищает от урона фишками."
     },
     {
       "id": "card_al1.d",
-      "russian": " "
+      "russian": "Защищает от урона фишками."
     },
     {
       "id": "card_al2.d",
-      "russian": " "
+      "russian": "Защищает от урона фишками."
     },
     {
       "id": "card_ag1.d",
-      "russian": " "
+      "russian": "Защищает от урона фишками."
     },
     {
       "id": "card_ag2.d",
-      "russian": " "
+      "russian": "Защищает от урона фишками."
     },
     {
       "id": "card_am1.d",
@@ -1977,31 +1976,31 @@
     },
     {
       "id": "card_s1_1.d",
-      "russian": " "
+      "russian": "Наносит магический урон, пробивает броню."
     },
     {
       "id": "card_s2_1.d",
-      "russian": " "
+      "russian": "Наносит магический урон, пробивает броню."
     },
     {
       "id": "card_s3_1.d",
-      "russian": " "
+      "russian": "Наносит магический урон, пробивает броню."
     },
     {
       "id": "card_s4_1.d",
-      "russian": " "
+      "russian": "Наносит магический урон, пробивает броню."
     },
     {
       "id": "card_s5_1.d",
-      "russian": " "
+      "russian": "Наносит магический урон, пробивает броню."
     },
     {
       "id": "card_s1_2.d",
-      "russian": " "
+      "russian": "Наносит магический урон, пробивает броню."
     },
     {
       "id": "card_s2_2.d",
-      "russian": " "
+      "russian": "Наносит магический урон, пробивает броню."
     }
   ]
 }
