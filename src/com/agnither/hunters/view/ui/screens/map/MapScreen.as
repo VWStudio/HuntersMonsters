@@ -79,6 +79,7 @@ public class MapScreen extends Screen {
     private var _houseContainer : Sprite;
     private var isFirstRun : Boolean = true;
     private var _camp : Sprite;
+    private var _vinet : Image;
 
     public function MapScreen() {
 
@@ -191,6 +192,9 @@ public class MapScreen extends Screen {
 
         _container.x = mapDelta.x;
         _container.y = mapDelta.y;
+
+        _vinet = new Image(_refs.gui.getTexture("vinet"));
+        _vinet.touchable = false;
 
         _container.addEventListener(TouchEvent.TOUCH, handleTouch);
 
@@ -316,6 +320,7 @@ public class MapScreen extends Screen {
 
 
     override public function update() : void {
+        addChild(_vinet);
 
 
 

@@ -36,6 +36,7 @@ public class CampScreen extends Screen
     private var _skills : Sprite;
     private var _shop : Sprite;
     private var _instructor : Sprite;
+    private var _vinet : Image;
 
     public function CampScreen()
     {
@@ -88,7 +89,8 @@ public class CampScreen extends Screen
 
         _container.addEventListener(TouchEvent.TOUCH, handleTouch);
 
-
+        _vinet = new Image(_refs.gui.getTexture("vinet"));
+        _vinet.touchable = false;
     }
 
     private function onTouchInstructor(e : TouchEvent) : void
@@ -179,7 +181,7 @@ public class CampScreen extends Screen
 
     override public function update() : void
     {
-
+        addChild(_vinet);
     }
 
     private function handleTouch(e : TouchEvent) : void

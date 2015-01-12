@@ -78,6 +78,8 @@ public class BattleScreen extends Screen
 
     private var _summonPetBtn : Button;
 
+    private var _vinet : Image;
+
     private var _field : FieldView;
     private var _tooltip : Sprite;
     public static const PLAY_CHEST_FLY : String = "BattleScreen.PLAY_CHEST_FLY";
@@ -165,6 +167,10 @@ public class BattleScreen extends Screen
         _tooltip = new Sprite();
 
         _effects = new Sprite();
+
+
+        _vinet = new Image(_refs.gui.getTexture("vinet"));
+        _vinet.touchable = false;
     }
 
     public function clear() : void
@@ -219,6 +225,8 @@ public class BattleScreen extends Screen
         _tooltip.visible = false;
 
         addChild(_effects);
+
+        addChild(_vinet);
 
         coreAddListener(Match3Game.END_GAME, handleEndGame);
         coreAddListener(BattleScreen.PLAY_CHEST_FLY, onDropFly);
