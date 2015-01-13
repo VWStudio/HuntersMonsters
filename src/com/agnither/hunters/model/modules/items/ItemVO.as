@@ -40,6 +40,7 @@ public class ItemVO
     public var type : String;
     public var slot : int;
     public var price : int;
+    public var pricecrystal : int;
     public var ext : Object;
     public var setname : String;
     public var localekey : String = "";

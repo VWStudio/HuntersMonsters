@@ -53,6 +53,7 @@ public class HudScreen extends Screen {
     private var _modeBtn : ButtonContainer;
     private var _skillsButton : ButtonContainer;
     private var _expProgress : Image;
+    private var _playerCrystalls : TextField;
 
     public function HudScreen() {
     }
@@ -72,6 +73,9 @@ public class HudScreen extends Screen {
         _playerLeague = _links.leagueVal_tf;
         _playerRating = _links.ratingVal_tf;
         _playerGold = _links.goldVal_tf;
+
+        _playerCrystalls = _links.premVal_tf;
+
         _fullscreenButton = _links.fullscreen_btn;
         _musicButton = _links.music_btn;
         _soundButton = _links.sound_btn;
@@ -146,6 +150,7 @@ public class HudScreen extends Screen {
         _playerLeague.text = LeagueVO.DICT[progress.league.toString()].name;
         _playerRating.text = progress.rating.toString();
         _playerGold.text = progress.gold.toString();
+        _playerCrystalls.text = progress.crystalls.toString();
 //        _trapBtn.visible = App.instance.trapMode;
 
         _modeBtn.text = Model.instance.state == MapScreen.NAME ? "Лагерь" : "Карта";

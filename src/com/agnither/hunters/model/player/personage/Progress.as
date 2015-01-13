@@ -36,6 +36,7 @@ public class Progress extends EventDispatcher {
     public var rating : int = 0;
     public var magic : int = 0;
     public var gold : int = 0;
+    public var crystalls : int = 0;
     public var areaStars : Object = {};
     public var unlockPointsGiven : Array = [];
 
@@ -114,6 +115,7 @@ public class Progress extends EventDispatcher {
         rating = progressObj.rating;
         magic = progressObj.magic;
         gold = progressObj.gold;
+        crystalls = progressObj.crystalls;
         maxSummon = progressObj.maxSummon;
         monsterTimers = progressObj.monsterTimers ? progressObj.monsterTimers : {};
         monsterAmounts = progressObj.monsterAmounts ? progressObj.monsterAmounts : {};
@@ -192,6 +194,7 @@ public class Progress extends EventDispatcher {
         var obj : Object = {};
         obj.id = "local player";
         obj.name = settings.playerInitialName;
+
 //        obj.level = 20;
         obj.level = settings.playerInitialLevel;
         obj.exp = settings.playerInitialExp;
@@ -204,7 +207,10 @@ public class Progress extends EventDispatcher {
         obj.league = settings.playerInitialLeague;
         obj.rating = settings.playerInitialRating;
         obj.magic = settings.playerInitialMagic;
+
         obj.gold = settings.playerInitialGold;
+        obj.crystalls = 100;
+
         obj.maxSummon = settings.playerInitialSummonMax;
 //        obj.skillPoints = 10;
         obj.skillPoints = settings.playerInitialSkillPoints;

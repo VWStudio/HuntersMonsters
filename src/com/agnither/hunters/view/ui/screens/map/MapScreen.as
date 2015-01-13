@@ -195,6 +195,7 @@ public class MapScreen extends Screen {
 
         _vinet = new Image(_refs.gui.getTexture("vinet"));
         _vinet.touchable = false;
+        addChild(_vinet);
 
         _container.addEventListener(TouchEvent.TOUCH, handleTouch);
 
@@ -320,7 +321,7 @@ public class MapScreen extends Screen {
 
 
     override public function update() : void {
-        addChild(_vinet);
+
 
 
 

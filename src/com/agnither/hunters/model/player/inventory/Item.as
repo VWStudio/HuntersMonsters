@@ -125,6 +125,11 @@ public class Item extends EventDispatcher
         return _item.enemy;
     }
 
+    public function get crystallPrice() : Number
+    {
+        return _item.pricecrystal > 0 ? _item.pricecrystal : 0;
+    }
+
     public function isGold() : Boolean
     {
         return _item.type == ItemVO.TYPE_GOLD;

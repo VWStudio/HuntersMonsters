@@ -100,6 +100,22 @@ public class GoldView extends AbstractView {
         else
         {
 
+            if(item.crystallPrice)
+            {
+                if(item.crystallPrice <= Model.instance.progress.crystalls)
+                {
+                    Model.instance.progress.crystalls -= price;
+                    Model.instance.addPlayerItem(item);
+                    if (!item.isSpell())
+                    {
+                        Model.instance.shop.removeItem(item);
+                    }
+                    Model.instance.progress.saveProgress();
+                    coreDispatch(ItemView.HOVER_OUT);
+                }
+                return;
+            }
+
             if (Model.instance.progress.gold < price || price <= 0)
             {
                 return;
@@ -107,11 +123,7 @@ public class GoldView extends AbstractView {
 
             Model.instance.progress.gold -= price;
             Model.instance.addPlayerItem(item);
-            //if (!item.isSpell())
-//        if (_item.type != ItemTypeVO.spell)
-            //{
                 Model.instance.shop.removeItem(item);
-            //}
             Model.instance.progress.saveProgress();
 
         }
@@ -121,7 +133,15 @@ public class GoldView extends AbstractView {
 
     override public function update() : void {
 
-        if (!isNew) return;
+        if(!isNew)
+        {
+            return;
+        }
+
+//        _price = data as Number;
+        /**
+         * TODO change icon of crystall
+         */
 
         _value.text = price.toString();
         var str:String = "";
@@ -169,10 +189,22 @@ public class GoldView extends AbstractView {
         {
             _buy.text = "Купить";
             var isPriceEnough : Boolean = Model.instance.progress.gold >= price;
+            if(item.crystallPrice) {
+                isPriceEnough = Model.instance.progress.crystalls >= item.crystallPrice;
+            }
+
+
             _buy.visible = !Model.instance.player.inventory.isHaveSpell(item.id) && isPriceEnough
         }
-        _buy.visible = price > 0 && !(isSell && item.isSpell());
+        
         _goldIcon.visible = _value.visible = price > 0;
+
+        if(_goldIcon.visible) {
+            _goldIcon.texture = item.crystallPrice == 0 ? _refs.gui.getTexture("drop_gold") : _refs.gui.getTexture("crystal");
+            _goldIcon.readjustSize();
+        }
+
+        _buy.visible = price > 0 && isPriceEnough && !(isSell && item.isSpell());
         isNew = false;
 
         if (price > 0)

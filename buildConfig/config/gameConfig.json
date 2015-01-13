@@ -858,7 +858,8 @@
       "ext": "defence:[1,6]",
       "setname": "default",
       "dropparam": "1,6",
-      "localekey": "card_ab1"
+      "localekey": "card_ab1",
+      "pricecrystal" : 10
     },
     {
       "id": 5,
