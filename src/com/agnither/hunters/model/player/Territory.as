@@ -99,7 +99,14 @@ public class Territory
         _hud.visible = !_cloud.visible;
         _hud.isHouse = _area.isHouse;
         _hud.progress = Model.instance.progress.areaStars[area.area] ? Model.instance.progress.areaStars[area.area] : 0;
+        _hud.speedupCallback = onSpeedup;
+    }
 
+    private function onSpeedup() : void
+    {
+        _nextMonsters = 1;
+        Model.instance.progress.crystalls -= 1;
+//        Model.instance.progress.saveProgress();
     }
 
 //    public function getPoint($radius : Number = 145) : Point

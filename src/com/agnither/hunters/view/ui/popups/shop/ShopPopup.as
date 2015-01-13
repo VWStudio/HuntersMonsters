@@ -23,6 +23,7 @@ import com.agnither.hunters.view.ui.common.Tooltip;
 import com.agnither.hunters.view.ui.common.items.ItemView;
 import com.agnither.hunters.view.ui.popups.inventory.InventoryView;
 import com.agnither.ui.AbstractView;
+import com.agnither.ui.ButtonContainer;
 import com.agnither.ui.Popup;
 import com.cemaprjl.core.coreAddListener;
 import com.cemaprjl.core.coreDispatch;
@@ -33,6 +34,7 @@ import flash.geom.Point;
 import flash.geom.Rectangle;
 
 import starling.core.Starling;
+import starling.display.Image;
 import starling.display.Sprite;
 import starling.events.Event;
 import starling.text.TextField;
@@ -63,6 +65,8 @@ public class ShopPopup extends Popup
 //    private var _tooltipItem : Tooltip;
     private var _deliver : TextField;
     private var _deliverTime : TextField;
+    private var _speedup_btn : ButtonContainer;
+    private var _speedup_icon : Image;
 
     public function ShopPopup()
     {
@@ -162,7 +166,24 @@ public class ShopPopup extends Popup
         _deliverTime = _links["deliverTime_tf"];
 
 
+        _speedup_btn = _links['speedup_btn'];
+//        _speedup_btn.visible = false;
+        _speedup_btn.addEventListener(Event.TRIGGERED, onSpeedup);
+
+        _speedup_icon = _links["bitmap_crystal"];
+//        _speedup_icon.visible = false;
+
+
         update();
+    }
+
+    private function onSpeedup(event : Event) : void
+    {
+        if(Model.instance.progress.crystalls > 1) {
+            Model.instance.deliverTime = 0;
+            Model.instance.progress.crystalls -= 1;
+            Model.instance.progress.saveProgress();
+        }
     }
 
     private function onNewDeliver() : void

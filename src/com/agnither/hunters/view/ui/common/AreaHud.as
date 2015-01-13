@@ -3,10 +3,13 @@
  */
 package com.agnither.hunters.view.ui.common
 {
+import com.agnither.hunters.model.Model;
 import com.agnither.ui.AbstractView;
+import com.agnither.ui.ButtonContainer;
 import com.cemaprjl.utils.Formatter;
 
 import starling.display.Image;
+import starling.events.Event;
 import starling.text.TextField;
 
 public class AreaHud extends AbstractView
@@ -23,6 +26,9 @@ public class AreaHud extends AbstractView
     private var _timerBack : Image;
     private var _timerTitle : TextField;
     private var _timerValue : TextField;
+    private var _speedup_btn : ButtonContainer;
+    private var _speedup_icon : Image;
+    public var speedupCallback : Function;
 
     public function AreaHud()
     {
@@ -44,6 +50,15 @@ public class AreaHud extends AbstractView
         _timerBack.visible = false;
         _timerTitle.visible = false;
         _timerValue.visible = false;
+
+        _speedup_btn = _links['speedup_btn'];
+        _speedup_btn.visible = false;
+        _speedup_btn.addEventListener(Event.TRIGGERED, onSpeedup);
+
+        _speedup_icon = _links["bitmap_crystal"];
+        _speedup_icon.visible = false;
+
+
 
 
 
@@ -72,6 +87,13 @@ public class AreaHud extends AbstractView
 //                    break;
 //            }
 //        }
+    }
+
+    private function onSpeedup(event : Event) : void
+    {
+        if(speedupCallback != null && Model.instance.progress.crystalls > 1) {
+            speedupCallback();
+        }
     }
 
     public function set isHouse($val : Boolean) : void
@@ -110,6 +132,8 @@ public class AreaHud extends AbstractView
         _timerValue.visible = $time > 0;
         _timerBack.visible = $time > 0;
         _timerTitle.visible = $time > 0;
+        _speedup_btn.visible = $time > 0;
+        _speedup_icon.visible = $time > 0;
     }
 }
 }

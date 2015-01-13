@@ -1351,6 +1351,47 @@
                 "align": "center",
                 "name": "timerValue_tf"
               }
+            ],
+            [
+              {
+                "x": 111,
+                "y": -22,
+                "type": "button",
+                "name": "speedup_btn",
+                "images": [
+                  "common_button_back1",
+                  "common_button_back2",
+                  "common_button_back1"
+                ]
+              },
+              {
+                "x": 112,
+                "y": -17,
+                "type": "text",
+                "width": 135.15,
+                "height": 21.05,
+                "size": 14,
+                "text": "Ускорить за        1",
+                "fontName": "impact_21",
+                "fontColor": "0xFFFFFF",
+                "align": "center",
+                "name": "speedup_label"
+              },
+              {
+                "x": 204,
+                "y": -16,
+                "matrix": {
+                  "a": 0.51470947265625,
+                  "b": 0,
+                  "c": 0,
+                  "d": 0.51470947265625,
+                  "tx": 204.25,
+                  "ty": -16
+                },
+                "type": "bitmap",
+                "image": "crystal",
+                "name": "bitmap_crystal"
+              }
             ]
           ]
         }
@@ -1461,6 +1502,47 @@
                 "fontColor": "0xFFFFFF",
                 "align": "center",
                 "name": "timerValue_tf"
+              }
+            ],
+            [
+              {
+                "x": 111,
+                "y": -22,
+                "type": "button",
+                "name": "speedup_btn",
+                "images": [
+                  "common_button_back1",
+                  "common_button_back2",
+                  "common_button_back1"
+                ]
+              },
+              {
+                "x": 112,
+                "y": -17,
+                "type": "text",
+                "width": 135.15,
+                "height": 21.05,
+                "size": 14,
+                "text": "Ускорить за        1",
+                "fontName": "impact_21",
+                "fontColor": "0xFFFFFF",
+                "align": "center",
+                "name": "speedup_label"
+              },
+              {
+                "x": 204,
+                "y": -16,
+                "matrix": {
+                  "a": 0.51470947265625,
+                  "b": 0,
+                  "c": 0,
+                  "d": 0.51470947265625,
+                  "tx": 204.25,
+                  "ty": -16
+                },
+                "type": "bitmap",
+                "image": "crystal",
+                "name": "bitmap_crystal"
               }
             ]
           ]
@@ -1573,6 +1655,47 @@
                 "align": "center",
                 "name": "timerValue_tf"
               }
+            ],
+            [
+              {
+                "x": 111,
+                "y": -22,
+                "type": "button",
+                "name": "speedup_btn",
+                "images": [
+                  "common_button_back1",
+                  "common_button_back2",
+                  "common_button_back1"
+                ]
+              },
+              {
+                "x": 112,
+                "y": -17,
+                "type": "text",
+                "width": 135.15,
+                "height": 21.05,
+                "size": 14,
+                "text": "Ускорить за        1",
+                "fontName": "impact_21",
+                "fontColor": "0xFFFFFF",
+                "align": "center",
+                "name": "speedup_label"
+              },
+              {
+                "x": 204,
+                "y": -16,
+                "matrix": {
+                  "a": 0.51470947265625,
+                  "b": 0,
+                  "c": 0,
+                  "d": 0.51470947265625,
+                  "tx": 204.25,
+                  "ty": -16
+                },
+                "type": "bitmap",
+                "image": "crystal",
+                "name": "bitmap_crystal"
+              }
             ]
           ]
         }
@@ -1683,6 +1806,47 @@
                 "fontColor": "0xFFFFFF",
                 "align": "center",
                 "name": "timerValue_tf"
+              }
+            ],
+            [
+              {
+                "x": 111,
+                "y": -22,
+                "type": "button",
+                "name": "speedup_btn",
+                "images": [
+                  "common_button_back1",
+                  "common_button_back2",
+                  "common_button_back1"
+                ]
+              },
+              {
+                "x": 112,
+                "y": -17,
+                "type": "text",
+                "width": 135.15,
+                "height": 21.05,
+                "size": 14,
+                "text": "Ускорить за        1",
+                "fontName": "impact_21",
+                "fontColor": "0xFFFFFF",
+                "align": "center",
+                "name": "speedup_label"
+              },
+              {
+                "x": 204,
+                "y": -16,
+                "matrix": {
+                  "a": 0.51470947265625,
+                  "b": 0,
+                  "c": 0,
+                  "d": 0.51470947265625,
+                  "tx": 204.25,
+                  "ty": -16
+                },
+                "type": "bitmap",
+                "image": "crystal",
+                "name": "bitmap_crystal"
               }
             ]
           ]
@@ -1795,6 +1959,47 @@
                 "align": "center",
                 "name": "timerValue_tf"
               }
+            ],
+            [
+              {
+                "x": 111,
+                "y": -22,
+                "type": "button",
+                "name": "speedup_btn",
+                "images": [
+                  "common_button_back1",
+                  "common_button_back2",
+                  "common_button_back1"
+                ]
+              },
+              {
+                "x": 112,
+                "y": -17,
+                "type": "text",
+                "width": 135.15,
+                "height": 21.05,
+                "size": 14,
+                "text": "Ускорить за        1",
+                "fontName": "impact_21",
+                "fontColor": "0xFFFFFF",
+                "align": "center",
+                "name": "speedup_label"
+              },
+              {
+                "x": 204,
+                "y": -16,
+                "matrix": {
+                  "a": 0.51470947265625,
+                  "b": 0,
+                  "c": 0,
+                  "d": 0.51470947265625,
+                  "tx": 204.25,
+                  "ty": -16
+                },
+                "type": "bitmap",
+                "image": "crystal",
+                "name": "bitmap_crystal"
+              }
             ]
           ]
         }
@@ -1905,6 +2110,47 @@
                 "fontColor": "0xFFFFFF",
                 "align": "center",
                 "name": "timerValue_tf"
+              }
+            ],
+            [
+              {
+                "x": 111,
+                "y": -22,
+                "type": "button",
+                "name": "speedup_btn",
+                "images": [
+                  "common_button_back1",
+                  "common_button_back2",
+                  "common_button_back1"
+                ]
+              },
+              {
+                "x": 112,
+                "y": -17,
+                "type": "text",
+                "width": 135.15,
+                "height": 21.05,
+                "size": 14,
+                "text": "Ускорить за        1",
+                "fontName": "impact_21",
+                "fontColor": "0xFFFFFF",
+                "align": "center",
+                "name": "speedup_label"
+              },
+              {
+                "x": 204,
+                "y": -16,
+                "matrix": {
+                  "a": 0.51470947265625,
+                  "b": 0,
+                  "c": 0,
+                  "d": 0.51470947265625,
+                  "tx": 204.25,
+                  "ty": -16
+                },
+                "type": "bitmap",
+                "image": "crystal",
+                "name": "bitmap_crystal"
               }
             ]
           ]
@@ -2017,6 +2263,47 @@
                 "align": "center",
                 "name": "timerValue_tf"
               }
+            ],
+            [
+              {
+                "x": 111,
+                "y": -22,
+                "type": "button",
+                "name": "speedup_btn",
+                "images": [
+                  "common_button_back1",
+                  "common_button_back2",
+                  "common_button_back1"
+                ]
+              },
+              {
+                "x": 112,
+                "y": -17,
+                "type": "text",
+                "width": 135.15,
+                "height": 21.05,
+                "size": 14,
+                "text": "Ускорить за        1",
+                "fontName": "impact_21",
+                "fontColor": "0xFFFFFF",
+                "align": "center",
+                "name": "speedup_label"
+              },
+              {
+                "x": 204,
+                "y": -16,
+                "matrix": {
+                  "a": 0.51470947265625,
+                  "b": 0,
+                  "c": 0,
+                  "d": 0.51470947265625,
+                  "tx": 204.25,
+                  "ty": -16
+                },
+                "type": "bitmap",
+                "image": "crystal",
+                "name": "bitmap_crystal"
+              }
             ]
           ]
         }
@@ -2127,6 +2414,47 @@
                 "fontColor": "0xFFFFFF",
                 "align": "center",
                 "name": "timerValue_tf"
+              }
+            ],
+            [
+              {
+                "x": 111,
+                "y": -22,
+                "type": "button",
+                "name": "speedup_btn",
+                "images": [
+                  "common_button_back1",
+                  "common_button_back2",
+                  "common_button_back1"
+                ]
+              },
+              {
+                "x": 112,
+                "y": -17,
+                "type": "text",
+                "width": 135.15,
+                "height": 21.05,
+                "size": 14,
+                "text": "Ускорить за        1",
+                "fontName": "impact_21",
+                "fontColor": "0xFFFFFF",
+                "align": "center",
+                "name": "speedup_label"
+              },
+              {
+                "x": 204,
+                "y": -16,
+                "matrix": {
+                  "a": 0.51470947265625,
+                  "b": 0,
+                  "c": 0,
+                  "d": 0.51470947265625,
+                  "tx": 204.25,
+                  "ty": -16
+                },
+                "type": "bitmap",
+                "image": "crystal",
+                "name": "bitmap_crystal"
               }
             ]
           ]
@@ -2239,6 +2567,47 @@
                 "align": "center",
                 "name": "timerValue_tf"
               }
+            ],
+            [
+              {
+                "x": 111,
+                "y": -22,
+                "type": "button",
+                "name": "speedup_btn",
+                "images": [
+                  "common_button_back1",
+                  "common_button_back2",
+                  "common_button_back1"
+                ]
+              },
+              {
+                "x": 112,
+                "y": -17,
+                "type": "text",
+                "width": 135.15,
+                "height": 21.05,
+                "size": 14,
+                "text": "Ускорить за        1",
+                "fontName": "impact_21",
+                "fontColor": "0xFFFFFF",
+                "align": "center",
+                "name": "speedup_label"
+              },
+              {
+                "x": 204,
+                "y": -16,
+                "matrix": {
+                  "a": 0.51470947265625,
+                  "b": 0,
+                  "c": 0,
+                  "d": 0.51470947265625,
+                  "tx": 204.25,
+                  "ty": -16
+                },
+                "type": "bitmap",
+                "image": "crystal",
+                "name": "bitmap_crystal"
+              }
             ]
           ]
         }
@@ -2349,6 +2718,47 @@
                 "fontColor": "0xFFFFFF",
                 "align": "center",
                 "name": "timerValue_tf"
+              }
+            ],
+            [
+              {
+                "x": 111,
+                "y": -22,
+                "type": "button",
+                "name": "speedup_btn",
+                "images": [
+                  "common_button_back1",
+                  "common_button_back2",
+                  "common_button_back1"
+                ]
+              },
+              {
+                "x": 112,
+                "y": -17,
+                "type": "text",
+                "width": 135.15,
+                "height": 21.05,
+                "size": 14,
+                "text": "Ускорить за        1",
+                "fontName": "impact_21",
+                "fontColor": "0xFFFFFF",
+                "align": "center",
+                "name": "speedup_label"
+              },
+              {
+                "x": 204,
+                "y": -16,
+                "matrix": {
+                  "a": 0.51470947265625,
+                  "b": 0,
+                  "c": 0,
+                  "d": 0.51470947265625,
+                  "tx": 204.25,
+                  "ty": -16
+                },
+                "type": "bitmap",
+                "image": "crystal",
+                "name": "bitmap_crystal"
               }
             ]
           ]
@@ -2461,6 +2871,47 @@
                 "align": "center",
                 "name": "timerValue_tf"
               }
+            ],
+            [
+              {
+                "x": 111,
+                "y": -22,
+                "type": "button",
+                "name": "speedup_btn",
+                "images": [
+                  "common_button_back1",
+                  "common_button_back2",
+                  "common_button_back1"
+                ]
+              },
+              {
+                "x": 112,
+                "y": -17,
+                "type": "text",
+                "width": 135.15,
+                "height": 21.05,
+                "size": 14,
+                "text": "Ускорить за        1",
+                "fontName": "impact_21",
+                "fontColor": "0xFFFFFF",
+                "align": "center",
+                "name": "speedup_label"
+              },
+              {
+                "x": 204,
+                "y": -16,
+                "matrix": {
+                  "a": 0.51470947265625,
+                  "b": 0,
+                  "c": 0,
+                  "d": 0.51470947265625,
+                  "tx": 204.25,
+                  "ty": -16
+                },
+                "type": "bitmap",
+                "image": "crystal",
+                "name": "bitmap_crystal"
+              }
             ]
           ]
         }
@@ -2572,6 +3023,47 @@
                 "align": "center",
                 "name": "timerValue_tf"
               }
+            ],
+            [
+              {
+                "x": 111,
+                "y": -22,
+                "type": "button",
+                "name": "speedup_btn",
+                "images": [
+                  "common_button_back1",
+                  "common_button_back2",
+                  "common_button_back1"
+                ]
+              },
+              {
+                "x": 112,
+                "y": -17,
+                "type": "text",
+                "width": 135.15,
+                "height": 21.05,
+                "size": 14,
+                "text": "Ускорить за        1",
+                "fontName": "impact_21",
+                "fontColor": "0xFFFFFF",
+                "align": "center",
+                "name": "speedup_label"
+              },
+              {
+                "x": 204,
+                "y": -16,
+                "matrix": {
+                  "a": 0.51470947265625,
+                  "b": 0,
+                  "c": 0,
+                  "d": 0.51470947265625,
+                  "tx": 204.25,
+                  "ty": -16
+                },
+                "type": "bitmap",
+                "image": "crystal",
+                "name": "bitmap_crystal"
+              }
             ]
           ]
         }
@@ -2682,6 +3174,47 @@
                 "fontColor": "0xFFFFFF",
                 "align": "center",
                 "name": "timerValue_tf"
+              }
+            ],
+            [
+              {
+                "x": 111,
+                "y": -22,
+                "type": "button",
+                "name": "speedup_btn",
+                "images": [
+                  "common_button_back1",
+                  "common_button_back2",
+                  "common_button_back1"
+                ]
+              },
+              {
+                "x": 112,
+                "y": -17,
+                "type": "text",
+                "width": 135.15,
+                "height": 21.05,
+                "size": 14,
+                "text": "Ускорить за        1",
+                "fontName": "impact_21",
+                "fontColor": "0xFFFFFF",
+                "align": "center",
+                "name": "speedup_label"
+              },
+              {
+                "x": 204,
+                "y": -16,
+                "matrix": {
+                  "a": 0.51470947265625,
+                  "b": 0,
+                  "c": 0,
+                  "d": 0.51470947265625,
+                  "tx": 204.25,
+                  "ty": -16
+                },
+                "type": "bitmap",
+                "image": "crystal",
+                "name": "bitmap_crystal"
               }
             ]
           ]
@@ -5439,6 +5972,45 @@
           "fontColor": "0xFFFFFF",
           "align": "right",
           "name": "deliver_tf"
+        },
+        {
+          "x": 707,
+          "y": 559,
+          "type": "button",
+          "name": "speedup_btn",
+          "images": [
+            "common_button_back1",
+            "common_button_back2",
+            "common_button_back1"
+          ]
+        },
+        {
+          "x": 708,
+          "y": 564,
+          "type": "text",
+          "width": 135.15,
+          "height": 21.05,
+          "size": 14,
+          "text": "Ускорить за        1",
+          "fontName": "impact_21",
+          "fontColor": "0xFFFFFF",
+          "align": "center",
+          "name": "speedup_label"
+        },
+        {
+          "x": 801,
+          "y": 566,
+          "matrix": {
+            "a": 0.51470947265625,
+            "b": 0,
+            "c": 0,
+            "d": 0.51470947265625,
+            "tx": 800.8,
+            "ty": 565.6
+          },
+          "type": "bitmap",
+          "image": "crystal",
+          "name": "bitmap_crystal"
         }
       ],
       [

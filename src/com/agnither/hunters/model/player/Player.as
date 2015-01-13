@@ -61,6 +61,7 @@ public class Player extends EventDispatcher
 
     protected var _manaList : ManaList;
     private var _isCurrent : Boolean = false;
+//    private var incHpPercent : Number = 0;
 
     public function get manaList() : ManaList
     {
@@ -83,7 +84,9 @@ public class Player extends EventDispatcher
     public function init(data : Object) : void
     {
         _hero.init(data);
-
+//        if(incHpPercent > 0) {
+//            _hero.maxHP = _hero.hp = _hero.maxHP + _hero.maxHP * incHpPercent;
+//        }
         resetMana();
     }
 
@@ -194,7 +197,8 @@ public class Player extends EventDispatcher
         _manaList.useSpell(spell);
 
 
-        if (this is LocalPlayer && hitPercent > 0) {
+        if (this is LocalPlayer && hitPercent > 0)
+        {
             // drop from monster
             coreDispatch(DropList.GENERATE_DROP, hitPercent, target.hp);
         }
@@ -205,33 +209,45 @@ public class Player extends EventDispatcher
         doubleDrop = null;
         mirrorDamage = null;
         manaAdd = null;
+//        incHpPercent = 0;
         spellsDefence = [];
 //        Model.instance.resurrectPet = null;
 
-        for (var i : int = 0; i < _inventory.inventoryItems.length; i++) {
-            var item: Item = _inventory.getItem(_inventory.inventoryItems[i]);
-            if (!item.isSpell()) {
+        for (var i : int = 0; i < _inventory.inventoryItems.length; i++)
+        {
+            var item : Item = _inventory.getItem(_inventory.inventoryItems[i]);
+            if (!item.isSpell())
+            {
 
                 for (var extType : String in item.getExtensions())
                 {
-                    if(extType == DamageExt.TYPE) {
+                    if (extType == DamageExt.TYPE)
+                    {
                         _hero.damageType = (item.getExtension(extType) as DamageExt).getType();
                     }
-                    if(extType == DoubleDropExt.TYPE) {
+                    if (extType == DoubleDropExt.TYPE)
+                    {
                         doubleDrop = item.getExtension(extType) as DoubleDropExt;
                     }
-                    if(extType == MirrorDamageExt.TYPE) {
+                    if (extType == MirrorDamageExt.TYPE)
+                    {
                         mirrorDamage = item.getExtension(extType) as MirrorDamageExt;
                     }
-                    if(extType == ManaAddExt.TYPE) {
+                    if (extType == ManaAddExt.TYPE)
+                    {
                         manaAdd = item.getExtension(extType) as ManaAddExt;
                     }
-                    if(extType == SpellDefenceExt.TYPE) {
+                    if (extType == SpellDefenceExt.TYPE)
+                    {
                         spellsDefence.push(item.getExtension(extType));
                     }
-                    if(extType == ResurrectPetExt.TYPE) {
+                    if (extType == ResurrectPetExt.TYPE)
+                    {
                         Model.instance.resurrectPet = item.getExtension(extType) as ResurrectPetExt;
                     }
+//                    if(extType == IncHpExt.TYPE) {
+//                        incHpPercent = (item.getExtension(extType) as IncHpExt).percent;
+//                    }
                 }
             }
         }
