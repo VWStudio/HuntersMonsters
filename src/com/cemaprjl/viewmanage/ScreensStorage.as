@@ -12,6 +12,7 @@ import com.agnither.hunters.view.ui.popups.shop.ShopPopup;
 import com.agnither.hunters.view.ui.popups.skills.SkillsPopup;
 import com.agnither.hunters.view.ui.popups.trainer.TrainerPopup;
 import com.agnither.hunters.view.ui.popups.traps.TrapSetPopup;
+import com.agnither.hunters.view.ui.popups.win.AlivePopup;
 import com.agnither.hunters.view.ui.popups.win.WinPopup;
 import com.agnither.hunters.view.ui.screens.battle.BattleScreen;
 import com.agnither.hunters.view.ui.screens.camp.CampScreen;
@@ -41,6 +42,7 @@ public class ScreensStorage {
         ViewFactory.add(SkillsPopup.NAME, SkillsPopup);
         ViewFactory.add(TrainerPopup.NAME, TrainerPopup);
         ViewFactory.add(ShopPopup.NAME, ShopPopup);
+        ViewFactory.add(AlivePopup.NAME, AlivePopup);
 
 
     }

@@ -46,6 +46,7 @@ public class WinPopup extends Popup
     private var _drops : Sprite;
     private var _gold : TextField;
     private var _tooltip : Sprite;
+    private var _title2 : TextField;
 
     public function WinPopup()
     {
@@ -71,6 +72,7 @@ public class WinPopup extends Popup
 //        _back.touchable = true;
 
         _title = _links["title_tf"];
+        _title2 = _links["title2_tf"];
 
         _closeButton = _links["close_btn"];
         _closeButton.addEventListener(Event.TRIGGERED, handleClose);
@@ -146,8 +148,9 @@ public class WinPopup extends Popup
     override public function update() : void
     {
 
-        _title.text = data.isWin ? "Победа" : "Поражение";
-        //_playButton.text = data.isWin ? "Забрать Награду" : "Закрыть";
+//        _title.text = data.isWin ? "Победа" : "Поражение";
+        _title2.text = data.isWin ? "Пойман!" : "Поражение";
+        _playButton.text = data.isWin ? "Забрать Награду" : "Закрыть";
 
         _moves.text = "Ходов: " + Model.instance.movesAmount;
         var stars : int = Model.instance.calcStars();

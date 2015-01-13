@@ -4177,6 +4177,243 @@
       ]
     ]
   },
+  "alivePopup": {
+    "x": 375,
+    "y": 130,
+    "structure": [
+      [
+        {
+          "x": 0,
+          "y": 0,
+          "matrix": {
+            "a": 3,
+            "b": 0,
+            "c": 0,
+            "d": 4,
+            "tx": 0,
+            "ty": 0
+          },
+          "type": "movie clip",
+          "structure": [
+            [
+              {
+                "x": 0,
+                "y": 0,
+                "type": "bitmap",
+                "image": "common_back",
+                "name": "bitmap_common_back"
+              }
+            ]
+          ]
+        }
+      ],
+      [
+        {
+          "x": 277,
+          "y": 6,
+          "type": "button",
+          "name": "close_btn",
+          "images": [
+            "common_icon_close",
+            "common_icon_close",
+            "common_icon_close"
+          ]
+        }
+      ],
+      [
+        {
+          "x": 0,
+          "y": 0,
+          "type": "text",
+          "width": 300,
+          "height": 26,
+          "size": 18,
+          "text": "Охота на монстра",
+          "fontName": "impact_21",
+          "fontColor": "0xFFFFFF",
+          "align": "center",
+          "name": "title_tf"
+        },
+        {
+          "x": -1,
+          "y": 61,
+          "type": "text",
+          "width": 300,
+          "height": 26,
+          "size": 14,
+          "text": "Продолжить игру с 10% здоровья",
+          "fontName": "impact_21",
+          "fontColor": "0xFFFFFF",
+          "align": "center",
+          "name": "continue10_tf"
+        },
+        {
+          "x": 2,
+          "y": 162,
+          "type": "text",
+          "width": 300,
+          "height": 26,
+          "size": 14,
+          "text": "Продолжить игру с 50% здоровья",
+          "fontName": "impact_21",
+          "fontColor": "0xFFFFFF",
+          "align": "center",
+          "name": "continue50_tf"
+        }
+      ],
+      [
+        {
+          "x": 82,
+          "y": 282,
+          "type": "button",
+          "name": "loose_btn",
+          "images": [
+            "common_button_back1",
+            "common_button_back2",
+            "common_button_back1"
+          ]
+        }
+      ],
+      [
+        {
+          "x": 84,
+          "y": 283,
+          "type": "text",
+          "width": 133,
+          "height": 26,
+          "size": 18,
+          "text": "Сдаться",
+          "fontName": "impact_21",
+          "fontColor": "0xFFFFFF",
+          "align": "center",
+          "name": "loose_label"
+        },
+        {
+          "x": 80,
+          "y": 187,
+          "type": "button",
+          "name": "c50_btn",
+          "images": [
+            "common_button_back1",
+            "common_button_back2",
+            "common_button_back1"
+          ]
+        },
+        {
+          "x": 82,
+          "y": 188,
+          "type": "text",
+          "width": 133,
+          "height": 26,
+          "size": 18,
+          "text": "5",
+          "fontName": "impact_21",
+          "fontColor": "0xFFFFFF",
+          "align": "center",
+          "name": "c50_label"
+        },
+        {
+          "x": 82,
+          "y": 85,
+          "type": "button",
+          "name": "c10_btn",
+          "images": [
+            "common_button_back1",
+            "common_button_back2",
+            "common_button_back1"
+          ]
+        },
+        {
+          "x": 84,
+          "y": 87,
+          "type": "text",
+          "width": 133,
+          "height": 26,
+          "size": 18,
+          "text": "1",
+          "fontName": "impact_21",
+          "fontColor": "0xFFFFFF",
+          "align": "center",
+          "name": "c10_label"
+        }
+      ],
+      [
+        {
+          "x": 157,
+          "y": 246,
+          "matrix": {
+            "a": 1.51104736328125,
+            "b": 0,
+            "c": 0,
+            "d": 1.51104736328125,
+            "tx": 157.45,
+            "ty": 246.35
+          },
+          "type": "movie clip",
+          "linkage": "map.PointStars",
+          "name": "stars",
+          "structure": [
+            [],
+            [
+              {
+                "x": -1,
+                "y": 0,
+                "type": "movie clip",
+                "name": "star1",
+                "structure": [[]]
+              },
+              {
+                "x": 10,
+                "y": 0,
+                "type": "movie clip",
+                "name": "star2",
+                "structure": [[]]
+              },
+              {
+                "x": 22,
+                "y": 0,
+                "type": "movie clip",
+                "name": "star3",
+                "structure": [[]]
+              }
+            ]
+          ]
+        }
+      ],
+      [
+        {
+          "x": 111,
+          "y": 189,
+          "matrix": {
+            "a": 0.76470947265625,
+            "b": 0,
+            "c": 0,
+            "d": 0.76470947265625,
+            "tx": 111.15,
+            "ty": 188.65
+          },
+          "type": "bitmap",
+          "image": "crystal",
+          "name": "bitmap_crystal"
+        },
+        {
+          "x": 116,
+          "y": 87,
+          "matrix": {
+            "a": 0.76470947265625,
+            "b": 0,
+            "c": 0,
+            "d": 0.76470947265625,
+            "tx": 115.6,
+            "ty": 86.95
+          },
+          "type": "bitmap",
+          "image": "crystal",
+          "name": "bitmap_crystal1"
+        }
+      ]
+    ]
+  },
   "win_popup": {
     "x": 348,
     "y": 140,

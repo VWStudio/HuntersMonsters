@@ -14,6 +14,7 @@ import com.agnither.hunters.model.player.personage.Personage;
 import com.agnither.hunters.view.ui.screens.battle.BattleScreen;
 import com.agnither.hunters.view.ui.screens.battle.match3.FieldView;
 import com.agnither.hunters.view.ui.screens.battle.player.inventory.BattleInventoryView;
+import com.cemaprjl.core.coreAddListener;
 import com.cemaprjl.core.coreDispatch;
 
 import starling.display.Stage;
@@ -36,6 +37,7 @@ public class Match3Game extends EventDispatcher
 //    public static var ignoreGraphic : Boolean = true;
 
     private var _player : Player;
+    public static const CONTINUE : String = "Match3Game.CONTINUE";
     public function get player() : Player
     {
         return _player;
@@ -83,6 +85,13 @@ public class Match3Game extends EventDispatcher
 
 
         _drop = new DropList();
+
+        coreAddListener(Match3Game.CONTINUE, onContinue)
+    }
+
+    private function onContinue() : void
+    {
+        _allowPlay = true;
     }
 
     private function handleSelectCell(e : Event) : void

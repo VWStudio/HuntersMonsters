@@ -21,6 +21,7 @@ import com.agnither.hunters.view.ui.common.GoldView;
 import com.agnither.hunters.view.ui.popups.house.HousePopup;
 import com.agnither.hunters.view.ui.popups.hunt.HuntStepsPopup;
 import com.agnither.hunters.view.ui.popups.monsters.SelectMonsterPopup;
+import com.agnither.hunters.view.ui.popups.win.AlivePopup;
 import com.agnither.hunters.view.ui.popups.win.WinPopup;
 import com.agnither.hunters.view.ui.screens.battle.match3.FieldView;
 import com.agnither.hunters.view.ui.screens.battle.player.DropListView;
@@ -86,6 +87,7 @@ public class BattleScreen extends Screen
     private var _effects : Sprite;
     public static const PLAY_MANA_FLY : String = "BattleScreen.PLAY_MANA_FLY";
     private var _timeout : uint;
+    private var _respawnedOnce : Boolean = false;
 //    public static const SUMMON_BUTTON_UPDATE : String = "BattleScreen.SUMMON_BUTTON_UPDATE";
 
 
@@ -187,6 +189,8 @@ public class BattleScreen extends Screen
         {
             _game = new Match3Game(stage);
         }
+
+        _respawnedOnce = false;
 //        _game.init(new AIPlayer(Model.instance.monsters.getRandomMonster()), new AIPlayer(Model.instance.monsters.getRandomMonster()), 2);
         _game.init(Model.instance.player, Model.instance.enemy, Model.instance.drop);
 
@@ -351,7 +355,7 @@ public class BattleScreen extends Screen
     private function handleEndGame($isWin : Boolean) : void
     {
 
-        coreRemoveListener(Match3Game.END_GAME, handleEndGame);
+
         //coreRemoveListener(BattleScreen.PLAY_CHEST_FLY, onDropFly);
         //coreRemoveListener(BattleScreen.PLAY_MANA_FLY, onManaFly);
         //coreRemoveListener(DropSlotView.SHOW_TOOLTIP, onShowTooltip);
@@ -364,6 +368,14 @@ public class BattleScreen extends Screen
 
     private function gameEnds($isWin : Boolean) : void
     {
+        if(!_respawnedOnce && !$isWin)
+        {
+            _respawnedOnce = true;
+            coreExecute(ShowPopupCmd, AlivePopup.NAME);
+            return;
+        }
+
+        coreRemoveListener(Match3Game.END_GAME, handleEndGame);
         coreRemoveListener(BattleScreen.PLAY_CHEST_FLY, onDropFly);
         coreRemoveListener(BattleScreen.PLAY_MANA_FLY, onManaFly);
         coreRemoveListener(DropSlotView.SHOW_TOOLTIP, onShowTooltip);
