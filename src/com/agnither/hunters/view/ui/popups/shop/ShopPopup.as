@@ -68,6 +68,8 @@ public class ShopPopup extends Popup
     private var _deliverTime : TextField;
     private var _speedup_btn : ButtonContainer;
     private var _speedup_icon : Image;
+    private var _sellerItems : Array;
+    public static const ITEM_BOUGHT : String = "ShopPopup.ITEM_BOUGHT";
 
     public function ShopPopup()
     {
@@ -135,6 +137,7 @@ public class ShopPopup extends Popup
         _inventory = Model.instance.player.inventory;
 
         coreAddListener(Progress.UPDATED, update);
+        coreAddListener(ITEM_BOUGHT, onBought);
 
 //        coreAddListener(ShopPopup.SHOW_TOOLTIP, showTooltip);
 //        coreAddListener(ShopPopup.HIDE_TOOLTIP, hideTip);
@@ -178,6 +181,16 @@ public class ShopPopup extends Popup
         update();
     }
 
+    private function onBought($item : Item) : void
+    {
+        var index : int = _sellerItems.indexOf($item);
+        if(index >= 0) {
+            _sellerItems.splice(index, 1);
+            update();
+        }
+
+    }
+
     private function onSpeedup(event : Event) : void
     {
         if(Model.instance.progress.crystalls > 1) {
@@ -189,6 +202,7 @@ public class ShopPopup extends Popup
 
     private function onNewDeliver() : void
     {
+        _sellerItems = null;
         if (!isActive)
         {
             return;
@@ -332,6 +346,35 @@ public class ShopPopup extends Popup
 //    private function showSellerItems($type : String) : void
     {
 
+        if(!_sellerItems) {
+            _sellerItems = getItemsInShop();
+        }
+
+//        trace(JSON.stringify(items));
+
+
+        _container.removeChildren();
+        var pt :Point;
+        var i : int;
+        for (i = 0; i < _sellerItems.length; i++)
+        {
+            var tile : BuyItemView = new BuyItemView(_sellerItems[i]);
+            if(!pt) {
+                pt = new Point(tile.width + 5, tile.height + 5);
+            }
+            _container.addChild(tile);
+            tile.x = pt.x  * (i % 3);
+//            tile.x = 210 * (i % 3);
+            tile.y = pt.y * int(i / 3);
+//            tile.y = 70 * int(i / 3);
+
+        }
+        _scroll.setScrollParams(_container.height, 460);
+//        _scroll.setScrollParams(int((_container.numChildren + 1) / 2), 5);
+    }
+
+    private function getItemsInShop() : Array
+    {
         var items : Array = Model.instance.shop.getItemsByType(ItemVO.TYPE_WEAPON);
         items = items.concat(Model.instance.shop.getItemsByType(ItemVO.TYPE_ARMOR));
         items = items.concat(Model.instance.shop.getItemsByType(ItemVO.TYPE_MAGIC));
@@ -361,10 +404,10 @@ public class ShopPopup extends Popup
             var cm : int = cMin + Math.round((cMax - cMin) * Math.random());
             while(crystallItems.length < cm && counter < cm * 100) {
                 var randType : String = ([ItemVO.TYPE_WEAPON, ItemVO.TYPE_ARMOR, ItemVO.TYPE_MAGIC] as Array)[int(Math.random() * 3)];
-                var item : Item = Model.instance.items.generateRandomItem(randType);
-                if(item && item.crystallPrice > 0) {
-                    crystallItems.push(item);
-                    items.push(item)
+                var item2 : Item = Model.instance.items.generateRandomItem(randType);
+                if(item2 && item2.crystallPrice > 0) {
+                    crystallItems.push(item2);
+                    items.push(item2)
                 }
                 counter++;
             }
@@ -373,26 +416,7 @@ public class ShopPopup extends Popup
 
 
         items = items.sort(sortItems);
-//        trace(JSON.stringify(items));
-
-
-        _container.removeChildren();
-        var pt :Point;
-        for (i = 0; i < items.length; i++)
-        {
-            var tile : BuyItemView = new BuyItemView(items[i]);
-            if(!pt) {
-                pt = new Point(tile.width + 5, tile.height + 5);
-            }
-            _container.addChild(tile);
-            tile.x = pt.x  * (i % 3);
-//            tile.x = 210 * (i % 3);
-            tile.y = pt.y * int(i / 3);
-//            tile.y = 70 * int(i / 3);
-
-        }
-        _scroll.setScrollParams(_container.height, 460);
-//        _scroll.setScrollParams(int((_container.numChildren + 1) / 2), 5);
+        return items;
     }
 
     private function sortItems($a : Item, $b : Item) : int

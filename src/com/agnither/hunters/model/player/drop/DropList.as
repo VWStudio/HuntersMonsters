@@ -51,7 +51,12 @@ public class DropList extends EventDispatcher
         var currentMonster : MonsterVO = Model.instance.enemy.hero.monster;
         if(!currentMonster) return;
 
-        var isDropped : Boolean = ($hitPercent * 200) > Math.random() * 100;
+        var chance : Number = ($hitPercent * 200);
+        if(Model.instance.player.doubleDrop) {
+            chance = chance * Model.instance.player.doubleDrop.getBaseValue()
+        }
+
+        var isDropped : Boolean = chance > Math.random() * 100;
         if(!hp && $hitPercent)
         {
             isDropped = true;

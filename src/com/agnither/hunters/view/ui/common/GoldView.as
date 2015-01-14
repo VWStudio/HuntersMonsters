@@ -119,6 +119,7 @@ public class GoldView extends AbstractView {
                     {
                         Model.instance.shop.removeItem(item);
                     }
+                    coreDispatch(ShopPopup.ITEM_BOUGHT, item);
                     Model.instance.progress.saveProgress();
                     coreDispatch(ItemView.HOVER_OUT);
                 }
@@ -135,6 +136,7 @@ public class GoldView extends AbstractView {
                 Model.instance.shop.removeItem(item);
             Model.instance.progress.saveProgress();
 
+            coreDispatch(ShopPopup.ITEM_BOUGHT, item);
         }
         coreDispatch(ItemView.HOVER_OUT);
         item = null;

@@ -6,9 +6,13 @@ package com.agnither.hunters.model.player
 import com.agnither.hunters.data.outer.MagicTypeVO;
 import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.modules.extensions.DamageExt;
+import com.agnither.hunters.model.modules.extensions.DmgEnemyOnTurnExt;
 import com.agnither.hunters.model.modules.extensions.DoubleDropExt;
+import com.agnither.hunters.model.modules.extensions.IncDmgExt;
+import com.agnither.hunters.model.modules.extensions.IncHpExt;
 import com.agnither.hunters.model.modules.extensions.ManaAddExt;
 import com.agnither.hunters.model.modules.extensions.MirrorDamageExt;
+import com.agnither.hunters.model.modules.extensions.MoveAgainExt;
 import com.agnither.hunters.model.modules.extensions.ResurrectPetExt;
 import com.agnither.hunters.model.modules.extensions.SpellDefenceExt;
 import com.agnither.hunters.model.player.drop.DropList;
@@ -34,6 +38,8 @@ public class Player extends EventDispatcher
     public var mirrorDamage : MirrorDamageExt;
     public var manaAdd : ManaAddExt;
     public var spellsDefence : Array = [];
+    public var incHpPercent : Number = 0;
+    public var incDmgPercent : Number = 0;
 
     protected var _inventory : Inventory;
     public function get inventory() : Inventory
@@ -61,7 +67,9 @@ public class Player extends EventDispatcher
 
     protected var _manaList : ManaList;
     private var _isCurrent : Boolean = false;
-//    private var incHpPercent : Number = 0;
+    public var dealDmgOnMove : Number;
+    public var moveAgainOn5 : Boolean = false;
+
 
     public function get manaList() : ManaList
     {
@@ -84,9 +92,9 @@ public class Player extends EventDispatcher
     public function init(data : Object) : void
     {
         _hero.init(data);
-//        if(incHpPercent > 0) {
-//            _hero.maxHP = _hero.hp = _hero.maxHP + _hero.maxHP * incHpPercent;
-//        }
+        if(incHpPercent > 0) {
+            _hero.maxHP = _hero.hp = _hero.maxHP + _hero.maxHP * incHpPercent;
+        }
         resetMana();
     }
 
@@ -176,10 +184,9 @@ public class Player extends EventDispatcher
         {
             dmg = dmg * Model.instance.progress.getSkillMultiplier("8");
         }
-        else
-        {
+//        else
+//        {
             if (spellsDefence.length > 0)
-//            if (Model.instance.spellsDefence.length > 0)
             {
                 for (var i : int = 0; i < spellsDefence.length; i++)
                 {
@@ -190,11 +197,19 @@ public class Player extends EventDispatcher
                     }
                 }
             }
-        }
+//        }
         var hitPercent : Number = target.hit(int(dmg), true);
 //        target.hit(spell.getDamage(), true);
 //        spell.useSpell(target);
         _manaList.useSpell(spell);
+
+        var currentEnemy : Player = this == Model.instance.player ? Model.instance.enemy : Model.instance.player;
+
+        if(currentEnemy.mirrorDamage) {
+            if(currentEnemy.mirrorDamage.isLucky()) {
+                this.hero.hit(dmg * currentEnemy.mirrorDamage.percent, true);
+            }
+        }
 
 
         if (this is LocalPlayer && hitPercent > 0)
@@ -209,7 +224,10 @@ public class Player extends EventDispatcher
         doubleDrop = null;
         mirrorDamage = null;
         manaAdd = null;
-//        incHpPercent = 0;
+        incHpPercent = 0;
+        incDmgPercent = 0;
+        dealDmgOnMove = 0;
+        moveAgainOn5 = false;
         spellsDefence = [];
 //        Model.instance.resurrectPet = null;
 
@@ -245,9 +263,21 @@ public class Player extends EventDispatcher
                     {
                         Model.instance.resurrectPet = item.getExtension(extType) as ResurrectPetExt;
                     }
-//                    if(extType == IncHpExt.TYPE) {
-//                        incHpPercent = (item.getExtension(extType) as IncHpExt).percent;
-//                    }
+                    if(extType == IncHpExt.TYPE) {
+                        incHpPercent = (item.getExtension(extType) as IncHpExt).percent;
+                    }
+                    if(extType == IncDmgExt.TYPE) {
+                        incDmgPercent = (item.getExtension(extType) as IncDmgExt).percent;
+                    }
+                    if(extType == DmgEnemyOnTurnExt.TYPE) {
+                        dealDmgOnMove = (item.getExtension(extType) as DmgEnemyOnTurnExt).amount;
+                    }
+                    if(extType == MoveAgainExt.TYPE) {
+
+                        moveAgainOn5 = true;
+                    }
+
+//
                 }
             }
         }

@@ -70,6 +70,7 @@ public class Match3Game extends EventDispatcher
     private var _stage : Stage;
     private var _allowPlay : Boolean = true;
     private var _totalMoves : int = 0;
+    private var _lastMatch : Match;
 
     public function get dropList() : DropList
     {
@@ -180,6 +181,10 @@ public class Match3Game extends EventDispatcher
         if (_allowPlay)
         {
             _currentPlayer.startMove();
+            if(_currentPlayer.dealDmgOnMove > 0) {
+                var anEnemy : Player = (_currentPlayer == player) ? enemy : player;
+                anEnemy.hero.hit(_currentPlayer.dealDmgOnMove);
+            }
         }
     }
 
@@ -188,6 +193,9 @@ public class Match3Game extends EventDispatcher
         var attacker : Personage;
 
         var match : Match = e.data as Match;
+
+        _lastMatch = match;
+
         var dmg : Number = 0;
         var hitPercent : Number = 0;
         var aim : Personage;
@@ -201,6 +209,12 @@ public class Match3Game extends EventDispatcher
 //                    attacker = currentPlayer.hero;
                     aim = currentEnemy.hero;
                     dmg = currentEnemy.hero.maxHP * (match.amount * 2) / 100;
+
+                    if(currentPlayer.incDmgPercent > 0) {
+                        dmg = dmg + dmg * currentPlayer.incDmgPercent;
+                    }
+
+
 //                    match.showDamage(dmg / match.amount);
                     match.showDamage(dmg);
                     hitPercent = aim.hit(dmg, true); // required for calculate drop
@@ -232,16 +246,21 @@ public class Match3Game extends EventDispatcher
             aim = currentEnemy.hero;
 //            aim = !currentEnemy.pet.isDead ? currentEnemy.pet : currentEnemy.hero;
             dmg = attacker.damage / 3;
-            if (attacker == Model.instance.player.hero)
-            {
+//            if (attacker == Model.instance.player.hero)
+//            {
                 dmg = dmg * (attacker.damageType == MagicTypeVO.WEAPON ? Model.instance.progress.getSkillMultiplier("2") : Model.instance.progress.getSkillMultiplier("3"));
-            } else {
+//            } else {
+
+            if(currentPlayer.incDmgPercent > 0) {
+                dmg = dmg + dmg * currentPlayer.incDmgPercent;
+            }
+
                 if(currentEnemy.mirrorDamage) {
                     if(currentEnemy.mirrorDamage.isLucky()) {
                         attacker.hit(match.amount * dmg * currentEnemy.mirrorDamage.percent, true);
                     }
                 }
-            }
+//            }
             if(dmg > 0) {
                 match.showDamage(match.amount * dmg);
 //                match.showDamage(dmg);
@@ -260,6 +279,11 @@ public class Match3Game extends EventDispatcher
 
     private function handleMove(e : Event) : void
     {
+        if(_lastMatch.amount == 5 && currentPlayer.moveAgainOn5) {
+            nextMove(currentPlayer);
+            return;
+        }
+
         nextMove(currentEnemy);
     }
 
