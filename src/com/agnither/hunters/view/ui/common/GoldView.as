@@ -139,10 +139,6 @@ public class GoldView extends AbstractView {
         }
 
 //        _price = data as Number;
-        /**
-         * TODO change icon of crystall
-         */
-
         _value.text = price.toString();
         var str:String = "";
         str += item.description;
@@ -204,7 +200,9 @@ public class GoldView extends AbstractView {
             _goldIcon.readjustSize();
         }
 
-        _buy.visible = price > 0 && isPriceEnough && !(isSell && item.isSpell());
+        _buy.visible = price > 0 && !(isSell && item.isSpell());
+//        XXX uncomment next line if required to hide button on not enough money;
+//        _buy.visible = _buy.visible && isPriceEnough;
         isNew = false;
 
         if (price > 0)

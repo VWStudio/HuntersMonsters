@@ -4207,19 +4207,7 @@
           ]
         }
       ],
-      [
-        {
-          "x": 277,
-          "y": 6,
-          "type": "button",
-          "name": "close_btn",
-          "images": [
-            "common_icon_close",
-            "common_icon_close",
-            "common_icon_close"
-          ]
-        }
-      ],
+      [],
       [
         {
           "x": 0,

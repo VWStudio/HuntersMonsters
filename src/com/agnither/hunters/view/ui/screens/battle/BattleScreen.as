@@ -368,9 +368,10 @@ public class BattleScreen extends Screen
 
     private function gameEnds($isWin : Boolean) : void
     {
-        if(!_respawnedOnce && !$isWin)
+//        if(!_respawnedOnce && !$isWin)
+        if(!$isWin)
         {
-            _respawnedOnce = true;
+//            _respawnedOnce = true;
             coreExecute(ShowPopupCmd, AlivePopup.NAME);
             return;
         }

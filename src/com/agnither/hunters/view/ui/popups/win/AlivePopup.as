@@ -50,6 +50,11 @@ public class AlivePopup extends Popup
     }
 
 
+    override public function get isDarkenessCloseAllowed() : Boolean
+    {
+        return false;
+    }
+
     override protected function initialize() : void
     {
 

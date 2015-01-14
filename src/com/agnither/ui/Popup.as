@@ -20,6 +20,11 @@ public class Popup extends AbstractView {
 
     private var _darkened: Boolean = true;
     private var _popup_closeButton : DisplayObject;
+
+    public function get isDarkenessCloseAllowed():Boolean {
+        return true;
+    }
+
     public function get darkened():Boolean {
         return _darkened;
     }

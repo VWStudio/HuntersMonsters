@@ -214,7 +214,7 @@ public class UI extends Screen {
 
     private function handleClosePopup(e : TouchEvent) : void {
         var touch : Touch = e.getTouch(_darkness, TouchPhase.ENDED);
-        if (touch && _currentPopup)
+        if (touch && _currentPopup && _currentPopup.isDarkenessCloseAllowed)
         {
             hidePopup();
         }
