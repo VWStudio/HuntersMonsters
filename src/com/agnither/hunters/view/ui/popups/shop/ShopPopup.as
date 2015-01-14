@@ -13,6 +13,7 @@ import com.agnither.hunters.model.modules.extensions.PetExt;
 import com.agnither.hunters.model.modules.items.ItemVO;
 import com.agnither.hunters.model.modules.locale.Locale;
 import com.agnither.hunters.model.modules.monsters.MonsterVO;
+import com.agnither.hunters.model.modules.players.SettingsVO;
 import com.agnither.hunters.model.player.inventory.Inventory;
 import com.agnither.hunters.model.player.inventory.Item;
 import com.agnither.hunters.model.player.personage.Progress;
@@ -337,6 +338,38 @@ public class ShopPopup extends Popup
         items = items.concat(Model.instance.shop.getItemsByType(ItemVO.TYPE_SPELL));
 //        var items : Array = Model.instance.shop.getItemsByType($type);
 
+        var crystallItems : Array = [];
+        var i : int;
+        for (i = 0; i < items.length; i++)
+        {
+            var item : Item = items[i];
+            if(item.crystallPrice > 0) {
+                crystallItems.push(item);
+            }
+        }
+
+        var cMin : int = SettingsVO.DICT["shopCrystallItems"][0];
+        var cMax : int = SettingsVO.DICT["shopCrystallItems"][1];
+        if(crystallItems.length > cMax) {
+            while(crystallItems.length > cMax) {
+                var index : int = int(Math.random() * crystallItems.length);
+                var item1 : Item = crystallItems.splice(index, 1)[0];
+                items.splice(items.indexOf(item1), 1);
+            }
+        } else if(crystallItems.length < cMin) {
+            var counter : int = 0;
+            var cm : int = cMin + Math.round((cMax - cMin) * Math.random());
+            while(crystallItems.length < cm && counter < cm * 100) {
+                var randType : String = ([ItemVO.TYPE_WEAPON, ItemVO.TYPE_ARMOR, ItemVO.TYPE_MAGIC] as Array)[int(Math.random() * 3)];
+                var item : Item = Model.instance.items.generateRandomItem(randType);
+                if(item && item.crystallPrice > 0) {
+                    crystallItems.push(item);
+                    items.push(item)
+                }
+                counter++;
+            }
+        }
+
 
 
         items = items.sort(sortItems);
@@ -345,7 +378,7 @@ public class ShopPopup extends Popup
 
         _container.removeChildren();
         var pt :Point;
-        for (var i : int = 0; i < items.length; i++)
+        for (i = 0; i < items.length; i++)
         {
             var tile : BuyItemView = new BuyItemView(items[i]);
             if(!pt) {

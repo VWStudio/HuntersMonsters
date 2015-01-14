@@ -129,41 +129,41 @@ public class BuyItemView extends AbstractView
 
     }
 
-    private function onBuy(event : Event) : void
-    {
-        if(item.crystallPrice)
-        {
-           if(item.crystallPrice >= Model.instance.progress.crystalls)
-           {
-                Model.instance.progress.crystalls -= _price;
-                Model.instance.addPlayerItem(_item);
-                if (!_item.isSpell())
-//        if (_item.type != ItemTypeVO.spell)
-                {
-                    Model.instance.shop.removeItem(_item);
-                }
-                Model.instance.progress.saveProgress();
-                coreDispatch(ItemView.HOVER_OUT);
-            }
-            return;
-        }
-
-        if (Model.instance.progress.gold < _price || _price <= 0)
-        {
-            return;
-        }
-
-        Model.instance.progress.gold -= _price;
-        Model.instance.addPlayerItem(_item);
-        if (!_item.isSpell())
-//        if (_item.type != ItemTypeVO.spell)
-        {
-            Model.instance.shop.removeItem(_item);
-        }
-        Model.instance.progress.saveProgress();
-        coreDispatch(ItemView.HOVER_OUT);
-
-    }
+//    private function onBuy(event : Event) : void
+//    {
+//        if(item.crystallPrice)
+//        {
+//           if(item.crystallPrice >= Model.instance.progress.crystalls)
+//           {
+//                Model.instance.progress.crystalls -= _price;
+//                Model.instance.addPlayerItem(_item);
+//                if (!_item.isSpell())
+////        if (_item.type != ItemTypeVO.spell)
+//                {
+//                    Model.instance.shop.removeItem(_item);
+//                }
+//                Model.instance.progress.saveProgress();
+//                coreDispatch(ItemView.HOVER_OUT);
+//            }
+//            return;
+//        }
+//
+//        if (Model.instance.progress.gold < _price || _price <= 0)
+//        {
+//            return;
+//        }
+//
+//        Model.instance.progress.gold -= _price;
+//        Model.instance.addPlayerItem(_item);
+//        if (!_item.isSpell())
+////        if (_item.type != ItemTypeVO.spell)
+//        {
+//            Model.instance.shop.removeItem(_item);
+//        }
+//        Model.instance.progress.saveProgress();
+//        coreDispatch(ItemView.HOVER_OUT);
+//
+//    }
 
 //    public function setBuyItem($item : Item) : void
 //    {

@@ -93,9 +93,18 @@ public class GoldView extends AbstractView {
 
         if(isSell)
         {
-            Model.instance.progress.gold += price;
-            Model.instance.player.inventory.removeItem(item);
-            Model.instance.progress.saveProgress();
+            if(item.crystallPrice)
+            {
+                Model.instance.progress.crystalls += price;
+                Model.instance.player.inventory.removeItem(item);
+                Model.instance.progress.saveProgress();
+            }
+            else
+            {
+                Model.instance.progress.gold += price;
+                Model.instance.player.inventory.removeItem(item);
+                Model.instance.progress.saveProgress();
+            }
         }
         else
         {

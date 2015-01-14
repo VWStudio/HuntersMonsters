@@ -42,7 +42,8 @@ public class Shop
         var itemsMin : int = SettingsVO.DICT[$type + "TabMin"];
         var itemsMax : int = SettingsVO.DICT[$type + "TabMax"];
         var arr : Array = [];
-        var amount : Number = itemsMin + int((itemsMax - itemsMin + 1) * Math.random());
+        var amount : int = itemsMin + int((itemsMax - itemsMin + 1) * Math.random());
+        var amountCrystal : int = 2; // XXX min of crystall items
         var i : int = 0;
         var item : Item;
         var itemVO : ItemVO;

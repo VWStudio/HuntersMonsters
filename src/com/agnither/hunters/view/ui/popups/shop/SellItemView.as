@@ -113,9 +113,14 @@ public class SellItemView extends AbstractView
 
         }
 
+        if(_item.crystallPrice) {
+            _price = Math.round(item.crystallPrice * 0.2);
+        }
+
         if(_price <= 1) {
             _price = 1;
         }
+
 
     }
 

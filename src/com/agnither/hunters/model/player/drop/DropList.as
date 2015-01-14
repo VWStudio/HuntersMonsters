@@ -93,14 +93,33 @@ public class DropList extends EventDispatcher
             var indexOfItem : int = Util.getIndexOfRandom(Model.instance.items.chances, Model.instance.items.dropChanceSum);
             var slot : String = Model.instance.items.slots[indexOfItem];
             var items : Array = Model.instance.items.itemsBySlot[slot];
+            var arr : Array = [];
+            for (var i : int = 0; i < items.length; i++)
+            {
+                var vo : ItemVO = items[i];
+                if(vo.pricecrystal > 0)
+                {
+                    continue;
+                }
+                arr.push(vo);
+            }
+            trace("*", items);
+            items = arr;
+            trace("**", items);
+
             var paramMult : Number = SettingsVO.DICT[slot+"ParamMult"];
 
-            if (currentMonster.order < 3) pMin = 1;
+            if (currentMonster.order < 3)
+            {
+                pMin = 1;
+            }
             else {
                 pMin = Math.round(Math.sqrt((MonsterVO.DICT["order"+(currentMonster.order - 3)].reward * (MonsterVO.DICT["order"+(currentMonster.order - 2)].difficultyfactor + 1)) / paramMult));
             }
 
-            if (currentMonster.order < 1) pAverage = 1;
+            if (currentMonster.order < 1) {
+                pAverage = 1;
+            }
             else {
                 pAverage = Math.round(Math.sqrt((MonsterVO.DICT["order"+(currentMonster.order - 1)].reward * (currentMonster.difficultyfactor + 1)) / paramMult));
             }
@@ -109,7 +128,10 @@ public class DropList extends EventDispatcher
 
             var itemParam : Number = Util.getRandomParam(pMin, pAverage, pMax);
             trace("dropItem min:" + pMin + " pAverage:" + pAverage + " pMax:" + pMax + " itemParam:" + itemParam + "slot: " + slot);
-            if(items && items.length > 0) content = findItem(items, Math.round(itemParam), -1);
+            if(items && items.length > 0)
+            {
+                content = findItem(items, Math.round(itemParam), -1);
+            }
         }
         if(content) addContent(content);
     }
