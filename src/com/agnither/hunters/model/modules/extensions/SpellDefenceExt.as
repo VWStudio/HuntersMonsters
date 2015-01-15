@@ -10,7 +10,7 @@ public class SpellDefenceExt extends Extension
 
     public static const TYPE : String = "spell_defence";
     private var _type : String;
-    private var _amount : Number;
+    private var _percent : Number;
 
     public function SpellDefenceExt($args : Array)
     {
@@ -26,7 +26,7 @@ public class SpellDefenceExt extends Extension
     override protected function fill() : void
     {
         _type = _extArguments[0];
-        _amount = _extArguments[1];
+        _percent = _extArguments[1];
     }
 
 
@@ -34,7 +34,7 @@ public class SpellDefenceExt extends Extension
     {
 //        var obj : Object = {};
 //        obj[TYPE] = [_type, _amount];
-        return [_type, _amount];
+        return [_type, _percent];
     }
 
     public function getType() : String
@@ -42,20 +42,20 @@ public class SpellDefenceExt extends Extension
         return _type;
     }
 
-    public function getAmount() : Number
+    public function getPercent() : Number
     {
-        return _amount;
+        return _percent / 100;
     }
 
     override public function getBaseValue() : Number
     {
-        return _amount;
+        return _percent;
     }
 
     override public function getDescription() : String
     {
         var description : String = super.getDescription() + ", "
-                                   +_type+", "+_amount;
+                                   +_type+", "+_percent;
 
 
         return description;

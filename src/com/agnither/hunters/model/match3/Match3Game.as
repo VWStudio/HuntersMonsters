@@ -160,7 +160,7 @@ public class Match3Game extends EventDispatcher
     {
         if ($item.isSpell())
         {
-            currentPlayer.useSpell($item.uniqueId, currentEnemy.hero);
+            currentPlayer.useSpell($item.uniqueId, currentEnemy);
         }
 
     }

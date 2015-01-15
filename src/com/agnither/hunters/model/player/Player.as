@@ -172,7 +172,7 @@ public class Player extends EventDispatcher
         return (item && item.isSpell()) ? _manaList.checkSpell(item) : false;
     }
 
-    public function useSpell(id : String, target : Personage) : void
+    public function useSpell(id : String, target : Player) : void
     {
         var spell : Item = _inventory.getItem(id);
         if (!spell.isSpell())
@@ -186,19 +186,19 @@ public class Player extends EventDispatcher
         }
 //        else
 //        {
-            if (spellsDefence.length > 0)
+            if (target.spellsDefence.length > 0)
             {
-                for (var i : int = 0; i < spellsDefence.length; i++)
+                for (var i : int = 0; i < target.spellsDefence.length; i++)
                 {
-                    var sd : SpellDefenceExt = spellsDefence[i] as SpellDefenceExt;
+                    var sd : SpellDefenceExt = target.spellsDefence[i] as SpellDefenceExt;
                     if (sd && sd.getType() == spell.type)
                     {
-                        dmg -= sd.getAmount();
+                        dmg -= dmg * sd.getPercent();
                     }
                 }
             }
 //        }
-        var hitPercent : Number = target.hit(int(dmg), true);
+        var hitPercent : Number = target.hero.hit(int(dmg), true);
 //        target.hit(spell.getDamage(), true);
 //        spell.useSpell(target);
         _manaList.useSpell(spell);
@@ -215,7 +215,7 @@ public class Player extends EventDispatcher
         if (this is LocalPlayer && hitPercent > 0)
         {
             // drop from monster
-            coreDispatch(DropList.GENERATE_DROP, hitPercent, target.hp);
+            coreDispatch(DropList.GENERATE_DROP, hitPercent, target.hero.hp);
         }
     }
 
