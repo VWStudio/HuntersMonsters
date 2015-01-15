@@ -173,12 +173,12 @@ public class Progress extends EventDispatcher {
 
         _data.data.version = version;
 
-//        trace("------save------");
+        trace("------save------");
         for (var key : String in $val)
         {
             _data.data[key] = JSON.stringify($val[key]);
-//            trace(key,"----------------------");
-//            trace(_data.data[key]);
+            trace(key,"----------------------");
+            trace(_data.data[key]);
         }
 
         _data.flush();
@@ -223,7 +223,7 @@ public class Progress extends EventDispatcher {
         obj.houses = [];
         obj.unlockedLocations = settings.unlockedLocations;
         obj.campPosition = null;
-//        obj.tamedMonsters = ["blue_bull", "meowut","pikachu","squirtle","charmander","slowpoke","bulbasaur","pidgey","ratata","zubat"];
+        obj.tamedMonsters = ["blue_bull", "meowut","pikachu","squirtle","charmander","slowpoke","bulbasaur","pidgey","ratata","zubat"];
 
         obj.areaStars = {};
         obj.sets = ["default"];

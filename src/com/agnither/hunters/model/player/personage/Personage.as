@@ -80,6 +80,8 @@ public class Personage extends EventDispatcher {
 
     public function hit(value: int, ignoreDefence: Boolean = false):Number {
 
+        trace("HIT", this.name, this.hp, value, ignoreDefence);
+
         if (hp<=0) return 0;
         if (!ignoreDefence) {
             value -= getDefence();

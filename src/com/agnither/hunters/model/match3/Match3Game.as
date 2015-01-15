@@ -38,6 +38,7 @@ public class Match3Game extends EventDispatcher
 
     private var _player : Player;
     public static const CONTINUE : String = "Match3Game.CONTINUE";
+
     public function get player() : Player
     {
         return _player;
@@ -181,9 +182,11 @@ public class Match3Game extends EventDispatcher
         if (_allowPlay)
         {
             _currentPlayer.startMove();
-            if(_currentPlayer.dealDmgOnMove > 0) {
+            if (_currentPlayer.dealDmgOnMove > 0)
+            {
                 var anEnemy : Player = (_currentPlayer == player) ? enemy : player;
                 anEnemy.hero.hit(_currentPlayer.dealDmgOnMove);
+                _currentPlayer.hero.heal(_currentPlayer.dealDmgOnMove);
             }
         }
     }
@@ -213,10 +216,19 @@ public class Match3Game extends EventDispatcher
                     aim = currentEnemy.hero;
                     dmg = currentEnemy.hero.maxHP * (match.amount * 2) / 100;
 
-                    if(currentPlayer.incDmgPercent > 0) {
+                    if (currentPlayer.incDmgPercent > 0)
+                    {
                         dmg = dmg + dmg * currentPlayer.incDmgPercent;
                     }
 
+                    if (currentEnemy.mirrorDamage)
+                    {
+                        if (currentEnemy.mirrorDamage.isLucky())
+                        {
+//                            trace("mirror skull", currentEnemy.mirrorDamage, dmg, currentEnemy.mirrorDamage.percent);
+                            currentPlayer.hero.hit(Math.round(dmg * currentEnemy.mirrorDamage.percent), true);
+                        }
+                    }
 
 //                    match.showDamage(dmg / match.amount);
                     match.showDamage(dmg);
@@ -229,7 +241,8 @@ public class Match3Game extends EventDispatcher
                 //{
                 //    attacker = currentPlayer.pet;
                 //} else
-                if (match.type == currentPlayer.damageType) {
+                if (match.type == currentPlayer.damageType)
+                {
                     attacker = currentPlayer.hero;
                 }
 
@@ -251,20 +264,25 @@ public class Match3Game extends EventDispatcher
             dmg = attacker.damage / 3;
 //            if (attacker == Model.instance.player.hero)
 //            {
-                dmg = dmg * (attacker.damageType == MagicTypeVO.WEAPON ? Model.instance.progress.getSkillMultiplier("2") : Model.instance.progress.getSkillMultiplier("3"));
+            dmg = dmg * (attacker.damageType == MagicTypeVO.WEAPON ? Model.instance.progress.getSkillMultiplier("2") : Model.instance.progress.getSkillMultiplier("3"));
 //            } else {
 
-            if(currentPlayer.incDmgPercent > 0) {
+            if (currentPlayer.incDmgPercent > 0)
+            {
                 dmg = dmg + dmg * currentPlayer.incDmgPercent;
             }
 
-                if(currentEnemy.mirrorDamage) {
-                    if(currentEnemy.mirrorDamage.isLucky()) {
-                        attacker.hit(match.amount * dmg * currentEnemy.mirrorDamage.percent, true);
-                    }
+            if (currentEnemy.mirrorDamage)
+            {
+                if (currentEnemy.mirrorDamage.isLucky())
+                {
+//                    trace("mirror attack", currentEnemy.mirrorDamage, match.amount * dmg, currentEnemy.mirrorDamage.percent);
+                    attacker.hit(match.amount * dmg * currentEnemy.mirrorDamage.percent, true);
                 }
+            }
 //            }
-            if(dmg > 0) {
+            if (dmg > 0)
+            {
                 match.showDamage(match.amount * dmg);
 //                match.showDamage(dmg);
                 hitPercent = aim.hit(match.amount * dmg);
@@ -273,7 +291,8 @@ public class Match3Game extends EventDispatcher
         }
 
 
-        if (currentPlayer is LocalPlayer && hitPercent > 0) {
+        if (currentPlayer is LocalPlayer && hitPercent > 0)
+        {
             // drop from monster
             coreDispatch(DropList.GENERATE_DROP, hitPercent, currentEnemy.hero.hp);
         }
@@ -283,7 +302,8 @@ public class Match3Game extends EventDispatcher
     private function handleMove(e : Event) : void
     {
 //        trace(_lastMatchAmount, currentPlayer.moveAgainOn5);
-        if(_lastMatchAmount >= 5 && currentPlayer.moveAgainOn5) {
+        if (_lastMatchAmount >= 5 && currentPlayer.moveAgainOn5)
+        {
 //            trace("MOVE AGAIN!!!");
             _lastMatchAmount = 0;
             nextMove(currentPlayer);

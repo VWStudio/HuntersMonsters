@@ -52,8 +52,10 @@ public class DropList extends EventDispatcher
         if(!currentMonster) return;
 
         var chance : Number = ($hitPercent * 200);
+//        trace(chance);
         if(Model.instance.player.doubleDrop) {
-            chance = chance * Model.instance.player.doubleDrop.getBaseValue()
+            chance += chance * Model.instance.player.doubleDrop.percent;
+//            trace("inc chance:", chance);
         }
 
         var isDropped : Boolean = chance > Math.random() * 100;

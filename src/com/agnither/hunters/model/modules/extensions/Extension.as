@@ -111,8 +111,11 @@ public class Extension
     }
 
     public function setArguments($args : Array) : void {
-        _initialArgs = $args.slice();
-        _extArguments = $args;
+//        trace(this, "SET ARGUMENTS", $args);
+        _initialArgs = $args.concat([]);
+//        trace(this, "initial", _initialArgs);
+        _extArguments = $args.concat([]);
+//        trace(this, "extArgs", _extArguments);
         fill();
     }
 

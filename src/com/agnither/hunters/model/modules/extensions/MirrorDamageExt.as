@@ -25,6 +25,7 @@ public class MirrorDamageExt extends Extension
 
     override protected function fill() : void
     {
+//        trace("fill-----",_extArguments);
         _chance = _extArguments[0];
         _percent = _extArguments[1];
     }
@@ -35,13 +36,14 @@ public class MirrorDamageExt extends Extension
 //        var obj : Object = {};
 //        obj[TYPE] = [_chance, _percent];
 //        return obj;
-        return _percent;
+        return [_chance, _percent];
     }
 
     public function isLucky() : Boolean
     {
         var roll : Number = Math.random() * 100;
-        return _chance > roll;
+//        trace("IS MIRROR", roll, "==",_chance);
+        return _chance >= roll;
     }
 
     public function get percent() : Number

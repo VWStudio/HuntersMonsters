@@ -37,10 +37,9 @@ public class DoubleDropExt extends Extension
         return _chance;
     }
 
-    public function isLucky() : Boolean
+    public function get percent() : Number
     {
-        var roll : Number = Math.random() * 100;
-        return _chance > roll;
+        return _chance / 100;
     }
 
     override public function getBaseValue() : Number

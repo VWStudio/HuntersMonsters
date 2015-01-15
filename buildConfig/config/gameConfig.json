@@ -366,7 +366,7 @@
       "damagetype": "fire",
       "magic": 3,
       "items": 12,
-      "extension": "move_again:[]",
+      "extension": "double_drop: 20",
       "speed": 100,
       "stars": "5,10,20",
       "difficultyfactor": 5,
