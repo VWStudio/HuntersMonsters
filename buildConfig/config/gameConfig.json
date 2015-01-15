@@ -324,7 +324,7 @@
       "damage": 5,
       "damagetype": "weapon",
       "magic": 7,
-      "extension": "mana_add:[\"nature\",1]",
+      "extension": "increase_hp:[50]",
       "speed": 100,
       "stars": "5,10,20",
       "difficultyfactor": 1,
@@ -345,7 +345,7 @@
       "damagetype": "water",
       "magic": 3,
       "items": 13,
-      "extension": "mana_add:[\"water\",1]",
+      "extension": "mirror_damage:[100,50]",
       "speed": 100,
       "stars": "5,10,20",
       "difficultyfactor": 2,
@@ -366,7 +366,7 @@
       "damagetype": "fire",
       "magic": 3,
       "items": 12,
-      "extension": "mana_add:[\"fire\",1]",
+      "extension": "move_again:[]",
       "speed": 100,
       "stars": "5,10,20",
       "difficultyfactor": 5,
@@ -387,7 +387,7 @@
       "damagetype": "weapon",
       "magic": 3,
       "items": "15,14",
-      "extension": "mana_add:[\"nature\",1]",
+      "extension": "increase_dmg:[50]",
       "speed": 100,
       "stars": "5,10,20",
       "difficultyfactor": 7,
@@ -408,7 +408,7 @@
       "damagetype": "nature",
       "magic": 3,
       "items": "12,13",
-      "extension": "double_drop:15",
+      "extension": "double_drop: 20",
       "speed": 100,
       "stars": "5,10,20",
       "difficultyfactor": 8,
@@ -775,10 +775,10 @@
       "picture": "card_w1",
       "droppicture": "drop_sword",
       "ext": "damage:[\"weapon\",1,9]",
+      "pricecrystal": 5,
       "setname": "default",
       "dropparam": "1,9",
-      "localekey": "card_wp1",
-      "pricecrystal": 5
+      "localekey": "card_wp1"
     },
     {
       "id": 1,
@@ -1027,8 +1027,9 @@
       "slot": 8,
       "picture": "card_am1",
       "droppicture": "drop_ring",
-      "ext": "mana_add:[\"nature\",5]",
-      "setname": "house03",
+      "ext": "mana_add:[\"fire\",1]",
+      "pricecrystal": 5,
+      "setname": "default",
       "dropparam": "5,10",
       "localekey": "card_am1"
     },
@@ -1357,7 +1358,7 @@
     {
       "id": 8,
       "name": "ring",
-      "max": 0
+      "max": 2
     },
     {
       "id": 9,
@@ -1860,7 +1861,7 @@
     },
     {
       "id": "card_am1",
-      "russian": "Кольцо"
+      "russian": "Огненный Блеск"
     },
     {
       "id": "card_s1_1",
@@ -1996,7 +1997,7 @@
     },
     {
       "id": "card_am1.d",
-      "russian": " "
+      "russian": "Каждый ход приносит 1 магию огня."
     },
     {
       "id": "card_s1_1.d",

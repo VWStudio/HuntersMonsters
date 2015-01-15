@@ -92,9 +92,7 @@ public class Player extends EventDispatcher
     public function init(data : Object) : void
     {
         _hero.init(data);
-        if(incHpPercent > 0) {
-            _hero.maxHP = _hero.hp = _hero.maxHP + _hero.maxHP * incHpPercent;
-        }
+
         resetMana();
     }
 
@@ -148,6 +146,9 @@ public class Player extends EventDispatcher
         _inventory.parse(items);
         _inventory.setInventoryItems(inventory);
         updateGlobalExtensions();
+        if(incHpPercent > 0) {
+            _hero.maxHP = _hero.hp = _hero.maxHP + _hero.maxHP * incHpPercent;
+        }
     }
 
     public function initPets(pets : Object) : void

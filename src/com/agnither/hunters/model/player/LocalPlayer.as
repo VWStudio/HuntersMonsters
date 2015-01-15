@@ -139,6 +139,10 @@ public class LocalPlayer extends Player {
 //    }
 
     public function resetToBattle() : void {
+        hero.maxHP = Model.instance.progress.hp;
+        if(incHpPercent > 0) {
+            _hero.maxHP = _hero.hp = _hero.maxHP + _hero.maxHP * incHpPercent;
+        }
         hero.healMax();
         pet.unsummon();
         _ressurrectedPet = false;

@@ -70,7 +70,7 @@ public class Match3Game extends EventDispatcher
     private var _stage : Stage;
     private var _allowPlay : Boolean = true;
     private var _totalMoves : int = 0;
-    private var _lastMatch : Match;
+    private var _lastMatchAmount : int;
 
     public function get dropList() : DropList
     {
@@ -194,7 +194,10 @@ public class Match3Game extends EventDispatcher
 
         var match : Match = e.data as Match;
 
-        _lastMatch = match;
+//        trace("--", match.type, match.amount, _lastMatchAmount);
+
+        _lastMatchAmount = Math.max(_lastMatchAmount, match.amount);
+
 
         var dmg : Number = 0;
         var hitPercent : Number = 0;
@@ -279,11 +282,15 @@ public class Match3Game extends EventDispatcher
 
     private function handleMove(e : Event) : void
     {
-        if(_lastMatch.amount == 5 && currentPlayer.moveAgainOn5) {
+//        trace(_lastMatchAmount, currentPlayer.moveAgainOn5);
+        if(_lastMatchAmount >= 5 && currentPlayer.moveAgainOn5) {
+//            trace("MOVE AGAIN!!!");
+            _lastMatchAmount = 0;
             nextMove(currentPlayer);
             return;
         }
 
+        _lastMatchAmount = 0;
         nextMove(currentEnemy);
     }
 

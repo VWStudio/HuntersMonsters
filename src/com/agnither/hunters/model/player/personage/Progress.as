@@ -223,13 +223,16 @@ public class Progress extends EventDispatcher {
         obj.houses = [];
         obj.unlockedLocations = settings.unlockedLocations;
         obj.campPosition = null;
-        //obj.tamedMonsters = ["blue_bull"];
+//        obj.tamedMonsters = ["blue_bull", "meowut","pikachu","squirtle","charmander","slowpoke","bulbasaur","pidgey","ratata","zubat"];
+
         obj.areaStars = {};
         obj.sets = ["default"];
 
 
         saveObject.items = {};
         saveObject.inventory = [];
+
+//        saveObject.tamedMonsters
 
         var playerItems : Vector.<PlayerItemVO> = PlayerItemVO.LIST;
         var i : int = 0;
@@ -251,16 +254,24 @@ public class Progress extends EventDispatcher {
             }
         }
 
-        trace(JSON.stringify(saveObject.items));
-        trace(JSON.stringify(saveObject.inventory));
+//        trace(JSON.stringify(saveObject.items));
+//        trace(JSON.stringify(saveObject.inventory));
 
         saveObject.pets = {};
 
         var playerPets : Vector.<PlayerPetVO> = PlayerPetVO.LIST;
+//        var pp : PlayerPetVO = PlayerPetVO.fill(new PlayerPetVO(), {
+//            id:"blue_bull",
+//            level:1,
+//            extension:[{increase_hp:[50]}]
+//        });
+//        playerPets.push(pp);
+
         for (i = 0; i < playerPets.length; i++)
         {
             var playerPet : PlayerPetVO = playerPets[i];
             var monster : Object = Util.toObj(Model.instance.monsters.getMonster(playerPet.id, playerPet.level, playerPet));
+            trace("---", JSON.stringify(monster));
             var petID : String = Util.uniq(monster.name);
             saveObject.pets[petID] = monster;
         }

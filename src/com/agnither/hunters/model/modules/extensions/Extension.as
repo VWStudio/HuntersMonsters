@@ -44,8 +44,42 @@ public class Extension
             case PetExt.TYPE:
                 return new PetExt($args);
                 break;
+            case IncHpExt.TYPE:
+                return new IncHpExt($args);
+                break;
+
+            case IncDmgExt.TYPE:
+                return new IncDmgExt($args);
+                break;
+
+            case DmgEnemyOnTurnExt.TYPE:
+                return new DmgEnemyOnTurnExt($args);
+                break;
+
+            case MoveAgainExt.TYPE:
+                return new MoveAgainExt($args);
+                break;
         }
         return new Extension($args);
+
+
+
+        /*
+         if(extType == IncHpExt.TYPE) {
+         incHpPercent = (item.getExtension(extType) as IncHpExt).percent;
+         }
+         if(extType == IncDmgExt.TYPE) {
+         incDmgPercent = (item.getExtension(extType) as IncDmgExt).percent;
+         }
+         if(extType == DmgEnemyOnTurnExt.TYPE) {
+         dealDmgOnMove = (item.getExtension(extType) as DmgEnemyOnTurnExt).amount;
+         }
+         if(extType == MoveAgainExt.TYPE) {
+
+         moveAgainOn5 = true;
+         }
+         */
+
     }
 
     public function getRandomExtValue($min : Number, $max : Number, $factor : Number = 0.5):Number {
