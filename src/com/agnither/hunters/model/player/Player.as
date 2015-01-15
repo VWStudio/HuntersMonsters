@@ -37,7 +37,7 @@ public class Player extends EventDispatcher
     public var doubleDrop : DoubleDropExt;
     public var mirrorDamage : MirrorDamageExt;
     public var manaAdd : ManaAddExt;
-    public var spellsDefence : Array = [];
+//    public var spellsDefence : Array = [];
     public var incHpPercent : Number = 0;
     public var incDmgPercent : Number = 0;
 
@@ -69,6 +69,7 @@ public class Player extends EventDispatcher
     private var _isCurrent : Boolean = false;
     public var dealDmgOnMove : Number;
     public var moveAgainOn5 : Boolean = false;
+    public var spellDefencePercent : Number = 0;
 
 
     public function get manaList() : ManaList
@@ -187,16 +188,20 @@ public class Player extends EventDispatcher
         }
 //        else
 //        {
-            if (target.spellsDefence.length > 0)
+//            if (target.spellsDefence.length > 0)
+            if (target.spellDefencePercent > 0)
             {
-                for (var i : int = 0; i < target.spellsDefence.length; i++)
-                {
-                    var sd : SpellDefenceExt = target.spellsDefence[i] as SpellDefenceExt;
-                    if (sd && sd.getType() == spell.type)
-                    {
-                        dmg -= dmg * sd.getPercent();
-                    }
-                }
+
+                dmg -= dmg * target.spellDefencePercent;
+
+//                for (var i : int = 0; i < target.spellsDefence.length; i++)
+//                {
+//                    var sd : SpellDefenceExt = target.spellsDefence[i] as SpellDefenceExt;
+//                    if (sd && sd.getType() == spell.type)
+//                    {
+//                        dmg -= dmg * sd.getPercent();
+//                    }
+//                }
             }
 //        }
         var hitPercent : Number = target.hero.hit(int(dmg), true);
@@ -229,7 +234,8 @@ public class Player extends EventDispatcher
         incDmgPercent = 0;
         dealDmgOnMove = 0;
         moveAgainOn5 = false;
-        spellsDefence = [];
+//        spellsDefence = [];
+        spellDefencePercent = 0;
 //        Model.instance.resurrectPet = null;
 
         for (var i : int = 0; i < _inventory.inventoryItems.length; i++)
@@ -258,7 +264,9 @@ public class Player extends EventDispatcher
                     }
                     if (extType == SpellDefenceExt.TYPE)
                     {
-                        spellsDefence.push(item.getExtension(extType));
+                        spellDefencePercent = (item.getExtension(extType) as SpellDefenceExt).getPercent();
+//                        spellsDefence.push(item.getExtension(extType));
+//                        spellsDefence.push(item.getExtension(extType));
                     }
                     if (extType == ResurrectPetExt.TYPE)
                     {

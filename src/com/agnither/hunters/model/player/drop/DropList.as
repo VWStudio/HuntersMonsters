@@ -37,7 +37,7 @@ public class DropList extends EventDispatcher
 
     public function DropList()
     {
-        _list = new Vector.<DropSlot>(6);
+        _list = new Vector.<DropSlot>(12);
         for (var i : int = 0; i < 6; i++)
         {
             _list[i] = new DropSlot();
@@ -51,6 +51,7 @@ public class DropList extends EventDispatcher
         var currentMonster : MonsterVO = Model.instance.enemy.hero.monster;
         if(!currentMonster) return;
 
+
         var chance : Number = ($hitPercent * 200);
 //        trace(chance);
         if(Model.instance.player.doubleDrop) {
@@ -62,6 +63,12 @@ public class DropList extends EventDispatcher
         if(!hp && $hitPercent)
         {
             isDropped = true;
+        }
+        else
+        {
+            if(_list.length == 11) {
+                return;
+            }
         }
        //isDropped = true;
         if(!isDropped) return;
@@ -140,7 +147,10 @@ public class DropList extends EventDispatcher
                 content = findItem(items, Math.round(itemParam), -1);
             }
         }
-        if(content) addContent(content);
+        if(content)
+        {
+            addContent(content);
+        }
     }
 
     private function findItem($items : Array, itemParam : Number, changeValue : Number) : Item

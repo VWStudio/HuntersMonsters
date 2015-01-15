@@ -116,7 +116,7 @@ public class Match3Game extends EventDispatcher
         }
     }
 
-    public function init(player : Player, enemy : Player, dropSet : int) : void
+    public function init($player : Player, $enemy : Player, dropSet : int) : void
     {
         AIPlayer.game = this;
         _allowPlay = true;
@@ -133,10 +133,10 @@ public class Match3Game extends EventDispatcher
         }
 
 
-        _player = player;
+        _player = $player;
         _player.hero.addEventListener(Personage.DEAD, handlePlayerDead);
 
-        _enemy = enemy;
+        _enemy = $enemy;
         _enemy.hero.addEventListener(Personage.DEAD, handleEnemyDead);
 
         _field.initChips(_player.hero.magic.name, _enemy.hero.magic.name);
@@ -166,13 +166,13 @@ public class Match3Game extends EventDispatcher
 
     }
 
-    public function nextMove(player : Player) : void
+    public function nextMove($player : Player) : void
     {
         if (_currentPlayer)
         {
             _currentPlayer.isCurrent = false;
         }
-        _currentPlayer = player;
+        _currentPlayer = $player;
         _currentPlayer.isCurrent = true;
 
         if (_currentPlayer is LocalPlayer)
@@ -182,9 +182,10 @@ public class Match3Game extends EventDispatcher
         if (_allowPlay)
         {
             _currentPlayer.startMove();
+            trace("_currentPlayer.dealDmgOnMove", _currentPlayer.dealDmgOnMove);
             if (_currentPlayer.dealDmgOnMove > 0)
             {
-                var anEnemy : Player = (_currentPlayer == player) ? enemy : player;
+                var anEnemy : Player = (_currentPlayer is LocalPlayer) ? enemy : _player;
                 anEnemy.hero.hit(_currentPlayer.dealDmgOnMove);
                 _currentPlayer.hero.heal(_currentPlayer.dealDmgOnMove);
             }
