@@ -150,7 +150,7 @@ public class Inventory extends EventDispatcher
                 }
                 else
                 {
-                    itemVO = Model.instance.items.getItemVO(itemData.id);
+                    itemVO = Model.instance.items.getItemVO(itemData.name);
                 }
                 if (itemData.ext)
                 {
@@ -224,12 +224,12 @@ public class Inventory extends EventDispatcher
         return arr;
     }
 
-    public function getSpell($id : Number) : Item
+    public function getSpell($id : String) : Item
     {
         return _spells["spell" + $id];
     }
 
-    public function isHaveSpell($id : Number) : Boolean
+    public function isHaveSpell($id : String) : Boolean
     {
 
         return _spells["spell" + $id] != null;

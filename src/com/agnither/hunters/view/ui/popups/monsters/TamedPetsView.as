@@ -70,7 +70,7 @@ public class TamedPetsView extends AbstractView
 //            else
             if (touch.phase == TouchPhase.HOVER)
             {
-                coreDispatch(ItemView.HOVER, item, item.item);
+                coreDispatch(ItemView.HOVER, item, item.item.item);
             }
         }
         else

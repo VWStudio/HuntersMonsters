@@ -49,7 +49,7 @@ public class AIPlayer extends Player
         var inventory : Array = [];
         for (var i : int = 0; i < monster.items.length; i++)
         {
-            var id : int = monster.items[i];
+            var id : String = monster.items[i];
             items[id] = Model.instance.items.getItemVO(id);
             inventory.push(id);
         }
@@ -57,10 +57,12 @@ public class AIPlayer extends Player
         var petItem : ItemVO = ItemVO.createPetItemVO(monster, true, true);
 //        petItem.id = 24;
 //        petItem.slot = 1;
-        items[petItem.id] = petItem;
+        items[petItem.name] = petItem;
+//        items[petItem.id] = petItem;
 
 
-        inventory.unshift(petItem.id.toString());
+        inventory.unshift(petItem.name.toString());
+//        inventory.unshift(petItem.id.toString());
         initInventory(items, inventory);
     }
 

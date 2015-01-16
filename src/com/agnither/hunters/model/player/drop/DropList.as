@@ -211,11 +211,11 @@ public class DropList extends EventDispatcher
         _dropSet = dropSet;
     }
 
-    public function drop() : Item
-    {
+//    public function drop() : Item
+//    {
 
-        var isOnlyGold : Boolean = _itemsAmount < _list.length - 1;
-        var content : Item = Model.instance.items.createDropItem(isOnlyGold ? _dropSet : 2);
+//        var isOnlyGold : Boolean = _itemsAmount < _list.length - 1;
+//        var content : Item = Model.instance.items.createDropItem(isOnlyGold ? _dropSet : 2);
 
 
 //        var drop : DropVO =  ? DropVO.getRandomDrop(_dropSet) : DropVO.getRandomDrop(2); // set 2 is only createGoldItemVO
@@ -232,9 +232,9 @@ public class DropList extends EventDispatcher
 ////                content = new GoldDrop(GoldDropVO.DICT[drop.item_id].random);
 //                break;
 //        }
-        addContent(content);
-        return content;
-    }
+//        addContent(content);
+//        return content;
+//    }
 
     private function addContent(content : Item) : void
     {

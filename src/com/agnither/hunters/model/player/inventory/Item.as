@@ -95,9 +95,10 @@ public class Item extends EventDispatcher
         }
     }
 
-    public function get id() : int
+    public function get id() : String
+//    public function get id() : int
     {
-        return _item.id;
+        return _item.name;
     }
 
     public function get name() : String

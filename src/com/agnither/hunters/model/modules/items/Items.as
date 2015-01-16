@@ -27,10 +27,11 @@ public class Items
 //    }
     public function getRandomThing() : ItemVO
     {
-        return getItemVO(ItemVO.THINGS[int(ItemVO.THINGS.length * Math.random())].id);
+//        return getItemVO(ItemVO.THINGS[int(ItemVO.THINGS.length * Math.random())].id);
+        return getItemVO(ItemVO.THINGS[int(ItemVO.THINGS.length * Math.random())].name);
     }
 
-    public function getItemVO($id : int, $fillObj : Object = null) : ItemVO
+    public function getItemVO($id : String, $fillObj : Object = null) : ItemVO
     {
 
         var item : ItemVO = ItemVO.DICT[$id];
@@ -45,24 +46,26 @@ public class Items
         return item.clone();
     }
 
-    public function createDropItem($dropSetID : int) : Item
-    {
-
-        var item : Item;
-        var drop : DropVO = DropVO.getRandomDrop($dropSetID); // set 2 is only createGoldItemVO
-        if (drop.item_id && ItemVO.DICT[drop.item_id])
-        {
-            var itemVO : ItemVO = getItemVO(drop.item_id);
-            item = Item.create(itemVO);
-            item.uniqueId = Util.uniq(item.name);
-        }
-        else
-        {
-            item = Item.create(ItemVO.createGoldItemVO);
-            item.amount = drop.randomAmount;
-        }
-        return item;
-    }
+//    public function createDropItem($dropSetID : int) : Item
+//    {
+//
+//
+//
+//        var item : Item;
+//        var drop : DropVO = DropVO.getRandomDrop($dropSetID); // set 2 is only createGoldItemVO
+//        if (drop.item_id && ItemVO.DICT[drop.item_id])
+//        {
+//            var itemVO : ItemVO = getItemVO(drop.item_id);
+//            item = Item.create(itemVO);
+//            item.uniqueId = Util.uniq(item.name);
+//        }
+//        else
+//        {
+//            item = Item.create(ItemVO.createGoldItemVO);
+//            item.amount = drop.randomAmount;
+//        }
+//        return item;
+//    }
 
     private function getRandomSet() : String
     {

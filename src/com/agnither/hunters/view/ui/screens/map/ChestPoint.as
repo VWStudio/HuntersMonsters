@@ -102,7 +102,17 @@ public class ChestPoint extends AbstractView
         for (var j : int = 0; j < 3; j++)
         {
 //            var drop : DropVO = DropVO.getRandomDrop(MonsterAreaVO.DICT[monster.id].chestdropset);
-            var item : Item = Model.instance.items.createDropItem(_territory.area.chestdropset);
+            /**
+             * TODO if we need chests, we should replace drops to item creation
+             */
+
+
+            var item : Item;
+//            var item : Item = Model.instance.items.createDropItem(_territory.area.chestdropset);
+            if(!item)
+            {
+                continue;
+            }
             if (item.isGold())
             {
                 if (goldDrop)

@@ -1,32 +1,23 @@
 /**
  * Created by agnither on 25.08.14.
  */
-package com.agnither.hunters.view.ui.popups.monsters {
-import com.agnither.hunters.App;
-import com.agnither.hunters.data.outer.TrapVO;
+package com.agnither.hunters.view.ui.popups.monsters
+{
 import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.modules.locale.Locale;
 import com.agnither.hunters.model.modules.monsters.MonsterAreaVO;
 import com.agnither.hunters.model.modules.monsters.MonsterVO;
-import com.agnither.hunters.model.player.Player;
-import com.agnither.hunters.model.player.inventory.PetsInventory;
-import com.agnither.hunters.view.ui.UI;
-import com.agnither.hunters.view.ui.common.TabView;
-import com.agnither.hunters.view.ui.popups.monsters.CatchedPetsView___not_used;
-import com.agnither.hunters.view.ui.popups.traps.TrapItem;
 import com.agnither.ui.ButtonContainer;
 import com.agnither.ui.Popup;
-import com.agnither.utils.CommonRefs;
-import com.cemaprjl.core.coreDispatch;
 import com.cemaprjl.core.coreExecute;
 import com.cemaprjl.viewmanage.ShowPopupCmd;
 
-import starling.display.Button;
 import starling.display.Sprite;
 import starling.events.Event;
 import starling.text.TextField;
 
-public class TameMonsterPopup extends Popup {
+public class TameMonsterPopup extends Popup
+{
 
     public static const NAME : String = "com.agnither.hunters.view.ui.popups.monsters.TameMonsterPopup";
     private var _title : TextField;
@@ -38,10 +29,12 @@ public class TameMonsterPopup extends Popup {
     private var _monster : MonsterVO;
     private var _isEnough : Boolean = false;
 
-    public function TameMonsterPopup() {
+    public function TameMonsterPopup()
+    {
     }
 
-    override protected function initialize():void {
+    override protected function initialize() : void
+    {
         createFromConfig(_refs.guiConfig.tame_monster);
 
         _title = _links.titlle_tf;
@@ -63,14 +56,15 @@ public class TameMonsterPopup extends Popup {
     }
 
 
-    override protected function handleClose(e : Event) : void {
+    override protected function handleClose(e : Event) : void
+    {
         super.handleClose(e);
 
         coreExecute(ShowPopupCmd, SelectMonsterPopup.NAME);
     }
 
-    private function onTame(event : Event) : void {
-
+    private function onTame(event : Event) : void
+    {
 
 
         for (var i : int = 0; i < _container.numChildren; i++)
@@ -89,7 +83,8 @@ public class TameMonsterPopup extends Popup {
     }
 
 
-    override public function update() : void {
+    override public function update() : void
+    {
 
         _monsterID = data.toString();
         _title.text = "Приручить монстра:  " + Locale.getString(_monsterID);
@@ -109,7 +104,7 @@ public class TameMonsterPopup extends Popup {
             priceItem.y = i * 60;
             _isEnough = _isEnough && priceItem.isEnough;
         }
-        _container.x = (-_container.width/2) + (width/2) + 30;
+        _container.x = (-_container.width / 2) + (width / 2) + 30;
 
         _tame.visible = _isEnough;
 
@@ -119,16 +114,7 @@ public class TameMonsterPopup extends Popup {
 //        _monsters.showType(PetsInventory.TAMED);
 
 
-
-
-
-
-
-
-
-
     }
-
 
 
 }

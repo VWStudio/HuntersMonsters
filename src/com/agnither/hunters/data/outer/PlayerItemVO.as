@@ -49,7 +49,7 @@ public class PlayerItemVO {
         return object;
     }
 
-    public var id: int;
+    public var id: String;
     public var ext : Object;
     public var wield : Boolean = false;
 

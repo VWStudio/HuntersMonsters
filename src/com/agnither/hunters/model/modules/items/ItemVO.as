@@ -32,7 +32,7 @@ public class ItemVO
     public static const TYPE_TAMED_PET : String = "tamed_pet";
 
 
-    public var id : int;
+//    public var id : int;
     public var name : String;
     public var picture : String;
     public var droppicture : String;
@@ -49,7 +49,7 @@ public class ItemVO
     public static function createPetItemVO($monster : MonsterVO, $isTamed : Boolean = false, isEnemy:Boolean = false) : ItemVO {
 
         var obj : Object = {};
-        obj.id = $isTamed ? 24 : 23;
+//        obj.id = $isTamed ? 24 : 23;
         obj.name = $monster.id;
         obj.picture = $monster.itemimage;
         obj.price = 0;
@@ -116,7 +116,8 @@ public class ItemVO
 
             var object : ItemVO = fill(new ItemVO(), source);
             LIST.push(object);
-            DICT[object.id] = object;
+//            DICT[object.id] = object;
+            DICT[object.name] = object;
 
 
 

@@ -1,24 +1,19 @@
 /**
  * Created by agnither on 12.08.14.
  */
-package com.agnither.hunters.view.ui.screens.hud {
-import com.agnither.hunters.App;
+package com.agnither.hunters.view.ui.screens.hud
+{
 import com.agnither.hunters.data.outer.LeagueVO;
 import com.agnither.hunters.data.outer.LevelVO;
 import com.agnither.hunters.model.Model;
-import com.agnither.hunters.model.player.LocalPlayer;
 import com.agnither.hunters.model.player.personage.Progress;
 import com.agnither.hunters.view.ui.popups.inventory.InventoryPopup;
-import com.agnither.hunters.view.ui.popups.monsters.SelectMonsterPopup;
-import com.agnither.hunters.view.ui.popups.monsters.CatchedPetsView___not_used;
 import com.agnither.hunters.view.ui.popups.skills.SkillsPopup;
 import com.agnither.hunters.view.ui.screens.camp.CampScreen;
 import com.agnither.hunters.view.ui.screens.map.MapScreen;
 import com.agnither.ui.ButtonContainer;
-import com.agnither.ui.ButtonContainer;
 import com.agnither.ui.Screen;
 import com.cemaprjl.core.coreAddListener;
-import com.cemaprjl.core.coreDispatch;
 import com.cemaprjl.core.coreExecute;
 import com.cemaprjl.viewmanage.ShowPopupCmd;
 import com.cemaprjl.viewmanage.ShowScreenCmd;
@@ -28,12 +23,11 @@ import flash.net.URLRequest;
 import flash.net.navigateToURL;
 
 import starling.display.Image;
-
 import starling.events.Event;
-
 import starling.text.TextField;
 
-public class HudScreen extends Screen {
+public class HudScreen extends Screen
+{
 
     public static const NAME : String = "HudScreen";
     public static const UPDATE : String = "HudScreen.UPDATE";
@@ -55,10 +49,12 @@ public class HudScreen extends Screen {
     private var _expProgress : Image;
     private var _playerCrystalls : TextField;
 
-    public function HudScreen() {
+    public function HudScreen()
+    {
     }
 
-    override protected function initialize() : void {
+    override protected function initialize() : void
+    {
 
 
         createFromConfig(_refs.guiConfig.hud);
@@ -116,8 +112,10 @@ public class HudScreen extends Screen {
         coreExecute(ShowPopupCmd, SkillsPopup.NAME);
     }
 
-    private function onMode(event : Event) : void {
-        switch (Model.instance.state) {
+    private function onMode(event : Event) : void
+    {
+        switch (Model.instance.state)
+        {
             case MapScreen.NAME :
                 coreExecute(ShowScreenCmd, CampScreen.NAME);
                 break;
@@ -137,22 +135,24 @@ public class HudScreen extends Screen {
 //        coreDispatch(MapScreen.STOP_TRAP);
 //    }
 
-    private function onInventory(event : Event) : void {
+    private function onInventory(event : Event) : void
+    {
         coreExecute(ShowPopupCmd, InventoryPopup.NAME);
     }
 
 
-    override public function update() : void {
-        var progress :  Progress = Model.instance.progress;
+    override public function update() : void
+    {
+        var progress : Progress = Model.instance.progress;
         _playerLevel.text = progress.level.toString() + " ур";
 
 
-        var exp:Number = progress.fullExp;
-        var expNext:Number = LevelVO.DICT[String(1)].exp;
+        var exp : Number = progress.fullExp;
+        var expNext : Number = LevelVO.DICT[String(1)].exp;
         if (progress.level > 1)
         {
-            exp = progress.fullExp - LevelVO.DICT[String(progress.level-1)].exp;
-            expNext = LevelVO.DICT[progress.level.toString()].exp - LevelVO.DICT[String(progress.level-1)].exp;
+            exp = progress.fullExp - LevelVO.DICT[String(progress.level - 1)].exp;
+            expNext = LevelVO.DICT[progress.level.toString()].exp - LevelVO.DICT[String(progress.level - 1)].exp;
         }
 
         //progress.fullExp.toString() + "/" +LevelVO.DICT[progress.level.toString()].exp;
@@ -168,13 +168,16 @@ public class HudScreen extends Screen {
 
         var lvvo : LevelVO = LevelVO.DICT[progress.level.toString()];
 
-        if(progress.fullExp < lvvo.exp) {
+        if (progress.fullExp < lvvo.exp)
+        {
             //_playerExp.text = progress.fullExp.toString() + "/" +LevelVO.DICT[progress.level.toString()].exp;
             //_expProgress.scaleX = progress.fullExp / LevelVO.DICT[progress.level.toString()].exp;
 
             _playerExp.text = exp + "/" + expNext;
             _expProgress.scaleX = exp / expNext;
-        } else {
+        }
+        else
+        {
             progress.addExp(0);
             progress.saveProgress();
             update();
@@ -185,14 +188,18 @@ public class HudScreen extends Screen {
 
      */
 
-    private function onReset(event : Event = null) : void {
+    private function onReset(event : Event = null) : void
+    {
 
         Model.instance.progress.reset();
 
-        var url:String;
-        if(Model.instance.flashvars && Model.instance.flashvars["api_id"] != null) {
-            url = "app"+Model.instance.flashvars["api_id"];
-        } else {
+        var url : String;
+        if (Model.instance.flashvars && Model.instance.flashvars["api_id"] != null)
+        {
+            url = "app" + Model.instance.flashvars["api_id"];
+        }
+        else
+        {
             url = ExternalInterface.call("window.location.href.toString");
         }
 

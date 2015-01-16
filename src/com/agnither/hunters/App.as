@@ -1,26 +1,19 @@
 /**
  * Created by agnither on 06.08.14.
  */
-package com.agnither.hunters {
+package com.agnither.hunters
+{
 import com.agnither.hunters.data.Config;
 import com.agnither.hunters.model.Model;
-import com.agnither.hunters.model.match3.Match3Game;
 import com.agnither.hunters.model.modules.monsters.MonsterAreaVO;
 import com.agnither.hunters.model.modules.monsters.MonsterVO;
-import com.agnither.hunters.model.player.AIPlayer;
-import com.agnither.hunters.model.player.LocalPlayer;
-import com.agnither.hunters.model.player.Player;
-import com.agnither.hunters.model.player.inventory.Pet;
 import com.agnither.hunters.utils.DeviceResInfo;
 import com.agnither.hunters.view.ui.UI;
-import com.agnither.hunters.view.ui.popups.monsters.CatchedPetsView___not_used;
-import com.agnither.hunters.view.ui.screens.battle.BattleScreen;
 import com.agnither.hunters.view.ui.screens.hud.HudScreen;
 import com.agnither.hunters.view.ui.screens.map.ChestPoint;
 import com.agnither.hunters.view.ui.screens.map.MapScreen;
 import com.agnither.ui.Popup;
 import com.agnither.utils.CommonRefs;
-import com.agnither.utils.ResourcesManager;
 import com.agnither.utils.ResourcesManager;
 import com.cemaprjl.core.coreAddListener;
 import com.cemaprjl.core.coreDispatch;
@@ -33,8 +26,8 @@ import starling.display.Sprite;
 import starling.events.Event;
 import starling.textures.Texture;
 
-public class App extends Sprite {
-
+public class App extends Sprite
+{
 
 
     private var _info : DeviceResInfo;
@@ -44,13 +37,13 @@ public class App extends Sprite {
     private var _ui : UI;
 
 
-
     public var chestStep : int = -1;
     public var steps : Vector.<MonsterVO>;
     public var chest : ChestPoint;
 
     private static var _instance : App;
-    public static function get instance() : App {
+    public static function get instance() : App
+    {
         if (!_instance)
         {
             _instance = new App();
@@ -66,12 +59,14 @@ public class App extends Sprite {
     private var _tick : Ticker;
     private var _timeleft : Number = -1;
 
-    public function App() {
+    public function App()
+    {
         addEventListener(Event.ADDED_TO_STAGE, start);
         _instance = this;
     }
 
-    public function start(e : Event = null) : void {
+    public function start(e : Event = null) : void
+    {
 
         removeEventListener(Event.ADDED_TO_STAGE, start);
 
@@ -92,37 +87,41 @@ public class App extends Sprite {
     }
 
 
-
-    private function handleComplete() : void {
+    private function handleComplete() : void
+    {
         coreRemoveListener(ResourcesManager.ON_COMPLETE_LOAD, handleComplete);
 
 //        if(!ResourcesManager.isLocal) {
 //            handleInit();
 //        } else {
 //            coreAddListener(ResourcesManager.ON_COMPLETE_INIT, handleInit);
-            initLocale();
-            Config.parse(_resources.main);
-            handleInit();
+        initLocale();
+        Config.parse(_resources.main);
+        handleInit();
 //        }
     }
 
-    private function initLocale() : void {
+    private function initLocale() : void
+    {
 //        LocalizationManager.init("ru");
 //        LocalizationManager.parse(_resources.main.getObject("locale"));
     }
 
-    private function handleLoadAnimation() : void {
+    private function handleLoadAnimation() : void
+    {
 //        _resources.onComplete.addOnce(handleLoadGUI);
         // XXX commented, not in use
 //        _resources.onComplete.addOnce(handleInit);
     }
 
-    private function handleLoadGUI() : void {
+    private function handleLoadGUI() : void
+    {
         // XXX commented, not in use
 //        _resources.onComplete.addOnce(handleInit);
     }
 
-    private function handleInit() : void {
+    private function handleInit() : void
+    {
 
         _refs = new CommonRefs(_resources);
         var tex : Texture = _refs.gui.getTexture("camp");
@@ -143,7 +142,8 @@ public class App extends Sprite {
         coreExecute(ShowScreenCmd, MapScreen.NAME);
     }
 
-    private function eventGeneration($delta : Number) : void {
+    private function eventGeneration($delta : Number) : void
+    {
 
         if (_timeleft <= 0)
         {
@@ -156,34 +156,41 @@ public class App extends Sprite {
         }
     }
 
-    private function generateEvent() : void {
+    private function generateEvent() : void
+    {
 
         coreDispatch(MapScreen.ADD_CHEST);
     }
 
-    private function onTrapEnd() : void {
+    private function onTrapEnd() : void
+    {
         _trapMode = false;
         coreDispatch(HudScreen.UPDATE);
     }
 
-    private function onTrapStart() : void {
+    private function onTrapStart() : void
+    {
         _trapMode = true;
         coreDispatch(HudScreen.UPDATE);
     }
 
-    public function get refs() : CommonRefs {
+    public function get refs() : CommonRefs
+    {
         return _refs;
     }
 
-    public function get trapMode() : Boolean {
+    public function get trapMode() : Boolean
+    {
         return _trapMode;
     }
 
-    public function get tick() : Ticker {
+    public function get tick() : Ticker
+    {
         return _tick;
     }
 
-    public function get currentPopup() : Popup {
+    public function get currentPopup() : Popup
+    {
         return _ui.currentPopup;
     }
 }

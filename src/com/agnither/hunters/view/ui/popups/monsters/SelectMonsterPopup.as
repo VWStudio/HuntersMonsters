@@ -1,43 +1,35 @@
 /**
  * Created by agnither on 25.08.14.
  */
-package com.agnither.hunters.view.ui.popups.monsters {
-import com.agnither.hunters.App;
-import com.agnither.hunters.data.outer.TrapVO;
+package com.agnither.hunters.view.ui.popups.monsters
+{
 import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.modules.locale.Locale;
-import com.agnither.hunters.model.player.Player;
-import com.agnither.hunters.model.player.inventory.PetsInventory;
-import com.agnither.hunters.view.ui.UI;
 import com.agnither.hunters.view.ui.common.Scroll;
 import com.agnither.hunters.view.ui.common.TabView;
-import com.agnither.hunters.view.ui.popups.monsters.CatchedPetsView___not_used;
-import com.agnither.hunters.view.ui.popups.traps.TrapItem;
 import com.agnither.hunters.view.ui.screens.battle.BattleScreen;
 import com.agnither.ui.Popup;
-import com.agnither.utils.CommonRefs;
-import com.cemaprjl.core.coreDispatch;
 
 import flash.geom.Rectangle;
 
 import starling.core.Starling;
-
 import starling.display.Button;
 import starling.display.Sprite;
 import starling.events.Event;
 
-public class SelectMonsterPopup extends Popup {
+public class SelectMonsterPopup extends Popup
+{
 
     public static const NAME : String = "com.agnither.hunters.view.ui.popups.monsters.SelectMonsterPopup";
 
-    private var _tab1: TabView;
-    private var _tab2: TabView;
+    private var _tab1 : TabView;
+    private var _tab2 : TabView;
     private var _tab3 : TabView;
 
-    private var _closeBtn: Button;
+    private var _closeBtn : Button;
 
 //    private var _monsters: CatchedPetsView___not_used;
-    private var _monstersContainer: Sprite;
+    private var _monstersContainer : Sprite;
 
     private var _tamedmonsters : TamedPetsView;
 //    private var _traps : TrapsListView;
@@ -45,10 +37,12 @@ public class SelectMonsterPopup extends Popup {
     private var _scrollMonsters : Sprite;
     private var lineHeight : Number = 170;
 
-    public function SelectMonsterPopup() {
+    public function SelectMonsterPopup()
+    {
     }
 
-    override protected function initialize():void {
+    override protected function initialize() : void
+    {
         createFromConfig(_refs.guiConfig.monsters_popup);
 
         _tab1 = _links.tab1;
@@ -89,7 +83,7 @@ public class SelectMonsterPopup extends Popup {
 
         _scroll = new Scroll(_links["scroll"]);
         _scroll.onChange = onScroll;
-        _scrollMonsters.clipRect = new Rectangle(0,0,730,540);
+        _scrollMonsters.clipRect = new Rectangle(0, 0, 730, 540);
 
         handleCloseButton(_links.close_btn);
     }
@@ -97,17 +91,20 @@ public class SelectMonsterPopup extends Popup {
     private function onScroll($val : Number) : void
     {
         var newy : Number = -lineHeight * $val;
-        Starling.juggler.tween(_monstersContainer, 0.4, {y : newy});
+        Starling.juggler.tween(_monstersContainer, 0.4, {y: newy});
     }
 
 
-    override public function update() : void {
+    override public function update() : void
+    {
         _tab1.dispatchEventWith(TabView.TAB_CLICK);
     }
 
-    private function handleSelectTab(e: Event):void {
+    private function handleSelectTab(e : Event) : void
+    {
 
-        if(Model.instance.state == BattleScreen.NAME && (e.currentTarget == _tab2 || e.currentTarget == _tab3)) {
+        if (Model.instance.state == BattleScreen.NAME && (e.currentTarget == _tab2 || e.currentTarget == _tab3))
+        {
 
             return;
 
@@ -117,7 +114,8 @@ public class SelectMonsterPopup extends Popup {
 //        _monsters.visible = false;
         _tamedmonsters.visible = false;
         _monstersContainer.y = 0;
-        switch (e.currentTarget) {
+        switch (e.currentTarget)
+        {
             case _tab1:
                 _tamedmonsters.visible = true;
                 _tamedmonsters.update();
