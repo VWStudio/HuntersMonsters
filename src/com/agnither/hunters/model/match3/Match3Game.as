@@ -227,7 +227,7 @@ public class Match3Game extends EventDispatcher
                         if (currentEnemy.mirrorDamage.isLucky())
                         {
 //                            trace("mirror skull", currentEnemy.mirrorDamage, dmg, currentEnemy.mirrorDamage.percent);
-                            currentPlayer.hero.hit(Math.round(dmg * currentEnemy.mirrorDamage.percent), true);
+                            currentPlayer.hero.hit(Math.round(dmg * currentEnemy.mirrorDamage.percent - aim.getDefence()), true);
                         }
                     }
 
@@ -278,7 +278,7 @@ public class Match3Game extends EventDispatcher
                 if (currentEnemy.mirrorDamage.isLucky())
                 {
 //                    trace("mirror attack", currentEnemy.mirrorDamage, match.amount * dmg, currentEnemy.mirrorDamage.percent);
-                    attacker.hit(match.amount * dmg * currentEnemy.mirrorDamage.percent, true);
+                    attacker.hit(match.amount * dmg * currentEnemy.mirrorDamage.percent - aim.getDefence(), true);
                 }
             }
 //            }

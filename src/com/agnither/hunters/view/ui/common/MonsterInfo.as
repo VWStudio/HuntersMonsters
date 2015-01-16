@@ -147,7 +147,7 @@ public class MonsterInfo extends AbstractView {
 
     public function get item() : Item
     {
-        return Item.create(ItemVO.createPetItemVO(_monster));
+        return Item.create(ItemVO.createPetItemVO(_monster, true));
     }
 }
 }

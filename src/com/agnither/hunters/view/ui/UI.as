@@ -132,7 +132,7 @@ public class UI extends Screen {
 
 
 
-    private function onItemHover($touchItem : AbstractView, $item : Item, $price : Number = 0, $isSell : Boolean = false, $isBattle : Boolean = false) : void
+    private function onItemHover($touchItem : AbstractView, $item : Item, $price : Number = 0, $isSell : Boolean = false, $isBattle : Boolean = true) : void
     {
 //        if (!isActive)
 //        {

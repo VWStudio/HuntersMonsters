@@ -237,6 +237,15 @@ public class Inventory extends EventDispatcher
             arr = arr.concat(itemsbytype);
         }
 
+        var len : int = arr.length-1;
+        for (var i : int = len; i >= 0; i--)
+        {
+            var itemUniqID : String = arr[i];
+            if(_inventoryItems.indexOf(itemUniqID) >= 0 && Model.instance.progress.tamedMonsters.indexOf(getItem(itemUniqID).name) >= 0) {
+                arr.splice(i, 1);
+            }
+        }
+
         arr = arr.sort(sortInventory);
         return arr;
     }
