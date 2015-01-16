@@ -140,6 +140,11 @@ public class Item extends EventDispatcher
         return _item.type == ItemVO.TYPE_SPELL;
     }
 
+    public function isMagic() : Boolean
+    {
+        return _item.type == ItemVO.TYPE_MAGIC;
+    }
+
     public function isPet() : Boolean
     {
         return _item.type == ItemVO.TYPE_PET;

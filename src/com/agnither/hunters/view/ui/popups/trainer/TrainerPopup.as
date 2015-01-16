@@ -96,7 +96,6 @@ public class TrainerPopup extends Popup
 
         if(App.instance.currentPopup != this) return;
 
-
         _container.removeChildren();
         if (_currentOwner == _trainerTab)
         {

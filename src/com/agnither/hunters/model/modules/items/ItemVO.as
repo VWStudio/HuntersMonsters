@@ -97,7 +97,7 @@ public class ItemVO
         obj.price = 0;
         obj.slot = 0;
         obj.setname = "";
-        obj.localekey = "gold";
+        //obj.localekey = "gold";
         obj.droppicture = "drop_gold";
 
         return ItemVO.fill(new ItemVO(), obj)
@@ -117,6 +117,8 @@ public class ItemVO
             var object : ItemVO = fill(new ItemVO(), source);
             LIST.push(object);
             DICT[object.id] = object;
+
+
 
             if (object.type == "spell")
             {

@@ -13,7 +13,7 @@ public class PlayerItemVO {
 
     public static function parseData(data: Object):void {
 
-        trace(JSON.stringify(data));
+        //trace(JSON.stringify(data));
 
         for (var i: int = 0; i < data.length; i++) {
             var row: Object = data[i];

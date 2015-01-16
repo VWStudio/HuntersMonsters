@@ -58,9 +58,7 @@ public class ManaAddExt extends Extension
     override public function getDescription() : String
     {
         var magic : MagicTypeVO = MagicTypeVO.DICT[_type];
-        var description : String = super.getDescription() + ",\n"
-                                   +_amount+" "+Locale.getString(magic.name);
-
+        var description : String = super.getDescription() + ":\n" + _amount + " " + Locale.getString(magic.name);
 
         return description;
     }

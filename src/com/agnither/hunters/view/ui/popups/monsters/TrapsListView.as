@@ -44,8 +44,9 @@ public class TrapsListView extends AbstractView {
     {
 
         _trapsContainer.removeChildren();
-        var boughtTraps : Array = Model.instance.progress.traps;
-        trace(JSON.stringify(boughtTraps));
+        var boughtTraps : Array = new Array();
+        //var boughtTraps : Array = Model.instance.progress.traps;
+        //trace(JSON.stringify(boughtTraps));
         for (var i : int = 0; i < boughtTraps.length; i++)
         {
             var trapObj : Object = boughtTraps[i];

@@ -57,12 +57,12 @@ public class DamageExt extends Extension
 
     override public function getDescription() : String
     {
-        return Locale.getString(TYPE) + ":"+_damage;
+        return Locale.getString(TYPE) + ": " + Locale.getString(_damageType)+ ".";
     }
 
     public function getRange() : String
     {
-        trace(_initialArgs);
+        //trace(_initialArgs);
         return _initialArgs[1] + (_initialArgs.length > 2 ? "-"+_initialArgs[2] : "");
     }
 }

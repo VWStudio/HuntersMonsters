@@ -990,7 +990,7 @@ public class AssetManager extends EventDispatcher
      *  default, it traces 'message' to the console. */
     protected function log(message:String):void
     {
-        if (mVerbose) trace("[AssetManager]", message);
+        if (mVerbose); //trace("[AssetManager]", message);
     }
 
     private function byteArrayStartsWith(bytes:ByteArray, char:String):Boolean

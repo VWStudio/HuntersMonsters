@@ -48,6 +48,10 @@ public class ManaExt extends Extension
     {
         var str : String = "";
 
+        str += Locale.getString(TYPE);
+        str += "\n\n";
+        str += "Требует магии:\n";
+
         for (var i : int = 0; i < int(_extArguments.length / 2); i++)
         {
             str += _extArguments[i*2+1];

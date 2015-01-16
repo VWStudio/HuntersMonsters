@@ -73,14 +73,17 @@ public class TamedMonsterView extends AbstractView {
         _picture.touchable = true;
         this.touchable = true;
 
-        if(_picture.width > _tint.width) {
-            _picture.width = _tint.width;
+        var byWid : Boolean = _picture.width > _picture.height;
+        if(byWid) {
+            _picture.width = _back.width;
             _picture.scaleY = _picture.scaleX;
-        }
-        if(_picture.height > _tint.height) {
-            _picture.height = _tint.height;
+        } else {
+            _picture.height = _back.height;
             _picture.scaleX = _picture.scaleY;
         }
+        _picture.x = (_back.width - _picture.width) * 0.5;
+        _picture.y = (_back.height - _picture.height) * 0.5;
+
         _name.text = Locale.getString(_monsterID);
 
         isUnlocked = Model.instance.progress.unlockedLocations.indexOf(_monsterID) >= 0;

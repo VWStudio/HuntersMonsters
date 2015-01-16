@@ -53,6 +53,19 @@ public class PetView extends AbstractView {
         _picture.texture = _refs.gui.getTexture(_pet.picture);
         this.touchable = true;
 
+        /* _picture.readjustSize();
+       var byWid : Boolean = _picture.width > _picture.height;
+        if(byWid) {
+            _picture.width = _picture.width;
+            _picture.scaleY = _picture.scaleX;
+        } else {
+            _picture.height = _picture.height;
+            _picture.scaleX = _picture.scaleY;
+        }
+        _picture.x = (_picture.width - _picture.width) * 0.5;
+        _picture.y = (_picture.height - _picture.height) * 0.5;*/
+
+
 //        _links.damage_icon.getChildAt(0).texture = _refs.gui.getTexture("hit.png");
 
         var damageType: MagicTypeVO = MagicTypeVO.DICT[_pet.params.magic];
@@ -85,6 +98,7 @@ public class PetView extends AbstractView {
     public function setBuyable($val : Boolean = false):void {
         _buyable = $val;
         _sellButton.visible = _buyable && _price <= Model.instance.progress.gold;
+
     }
 
     private function onSell(event : Event) : void

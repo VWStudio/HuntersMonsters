@@ -97,7 +97,6 @@ public class Items
 
     private function getRandomItem($set : String, $type : String) : Item
     {
-
         var items : Array = ItemVO.SETS[$set];
         var itemsByType : Array = [];
         var i : int = 0;

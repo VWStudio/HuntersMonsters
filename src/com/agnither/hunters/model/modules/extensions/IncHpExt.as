@@ -45,8 +45,8 @@ public class IncHpExt extends Extension
 
     override public function getDescription() : String
     {
-        var description : String = super.getDescription() + ", "
-                                   +_percent+"%";
+        var description : String = super.getDescription() + " "
+                                   +_percent+"%.";
 
 
         return description;

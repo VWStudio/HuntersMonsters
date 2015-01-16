@@ -472,7 +472,7 @@ public class Territory
     public function updateHouseData() : void {
         _isHouseOwner = Model.instance.progress.houses.indexOf(_area.area) >= 0;
 
-        trace("UPDATE HOUSE DATA", area.id, _houseUnlockItems );
+        //trace("UPDATE HOUSE DATA", area.id, _houseUnlockItems );
 
         if(!_houseUnlockItems) {
             _houseUnlockItems = ItemVO.SETS[area.area];

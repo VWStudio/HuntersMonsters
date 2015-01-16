@@ -34,8 +34,8 @@ public class ShowPopupCmd implements ICommand {
         var view : Popup = av as Popup;
 
         if(!view) {
-            trace(popupName, av, view);
-            trace("view is not Popup");
+            //trace(popupName, av, view);
+            //trace("view is not Popup");
             return;
         }
 

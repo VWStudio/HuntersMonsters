@@ -182,7 +182,7 @@ public class Match3Game extends EventDispatcher
         if (_allowPlay)
         {
             _currentPlayer.startMove();
-            trace("_currentPlayer.dealDmgOnMove", _currentPlayer.dealDmgOnMove);
+            //trace("_currentPlayer.dealDmgOnMove", _currentPlayer.dealDmgOnMove);
             if (_currentPlayer.dealDmgOnMove > 0)
             {
                 var anEnemy : Player = (_currentPlayer is LocalPlayer) ? enemy : _player;

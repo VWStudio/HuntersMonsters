@@ -68,7 +68,7 @@ public class Progress extends EventDispatcher {
 
         if (version == -1 || !_data.data.progress || _data.data.version == null || _data.data.version != version)
         {
-            trace("LOAD MOCKUP",version, _data.data.version != null, _data.data.progress != null);
+            //trace("LOAD MOCKUP",version, _data.data.version != null, _data.data.progress != null);
 //        if (version == -1 || _data.data.version == null || _data.data.version != version) {
             save(mockup());
         }
@@ -99,7 +99,7 @@ public class Progress extends EventDispatcher {
         var dataObj : Object = _data.data;
         var progressObj : Object = JSON.parse(dataObj.progress);
 
-        trace(dataObj.progress);
+        //trace(dataObj.progress);
 
         id = progressObj.id;
         name = progressObj.name;
@@ -138,7 +138,7 @@ public class Progress extends EventDispatcher {
 //        inventory = progressObj.inventory ? progressObj.inventory : [];
 
         _items = dataObj.items ? JSON.parse(dataObj.items) : {};
-        trace(JSON.stringify(_items));
+        //trace(JSON.stringify(_items));
         _inventory = dataObj.inventory ? JSON.parse(dataObj.inventory) as Array : [];
         _pets = dataObj.pets ? JSON.parse(dataObj.pets) : {};
 
@@ -160,7 +160,7 @@ public class Progress extends EventDispatcher {
     {
         var obj : Object = {};
         var str : String = JSON.stringify(this);
-        trace(str);
+        //trace(str);
         obj.progress = JSON.parse(str);
         obj.items = JSON.parse(JSON.stringify(Model.instance.player.inventory.items));
         obj.inventory = JSON.parse(JSON.stringify(Model.instance.player.inventory.inventoryItems));
@@ -173,12 +173,12 @@ public class Progress extends EventDispatcher {
 
         _data.data.version = version;
 
-        trace("------save------");
+        //trace("------save------");
         for (var key : String in $val)
         {
             _data.data[key] = JSON.stringify($val[key]);
-            trace(key,"----------------------");
-            trace(_data.data[key]);
+            //trace(key,"----------------------");
+            //trace(_data.data[key]);
         }
 
         _data.flush();
@@ -223,7 +223,7 @@ public class Progress extends EventDispatcher {
         obj.houses = [];
         obj.unlockedLocations = settings.unlockedLocations;
         obj.campPosition = null;
-        obj.tamedMonsters = ["blue_bull", "meowut","pikachu","squirtle","charmander","slowpoke","bulbasaur","pidgey","ratata","zubat"];
+        //obj.tamedMonsters = ["blue_bull", "meowut","pikachu","squirtle","charmander","slowpoke","bulbasaur","pidgey","ratata","zubat"];
 
         obj.areaStars = {};
         obj.sets = ["default"];
@@ -245,7 +245,7 @@ public class Progress extends EventDispatcher {
             if(playerItem.ext) {
                 item.ext = playerItem.ext;
             }
-            trace("*",i,JSON.stringify(item));
+            //trace("*",i,JSON.stringify(item));
             var itmName : String = Util.uniq(item.name);
             saveObject.items[itmName] = item;
             if (playerItem.wield)
@@ -271,7 +271,7 @@ public class Progress extends EventDispatcher {
         {
             var playerPet : PlayerPetVO = playerPets[i];
             var monster : Object = Util.toObj(Model.instance.monsters.getMonster(playerPet.id, playerPet.level, playerPet));
-            trace("---", JSON.stringify(monster));
+            //trace("---", JSON.stringify(monster));
             var petID : String = Util.uniq(monster.name);
             saveObject.pets[petID] = monster;
         }

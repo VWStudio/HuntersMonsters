@@ -49,7 +49,7 @@ public class DefenceExt extends Extension
 
     override public function getDescription() : String
     {
-        return Locale.getString(TYPE) + ":"+_defence;
+        return Locale.getString(TYPE);
     }
 
     override public function getBaseValue() : Number

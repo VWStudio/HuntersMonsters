@@ -11,9 +11,12 @@ import com.agnither.hunters.model.player.inventory.Item;
 import com.agnither.hunters.view.ui.common.items.ItemView;
 import com.agnither.ui.AbstractView;
 import com.agnither.ui.ButtonContainer;
+import com.cemaprjl.core.coreAddListener;
 import com.cemaprjl.core.coreDispatch;
 
 import flash.geom.Point;
+import flash.ui.Mouse;
+import flash.ui.MouseCursor;
 
 import starling.display.Sprite;
 
@@ -107,22 +110,26 @@ public class BuyItemView extends AbstractView
 
     }
 
+
     private function onTouch(e : TouchEvent) : void
     {
-        var touch : Touch = e.getTouch(this, TouchPhase.HOVER);
+        //var touch : Touch = e.getTouch(this, TouchPhase.HOVER);
+        var item: ItemView = e.currentTarget as ItemView;
+        var touch: Touch = e.getTouch(item);
 //        var touch1 : Touch =
 //        var touchTooltip : Touch = e.getTouch(Model.instance.itemsTooltip);
 //        var ttInteract : Boolean = e.interactsWith(Model.instance.itemsTooltip);
 
 //        var isHitTooltip : Boolean = e.interactsWith(Model.instance.itemsTooltip);
-        if (touch && Model.instance.itemsTooltip.item != _itemView.item) {
-
+        if (touch && Model.instance.itemsTooltip.item != _itemView.item)
+        {
 
             coreDispatch(ItemView.HOVER, _itemView, _price, false);
 //            coreDispatch(ShopPopup.SHOW_TOOLTIP, this);
         }
         else
         {
+            Mouse.cursor = MouseCursor.AUTO;
 //            coreDispatch(ShopPopup.HIDE_TOOLTIP, !isHitTooltip);
         }
 

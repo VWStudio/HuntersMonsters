@@ -19,7 +19,7 @@ public class Monster extends Personage {
     }
 
     public function unsummon():void {
-        trace("UNSUMMON");
+        //trace("UNSUMMON");
         _pet = null;
         hp = 0;
     }

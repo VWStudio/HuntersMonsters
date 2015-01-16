@@ -58,8 +58,8 @@ public class MirrorDamageExt extends Extension
 
     override public function getDescription() : String
     {
-        var description : String = super.getDescription() + ", "
-                                   +_chance+"%";
+        var description : String = super.getDescription() + " "
+                                   +_percent+"% от урона.";
 
 
         return description;

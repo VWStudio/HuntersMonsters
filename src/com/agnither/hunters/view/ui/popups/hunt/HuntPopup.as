@@ -4,14 +4,23 @@
 package com.agnither.hunters.view.ui.popups.hunt {
 import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.match3.Match3Game;
+import com.agnither.hunters.model.modules.locale.Locale;
 import com.agnither.hunters.view.ui.UI;
 import com.agnither.hunters.view.ui.common.MonsterInfo;
+import com.agnither.hunters.view.ui.common.items.ItemView;
+import com.agnither.hunters.view.ui.popups.monsters.TamedMonsterView;
 import com.agnither.ui.ButtonContainer;
 import com.agnither.ui.Popup;
 import com.cemaprjl.core.coreDispatch;
 
+import flash.ui.Mouse;
+import flash.ui.MouseCursor;
+
 import starling.display.Image;
 import starling.events.Event;
+import starling.events.Touch;
+import starling.events.TouchEvent;
+import starling.events.TouchPhase;
 import starling.text.TextField;
 
 public class HuntPopup extends Popup {
@@ -22,6 +31,7 @@ public class HuntPopup extends Popup {
 
     private var _back : Image;
     private var _playButton : ButtonContainer;
+    private var _title : TextField;
     private var _monster : MonsterInfo;
     private var _closeButton : ButtonContainer;
     private var _stars3 : TextField;
@@ -37,6 +47,7 @@ public class HuntPopup extends Popup {
 
         createFromConfig(_refs.guiConfig.hunt_popup);
 
+        _title = _links["title_tf"];
 
         _back = _links["bitmap_common_back"];
         _closeButton = _links["close_btn"];
@@ -76,12 +87,17 @@ public class HuntPopup extends Popup {
 
     override public function update() : void {
 
+        //_monster.data = Model.instance.monster;
+        //_monster.hideInfo = true;
+        //_monster.update();
+        //_title.text = Locale.getString(_monster.data.id);
+
         _monster.data = data;
         _monster.update();
+        _title.text = Locale.getString(_monster.data.id) + " "+_monster.data.level+ "ур";;
         _stars3.text = _monster.monster.stars[0];
         _stars2.text = _monster.monster.stars[1];
         _stars1.text = _monster.monster.stars[2];
-
 
     }
 

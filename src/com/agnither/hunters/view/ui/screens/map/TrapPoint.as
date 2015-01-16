@@ -117,14 +117,14 @@ public class TrapPoint extends AbstractView {
             var chanceToCatch : Number = Math.random() * 100;
             _monsterCaught = (max + chanceAdd) > chanceToCatch;
 //            var isCaught : Boolean = Math.random() * (max + chanceAdd);
-            trace("max chance", max, chanceAdd, _monsterCaught, chanceToCatch, max + chanceAdd);
+            //trace("max chance", max, chanceAdd, _monsterCaught, chanceToCatch, max + chanceAdd);
 
             if(_monsterCaught) {
 
                 var chanceSum : Number = chances[0] + chances[1] + chances[2] + chanceAdd * 3;
                 var randomVal : Number = Math.random() * chanceSum;
                 var caughtMonster : int = -1;
-                trace(randomVal, chanceSum);
+                //trace(randomVal, chanceSum);
                 for (var i : int = 0; i < chances.length; i++)
                 {
                     var ch : Number = chances[i] + chanceAdd;
@@ -135,7 +135,7 @@ public class TrapPoint extends AbstractView {
                         randomVal -= ch;
                     }
                 }
-                trace(i, caughtMonster, chances[i], randomVal, chanceSum);
+                //trace(i, caughtMonster, chances[i], randomVal, chanceSum);
 
                 _monsterCaught = caughtMonster >= 0;
             }

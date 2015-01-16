@@ -40,8 +40,8 @@ public class DmgEnemyOnTurnExt extends Extension
 
     override public function getDescription() : String
     {
-        var description : String = super.getDescription() + ", "
-                                   +_amount+"%";
+        var description : String = super.getDescription() + " "
+                                   +_amount+" здоровья противника.";
 
 
         return description;

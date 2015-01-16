@@ -81,8 +81,9 @@ public class GoldView extends AbstractView {
 
     private function onItemHoverOut() : void
     {
+        //trace("onItemHoverOut");
         this.visible = false;
-        //item = null;
+        item = null;
 //        this.visible = price > 0 && touched;
 
 
@@ -90,7 +91,6 @@ public class GoldView extends AbstractView {
 
     private function onBuy(event : Event) : void
     {
-
         if(isSell)
         {
             if(item.crystallPrice)
@@ -108,35 +108,38 @@ public class GoldView extends AbstractView {
         }
         else
         {
-
             if(item.crystallPrice)
             {
-                if(item.crystallPrice <= Model.instance.progress.crystalls)
+                if (Model.instance.progress.crystalls < item.crystallPrice || item.crystallPrice <= 0)
                 {
-                    Model.instance.progress.crystalls -= price;
-                    Model.instance.addPlayerItem(item);
-                    if (!item.isSpell())
-                    {
-                        Model.instance.shop.removeItem(item);
-                    }
-                    coreDispatch(ShopPopup.ITEM_BOUGHT, item);
-                    Model.instance.progress.saveProgress();
                     coreDispatch(ItemView.HOVER_OUT);
+                    item = null;
+                    return;
                 }
+
+                Model.instance.progress.crystalls -= item.crystallPrice;
+                Model.instance.addPlayerItem(item);
+                if (!item.isSpell()) Model.instance.shop.removeItem(item);
+                coreDispatch(ShopPopup.ITEM_BOUGHT, item);
+                Model.instance.progress.saveProgress();
+
+                coreDispatch(ItemView.HOVER_OUT);
+                item = null;
                 return;
             }
 
             if (Model.instance.progress.gold < price || price <= 0)
             {
+                coreDispatch(ItemView.HOVER_OUT);
+                item = null;
                 return;
             }
 
             Model.instance.progress.gold -= price;
             Model.instance.addPlayerItem(item);
-                Model.instance.shop.removeItem(item);
-            Model.instance.progress.saveProgress();
-
+            Model.instance.shop.removeItem(item);
             coreDispatch(ShopPopup.ITEM_BOUGHT, item);
+            Model.instance.progress.saveProgress();
         }
         coreDispatch(ItemView.HOVER_OUT);
         item = null;
@@ -144,44 +147,43 @@ public class GoldView extends AbstractView {
 
     override public function update() : void {
 
-        if(!isNew)
-        {
-            return;
-        }
+        if(!isNew) return;
 
-//        _price = data as Number;
         _value.text = price.toString();
         var str:String = "";
-        str += item.description;
         var exts : Object = item.getExtensions();
         for (var key : String in exts)
         {
-            if (key == ManaExt.TYPE)
-            {
+            if (key != "monster") {
+                if (!item.isSpell()) str += exts[key].getDescription();
+                else if (key != "damage") str += exts[key].getDescription();
+            }
+        }
+        switch (item.slot) {
+            case 0:
                 str += "\n\n";
-                str += "Требует магии:\n";
-                str += exts[key].getDescription();
-            }
-        }
-
-        if (item.isArmor() || item.isWeapon())
-        {
-            str += "\n\n";
-            str += "Слот: ";
-            switch (item.slot)
-            {
-                case 2: str += "Оружие"; break;
-                case 3: str += "Голова"; break;
-                case 4: str += "Тело"; break;
-                case 6: str += "Руки"; break;
-                case 7: str += "Ноги"; break;
-            }
-        }
-
-        if (item.slot == 0)
-        {
-            str += "\n\n";
-            str += "Не прирученный монстр.";
+                str += "Не прирученный монстр.";
+                break;
+            case 2:
+                str += "\n\n";
+                str += "Слот: Оружие";
+                break;
+            case 3:
+                str += "\n\n";
+                str += "Слот: Голова";
+                break;
+            case 4:
+                str += "\n\n";
+                str += "Слот: Тело";
+                break;
+            case 6:
+                str += "\n\n";
+                str += "Слот: Руки";
+                break;
+            case 7:
+                str += "\n\n";
+                str += "Слот: Ноги";
+                break;
         }
 
         if (str.length > 0) _tip.text = str;
@@ -232,13 +234,12 @@ public class GoldView extends AbstractView {
 
     private function onTouch(event : TouchEvent) : void
     {
+        //trace("onTouch");
         if(price <= 0) return;
         var touch : Touch = event.getTouch(this);
 
-//        this.touched = touch != null;
         if(!touch) {
             if(event.target is TextField) {
-//            if(event.target is TextField || event.target is ButtonContainer) {
             }
             else
             {
@@ -248,7 +249,12 @@ public class GoldView extends AbstractView {
         }
 
         var touchBuy : Touch = event.getTouch(_buy, TouchPhase.HOVER);
-        if (!touchBuy) coreDispatch(ItemView.HOVER_OUT);
+        var touchBuyClick : Touch = event.getTouch(_buy, TouchPhase.BEGAN);
+        if (!touchBuy && !touchBuyClick)
+        {
+            coreDispatch(ItemView.HOVER_OUT);
+            //item = null;
+        }
     }
 
     public function setData($item : ItemView, $price : Number, $isSell : Boolean, $isBattle : Boolean) : void

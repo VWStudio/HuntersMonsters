@@ -38,7 +38,7 @@ public class DropList extends EventDispatcher
     public function DropList()
     {
         _list = new Vector.<DropSlot>(12);
-        for (var i : int = 0; i < 6; i++)
+        for (var i : int = 0; i < 12; i++)
         {
             _list[i] = new DropSlot();
         }
@@ -117,9 +117,9 @@ public class DropList extends EventDispatcher
                 }
                 arr.push(vo);
             }
-            trace("*", items);
+            //trace("*", items);
             items = arr;
-            trace("**", items);
+            //trace("**", items);
 
             var paramMult : Number = SettingsVO.DICT[slot+"ParamMult"];
 
@@ -141,7 +141,7 @@ public class DropList extends EventDispatcher
             pMax = Math.round(Math.sqrt((currentMonster.reward * (MonsterVO.DICT["order"+(currentMonster.order + 1)].difficultyfactor + 1)) / paramMult));
 
             var itemParam : Number = Util.getRandomParam(pMin, pAverage, pMax);
-            trace("dropItem min:" + pMin + " pAverage:" + pAverage + " pMax:" + pMax + " itemParam:" + itemParam + "slot: " + slot);
+            //trace("dropItem min:" + pMin + " pAverage:" + pAverage + " pMax:" + pMax + " itemParam:" + itemParam + "slot: " + slot);
             if(items && items.length > 0)
             {
                 content = findItem(items, Math.round(itemParam), -1);
@@ -155,7 +155,7 @@ public class DropList extends EventDispatcher
 
     private function findItem($items : Array, itemParam : Number, changeValue : Number) : Item
     {
-        trace("findItem", itemParam, changeValue, $items);
+        //trace("findItem", itemParam, changeValue, $items);
         var selectedItems : Array = [];
         if(itemParam > 0) {
             var minVal : Number
@@ -179,7 +179,7 @@ public class DropList extends EventDispatcher
                 }
             }
         }
-        trace("*", itemParam, selectedItems, minVal, maxVal);
+        //trace("*", itemParam, selectedItems, minVal, maxVal);
         if(!selectedItems.length) {
             var newChangeValue : Number = changeValue < 0 ? -1 * (changeValue - 1) : -1 * (changeValue + 1);
             if(itemParam + changeValue + newChangeValue < 0) {
@@ -201,7 +201,7 @@ public class DropList extends EventDispatcher
 
         var item : Item = Item.create(itemVO);
 
-        trace(index, JSON.stringify(itemVO));
+        //trace(index, JSON.stringify(itemVO));
 
         return item;
     }

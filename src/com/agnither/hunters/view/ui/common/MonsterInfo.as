@@ -4,13 +4,27 @@
 package com.agnither.hunters.view.ui.common {
 import com.agnither.hunters.data.outer.MagicTypeVO;
 import com.agnither.hunters.data.outer.DamageTypeVO;
+import com.agnither.hunters.model.Model;
+import com.agnither.hunters.model.modules.items.ItemVO;
 import com.agnither.hunters.model.modules.locale.Locale;
+import com.agnither.hunters.model.modules.monsters.MonsterAreaVO;
 import com.agnither.hunters.model.modules.monsters.MonsterVO;
+import com.agnither.hunters.model.player.inventory.Item;
+import com.agnither.hunters.view.ui.common.items.ItemView;
+import com.agnither.hunters.view.ui.popups.monsters.TamedMonsterView;
 import com.agnither.ui.AbstractView;
 import com.agnither.ui.ButtonContainer;
+import com.cemaprjl.core.coreDispatch;
+
+import flash.ui.Mouse;
+
+import flash.ui.MouseCursor;
 
 import starling.display.Image;
 import starling.display.Sprite;
+import starling.events.Touch;
+import starling.events.TouchEvent;
+import starling.events.TouchPhase;
 
 import starling.text.TextField;
 
@@ -43,6 +57,7 @@ public class MonsterInfo extends AbstractView {
         _hpVal = _links["hp_tf"];
         _icon = _links["icon"].getChildAt(0) as Image;
 
+        _nameVal.visible = false;
 
         //_damageType = new Image(_refs.gui.getTexture(MagicTypeVO.DICT[_monster.damagetype].picturedamage));
 
@@ -65,6 +80,7 @@ public class MonsterInfo extends AbstractView {
         _sellButton.visible = false;
 
         _hideInfo = false;
+
     }
 
 
@@ -74,7 +90,6 @@ public class MonsterInfo extends AbstractView {
         //var monster : MonsterVO = petExt.getMonster();
         //magicType = MagicTypeVO.DICT[monster.damagetype];
         //texName = magicType.picturedamage;
-
 
         _monster = (data as MonsterVO);
         if (_hideInfo)
@@ -111,6 +126,7 @@ public class MonsterInfo extends AbstractView {
         }
         _icon.x = (_back.width - _icon.width) * 0.5;
         _icon.y = (_back.height - _icon.height) * 0.5;
+
     }
 
     public function set hideInfo($val : Boolean):void {

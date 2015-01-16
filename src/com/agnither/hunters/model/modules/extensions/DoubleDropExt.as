@@ -50,10 +50,7 @@ public class DoubleDropExt extends Extension
 
     override public function getDescription() : String
     {
-        var description : String = super.getDescription() + ", "
-                +_chance+"%";
-
-
+        var description : String = super.getDescription() + " " + _chance + "%.";
         return description;
     }
 }

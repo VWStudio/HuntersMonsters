@@ -86,48 +86,53 @@
     },
     {
       "parameter": "shopDeliverTimeMin",
-      "value": "3",
+      "value": "240",
       "type": "int"
     },
     {
       "parameter": "weaponTabMin",
-      "value": "1",
+      "value": "4",
       "type": "int"
     },
     {
       "parameter": "weaponTabMax",
-      "value": "2",
+      "value": "6",
       "type": "int"
     },
     {
       "parameter": "armorTabMin",
-      "value": "3",
+      "value": "4",
       "type": "int"
     },
     {
       "parameter": "armorTabMax",
-      "value": "10",
+      "value": "7",
       "type": "int"
     },
     {
       "parameter": "magicTabMin",
-      "value": "3",
+      "value": "1",
       "type": "int"
     },
     {
       "parameter": "magicTabMax",
-      "value": "10",
-      "type": "int"
-    },
-    {
-      "parameter": "spellTabMin",
       "value": "3",
       "type": "int"
     },
     {
-      "parameter": "spellTabMax",
-      "value": "10",
+      "parameter": "spellTabMin",
+      "value": "1",
       "type": "int"
+    },
+    {
+      "parameter": "spellTabMax",
+      "value": "3",
+      "type": "int"
+    },
+    {
+      "parameter": "shopCrystallItems",
+      "value": "1,2",
+      "type": "array"
     },
     {
       "parameter": "sellPriceMult",
@@ -305,11 +310,6 @@
       "parameter": "pet_levelPriceMult",
       "value": "1",
       "info": "---"
-    },
-    {
-      "parameter": "shopCrystallItems",
-      "value": "1,3",
-      "type": "array"
     }
   ],
   "monster": [
@@ -324,7 +324,7 @@
       "damage": 5,
       "damagetype": "weapon",
       "magic": 7,
-      "extension": "spell_defence:[50]",
+      "extension": "increase_hp:[10]",
       "speed": 100,
       "stars": "5,10,20",
       "difficultyfactor": 1,
@@ -345,7 +345,7 @@
       "damagetype": "water",
       "magic": 3,
       "items": 13,
-      "extension": "mirror_damage:[100,50]",
+      "extension": "mana_add:[\"water\",1]",
       "speed": 100,
       "stars": "5,10,20",
       "difficultyfactor": 2,
@@ -366,7 +366,7 @@
       "damagetype": "fire",
       "magic": 3,
       "items": 12,
-      "extension": "double_drop: 20",
+      "extension": "mana_add:[\"fire\",1]",
       "speed": 100,
       "stars": "5,10,20",
       "difficultyfactor": 5,
@@ -387,7 +387,7 @@
       "damagetype": "weapon",
       "magic": 3,
       "items": "15,14",
-      "extension": "dmg_on_turn:[2]",
+      "extension": "mana_add:[\"nature\",1]",
       "speed": 100,
       "stars": "5,10,20",
       "difficultyfactor": 7,
@@ -408,7 +408,7 @@
       "damagetype": "nature",
       "magic": 3,
       "items": "12,13",
-      "extension": "double_drop: 20",
+      "extension": "double_drop: 15",
       "speed": 100,
       "stars": "5,10,20",
       "difficultyfactor": 8,
@@ -428,7 +428,7 @@
       "damage": 23,
       "damagetype": "weapon",
       "magic": 3,
-      "extension": "mana_add:[\"nature\",1]",
+      "extension": "increase_dmg:[10]",
       "speed": 100,
       "stars": "5,10,20",
       "difficultyfactor": 9,
@@ -449,7 +449,7 @@
       "damagetype": "stone",
       "magic": 7,
       "items": 17,
-      "extension": "mirror_damage:[20,50]",
+      "extension": "mirror_damage:[100,20]",
       "speed": 100,
       "stars": "5,10,20",
       "difficultyfactor": 9,
@@ -470,7 +470,7 @@
       "damagetype": "dark",
       "magic": 6,
       "items": 18,
-      "extension": "mana_add:[\"nature\",1]",
+      "extension": "dmg_on_turn:[2]",
       "speed": 100,
       "stars": "5,10,20",
       "difficultyfactor": 10,
@@ -491,7 +491,7 @@
       "damagetype": "weapon",
       "magic": 3,
       "items": 16,
-      "extension": "spell_defence:[\"nature\",1]",
+      "extension": "spell_defence:[20]",
       "speed": 100,
       "stars": "5,10,20",
       "difficultyfactor": 8,
@@ -512,7 +512,7 @@
       "damagetype": "weapon",
       "magic": 6,
       "items": "18,17,16",
-      "extension": "mana_add:[\"nature\",1]",
+      "extension": "move_again:[]",
       "speed": 0,
       "stars": "5,10,20",
       "difficultyfactor": 15,
@@ -532,7 +532,7 @@
       "damage": 67,
       "damagetype": "weapon",
       "magic": 3,
-      "extension": "mana_add:[\"nature\",1]",
+      "extension": "mana_add:[\"fire\",1]",
       "speed": 0,
       "stars": "5,10,20",
       "difficultyfactor": 8,
@@ -570,7 +570,7 @@
       "areamax": 2,
       "lifemin": 60,
       "lifemax": 60,
-      "respawn": 60,
+      "respawn": 240,
       "chestlife": 0,
       "chestrespawn": 60,
       "chestdropset": 3,
@@ -588,7 +588,7 @@
       "areamax": 2,
       "lifemin": 60,
       "lifemax": 60,
-      "respawn": 60,
+      "respawn": 900,
       "chestlife": 0,
       "chestrespawn": 60,
       "chestdropset": 3,
@@ -615,7 +615,7 @@
       "areamax": 2,
       "lifemin": 60,
       "lifemax": 60,
-      "respawn": 60,
+      "respawn": 1800,
       "chestlife": 0,
       "chestrespawn": 60,
       "chestdropset": 3,
@@ -632,7 +632,7 @@
       "areamax": 2,
       "lifemin": 60,
       "lifemax": 60,
-      "respawn": 60,
+      "respawn": 1800,
       "chestlife": 0,
       "chestrespawn": 60,
       "chestdropset": 3,
@@ -650,7 +650,7 @@
       "areamax": 2,
       "lifemin": 60,
       "lifemax": 60,
-      "respawn": 60,
+      "respawn": 1800,
       "chestlife": 0,
       "chestrespawn": 60,
       "chestdropset": 3,
@@ -677,7 +677,7 @@
       "areamax": 2,
       "lifemin": 60,
       "lifemax": 60,
-      "respawn": 60,
+      "respawn": 7200,
       "chestlife": 0,
       "chestrespawn": 60,
       "chestdropset": 3,
@@ -695,7 +695,7 @@
       "areamax": 2,
       "lifemin": 60,
       "lifemax": 60,
-      "respawn": 60,
+      "respawn": 7200,
       "chestlife": 0,
       "chestrespawn": 60,
       "chestdropset": 3,
@@ -722,7 +722,7 @@
       "areamax": 2,
       "lifemin": 60,
       "lifemax": 60,
-      "respawn": 60,
+      "respawn": 7200,
       "chestlife": 0,
       "chestrespawn": 60,
       "chestdropset": 3,
@@ -738,7 +738,7 @@
       "areamax": 1,
       "lifemin": 60,
       "lifemax": 60,
-      "respawn": 60,
+      "respawn": 14400,
       "chestlife": 0,
       "chestrespawn": 60,
       "chestdropset": 3,
@@ -766,19 +766,6 @@
       "droppicture": "drop_magic",
       "setname": "default",
       "localekey": "tamed_pet"
-    },
-    {
-      "id": 31,
-      "name": "card_wp1",
-      "type": "weapon",
-      "slot": 2,
-      "picture": "card_w1",
-      "droppicture": "drop_sword",
-      "ext": "damage:[\"weapon\",1,9]",
-      "pricecrystal": 5,
-      "setname": "default",
-      "dropparam": "1,9",
-      "localekey": "card_wp1"
     },
     {
       "id": 1,
@@ -961,63 +948,27 @@
       "localekey": "card_al2"
     },
     {
-      "id": 9,
-      "name": "card_am1",
-      "type": "magic",
-      "slot": 8,
-      "picture": "card_am1",
-      "droppicture": "drop_ring",
-      "ext": "double_drop:20",
-      "setname": "house03",
-      "dropparam": "10,20",
-      "localekey": "card_am1"
-    },
-    {
-      "id": 10,
-      "name": "card_am1",
-      "type": "magic",
-      "slot": 8,
-      "picture": "card_am1",
-      "droppicture": "drop_ring",
-      "ext": "resurrect_pet:50",
-      "setname": "house03",
-      "dropparam": "30,70",
-      "localekey": "card_am1"
-    },
-    {
-      "id": 11,
-      "name": "card_am1",
-      "type": "magic",
-      "slot": 8,
-      "picture": "card_am1",
-      "droppicture": "drop_ring",
-      "ext": "resurrect_pet:50",
-      "setname": "house03",
-      "dropparam": "1,50",
-      "localekey": "card_am1"
-    },
-    {
       "id": 19,
-      "name": "card_am1",
+      "name": "card_am3",
       "type": "magic",
       "slot": 8,
       "picture": "card_am1",
       "droppicture": "drop_ring",
-      "ext": "mirror_damage:[20,50]",
-      "setname": "house03",
-      "dropparam": "20,50",
+      "ext": "mana_add:[\"fire\",1]",
+      "pricecrystal": 7,
+      "setname": "default",
       "localekey": "card_am1"
     },
     {
       "id": 20,
-      "name": "card_am1",
+      "name": "card_am2",
       "type": "magic",
       "slot": 8,
       "picture": "card_am1",
       "droppicture": "drop_ring",
-      "ext": "spell_defence:[\"nature\",1]",
-      "setname": "house03",
-      "dropparam": "1,5",
+      "ext": "spell_defence:[20]",
+      "pricecrystal": 5,
+      "setname": "default",
       "localekey": "card_am1"
     },
     {
@@ -1027,10 +978,9 @@
       "slot": 8,
       "picture": "card_am1",
       "droppicture": "drop_ring",
-      "ext": "mana_add:[\"fire\",1]",
-      "pricecrystal": 5,
+      "ext": "double_drop:20",
+      "pricecrystal": 4,
       "setname": "default",
-      "dropparam": "5,10",
       "localekey": "card_am1"
     },
     {
@@ -1043,7 +993,6 @@
       "ext": "damage:[\"fire\",3];mana:[\"fire\",4]",
       "price": 100,
       "setname": "default",
-      "dropparam": "5,10",
       "localekey": "card_s1_1"
     },
     {
@@ -1056,7 +1005,6 @@
       "ext": "damage:[\"water\",4];mana:[\"water\",5]",
       "price": 100,
       "setname": "default",
-      "dropparam": "5,10",
       "localekey": "card_s2_1"
     },
     {
@@ -1069,7 +1017,6 @@
       "ext": "damage:[\"water\",12];mana:[\"fire\",6,\"water\",8]",
       "price": 250,
       "setname": "default",
-      "dropparam": "5,10",
       "localekey": "card_s2_2"
     },
     {
@@ -1082,7 +1029,6 @@
       "ext": "damage:[\"nature\",8];mana:[\"nature\",7]",
       "price": 400,
       "setname": "house01",
-      "dropparam": "5,10",
       "localekey": "card_s3_1"
     },
     {
@@ -1095,7 +1041,6 @@
       "ext": "damage:[\"fire\",10];mana:[\"fire\",6]",
       "price": 1100,
       "setname": "house01",
-      "dropparam": "5,10",
       "localekey": "card_s1_2"
     },
     {
@@ -1108,7 +1053,6 @@
       "ext": "damage:[\"stone\",20];mana:[\"stone\",12]",
       "price": 1600,
       "setname": "house01",
-      "dropparam": "5,11",
       "localekey": "card_s4_1"
     },
     {
@@ -1121,7 +1065,6 @@
       "ext": "damage:[\"dark\",13];mana:[\"dark\",6]",
       "price": 2200,
       "setname": "house01",
-      "dropparam": "5,12",
       "localekey": "card_s5_1"
     }
   ],
@@ -1688,22 +1631,6 @@
       "russian": "Восстанавливает вызванного монстра после смерти"
     },
     {
-      "id": "double_drop",
-      "russian": "Шанс двойного дропа."
-    },
-    {
-      "id": "mirror_damage",
-      "russian": "Отражает часть повреждений на противника"
-    },
-    {
-      "id": "spell_defence",
-      "russian": "Защищает от заклинаний"
-    },
-    {
-      "id": "mana_add",
-      "russian": "Прибавляет каждый ход немного маны"
-    },
-    {
       "id": "hunter_tab",
       "russian": "Купить"
     },
@@ -1740,20 +1667,52 @@
       "russian": "Дом"
     },
     {
+      "id": "monster",
+      "russian": "Зверюга"
+    },
+    {
       "id": "damage",
-      "russian": "Атака"
+      "russian": "Наносит урон фишками"
     },
     {
       "id": "defence",
-      "russian": "Защита"
+      "russian": "Защищает от урона фишками."
     },
     {
       "id": "mana",
-      "russian": "Мана"
+      "russian": "Наносит магический урон, пробивает броню."
     },
     {
-      "id": "monster",
-      "russian": "Зверюга"
+      "id": "double_drop",
+      "russian": "Увеличивет вероятность выпадения награды на"
+    },
+    {
+      "id": "mirror_damage",
+      "russian": "Отражает на противника"
+    },
+    {
+      "id": "spell_defence",
+      "russian": "Защита от заклинаний"
+    },
+    {
+      "id": "mana_add",
+      "russian": "Каждый ход приносит магию"
+    },
+    {
+      "id": "increase_hp",
+      "russian": "Увеличивет здоровье на"
+    },
+    {
+      "id": "increase_dmg",
+      "russian": "Увеличивет урон фишками на "
+    },
+    {
+      "id": "dmg_on_turn",
+      "russian": "Каждый ход забирает себе"
+    },
+    {
+      "id": "move_again",
+      "russian": "Дополнительный ход, за ряд из 5 фишек."
     },
     {
       "id": "blue_bull",
@@ -1812,10 +1771,6 @@
       "russian": "Клинок Севера"
     },
     {
-      "id": "card_wp1",
-      "russian": "Премиум Клинок"
-    },
-    {
       "id": "card_wm",
       "russian": "Пылающий Посох"
     },
@@ -1861,7 +1816,7 @@
     },
     {
       "id": "card_am1",
-      "russian": "Огненный Блеск"
+      "russian": "Магическое Кольцо"
     },
     {
       "id": "card_s1_1",
@@ -1890,142 +1845,6 @@
     {
       "id": "card_s2_2",
       "russian": "Ядовитый Пар"
-    },
-    {
-      "id": "blue_bull.d",
-      "russian": "Увеличивет здоровье на 10%."
-    },
-    {
-      "id": "meowut.d",
-      "russian": "Каждый ход приносит 1 магию воды."
-    },
-    {
-      "id": "pikachu.d",
-      "russian": "Каждый ход приносит 1 магию огня."
-    },
-    {
-      "id": "squirtle.d",
-      "russian": "Каждый ход приносит 1 магию природы."
-    },
-    {
-      "id": "charmander.d",
-      "russian": "Увеличивет вероятность выпадения награды на 15%."
-    },
-    {
-      "id": "slowpoke.d",
-      "russian": "Увеличивет урон фишками на 10%."
-    },
-    {
-      "id": "bulbasaur.d",
-      "russian": "Отражает на противника 20% от урона."
-    },
-    {
-      "id": "pidgey.d",
-      "russian": "Забирает у противника 2 здоровья каждый ход."
-    },
-    {
-      "id": "ratata.d",
-      "russian": "Увеличивет защиту от магии на 10%."
-    },
-    {
-      "id": "zubat.d",
-      "russian": "Дополнительный ход, за ряд из 5 фишек."
-    },
-    {
-      "id": "card_w1.d",
-      "russian": "Наносит урон фишками холодного оружия."
-    },
-    {
-      "id": "card_w2.d",
-      "russian": "Наносит урон фишками холодного оружия."
-    },
-    {
-      "id": "card_w3.d",
-      "russian": "Наносит урон фишками холодного оружия."
-    },
-    {
-      "id": "card_w4.d",
-      "russian": "Наносит урон фишками холодного оружия."
-    },
-    {
-      "id": "card_wp1.d",
-      "russian": "Наносит урон фишками холодного оружия."
-    },
-    {
-      "id": "card_wm.d",
-      "russian": "Наносит урон фишками магии."
-    },
-    {
-      "id": "card_ah1.d",
-      "russian": "Защищает от урона фишками."
-    },
-    {
-      "id": "card_ah2.d",
-      "russian": "Защищает от урона фишками."
-    },
-    {
-      "id": "card_ab1.d",
-      "russian": "Защищает от урона фишками."
-    },
-    {
-      "id": "card_ab2.d",
-      "russian": "Защищает от урона фишками."
-    },
-    {
-      "id": "card_ab3.d",
-      "russian": "Защищает от урона фишками."
-    },
-    {
-      "id": "card_ab4.d",
-      "russian": "Защищает от урона фишками."
-    },
-    {
-      "id": "card_al1.d",
-      "russian": "Защищает от урона фишками."
-    },
-    {
-      "id": "card_al2.d",
-      "russian": "Защищает от урона фишками."
-    },
-    {
-      "id": "card_ag1.d",
-      "russian": "Защищает от урона фишками."
-    },
-    {
-      "id": "card_ag2.d",
-      "russian": "Защищает от урона фишками."
-    },
-    {
-      "id": "card_am1.d",
-      "russian": "Каждый ход приносит 1 магию огня."
-    },
-    {
-      "id": "card_s1_1.d",
-      "russian": "Наносит магический урон, пробивает броню."
-    },
-    {
-      "id": "card_s2_1.d",
-      "russian": "Наносит магический урон, пробивает броню."
-    },
-    {
-      "id": "card_s3_1.d",
-      "russian": "Наносит магический урон, пробивает броню."
-    },
-    {
-      "id": "card_s4_1.d",
-      "russian": "Наносит магический урон, пробивает броню."
-    },
-    {
-      "id": "card_s5_1.d",
-      "russian": "Наносит магический урон, пробивает броню."
-    },
-    {
-      "id": "card_s1_2.d",
-      "russian": "Наносит магический урон, пробивает броню."
-    },
-    {
-      "id": "card_s2_2.d",
-      "russian": "Наносит магический урон, пробивает броню."
     }
   ]
 }

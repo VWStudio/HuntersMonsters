@@ -56,11 +56,7 @@ public class SpellDefenceExt extends Extension
 
     override public function getDescription() : String
     {
-        var description : String = super.getDescription() + ", "
-                                   +", "+_percent;
-//                                   +_type+", "+_percent;
-
-
+        var description : String = super.getDescription() + " " +_percent + "%.";
         return description;
     }
 

@@ -30,7 +30,7 @@ public class ItemView extends AbstractView
         return new ItemView(item);
     }
 
-    protected var _item : Item;
+    public var _item : Item;
     public function get item() : Item
     {
         return _item;
@@ -208,7 +208,7 @@ public class ItemView extends AbstractView
 
     public function demoMode() : void
     {
-        trace("DEMO:", JSON.stringify(_item.getExtensions()));
+        //trace("DEMO:", JSON.stringify(_item.getExtensions()));
         if (_item.isSpell() || _item.getDamage())
         {
             _damage.text = (item.getExtension(DamageExt.TYPE) as DamageExt).getRange();

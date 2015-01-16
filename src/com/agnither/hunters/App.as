@@ -126,7 +126,7 @@ public class App extends Sprite {
 
         _refs = new CommonRefs(_resources);
         var tex : Texture = _refs.gui.getTexture("camp");
-        trace("camp", tex.height);
+        //trace("camp", tex.height);
 
         _ui = new UI();
 

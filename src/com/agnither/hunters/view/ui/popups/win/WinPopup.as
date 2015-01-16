@@ -54,6 +54,10 @@ public class WinPopup extends Popup
         super();
     }
 
+    override public function get isDarkenessCloseAllowed() : Boolean
+    {
+        return false;
+    }
 
     override public function onRemove() : void
     {
@@ -76,6 +80,7 @@ public class WinPopup extends Popup
 
         _closeButton = _links["close_btn"];
         _closeButton.addEventListener(Event.TRIGGERED, handleClose);
+        _closeButton.visible = false;
 
         _playButton = _links["play_btn"];
         _playButton.addEventListener(Event.TRIGGERED, handleClose);
@@ -192,6 +197,7 @@ public class WinPopup extends Popup
                     }
                 }
             }
+            _drops.x = (-_drops.width/2-40)+150;
 
             Model.instance.progress.addExp(_monster.monster.expearned);
 

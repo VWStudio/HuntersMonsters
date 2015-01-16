@@ -13,7 +13,7 @@ public class Locale {
         if(lvo && lvo[current]) {
             return lvo[current];
         }
-        trace("NO LOCALE FOR: ", $id, current);
+        //trace("NO LOCALE FOR: ", $id, current);
         return $id;
 
 
