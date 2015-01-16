@@ -96,17 +96,17 @@
     },
     {
       "parameter": "weaponTabMax",
-      "value": "6",
+      "value": "7",
       "type": "int"
     },
     {
       "parameter": "armorTabMin",
-      "value": "4",
+      "value": "6",
       "type": "int"
     },
     {
       "parameter": "armorTabMax",
-      "value": "7",
+      "value": "12",
       "type": "int"
     },
     {
@@ -126,7 +126,7 @@
     },
     {
       "parameter": "spellTabMax",
-      "value": "3",
+      "value": "4",
       "type": "int"
     },
     {
@@ -153,7 +153,7 @@
     },
     {
       "parameter": "slot3DropChance",
-      "value": "15",
+      "value": "12",
       "type": "int",
       "info": "helmet slot"
     },
@@ -171,13 +171,13 @@
     },
     {
       "parameter": "slot7DropChance",
-      "value": "10",
+      "value": "11",
       "type": "int",
       "info": "boots slot"
     },
     {
       "parameter": "slot6DropChance",
-      "value": "10",
+      "value": "12",
       "type": "int",
       "info": "gloves slot"
     },
@@ -197,89 +197,97 @@
       "parameter": "slot2ParamMult",
       "value": 3,
       "type": "int",
-      "info": "slot param multiplier for drop"
+      "info": "weapon slot"
     },
     {
       "parameter": "slot3ParamMult",
       "value": 51,
       "type": "int",
-      "info": "slot param multiplier for drop"
+      "info": "helmet slot"
     },
     {
       "parameter": "slot4ParamMult",
       "value": 6,
       "type": "int",
-      "info": "slot param multiplier for drop"
+      "info": "body clop"
     },
     {
       "parameter": "slot5ParamMult",
-      "value": 165,
+      "value": "51",
       "type": "int",
-      "info": "slot param multiplier for drop"
+      "info": "pants slot"
     },
     {
       "parameter": "slot7ParamMult",
-      "value": 165,
+      "value": "51",
       "type": "int",
-      "info": "slot param multiplier for drop"
+      "info": "boots slot"
     },
     {
       "parameter": "slot6ParamMult",
-      "value": 165,
+      "value": "51",
       "type": "int",
-      "info": "slot param multiplier for drop"
+      "info": "gloves slot"
     },
     {
       "parameter": "slot8ParamMult",
       "value": 3,
       "type": "int",
-      "info": "slot param multiplier for drop"
+      "info": "rings slot"
     },
     {
       "parameter": "slot9ParamMult",
       "value": 3,
       "type": "int",
-      "info": "slot param multiplier for drop"
+      "info": "spell slot"
     },
     {
       "parameter": "slot2PriceMult",
       "value": 1.5,
-      "type": "int"
+      "type": "int",
+      "info": "weapon slot"
     },
     {
       "parameter": "slot3PriceMult",
       "value": 15,
-      "type": "int"
+      "type": "int",
+      "info": "helmet slot"
     },
     {
       "parameter": "slot4PriceMult",
       "value": 2.4000000000000004,
-      "type": "int"
+      "type": "int",
+      "info": "body clop"
     },
     {
       "parameter": "slot5PriceMult",
-      "value": 3,
-      "type": "int"
+      "value": "21",
+      "type": "int",
+      "info": "pants slot"
     },
     {
       "parameter": "slot7PriceMult",
-      "value": 36,
-      "type": "int"
+      "value": "21",
+      "type": "int",
+      "info": "boots slot"
     },
     {
       "parameter": "slot6PriceMult",
-      "value": 36,
-      "type": "int"
+      "value": "21",
+      "type": "int",
+      "info": "gloves slot"
     },
     {
       "parameter": "slot8PriceMult",
       "value": 3,
-      "type": "int"
+      "type": "int",
+      "info": "rings slot"
     },
     {
       "parameter": "slot9PriceMult",
       "value": 3,
-      "type": "int"
+      "type": "int",
+      "info": "spell slot"
     },
     {
       "parameter": "double_dropPriceMult",
@@ -786,22 +794,10 @@
       "slot": 2,
       "picture": "card_w2",
       "droppicture": "drop_sword",
-      "ext": "damage:[\"weapon\",8,24]",
-      "setname": "house00",
-      "dropparam": "8,24",
+      "ext": "damage:[\"weapon\",5,16]",
+      "setname": "default",
+      "dropparam": "5,16",
       "localekey": "card_w2"
-    },
-    {
-      "id": 3,
-      "name": "card_wm",
-      "type": "weapon",
-      "slot": 2,
-      "picture": "card_wm",
-      "droppicture": "drop_staff",
-      "ext": "damage:[\"fire\",20,35]",
-      "setname": "house01",
-      "dropparam": "20,35",
-      "localekey": "card_wm"
     },
     {
       "id": 24,
@@ -810,9 +806,9 @@
       "slot": 2,
       "picture": "card_w3",
       "droppicture": "drop_sword",
-      "ext": "damage:[\"weapon\",23,38]",
+      "ext": "damage:[\"weapon\",8,25]",
       "setname": "house00",
-      "dropparam": "23,38",
+      "dropparam": "8,25",
       "localekey": "card_w3"
     },
     {
@@ -822,10 +818,22 @@
       "slot": 2,
       "picture": "card_w4",
       "droppicture": "drop_sword",
-      "ext": "damage:[\"weapon\",36,68]",
-      "setname": "house02",
-      "dropparam": "36,68",
+      "ext": "damage:[\"weapon\",23,68]",
+      "setname": "house01",
+      "dropparam": "23,68",
       "localekey": "card_w4"
+    },
+    {
+      "id": 3,
+      "name": "card_wm",
+      "type": "weapon",
+      "slot": 2,
+      "picture": "card_wm",
+      "droppicture": "drop_staff",
+      "ext": "damage:[\"fire\",8,25]",
+      "setname": "house00",
+      "dropparam": "8,25",
+      "localekey": "card_wm"
     },
     {
       "id": 7,
@@ -834,9 +842,9 @@
       "slot": 3,
       "picture": "card_ah1",
       "droppicture": "drop_shield",
-      "ext": "defence:[1,9]",
-      "setname": "house00",
-      "dropparam": "1,9",
+      "ext": "defence:[1,5]",
+      "setname": "default",
+      "dropparam": "1,5",
       "localekey": "card_ah1"
     },
     {
@@ -846,9 +854,9 @@
       "slot": 3,
       "picture": "card_ah2",
       "droppicture": "drop_shield",
-      "ext": "defence:[8,16]",
-      "setname": "house02",
-      "dropparam": "8,16",
+      "ext": "defence:[5,16]",
+      "setname": "house01",
+      "dropparam": "5,16",
       "localekey": "card_ah2"
     },
     {
@@ -858,9 +866,9 @@
       "slot": 4,
       "picture": "card_ab1",
       "droppicture": "drop_body",
-      "ext": "defence:[1,6]",
+      "ext": "defence:[1,5]",
       "setname": "default",
-      "dropparam": "1,6",
+      "dropparam": "1,5",
       "localekey": "card_ab1"
     },
     {
@@ -870,9 +878,9 @@
       "slot": 4,
       "picture": "card_ab2",
       "droppicture": "drop_body",
-      "ext": "defence:[4,27]",
-      "setname": "house00",
-      "dropparam": "4,27",
+      "ext": "defence:[6,18]",
+      "setname": "default",
+      "dropparam": "6,18",
       "localekey": "card_ab2"
     },
     {
@@ -882,9 +890,9 @@
       "slot": 4,
       "picture": "card_ab3",
       "droppicture": "drop_body",
-      "ext": "defence:[25,48]",
-      "setname": "house02",
-      "dropparam": "25,48",
+      "ext": "defence:[18,27]",
+      "setname": "house01",
+      "dropparam": "18,27",
       "localekey": "card_ab3"
     },
     {
@@ -894,9 +902,9 @@
       "slot": 4,
       "picture": "card_ab4",
       "droppicture": "drop_body",
-      "ext": "defence:[46,71]",
+      "ext": "defence:[26,50]",
       "setname": "house02",
-      "dropparam": "46,71",
+      "dropparam": "26,50",
       "localekey": "card_ab4"
     },
     {
@@ -907,7 +915,7 @@
       "picture": "card_ag1",
       "droppicture": "drop_gloves",
       "ext": "defence:[1,5]",
-      "setname": "house00",
+      "setname": "default",
       "dropparam": "1,5",
       "localekey": "card_ag1"
     },
@@ -918,9 +926,9 @@
       "slot": 6,
       "picture": "card_ag2",
       "droppicture": "drop_gloves",
-      "ext": "defence:[4,9]",
-      "setname": "house02",
-      "dropparam": "4,9",
+      "ext": "defence:[5,16]",
+      "setname": "house01",
+      "dropparam": "5,16",
       "localekey": "card_ag2"
     },
     {
@@ -942,9 +950,9 @@
       "slot": 7,
       "picture": "card_al2",
       "droppicture": "drop_boots",
-      "ext": "defence:[4,9]",
-      "setname": "house02",
-      "dropparam": "4,9",
+      "ext": "defence:[5,16]",
+      "setname": "house01",
+      "dropparam": "5,16",
       "localekey": "card_al2"
     },
     {
@@ -968,7 +976,7 @@
       "droppicture": "drop_ring",
       "ext": "spell_defence:[20]",
       "pricecrystal": 5,
-      "setname": "default",
+      "setname": "house00",
       "localekey": "card_am1"
     },
     {
@@ -1028,7 +1036,7 @@
       "droppicture": "drop_magic",
       "ext": "damage:[\"nature\",8];mana:[\"nature\",7]",
       "price": 400,
-      "setname": "house01",
+      "setname": "house00",
       "localekey": "card_s3_1"
     },
     {
@@ -1040,7 +1048,7 @@
       "droppicture": "drop_magic",
       "ext": "damage:[\"fire\",10];mana:[\"fire\",6]",
       "price": 1100,
-      "setname": "house01",
+      "setname": "house00",
       "localekey": "card_s1_2"
     },
     {
@@ -1052,7 +1060,7 @@
       "droppicture": "drop_magic",
       "ext": "damage:[\"stone\",20];mana:[\"stone\",12]",
       "price": 1600,
-      "setname": "house01",
+      "setname": "house00",
       "localekey": "card_s4_1"
     },
     {
@@ -1073,121 +1081,121 @@
       "id": 1,
       "type": "monster",
       "code": "blue_bull",
-      "amount": 2
+      "amount": 1
     },
     {
       "id": 2,
       "type": "monster",
       "code": "meowut",
-      "amount": 2
+      "amount": 1
     },
     {
       "id": 3,
       "type": "monster",
       "code": "pikachu",
-      "amount": 2
+      "amount": 1
     },
     {
       "id": 4,
       "type": "monster",
       "code": "squirtle",
-      "amount": 2
+      "amount": 1
     },
     {
       "id": 5,
       "type": "monster",
       "code": "charmander",
-      "amount": 2
+      "amount": 1
     },
     {
       "id": 6,
       "type": "monster",
       "code": "slowpoke",
-      "amount": 2
+      "amount": 1
     },
     {
       "id": 7,
       "type": "monster",
       "code": "bulbasaur",
-      "amount": 2
+      "amount": 1
     },
     {
       "id": 8,
       "type": "monster",
       "code": "pidgey",
-      "amount": 2
+      "amount": 1
     },
     {
       "id": 9,
       "type": "monster",
       "code": "ratata",
-      "amount": 2
+      "amount": 1
     },
     {
       "id": 10,
       "type": "monster",
       "code": "zubat",
-      "amount": 2
+      "amount": 1
     },
     {
       "id": 11,
       "type": "money",
       "code": "gold",
-      "amount": 120
+      "amount": 60
     },
     {
       "id": 12,
       "type": "money",
       "code": "gold",
-      "amount": 250
+      "amount": 116
     },
     {
       "id": 13,
       "type": "money",
       "code": "gold",
-      "amount": 400
+      "amount": 306
     },
     {
       "id": 14,
       "type": "money",
       "code": "gold",
-      "amount": 800
+      "amount": 552
     },
     {
       "id": 15,
       "type": "money",
       "code": "gold",
-      "amount": 1300
+      "amount": 942
     },
     {
       "id": 16,
       "type": "money",
       "code": "gold",
-      "amount": 2000
+      "amount": 1506
     },
     {
       "id": 17,
       "type": "money",
       "code": "gold",
-      "amount": 3000
+      "amount": 2262
     },
     {
       "id": 18,
       "type": "money",
       "code": "gold",
-      "amount": 4200
+      "amount": 3162
     },
     {
       "id": 19,
       "type": "money",
       "code": "gold",
-      "amount": 6000
+      "amount": 4428
     },
     {
       "id": 20,
       "type": "money",
       "code": "gold",
-      "amount": 12000
+      "amount": 8862
     }
   ],
   "player_items": [
@@ -1318,27 +1326,27 @@
     },
     {
       "id": 2,
-      "exptolevel": 220,
+      "exptolevel": 300,
       "basehp": 40
     },
     {
       "id": 3,
-      "exptolevel": 1000,
+      "exptolevel": 1220,
       "basehp": 50
     },
     {
       "id": 4,
-      "exptolevel": 3300,
+      "exptolevel": 4300,
       "basehp": 60
     },
     {
       "id": 5,
-      "exptolevel": 9000,
+      "exptolevel": 12300,
       "basehp": 70
     },
     {
       "id": 6,
-      "exptolevel": 20000,
+      "exptolevel": 29000,
       "basehp": 80
     }
   ],

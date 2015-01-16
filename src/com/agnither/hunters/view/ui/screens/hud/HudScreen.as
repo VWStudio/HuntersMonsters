@@ -145,7 +145,18 @@ public class HudScreen extends Screen {
     override public function update() : void {
         var progress :  Progress = Model.instance.progress;
         _playerLevel.text = progress.level.toString() + " ур";
-        progress.fullExp.toString() + "/" +LevelVO.DICT[progress.level.toString()].exp;
+
+
+        var exp:Number = progress.fullExp;
+        var expNext:Number = LevelVO.DICT[String(1)].exp;
+        if (progress.level > 1)
+        {
+            exp = progress.fullExp - LevelVO.DICT[String(progress.level-1)].exp;
+            expNext = LevelVO.DICT[progress.level.toString()].exp - LevelVO.DICT[String(progress.level-1)].exp;
+        }
+
+        //progress.fullExp.toString() + "/" +LevelVO.DICT[progress.level.toString()].exp;
+
 
         _playerLeague.text = LeagueVO.DICT[progress.league.toString()].name;
         _playerRating.text = progress.rating.toString();
@@ -158,8 +169,11 @@ public class HudScreen extends Screen {
         var lvvo : LevelVO = LevelVO.DICT[progress.level.toString()];
 
         if(progress.fullExp < lvvo.exp) {
-            _playerExp.text = progress.fullExp.toString() + "/" +LevelVO.DICT[progress.level.toString()].exp;
-            _expProgress.scaleX = progress.fullExp / LevelVO.DICT[progress.level.toString()].exp;
+            //_playerExp.text = progress.fullExp.toString() + "/" +LevelVO.DICT[progress.level.toString()].exp;
+            //_expProgress.scaleX = progress.fullExp / LevelVO.DICT[progress.level.toString()].exp;
+
+            _playerExp.text = exp + "/" + expNext;
+            _expProgress.scaleX = exp / expNext;
         } else {
             progress.addExp(0);
             progress.saveProgress();

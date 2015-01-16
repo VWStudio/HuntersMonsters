@@ -66,7 +66,7 @@ public class TamePriceRow extends AbstractView {
         switch (price.type) {
             case "monster":
                 //removePets();
-                removeItems();
+                //removeItems();
                 break;
             case "money":
                 Model.instance.progress.gold -= price.amount;

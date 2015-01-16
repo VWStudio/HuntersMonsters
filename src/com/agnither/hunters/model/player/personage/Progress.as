@@ -209,7 +209,7 @@ public class Progress extends EventDispatcher {
         obj.magic = settings.playerInitialMagic;
 
         obj.gold = settings.playerInitialGold;
-        obj.crystalls = 100;
+        obj.crystalls = 50;
 
         obj.maxSummon = settings.playerInitialSummonMax;
 //        obj.skillPoints = 10;
