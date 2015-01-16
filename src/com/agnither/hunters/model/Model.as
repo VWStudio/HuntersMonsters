@@ -135,6 +135,7 @@ public class Model
 
         MonsterAreaVO.NAMES_LIST = MonsterAreaVO.NAMES_LIST.sort(sortNames);
 
+        deliverTime = Model.instance.progress.shopTimer + SettingsVO.DICT["shopDeliverTimeMin"] * 60 * 1000 - new Date().valueOf();
         App.instance.tick.addTickCallback(territoriesTick);
     }
 
@@ -227,6 +228,8 @@ public class Model
         if(deliverTime <= 0) {
             deliverTime = SettingsVO.DICT["shopDeliverTimeMin"] * 60 * 1000;
             shop.updateGoods();
+            Model.instance.progress.shopTimer = new Date().valueOf();
+            Model.instance.progress.saveProgress();
             coreDispatch(Shop.NEW_DELIVER);
         }
         else

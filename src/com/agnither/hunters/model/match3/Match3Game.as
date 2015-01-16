@@ -186,7 +186,7 @@ public class Match3Game extends EventDispatcher
             if (_currentPlayer.dealDmgOnMove > 0)
             {
                 var anEnemy : Player = (_currentPlayer is LocalPlayer) ? enemy : _player;
-                anEnemy.hero.hit(_currentPlayer.dealDmgOnMove);
+                anEnemy.hero.hit(_currentPlayer.dealDmgOnMove, true);
                 _currentPlayer.hero.heal(_currentPlayer.dealDmgOnMove);
             }
         }

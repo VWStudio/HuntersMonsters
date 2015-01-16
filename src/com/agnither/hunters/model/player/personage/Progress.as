@@ -58,6 +58,7 @@ public class Progress extends EventDispatcher {
     public var campPosition : Object;
     public static const SETS_UPDATED : String = "Progress.SETS_UPDATED";
     public var monsterTimers : Object = {};
+    public var shopTimer : Number = 0;
     public var monsterAmounts : Object = {};
 
     public function Progress() {
@@ -118,6 +119,9 @@ public class Progress extends EventDispatcher {
         crystalls = progressObj.crystalls;
         maxSummon = progressObj.maxSummon;
         monsterTimers = progressObj.monsterTimers ? progressObj.monsterTimers : {};
+
+        shopTimer = progressObj.shopTimer ? progressObj.shopTimer : 0;
+
         monsterAmounts = progressObj.monsterAmounts ? progressObj.monsterAmounts : {};
         skillPoints = progressObj.skillPoints;
         skills = progressObj.skills ? progressObj.skills : {};
