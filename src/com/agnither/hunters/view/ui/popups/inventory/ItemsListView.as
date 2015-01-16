@@ -118,8 +118,8 @@ public class ItemsListView extends AbstractView {
             Mouse.cursor = MouseCursor.BUTTON;
             if(touch.phase == TouchPhase.BEGAN) {
                 //if (item.item.isPet()) coreDispatch(LocalPlayer.PET_SELECTED, item.item);
-                coreDispatch(LocalPlayer.ITEM_SELECTED, item.item);
                 item.update();
+                coreDispatch(LocalPlayer.ITEM_SELECTED, item.item);
             }
             else if(touch.phase == TouchPhase.HOVER)
             {

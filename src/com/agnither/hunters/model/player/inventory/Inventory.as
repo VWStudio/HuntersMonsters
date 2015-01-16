@@ -188,6 +188,14 @@ public class Inventory extends EventDispatcher
             var itemsbytype : Array = _itemsByType[key];
             arr = arr.concat(itemsbytype);
         }
+        var len : int = arr.length-1;
+        for (var i : int = len; i >= 0; i--)
+        {
+            var itemUniqID : String = arr[i];
+            if(_inventoryItems.indexOf(itemUniqID) >= 0) {
+                arr.splice(i, 1);
+            }
+        }
 
         arr = arr.sort(sortInventory);
         return arr;
@@ -200,6 +208,15 @@ public class Inventory extends EventDispatcher
             if(key != ItemVO.TYPE_SPELL) continue;
             var itemsbytype : Array = _itemsByType[key];
             arr = arr.concat(itemsbytype);
+        }
+
+        var len : int = arr.length-1;
+        for (var i : int = len; i >= 0; i--)
+        {
+            var itemUniqID : String = arr[i];
+            if(_inventoryItems.indexOf(itemUniqID) >= 0) {
+                arr.splice(i, 1);
+            }
         }
 
         arr = arr.sort(sortInventory);

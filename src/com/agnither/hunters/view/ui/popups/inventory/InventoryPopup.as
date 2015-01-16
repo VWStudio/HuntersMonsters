@@ -3,11 +3,13 @@
  */
 package com.agnither.hunters.view.ui.popups.inventory
 {
+import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.modules.extensions.DamageExt;
 import com.agnither.hunters.model.modules.extensions.DefenceExt;
 import com.agnither.hunters.model.modules.extensions.ManaExt;
 import com.agnither.hunters.model.modules.items.ItemVO;
 import com.agnither.hunters.model.modules.locale.Locale;
+import com.agnither.hunters.model.player.inventory.Inventory;
 import com.agnither.hunters.view.ui.UI;
 import com.agnither.hunters.view.ui.common.Scroll;
 import com.agnither.hunters.view.ui.common.TabView;
@@ -46,6 +48,7 @@ public class InventoryPopup extends Popup
 //    private var _tooltip : Tooltip;
     private var _invTitle : TextField;
     private var _itemHeight : Number = 60;
+    private var _currentTab : TabView;
 
     public function InventoryPopup()
     {
@@ -113,6 +116,13 @@ public class InventoryPopup extends Popup
 //        coreAddListener(ItemView.HOVER, onItemHover);
 //        coreAddListener(ItemView.HOVER_OUT, onItemHoverOut);
         //coreDispatch(ItemView.HOVER, item.item);
+
+        Model.instance.player.inventory.addEventListener(Inventory.UPDATE, handleUpdate);
+    }
+
+    private function handleUpdate(event : Event) : void
+    {
+        update()
     }
 
 //    private function onItemHoverOut() : void
@@ -162,7 +172,11 @@ public class InventoryPopup extends Popup
 
     override public function update() : void
     {
-        _itemsTab.dispatchEventWith(TabView.TAB_CLICK);
+        if(!_currentTab) {
+            _itemsTab.dispatchEventWith(TabView.TAB_CLICK);
+        } else {
+            _currentTab.dispatchEventWith(TabView.TAB_CLICK);
+        }
         _inventoryView.update();
 //        handleSelectTab();
 //        _items.showType(ItemTypeVO.weapon);
@@ -179,6 +193,8 @@ public class InventoryPopup extends Popup
         switch (e.currentTarget)
         {
             case _itemsTab:
+                _currentTab = _itemsTab;
+
                 _items.showThings();
 //                _items.showType(ItemVO.TYPE_WEAPON);
 //                _items.showType(ItemTypeVO.weapon);
@@ -187,6 +203,7 @@ public class InventoryPopup extends Popup
 
                 break;
             case _spellTab:
+                _currentTab = _spellTab;
 //            case _armorTab:
                 _items.showSpells();
 //                _items.showType(ItemVO.TYPE_ARMOR);
@@ -195,6 +212,7 @@ public class InventoryPopup extends Popup
                 _scroll.setScrollParams(_items.height + 10, 460);
                 break;
             case _petsTab:
+                _currentTab = _petsTab;
                 _items.showPets();
 //                _items.showType(ItemVO.TYPE_MAGIC);
 //                _items.showType(ItemTypeVO.magic);

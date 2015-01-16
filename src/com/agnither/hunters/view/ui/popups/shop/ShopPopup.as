@@ -487,6 +487,17 @@ public class ShopPopup extends Popup
         items = items.concat(_inventory.getItemsByType(ItemVO.TYPE_MAGIC));
         items = items.concat(_inventory.getItemsByType(ItemVO.TYPE_PET));
 
+
+        var len : int = items.length-1;
+        for (var i : int = len; i >= 0; i--)
+        {
+            var itemUniqID : String = items[i];
+            if(Model.instance.player.inventory.inventoryItems.indexOf(itemUniqID) >= 0) {
+                items.splice(i, 1);
+            }
+        }
+
+
         items = items.sort(Model.instance.player.inventory.sortInventory);
 
         _container.removeChildren();
