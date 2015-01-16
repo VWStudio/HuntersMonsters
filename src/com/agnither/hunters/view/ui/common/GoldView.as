@@ -83,7 +83,7 @@ public class GoldView extends AbstractView {
     {
         //trace("onItemHoverOut");
         this.visible = false;
-        item = null;
+//        item = null;
 //        this.visible = price > 0 && touched;
 
 
@@ -108,30 +108,35 @@ public class GoldView extends AbstractView {
         }
         else
         {
-            if(item.crystallPrice)
-            {
-                if (Model.instance.progress.crystalls < item.crystallPrice || item.crystallPrice <= 0)
+            if(item) {
+
+                if(item.crystallPrice)
                 {
+                    if (Model.instance.progress.crystalls < item.crystallPrice || item.crystallPrice <= 0)
+                    {
+                        coreDispatch(ItemView.HOVER_OUT);
+//                        item = null;
+                        return;
+                    }
+
+                    Model.instance.progress.crystalls -= item.crystallPrice;
+                    Model.instance.addPlayerItem(item);
+                    if (!item.isSpell()) Model.instance.shop.removeItem(item);
+                    coreDispatch(ShopPopup.ITEM_BOUGHT, item);
+                    Model.instance.progress.saveProgress();
+
                     coreDispatch(ItemView.HOVER_OUT);
-                    item = null;
+//                    item = null;
                     return;
                 }
+            } else {
 
-                Model.instance.progress.crystalls -= item.crystallPrice;
-                Model.instance.addPlayerItem(item);
-                if (!item.isSpell()) Model.instance.shop.removeItem(item);
-                coreDispatch(ShopPopup.ITEM_BOUGHT, item);
-                Model.instance.progress.saveProgress();
-
-                coreDispatch(ItemView.HOVER_OUT);
-                item = null;
-                return;
             }
 
             if (Model.instance.progress.gold < price || price <= 0)
             {
                 coreDispatch(ItemView.HOVER_OUT);
-                item = null;
+//                item = null;
                 return;
             }
 
@@ -142,7 +147,7 @@ public class GoldView extends AbstractView {
             Model.instance.progress.saveProgress();
         }
         coreDispatch(ItemView.HOVER_OUT);
-        item = null;
+//        item = null;
     }
 
     override public function update() : void {
@@ -264,7 +269,8 @@ public class GoldView extends AbstractView {
         if(_itemView) {
             _itemView.removeEventListener(TouchEvent.TOUCH, onTouchItem);
         }
-        itemView = $touchItem;
+        isNew = _itemView != $touchItem || item != $item;
+        _itemView = $touchItem;
         item = $item;
         _itemView.addEventListener(TouchEvent.TOUCH, onTouchItem);
 
@@ -296,16 +302,16 @@ public class GoldView extends AbstractView {
 //        return _itemView;
 //    }
 
-    public function set itemView(value : AbstractView) : void
-    {
-        if(_itemView == value) {
-            return
-        }
-        else
-        {
-            _itemView = value;
-            isNew = true;
-        }
-    }
+//    public function set itemView(value : AbstractView) : void
+//    {
+//        if(_itemView == value) {
+//            return
+//        }
+//        else
+//        {
+//            _itemView = value;
+//            isNew = true;
+//        }
+//    }
 }
 }

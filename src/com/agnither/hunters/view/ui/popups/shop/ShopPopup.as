@@ -68,7 +68,7 @@ public class ShopPopup extends Popup
     private var _deliverTime : TextField;
     private var _speedup_btn : ButtonContainer;
     private var _speedup_icon : Image;
-    private var _sellerItems : Array;
+//    private var _sellerItems : Array;
     public static const ITEM_BOUGHT : String = "ShopPopup.ITEM_BOUGHT";
 
     public function ShopPopup()
@@ -183,12 +183,14 @@ public class ShopPopup extends Popup
 
     private function onBought($item : Item) : void
     {
-        var index : int = _sellerItems.indexOf($item);
-        if(index >= 0) {
-            _sellerItems.splice(index, 1);
-            update();
-        }
+//        _sellerItems = null;
+//        var index : int = _sellerItems.indexOf($item);
+//        if(index >= 0) {
+//            _sellerItems.splice(index, 1);
+//            update();
+//        }
 
+        update();
     }
 
     private function onSpeedup(event : Event) : void
@@ -202,7 +204,7 @@ public class ShopPopup extends Popup
 
     private function onNewDeliver() : void
     {
-        _sellerItems = null;
+//        _sellerItems = null;
         if (!isActive)
         {
             return;
@@ -346,9 +348,9 @@ public class ShopPopup extends Popup
 //    private function showSellerItems($type : String) : void
     {
 
-        if(!_sellerItems) {
-            _sellerItems = getItemsInShop();
-        }
+//        if(!_sellerItems) {
+            var sellerItems  : Array = getItemsInShop();
+//        }
 
 //        trace(JSON.stringify(items));
 
@@ -356,9 +358,9 @@ public class ShopPopup extends Popup
         _container.removeChildren();
         var pt :Point;
         var i : int;
-        for (i = 0; i < _sellerItems.length; i++)
+        for (i = 0; i < sellerItems.length; i++)
         {
-            var tile : BuyItemView = new BuyItemView(_sellerItems[i]);
+            var tile : BuyItemView = new BuyItemView(sellerItems[i]);
             if(!pt) {
                 pt = new Point(tile.width + 5, tile.height + 5);
             }
@@ -375,46 +377,8 @@ public class ShopPopup extends Popup
 
     private function getItemsInShop() : Array
     {
-        var items : Array = Model.instance.shop.getItemsByType(ItemVO.TYPE_WEAPON);
-        items = items.concat(Model.instance.shop.getItemsByType(ItemVO.TYPE_ARMOR));
-        items = items.concat(Model.instance.shop.getItemsByType(ItemVO.TYPE_MAGIC));
-        items = items.concat(Model.instance.shop.getItemsByType(ItemVO.TYPE_SPELL));
-//        var items : Array = Model.instance.shop.getItemsByType($type);
 
-        var crystallItems : Array = [];
-        var i : int;
-        for (i = 0; i < items.length; i++)
-        {
-            var item : Item = items[i];
-            if(item.crystallPrice > 0) {
-                crystallItems.push(item);
-            }
-        }
-
-        var cMin : int = SettingsVO.DICT["shopCrystallItems"][0];
-        var cMax : int = SettingsVO.DICT["shopCrystallItems"][1];
-        if(crystallItems.length > cMax) {
-            while(crystallItems.length > cMax) {
-                var index : int = int(Math.random() * crystallItems.length);
-                var item1 : Item = crystallItems.splice(index, 1)[0];
-                items.splice(items.indexOf(item1), 1);
-            }
-        } else if(crystallItems.length < cMin) {
-            var counter : int = 0;
-            var cm : int = cMin + Math.round((cMax - cMin) * Math.random());
-            while(crystallItems.length < cm && counter < cm * 100) {
-                var randType : String = ([ItemVO.TYPE_WEAPON, ItemVO.TYPE_ARMOR, ItemVO.TYPE_MAGIC] as Array)[int(Math.random() * 3)];
-                var item2 : Item = Model.instance.items.generateRandomItem(randType);
-                if(item2 && item2.crystallPrice > 0) {
-                    crystallItems.push(item2);
-                    items.push(item2)
-                }
-                counter++;
-            }
-        }
-
-
-
+        var items : Array = Model.instance.shop.getShopItems();
         items = items.sort(sortItems);
         return items;
     }

@@ -78,7 +78,7 @@ public class HuntPopup extends Popup {
         if (touch) {
             Mouse.cursor = MouseCursor.BUTTON;
             if(touch.phase == TouchPhase.HOVER) {
-                coreDispatch(ItemView.HOVER, target, target.item);
+                coreDispatch(ItemView.HOVER, _monster, _monster.item);
             }
         } else {
             coreDispatch(ItemView.HOVER_OUT);

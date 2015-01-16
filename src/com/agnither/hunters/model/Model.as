@@ -97,7 +97,7 @@ public class Model
         items = new Items();
 
 //        traps = new Traps();
-        shop = new Shop();
+//        shop = new Shop();
 
 
         coreAddListener(Model.MONSTER_CATCHED, onMonsterCatched);
@@ -125,7 +125,7 @@ public class Model
     public function init() : void
     {
         progress = new Progress();
-
+        shop = new Shop();
         player = new LocalPlayer();
         player.init(progress);
 

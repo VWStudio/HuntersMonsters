@@ -161,7 +161,6 @@ public class Inventory extends EventDispatcher
             newItem.uniqueId = key;
             addItem(newItem);
         }
-
     }
 
     public function addItem($item : Item) : void

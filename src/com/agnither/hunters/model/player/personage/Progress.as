@@ -60,6 +60,7 @@ public class Progress extends EventDispatcher {
     public var monsterTimers : Object = {};
     public var shopTimer : Number = 0;
     public var monsterAmounts : Object = {};
+    public var shopItems : Object = {};
 
     public function Progress() {
         _data = SharedObject.getLocal("player");
@@ -123,6 +124,7 @@ public class Progress extends EventDispatcher {
         shopTimer = progressObj.shopTimer ? progressObj.shopTimer : 0;
 
         monsterAmounts = progressObj.monsterAmounts ? progressObj.monsterAmounts : {};
+        shopItems = progressObj.shopItems ? progressObj.shopItems : {};
         skillPoints = progressObj.skillPoints;
         skills = progressObj.skills ? progressObj.skills : {};
         sets = progressObj.sets ? progressObj.sets : [];
@@ -212,7 +214,8 @@ public class Progress extends EventDispatcher {
         obj.rating = settings.playerInitialRating;
         obj.magic = settings.playerInitialMagic;
 
-        obj.gold = settings.playerInitialGold;
+        obj.gold = 10000;
+//        obj.gold = settings.playerInitialGold;
         obj.crystalls = 50;
 
         obj.maxSummon = settings.playerInitialSummonMax;
@@ -227,7 +230,7 @@ public class Progress extends EventDispatcher {
         obj.houses = [];
         obj.unlockedLocations = settings.unlockedLocations;
         obj.campPosition = null;
-        //obj.tamedMonsters = ["blue_bull", "meowut","pikachu","squirtle","charmander","slowpoke","bulbasaur","pidgey","ratata","zubat"];
+        obj.tamedMonsters = ["blue_bull", "meowut","pikachu","squirtle","charmander","slowpoke","bulbasaur","pidgey","ratata","zubat"];
 
         obj.areaStars = {};
         obj.sets = ["default"];

@@ -43,6 +43,7 @@ public class MonsterInfo extends AbstractView {
     private var _back : Sprite;
 
     private var _hideInfo : Boolean;
+    private var _item : Item;
 
     public function MonsterInfo() {
         super();
@@ -131,6 +132,9 @@ public class MonsterInfo extends AbstractView {
         _icon.x = (_back.width - _icon.width) * 0.5;
         _icon.y = (_back.height - _icon.height) * 0.5;
 
+
+        _item = Item.create(ItemVO.createPetItemVO(_monster, true));
+        trace(JSON.stringify(_item));
     }
 
     public function set hideInfo($val : Boolean):void {
@@ -147,7 +151,7 @@ public class MonsterInfo extends AbstractView {
 
     public function get item() : Item
     {
-        return Item.create(ItemVO.createPetItemVO(_monster, true));
+        return _item;
     }
 }
 }
