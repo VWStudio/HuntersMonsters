@@ -38,7 +38,7 @@ public class GoldView extends AbstractView {
 //    public var touched : Boolean = false;
     public var price : Number;
     private var _goldIcon : Image;
-    private var _itemView : ItemView;
+    private var _itemView : AbstractView;
     private var _quad : Quad;
     private var _back : Image;
     private var isNew : Boolean = true;
@@ -257,15 +257,15 @@ public class GoldView extends AbstractView {
         }
     }
 
-    public function setData($item : ItemView, $price : Number, $isSell : Boolean, $isBattle : Boolean) : void
+    public function setData($touchItem : AbstractView, $item : Item, $price : Number, $isSell : Boolean, $isBattle : Boolean) : void
     {
         item = null;
 //        trace("SET DATA");
         if(_itemView) {
             _itemView.removeEventListener(TouchEvent.TOUCH, onTouchItem);
         }
-        itemView = $item;
-        item = $item.item;
+        itemView = $touchItem;
+        item = $item;
         _itemView.addEventListener(TouchEvent.TOUCH, onTouchItem);
 
         price = $price;
@@ -291,12 +291,12 @@ public class GoldView extends AbstractView {
         }
     }
 
-    public function get itemView() : ItemView
-    {
-        return _itemView;
-    }
+//    public function get itemView() : ItemView
+//    {
+//        return _itemView;
+//    }
 
-    public function set itemView(value : ItemView) : void
+    public function set itemView(value : AbstractView) : void
     {
         if(_itemView == value) {
             return

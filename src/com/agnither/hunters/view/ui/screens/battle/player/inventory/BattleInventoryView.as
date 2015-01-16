@@ -68,7 +68,7 @@ public class BattleInventoryView extends AbstractView {
         }
         var touchHover: Touch = e.getTouch(target, TouchPhase.HOVER);
         if(touchHover) {
-            coreDispatch(ItemView.HOVER, target, 0 ,false, true);
+            coreDispatch(ItemView.HOVER, target, target.item, 0 ,false, true);
         } else {
 //            coreDispatch(ItemView.HOVER_OUT)
         }

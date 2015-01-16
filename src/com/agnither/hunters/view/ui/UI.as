@@ -132,23 +132,23 @@ public class UI extends Screen {
 
 
 
-    private function onItemHover($item : Object, $price : Number = 0, $isSell : Boolean = false, $isBattle : Boolean = false) : void
+    private function onItemHover($touchItem : AbstractView, $item : Item, $price : Number = 0, $isSell : Boolean = false, $isBattle : Boolean = false) : void
     {
 //        if (!isActive)
 //        {
 //            return;
 //        }
-        if ($item)
+        if ($touchItem)
         {
-            var rect : Rectangle = $item.getBounds(this);
+            var rect : Rectangle = $touchItem.getBounds(this);
             _tooltip.x = rect.x;
             _tooltip.y = rect.y + rect.height;
             _tooltip.visible = true;
-            if($item is ItemView) {
-                _tooltip.setData($item as ItemView, $price, $isSell, $isBattle);
-            } else {
-                _tooltip.setData($item.item as ItemView, $price, $isSell, $isBattle);
-            }
+            _tooltip.setData($touchItem, $item, $price, $isSell, $isBattle);
+//            if($touchItem is ItemView) {
+//            } else {
+//                _tooltip.setData($touchItem.item as ItemView, $price, $isSell, $isBattle);
+//            }
 //            _tooltip.item = $item.item;
 //            _tooltip.price = $price;
 //            _tooltip.isSell= $isSell;

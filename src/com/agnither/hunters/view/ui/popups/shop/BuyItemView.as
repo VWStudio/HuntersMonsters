@@ -124,7 +124,7 @@ public class BuyItemView extends AbstractView
         if (touch && Model.instance.itemsTooltip.item != _itemView.item)
         {
 
-            coreDispatch(ItemView.HOVER, _itemView, _price, false);
+            coreDispatch(ItemView.HOVER, _itemView, _itemView.item, _price, false);
 //            coreDispatch(ShopPopup.SHOW_TOOLTIP, this);
         }
         else

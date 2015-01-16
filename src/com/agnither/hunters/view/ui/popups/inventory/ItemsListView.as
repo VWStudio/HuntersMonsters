@@ -123,7 +123,7 @@ public class ItemsListView extends AbstractView {
             }
             else if(touch.phase == TouchPhase.HOVER)
             {
-                coreDispatch(ItemView.HOVER, item);
+                coreDispatch(ItemView.HOVER, item, item.item);
             }
         } else {
 //            coreDispatch(ItemView.HOVER_OUT);
@@ -205,7 +205,7 @@ public class ItemsListView extends AbstractView {
 //            else
             if(touch.phase == TouchPhase.HOVER)
             {
-                coreDispatch(ItemView.HOVER, item);
+                coreDispatch(ItemView.HOVER, item, item.item);
             }
         } else {
             coreDispatch(ItemView.HOVER_OUT, item);

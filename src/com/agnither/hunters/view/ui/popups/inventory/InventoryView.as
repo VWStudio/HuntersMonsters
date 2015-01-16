@@ -89,7 +89,7 @@ public class InventoryView extends AbstractView {
                 coreDispatch(LocalPlayer.ITEM_SELECTED,  target.item);
             }
             if(touch.phase == TouchPhase.HOVER) {
-                coreDispatch(ItemView.HOVER, target);
+                coreDispatch(ItemView.HOVER, target, target.item);
             }
         } else {
             coreDispatch(ItemView.HOVER_OUT);

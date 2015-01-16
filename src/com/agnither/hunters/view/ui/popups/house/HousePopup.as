@@ -254,7 +254,7 @@ public class HousePopup extends Popup
             }
             else if (touch.phase == TouchPhase.HOVER)
             {
-                coreDispatch(ItemView.HOVER, item);
+                coreDispatch(ItemView.HOVER, item, item.item);
             }
         }
         else

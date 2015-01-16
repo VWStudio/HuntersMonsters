@@ -67,10 +67,24 @@ public class HuntPopup extends Popup {
         _stars3.visible = false;
 
         _monster = _links.monster;
-
+        _monster.addEventListener(TouchEvent.TOUCH, onTouchMonster);
+        _monster.touchable = true;
 
     }
-
+    private function onTouchMonster(e : TouchEvent) : void
+    {
+        var target: MonsterInfo = e.currentTarget as MonsterInfo;
+        var touch: Touch = e.getTouch(target);
+        if (touch) {
+            Mouse.cursor = MouseCursor.BUTTON;
+            if(touch.phase == TouchPhase.HOVER) {
+                coreDispatch(ItemView.HOVER, target, target.item);
+            }
+        } else {
+            coreDispatch(ItemView.HOVER_OUT);
+            Mouse.cursor = MouseCursor.AUTO;
+        }
+    }
     override protected function handleClose(event : Event) : void {
         Model.instance.currentMonsterPoint = null;
         coreDispatch(UI.HIDE_POPUP, NAME);

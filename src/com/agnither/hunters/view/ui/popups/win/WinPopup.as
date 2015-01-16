@@ -6,6 +6,7 @@ package com.agnither.hunters.view.ui.popups.win
 import com.agnither.hunters.model.Model;
 import com.agnither.hunters.model.modules.locale.Locale;
 import com.agnither.hunters.model.modules.monsters.MonsterVO;
+import com.agnither.hunters.model.player.LocalPlayer;
 import com.agnither.hunters.model.player.drop.DropList;
 import com.agnither.hunters.model.player.drop.DropSlot;
 import com.agnither.hunters.model.player.inventory.Item;
@@ -21,10 +22,15 @@ import com.cemaprjl.core.coreDispatch;
 import com.cemaprjl.core.coreRemoveListener;
 
 import flash.geom.Rectangle;
+import flash.ui.Mouse;
+import flash.ui.MouseCursor;
 
 import starling.display.Image;
 import starling.display.Sprite;
 import starling.events.Event;
+import starling.events.Touch;
+import starling.events.TouchEvent;
+import starling.events.TouchPhase;
 import starling.text.TextField;
 
 public class WinPopup extends Popup
@@ -97,6 +103,7 @@ public class WinPopup extends Popup
         _drops.y = 340;
 
         _monster = _links.monster;
+        _monster.touchable = true;
 
         _tooltip = new Sprite();
         addChild(_tooltip);
@@ -165,6 +172,7 @@ public class WinPopup extends Popup
         _monster.data = Model.instance.monster;
         _monster.hideInfo = true;
         _monster.update();
+        _monster.addEventListener(TouchEvent.TOUCH, onTouchMonster);
         _isClosed = false;
 
         _title.text = Locale.getString(_monster.data.id);
@@ -209,6 +217,21 @@ public class WinPopup extends Popup
         }
 
 
+    }
+
+    private function onTouchMonster(e : TouchEvent) : void
+    {
+        var target: MonsterInfo = e.currentTarget as MonsterInfo;
+        var touch: Touch = e.getTouch(target);
+        if (touch) {
+            Mouse.cursor = MouseCursor.BUTTON;
+            if(touch.phase == TouchPhase.HOVER) {
+                coreDispatch(ItemView.HOVER, target, target.item);
+            }
+        } else {
+            coreDispatch(ItemView.HOVER_OUT);
+            Mouse.cursor = MouseCursor.AUTO;
+        }
     }
 
 

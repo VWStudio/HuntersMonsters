@@ -52,10 +52,14 @@ public class MonsterInfo extends AbstractView {
     override protected function initialize() : void {
 
         _back = getChildAt(0) as Sprite;
-
+        _back.touchable = true;
         _nameVal = _links["name_tf"];
         _hpVal = _links["hp_tf"];
+        _links["icon"].touchable = true;
         _icon = _links["icon"].getChildAt(0) as Image;
+        _icon.touchable = true;
+        this.touchable = true;
+
 
         _nameVal.visible = false;
 
@@ -139,6 +143,11 @@ public class MonsterInfo extends AbstractView {
 
     public function get monster() : MonsterVO {
         return _monster;
+    }
+
+    public function get item() : Item
+    {
+        return Item.create(ItemVO.createPetItemVO(_monster));
     }
 }
 }
