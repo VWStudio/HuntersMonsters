@@ -119,7 +119,7 @@ public class TamedMonsterView extends AbstractView {
 //        _picture.touchable = true;
 
         _name = _links.name_tf;
-        _tint = _links["bitmap_common_disabled_tint"];
+        _tint = _links["bitmap_lock_bg"];
 
 
         _tameIcon = _links["bitmap_itemicon_tamed"];

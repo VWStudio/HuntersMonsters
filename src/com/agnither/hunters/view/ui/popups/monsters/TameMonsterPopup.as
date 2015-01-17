@@ -101,7 +101,7 @@ public class TameMonsterPopup extends Popup
             var o : Number = _monsterArea.tameprice[i];
             var priceItem : TamePriceRow = new TamePriceRow(o);
             _container.addChild(priceItem);
-            priceItem.y = i * 60;
+            priceItem.y = i * 30;
             _isEnough = _isEnough && priceItem.isEnough;
         }
         _container.x = (-_container.width / 2) + (width / 2) + 30;

@@ -173,7 +173,7 @@ public class HudScreen extends Screen
             //_playerExp.text = progress.fullExp.toString() + "/" +LevelVO.DICT[progress.level.toString()].exp;
             //_expProgress.scaleX = progress.fullExp / LevelVO.DICT[progress.level.toString()].exp;
 
-            _playerExp.text = exp + "/" + expNext;
+            _playerExp.text = exp + " / " + expNext;
             _expProgress.scaleX = exp / expNext;
         }
         else

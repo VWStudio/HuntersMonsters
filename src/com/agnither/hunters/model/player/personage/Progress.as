@@ -214,13 +214,13 @@ public class Progress extends EventDispatcher {
         obj.rating = settings.playerInitialRating;
         obj.magic = settings.playerInitialMagic;
 
-        obj.gold = 10000;
-//        obj.gold = settings.playerInitialGold;
+        //obj.gold = 10000;
+        obj.gold = settings.playerInitialGold;
         obj.crystalls = 50;
 
         obj.maxSummon = settings.playerInitialSummonMax;
-//        obj.skillPoints = 10;
-        obj.skillPoints = settings.playerInitialSkillPoints;
+        obj.skillPoints = 1;
+        //obj.skillPoints = settings.playerInitialSkillPoints;
         obj.monsterTimers = {};
         obj.unlockPoints = settings.unlockPoints;
         obj.unlockPointsGiven = [];
@@ -230,7 +230,7 @@ public class Progress extends EventDispatcher {
         obj.houses = [];
         obj.unlockedLocations = settings.unlockedLocations;
         obj.campPosition = null;
-        obj.tamedMonsters = ["blue_bull", "meowut","pikachu","squirtle","charmander","slowpoke","bulbasaur","pidgey","ratata","zubat"];
+        //obj.tamedMonsters = ["blue_bull", "meowut","pikachu","squirtle","charmander","slowpoke","bulbasaur","pidgey","ratata","zubat"];
 
         obj.areaStars = {};
         obj.sets = ["default"];

@@ -86,37 +86,37 @@
     },
     {
       "parameter": "shopDeliverTimeMin",
-      "value": "240",
+      "value": "60",
       "type": "int"
     },
     {
       "parameter": "weaponTabMin",
-      "value": "4",
-      "type": "int"
-    },
-    {
-      "parameter": "weaponTabMax",
       "value": "7",
       "type": "int"
     },
     {
-      "parameter": "armorTabMin",
-      "value": "6",
-      "type": "int"
-    },
-    {
-      "parameter": "armorTabMax",
+      "parameter": "weaponTabMax",
       "value": "12",
       "type": "int"
     },
     {
+      "parameter": "armorTabMin",
+      "value": "12",
+      "type": "int"
+    },
+    {
+      "parameter": "armorTabMax",
+      "value": "16",
+      "type": "int"
+    },
+    {
       "parameter": "magicTabMin",
-      "value": "1",
+      "value": "2",
       "type": "int"
     },
     {
       "parameter": "magicTabMax",
-      "value": "3",
+      "value": "4",
       "type": "int"
     },
     {
@@ -327,7 +327,7 @@
       "picture": "monster_2.png",
       "itemimage": "card_m1",
       "level": 1,
-      "hp": 20,
+      "hp": 14,
       "defence": 1,
       "damage": 5,
       "damagetype": "weapon",
@@ -337,7 +337,7 @@
       "stars": "5,10,20",
       "difficultyfactor": 1,
       "expearned": 5,
-      "reward": 15,
+      "reward": 20,
       "difficulty": 100,
       "drop": 1
     },
@@ -347,7 +347,7 @@
       "picture": "monster_4.png",
       "itemimage": "card_m2",
       "level": 1,
-      "hp": 29,
+      "hp": 19,
       "defence": 4,
       "damage": 4,
       "damagetype": "water",
@@ -356,9 +356,9 @@
       "extension": "mana_add:[\"water\",1]",
       "speed": 100,
       "stars": "5,10,20",
-      "difficultyfactor": 2,
+      "difficultyfactor": 1,
       "expearned": 10,
-      "reward": 29,
+      "reward": 32,
       "difficulty": 100,
       "drop": 1
     },
@@ -368,7 +368,7 @@
       "picture": "monster_1.png",
       "itemimage": "card_m3",
       "level": 1,
-      "hp": 38,
+      "hp": 36,
       "defence": 7,
       "damage": 10,
       "damagetype": "fire",
@@ -377,7 +377,7 @@
       "extension": "mana_add:[\"fire\",1]",
       "speed": 100,
       "stars": "5,10,20",
-      "difficultyfactor": 5,
+      "difficultyfactor": 3,
       "expearned": 17,
       "reward": 51,
       "difficulty": 100,
@@ -561,7 +561,7 @@
       "areamax": 2,
       "lifemin": 60,
       "lifemax": 60,
-      "respawn": 60,
+      "respawn": 30,
       "chestlife": 0,
       "chestrespawn": 60,
       "chestdropset": 3,
@@ -578,7 +578,7 @@
       "areamax": 2,
       "lifemin": 60,
       "lifemax": 60,
-      "respawn": 240,
+      "respawn": 120,
       "chestlife": 0,
       "chestrespawn": 60,
       "chestdropset": 3,
@@ -596,7 +596,7 @@
       "areamax": 2,
       "lifemin": 60,
       "lifemax": 60,
-      "respawn": 900,
+      "respawn": 300,
       "chestlife": 0,
       "chestrespawn": 60,
       "chestdropset": 3,
@@ -623,7 +623,7 @@
       "areamax": 2,
       "lifemin": 60,
       "lifemax": 60,
-      "respawn": 1800,
+      "respawn": 600,
       "chestlife": 0,
       "chestrespawn": 60,
       "chestdropset": 3,
@@ -640,7 +640,7 @@
       "areamax": 2,
       "lifemin": 60,
       "lifemax": 60,
-      "respawn": 1800,
+      "respawn": 1200,
       "chestlife": 0,
       "chestrespawn": 60,
       "chestdropset": 3,
@@ -756,7 +756,6 @@
   ],
   "item": [
     {
-      "id": 22,
       "name": "pet",
       "type": "pet",
       "slot": 0,
@@ -766,7 +765,6 @@
       "localekey": "pet"
     },
     {
-      "id": 23,
       "name": "tamed_pet",
       "type": "pet",
       "slot": 1,
@@ -776,7 +774,6 @@
       "localekey": "tamed_pet"
     },
     {
-      "id": 1,
       "name": "card_w1",
       "type": "weapon",
       "slot": 2,
@@ -788,7 +785,6 @@
       "localekey": "card_w1"
     },
     {
-      "id": 2,
       "name": "card_w2",
       "type": "weapon",
       "slot": 2,
@@ -800,7 +796,6 @@
       "localekey": "card_w2"
     },
     {
-      "id": 24,
       "name": "card_w3",
       "type": "weapon",
       "slot": 2,
@@ -812,7 +807,6 @@
       "localekey": "card_w3"
     },
     {
-      "id": 25,
       "name": "card_w4",
       "type": "weapon",
       "slot": 2,
@@ -824,7 +818,6 @@
       "localekey": "card_w4"
     },
     {
-      "id": 3,
       "name": "card_wm",
       "type": "weapon",
       "slot": 2,
@@ -836,7 +829,6 @@
       "localekey": "card_wm"
     },
     {
-      "id": 7,
       "name": "card_ah1",
       "type": "armor",
       "slot": 3,
@@ -848,7 +840,6 @@
       "localekey": "card_ah1"
     },
     {
-      "id": 26,
       "name": "card_ah2",
       "type": "armor",
       "slot": 3,
@@ -860,7 +851,6 @@
       "localekey": "card_ah2"
     },
     {
-      "id": 4,
       "name": "card_ab1",
       "type": "armor",
       "slot": 4,
@@ -872,7 +862,6 @@
       "localekey": "card_ab1"
     },
     {
-      "id": 5,
       "name": "card_ab2",
       "type": "armor",
       "slot": 4,
@@ -884,7 +873,6 @@
       "localekey": "card_ab2"
     },
     {
-      "id": 27,
       "name": "card_ab3",
       "type": "armor",
       "slot": 4,
@@ -896,7 +884,6 @@
       "localekey": "card_ab3"
     },
     {
-      "id": 28,
       "name": "card_ab4",
       "type": "armor",
       "slot": 4,
@@ -908,7 +895,6 @@
       "localekey": "card_ab4"
     },
     {
-      "id": 6,
       "name": "card_ag1",
       "type": "armor",
       "slot": 6,
@@ -920,7 +906,6 @@
       "localekey": "card_ag1"
     },
     {
-      "id": 30,
       "name": "card_ag2",
       "type": "armor",
       "slot": 6,
@@ -932,7 +917,6 @@
       "localekey": "card_ag2"
     },
     {
-      "id": 8,
       "name": "card_al1",
       "type": "armor",
       "slot": 7,
@@ -944,7 +928,6 @@
       "localekey": "card_al1"
     },
     {
-      "id": 29,
       "name": "card_al2",
       "type": "armor",
       "slot": 7,
@@ -956,7 +939,6 @@
       "localekey": "card_al2"
     },
     {
-      "id": 19,
       "name": "card_am3",
       "type": "magic",
       "slot": 8,
@@ -968,7 +950,6 @@
       "localekey": "card_am1"
     },
     {
-      "id": 20,
       "name": "card_am2",
       "type": "magic",
       "slot": 8,
@@ -980,7 +961,6 @@
       "localekey": "card_am1"
     },
     {
-      "id": 21,
       "name": "card_am1",
       "type": "magic",
       "slot": 8,
@@ -992,7 +972,6 @@
       "localekey": "card_am1"
     },
     {
-      "id": 12,
       "name": "card_s1_1",
       "type": "spell",
       "slot": 9,
@@ -1004,7 +983,6 @@
       "localekey": "card_s1_1"
     },
     {
-      "id": 13,
       "name": "card_s2_1",
       "type": "spell",
       "slot": 9,
@@ -1016,8 +994,7 @@
       "localekey": "card_s2_1"
     },
     {
-      "id": 14,
-      "name": "card_s2_1",
+      "name": "card_s2_2",
       "type": "spell",
       "slot": 9,
       "picture": "card_s2_2",
@@ -1028,7 +1005,6 @@
       "localekey": "card_s2_2"
     },
     {
-      "id": 15,
       "name": "card_s3_1",
       "type": "spell",
       "slot": 9,
@@ -1040,7 +1016,6 @@
       "localekey": "card_s3_1"
     },
     {
-      "id": 16,
       "name": "card_s1_2",
       "type": "spell",
       "slot": 9,
@@ -1052,7 +1027,6 @@
       "localekey": "card_s1_2"
     },
     {
-      "id": 17,
       "name": "card_s4_1",
       "type": "spell",
       "slot": 9,
@@ -1064,7 +1038,6 @@
       "localekey": "card_s4_1"
     },
     {
-      "id": 18,
       "name": "card_s5_1",
       "type": "spell",
       "slot": 9,
@@ -1353,30 +1326,30 @@
   "skills": [
     {
       "id": 1,
-      "name": "Выносливость",
+      "name": "Магия огня",
       "unlocklevel": 1,
-      "points": 5,
-      "changevalue": 10,
-      "description": "+10% здоровья за 1 пункт",
-      "icon": "drop_magic"
+      "points": 4,
+      "changevalue": 1,
+      "description": "+1 единица магии в начале боя за 1 пункт",
+      "icon": "mana_fire"
     },
     {
       "id": 2,
-      "name": "Воин",
+      "name": "Магия воды",
       "unlocklevel": 1,
-      "points": 5,
-      "changevalue": 10,
-      "description": "+10% урона фишками холодного оружия за 1 пункт",
-      "icon": "chip_sword"
+      "points": 4,
+      "changevalue": 1,
+      "description": "+1 единица магии в начале боя за 1 пункт",
+      "icon": "mana_blue"
     },
     {
       "id": 3,
-      "name": "Маг",
+      "name": "Магия природы",
       "unlocklevel": 1,
-      "points": 5,
-      "changevalue": 5,
-      "description": "+5% урона фишками магии за 1 пункт",
-      "icon": "itemicon_spell"
+      "points": 4,
+      "changevalue": 1,
+      "description": "+1 единица магии в начале боя за 1 пункт",
+      "icon": "mana_green"
     },
     {
       "id": 4,

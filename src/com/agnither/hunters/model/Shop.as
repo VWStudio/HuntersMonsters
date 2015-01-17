@@ -205,7 +205,7 @@ public class Shop
                     var item2 : Item = Model.instance.items.generateRandomItem(randType);
                     if(item2 && item2.crystallPrice > 0) {
                         crystallItems.push(item2); // добавляем в найденые
-                        items.push(item2) // добавляем в итоговый массив
+                        items.push(item2); // добавляем в итоговый массив
                         arrByType = getItemsByType(arr[i]); // в массив для сохранения
                         arrByType.push(item2);
                     }

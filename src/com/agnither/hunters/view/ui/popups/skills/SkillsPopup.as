@@ -27,16 +27,16 @@ public class SkillsPopup extends Popup {
     private var _hp : TextField;
     private var _summon : TextField;
     private var _skillPoints : TextField;
-    private var _level1tf : TextField;
-    private var _level2tf : TextField;
-    private var _level3tf : TextField;
-    private var _level4tf : TextField;
+    //private var _level1tf : TextField;
+    //private var _level2tf : TextField;
+    //private var _level3tf : TextField;
+    //private var _level4tf : TextField;
     private var _magic : Sprite;
     private var _level1 : Sprite;
     private var _level2 : Sprite;
     private var _level3 : Sprite;
     private var _level4 : Sprite;
-    private var _hero : Image;
+    //private var _hero : Image;
     private var _tooltip : Tooltip;
 
     public function SkillsPopup() {
@@ -47,7 +47,7 @@ public class SkillsPopup extends Popup {
     override protected function initialize() : void {
         createFromConfig(_refs.guiConfig.skills_popup);
 
-        _hero = _links["bitmap_hero.png"];
+        //_hero = _links["bitmap_hero.png"];
 
         handleCloseButton(_links["close_btn"]);
 
@@ -56,12 +56,14 @@ public class SkillsPopup extends Popup {
         _exp = _links["exp_tf"];
         _exp.visible = false;
         _hp = _links["hp_tf"];
+        _hp.visible = false;
         _summon = _links["summon_tf"];
+        _summon.visible = false;
         _skillPoints = _links["sp_tf"];
-        _level1tf = _links["level1_tf"];
-        _level2tf = _links["level2_tf"];
-        _level3tf = _links["level3_tf"];
-        _level4tf = _links["level4_tf"];
+        //_level1tf = _links["level1_tf"];
+        //_level2tf = _links["level2_tf"];
+        //_level3tf = _links["level3_tf"];
+        //_level4tf = _links["level4_tf"];
 
         _magic = new Sprite();
         addChild(_magic);
@@ -107,6 +109,7 @@ public class SkillsPopup extends Popup {
 
     private function onItemHoverOut() : void
     {
+        trace(1);
         _tooltip.visible = false;
     }
 
@@ -127,7 +130,7 @@ public class SkillsPopup extends Popup {
 
     override public function update() : void {
 
-
+         trace(SkillVO.LEVELS["1"]);
 
         var progress :  Progress = Model.instance.progress;
         var player :  LocalPlayer = Model.instance.player;
@@ -137,11 +140,11 @@ public class SkillsPopup extends Popup {
         _exp.text = "Опыт: "+progress.exp.toString() + "/" +LevelVO.DICT[progress.level.toString()].exp;
         _hp.text = "Здоровье:  "+progress.hp.toString() + "       (+10 за каждый новый уровень)";
         _summon.text = "Питомцы:  "+player.hero.maxSummon.toString();
-        _skillPoints.text = "Очки навыков:  "+progress.skillPoints.toString() + "       (+1 за каждый новый уровень)";
-        _level1tf.text = "Уровень 1";
-        _level2tf.text = "Уровень 3";
-        _level3tf.text = "Уровень 7";
-        _level4tf.text = "Уровень 10";
+        _skillPoints.text = "Очки навыков:  "+progress.skillPoints.toString();
+        //_level1tf.text = "Уровень 1";
+        //_level2tf.text = "Уровень 3";
+        //_level3tf.text = "Уровень 7";
+        //_level4tf.text = "Уровень 10";
 
         _level1.removeChildren();
         var arr : Array = SkillVO.LEVELS["1"];
@@ -152,10 +155,10 @@ public class SkillsPopup extends Popup {
             _level1.addChild(skItem);
             skItem.setSkill(skill);
             skItem.update();
-            skItem.x = i * 125;
+            skItem.y = i * 42;
         }
 
-        _level2.removeChildren();
+        /*_level2.removeChildren();
         arr = SkillVO.LEVELS["3"];
         for (i = 0; i < arr.length; i++)
         {
@@ -189,7 +192,7 @@ public class SkillsPopup extends Popup {
             skItem.setSkill(skill);
             skItem.update();
             skItem.x = i * 125;
-        }
+        } */
 
     }
 }

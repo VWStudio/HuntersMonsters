@@ -46,7 +46,7 @@ public class TamePriceRow extends AbstractView {
                 isEnough = monsters.length >= price.amount;
                 break;
             case "money":
-                _title.text = price.amount + "   золота";
+                _title.text = price.amount + "   Золото";
                 isEnough = Model.instance.progress.gold >= price.amount;
                 break;
             case "item":
