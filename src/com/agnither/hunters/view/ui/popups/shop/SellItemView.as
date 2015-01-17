@@ -196,7 +196,8 @@ public class SellItemView extends AbstractView
 //        }
 
         touch = e.getTouch(this, TouchPhase.HOVER);
-        if (touch && Model.instance.itemsTooltip.item != _itemView.item)
+        if (touch && (!Model.instance.itemsTooltip.visible || Model.instance.itemsTooltip.item != _itemView.item))
+//        if (touch)
         {
             coreDispatch(ItemView.HOVER, _itemView, _itemView.item, _price, true);
         }

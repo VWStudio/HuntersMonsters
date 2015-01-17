@@ -121,7 +121,8 @@ public class BuyItemView extends AbstractView
 //        var ttInteract : Boolean = e.interactsWith(Model.instance.itemsTooltip);
 
 //        var isHitTooltip : Boolean = e.interactsWith(Model.instance.itemsTooltip);
-        if (touch && Model.instance.itemsTooltip.item != _itemView.item)
+//        if (touch && Model.instance.itemsTooltip.item != _itemView.item)
+        if (touch && (!Model.instance.itemsTooltip.visible || Model.instance.itemsTooltip.item != _itemView.item))
         {
 
             coreDispatch(ItemView.HOVER, _itemView, _itemView.item, _price, false);
