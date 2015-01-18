@@ -120,6 +120,7 @@ public class ItemsListView extends AbstractView {
                 //if (item.item.isPet()) coreDispatch(LocalPlayer.PET_SELECTED, item.item);
                 item.update();
                 coreDispatch(LocalPlayer.ITEM_SELECTED, item.item);
+
             }
             else if(touch.phase == TouchPhase.HOVER)
             {
