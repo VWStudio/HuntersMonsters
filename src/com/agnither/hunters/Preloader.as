@@ -93,7 +93,8 @@ public class Preloader extends MovieClip
         var isLocal : Boolean = stage.loaderInfo.url.indexOf("http") < 0;
 
         _libLoader = new Loader();
-        var myUrlReq : URLRequest = new URLRequest(!isLocal ? "http://app.vk.com/c6130/u284790/7db47f1516a93d.swf" : "AssetsLib.swf");
+        var myUrlReq : URLRequest = new URLRequest(!isLocal ? "http://app.vk.com/c6130/u284790/1585c56412b7c4.swf" : "AssetsLib.swf");
+//        var myUrlReq : URLRequest = new URLRequest(!isLocal ? "http://app.vk.com/c6130/u284790/7db47f1516a93d.swf" : "AssetsLib.swf");
         _libLoader.contentLoaderInfo.addEventListener(Event.COMPLETE, onGraphicLoaded);
         _libLoader.contentLoaderInfo.addEventListener(ProgressEvent.PROGRESS, libProgress);
         _libLoader.load(myUrlReq, new LoaderContext(false, ApplicationDomain.currentDomain, !isLocal ? SecurityDomain.currentDomain : null));
