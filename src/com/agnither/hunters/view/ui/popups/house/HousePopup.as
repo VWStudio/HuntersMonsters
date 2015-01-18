@@ -88,7 +88,7 @@ public class HousePopup extends Popup
 
         _itemsContainer = new Sprite();
         addChild(_itemsContainer);
-        _itemsContainer.x = 210;
+        _itemsContainer.x = 92;
         _itemsContainer.y = 70;
 
         _randomContainer = new Sprite();

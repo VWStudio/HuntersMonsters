@@ -46,7 +46,7 @@ public class SkillItem extends AbstractView
         _back = _links["bitmap_common_hitrect"];
         _disabled = _links["bitmap_common_disabled_tint"];
         _disabled.touchable = true;
-        _disabled.visible = false;
+        //_disabled.visible = false;
         _points = _links["points_tf"];
         _points.touchable = false;
 
@@ -54,6 +54,7 @@ public class SkillItem extends AbstractView
         _back.addEventListener(TouchEvent.TOUCH, onTouch);
 
         _disabled.addEventListener(TouchEvent.TOUCH, onDisabledTouch);
+        _icon.visible = false;
 
     }
 
@@ -80,7 +81,7 @@ public class SkillItem extends AbstractView
         isLevelEnough = _skill.unlocklevel <= Model.instance.progress.level;
         isNotMax = owned < _skill.points;
         isAllowedToIncrease = Model.instance.progress.skillPoints > 0 && isLevelEnough && isNotMax;
-        _points.text = owned + "/" + _skill.points + (isAllowedToIncrease ? "(+)" : "");
+        _points.text = owned + "/" + _skill.points;// + (isAllowedToIncrease ? "(+)" : "");
         _disabled.visible = !isLevelEnough;
 //        _back.visible = isLevelEnough;
 
@@ -122,7 +123,8 @@ public class SkillItem extends AbstractView
         }
         else
         {
-            coreDispatch(SkillItem.HOVER, this);
+            //coreDispatch(SkillItem.HOVER, this);
+            coreDispatch(SkillItem.HOVER_OUT, this);
             Mouse.cursor = MouseCursor.AUTO;
 
         }

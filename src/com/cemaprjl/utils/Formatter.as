@@ -27,14 +27,13 @@ public class Formatter {
         var parts:Array = time.split(":");
         parts.reverse();
 
-        var seconds:String = parts[0];
-        var minutes:String = parts[1];
-        var hours:String = parts[2];
+        var seconds:String = String(int(parts[0]));
+        var minutes:String = String(int(parts[1]));
+        var hours:String = String(int(parts[2]));
 
-        var str:String = minutes + ":" + seconds;
-        if (int(hours) > 0) {
-            str = hours + ":" + str;
-        }
+        var str:String = seconds + "с";
+        if (int(minutes) > 0) str = minutes + "м " + seconds + "с";
+        if (int(hours) > 0) str = hours + "ч " + minutes + "м";
 
         return str;
     }

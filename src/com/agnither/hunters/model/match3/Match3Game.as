@@ -216,6 +216,7 @@ public class Match3Game extends EventDispatcher
 //                    attacker = currentPlayer.hero;
                     aim = currentEnemy.hero;
                     dmg = currentEnemy.hero.maxHP * (match.amount * 2) / 100;
+                    if (dmg<1) dmg = 1;
 
                     if (currentPlayer.incDmgPercent > 0)
                     {
